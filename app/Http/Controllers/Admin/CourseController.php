@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Course;
+use App\Models\CourseCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -20,7 +21,8 @@ class CourseController extends Controller
     public function create()
     {
         $admins = Admin::latest()->get();
-        return view('admin.pages.course.create', compact('admins'));
+        $courseCats = CourseCategory::latest()->get();
+        return view('admin.pages.course.create', compact('admins','courseCats'));
     }
 
     public function store(Request $request)
@@ -33,6 +35,7 @@ class CourseController extends Controller
             Course::insert([
 
                 'instructor_id' => $request->instructor_id,
+                'course_category_id' => $request->course_category_id,
 
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "-"),
@@ -78,6 +81,7 @@ class CourseController extends Controller
                 Course::insert([
 
                     'instructor_id' => $request->instructor_id,
+                    'course_category_id' => $request->course_category_id,
 
                     'name' => $request->name,
                     'slug' => Str::slug($request->name, "-"),
@@ -130,7 +134,8 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $admins = Admin::latest()->get();
-        return view('admin.pages.course.edit', compact('course', 'admins'));
+        $courseCats = CourseCategory::latest()->get();
+        return view('admin.pages.course.edit', compact('course', 'admins','courseCats'));
     }
 
     public function update(Request $request, $id)
@@ -160,6 +165,7 @@ class CourseController extends Controller
             $course->update([
 
                 'instructor_id' => $request->instructor_id,
+                'course_category_id' => $request->course_category_id,
 
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "-"),
