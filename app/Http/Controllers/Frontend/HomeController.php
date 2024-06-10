@@ -2,55 +2,19 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Site;
-use App\Models\User;
 use App\Models\Faq;
-use App\Models\Rfq;
 use App\Models\Row;
-use App\Models\Blog;
-use App\Models\Brand;
-use App\Models\Policy;
 use Illuminate\Http\Request;
-use App\Models\AboutUs;
-use App\Models\Country;
 use App\Models\Feature;
-use App\Models\Product;
 use App\Models\Setting;
-use App\Models\Success;
-use App\Models\Category;
 use App\Models\Homepage;
-use App\Models\Industry;
-use App\Models\BrandPage;
 use App\Models\LearnMore;
-use App\Models\RfqProduct;
-use App\Models\TechGlossy;
-use App\Models\ClientStory;
-use App\Models\DocumentPdf;
-use App\Models\SubCategory;
-use App\Models\IndustryPage;
-use App\Models\SolutionCard;
 use App\Models\WhatWeDoPage;
 use Illuminate\Support\Facades\DB;
-use App\Models\MultiIndustry;
-use App\Models\PortfolioPage;
-use App\Models\PortfolioTeam;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseCurriculum;
-use App\Models\OfficeLocation;
-use App\Models\SolutionDetail;
-use App\Models\SubSubCategory;
-use App\Models\TechnologyData;
-use Brian2694\Toastr\Facades\Toastr;
-use App\Models\PortfolioClient;
-use App\Models\HardwareInfoPage;
 use App\Models\NewsTrend;
-use App\Models\PortfolioDetails;
-use App\Models\SoftwareInfoPage;
-use App\Models\PortfolioCategory;
-use App\Models\PortfolioChooseUs;
-use App\Models\SubSubSubCategory;
-use App\Models\PortfolioClientFeedback;
 use App\Models\CourseQuery;
 
 class HomeController extends Controller
@@ -75,37 +39,10 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data['home'] = Homepage::latest('id')->with([
-            'feature1', 'feature2', 'feature3', 'feature4', 'feature5',
-            'success1', 'success2', 'success3',
-            'story1', 'story2', 'story3', 'story4',
-            'techglossy'
-        ])->first();
-
-        $data['courses'] = Course::latest('id')->get();
-        $data['features'] = [
-            'feature1' => $data['home']->feature1 ?? null,
-            'feature2' => $data['home']->feature2 ?? null,
-            'feature3' => $data['home']->feature3 ?? null,
-            'feature4' => $data['home']->feature4 ?? null,
-            'feature5' => $data['home']->feature5 ?? null,
-        ];
-        $data['storys'] = [
-            'story1' => $data['home']->story1 ?? null,
-            'story2' => $data['home']->story2 ?? null,
-            'story3' => $data['home']->story3 ?? null,
-            'story4' => $data['home']->story4 ?? null,
-        ];
-        $data['successItems'] = [
-            '1' => $data['home']->success1 ?? null,
-            '2' => $data['home']->success2 ?? null,
-            '3' => $data['home']->success3 ?? null,
-        ];
-        $data['techglossy'] = $data['home']->techglossy ?? null;
 
 
 
-        return view('frontend.pages.home.index', $data);
+        return view('frontend.pages.home');
     }
 
 
@@ -143,7 +80,7 @@ class HomeController extends Controller
     public function courseDetails($id,$slug)
     {
         $coursedetail = Course::find($id);
-        
+
         $relatedcourses = Course::latest()->get();
 
         $courseCurriculams = CourseCurriculum::where('course_id', $coursedetail->id)->get();

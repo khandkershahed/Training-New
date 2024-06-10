@@ -1,39 +1,35 @@
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--Title-->
-<title>{{ !empty($setting->site_name) ? $setting->site_name : 'NGen IT Ltd.' }}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Corporate Training Courses in Africa, Asia, Europe, USA | Training
+    </title>
+    <link
+      rel="shortcut icon"
+      href="https://www.promisetrainingglobal.com/wp-content/themes/universo/images/favicon.png"
+      type="image/x-icon"
+    />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"
+    />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/Css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/Css/main-style.css') }}" />
 
-<!--Fav-Icon-->
-<link rel="icon" type="image/x-icon"
-    href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/brandPage-logo-no-img(217-55).jpg') }}">
-
-
-
-
-
-<!--CSS Start-->
-
-
-<!-- slick slider -->
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/sliders/owl.carousel.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/sliders/slick.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/sliders/slick-theme.css') }}">
-
-<!-- Library link -->
-<link href="{{ asset('frontend/css/bootstrap/bootstrap@5.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('frontend/css/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/select-2/select2.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/toastr/toastr.min.css') }}">
-
-
-<!-- Css link -->
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/custom_global.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/custom_responsive.css') }}">
-
-{{-- Custom Style 6-7-2023 End --}}
-
-@yield('styles')
-<meta property="og:image:width" content="700"> {{-- Set the width of your image --}}
-<meta property="og:image:height" content="630"> {{-- Set the height of your image --}}

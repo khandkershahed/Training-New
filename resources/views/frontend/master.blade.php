@@ -3,87 +3,74 @@
 
 <head>
     @include('frontend.partials.head')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-    <meta name="google-site-verification" content="rvHWL3HPw7hzVuxHE37nPByXS604wH6gpUPzjZiWNy8" />
-    <meta name="title" content="NGen IT Ltd.">
-    <meta name="description"
-        content="NGEN IT Ltd. is a System Integration, Software & Hardware based License Provider & Software development based company established at 2008. Our technical expertise, broad solutions portfolio and supply chain capabilities give us the right resources and scale to achieve more for you. Cloud Services.">
-    <meta name="keywords"
-        content="software, hardware, training, books, license, Microsoft, Adobe, Software License, Acronis, Veeam, Industry, Solution, Health Industry, Financial Industry,">
-    <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    <meta name="author" content="NGen IT">
-    <script async data-id="9476858534" id="chatling-embed-script" type="text/javascript"
-        src="https://chatling.ai/js/embed.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KB1NVD4FHE"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-KB1NVD4FHE');
-    </script>
 </head>
-{{-- <body onload="myFunction()"> --}}
 
 <body>
-    <div id="loading" style="margin-top: 0rem !important"></div>
-
-    <!--======// Nav Menu //========-->
-    @include('frontend.partials.header')
-    <!--------End---------->
-    <div class="page-wrapper row p-0">
-        @yield('content')
+    <div class="loader">
+        
     </div>
-    <!----------End--------->
-    <!--=======// Footer Section//=========-->
-    @if (Route::current() && Route::current()->getName() && str_contains(Route::current()->getName(), 'client'))
-    @else
+
+    <main>
+        @yield('content')
+    </main>
+
+    <footer>
         @include('frontend.partials.footer')
-    @endif
+    </footer>
+    <!-- All Extra Content -->
+    <!-- Mobile Menu Offcanvas -->
+    <div class="offcanvas offcanvas-start w-100" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+        aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="staticBackdropLabel">Menu Area</h5>
+            <button type="button" class="btn-close navbar-toggler-close" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>asdasdasdswasdasd</div>
+        </div>
+    </div>
 
-    <!--=======// Cookises Modals //=======-->
-    @include('frontend.partials.cookies')
-    <!----------End--------->
+    <!-- Sidebar Fixed Modal Start -->
+    <!-- Button trigger modal -->
+    <button type="button" class="toggle-btn-sidebar" data-bs-toggle="modal" data-bs-target="#discountModal">
+        GET DISCOUNT
+    </button>
 
-    <!--=======// Feedback Modals //=======-->
-    @include('frontend.partials.feedback')
-    <!----------End--------->
+    <!-- Modal -->
+    <div class="modal fade" id="discountModal" tabindex="-1" aria-labelledby="discountModalLabel"
+        aria-hidden="true" data-bs-target="#staticBackdrop">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="discountModalLabel">
+                        Discount Information
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal content goes here -->
+                    This is where you can display information about discounts,
+                    promotions, etc.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        Apply Discount
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sidebar Fixed Modal End -->
 
-    <!--============///* USE LINK *///=============-->
+    <!-- Mobile Menu OffcanvasE End-->
+    <!-- All Extra Content ENd -->
+    <!-- Bootstrap JavaScript Libraries -->
     @include('frontend.partials.script')
-    <script>
-        // var preloader = document.getElementById('loading');
-
-        // function myFunction() {
-        //   preloader.style.display = "none";
-        // }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const preloader = document.getElementById('loading');
-
-            // Simulate a delay (you can replace this with actual logic)
-            setTimeout(function() {
-                preloader.style.opacity = 0;
-                setTimeout(function() {
-                    preloader.style.display = "none";
-                }, 100); // Same duration as preloader CSS animation
-            }, 800); // Simulated delay in milliseconds
-        });
-    </script>
-
-
-    {{-- {{ \TawkTo::widgetCode() }} --}}
-
-    
-
-
 </body>
 
 </html>
