@@ -22,54 +22,16 @@ class HomeController extends Controller
 
     //Client Authentication
 
-    public function login()
-    {
-        return view('frontend.auth.login');
-    }
-
-    public function register()
-    {
-        return view('frontend.auth.register');
-    }
-
-
-
     //Homepage
 
     public function index()
     {
-
-
-
-
         return view('frontend.pages.home');
     }
 
 
-
-
     //Learn More
 
-
-    public function LearnMore()
-    {
-        $learnmore = LearnMore::with([
-            'successStoryOne',
-            'successStoryTwo',
-            'successStoryThree',
-        ])->orderBy('id', 'DESC')->first();
-
-        if ($learnmore) {
-            $data['learnmore'] = $learnmore;
-            $data['story1'] = $learnmore->successStoryOne;
-            $data['story2'] = $learnmore->successStoryTwo;
-            $data['story3'] = $learnmore->successStoryThree;
-            return view('frontend.pages.learnmore.view', $data);
-        }
-    return redirect()->back()->with('error','No Page Found');
-    // return redirect()->route('admin.course_query.index')->with('success', 'Course Query Inserted Successfully!!');
-
-    }
 
     public function allCourses()
     {
@@ -126,60 +88,15 @@ class HomeController extends Controller
     //About
     public function about()
     {
-        // $data['about'] = AboutUs::latest('id', 'desc')->firstOrFail();
-        // if ($data['about']) {
 
-        //     $data['row1'] = Row::where('id', $data['about']->row_one_id)->first();
-        //     $data['row2'] = Row::where('id', $data['about']->row_two_id)->first();
-        //     $data['row3'] = Row::where('id', $data['about']->row_three_id)->first();
-        // }
-        // $data['pdfs'] = DocumentPdf::where('category', 'company')->latest('id', 'desc')->limit(4)->get(['document', 'button_name', 'button_link']);
-        return view('frontend.pages.about.about');
-    }
-
-    //What We Do
-
-    public function whatWeDo()
-    {
-        $data['whatwedo'] = WhatWeDoPage::latest('id', 'desc')->firstOrFail();
-        if (!empty($data['whatwedo'])) {
-            $data['row_two'] = Row::where('id', $data['whatwedo']->row_two_id)->first();
-            $data['row_three'] = Row::where('id', $data['whatwedo']->row_three_id)->first();
-        }
-        return view('frontend.pages.whatwedo.whatwedo', $data);
+        return view('frontend.pages.about');
     }
 
 
-    //Feature Details
-    public function FeatureDetails($id)
-    {
-        $data['learnmore'] = LearnMore::orderBy('id', 'DESC')->select('learn_mores.industry_header', 'learn_mores.consult_title', 'learn_mores.consult_short_des', 'learn_mores.background_image')->first();
-        $data['feature'] = Feature::with(['rowOne', 'rowTwo'])->findOrFail($id);
-
-        $data['row_one'] = $data['feature']->rowOne;
-        $data['row_two'] = $data['feature']->rowTwo;
-
-        $data['features'] = Feature::with('rowOne', 'rowTwo')
-            ->where('id', '!=', $id)->select('logo', 'id', 'badge', 'header')->get();
-        return view('frontend.pages.feature.feature_details', $data);
-    }
-
-
-    //Contact, Support, Location, RFQ
-    // public function location()
-    // {
-    //     $data['setting'] = Site::latest()->first();
-    //     $data['locations'] = OfficeLocation::orderBy('name', 'ASC')->get();
-    //     $country_ids = $data['locations']->pluck('country_id')->unique()->toArray();
-    //     $data['countries']  = Country::whereIn('id', $country_ids)->get();
-    //     $data['tech_datas'] = TechnologyData::where('category', 'location')->orderBy('id', 'desc')->limit(6)->get();
-    //     return view('frontend.pages.contact.location', $data);
-    // }
 
     public function contact()
     {
-        $data['setting'] = Setting::latest()->first();
-        return view('frontend.pages.contact.contact', $data);
+        return view('frontend.pages.contact');
     }
 
     public function Support()

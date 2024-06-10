@@ -3,11 +3,11 @@
     <!-- Banner Section -->
     <section>
         <div class="slider">
-            <div class="slick-slide text-right banenr-main" style="background-image: url(./assets/img/banner1.jpg)"></div>
+            <div class="slick-slide text-right banenr-main" style="background-image: url({{ asset('frontend/assets/img/banner1.jpg') }})"></div>
             <!-- slick-slide -->
-            <div class="slick-slide text-right banenr-main" style="background-image: url(./assets/img/banner2.jpg)"></div>
+            <div class="slick-slide text-right banenr-main" style="background-image: url({{ asset('frontend/assets/img/banner2.jpg') }})"></div>
             <!-- slick-slide -->
-            <div class="slick-slide text-right banenr-main" style="background-image: url(./assets/img/banner3.jpg)"></div>
+            <div class="slick-slide text-right banenr-main" style="background-image: url({{ asset('frontend/assets/img/banner3.jpg') }})"></div>
             <!-- slick-slide -->
         </div>
     </section>

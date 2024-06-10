@@ -6,10 +6,8 @@
 </head>
 
 <body>
-    <div class="loader">
-        
-    </div>
-
+    <div class="loader"></div>
+    @include('frontend.partials.header')
     <main>
         @yield('content')
     </main>

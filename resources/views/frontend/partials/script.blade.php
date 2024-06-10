@@ -1,11 +1,11 @@
-<script src="./assets/Js/popper.min.js"></script>
-    <script src="./assets/Js/bootstrap.min.js"></script>
+<script src="{{ asset('frontend/assets/Js/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/Js/bootstrap.min.js') }}"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
-    <script src="./assets/Js/script.js"></script>
+    <script src="{{ asset('frontend/assets/Js/script.js') }}"></script>
     <script>
         function toggleMenu() {
             var offcanvas = document.querySelector(".offcanvas-sidebar");

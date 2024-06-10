@@ -786,10 +786,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="about-us.html" class="nav-link active" aria-current="page">About Us</a>
+                        <a href="{{ route('about') }}" class="nav-link active" aria-current="page">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="contact-us.html">Contact Us</a>
+                        <a class="{{ route('contact') }}" aria-current="page" href="contact-us.html">Contact Us</a>
                     </li>
                 </ul>
             </div>
