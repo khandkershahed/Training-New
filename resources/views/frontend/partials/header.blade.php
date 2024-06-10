@@ -5,31 +5,29 @@
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-0 text-white">
-                            <span><span class="fw-bold text-white">Hotline:</span> +971 54
-                                4590 666</span>
+                            <span><span class="fw-bold text-white">Hotline:</span> {{optional($setting)->primary_phone}}</span>
                             |
-                            <span><span class="fw-bold text-white">UK:</span> +44 207 193
-                                8814</span>
+                            <span><span class="fw-bold text-white"></span> {{optional($setting)->whatsapp}}</span>
                             |
                             <span><span class="fw-bold text-white">Email:</span>
-                                training@ngenit.com</span>
+                            {{optional($setting)->primary_email}}</span>
                         </p>
                         <div class="top-social">
-                            <a href="#" class="text-decoration-none mobile-d-none" data-bs-toggle="popover"
+                            <a href="{{optional($setting)->social_facebook}}" class="text-decoration-none mobile-d-none" data-bs-toggle="popover"
                                 data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Facebook">
                                 <i class="fab fa-facebook-f primary-text-color fs-6 social-top"></i>
                             </a>
-                            <a href="" class="text-decoration-none" data-bs-toggle="popover"
+                            <a href="{{optional($setting)->social_linkedin}}" class="text-decoration-none" data-bs-toggle="popover"
                                 data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Linkedin">
                                 <i
                                     class="fa-brands fa-linkedin primary-text-color fs-6 social-top mobile-d-none"></i>
                             </a>
-                            <a href="" class="text-decoration-none" data-bs-toggle="popover"
+                            <a href="{{optional($setting)->social_youtube}}" class="text-decoration-none" data-bs-toggle="popover"
                                 data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Youtube">
                                 <i class="fa-brands fa-youtube primary-text-color fs-6 social-top"></i>
                             </a>
-                            <a href="registration.html" class="text-decoration-none" data-bs-toggle="popover"
-                                data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Registration">
+                            <a href="{{ route('login') }}" class="text-decoration-none" data-bs-toggle="popover"
+                                data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Login">
                                 <i class="fa-solid fa-user primary-text-color fs-6 social-top"></i>
                             </a>
                         </div>
@@ -43,7 +41,7 @@
     <nav class="navbar navbar-expand-lg navbar-light main_header">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img class="img-fluid" src="./assets/img/logo.png" alt="" />
+                <img class="img-fluid" src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}" alt="" />
             </a>
             <button class="navbar-toggler text-white" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" id="navbarToggler">
