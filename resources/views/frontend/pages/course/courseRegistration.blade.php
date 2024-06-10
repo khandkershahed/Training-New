@@ -9,6 +9,7 @@
             text-align: center;
         }
 
+
         .showcase-courses img {
             width: 100%;
             height: 100%;
@@ -69,7 +70,7 @@
             padding-bottom: 13px !important;
             border-radius: 5px;
             border: 1px solid #FFFFFF33;
-            color: white;
+            color: #747474;
         }
 
         .form-color:focus {
@@ -167,43 +168,44 @@
 
                                 <div class="input-field-gap">
                                     <input type="text" class="form-control form-color" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" required name="email" placeholder="Email Id:example@example.com">
+                                        aria-describedby="emailHelp" required name="email"
+                                        placeholder="Email Id:example@example.com">
                                 </div>
 
                                 <div class="input-field-gap">
                                     <input type="tel" class="form-control form-color" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" required name="phone" placeholder="Phone;Eg:017*******">
+                                        aria-describedby="emailHelp" required name="phone"
+                                        placeholder="Phone;Eg:017*******">
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <select class="form-select form-color" required name="course_id" aria-label="Select Course" placeholder="Select Course">
+                                    <select class="form-select form-color" required name="course_id"
+                                        aria-label="Select Course" data-placeholder="Select Course">
                                         <option value="" disabled selected>Select Course</option>
                                         @foreach ($courses as $course)
-                                            <option value="{{$course->id}}">{{$course->name}}</option>
+                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <textarea class="form-control form-color" name="message" rows="1"
-                                        placeholder="Something Note Here"></textarea>
+                                    <textarea class="form-control form-color" name="message" rows="1" placeholder="Something Note Here"></textarea>
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <textarea class="form-control form-color" name="address" rows="2"
-                                        placeholder="Your Address"></textarea>
+                                    <textarea class="form-control form-color" name="address" rows="2" placeholder="Your Address"></textarea>
                                 </div>
 
                                 <div>
-                                    <button type="submit" class="btn btn-white w-100">Submit</button>
+                                    <button type="submit" class="btn bg-white w-100 fw-bold"
+                                        style="color:#111E30">Submit</button>
                                 </div>
 
                             </div>
                             <div class="col-lg-6 d-lg-block d-sm-none">
                                 <div class="sidebar-areas">
                                     <img class="form-side-area" width="516px" height="580px"
-                                        src="{{ asset('frontend/images/registration.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/assets/img/registration.jpg') }}" alt="">
                                     <div class="sidebar-content">
                                         <p>"Skill development is not just about acquiring knowledge;
                                             it's about cultivating the ability to adapt and thrive

@@ -199,7 +199,7 @@
                 </div>
                 <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
@@ -347,298 +347,10 @@
                             </div>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown position-static">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
-                            type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                            aria-expanded="false">Training Categories</a>
-                        <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 py-0"
-                            aria-labelledby="navbarScrollingDropdown">
-                            <div class="container">
-                                <div class="row gx-0">
-                                    <div class="col-lg-3" style="background: #0a1d5b">
-                                        <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
-                                            <li class="nav-item cources-category-top" role="presentation">
-                                                <button
-                                                    class="nav-link cources-category-top-link text-white active"
-                                                    id="home-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#home-tab-pane" type="button" role="tab"
-                                                    aria-controls="home-tab-pane" aria-selected="true">
-                                                    Data Science
-                                                </button>
-                                            </li>
-                                            <li class="nav-item cources-category-top" role="presentation">
-                                                <button class="nav-link cources-category-top-link text-white"
-                                                    id="profile-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#profile-tab-pane" type="button"
-                                                    role="tab" aria-controls="profile-tab-pane"
-                                                    aria-selected="false">
-                                                    Profile
-                                                </button>
-                                            </li>
-                                            <li class="nav-item cources-category-top" role="presentation">
-                                                <button class="nav-link cources-category-top-link text-white"
-                                                    id="contact-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#contact-tab-pane" type="button"
-                                                    role="tab" aria-controls="contact-tab-pane"
-                                                    aria-selected="false">
-                                                    Contact
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-9 header-courses">
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="tab-pane fade show active p-3" id="home-tab-pane"
-                                                role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                                                <h3 class="pb-3 primary-text-color">
-                                                    Data Science
-                                                </h3>
-                                                <div class="row">
-                                                    <div class="col-lg-4">
-                                                        <p class="fw-bold border-bottom text-muted">
-                                                            Degrees
-                                                        </p>
-                                                        <small class="text-muted">Breakthrough pricing on 100%
-                                                            online degrees
-                                                            designed to fit into your life.</small>
-                                                        <a href="" class="text-decoration-none">
-                                                            <div class="d-flex align-items-center pt-3">
-                                                                <div>
-                                                                    <img class="img-fluid" width="36px"
-                                                                        height="36px"
-                                                                        src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-university-assets.s3.amazonaws.com/70/de505d47be7d3a063b51b6f856a6e2/New-Block-M-Stacked-Blue-295C_600x600.png?auto=format%2Ccompress&dpr=1"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="ps-2">
-                                                                    <small class="text-muted">University of
-                                                                        Michigan</small>
-                                                                    <p class="mb-0 primary-text-color">
-                                                                        Master of Applied Data Science
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <p class="fw-bold border-bottom text-muted">
-                                                            Certificate programs
-                                                        </p>
-                                                        <small class="text-muted">In 3-9 months, gain the skills to
-                                                            break into
-                                                            a new career or take your career to the next
-                                                            level.</small>
-                                                        <a href="" class="text-decoration-none">
-                                                            <div class="d-flex align-items-center pt-3">
-                                                                <div>
-                                                                    <img class="img-fluid" width="36px"
-                                                                        height="36px"
-                                                                        src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-university-assets.s3.amazonaws.com/70/de505d47be7d3a063b51b6f856a6e2/New-Block-M-Stacked-Blue-295C_600x600.png?auto=format%2Ccompress&dpr=1"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="ps-2">
-                                                                    <small class="text-muted">University of
-                                                                        Michigan</small>
-                                                                    <p class="mb-0 primary-text-color">
-                                                                        Master of Applied Data Science
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <p class="fw-bold border-bottom text-muted">
-                                                            Get Started
-                                                        </p>
-                                                        <ul class="ps-4 ms-0">
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">New
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Beginner
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Advanced
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Data
-                                                                    Science Projects</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Advanced
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                                                aria-labelledby="profile-tab" tabindex="0">
-                                                2
-                                            </div>
-                                            <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
-                                                aria-labelledby="contact-tab" tabindex="0">
-                                                3
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ route('courses.all') }}">All Courses</a>
                     </li>
-                    <li class="nav-item dropdown position-static">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
-                            type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                            aria-expanded="false">Training Vanue</a>
-                        <ul class="dropdown-menu w-100 m-0 rounded-0 py-0"
-                            aria-labelledby="navbarScrollingDropdown">
-                            <div class="container">
-                                <div class="row gx-0">
-                                    <div class="col-lg-3" style="background: #0a1d5b">
-                                        <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
-                                            <li class="nav-item cources-category-top" role="presentation">
-                                                <button
-                                                    class="nav-link cources-category-top-link text-white active"
-                                                    id="home-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#home-tab-pane" type="button" role="tab"
-                                                    aria-controls="home-tab-pane" aria-selected="true">
-                                                    Data Science
-                                                </button>
-                                            </li>
-                                            <li class="nav-item cources-category-top" role="presentation">
-                                                <button class="nav-link cources-category-top-link text-white"
-                                                    id="profile-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#profile-tab-pane" type="button"
-                                                    role="tab" aria-controls="profile-tab-pane"
-                                                    aria-selected="false">
-                                                    Profile
-                                                </button>
-                                            </li>
-                                            <li class="nav-item cources-category-top" role="presentation">
-                                                <button class="nav-link cources-category-top-link text-white"
-                                                    id="contact-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#contact-tab-pane" type="button"
-                                                    role="tab" aria-controls="contact-tab-pane"
-                                                    aria-selected="false">
-                                                    Contact
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-9 header-courses">
-                                        <div class="tab-content" id="myTabContent">
-                                            <div class="tab-pane fade show active p-3" id="home-tab-pane"
-                                                role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                                                <h3 class="pb-3 primary-text-color">
-                                                    Data Science
-                                                </h3>
-                                                <div class="row">
-                                                    <div class="col-lg-4">
-                                                        <p class="fw-bold border-bottom text-muted">
-                                                            Degrees
-                                                        </p>
-                                                        <small class="text-muted">Breakthrough pricing on 100%
-                                                            online degrees
-                                                            designed to fit into your life.</small>
-                                                        <a href="" class="text-decoration-none">
-                                                            <div class="d-flex align-items-center pt-3">
-                                                                <div>
-                                                                    <img class="img-fluid" width="36px"
-                                                                        height="36px"
-                                                                        src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-university-assets.s3.amazonaws.com/70/de505d47be7d3a063b51b6f856a6e2/New-Block-M-Stacked-Blue-295C_600x600.png?auto=format%2Ccompress&dpr=1"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="ps-2">
-                                                                    <small class="text-muted">University of
-                                                                        Michigan</small>
-                                                                    <p class="mb-0 primary-text-color">
-                                                                        Master of Applied Data Science
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <p class="fw-bold border-bottom text-muted">
-                                                            Certificate programs
-                                                        </p>
-                                                        <small class="text-muted">In 3-9 months, gain the skills to
-                                                            break into
-                                                            a new career or take your career to the next
-                                                            level.</small>
-                                                        <a href="" class="text-decoration-none">
-                                                            <div class="d-flex align-items-center pt-3">
-                                                                <div>
-                                                                    <img class="img-fluid" width="36px"
-                                                                        height="36px"
-                                                                        src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-university-assets.s3.amazonaws.com/70/de505d47be7d3a063b51b6f856a6e2/New-Block-M-Stacked-Blue-295C_600x600.png?auto=format%2Ccompress&dpr=1"
-                                                                        alt="" />
-                                                                </div>
-                                                                <div class="ps-2">
-                                                                    <small class="text-muted">University of
-                                                                        Michigan</small>
-                                                                    <p class="mb-0 primary-text-color">
-                                                                        Master of Applied Data Science
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <p class="fw-bold border-bottom text-muted">
-                                                            Get Started
-                                                        </p>
-                                                        <ul class="ps-4 ms-0">
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">New
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Beginner
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Advanced
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Data
-                                                                    Science Projects</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href=""
-                                                                    class="text-decoration-none primary-text-color">Advanced
-                                                                    Data Science Courses</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                                                aria-labelledby="profile-tab" tabindex="0">
-                                                2
-                                            </div>
-                                            <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
-                                                aria-labelledby="contact-tab" tabindex="0">
-                                                3
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
+
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
                             type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
@@ -786,10 +498,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('about') }}" class="nav-link active" aria-current="page">About Us</a>
+                        <a class="nav-link " aria-current="page" href="{{ route('course.registration') }}">Course Registration</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('contact') }}">Contact Us</a>
+                        <a href="{{ route('about') }}" class="nav-link" aria-current="page">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ route('contact') }}">Contact Us</a>
                     </li>
                 </ul>
             </div>

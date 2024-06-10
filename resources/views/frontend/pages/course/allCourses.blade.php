@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('content')
-    <style>
+    {{-- <style>
         .showcase-courses {
             width: 100%;
             height: 300px;
@@ -63,9 +63,9 @@
             padding-left: 0;
             padding-right: 0;
         }
-    </style>
+    </style> --}}
     <section class="">
-        <img class="custom-banner" src="{{ asset('frontend/images/all-courses-banner.jpg') }}" alt="Picture">
+        <img class="img-fluid" src="{{ asset('frontend/assets/img/all-courses-banner.jpg') }}" alt="Picture">
         {{-- <div class="overlay-courses">
             <h2>Our All Courses</h2>
             <p>One-Stop Learning &amp; Development Solutions</p>

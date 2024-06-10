@@ -36,7 +36,7 @@ class HomeController extends Controller
     public function allCourses()
     {
         $courses = Course::latest()->get();
-        return view('frontend.pagese.course.allCourses',compact('courses'));
+        return view('frontend.pages.course.allCourses',compact('courses'));
     }
 
     public function courseDetails($id,$slug)
@@ -47,7 +47,7 @@ class HomeController extends Controller
 
         $courseCurriculams = CourseCurriculum::where('course_id', $coursedetail->id)->get();
 
-        return view('frontend.pagese.course.allCoursesDetails',compact('relatedcourses','coursedetail','courseCurriculams'));
+        return view('frontend.pages.course.allCoursesDetails',compact('relatedcourses','coursedetail','courseCurriculams'));
     }
 
 
@@ -56,7 +56,7 @@ class HomeController extends Controller
         $data = [
             'courses' => Course::latest('id')->get(),
         ];
-        return view('frontend.pagese.course.courseRegistration',$data);
+        return view('frontend.pages.course.courseRegistration',$data);
     }
 
     //Course Registration Store
@@ -119,7 +119,7 @@ class HomeController extends Controller
 
             $data['courseCurriculams'] = CourseCurriculum::where('course_id', $data['coursedetail']->id)->get();
 
-            return view('frontend.pagese.course.allCoursesDetails', $data);
+            return view('frontend.pages.course.allCoursesDetails', $data);
         } else {
 
             return redirect()->back();
