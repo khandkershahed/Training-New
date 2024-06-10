@@ -51,6 +51,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\WhatWeDoPageController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CourseCategoryController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -155,6 +156,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'course_outline' => CourseOutlineController::class,
             'course_schedule' => CourseScheduleController::class,
             'about' => AboutUsController::class,
+            'course_category' => CourseCategoryController::class,
 
         ],
     );
