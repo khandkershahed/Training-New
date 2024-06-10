@@ -12,6 +12,7 @@ use App\Models\LearnMore;
 use App\Models\WhatWeDoPage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
 use App\Models\Course;
 use App\Models\CourseCurriculum;
 use App\Models\NewsTrend;
@@ -23,7 +24,6 @@ class HomeController extends Controller
     //Client Authentication
 
     //Homepage
-
     public function index()
     {
         return view('frontend.pages.home');
@@ -31,8 +31,6 @@ class HomeController extends Controller
 
 
     //Learn More
-
-
     public function allCourses()
     {
         $courses = Course::latest()->get();
@@ -88,11 +86,9 @@ class HomeController extends Controller
     //About
     public function about()
     {
-
-        return view('frontend.pages.about');
+        $about = AboutUs::find(1);
+        return view('frontend.pages.about',compact('about'));
     }
-
-
 
     public function contact()
     {
