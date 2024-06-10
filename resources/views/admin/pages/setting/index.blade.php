@@ -92,10 +92,17 @@
 
                 <div class="row">
                     <div class="col-lg-4 mb-7">
-                        <x-metronic.label for="address" class="col-form-label fw-bold fs-6 ">{{ __('Address') }}
+                        <x-metronic.label for="address_line_one" class="col-form-label fw-bold fs-6 ">{{ __('Address Line One') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="address" type="text" name="address" :value="old('address', optional($setting->first())->address)"
+                        <x-metronic.input id="address_line_one" type="text" name="address_line_one" :value="old('address_line_one', optional($setting->first())->address_line_one)"
+                            placeholder="Enter the Phone"></x-metronic.input>
+                    </div>
+                    <div class="col-lg-4 mb-7">
+                        <x-metronic.label for="address_line_two" class="col-form-label fw-bold fs-6 ">{{ __('Address Line Two') }}
+                        </x-metronic.label>
+
+                        <x-metronic.input id="address_line_two" type="text" name="address_line_two" :value="old('address_line_two', optional($setting->first())->address_line_two)"
                             placeholder="Enter the Phone"></x-metronic.input>
                     </div>
 

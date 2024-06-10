@@ -77,12 +77,8 @@
         color: #747474
     }
 </style>
-    <section class="showcase">
-        <img src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/course-banner.jpg?id=8892" alt="Picture" />
-        <div class="overlay">
-            <h2>Login</h2>
-            <p>One-Stop Learning & Development Solutions</p>
-        </div>
+    <section>
+        <img class="img-fluid" src="{{ asset('frontend/assets/img/login.jpg') }}" alt="LogIn" />
     </section>
     <section style="background-color: #051225">
         <div class="container py-lg-5 py-3">

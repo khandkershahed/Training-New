@@ -11,10 +11,6 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
-use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CourseContentController;
@@ -28,28 +24,17 @@ use App\Http\Controllers\Admin\CourseScheduleController;
 use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\FeatureController;
-use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\HomepageController;
-use App\Http\Controllers\Admin\IconController;
 use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\RowController;
-use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\SpecificationController;
-use App\Http\Controllers\Admin\SuccessController;
-use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
-use App\Http\Controllers\Admin\WhatWeDoPageController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -124,25 +109,11 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
         [
             'user' => UserController::class, //done
             'user-management' => UserManagementController::class,
-            'categories' => CategoryController::class, //done
-            'tags' => TagController::class, //done
-            'icons' => IconController::class, //done
-            'services' => ServiceController::class, //done
-            // 'experiences'     => ExperienceController::class, //done
-            'projects' => ProjectController::class,
-            'testimonials' => TestimonialController::class,
-            'specifications' => SpecificationController::class,
-            'blogs' => BlogController::class,
             'newsletters' => NewsletterController::class,
-            'brands' => BrandController::class, //done
             'contacts' => ContactController::class,
-            'feature' => FeatureController::class,
-            'row' => RowController::class,
             'news-trend' => NewsTrendController::class,
             'homepage' => HomepageController::class,
-            'whatwedo' => WhatWeDoPageController::class,
             'learnmore' => LearnMoreController::class,
-            'success' => SuccessController::class,
 
             //Created By Ashiquzzaman
             'course' => CourseController::class,
@@ -166,13 +137,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::post('send-test-mail', [EmailSettingController::class, 'sendTestMail'])->name('send.test.mail');
 
     Route::post('email-settings/toggle-status/{id}', [EmailSettingController::class, 'toggleStatus'])->name('email-settings.toggle-status');
-    Route::post('tags/toggle-status/{id}', [TagController::class, 'toggleStatus'])->name('tags.toggle-status');
-    Route::post('icons/toggle-status/{id}', [IconController::class, 'toggleStatus'])->name('icons.toggle-status');
-    Route::post('brands/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('brands.toggle-status');
-    Route::post('banners/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('banners.toggle-status');
-    Route::post('footers/toggle-status/{id}', [FooterController::class, 'toggleStatus'])->name('footers.toggle-status');
-    Route::post('services/toggle-status/{id}', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status');
-    Route::post('blogs/toggle-status/{id}', [BlogController::class, 'toggleStatus'])->name('blogs.toggle-status');
 
     Route::get('/backup', [Controller::class, 'downloadBackup']);
 
@@ -191,8 +155,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'updateOrcreateSetting'])->name('settings.updateOrCreate');
 
-    Route::get('/banner', [BannerController::class, 'index'])->name('banner.index');
-    Route::put('/banner', [BannerController::class, 'updateOrcreateBanner'])->name('banner.updateOrCreate');
 
     Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
