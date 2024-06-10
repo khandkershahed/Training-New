@@ -443,7 +443,7 @@
                       </span>
                       <div
                           class="menu-sub menu-sub-accordion {{ Route::is('admin.feature.index', 'admin.success.index', 'admin.row.index', 'admin.news-trend.index', 'admin.homepage.index', 'admin.whatwedo.index', 'admin.learnmore.index') ? 'menu-active-bg' : '' }}">
-                          <div class="menu-item">
+                          {{-- <div class="menu-item">
                               <a class="menu-link {{ Route::is('admin.feature.index') ? 'active' : '' }}"
                                   href="{{ route('admin.feature.index') }}">
                                   <span class="menu-bullet">
@@ -451,8 +451,8 @@
                                   </span>
                                   <span class="menu-title">Features</span>
                               </a>
-                          </div>
-                          <div class="menu-item">
+                          </div> --}}
+                          {{-- <div class="menu-item">
                               <a class="menu-link {{ Route::is('admin.success.index') ? 'active' : '' }}"
                                   href="{{ route('admin.success.index') }}">
                                   <span class="menu-bullet">
@@ -460,8 +460,8 @@
                                   </span>
                                   <span class="menu-title">Success</span>
                               </a>
-                          </div>
-                          <div class="menu-item">
+                          </div> --}}
+                          {{-- <div class="menu-item">
                               <a class="menu-link {{ Route::is('admin.row.index') ? 'active' : '' }}"
                                   href="{{ route('admin.row.index') }}">
                                   <span class="menu-bullet">
@@ -469,7 +469,7 @@
                                   </span>
                                   <span class="menu-title">Rows</span>
                               </a>
-                          </div>
+                          </div> --}}
                           <div class="menu-item">
                               <a class="menu-link {{ Route::is('admin.news-trend.index') ? 'active' : '' }}"
                                   href="{{ route('admin.news-trend.index') }}">
@@ -480,7 +480,7 @@
                               </a>
                           </div>
 
-                          <div class="menu-item">
+                          {{-- <div class="menu-item">
                               <a class="menu-link {{ Route::is('admin.whatwedo.index') ? 'active' : '' }}"
                                   href="{{ route('admin.whatwedo.index') }}">
                                   <span class="menu-bullet">
@@ -488,7 +488,7 @@
                                   </span>
                                   <span class="menu-title">What We Do</span>
                               </a>
-                          </div>
+                          </div> --}}
                           <div class="menu-item">
                               <a class="menu-link {{ Route::is('admin.learnmore.index') ? 'active' : '' }}"
                                   href="{{ route('admin.learnmore.index') }}">

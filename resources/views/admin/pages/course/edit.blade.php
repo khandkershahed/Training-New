@@ -55,7 +55,29 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
+
+                            <div class="form-group">
+                                <label for="" class="mb-2">Course Category Name</label>
+                                <select name="course_category_id" data-placeholder="Select Row One.."
+                                    class="form-select form-select-sm" data-control="select2"
+                                    data-placeholder="Select an option">
+
+                                    @if (count($courseCats) > 0)
+                                        @foreach ($courseCats as $courseCat)
+                                            <option class="form-control" value="{{ $admin->id }}"
+                                                {{ $course->course_category_id == $courseCat->id ? 'selected' : '' }}>
+                                                {{ $courseCat->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Course Name</label>
                                 <input type="text" name="name" placeholder="Corse Name"
@@ -63,11 +85,11 @@
                             </div>
                         </div>
 
-                        <div class="col-5 mb-3">
+                        <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Tags</label>
-                                <input type="text" name="tags" data-role="tagsinput" placeholder="" class="form-control form-control-sm"
-                                    value="{{ $course->tags }}">
+                                <input type="text" name="tags" data-role="tagsinput" placeholder=""
+                                    class="form-control form-control-sm" value="{{ $course->tags }}">
                             </div>
                         </div>
 
