@@ -1,13 +1,9 @@
 @extends('frontend.master')
 @section('content')
-    <section class="showcase">
-        <img src="https://coursebuilder.thimpress.com/demo-corporate-learning/wp-content/uploads/sites/10/2018/10/page_title_1.jpg"
-            alt="Picture" />
-        <div class="overlay">
-            <h2>Contact Us</h2>
-            <p>One-Stop Learning & Development Solutions</p>
-        </div>
+    <section>
+        <img class="img-fluid" src="{{ asset('frontend/assets/img/contact_banner.jpg') }}" alt="LogIn" />
     </section>
+
     <section class="" style="background-color: #eee;">
         <div class="container">
             <div class="row py-5">
@@ -65,20 +61,20 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" placeholder="Enter Your Name" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                    <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" placeholder="Enter Your Email" />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter Your Name" />
+                                    <input type="text" name="phone" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="Phone Number" />
                                 </div>
                             </div>
                             <div class="col-lg-12">

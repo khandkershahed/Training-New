@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('email', 100);
-            $table->text('message');
-            $table->boolean('is_banned')->default(0)->comment('0 for inactive, 1 for active');
-            $table->ipAddress('ip_address')->nullable();
+            $table->string('code')->unique();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('subject')->nullable();
+            $table->text('message')->nullable();
+            $table->string('ip_address', 100)->nullable();
+            $table->enum('status', ['pending', 'replied', 'on_going', 'closed'])->default('pending');
             $table->timestamps();
         });
     }
