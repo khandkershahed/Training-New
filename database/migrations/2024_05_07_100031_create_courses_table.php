@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations. 
+     * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('instructor_id')->nullable()->constrained('admins')->cascadeOnUpdate();
+            $table->foreignId('course_category_id')->nullable()->constrained('course_categories')->cascadeOnUpdate();
             $table->string('name', 255);
             $table->string('slug', 255)->unique();
             $table->string('course_code', 50)->unique()->nullable();
