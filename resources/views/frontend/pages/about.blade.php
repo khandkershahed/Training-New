@@ -3,10 +3,10 @@
     <section class="showcase">
         <img src="{{ asset('upload/about/' . $about->banner_image) }}" alt="Picture" />
 
-        <div class="overlay">
-            {{-- <h2>About Us</h2>
-            <p>One-Stop Learning & Development Solutions</p> --}}
-        </div>
+        {{-- <div class="overlay">
+            <h2>About Us</h2>
+            <p>One-Stop Learning & Development Solutions</p>
+        </div> --}}
 
     </section>
 

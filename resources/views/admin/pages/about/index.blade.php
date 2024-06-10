@@ -4,8 +4,10 @@
 
     <div class="card card-flash">
         <div class="card-header mt-6">
+
             <div class="card-title"></div>
-            <div class="card-toolbar">
+
+            {{-- <div class="card-toolbar">
                 <a href="{{ route('admin.about.create') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -19,7 +21,8 @@
                         </svg>
                     </span> Create
                 </a>
-            </div>
+            </div> --}}
+            
         </div>
         <div class="card-body pt-0">
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">

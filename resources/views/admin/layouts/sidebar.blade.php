@@ -328,6 +328,15 @@
                                   <span class="menu-bullet">
                                       <span class="bullet bullet-dot"></span>
                                   </span>
+                                  <span class="menu-title">Course Category</span>
+                              </a>
+                          </div>
+
+                          <div class="menu-item">
+                              <a class="menu-link" href="{{ route('admin.course.index') }}">
+                                  <span class="menu-bullet">
+                                      <span class="bullet bullet-dot"></span>
+                                  </span>
                                   <span class="menu-title">Courses</span>
                               </a>
                           </div>
@@ -500,14 +509,13 @@
                           </div>
 
                           <div class="menu-item">
-                            <a class="menu-link"
-                                href="{{ route('admin.about.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">About</span>
-                            </a>
-                        </div>
+                              <a class="menu-link" href="{{ route('admin.about.index') }}">
+                                  <span class="menu-bullet">
+                                      <span class="bullet bullet-dot"></span>
+                                  </span>
+                                  <span class="menu-title">About</span>
+                              </a>
+                          </div>
 
                       </div>
                   </div>
@@ -753,18 +761,17 @@
                               </a>
                           </div>
                           <div class="menu-item">
-                            <a class="menu-link"
-                                href="{{ route('admin.all.registration') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Registration</span>
-                            </a>
-                        </div>
+                              <a class="menu-link" href="{{ route('admin.all.registration') }}">
+                                  <span class="menu-bullet">
+                                      <span class="bullet bullet-dot"></span>
+                                  </span>
+                                  <span class="menu-title">Registration</span>
+                              </a>
+                          </div>
                       </div>
                   </div>
 
-                  
+
 
               </div>
           </div>
