@@ -324,6 +324,15 @@
                       <div class="menu-sub menu-sub-accordion">
 
                           <div class="menu-item">
+                              <a class="menu-link" href="{{ route('admin.service.index') }}">
+                                  <span class="menu-bullet">
+                                      <span class="bullet bullet-dot"></span>
+                                  </span>
+                                  <span class="menu-title">Service</span>
+                              </a>
+                          </div>
+
+                          <div class="menu-item">
                               <a class="menu-link" href="{{ route('admin.course_category.index') }}">
                                   <span class="menu-bullet">
                                       <span class="bullet bullet-dot"></span>
