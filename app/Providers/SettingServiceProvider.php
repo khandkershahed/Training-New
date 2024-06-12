@@ -24,8 +24,8 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (Schema::hasTable('settings')) {
-            View::share('setting', Setting::first());
-        }
+        // if (Schema::hasTable('settings')) {
+        //     View::share('setting', Setting::first());
+        // }
     }
 }
