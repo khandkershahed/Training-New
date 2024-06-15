@@ -10,13 +10,16 @@ use App\Models\Setting;
 class SettingServiceProvider extends ServiceProvider
 {
     /**
+     * Indicates if loading of the provider is deferred.
+     */
+    protected $defer = true;
+
+    /**
      * Register services.
      */
     public function register(): void
     {
-        if (Schema::hasTable('settings')) {
-            View::share('setting', Setting::first());
-        }
+        // No database access here
     }
 
     /**
@@ -24,8 +27,16 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // if (Schema::hasTable('settings')) {
-        //     View::share('setting', Setting::first());
-        // }
+        if (Schema::hasTable('settings')) {
+            View::share('setting', Setting::first());
+        }
+    }
+
+    /**
+     * Get the services provided by the provider.
+     */
+    public function provides()
+    {
+        return [];
     }
 }
