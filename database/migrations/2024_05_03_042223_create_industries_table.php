@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('industries', function (Blueprint $table) {
+
             $table->id();
+
             $table->foreignId('parent_id')->nullable()->constrained('industries')->onDelete('cascade');
+
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->longText('header')->nullable();
@@ -21,7 +24,6 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('banner_image')->nullable();
             $table->string('thumbnail_image')->nullable();
-
 
             $table->timestamps();
         });
