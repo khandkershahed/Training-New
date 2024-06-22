@@ -97,12 +97,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 
     Route::resources(
         [
-            'role'                => RoleController::class,
-            'permission'          => PermissionController::class,
-            'email-settings'      => EmailSettingController::class,
-            'faq'                 => FaqController::class,
+            'role' => RoleController::class,
+            'permission' => PermissionController::class,
+            'email-settings' => EmailSettingController::class,
+            'faq' => FaqController::class,
             'terms-and-condition' => TermsConditionController::class,
-            'privacy-policy'      => PrivacyPolicyController::class,
+            'privacy-policy' => PrivacyPolicyController::class,
         ],
         ['except' => ['show']]
     );
@@ -113,29 +113,29 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 
     Route::resources(
         [
-            'user'                => UserController::class, //done
-            'user-management'     => UserManagementController::class,
-            'newsletters'         => NewsletterController::class,
-            'contacts'            => ContactController::class,
-            'news-trend'          => NewsTrendController::class,
-            'homepage'            => HomepageController::class,
-            'learnmore'           => LearnMoreController::class,
+            'user' => UserController::class, //done
+            'user-management' => UserManagementController::class,
+            'newsletters' => NewsletterController::class,
+            'contacts' => ContactController::class,
+            'news-trend' => NewsTrendController::class,
+            'homepage' => HomepageController::class,
+            'learnmore' => LearnMoreController::class,
 
             //Created By Ashiquzzaman
-            'course'              => CourseController::class,
-            'course_curriculam'   => CourseCurriculamController::class,
-            'course_content'      => CourseContentController::class,
-            'coupon'              => CouponController::class,
-            'course_query'        => CourseQueryController::class,
+            'course' => CourseController::class,
+            'course_curriculam' => CourseCurriculamController::class,
+            'course_content' => CourseContentController::class,
+            'coupon' => CouponController::class,
+            'course_query' => CourseQueryController::class,
 
-            'course_management'   => CourseManagentController::class,
-            'course_project'      => CourseProjectController::class,
-            'course_outline'      => CourseOutlineController::class,
-            'course_schedule'     => CourseScheduleController::class,
-            'about'               => AboutUsController::class,
-            'course_category'     => CourseCategoryController::class,
-            'service'             => ServiceController::class,
-            'industry'             => IndustryController::class,
+            'course_management' => CourseManagentController::class,
+            'course_project' => CourseProjectController::class,
+            'course_outline' => CourseOutlineController::class,
+            'course_schedule' => CourseScheduleController::class,
+            'about' => AboutUsController::class,
+            'course_category' => CourseCategoryController::class,
+            'service' => ServiceController::class,
+            'industry' => IndustryController::class,
 
         ],
     );
