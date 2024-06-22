@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\industry;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -21,8 +23,10 @@ class CourseController extends Controller
     public function create()
     {
         $admins = Admin::latest()->get();
+        $services = Service::latest()->get();
+        $industrys = industry::latest()->get();
         $courseCats = CourseCategory::latest()->get();
-        return view('admin.pages.course.create', compact('admins','courseCats'));
+        return view('admin.pages.course.create', compact('admins', 'courseCats', 'services', 'industrys'));
     }
 
     public function store(Request $request)
@@ -30,11 +34,35 @@ class CourseController extends Controller
         $mainFile = $request->file('thumbnail_image');
         $imgPath = storage_path('app/public/course/');
 
+        $instructor = $request->instructor_id;
+        if ($instructor !== null) {
+            $instructors = implode(',', $instructor);
+        } else {
+            $instructors = null;
+        }
+
+        $service = $request->service_id;
+        if ($service !== null) {
+            $services = implode(',', $service);
+        } else {
+            $services = null;
+        }
+
+        $industry = $request->industry_id;
+        if ($industry !== null) {
+            $industrys = implode(',', $industry);
+        } else {
+            $industrys = null;
+        }
+
         if (empty($mainFile)) {
 
             Course::insert([
 
-                'instructor_id' => $request->instructor_id,
+                'instructor_id' => $instructors,
+                'service_id' => $services,
+                'industry_id' => $industrys,
+
                 'course_category_id' => $request->course_category_id,
 
                 'name' => $request->name,
@@ -80,7 +108,10 @@ class CourseController extends Controller
 
                 Course::insert([
 
-                    'instructor_id' => $request->instructor_id,
+                    'instructor_id' => $instructors,
+                    'service_id' => $services,
+                    'industry_id' => $industrys, 'instructor_id' => $request->instructor_id,
+
                     'course_category_id' => $request->course_category_id,
 
                     'name' => $request->name,
@@ -134,8 +165,10 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $admins = Admin::latest()->get();
+        $services = Service::latest()->get();
+        $industrys = industry::latest()->get();
         $courseCats = CourseCategory::latest()->get();
-        return view('admin.pages.course.edit', compact('course', 'admins','courseCats'));
+        return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys'));
     }
 
     public function update(Request $request, $id)
@@ -144,6 +177,27 @@ class CourseController extends Controller
 
         $mainFile = $request->file('thumbnail_image');
         $uploadPath = storage_path('app/public/course/');
+
+        $instructor = $request->instructor_id;
+        if ($instructor !== null) {
+            $instructors = implode(',', $instructor);
+        } else {
+            $instructors = null;
+        }
+
+        $service = $request->service_id;
+        if ($service !== null) {
+            $services = implode(',', $service);
+        } else {
+            $services = null;
+        }
+
+        $industry = $request->industry_id;
+        if ($industry !== null) {
+            $industrys = implode(',', $industry);
+        } else {
+            $industrys = null;
+        }
 
         if (isset($mainFile)) {
             $globalFunImg = customUpload($mainFile, $uploadPath);
@@ -164,7 +218,10 @@ class CourseController extends Controller
 
             $course->update([
 
-                'instructor_id' => $request->instructor_id,
+                'instructor_id' => $instructors,
+                'service_id' => $services,
+                'industry_id' => $industrys,
+                
                 'course_category_id' => $request->course_category_id,
 
                 'name' => $request->name,

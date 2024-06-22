@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class industry extends Model
+class PrivacyPolicy extends Model
 {
-    use HasFactory, HasSlug;
-    protected $slugSourceColumn = 'name';
+    use HasFactory;
 
     /**
      * The attributes that aren't mass assignable.

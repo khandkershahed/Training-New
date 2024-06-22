@@ -31,6 +31,8 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 //Service Created By Ashiquzzaman
 Route::get('/service', [HomeController::class, 'service'])->name('service');
+Route::get('/terms-and-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
 
 
 Route::get('/contact/location', [HomeController::class, 'location'])->name('location');

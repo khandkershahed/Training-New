@@ -31,19 +31,67 @@
 
                     <div class="row p-4">
 
-                        <div class="col-3 mb-3">
+                        <div class="col-4 mb-3">
 
                             <div class="form-group">
 
                                 <label for="" class="mb-2">Instructor Name</label>
 
-                                <select class="form-select form-select-solid form-select-sm" name="child_id[]"
+                                <select class="form-select form-select-solid form-select-sm" name="instructor_id[]"
                                     id="field2" multiple="" multiselect-search="true"
                                     multiselect-select-all="true" multiselect-max-items="2">
 
                                     @if (count($admins) > 0)
                                         @foreach ($admins as $admin)
                                             <option class="form-control" value="{{ $admin->id }}">{{ $admin->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-4 mb-3">
+
+                            <div class="form-group">
+
+                                <label for="" class="mb-2">Service Name</label>
+
+                                <select class="form-select form-select-solid form-select-sm" name="service_id[]"
+                                    id="field2" multiple="" multiselect-search="true"
+                                    multiselect-select-all="true" multiselect-max-items="2">
+
+                                    @if (count($services) > 0)
+                                        @foreach ($services as $service)
+                                            <option class="form-control" value="{{ $service->id }}">
+                                                {{ $service->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-4 mb-3">
+
+                            <div class="form-group">
+
+                                <label for="" class="mb-2">Industry Name</label>
+
+                                <select class="form-select form-select-solid form-select-sm" name="industry_id[]"
+                                    id="field2" multiple="" multiselect-search="true"
+                                    multiselect-select-all="true" multiselect-max-items="2">
+
+                                    @if (count($industrys) > 0)
+                                        @foreach ($industrys as $industry)
+                                            <option class="form-control" value="{{ $industry->id }}">
+                                                {{ $industry->name }}
                                             </option>
                                         @endforeach
                                     @endif
@@ -369,6 +417,8 @@
             });
         </script>
     @endpush
+
+
 
 
 </x-admin-app-layout>
