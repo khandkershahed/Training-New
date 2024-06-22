@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseCategoryController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -128,6 +129,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'course_schedule' => CourseScheduleController::class,
             'about' => AboutUsController::class,
             'course_category' => CourseCategoryController::class,
+            'service' => ServiceController::class,
 
         ],
     );
@@ -154,7 +156,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'updateOrcreateSetting'])->name('settings.updateOrCreate');
-
 
     Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');

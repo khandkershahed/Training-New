@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'About Us'">
+<x-admin-app-layout :title="'Course Service'">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
@@ -7,8 +7,8 @@
 
             <div class="card-title"></div>
 
-            {{-- <div class="card-toolbar">
-                <a href="{{ route('admin.about.create') }}" class="btn btn-light-primary rounded-2">
+            <div class="card-toolbar">
+                <a href="{{ route('admin.service.create') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -21,7 +21,7 @@
                         </svg>
                     </span> Create
                 </a>
-            </div> --}}
+            </div>
 
         </div>
         <div class="card-body pt-0">
@@ -30,32 +30,34 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="20%">Image</th>
-                        <th width="30%">Title</th>
+                        <th width="30%">Name</th>
+                        <th width="30%">Header</th>
                         <th width="100%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600">
 
-                    @foreach ($items as $key => $item)
+                    @foreach ($services as $key => $service)
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td class="">
 
-                                <img class=""
-                                    src="{{ !empty($item->banner_image) ? url('upload/about/' . $item->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->row_two_title) }}"
-                                    height="40" width="40" alt="">
+                                <img class="" src="{{ asset('storage/service/' . $service->banner_image) }}" height="40" width="40" alt="">
+
 
                             </td>
 
-                            <td class="text-start">{{ $item->row_two_title }}</td>
+                            <td class="text-start">{{ $service->name }}</td>
+                            <td class="text-start">{{ $service->header }}</td>
                             <td>
-                                <a href="{{ route('admin.about.edit', $item->id) }}" class="text-primary">
+                                <a href="{{ route('admin.service.edit', $service->id) }}"
+                                    class="text-primary">
                                     <i class="bi bi-pencil text-primary"></i>
                                 </a>
 
-                                {{-- <a href="{{ route('admin.about.destroy', $item->id) }}" class="delete">
+                                <a href="{{ route('admin.service.destroy', $service->id) }}" class="delete">
                                     <i class="bi bi-trash3-fill text-danger"></i>
-                                </a> --}}
+                                </a>
 
                             </td>
                         </tr>
