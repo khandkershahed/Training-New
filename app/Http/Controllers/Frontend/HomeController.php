@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Faq;
-use App\Models\Row;
-use Illuminate\Http\Request;
-use App\Models\Feature;
-use App\Models\Setting;
-use App\Models\Homepage;
-use App\Models\LearnMore;
-use App\Models\WhatWeDoPage;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use App\Models\Course;
 use App\Models\CourseCurriculum;
-use App\Models\NewsTrend;
 use App\Models\CourseQuery;
+use App\Models\Faq;
+use App\Models\NewsTrend;
+use App\Models\Service;
+use App\Models\Setting;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -29,15 +24,14 @@ class HomeController extends Controller
         return view('frontend.pages.home');
     }
 
-
     //Learn More
     public function allCourses()
     {
         $courses = Course::latest()->get();
-        return view('frontend.pages.course.allCourses',compact('courses'));
+        return view('frontend.pages.course.allCourses', compact('courses'));
     }
 
-    public function courseDetails($id,$slug)
+    public function courseDetails($id, $slug)
     {
         $coursedetail = Course::find($id);
 
@@ -45,16 +39,15 @@ class HomeController extends Controller
 
         $courseCurriculams = CourseCurriculum::where('course_id', $coursedetail->id)->get();
 
-        return view('frontend.pages.course.allCoursesDetails',compact('relatedcourses','coursedetail','courseCurriculams'));
+        return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams'));
     }
-
 
     public function courseRegistration()
     {
         $data = [
             'courses' => Course::latest('id')->get(),
         ];
-        return view('frontend.pages.course.courseRegistration',$data);
+        return view('frontend.pages.course.courseRegistration', $data);
     }
 
     //Course Registration Store
@@ -73,7 +66,6 @@ class HomeController extends Controller
             'address' => $request->address,
             'call' => $request->call,
 
-
             'ip_address' => $request->ip(),
 
             'created_at' => now(),
@@ -87,7 +79,7 @@ class HomeController extends Controller
     public function about()
     {
         $about = AboutUs::find(1);
-        return view('frontend.pages.about',compact('about'));
+        return view('frontend.pages.about', compact('about'));
     }
 
     public function contact()
@@ -121,7 +113,6 @@ class HomeController extends Controller
             return redirect()->back();
         }
     } // end method
-
 
     /// Advance Search Options
     public function globalSearch(Request $request)
@@ -171,6 +162,7 @@ class HomeController extends Controller
     //Service
     public function service()
     {
-        return view('frontend.pages.service.service');
+        $service = Service::first();
+        return view('frontend.pages.service.service', compact('service'));
     }
 }
