@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div>
-                        <img src="{{ asset('upload/about/' . ($about->row_two_image ? $about->row_two_image : '')) }}"
+                        <img class="img-fluid" src="{{ asset('upload/about/' . ($about->row_two_image ? $about->row_two_image : '')) }}"
                             alt="Row Two Image">
 
                     </div>
