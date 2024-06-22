@@ -2,14 +2,15 @@
     aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="staticBackdropLabel">Menu Area</h5>
-        <button type="button" class="btn-close navbar-toggler-close" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+        <button type="button" class="btn-close navbar-toggler-close main-color" data-bs-dismiss="offcanvas"
+            aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
     </div>
     <div class="offcanvas-body">
         <li class="text-style-none text-decoration-none"><a href="{{ route('homepage') }}">Home</a></li>
         <li class="text-style-none text-decoration-none"><a href="{{ route('about') }}">About Us</a></li>
         <li class="text-style-none text-decoration-none"><a href="{{ route('contact') }}"></a>Contact Us</li>
-        {{-- <li><a href=""></a></li> --}}
     </div>
 </div>
 
@@ -28,7 +29,7 @@
                 <h5 class="modal-title" id="discountModalLabel">
                     Get Discount On Purchase!
                 </h5>
-                <button type="button" class="btn-close" style="color: white"" data-bs-dismiss="modal"
+                <button type="button" class="btn-close" style="color: white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
