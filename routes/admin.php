@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseCategoryController;
+use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -134,6 +135,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'about'               => AboutUsController::class,
             'course_category'     => CourseCategoryController::class,
             'service'             => ServiceController::class,
+            'industry'             => IndustryController::class,
 
         ],
     );

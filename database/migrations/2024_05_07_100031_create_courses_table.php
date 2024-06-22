@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('instructor_id')->nullable()->constrained('admins')->cascadeOnUpdate(); //Multiple
-            $table->foreignId('course_category_id')->nullable()->constrained('course_categories')->cascadeOnUpdate(); //Multiple
+            $table->string('instructor_id')->nullable(); //Multiple
+            $table->string('course_category_id')->nullable(); //Multiple
 
-            $table->foreignId('service_id')->nullable()->constrained('services')->cascadeOnUpdate(); //Multiple
-            $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnUpdate(); //Multiple
+            $table->string('service_id')->nullable(); //Multiple
+            $table->string('industry_id')->nullable(); //Multiple
 
             $table->string('name', 255);
             $table->string('slug', 255)->unique();
