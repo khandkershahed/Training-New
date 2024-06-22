@@ -218,29 +218,53 @@ body::-webkit-scrollbar-thumb {
 
 .nav-tabs .cources-category-top.show .cources-category-top-link,
 .nav-tabs .cources-category-top-link {
-    background-color: var(--primary-color);
-    color: var(--white-color);
     border-radius: 0;
     width: 100%;
     border: 0;
     text-align: start;
-    border-bottom: 1px solid #eee;
+    padding: 12px;
+    background: white;
+    color: var(--primary-color) !important;
+
 }
 
-.cources-category-top {
+/* .cources-category-top {
     border-bottom: 1px solid #eee !important;
-}
+} */
 
 .nav-tabs .cources-category-top.show .cources-category-top-link,
 .nav-tabs .cources-category-top-link.active {
-    background-color: var(--extra-color);
-    color: var(--white-color);
+    background-color: #0a1d5b;
+    color: var(--white-color) !important;
     border-radius: 0;
     width: 100%;
     border: 0;
     text-align: start;
+    padding: 12px;
 }
-
+.menu-link:hover i {
+    margin-left: 5px;
+    transition: all 0.5s;
+}
+.mobile-menu-link{
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    padding: 10px;
+}
+.dropdown-toggle .mobile-menu-link::after {
+    position: relative;
+    top: 5px;
+}
+.mobile-menu-link:hover{
+    text-decoration: none;
+    color: #fff;
+    background: var(--primary-color);
+    width: 100%;
+    display: block;
+    padding: 10px;
+}
 .courses-tabs-header {
     background-color: #fdfbfb !important;
 }
@@ -306,9 +330,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .slider .slick-slide.text-left:before {
-    background: linear-gradient(to left,
-            rgba(249, 245, 245, 0) 10%,
-            rgb(0, 0, 0));
+    background: linear-gradient(
+        to left,
+        rgba(249, 245, 245, 0) 10%,
+        rgb(0, 0, 0)
+    );
 }
 
 /* .slider .slick-slide.text-right:before {
@@ -450,8 +476,8 @@ body::-webkit-scrollbar-thumb {
     appearance: none;
     border-radius: 4px;
     border-style: none;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px, rgba(0, 0, 0, 0.14) 0 2px 2px 0,
-        rgba(0, 0, 0, 0.12) 0 1px 5px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 3px 1px -2px,
+        rgba(0, 0, 0, 0.14) 0 2px 2px 0, rgba(0, 0, 0, 0.12) 0 1px 5px 0;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
@@ -480,8 +506,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .primary-btn-two:hover {
-    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px, rgba(0, 0, 0, 0.14) 0 4px 5px 0,
-        rgba(0, 0, 0, 0.12) 0 1px 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px,
+        rgba(0, 0, 0, 0.14) 0 4px 5px 0, rgba(0, 0, 0, 0.12) 0 1px 10px 0;
     color: white;
 }
 
@@ -499,8 +525,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .primary-btn-two:focus {
-    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px, rgba(0, 0, 0, 0.14) 0 4px 5px 0,
-        rgba(0, 0, 0, 0.12) 0 1px 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px,
+        rgba(0, 0, 0, 0.14) 0 4px 5px 0, rgba(0, 0, 0, 0.12) 0 1px 10px 0;
 }
 
 .primary-btn-two:active {
@@ -594,10 +620,7 @@ body::-webkit-scrollbar-thumb {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,
-            0,
-            0,
-            0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     /* Adjust the overlay color and opacity */
     z-index: 1;
     pointer-events: none;
@@ -1023,8 +1046,10 @@ body::-webkit-scrollbar-thumb {
 .btn-close {
     --bs-btn-close-color: #fff;
     /* Change to white */
-    --bs-btn-close-bg: url(data:image/svg + xml,
- %3csvgxmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23fff" %3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z" /%3e%3c/svg%3e);
+    --bs-btn-close-bg: url(
+        data:image/svg + xml,
+        %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 16 16"fill="%23fff"%3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/%3e%3c/svg%3e
+    );
     /* SVG with white fill */
     --bs-btn-close-opacity: 0.5;
     --bs-btn-close-hover-opacity: 0.75;
@@ -1174,7 +1199,6 @@ body::-webkit-scrollbar-thumb {
 
 /* Media query for screens with a maximum width of 1368 pixels */
 @media (max-width: 1368px) {
-
     /* Your styles go here */
     .slider .slick-slide {
         border: 0;
@@ -1414,7 +1438,8 @@ body::-webkit-scrollbar-thumb {
     z-index: 9999;
 }
 
-.menu-card {}
+.menu-card {
+}
 
 /* ==========================Offcanvas Style Start============================= */
 .offcanvas-sidebar {
@@ -1530,10 +1555,8 @@ body::-webkit-scrollbar-thumb {
     border: 1px solid #000;
 }
 
-
 /* ==========================Main Style Start============================= */
 @media only screen and (max-width: 768px) {
-
     html,
     body {
         width: 100%;
