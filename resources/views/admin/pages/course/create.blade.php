@@ -269,6 +269,8 @@
     </div>
 
     @push('scripts')
+        
+
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#myForm').validate({
@@ -369,6 +371,8 @@
             });
         </script>
     @endpush
+
+    
 
 
 </x-admin-app-layout>
