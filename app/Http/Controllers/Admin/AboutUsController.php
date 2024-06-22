@@ -127,17 +127,17 @@ class AboutUsController extends Controller
 
             'row_three_column_one' => $request->row_three_column_one,
             'row_three_column_one_title' => $request->row_three_column_one_title,
-            'row_three_column_one_decription' => $request->row_three_column_one_decription,
+            'row_three_column_one_description' => $request->row_three_column_one_description,
             'row_three_column_one_url' => $request->row_three_column_one_url,
 
             'row_three_column_two' => $request->row_three_column_two,
             'row_three_column_two_title' => $request->row_three_column_two_title,
-            'row_three_column_two_decription' => $request->row_three_column_two_decription,
+            'row_three_column_two_description' => $request->row_three_column_two_description,
             'row_three_column_two_url' => $request->row_three_column_two_url,
 
             'row_three_column_three' => $request->row_three_column_three,
             'row_three_column_three_title' => $request->row_three_column_three_title,
-            'row_three_column_three_decription' => $request->row_three_column_three_decription,
+            'row_three_column_three_description' => $request->row_three_column_three_description,
             'row_three_column_three_url' => $request->row_three_column_three_url,
 
             'row_four_column_one_title' => $request->row_four_column_one_title,

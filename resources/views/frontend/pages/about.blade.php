@@ -20,17 +20,15 @@
                 <div class="col-lg-6">
 
                     <div>
-
                         <p>{{ $about->ceo_section_badge }}</p>
                         <h2 class="main-color">{{ $about->ceo_section_title }}</h2>
 
                         <p>{!! $about->ceo_section_description !!}</p>
-
                     </div>
 
                     <div class="pt-4">
                         <h6 class="main-color">{{ $about->ceo_name }}</h6>
-                        <strong class="main-color">{{ $about->ceo_designation }}/strong>
+                        <strong class="main-color">{{ $about->ceo_designation }}</strong>
                             <div>
                                 <img class="img-fluid" src="{{ asset('upload/about/' . $about->ceo_section_signature) }}"
                                     alt="{{ $about->ceo_name }}" />
@@ -83,7 +81,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div>
-                        <img src="{{ asset('upload/about/' . ($about->row_two_image ? $about->row_two_image : '')) }}"
+                        <img class="img-fluid" src="{{ asset('upload/about/' . ($about->row_two_image ? $about->row_two_image : '')) }}"
                             alt="Row Two Image">
 
                     </div>
@@ -122,7 +120,7 @@
                         <div>
                             <h4 class="main-color">{{ $about->row_three_column_one_title }}</h4>
                             <p class="mb-0">
-                                {!! $about->row_three_column_one_decription !!}
+                                {!! $about->row_three_column_one_description !!}
                             </p>
                         </div>
                     </div>
@@ -139,7 +137,7 @@
                         <div>
                             <h4 class="main-color">{{ $about->row_three_column_two_title }}</h4>
                             <p class="mb-0">
-                                {!! $about->row_three_column_two_decription !!}
+                                {!! $about->row_three_column_two_description !!}
                             </p>
                         </div>
                     </div>
@@ -156,7 +154,7 @@
                         <div>
                             <h4 class="main-color">{{ $about->row_three_column_three_title }}</h4>
                             <p class="mb-0">
-                                {!! $about->row_three_column_three_decription !!}
+                                {!! $about->row_three_column_three_description !!}
                             </p>
                         </div>
                     </div>

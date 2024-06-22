@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('instructor_id')->nullable()->constrained('admins')->cascadeOnUpdate();
-            $table->foreignId('course_category_id')->nullable()->constrained('course_categories')->cascadeOnUpdate();
+
+            $table->foreignId('instructor_id')->nullable()->constrained('admins')->cascadeOnUpdate(); //Multiple
+            $table->foreignId('course_category_id')->nullable()->constrained('course_categories')->cascadeOnUpdate(); //Multiple
+
+            $table->foreignId('service_id')->nullable()->constrained('services')->cascadeOnUpdate(); //Multiple
+            $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnUpdate(); //Multiple
+
             $table->string('name', 255);
             $table->string('slug', 255)->unique();
             $table->string('course_code', 50)->unique()->nullable();

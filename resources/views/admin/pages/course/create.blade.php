@@ -34,10 +34,12 @@
                         <div class="col-3 mb-3">
 
                             <div class="form-group">
+
                                 <label for="" class="mb-2">Instructor Name</label>
-                                <select name="instructor_id" data-placeholder="Select Row One.."
-                                    class="form-select form-select-sm" data-control="select2"
-                                    data-placeholder="Select an option">
+
+                                <select class="form-select form-select-solid form-select-sm" name="child_id[]"
+                                    id="field2" multiple="" multiselect-search="true"
+                                    multiselect-select-all="true" multiselect-max-items="2">
 
                                     @if (count($admins) > 0)
                                         @foreach ($admins as $admin)
@@ -47,6 +49,7 @@
                                     @endif
 
                                 </select>
+
                             </div>
 
                         </div>
@@ -61,7 +64,8 @@
 
                                     @if (count($courseCats) > 0)
                                         @foreach ($courseCats as $courseCat)
-                                            <option class="form-control" value="{{ $courseCat->id }}">{{ $courseCat->name }}
+                                            <option class="form-control" value="{{ $courseCat->id }}">
+                                                {{ $courseCat->name }}
                                             </option>
                                         @endforeach
                                     @endif
@@ -82,7 +86,8 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Tags</label>
-                                <input type="text" name="tags" data-role="tagsinput" placeholder="" class="form-control form-control-sm" value="{{ old('tags') }}">
+                                <input type="text" name="tags" data-role="tagsinput" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('tags') }}">
                             </div>
                         </div>
 

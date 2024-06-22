@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
 
             $table->string('banner_image')->nullable();
-
             $table->string('ceo_section_image')->nullable();
             $table->string('ceo_section_badge')->nullable();
             $table->string('ceo_section_title')->nullable();
@@ -23,39 +22,34 @@ return new class extends Migration
             $table->string('ceo_name')->nullable();
             $table->string('ceo_designation')->nullable();
             $table->string('ceo_section_signature')->nullable();
-
             $table->string('row_two_badge')->nullable();
             $table->string('row_two_title')->nullable();
-            $table->string('row_two_description')->nullable();
+            $table->longText('row_two_description')->nullable();
             $table->string('row_two_image')->nullable();
-            
             $table->string('row_three_section_title')->nullable();
             $table->string('row_three_column_one')->nullable();
             $table->string('row_three_column_one_image')->nullable();
             $table->string('row_three_column_one_title')->nullable();
-            $table->string('row_three_column_one_decription')->nullable();
-            $table->string('row_three_column_one_url')->nullable();
-
+            $table->longText('row_three_column_one_description')->nullable();
+            $table->text('row_three_column_one_url')->nullable();
             $table->string('row_three_column_two')->nullable();
             $table->string('row_three_column_two_image')->nullable();
             $table->string('row_three_column_two_title')->nullable();
-            $table->string('row_three_column_two_decription')->nullable();
-            $table->string('row_three_column_two_url');
-
+            $table->longText('row_three_column_two_description')->nullable();
+            $table->text('row_three_column_two_url')->nullable();
             $table->string('row_three_column_three')->nullable();
             $table->string('row_three_column_three_image')->nullable();
             $table->string('row_three_column_three_title')->nullable();
-            $table->string('row_three_column_three_decription')->nullable();
-            $table->string('row_three_column_three_url')->nullable();
+            $table->longText('row_three_column_three_description')->nullable();
+            $table->text('row_three_column_three_url')->nullable();
 
-            
             $table->string('row_four_column_one_title')->nullable();
             $table->string('row_four_column_one_header')->nullable();
-            $table->string('row_four_column_one_description')->nullable();
+            $table->longText('row_four_column_one_description')->nullable();
 
             $table->string('row_four_column_two_title')->nullable();
             $table->string('row_four_column_two_header')->nullable();
-            $table->string('row_four_column_two_description')->nullable();
+            $table->longText('row_four_column_two_description')->nullable();
 
             $table->timestamps();
         });

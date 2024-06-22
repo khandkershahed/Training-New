@@ -12,7 +12,7 @@
                 <div class="col-lg-2 p-4 text-center border-left-side">
                     <div>
                         <a class="text-decoration-none text-white"
-                            href="https://www.techfocusltd.com/exhibit">EXHIBIT WITH US
+                            href="{{ route('course.registration') }}">Course Registration
                         </a>
                     </div>
                 </div>
@@ -38,13 +38,13 @@
                                 href="https://www.techfocusltd.com/services">
                                 Our Service</a>
                         </li>
-                        <li class="pt-2">
+                        {{-- <li class="pt-2">
                             <a class="text-white text-decoration-none"
                                 href="https://www.techfocusltd.com/subscription">
-                                Subscriptions</a>
-                        </li>
+                                Course Re</a>
+                        </li> --}}
                         <li class="pt-2">
-                            <a class="text-white text-decoration-none" href="about-us.html">About Us</a>
+                            <a class="text-white text-decoration-none" href="{{ route('about') }}">About Us</a>
                         </li>
                     </ul>
                     <div class="social-icons-btn">
@@ -71,16 +71,16 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <div class="py-5 d-flex align-items-center justify-content-center">
-                            <a href="https://www.techfocusltd.com" class="pe-lg-3">
-                                <img src="./assets/img/logo.png" width="180px" alt="" />
+                            <a href="{{ route('homepage') }}" class="pe-lg-3">
+                                <img src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}" width="180px" alt="" />
                             </a>
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <p class="mb-0 text-white">
-                                © Copyright 2024 by Training & Consultancy.
+                                © Copyright 2024 by NGEN IT LTD..
                             </p>
                             <div class="ps-5">
-                                <a href="" class="text-white text-decoration-none pe-2">Download</a>
+                                {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}
                                 <a href="" class="text-white text-decoration-none pe-2">Privacy</a>
                                 <a href="" class="text-white text-decoration-none pe-2">Policy</a>
                                 <a href="" class="text-white text-decoration-none">Terms of Use</a>
