@@ -43,9 +43,9 @@
             <a class="navbar-brand" href="index.html">
                 <img class="img-fluid" src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}" alt="" />
             </a>
-            <button class="navbar-toggler text-white" type="button" data-bs-toggle="offcanvas"
+            <button class="navbar-toggler main-color" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" id="navbarToggler">
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse align-items-center" id="navbarScroll">
                 <div class="mx-auto">
