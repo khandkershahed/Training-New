@@ -4,8 +4,9 @@
             <div class="row text-white align-items-center">
                 <div class="col-lg-3 p-4 text-lg-start text-center border-left-side">
                     <div>
-                        <a class="text-decoration-none text-white"
-                            href="https://www.techfocusltd.com/buying/guide">HOW TO BUY PRODUCTS</a>
+                        {{-- <a class="text-decoration-none text-white"
+                            href="javascript:void(0)">Learn IT , Lead IT</a> --}}
+                            <p class="p-0 m-0 text-white fs-3 fw-bold" style="letter-spacing: 2.5px">Learn IT , Lead IT</p>
                     </div>
                 </div>
                 <div class="col-lg-2 p-4 text-center border-left-side">
