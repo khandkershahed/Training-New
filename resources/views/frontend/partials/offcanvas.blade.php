@@ -1,16 +1,35 @@
-<div class="offcanvas offcanvas-start w-100" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+<div class="offcanvas offcanvas-start w-75" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" style="background: var(--primary-color);"
     aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="staticBackdropLabel">Menu Area</h5>
+        <a class="navbar-brand" href="index.html">
+            <img class="img-fluid"
+                src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}"
+                alt="" />
+        </a>
         <button type="button" class="btn-close navbar-toggler-close main-color" data-bs-dismiss="offcanvas"
             aria-label="Close">
             <i class="fa-solid fa-xmark"></i>
         </button>
     </div>
     <div class="offcanvas-body">
-        <li class="text-style-none text-decoration-none"><a href="{{ route('homepage') }}">Home</a></li>
-        <li class="text-style-none text-decoration-none"><a href="{{ route('about') }}">About Us</a></li>
-        <li class="text-style-none text-decoration-none"><a href="{{ route('contact') }}"></a>Contact Us</li>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link" href="{{ route('homepage') }}">Home</a></li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link" href="{{ route('about') }}">All Courses</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mobile-menu-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Services
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link" href="{{ route('contact') }}">Course Registration</a></li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link" href="{{ route('contact') }}">About Us</a></li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link" href="{{ route('contact') }}">Contact Us</a></li>
+        </ul>
     </div>
 </div>
 
