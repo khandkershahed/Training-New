@@ -71,16 +71,16 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <div class="py-5 d-flex align-items-center justify-content-center">
-                            <a href="https://www.techfocusltd.com" class="pe-lg-3">
-                                <img src="./assets/img/logo.png" width="180px" alt="" />
+                            <a href="{{ route('homepage') }}" class="pe-lg-3">
+                                <img src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}" width="180px" alt="" />
                             </a>
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <p class="mb-0 text-white">
-                                © Copyright 2024 by Training & Consultancy.
+                                © Copyright 2024 by NGEN IT LTD..
                             </p>
                             <div class="ps-5">
-                                <a href="" class="text-white text-decoration-none pe-2">Download</a>
+                                {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}
                                 <a href="" class="text-white text-decoration-none pe-2">Privacy</a>
                                 <a href="" class="text-white text-decoration-none pe-2">Policy</a>
                                 <a href="" class="text-white text-decoration-none">Terms of Use</a>
