@@ -7,13 +7,13 @@
                     <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
                         <a href="{{ route('homepage') }}" class="py-9 mb-5">
                             <img alt="Logo"
-                                src="{{ !empty($site->site_logo) && file_exists(public_path('storage/settings/' . $site->site_logo)) ? asset('storage/settings/' . $site->site_logo) : asset('images/no-logo(217-55).jpg') }}"
+                                src="{{ !empty($site->site_logo) && file_exists(public_path('storage/settings/' . $site->site_logo)) ? asset('storage/settings/' . $site->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}"
                                 class="h-60px" />
                         </a>
                         <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #179ef7">Welcome to
-                            {{ !empty($site->site_name) ? $site->site_name : 'Metronic' }}</h1>
+                            {{ !empty($site->site_name) ? $site->site_name : 'NGen IT Training' }}</h1>
                         <p class="fw-bold fs-2" style="color: #000;">Discover Amazing
-                            {{ !empty($site->site_name) ? $site->site_name : 'Metronic' }}
+                            {{ !empty($site->site_name) ? $site->site_name : 'NGen IT Training' }}
                             <br />with great build tools
                         </p>
                     </div>
@@ -30,7 +30,7 @@
                             @csrf
                             <div class="text-center mb-10">
                                 <h1 class="text-dark mb-3">Sign In to
-                                    {{ !empty($site->site_name) ? $site->site_name : 'Metronic' }}</h1>
+                                    {{ !empty($site->site_name) ? $site->site_name : 'NGen IT Training' }}</h1>
                                 {{-- <div class="text-gray-400 fw-bold fs-4">New Here?
                                     <a href="../../demo1/dist/authentication/layouts/aside/sign-up.html"
                                         class="link-primary fw-bolder">Create an Account</a>

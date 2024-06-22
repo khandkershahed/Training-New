@@ -81,9 +81,8 @@
                             </p>
                             <div class="ps-5">
                                 {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}
-                                <a href="" class="text-white text-decoration-none pe-2">Privacy</a>
-                                <a href="" class="text-white text-decoration-none pe-2">Policy</a>
-                                <a href="" class="text-white text-decoration-none">Terms of Use</a>
+                                <a href="{{ route('privacyPolicy') }}" class="text-white text-decoration-none pe-2">Privacy Policy</a>
+                                <a href="{{ route('termsCondition') }}" class="text-white text-decoration-none">Terms & Condition</a>
                             </div>
                         </div>
                     </div>

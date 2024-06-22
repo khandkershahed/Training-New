@@ -165,4 +165,16 @@ class HomeController extends Controller
         $service = Service::first();
         return view('frontend.pages.service.service', compact('service'));
     }
+
+
+    public function termsCondition()
+    {
+        $data['terms'] = Service::first();
+        return view('frontend.pages.termsCondition',$data);
+    }
+    public function privacyPolicy()
+    {
+        $data['privacy'] = Service::first();
+        return view('frontend.pages.privacyPolicy',$data);
+    }
 }
