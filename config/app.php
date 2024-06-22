@@ -169,7 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\BreadcrumbServiceProvider::class,
-        App\Providers\SettingServiceProvider::class,
+        // App\Providers\SettingServiceProvider::class,
         App\Providers\HeaderServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
