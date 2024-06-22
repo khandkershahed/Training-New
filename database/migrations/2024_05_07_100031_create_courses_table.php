@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('course_category_id')->nullable()->constrained('course_categories')->cascadeOnUpdate(); //Multiple
 
             $table->foreignId('service_id')->nullable()->constrained('services')->cascadeOnUpdate(); //Multiple
+            $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnUpdate(); //Multiple
 
             $table->string('name', 255);
             $table->string('slug', 255)->unique();
