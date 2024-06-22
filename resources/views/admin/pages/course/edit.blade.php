@@ -33,22 +33,69 @@
 
                     <div class="row p-4">
 
-                        <div class="col-3 mb-3">
+                        <div class="col-4 mb-3">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Instructor Name</label>
-                                <select name="instructor_id" data-placeholder="Select Row One.."
-                                    class="form-select form-select-sm" data-control="select2"
-                                    data-placeholder="Select an option">
+                                <select class="form-select form-select-solid form-select-sm" name="instructor_id[]"
+                                    id="field2" multiple="" multiselect-search="true"
+                                    multiselect-select-all="true" multiselect-max-items="2">
 
                                     @if (count($admins) > 0)
                                         @foreach ($admins as $admin)
-                                            <option class="form-control" value="{{ $admin->id }}"
-                                                {{ $course->instructor_id == $admin->id ? 'selected' : '' }}>
+                                            <option value="{{ $admin->id }}"
+                                                {{ in_array($admin->id, explode(',', $course->instructor_id)) ? 'selected' : '' }}>
                                                 {{ $admin->name }}
                                             </option>
                                         @endforeach
                                     @endif
+
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-4 mb-3">
+
+                            <div class="form-group">
+                                <label for="" class="mb-2">Service Name</label>
+                                <select class="form-select form-select-solid form-select-sm" name="service_id[]"
+                                    id="field2" multiple="" multiselect-search="true"
+                                    multiselect-select-all="true" multiselect-max-items="2">
+
+                                    @if (count($services) > 0)
+                                        @foreach ($services as $service)
+                                            <option value="{{ $service->id }}"
+                                                {{ in_array($service->id, explode(',', $course->service_id)) ? 'selected' : '' }}>
+                                                {{ $service->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-4 mb-3">
+
+                            <div class="form-group">
+                                <label for="" class="mb-2">Industry Name</label>
+                                <select class="form-select form-select-solid form-select-sm" name="industry_id[]"
+                                    id="field2" multiple="" multiselect-search="true"
+                                    multiselect-select-all="true" multiselect-max-items="2">
+
+                                    @if (count($industrys) > 0)
+                                        @foreach ($industrys as $industry)
+                                            <option value="{{ $industry->id }}"
+                                                {{ in_array($industry->id, explode(',', $course->industry_id)) ? 'selected' : '' }}>
+                                                {{ $industry->name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+
 
                                 </select>
                             </div>
@@ -65,7 +112,7 @@
 
                                     @if (count($courseCats) > 0)
                                         @foreach ($courseCats as $courseCat)
-                                            <option class="form-control" value="{{ $admin->id }}"
+                                            <option class="form-control" value="{{ $courseCat->id }}"
                                                 {{ $course->course_category_id == $courseCat->id ? 'selected' : '' }}>
                                                 {{ $courseCat->name }}
                                             </option>
