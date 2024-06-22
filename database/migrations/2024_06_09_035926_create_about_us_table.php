@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('row_three_column_two_image')->nullable();
             $table->string('row_three_column_two_title')->nullable();
             $table->longText('row_three_column_two_description')->nullable();
-            $table->text('row_three_column_two_url');
+            $table->text('row_three_column_two_url')->nullable();
             $table->string('row_three_column_three')->nullable();
             $table->string('row_three_column_three_image')->nullable();
             $table->string('row_three_column_three_title')->nullable();

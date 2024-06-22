@@ -12,7 +12,7 @@
                 <div class="col-lg-2 p-4 text-center border-left-side">
                     <div>
                         <a class="text-decoration-none text-white"
-                            href="https://www.techfocusltd.com/exhibit">EXHIBIT WITH US
+                            href="{{ route('course.registration') }}">Course Registration
                         </a>
                     </div>
                 </div>
@@ -38,13 +38,13 @@
                                 href="https://www.techfocusltd.com/services">
                                 Our Service</a>
                         </li>
-                        <li class="pt-2">
+                        {{-- <li class="pt-2">
                             <a class="text-white text-decoration-none"
                                 href="https://www.techfocusltd.com/subscription">
-                                Subscriptions</a>
-                        </li>
+                                Course Re</a>
+                        </li> --}}
                         <li class="pt-2">
-                            <a class="text-white text-decoration-none" href="about-us.html">About Us</a>
+                            <a class="text-white text-decoration-none" href="{{ route('about') }}">About Us</a>
                         </li>
                     </ul>
                     <div class="social-icons-btn">
