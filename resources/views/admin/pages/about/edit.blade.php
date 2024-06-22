@@ -217,7 +217,7 @@
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Three Column One Description</label>
-                                <textarea name="row_three_column_one_decription" class="form-control form-control-sm editor">{!! $about->row_three_column_one_decription !!}</textarea>
+                                <textarea name="row_three_column_one_description" class="form-control form-control-sm editor">{!! $about->row_three_column_one_description !!}</textarea>
                             </div>
                         </div>
 
@@ -265,7 +265,7 @@
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Three Column Two Description</label>
-                                <textarea name="row_three_column_two_decription" class="form-control form-control-sm editor">{!! $about->row_three_column_two_decription !!}</textarea>
+                                <textarea name="row_three_column_two_description" class="form-control form-control-sm editor">{!! $about->row_three_column_two_description !!}</textarea>
                             </div>
                         </div>
 
@@ -315,7 +315,7 @@
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Three Column Three Description</label>
-                                <textarea name="row_three_column_three_decription" class="form-control form-control-sm editor">{!! $about->row_three_column_three_decription !!}</textarea>
+                                <textarea name="row_three_column_three_description" class="form-control form-control-sm editor">{!! $about->row_three_column_three_description !!}</textarea>
                             </div>
                         </div>
 

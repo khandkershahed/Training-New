@@ -122,7 +122,7 @@
                         <div>
                             <h4 class="main-color">{{ $about->row_three_column_one_title }}</h4>
                             <p class="mb-0">
-                                {!! $about->row_three_column_one_decription !!}
+                                {!! $about->row_three_column_one_description !!}
                             </p>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                         <div>
                             <h4 class="main-color">{{ $about->row_three_column_two_title }}</h4>
                             <p class="mb-0">
-                                {!! $about->row_three_column_two_decription !!}
+                                {!! $about->row_three_column_two_description !!}
                             </p>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                         <div>
                             <h4 class="main-color">{{ $about->row_three_column_three_title }}</h4>
                             <p class="mb-0">
-                                {!! $about->row_three_column_three_decription !!}
+                                {!! $about->row_three_column_three_description !!}
                             </p>
                         </div>
                     </div>
