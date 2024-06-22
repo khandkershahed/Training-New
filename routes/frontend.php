@@ -28,8 +28,11 @@ Route::post('/course-registration/store', [HomeController::class, 'courseRegistr
 
 Route::post('/contact_us', [ContactController::class, 'store'])->name('contactus.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-//Service
+
+//Service Created By Ashiquzzaman
 Route::get('/service', [HomeController::class, 'service'])->name('service');
+
+
 Route::get('/contact/location', [HomeController::class, 'location'])->name('location');
 Route::get('support', [HomeController::class, 'Support'])->name('support');
 Route::get('/newsletter', [NewsletterController::class, 'newsletter']);
