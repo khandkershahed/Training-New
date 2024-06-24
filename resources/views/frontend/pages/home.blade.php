@@ -98,9 +98,7 @@
     </section>
     <!-- Services Section -->
     <section class="service-bg"
-        style="
-  background-image: url(https://images.pexels.com/photos/3377405/pexels-photo-3377405.jpeg?cs=srgb&dl=pexels-elina-araja-1743227-3377405.jpg&fm=jpg);
-">
+        style="background-image: url(https://images.pexels.com/photos/3377405/pexels-photo-3377405.jpeg?cs=srgb&dl=pexels-elina-araja-1743227-3377405.jpg&fm=jpg);">
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">

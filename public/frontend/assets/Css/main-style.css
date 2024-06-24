@@ -1333,6 +1333,9 @@ body::-webkit-scrollbar-thumb {
     .box .title {
         font-size: 20px;
     }
+    .partners-logo{
+        border: none;
+    }
 
     .details-menus {
         display: flex;
