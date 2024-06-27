@@ -48,6 +48,7 @@ return new class extends Migration
             $table->string('row_three_column_four_url')->nullable();
             $table->string('row_three_column_four_button_name')->nullable();
             $table->string('row_three_column_four_button_url')->nullable();
+
             $table->string('row_four_title')->nullable();
             $table->text('row_four_header')->nullable();
             $table->string('row_four_column_one_image')->nullable();
@@ -70,6 +71,7 @@ return new class extends Migration
             $table->text('row_four_column_six_url')->nullable();
             $table->string('row_four_button_name')->nullable();
             $table->text('row_four_button_url')->nullable();
+            
             $table->string('row_five_title')->nullable();
             $table->text('row_five_header')->nullable();
             $table->foreignId('row_five_course_one')->nullable()->constrained('courses')->onDelete('cascade');
