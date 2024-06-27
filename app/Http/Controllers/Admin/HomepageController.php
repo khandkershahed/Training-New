@@ -33,10 +33,9 @@ class HomepageController extends Controller
      */
     public function create()
     {
-        $data['client_experiences'] = Feature::latest()->get();
-        $data['storys'] = NewsTrend::all();
-        $data['successes'] = Success::all();
-        $data['techglossys'] = NewsTrend::all();
+        $data = [
+            // 'client_experiences' =>;
+        ];
         return view('admin.pages.homepage.create', $data);
     }
 
