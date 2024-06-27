@@ -156,7 +156,7 @@ class HomeController extends Controller
     public function faq()
     {
         $data['faq_categorys'] = Faq::select('category')->distinct()->get();
-        return view('frontend.pages.policy.faq', $data);
+        return view('frontend.pages.faq', $data);
     }
 
     //Service

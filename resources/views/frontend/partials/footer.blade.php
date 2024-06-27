@@ -14,49 +14,54 @@
                         Registration
                     </a>
                 </div>
-            </div>
-            <div class="col-lg-2 p-4 text-center border-left-side">
                 <div>
-                    <a class="text-decoration-none text-white" href="https://www.techfocusltd.com/faq">FAQ
+                    <a class="text-decoration-none text-white me-1" href="{{ route('faq') }}">FAQ
+                    </a>|
+                    <a class="text-decoration-none text-white ms-1" href="{{ route('course.registration') }}">Enquiries
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5 p-4 d-flex justify-content-between align-items-center social-area">
+            <div class="col-lg-3 p-4 text-center border-left-side">
                 <ul class="" style="list-style-type: none">
                     <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="https://www.techfocusltd.com/brand/list">Brand
-                            list</a>
+                        <a class="text-white text-decoration-none" href="javascript:void(0)">
+                            Professional Courses</a>
                     </li>
                     <li class="pt-2">
-                        <a class="text-white text-decoration-none"
-                            href="https://www.techfocusltd.com/manufacturer/account">
-                            Manufacturer account</a>
+                        <a class="text-white text-decoration-none" href="javascript:void(0)">Diploma Courses</a>
                     </li>
                     <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="https://www.techfocusltd.com/services">
+                        <a class="text-white text-decoration-none" href="javascript:void(0)">
+                            Industrial Courses</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 p-4 d-flex justify-content-between align-items-center social-area">
+                <ul class="" style="list-style-type: none">
+                    <li class="pt-2">
+                        <a class="text-white text-decoration-none" href="javascript:void(0)">
                             Our Service</a>
                     </li>
-                    {{-- <li class="pt-2">
-                            <a class="text-white text-decoration-none"
-                                href="https://www.techfocusltd.com/subscription">
-                                Course Re</a>
-                        </li> --}}
                     <li class="pt-2">
                         <a class="text-white text-decoration-none" href="{{ route('about') }}">About Us</a>
                     </li>
+                    <li class="pt-2">
+                        <a class="text-white text-decoration-none" href="{{ route('contact') }}">
+                            Contact Us</a>
+                    </li>
                 </ul>
                 <div class="social-icons-btn">
-                    <a class="icons-footer twitter" href="#">
+                    {{-- <a class="icons-footer twitter" href="#">
                         <i class="fa-brands fa-twitter"></i>
-                    </a>
+                    </a> --}}
                     <a class="icons-footer facebook" href="{{ optional($setting)->social_facebook }}">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
                     <a class="icons-footer linkedin" href="{{ optional($setting)->social_linkedin }}">
                         <i class="fa-brands fa-linkedin-in"></i>
                     </a>
-                    <a class="icons-footer instagram" href="{{ optional($setting)->social_youtube }}">
-                        <i class="fa-brands fa-instagram"></i>
+                    <a class="icons-footer youtube" href="{{ optional($setting)->social_youtube }}">
+                        <i class="fa-brands fa-youtube"></i>
                     </a>
                 </div>
             </div>
@@ -65,15 +70,15 @@
 </section>
 <section style="background-color: #001430">
     <div class="container">
-        <div class="row pb-5">
+        <div class="row py-3">
             <div class="col-lg-12">
                 <div class="text-center">
-                    <div class="py-5 d-flex align-items-center justify-content-center">
+                    {{-- <div class="py-5 d-flex align-items-center justify-content-center">
                         <a href="{{ route('homepage') }}" class="pe-lg-3">
                             <img src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}"
                                 width="180px" alt="" />
                         </a>
-                    </div>
+                    </div> --}}
                     <div class="d-flex align-items-center justify-content-center">
                         <p class="mb-0 text-white">
                             © Copyright 2024 by NGEN IT LTD..

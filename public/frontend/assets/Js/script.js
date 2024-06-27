@@ -60,6 +60,12 @@ $(".service-slick-carousel").slick({
   dots: false, // Adds the dots on the bottom
   responsive: [
     {
+      breakpoint: 1311, // Adjust the breakpoint as needed
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
       breakpoint: 768, // Adjust the breakpoint as needed
       settings: {
         slidesToShow: 2,

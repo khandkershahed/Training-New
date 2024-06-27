@@ -28,6 +28,7 @@ Route::post('/course-registration/store', [HomeController::class, 'courseRegistr
 
 Route::post('/contact_us', [ContactController::class, 'store'])->name('contactus.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 //Service Created By Ashiquzzaman
 Route::get('/service', [HomeController::class, 'service'])->name('service');
