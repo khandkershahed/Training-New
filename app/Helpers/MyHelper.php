@@ -2,7 +2,6 @@
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Laravel\Facades\Image;
 
 if (!function_exists('handaleFileUpload')) {
     function handaleFileUpload(UploadedFile $file, $folder = 'default')
@@ -79,3 +78,5 @@ if (!function_exists('customUpload')) {
         return array_map('htmlspecialchars', $output);
     }
 }
+
+

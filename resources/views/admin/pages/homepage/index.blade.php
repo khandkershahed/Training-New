@@ -46,7 +46,7 @@
                                     <a href="{{ route('admin.homepage.edit', $home->id) }}" class="text-primary">
                                         <i class="-pencil">edit</i>
                                     </a>
-                                    <a href="{{ route('admin.homepage.destroy', [$home->id]) }}"
+                                    <a href="{{ route('admin.homepage.destroy', $home->id) }}"
                                         class="text-danger delete mx-2">
                                         <i class="delete icon-trash"></i>delete
                                     </a>
