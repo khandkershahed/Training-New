@@ -352,6 +352,20 @@ class HomepageController extends Controller
             $home->banner_three_image = $imageName;
         }
 
+        // Handle file uploads for row_two_image
+        if ($request->hasFile('row_two_image')) {
+            // Delete old image if exists
+            if ($home->row_two_image) {
+                Storage::delete('public/homepage/' . $home->row_two_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_two_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_two_image = $imageName;
+        }
+
         // Handle file uploads for banner_three_image
         if ($request->hasFile('row_three_background_image')) {
             // Delete old image if exists
@@ -591,15 +605,15 @@ class HomepageController extends Controller
             'row_six_button_url' => $request->row_six_button_url,
             'row_seven_badge' => $request->row_seven_badge,
             'row_seven_title' => $request->row_seven_title,
-            'row_seven_section_one_icon' => $request->row_seven_section_one_icon,
+            // 'row_seven_section_one_icon' => $request->row_seven_section_one_icon,
             'row_seven_section_one_title' => $request->row_seven_section_one_title,
             'row_seven_section_one_description' => $request->row_seven_section_one_description,
             'row_seven_section_one_url' => $request->row_seven_section_one_url,
-            'row_seven_section_two_icon' => $request->row_seven_section_two_icon,
+            // 'row_seven_section_two_icon' => $request->row_seven_section_two_icon,
             'row_seven_section_two_title' => $request->row_seven_section_two_title,
             'row_seven_section_two_description' => $request->row_seven_section_two_description,
             'row_seven_section_two_url' => $request->row_seven_section_two_url,
-            'row_seven_section_three_icon' => $request->row_seven_section_three_icon,
+            // 'row_seven_section_three_icon' => $request->row_seven_section_three_icon,
             'row_seven_section_three_title' => $request->row_seven_section_three_title,
             'row_seven_section_three_description' => $request->row_seven_section_three_description,
             'row_seven_section_three_url' => $request->row_seven_section_three_url,

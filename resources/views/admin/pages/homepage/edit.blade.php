@@ -23,7 +23,7 @@
         </div>
         <div class="card-body">
 
-            <form id="myForm" method="post" action="{{ route('admin.homepage.update',$homePage->id) }}"
+            <form id="myForm" method="post" action="{{ route('admin.homepage.update', $homePage->id) }}"
                 enctype="multipart/form-data">
                 @csrf
 
@@ -78,7 +78,7 @@
                             <x-metronic.label for="banner_three_image"
                                 class="col-form-label fw-bold fs-6">{{ __('Banner three Image') }}
                             </x-metronic.label>
-                            
+
                             <!-- Ensure $homePage->banner_one_image is a string or handle array properly -->
                             @php
                                 $bannerThreeImage = is_array(old($homePage->banner_three_image))
@@ -522,7 +522,7 @@
                             <x-metronic.label for="row_four_column_two_image"
                                 class="col-form-label fw-bold fs-6">{{ __('Row Four Two Image') }}
                             </x-metronic.label>
-                            
+
                             <!-- Ensure $homePage->banner_one_image is a string or handle array properly -->
                             @php
                                 $rowFourTwoImage = is_array(old($homePage->row_four_column_two_image))
@@ -566,7 +566,7 @@
                             <x-metronic.label for="row_four_column_three_image"
                                 class="col-form-label fw-bold fs-6">{{ __('Row Four Three Image') }}
                             </x-metronic.label>
-                            
+
                             <!-- Ensure $homePage->banner_one_image is a string or handle array properly -->
                             @php
                                 $rowFourThreeImage = is_array(old($homePage->row_four_column_three_image))
@@ -1049,15 +1049,15 @@
                             <x-metronic.label for="row_seven_section_one_icon"
                                 class="col-form-label fw-bold fs-6 ">{{ __('Row Seven One Icon') }}
                             </x-metronic.label>
-                            <!-- Ensure $homePage->banner_one_image is a string or handle array properly -->
+
                             @php
-                                $sevenOneIcon = is_array(old($homePage->row_seven_section_one_icon))
+                                $sixBackgroundImage = is_array(old($homePage->row_seven_section_one_icon))
                                     ? ''
                                     : old($homePage->row_seven_section_one_icon);
                             @endphp
 
                             <x-metronic.file-input id="row_seven_section_one_icon" name="row_seven_section_one_icon"
-                                :value="$sevenOneIcon"></x-metronic.file-input>
+                                :value="$sixBackgroundImage"></x-metronic.file-input>
 
                             <!-- Display the image if it exists -->
                             @if ($homePage->row_seven_section_one_icon)
@@ -1160,8 +1160,8 @@
                                     : old($homePage->row_seven_section_three_icon);
                             @endphp
 
-                            <x-metronic.file-input id="row_seven_section_three_icon" name="row_seven_section_three_icon"
-                                :value="$sevenThreeIcon"></x-metronic.file-input>
+                            <x-metronic.file-input id="row_seven_section_three_icon"
+                                name="row_seven_section_three_icon" :value="$sevenThreeIcon"></x-metronic.file-input>
 
                             <!-- Display the image if it exists -->
                             @if ($homePage->row_seven_section_three_icon)

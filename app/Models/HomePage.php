@@ -15,4 +15,19 @@ class HomePage extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function courseOneHomePage()
+    {
+        return $this->hasOne(Course::class,'id','row_five_course_one');
+    }
+
+    public function courseTwoHomePage()
+    {
+        return $this->hasOne(Course::class,'id','row_five_course_two');
+    }
+
+    public function courseThreeHomePage()
+    {
+        return $this->hasOne(Course::class,'id','row_five_course_three');
+    }
 }

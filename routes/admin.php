@@ -118,7 +118,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'newsletters' => NewsletterController::class,
             'contacts' => ContactController::class,
             'news-trend' => NewsTrendController::class,
-            'homepage' => HomepageController::class,
             'learnmore' => LearnMoreController::class,
 
             //Created By Ashiquzzaman
@@ -136,6 +135,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'course_category' => CourseCategoryController::class,
             'service' => ServiceController::class,
             'industry' => IndustryController::class,
+            'homepage' => HomepageController::class,
 
         ],
     );

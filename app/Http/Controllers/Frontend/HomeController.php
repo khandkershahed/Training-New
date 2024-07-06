@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use App\Models\Course;
+use App\Models\CourseCategory;
 use App\Models\CourseCurriculum;
 use App\Models\CourseQuery;
 use App\Models\Faq;
+use App\Models\HomePage;
 use App\Models\NewsTrend;
 use App\Models\Service;
 use App\Models\Setting;
@@ -21,7 +23,13 @@ class HomeController extends Controller
     //Homepage
     public function index()
     {
-        return view('frontend.pages.home');
+        $homePage = HomePage::with('courseOneHomePage')->first();
+
+        $courses = Course::latest()->get();
+        $courseCategorys = CourseCategory::latest()->get();
+
+        // $homePageCourse = Homepage::with('courseOneHomePage')->first();
+        return view('frontend.pages.home',compact('homePage','courseCategorys','courses'));
     }
 
     //Learn More
