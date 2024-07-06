@@ -34,12 +34,6 @@ class HomepageController extends Controller
         return view('admin.pages.homepage.create', compact('courses'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -305,24 +299,6 @@ class HomepageController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
     public function edit($id)
     {
         $homePage = Homepage::find($id);
@@ -330,33 +306,218 @@ class HomepageController extends Controller
         return view('admin.pages.homepage.edit', compact('homePage', 'courses'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $uid = $request->id;
-        $home = Homepage::find($uid);
+        $home = Homepage::find($id);
 
-        // Get the uploaded file
+        // Handle file uploads for banner_one_image
         if ($request->hasFile('banner_one_image')) {
-            $file = $request->file('banner_one_image');
-
-            // Delete old file if it exists
+            // Delete old image if exists
             if ($home->banner_one_image) {
                 Storage::delete('public/homepage/' . $home->banner_one_image);
             }
 
-            // Store new file with a custom name
-            $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-            $storedPath = $file->storeAs('public/homepage', $fileName);
+            // Upload new image
+            $image = $request->file('banner_one_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->banner_one_image = $imageName;
+        }
 
-            // Save $fileName to your $home object or wherever needed
-            $banner_one_image = $storedPath;
+        // Handle file uploads for banner_two_image
+        if ($request->hasFile('banner_two_image')) {
+            // Delete old image if exists
+            if ($home->banner_two_image) {
+                Storage::delete('public/homepage/' . $home->banner_two_image);
+            }
+
+            // Upload new image
+            $image = $request->file('banner_two_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->banner_two_image = $imageName;
+        }
+
+        // Handle file uploads for banner_three_image
+        if ($request->hasFile('banner_three_image')) {
+            // Delete old image if exists
+            if ($home->banner_three_image) {
+                Storage::delete('public/homepage/' . $home->banner_three_image);
+            }
+
+            // Upload new image
+            $image = $request->file('banner_three_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->banner_three_image = $imageName;
+        }
+
+        // Handle file uploads for banner_three_image
+        if ($request->hasFile('row_three_background_image')) {
+            // Delete old image if exists
+            if ($home->row_three_background_image) {
+                Storage::delete('public/homepage/' . $home->row_three_background_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_three_background_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_three_background_image = $imageName;
+        }
+
+        // Handle file uploads for row_four_column_one_image
+        if ($request->hasFile('row_four_column_one_image')) {
+            // Delete old image if exists
+            if ($home->row_four_column_one_image) {
+                Storage::delete('public/homepage/' . $home->row_four_column_one_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_four_column_one_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_four_column_one_image = $imageName;
+        }
+
+        // Handle file uploads for row_four_column_two_image
+        if ($request->hasFile('row_four_column_two_image')) {
+            // Delete old image if exists
+            if ($home->row_four_column_two_image) {
+                Storage::delete('public/homepage/' . $home->row_four_column_two_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_four_column_two_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_four_column_two_image = $imageName;
+        }
+
+        // Handle file uploads for row_four_column_three_image
+        if ($request->hasFile('row_four_column_three_image')) {
+            // Delete old image if exists
+            if ($home->row_four_column_three_image) {
+                Storage::delete('public/homepage/' . $home->row_four_column_three_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_four_column_three_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_four_column_three_image = $imageName;
+        }
+
+        // Handle file uploads for row_four_column_four_image
+        if ($request->hasFile('row_four_column_four_image')) {
+            // Delete old image if exists
+            if ($home->row_four_column_four_image) {
+                Storage::delete('public/homepage/' . $home->row_four_column_four_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_four_column_four_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_four_column_four_image = $imageName;
+        }
+
+        // Handle file uploads for row_four_column_five_image
+        if ($request->hasFile('row_four_column_five_image')) {
+            // Delete old image if exists
+            if ($home->row_four_column_five_image) {
+                Storage::delete('public/homepage/' . $home->row_four_column_five_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_four_column_five_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_four_column_five_image = $imageName;
+        }
+
+        // Handle file uploads for row_four_column_six_image
+        if ($request->hasFile('row_four_column_six_image')) {
+            // Delete old image if exists
+            if ($home->row_four_column_six_image) {
+                Storage::delete('public/homepage/' . $home->row_four_column_six_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_four_column_six_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_four_column_six_image = $imageName;
+        }
+
+        // Handle file uploads for row_six_background_image
+        if ($request->hasFile('row_six_background_image')) {
+            // Delete old image if exists
+            if ($home->row_six_background_image) {
+                Storage::delete('public/homepage/' . $home->row_six_background_image);
+            }
+
+            // Upload new image
+            $image = $request->file('row_six_background_image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_six_background_image = $imageName;
+        }
+
+        // Handle file uploads for row_seven_section_one_icon
+        if ($request->hasFile('row_seven_section_one_icon')) {
+            // Delete old image if exists
+            if ($home->row_seven_section_one_icon) {
+                Storage::delete('public/homepage/' . $home->row_seven_section_one_icon);
+            }
+
+            // Upload new image
+            $image = $request->file('row_seven_section_one_icon');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_seven_section_one_icon = $imageName;
+        }
+
+        // Handle file uploads for row_seven_section_two_icon
+        if ($request->hasFile('row_seven_section_two_icon')) {
+            // Delete old image if exists
+            if ($home->row_seven_section_two_icon) {
+                Storage::delete('public/homepage/' . $home->row_seven_section_two_icon);
+            }
+
+            // Upload new image
+            $image = $request->file('row_seven_section_two_icon');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_seven_section_two_icon = $imageName;
+        }
+
+        // Handle file uploads for row_seven_section_three_icon
+        if ($request->hasFile('row_seven_section_three_icon')) {
+            // Delete old image if exists
+            if ($home->row_seven_section_three_icon) {
+                Storage::delete('public/homepage/' . $home->row_seven_section_three_icon);
+            }
+
+            // Upload new image
+            $image = $request->file('row_seven_section_three_icon');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_seven_section_three_icon = $imageName;
+        }
+
+        // Handle file uploads for row_seven_section_three_icon
+        if ($request->hasFile('row_seven_section_three_icon')) {
+            // Delete old image if exists
+            if ($home->row_seven_section_three_icon) {
+                Storage::delete('public/homepage/' . $home->row_seven_section_three_icon);
+            }
+
+            // Upload new image
+            $image = $request->file('row_seven_section_three_icon');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/homepage', $imageName);
+            $home->row_seven_section_three_icon = $imageName;
         }
 
         $home->update([
@@ -450,23 +611,60 @@ class HomepageController extends Controller
             'row_ten_title' => $request->row_ten_title,
             'row_ten_header' => $request->row_ten_header,
 
-            'banner_one_image' => (!empty($banner_one_image) ? $banner_one_image : $home->banner_one_image),
-
         ]);
 
         return redirect()->route('admin.homepage.index')->with('success', 'Data has been update successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $homepage = Homepage::find($id);
-
         $homepage->delete();
     }
+
+    // public function destroy($id)
+    // {
+    //     try {
+    //         // Find the homepage instance by ID
+    //         $homepage = Homepage::findOrFail($id);
+
+    //         // Delete associated images from storage
+    //         $this->deleteImageIfExists($homepage->banner_one_image);
+    //         $this->deleteImageIfExists($homepage->banner_two_image);
+    //         $this->deleteImageIfExists($homepage->banner_three_image);
+    //         $this->deleteImageIfExists($homepage->row_three_background_image);
+    //         $this->deleteImageIfExists($homepage->row_four_column_one_image);
+    //         $this->deleteImageIfExists($homepage->row_four_column_two_image);
+    //         $this->deleteImageIfExists($homepage->row_four_column_three_image);
+    //         $this->deleteImageIfExists($homepage->row_four_column_four_image);
+    //         $this->deleteImageIfExists($homepage->row_four_column_five_image);
+    //         $this->deleteImageIfExists($homepage->row_four_column_six_image);
+    //         $this->deleteImageIfExists($homepage->row_six_background_image);
+    //         $this->deleteImageIfExists($homepage->row_seven_section_one_icon);
+    //         $this->deleteImageIfExists($homepage->row_seven_section_two_icon);
+    //         $this->deleteImageIfExists($homepage->row_seven_section_three_icon);
+
+    //         // Delete the homepage instance
+    //         $homepage->delete();
+
+    //         // Redirect back with success message
+    //         return redirect()->route('admin.homepage.index')->with('success', 'Homepage and associated images deleted successfully');
+    //     } catch (\Exception $e) {
+    //         // Redirect back with error message if deletion fails
+    //         return redirect()->back()->with('error', 'Failed to delete Homepage: ' . $e->getMessage());
+    //     }
+    // }
+
+    // /**
+    //  * Delete an image from storage if it exists.
+    //  *
+    //  * @param string|null $imageName
+    //  * @return void
+    //  */
+    // private function deleteImageIfExists($imageName)
+    // {
+    //     if ($imageName) {
+    //         Storage::delete('public/homepage/' . $imageName);
+    //     }
+    // }
 }

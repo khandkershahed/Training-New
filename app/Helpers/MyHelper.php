@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\HomePage;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -78,5 +80,6 @@ if (!function_exists('customUpload')) {
         return array_map('htmlspecialchars', $output);
     }
 }
+
 
 

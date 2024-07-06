@@ -39,16 +39,16 @@
                                 <td>{{ $home->id }}</td>
                                 <td>{{ isset($words[$key]) ? 'Template' . ' ' . Str::ucfirst($words[$key]) : 'Number out of range' }}
                                 </td>
-                                <td class="text-center">
+                                <td class="">
                                     {{-- <a href="{{ route('homepage.show', $home->id) }}" class="text-info">
                                         <i class="icon-eye"></i>
                                     </a> --}}
                                     <a href="{{ route('admin.homepage.edit', $home->id) }}" class="text-primary">
-                                        <i class="-pencil">edit</i>
+                                        <i class="bi bi-pencil text-primary"></i>
                                     </a>
                                     <a href="{{ route('admin.homepage.destroy', $home->id) }}"
                                         class="text-danger delete mx-2">
-                                        <i class="delete icon-trash"></i>delete
+                                        <i class="bi bi-trash3-fill text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
