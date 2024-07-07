@@ -266,7 +266,6 @@
                         <div class="text-center p-3" style="border-right: 1px solid black">
 
                             <div class="diffrent-icons text-center">
-
                                 @if (!empty($homePage->row_four_column_two_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_two_image) }}"
                                         alt="" style="width: 40px;height: 40px;">
@@ -274,7 +273,6 @@
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
                                         style="width: 30px;height: 30px;" alt="">
                                 @endif
-
                             </div>
 
                             <p class="pt-3">{{ $homePage->row_four_column_two_description }}</p>
