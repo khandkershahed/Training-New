@@ -33,7 +33,7 @@
 
                     <div class="row p-4">
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Instructor Name</label>
@@ -56,7 +56,7 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Service Name</label>
@@ -79,7 +79,7 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Industry Name</label>
@@ -96,6 +96,25 @@
                                         @endforeach
                                     @endif
 
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 mb-3">
+
+                            <div class="form-group">
+                                <label for="" class="mb-2">Course Type</label>
+                                <select name="course_type" data-placeholder="Select Row One.."
+                                    class="form-select form-select-sm" data-control="select2"
+                                    data-placeholder="Select an option">
+
+                                    <option value="offline" {{ $course->course_type == 'offline' ? 'selected' : '' }}>
+                                        Offline</option>
+
+                                    <option value="online" {{ $course->course_type == 'online' ? 'selected' : '' }}>
+                                        Online</option>
 
                                 </select>
                             </div>
@@ -187,7 +206,6 @@
                                     class="form-control form-control-sm" value="{{ $course->total_student }}">
                             </div>
                         </div>
-
 
                         <div class="col-3 mb-3">
                             <div class="form-group">
@@ -308,8 +326,6 @@
                                     height="40" width="40" alt="">
                             </div>
                         </div>
-
-
 
                         <div class="col-12 mb-3 mt-4">
                             <button type="submit" class="btn btn-primary rounded-0 px-5 btn-sm float-end">Update

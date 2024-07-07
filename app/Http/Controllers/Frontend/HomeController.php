@@ -18,8 +18,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-    //Client Authentication
-
     //Homepage
     public function index()
     {
@@ -27,8 +25,7 @@ class HomeController extends Controller
 
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
-
-        // $homePageCourse = Homepage::with('courseOneHomePage')->first();
+        
         return view('frontend.pages.home',compact('homePage','courseCategorys','courses'));
     }
 

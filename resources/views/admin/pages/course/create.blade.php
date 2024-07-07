@@ -31,7 +31,7 @@
 
                     <div class="row p-4">
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
 
@@ -54,7 +54,7 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
 
@@ -78,7 +78,7 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
 
@@ -98,6 +98,22 @@
 
                                 </select>
 
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 mb-3">
+
+                            <div class="form-group">
+                                <label for="" class="mb-2">Course Type</label>
+                                <select name="course_type" data-placeholder="Select Row One.."
+                                    class="form-select form-select-sm" data-control="select2"
+                                    data-placeholder="Select an option">
+
+                                    <option value="offline">Offline</option>
+                                    <option value="online">Online</option>
+
+                                </select>
                             </div>
 
                         </div>

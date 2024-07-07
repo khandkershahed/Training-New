@@ -37,17 +37,17 @@
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
                         <option selected>Course Type</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="offline">Offline</option>
+                        <option value="online">Online</option>
                     </select>
                 </div>
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected>Category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach ($courseCategorys as $courseCategory)
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-lg-2">

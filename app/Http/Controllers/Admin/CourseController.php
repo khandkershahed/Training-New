@@ -64,6 +64,7 @@ class CourseController extends Controller
                 'industry_id' => $industrys,
 
                 'course_category_id' => $request->course_category_id,
+                'course_type' => $request->course_type,
 
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "-"),
@@ -110,9 +111,10 @@ class CourseController extends Controller
 
                     'instructor_id' => $instructors,
                     'service_id' => $services,
-                    'industry_id' => $industrys, 'instructor_id' => $request->instructor_id,
+                    'industry_id' => $industrys,
 
                     'course_category_id' => $request->course_category_id,
+                    'course_type' => $request->course_type,
 
                     'name' => $request->name,
                     'slug' => Str::slug($request->name, "-"),
@@ -223,6 +225,7 @@ class CourseController extends Controller
                 'industry_id' => $industrys,
                 
                 'course_category_id' => $request->course_category_id,
+                'course_type' => $request->course_type,
 
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "-"),
