@@ -1345,56 +1345,55 @@
                     <div class="slider-pertners">
                         <div class="pe-2">
                             <div class="card partners-logo">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <img class="img-fluid"
-                                        src="https://www.ngenitltd.com/storage/RZlRwzfUA8get0PcCzQphbeIJu6OhSL7ltNc4xiZ.png"
-                                        alt="ngenit" />
-                                </div>
+                                <a href="https://www.ngenitltd.com/" target="_blank" rel="noopener noreferrer">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <img class="img-fluid" src="{{ asset('images/ngenit_logo.png') }}"
+                                            alt="ngenit" />
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="pe-2">
                             <div class="card partners-logo">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <img class="img-fluid"
-                                        src="https://jaragroups.com/wp-content/uploads/2023/09/logo200.png"
-                                        alt="jaragroups" />
-                                </div>
+                                <a href="https://jaragroups.com/" target="_blank" rel="noopener noreferrer">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <img class="img-fluid" src="{{ asset('images/jaragroup_logo.png') }}"
+                                            alt="jaragroups" />
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="pe-2">
                             <div class="card partners-logo">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <img class="img-fluid"
-                                        src="https://gamersbd.com/wp-content/uploads/2022/05/GamersBD-Final-1-AI-File.png.png"
-                                        alt="gamersbd" />
-                                </div>
+                                <a href="https://gamersbd.com/" target="_blank" rel="noopener noreferrer">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <img class="img-fluid"
+                                            src="https://gamersbd.com/wp-content/uploads/2022/05/GamersBD-Final-1-AI-File.png.png"
+                                            alt="gamersbd" />
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="pe-2">
                             <div class="card partners-logo">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <img class="img-fluid"
-                                        src="https://www.dadabhaai.com/storage/main/jaragroups404413.png"
-                                        alt="dadabhaai" />
-                                </div>
+                                <a href="https://dadabhaai.com/" target="_blank" rel="noopener noreferrer">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <img class="img-fluid" src="{{ asset('images/dadabhaai_logo.png') }}"
+                                            alt="dadabhaai" />
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="pe-2">
                             <div class="card partners-logo">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <img class="img-fluid" src="./assets/img/logo.png" alt="techfocusltd" />
-                                </div>
+                                <a href="https://www.techfocusltd.com/" target="_blank" rel="noopener noreferrer">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <img class="img-fluid" src="{{ asset('images/techfocus_logo.png') }}" alt="techfocusltd" />
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                        <div class="pe-2">
-                            <div class="card partners-logo">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <img class="img-fluid"
-                                        src="https://www.promisetrainingglobal.com/wp-content/uploads/2017/12/accreditations-03.jpg"
-                                        alt="" />
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
