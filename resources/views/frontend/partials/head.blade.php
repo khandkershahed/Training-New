@@ -2,11 +2,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Corporate Training Courses in Africa, Asia, Europe, USA | Training
+      {{ $site->site_name }}
     </title>
     <link
       rel="shortcut icon"
-      href="https://www.promisetrainingglobal.com/wp-content/themes/universo/images/favicon.png"
+      href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/no-logo(217-55).jpg') }}"
       type="image/x-icon"
     />
     <!-- Bootstrap CSS v5.2.1 -->
