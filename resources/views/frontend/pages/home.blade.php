@@ -112,7 +112,7 @@
 
     <!-- Row Three Services Section -->
     <section class="service-bg"
-        style="background-image: url({{ asset('storage/homepage/' . $homePage->row_three_background_image) }});">
+        style="background-image: url('{{ asset('storage/homepage/' . $homePage->row_three_background_image) }}');">
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">
@@ -1303,7 +1303,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
