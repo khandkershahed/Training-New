@@ -405,12 +405,7 @@ body::-webkit-scrollbar-thumb {
     vertical-align: top;
     white-space: nowrap;
 }
-.diffrent-icons p{
-    color: #000;
-}
-.diffrent-icons:hover{
-    color: var(--primary-color);
-}
+
 .primary-btn-one:hover {
     cursor: pointer;
     background-color: var(--secondary-color);
@@ -695,12 +690,17 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--secondary-color);
     width: 50px;
     height: 50px;
-    padding: 10px 5px;
+    padding: 5px 5px;
     text-align: center;
     border-radius: 100%;
     margin: auto;
 }
-
+.diffrent-icons p{
+    color: #000;
+}
+.diffrent-icons p:hover{
+    color: var(--primary-color);
+}
 .service-icons {
     text-align: center;
     padding: 18px;
