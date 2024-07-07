@@ -115,7 +115,7 @@
                                             <div class="card-header p-0 bg-transparent">
 
                                                 <div>
-                                                    <img class="rounded-2 img-fluid course-images"
+                                                    <img class="rounded-2 img-fluid course-images" style="height: 230px;"
                                                         src="{{ asset(!empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : url('images/no-shop-imge.png')) }}"
                                                         alt="">
                                                 </div>

@@ -244,7 +244,7 @@
                     <a href="{{ $homePage->row_four_column_one_url }}" style="text-decoration: none">
                         <div class="text-center p-3" style="border-right: 1px solid black">
 
-                            <div class="diffrent-icons text-center">
+                            <div class="diffrent-icons text-center" style="background-color:transparent;">
 
                                 @if (!empty($homePage->row_four_column_one_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_one_image) }}"
@@ -265,7 +265,7 @@
                     <a href="{{ $homePage->row_four_column_two_url }}" style="text-decoration: none">
                         <div class="text-center p-3" style="border-right: 1px solid black">
 
-                            <div class="diffrent-icons text-center">
+                            <div class="diffrent-icons text-center" style="background-color:transparent;">
                                 @if (!empty($homePage->row_four_column_two_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_two_image) }}"
                                         alt="" style="width: 50px;height: 50px;">
@@ -284,7 +284,7 @@
                     <a href="{{ $homePage->row_four_column_three_url }}" style="text-decoration: none">
                         <div class="text-center p-3" style="border-right: 1px solid black">
 
-                            <div class="diffrent-icons text-center">
+                            <div class="diffrent-icons text-center" style="background-color:transparent;">
 
                                 @if (!empty($homePage->row_four_column_three_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_three_image) }}"
@@ -305,7 +305,7 @@
                     <a href="{{ $homePage->row_four_column_four_url }}" style="text-decoration: none">
                         <div class="text-center p-3" style="border-right: 1px solid black">
 
-                            <div class="diffrent-icons text-center">
+                            <div class="diffrent-icons text-center" style="background-color:transparent;">
 
                                 @if (!empty($homePage->row_four_column_four_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_four_image) }}"
@@ -326,7 +326,7 @@
                     <a href="{{ $homePage->row_four_column_five_url }}" style="text-decoration: none">
                         <div class="text-center p-3" style="border-right: 1px solid black">
 
-                            <div class="diffrent-icons text-center">
+                            <div class="diffrent-icons text-center" style="background-color:transparent;">
 
                                 @if (!empty($homePage->row_four_column_five_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_five_image) }}"
@@ -347,7 +347,7 @@
                     <a href="{{ $homePage->row_four_column_six_url }}" style="text-decoration: none">
                         <div class="text-center p-3" style="border-right: 1px solid black">
 
-                            <div class="diffrent-icons text-center">
+                            <div class="diffrent-icons text-center" style="background-color:transparent;">
 
                                 @if (!empty($homePage->row_four_column_six_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_six_image) }}"

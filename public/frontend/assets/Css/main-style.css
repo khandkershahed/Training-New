@@ -687,7 +687,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .diffrent-icons {
-    /* background-color: var(--secondary-color); */
+    background-color: var(--secondary-color);
     width: 50px;
     height: 50px;
     padding: 5px 5px;
