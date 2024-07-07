@@ -431,6 +431,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (min-width: 768px) {
+    .different_icon_column{
+        border-right: 1px solid black;
+    }
     .primary-btn-one {
         padding: 14px 22px;
         width: 176px;
