@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Models\Homepage;
+use App\Models\HomePage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +18,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $homes = Homepage::orderBy('id', 'DESC')->get(['id']);
+        $homes = HomePage::orderBy('id', 'DESC')->get(['id']);
         return view('admin.pages.homepage.index', compact('homes'));
     }
 
