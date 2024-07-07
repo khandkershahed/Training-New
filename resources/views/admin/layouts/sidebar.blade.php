@@ -5,7 +5,7 @@
      <div class="aside-logo flex-column-auto" id="kt_aside_logo">
          <a href="{{ route('dashboard') }}">
              <img alt="Logo"
-                 src="{{ !empty($site->site_logo) && file_exists(public_path('storage/settings/' . $site->site_logo)) ? asset('storage/settings/' . $site->site_logo) : asset('images/no-logo(217-55).jpg') }}"
+                 src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}"
                  class="h-60px logo w-200px">
          </a>
          <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
@@ -212,7 +212,7 @@
                      </span>
                      <div
                          class="menu-sub menu-sub-accordion {{ Route::is('admin.feature.index', 'admin.success.index', 'admin.row.index', 'admin.news-trend.index', 'admin.homepage.index', 'admin.whatwedo.index', 'admin.learnmore.index') ? 'menu-active-bg' : '' }}">
-                         
+
 
                          <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.industry.index') }}">
@@ -233,7 +233,7 @@
                              </a>
                          </div>
 
-                         
+
                          <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.learnmore.index') ? 'active' : '' }}"
                                  href="{{ route('admin.learnmore.index') }}">
