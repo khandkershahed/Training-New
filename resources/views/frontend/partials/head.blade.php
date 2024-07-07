@@ -2,7 +2,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      {{ $site->site_name }}
+      {{ optional($setting)->site_favicon ?? 'NGenIT Training' }}
     </title>
     <link
       rel="shortcut icon"
