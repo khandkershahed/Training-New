@@ -405,7 +405,12 @@ body::-webkit-scrollbar-thumb {
     vertical-align: top;
     white-space: nowrap;
 }
-
+.diffrent-icons p{
+    color: #000;
+}
+.diffrent-icons:hover{
+    color: var(--primary-color);
+}
 .primary-btn-one:hover {
     cursor: pointer;
     background-color: var(--secondary-color);
