@@ -695,6 +695,11 @@ body::-webkit-scrollbar-thumb {
     border-radius: 100%;
     margin: auto;
 }
+.course-title{
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
 .different_icon_description{
     color: #000;
 }
