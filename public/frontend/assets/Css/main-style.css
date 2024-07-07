@@ -687,7 +687,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .diffrent-icons {
-    background-color: var(--secondary-color);
+    /* background-color: var(--secondary-color); */
     width: 50px;
     height: 50px;
     padding: 5px 5px;
@@ -695,10 +695,10 @@ body::-webkit-scrollbar-thumb {
     border-radius: 100%;
     margin: auto;
 }
-.diffrent-icons p{
+.different_icon_description{
     color: #000;
 }
-.diffrent-icons p:hover{
+.different_icon_description:hover{
     color: var(--primary-color);
 }
 .service-icons {

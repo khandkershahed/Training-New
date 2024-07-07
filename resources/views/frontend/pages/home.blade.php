@@ -248,15 +248,15 @@
 
                                 @if (!empty($homePage->row_four_column_one_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_one_image) }}"
-                                        alt="" style="width: 40px;height: 40px;">
+                                        alt="" style="width: 50px;height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
-                                        style="width: 30px;height: 30px;" alt="">
+                                        style="width: 50px;height: 50px;" alt="">
                                 @endif
 
                             </div>
 
-                            <p class="pt-3">{{ $homePage->row_four_column_one_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_one_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -268,14 +268,14 @@
                             <div class="diffrent-icons text-center">
                                 @if (!empty($homePage->row_four_column_two_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_two_image) }}"
-                                        alt="" style="width: 40px;height: 40px;">
+                                        alt="" style="width: 50px;height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
-                                        style="width: 30px;height: 30px;" alt="">
+                                        style="width: 50px;height: 50px;" alt="">
                                 @endif
                             </div>
 
-                            <p class="pt-3">{{ $homePage->row_four_column_two_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_two_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -288,15 +288,15 @@
 
                                 @if (!empty($homePage->row_four_column_three_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_three_image) }}"
-                                        alt="" style="width: 40px;height: 40px;">
+                                        alt="" style="width: 50px; height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
-                                        style="width: 30px;height: 30px;" alt="">
+                                        style="width: 50px;height: 50px;" alt="">
                                 @endif
 
                             </div>
 
-                            <p class="pt-3">{{ $homePage->row_four_column_three_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_three_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -309,15 +309,15 @@
 
                                 @if (!empty($homePage->row_four_column_four_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_four_image) }}"
-                                        alt="" style="width: 40px;height: 40px;">
+                                        alt="" style="width: 50px;height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
-                                        style="width: 30px;height: 30px;" alt="">
+                                        style="width: 50px; height: 50px;" alt="">
                                 @endif
 
                             </div>
 
-                            <p class="pt-3">{{ $homePage->row_four_column_four_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_four_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -330,15 +330,15 @@
 
                                 @if (!empty($homePage->row_four_column_five_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_five_image) }}"
-                                        alt="" style="width: 40px;height: 40px;">
+                                        alt="" style="width: 50px; height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
-                                        style="width: 30px;height: 30px;" alt="">
+                                        style="width: 50px; height: 50px;" alt="">
                                 @endif
 
                             </div>
 
-                            <p class="pt-3">{{ $homePage->row_four_column_five_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_five_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -351,15 +351,15 @@
 
                                 @if (!empty($homePage->row_four_column_six_image))
                                     <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_six_image) }}"
-                                        alt="" style="width: 40px;height: 40px;">
+                                        alt="" style="width: 50px; height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
-                                        style="width: 30px;height: 30px;" alt="">
+                                        style="width: 50px; height: 50px;" alt="">
                                 @endif
 
                             </div>
 
-                            <p class="pt-3">{{ $homePage->row_four_column_six_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_six_description }}</p>
                         </div>
                     </a>
                 </div>
