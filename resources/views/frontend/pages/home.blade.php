@@ -34,6 +34,7 @@
     <section class="filter_section">
         <div class="container">
             <div class="row align-items-center">
+
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
                         <option selected>Course Type</option>
@@ -41,31 +42,34 @@
                         <option value="online">Online</option>
                     </select>
                 </div>
+
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
+                        <option selected disabled>Selected Category</option>
                         @foreach ($courseCategorys as $courseCategory)
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="col-lg-2">
+
+                {{-- <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
                         <option selected>Venue</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
-                </div>
+                </div> --}}
+
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected>Month</option>
+                        <option selected disabled>Month</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
                 </div>
+
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
                         <option selected>Year</option>
@@ -74,6 +78,7 @@
                         <option value="3">Three</option>
                     </select>
                 </div>
+
                 <div class="col-lg-2 text-center">
                     <button class="primary-btn-one">Search</button>
                 </div>
