@@ -15,4 +15,9 @@ class Course extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function categoryName()
+    {
+        return $this->belongsTo(CourseCategory::class,'course_category_id','id');
+    }
 }

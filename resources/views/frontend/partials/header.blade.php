@@ -50,6 +50,7 @@
                 data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" id="navbarToggler">
                 <i class="fa-solid fa-bars"></i>
             </button>
+
             <div class="collapse navbar-collapse align-items-center" id="navbarScroll">
                 <div class="mx-auto">
                     <div class="btn-group position-static" title="Our Courses">
@@ -63,7 +64,7 @@
                             style="border-top: 1px solid #0a1d5b;">
                             <li class="dropdown-header" style="border-top: 1px solid #0a1d5b;">
                                 @php
-                                    $courseCategories = App\Models\CourseCategory::orderBy('name', 'ASC')
+                                    $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')
                                         ->limit(8)
                                         ->latest()
                                         ->get();
@@ -74,16 +75,16 @@
                                         <div class="col-lg-3" style="background: #fff;">
                                             <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
 
-                                                @foreach ($courseCategories as $key => $courseCategory)
-                                                <li class="nav-item cources-category-top" role="presentation">
+                                                @foreach ($courseSections as $key => $courseSection)
+                                                    <li class="nav-item cources-category-top" role="presentation">
                                                         <button
                                                             class="nav-link cources-category-top-link text-white {{ $key == 0 ? 'active' : '' }}"
-                                                            id="tab-{{ $courseCategory->id }}" data-bs-toggle="tab"
-                                                            data-bs-target="#category{{ $courseCategory->id }}"
+                                                            id="tab-{{ $courseSection->id }}" data-bs-toggle="tab"
+                                                            data-bs-target="#section{{ $courseSection->id }}"
                                                             type="button" role="tab"
-                                                            aria-controls="category{{ $courseCategory->id }}"
+                                                            aria-controls="section{{ $courseSection->id }}"
                                                             aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
-                                                            {{ $courseCategory->name }}
+                                                            {{ $courseSection->name }}
                                                         </button>
                                                     </li>
                                                 @endforeach
@@ -92,70 +93,62 @@
                                         </div>
                                         <div class="col-lg-9 header-courses">
                                             <div class="tab-content" id="myTabContent">
-                                                @foreach ($courseCategories as $key => $courseCategory)
+                                                @foreach ($courseSections as $key => $courseSection)
                                                     @php
-                                                        $catwiseCourses = App\Models\Course::where(
-                                                            'course_category_id',
-                                                            $courseCategory->id,
+                                                        $sectionWiseCats = App\Models\Course::where(
+                                                            'course_section_id',
+                                                            $courseSection->id,
                                                         )
                                                             ->orderBy('name', 'ASC')
-                                                            ->latest()
                                                             ->limit(3)
-                                                            ->get();
+                                                            ->get()
+                                                            ->unique('course_category_id');
                                                     @endphp
                                                     <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
-                                                        id="category{{ $courseCategory->id }}" role="tabpanel"
-                                                        aria-labelledby="tab-{{ $courseCategory->id }}">
+                                                        id="section{{ $courseSection->id }}" role="tabpanel"
+                                                        aria-labelledby="tab-{{ $courseSection->id }}">
                                                         <div class="row">
-                                                            @foreach ($catwiseCourses as $course)
+                                                            @forelse ($sectionWiseCats as $sectionWiseCat)
                                                                 <div class="col-lg-4">
+
                                                                     <p class="fw-bold border-bottom text-muted">
-                                                                        {{ $course->name }}</p>
+                                                                        {{ $sectionWiseCat->categoryName->name }}
+                                                                    </p>
+
+                                                                    @php
+                                                                        $catWiseCourses = App\Models\Course::where(
+                                                                            'course_category_id',
+                                                                            $sectionWiseCat->id,
+                                                                        )
+                                                                            ->orderBy('name', 'ASC')
+                                                                            ->latest()
+                                                                            ->limit(5)
+                                                                            ->get();
+                                                                    @endphp
+
                                                                     <ul class="ps-0 ms-0"
                                                                         style="list-style-type: none;">
-                                                                        <li class="pb-3">
-                                                                            <a href="#"
-                                                                                class="text-decoration-none primary-text-color menu-link">
-                                                                                <i
-                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>New
-                                                                                Data Science Courses
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="pb-3">
-                                                                            <a href="#"
-                                                                                class="text-decoration-none primary-text-color menu-link">
-                                                                                <i
-                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Beginner
-                                                                                Data Science Courses
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="pb-3">
-                                                                            <a href="#"
-                                                                                class="text-decoration-none primary-text-color menu-link">
-                                                                                <i
-                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                                Data Science Courses
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="pb-3">
-                                                                            <a href="#"
-                                                                                class="text-decoration-none primary-text-color menu-link">
-                                                                                <i
-                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Data
-                                                                                Science Projects
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="pb-3">
-                                                                            <a href="#"
-                                                                                class="text-decoration-none primary-text-color menu-link">
-                                                                                <i
-                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                                Data Science Courses
-                                                                            </a>
-                                                                        </li>
+
+                                                                        @forelse ($catWiseCourses as $catWiseCourse)
+                                                                            <li class="pb-3">
+                                                                                <a href="#"
+                                                                                    class="text-decoration-none primary-text-color menu-link">
+                                                                                    <i
+                                                                                        class="fa-solid fa-arrow-right-long pe-3"></i>{{ $catWiseCourse->name }}
+                                                                                </a>
+                                                                            </li>
+                                                                        @empty
+                                                                            <p>No Course Avaiable</p>
+                                                                        @endforelse
+
+
                                                                     </ul>
                                                                 </div>
-                                                            @endforeach
+                                                            @empty
+                                                                <p>No Category Avaiable</p>
+                                                            @endforelse
+
+
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -166,7 +159,6 @@
                             </li>
                         </ul>
 
-
                     </div>
                 </div>
                 <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
@@ -174,8 +166,8 @@
                         <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown position-static">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
-                            role="button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                             aria-expanded="false">Online Learning</a>
                         <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 py-0" style="border-top: 1px solid #0a1d5b;"
                             aria-labelledby="navbarScrollingDropdown">

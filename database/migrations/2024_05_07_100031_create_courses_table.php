@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('course_code', 50)->unique()->nullable();
 
             $table->string('course_type',)->nullable();
+            $table->string('course_section_id',)->nullable();
             
             $table->string('tags')->nullable();
             $table->string('thumbnail_image', 255)->nullable();
