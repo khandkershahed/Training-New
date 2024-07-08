@@ -53,179 +53,120 @@
             <div class="collapse navbar-collapse align-items-center" id="navbarScroll">
                 <div class="mx-auto">
                     <div class="btn-group position-static" title="Our Courses">
+
                         <button class="category-btn-header dropdown-toggle text-white" type="button"
                             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                             <i class="fa-solid fa-layer-group fa-fw"></i>
                         </button>
+
                         <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 border-0 courses-tabs-header"
                             style="border-top: 1px solid #0a1d5b;">
-                            <div style="border-top: 1px solid #0a1d5b;">
+                            <li class="dropdown-header" style="border-top: 1px solid #0a1d5b;">
+                                @php
+                                    $courseCategories = App\Models\CourseCategory::orderBy('name', 'ASC')
+                                        ->limit(8)
+                                        ->latest()
+                                        ->get();
+                                @endphp
+
                                 <div class="container">
                                     <div class="row gx-0">
-                                        <div class="col-lg-3" style="background: #fff">
+                                        <div class="col-lg-3" style="background: #fff;">
                                             <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
+
+                                                @foreach ($courseCategories as $key => $courseCategory)
                                                 <li class="nav-item cources-category-top" role="presentation">
-                                                    <button class="nav-link cources-category-top-link text-white active"
-                                                        id="home-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#home-tab-pane" type="button" role="tab"
-                                                        aria-controls="home-tab-pane" aria-selected="true">
-                                                        Data Science
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item cources-category-top" role="presentation">
-                                                    <button class="nav-link cources-category-top-link text-white"
-                                                        id="profile-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                                        aria-controls="profile-tab-pane" aria-selected="false">
-                                                        Profile
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item cources-category-top" role="presentation">
-                                                    <button class="nav-link cources-category-top-link text-white"
-                                                        id="contact-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#contact-tab-pane" type="button"
-                                                        role="tab" aria-controls="contact-tab-pane"
-                                                        aria-selected="false">
-                                                        Contact
-                                                    </button>
-                                                </li>
+                                                        <button
+                                                            class="nav-link cources-category-top-link text-white {{ $key == 0 ? 'active' : '' }}"
+                                                            id="tab-{{ $courseCategory->id }}" data-bs-toggle="tab"
+                                                            data-bs-target="#category{{ $courseCategory->id }}"
+                                                            type="button" role="tab"
+                                                            aria-controls="category{{ $courseCategory->id }}"
+                                                            aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
+                                                            {{ $courseCategory->name }}
+                                                        </button>
+                                                    </li>
+                                                @endforeach
+
                                             </ul>
                                         </div>
                                         <div class="col-lg-9 header-courses">
                                             <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active p-3" id="home-tab-pane"
-                                                    role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <p class="fw-bold border-bottom text-muted">
-                                                                Degrees
-                                                            </p>
-                                                            <ul class="ps-0 ms-0" style="list-style-type: none;">
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link">
-                                                                        <i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>
-                                                                        New Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Beginner
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Data
-                                                                        Science Projects</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <p class="fw-bold border-bottom text-muted">
-                                                                Certificate programs
-                                                            </p>
-                                                            <ul class="ps-0 ms-0" style="list-style-type: none;">
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link">
-                                                                        <i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>
-                                                                        New Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Beginner
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Data
-                                                                        Science Projects</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <p class="fw-bold border-bottom text-muted">
-                                                                Get Started
-                                                            </p>
-                                                            <ul class="ps-0 ms-0" style="list-style-type: none;">
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link">
-                                                                        <i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>
-                                                                        New Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Beginner
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Data
-                                                                        Science Projects</a>
-                                                                </li>
-                                                                <li class="pb-3">
-                                                                    <a href=""
-                                                                        class="text-decoration-none primary-text-color menu-link"><i
-                                                                            class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
-                                                                        Data Science Courses</a>
-                                                                </li>
-                                                            </ul>
+                                                @foreach ($courseCategories as $key => $courseCategory)
+                                                    @php
+                                                        $catwiseCourses = App\Models\Course::where(
+                                                            'course_category_id',
+                                                            $courseCategory->id,
+                                                        )
+                                                            ->orderBy('name', 'ASC')
+                                                            ->latest()
+                                                            ->limit(3)
+                                                            ->get();
+                                                    @endphp
+                                                    <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
+                                                        id="category{{ $courseCategory->id }}" role="tabpanel"
+                                                        aria-labelledby="tab-{{ $courseCategory->id }}">
+                                                        <div class="row">
+                                                            @foreach ($catwiseCourses as $course)
+                                                                <div class="col-lg-4">
+                                                                    <p class="fw-bold border-bottom text-muted">
+                                                                        {{ $course->name }}</p>
+                                                                    <ul class="ps-0 ms-0"
+                                                                        style="list-style-type: none;">
+                                                                        <li class="pb-3">
+                                                                            <a href="#"
+                                                                                class="text-decoration-none primary-text-color menu-link">
+                                                                                <i
+                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>New
+                                                                                Data Science Courses
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="pb-3">
+                                                                            <a href="#"
+                                                                                class="text-decoration-none primary-text-color menu-link">
+                                                                                <i
+                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Beginner
+                                                                                Data Science Courses
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="pb-3">
+                                                                            <a href="#"
+                                                                                class="text-decoration-none primary-text-color menu-link">
+                                                                                <i
+                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
+                                                                                Data Science Courses
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="pb-3">
+                                                                            <a href="#"
+                                                                                class="text-decoration-none primary-text-color menu-link">
+                                                                                <i
+                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Data
+                                                                                Science Projects
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="pb-3">
+                                                                            <a href="#"
+                                                                                class="text-decoration-none primary-text-color menu-link">
+                                                                                <i
+                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>Advanced
+                                                                                Data Science Courses
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            @endforeach
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                                                    aria-labelledby="profile-tab" tabindex="0">
-                                                    2
-                                                </div>
-                                                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
-                                                    aria-labelledby="contact-tab" tabindex="0">
-                                                    3
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </li>
                         </ul>
+
+
                     </div>
                 </div>
                 <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
