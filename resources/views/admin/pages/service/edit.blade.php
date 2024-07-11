@@ -44,11 +44,10 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-9 mb-3">
                             <div class="form-group">
-                                <label for="" class="mb-2">Course Category Header</label>
-                                <input type="text" name="header" placeholder="Course Service Header"
-                                    class="form-control form-control-sm" value="{{ $service->header }}">
+                                <label for="" class="mb-2">Course Service Header</label>
+                                <textarea name="header" placeholder="Course Service Header" class="form-control" cols="3" rows="3">{{ $service->header }}</textarea>
                             </div>
                         </div>
 

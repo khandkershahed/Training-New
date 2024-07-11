@@ -1,5 +1,7 @@
 @extends('frontend.master')
 @section('content')
+    
+
     <section class="">
         @if (!empty($service->banner_image))
             <img class="img-fluid" src="{{ asset('storage/service/' . $service->banner_image) }}" alt="Picture" />
@@ -13,26 +15,26 @@
                     <nav aria-label="breadcrumb" class="py-3">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="" class="text-decoration-none main-color">Home</a>
+                                <a href="{{ route('homepage') }}" class="text-decoration-none main-color">Home</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="" class="text-decoration-none main-color">Library</a>
+                                <a href="" class="text-decoration-none main-color">{{ $service->name }}</a>
                             </li>
-                            
+
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
     </section>
+
     <section>
         <div class="container py-3">
             <div class="row">
                 <div class="col-lg-9">
                     <div class="text-start py-2 pt-0">
                         <h1 class="main-color">
-                            Unmatched Professional Consultancy <br />
-                            Services That Deliver Value
+                            {{ $service->name }}
                         </h1>
                         <div class="section-devider"
                             style="
@@ -43,84 +45,51 @@
                 ">
                         </div>
                         <p class="pt-3" style="text-align: justify">
-                            Our industry experience in building tailored solutions has
-                            taught us how to deliver success to clients. We are confident
-                            we can transfer this success to our new sector of consulting
-                            services playing to our strengths of assembling high
-                            performing teams and listening to our clients.
+                            {{ $service->header }}
                         </p>
                     </div>
-                    <div>
+                    {{-- <div>
                         <img class="img-fluid w-100"
                             src="https://www.promisetrainingglobal.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2017/12/public-course.jpg.webp"
                             alt="" />
-                    </div>
+                    </div> --}}
                     <div>
                         <p class="py-5" style="text-align: justify">
-                            You will gain knowledge and learn new things pertaining to
-                            your industry away from your workplace. Participants of our
-                            public training program will also have a chance to share their
-                            experiences with professionals from other organisations. This
-                            enables them to gain new perspectives on the common challenges
-                            they face at the workplace. Being one of the best public
-                            training seminar companies, we continually update our training
-                            programs to suit the latest international management practices
-                            and principles, field research and in-depth industry
-                            knowledge. Our courses are taught by seasoned tutors who
-                            possess knowledge and skills in their subject matter.
-                            Furthermore, they use a wide range of facilitation and
-                            training techniques to ensure participants learn and even
-                            apply the different concepts. Our training seminars focus to
-                            enhance both group and individual interactions and maximise
-                            learning. We hold our training seminars is premium quality
-                            venues around the world that are strategically located and
-                            have unmatched service standards and facilities. Enrol your
-                            team for the best corporate training programs available at
-                            Promise Training & Consultancy!
-                            <br />
-                            <br />
-                            You will gain knowledge and learn new things pertaining to
-                            your industry away from your workplace. Participants of our
-                            public training program will also have a chance to share their
-                            experiences with professionals from other organisations. This
-                            enables them to gain new perspectives on the common challenges
-                            they face at the workplace. Being one of the best public
-                            training seminar companies, we continually update our training
-                            programs to suit the latest international management practices
-                            and principles, field research and in-depth industry
-                            knowledge. Our courses are taught by seasoned tutors who
-                            possess knowledge and skills in their subject matter.
+                            {!! $service->description !!}
                         </p>
                     </div>
                 </div>
+
                 <div class="col-lg-3">
                     <h3 class="main-color">Search a Course</h3>
+
+                    @php
+                        $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')->limit(8)->latest()->get();
+                    @endphp
+
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="row gx-1">
+
                                     <div class="col-lg-6">
-                                        <select class="form-select rounded-0" aria-label="Default select example">
-                                            <option selected>Select Type</option>
-                                            <option value="1">Corporate</option>
-                                            <option value="2">Professional</option>
-                                            <option value="3">Industry</option>
+                                        <select class="form-select rounded-0" name="course_section_id"
+                                            aria-label="Default select example">
+                                            <option selected disabled>Select Type</option>
+                                            @foreach ($courseSections as $courseSection)
+                                                <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
+
                                     <div class="col-lg-6">
-                                        <select class="form-select rounded-0" aria-label="Default select example">
-                                            <option selected>Select Course</option>
-                                            <option value="1">
-                                                Well Test Design and Analysis
-                                            </option>
-                                            <option value="2">
-                                                Floating Production Storage and Offloading
-                                            </option>
-                                            <option value="3">
-                                                Competency Development for Supervisory
-                                            </option>
+                                        <select class="form-select rounded-0" name="course_category_id"
+                                            aria-label="Default select example">
+                                            <option selected disabled>Select Course</option>
                                         </select>
                                     </div>
+
+
                                 </div>
                                 <div class="table-responsive mt-3">
                                     <div class="table-responsive">
@@ -202,7 +171,8 @@
             </div>
         </div>
     </section>
-    <section>
+
+    {{-- <section>
         <div class="container mb-5">
             <div class="row align-items-center" style="background-color: #eaf6f5">
                 <div class="col-lg-6">
@@ -373,17 +343,38 @@
                 </div>
             </div>
         </div>
-    </section>
-@endsection
-{{-- @section('scripts')
-    <script>
-        function toggleText(id) {
-            var element = document.getElementById(id);
-            if (element.style.display === "none" || element.style.display === "") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
+    </section> --}}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="course_section_id"]').on('change', function() {
+                var course_section_id = $(this).val();
+                var url= "/course/ajax/" + course_section_id;
+                alert(url);
+                if (course_section_id) {
+                    $.ajax({
+                        url: "/course/ajax/" + course_section_id,
+                        type: "GET",
+                        dataType: "json",
+
+                        success: function(data) {
+                            $('select[name="course_category_id"]').empty(); // Clear existing options
+                            $.each(data, function(key, value) {
+                                $('select[name="course_category_id"]').append('<option value="' +
+                                    value.id + '">' + value.name + '</option>');
+                            });
+                        },
+
+                        error: function(xhr, status, error) {
+                            console.error("AJAX request failed: " + status + ", " + error);
+                        }
+                    });
+                } else {
+                    $('select[name="course_category_id"]').empty(); // Clear options if no section selected
+                }
+            });
+        });
     </script>
-@endsection --}}
+@endsection

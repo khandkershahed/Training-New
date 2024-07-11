@@ -20,4 +20,9 @@ class Course extends Model
     {
         return $this->belongsTo(CourseCategory::class,'course_category_id','id');
     }
+
+    // public function categoryName()
+    // {
+    //     return $this->belongsTo(CourseSection::class,'course_section_id','id');
+    // }
 }

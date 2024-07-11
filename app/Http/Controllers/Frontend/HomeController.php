@@ -25,8 +25,8 @@ class HomeController extends Controller
 
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
-        
-        return view('frontend.pages.home',compact('homePage','courseCategorys','courses'));
+
+        return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
     }
 
     //Learn More
@@ -165,21 +165,34 @@ class HomeController extends Controller
     }
 
     //Service
-    public function service()
+    // public function service()
+    // {
+    //     $service = Service::first();
+    //     return view('frontend.pages.service.service', compact('service'));
+    // }
+
+    public function serviceDetails($id, $slug)
     {
-        $service = Service::first();
+        $service = Service::find($id);
         return view('frontend.pages.service.service', compact('service'));
     }
 
+    public function getAjaxCourses($id)
+    {
+        dd($id);
+        $subCat = Course::with('categoryName')->where('course_section_id' , $course_section_id)->get();
+
+        return json_encode($subCat);
+    }
 
     public function termsCondition()
     {
         $data['terms'] = Service::first();
-        return view('frontend.pages.termsCondition',$data);
+        return view('frontend.pages.termsCondition', $data);
     }
     public function privacyPolicy()
     {
         $data['privacy'] = Service::first();
-        return view('frontend.pages.privacyPolicy',$data);
+        return view('frontend.pages.privacyPolicy', $data);
     }
 }

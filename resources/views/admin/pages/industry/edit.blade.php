@@ -34,7 +34,7 @@
 
                     <div class="row p-4">
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Parent Name</label>
@@ -58,7 +58,7 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Name</label>
@@ -68,11 +68,11 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Industry Header</label>
-                                <input type="text" name="header" placeholder="Course Service Header"
-                                    class="form-control form-control-sm" value="{{ $item->header }}">
+
+                                <textarea name="header" class="form-control" placeholder="Industry Header" cols="3" rows="3">{{ $item->header }}</textarea>
                             </div>
                         </div>
 
