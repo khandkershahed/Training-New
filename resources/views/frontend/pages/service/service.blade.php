@@ -1,18 +1,8 @@
 @extends('frontend.master')
 @section('content')
-    <style>
-        .more-text {
-            display: none;
-        }
-    </style>
-    <!-- Banner Section -->
-
     <section class="">
-        @if ($service && $service->banner_image)
-            <img class="img-fluid w-100" src="{{ asset('storage/service/' . $service->banner_image) }}" alt="" />
-        @else
-            <img class="img-fluid w-100" src="" alt="" />
-            {{-- Replace 'placeholder-image.jpg' with the path to your default placeholder image --}}
+        @if (!empty($service->banner_image))
+            <img class="img-fluid" src="{{ asset('storage/service/' . $service->banner_image) }}" alt="Picture" />
         @endif
     </section>
 
@@ -23,11 +13,12 @@
                     <nav aria-label="breadcrumb" class="py-3">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('homepage') }}" class="text-decoration-none main-color">Home</a>
+                                <a href="" class="text-decoration-none main-color">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <span class="text-muted">Service</span>
+                            <li class="breadcrumb-item">
+                                <a href="" class="text-decoration-none main-color">Library</a>
                             </li>
+                            
                         </ol>
                     </nav>
                 </div>
@@ -39,48 +30,67 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="text-start py-2 pt-0">
-
-
-                        @if ($service)
-                            <h1 class="main-color">{{ $service->name }}</h1>
-                        @else
-                            <p></p>
-                        @endif
-
-
+                        <h1 class="main-color">
+                            Unmatched Professional Consultancy <br />
+                            Services That Deliver Value
+                        </h1>
                         <div class="section-devider"
-                            style="background-color: #0a1d5b;height: 2px;width: 10%;margin: start;">
+                            style="
+                  background-color: #0a1d5b;
+                  height: 2px;
+                  width: 10%;
+                  margin: start;
+                ">
                         </div>
-
-
-                        @if ($service)
-                            <p class="pt-3" style="text-align: justify">{{ $service->header }}</p>
-                        @else
-                            <p></p>
-                        @endif
-
-
+                        <p class="pt-3" style="text-align: justify">
+                            Our industry experience in building tailored solutions has
+                            taught us how to deliver success to clients. We are confident
+                            we can transfer this success to our new sector of consulting
+                            services playing to our strengths of assembling high
+                            performing teams and listening to our clients.
+                        </p>
                     </div>
                     <div>
-
-                        @if ($service && $service->thumbnail_image)
-                            <img class="img-fluid w-100" src="{{ asset('storage/service/' . $service->thumbnail_image) }}"
-                                alt="" />
-                        @else
-                            <img class="img-fluid w-100" src="" alt="" />
-                        @endif
-
-
+                        <img class="img-fluid w-100"
+                            src="https://www.promisetrainingglobal.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2017/12/public-course.jpg.webp"
+                            alt="" />
                     </div>
                     <div>
-                        @if ($service)
-                            <p class="py-5" style="text-align: justify">
-                                {!! $service->description !!}
-                            </p>
-                        @else
-                            <p></p>
-                        @endif
-
+                        <p class="py-5" style="text-align: justify">
+                            You will gain knowledge and learn new things pertaining to
+                            your industry away from your workplace. Participants of our
+                            public training program will also have a chance to share their
+                            experiences with professionals from other organisations. This
+                            enables them to gain new perspectives on the common challenges
+                            they face at the workplace. Being one of the best public
+                            training seminar companies, we continually update our training
+                            programs to suit the latest international management practices
+                            and principles, field research and in-depth industry
+                            knowledge. Our courses are taught by seasoned tutors who
+                            possess knowledge and skills in their subject matter.
+                            Furthermore, they use a wide range of facilitation and
+                            training techniques to ensure participants learn and even
+                            apply the different concepts. Our training seminars focus to
+                            enhance both group and individual interactions and maximise
+                            learning. We hold our training seminars is premium quality
+                            venues around the world that are strategically located and
+                            have unmatched service standards and facilities. Enrol your
+                            team for the best corporate training programs available at
+                            Promise Training & Consultancy!
+                            <br />
+                            <br />
+                            You will gain knowledge and learn new things pertaining to
+                            your industry away from your workplace. Participants of our
+                            public training program will also have a chance to share their
+                            experiences with professionals from other organisations. This
+                            enables them to gain new perspectives on the common challenges
+                            they face at the workplace. Being one of the best public
+                            training seminar companies, we continually update our training
+                            programs to suit the latest international management practices
+                            and principles, field research and in-depth industry
+                            knowledge. Our courses are taught by seasoned tutors who
+                            possess knowledge and skills in their subject matter.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -131,11 +141,13 @@
                                             <tbody class="table-group-divider">
                                                 <tr>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="text-decoration-none text-muted"
+                                                        <a href="#" class="text-decoration-none text-muted"
                                                             title="Administration, Office Management & Secretarial"
                                                             onclick="toggleText('text1')">Administration<span>...</span></a>
-                                                        <p id="text1" class="more-text">Administration, Office
-                                                            Management & Secretarial</p>
+                                                        <p id="text1" class="more-text">
+                                                            Administration, Office Management &
+                                                            Secretarial
+                                                        </p>
                                                     </td>
                                                     <td class="text-muted">Offline</td>
                                                     <td class="text-muted">$5000</td>
@@ -239,44 +251,44 @@
                             <thead class="">
                                 <tr>
                                     <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
+                        background-color: #0a1d5b !important;
+                        color: white;
+                      "
                                         scope="col">
                                         Code
                                     </th>
                                     <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
+                        background-color: #0a1d5b !important;
+                        color: white;
+                      "
                                         scope="col">
                                         Course Title
                                     </th>
                                     <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
+                        background-color: #0a1d5b !important;
+                        color: white;
+                      "
                                         scope="col">
                                         Venue
                                     </th>
                                     <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
+                        background-color: #0a1d5b !important;
+                        color: white;
+                      "
                                         scope="col">
                                         Starting Date
                                     </th>
                                     <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
+                        background-color: #0a1d5b !important;
+                        color: white;
+                      "
                                         scope="col">
                                         Duration
                                     </th>
                                     <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
+                        background-color: #0a1d5b !important;
+                        color: white;
+                      "
                                         scope="col">
                                         Fees
                                     </th>
@@ -363,7 +375,7 @@
         </div>
     </section>
 @endsection
-@section('scripts')
+{{-- @section('scripts')
     <script>
         function toggleText(id) {
             var element = document.getElementById(id);
@@ -374,4 +386,4 @@
             }
         }
     </script>
-@endsection
+@endsection --}}

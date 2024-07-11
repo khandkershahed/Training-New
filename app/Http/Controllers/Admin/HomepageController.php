@@ -11,22 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class HomepageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $homes = HomePage::orderBy('id', 'DESC')->get(['id']);
         return view('admin.pages.homepage.index', compact('homes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $courses = Course::latest()->get();
