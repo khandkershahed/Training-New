@@ -129,7 +129,7 @@
             }
         }
     </style>
-    <section class="showcase-courses">
+    <section class="showcase">
         <img src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/course-banner.jpg?id=8892" alt="Picture">
         <div class="overlay-courses">
             <h2>Course Registration</h2>

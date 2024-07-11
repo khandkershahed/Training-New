@@ -1,7 +1,7 @@
 @extends('frontend.master')
 @section('content')
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
-    <section class="showcase-courses">
+    <section class="showcase">
         <img src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/course-banner.jpg?id=8892" alt="Picture">
         <div class="overlay-courses">
             <h2>Our All Courses</h2>
@@ -472,7 +472,7 @@
                                                     <h3 class="fw-bold">BDT
                                                         {{ number_format($coursedetail->online_price, 2) }}</h3>
 
-                                                    
+
 
                                                     <a href="javascript:void(0)" data-amount="{{ $coursedetail->online_price }}" data-id="{{ $coursedetail->id }}"
                                                         class="primary-btn-one" onclick="addToEnrollOnline(this)">Enroll Now</a>

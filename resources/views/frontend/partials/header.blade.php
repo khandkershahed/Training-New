@@ -62,7 +62,7 @@
 
                         <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 border-0 courses-tabs-header"
                             style="border-top: 1px solid #0a1d5b;">
-                            <li class="dropdown-header" style="border-top: 1px solid #0a1d5b;">
+                            <li class="dropdown-header py-0" style="border-top: 1px solid #0a1d5b;">
                                 @php
                                     $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')
                                         ->limit(8)
@@ -74,7 +74,6 @@
                                     <div class="row gx-0">
                                         <div class="col-lg-3" style="background: #fff;">
                                             <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
-
                                                 @foreach ($courseSections as $key => $courseSection)
                                                     <li class="nav-item cources-category-top" role="presentation">
                                                         <button

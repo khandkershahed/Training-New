@@ -266,7 +266,8 @@ body::-webkit-scrollbar-thumb {
     padding: 10px;
 }
 .courses-tabs-header {
-    background-color: #fdfbfb !important;
+    /* background-color: #fdfbfb !important; */
+    background-color: transparent !important;
 }
 
 .header-courses {
@@ -815,10 +816,12 @@ body::-webkit-scrollbar-thumb {
 /* ==========================Others Page Banner Style Start============================= */
 .showcase {
     width: 100%;
-    height: 400px;
+    height: 330px;
+    /* height: 400px; */
     position: relative;
     color: var(--white-color);
     text-align: center;
+    object-fit: cover;
 }
 
 .showcase img {
@@ -1573,11 +1576,462 @@ body::-webkit-scrollbar-thumb {
     border: 1px solid #000;
 }
 
-/* ==========================Main Style Start============================= */
-@media only screen and (max-width: 768px) {
+.custom-accordion .custom-accordion-item {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .custom-accordion .custom-accordion-item button[aria-expanded="true"] {
+    border-bottom: 1px solid #03b5d2;
+  }
+
+  .custom-accordion button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: #7288a2;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+  }
+
+  .custom-accordion button:hover,
+  .custom-accordion button:focus {
+    cursor: pointer;
+    color: #03b5d2;
+  }
+
+  .custom-accordion button:hover::after,
+  .custom-accordion button:focus::after {
+    cursor: pointer;
+    color: #03b5d2;
+    border: 1px solid #03b5d2;
+  }
+
+  .custom-accordion button .custom-accordion-title {
+    padding: 1em 1.5em 1em 0;
+  }
+
+  .custom-accordion button .icon {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid;
+    border-radius: 22px;
+  }
+
+  .custom-accordion button .icon::before {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+  }
+  .custom-accordion button .icon::after {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 5px;
+    left: 9px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+  }
+
+  .custom-accordion button[aria-expanded="true"] {
+    color: #03b5d2;
+  }
+  .custom-accordion button[aria-expanded="true"] .icon::after {
+    width: 0;
+  }
+  .custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
+    opacity: 1;
+    max-height: 9em;
+    transition: all 200ms linear;
+    will-change: opacity, max-height;
+  }
+  .custom-accordion .custom-accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+  }
+  .custom-accordion .custom-accordion-content p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 2em 0;
+  }
+  .more-text {
+    display: none;
+  }
+
+  .gradient-card {
+    height: 155px;
+    background: #0f0c29; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #24243e,
+      #302b63,
+      #0f0c29
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #24243e,
+      #302b63,
+      #0f0c29
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .box-service {
+    background: #302b63;
+    font-family: "Poppins", sans-serif;
+    box-service-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+  }
+  .box-service:before {
+    content: "";
+    background: #fff;
+    width: 200px;
+    opacity: 0.6;
+    transform: skew(-20deg);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    box-service-shadow: 0 0 100px #fff;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover:before {
+    opacity: 1;
+    left: 200%;
+  }
+  .box-service img {
+    width: 100%;
+    height: 400px;
+    max-height: 100%;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover img {
+    opacity: 0.4;
+    filter: grayscale(100%);
+  }
+  .box-service .box-service-content {
+    color: #fff;
+    width: 100%;
+    padding: 0 20px;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    z-index: 1;
+  }
+  .box-service .title {
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    transform: rotateX(90deg);
+    transform-origin: bottom center;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover .title {
+    transform: rotateX(0);
+  }
+  .box-service .post {
+    color: #fff;
+    font-size: 12px;
+    text-align: start;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    transform: rotateX(-90deg);
+    transform-origin: top center;
+    transition: all 0.6s ease;
+    padding-top: 20px;
+  }
+  .box-service:hover .post {
+    transform: rotateX(0);
+  }
+  .box-service .icon {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover .icon {
+    opacity: 1;
+  }
+  .box-service .icon li {
+    margin: 0 5px 0 0;
+    display: inline-block;
+  }
+  .box-service .icon li a {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.3);
+    font-size: 15px;
+    text-align: center;
+    line-height: 33px;
+    width: 33px;
+    height: 33px;
+    display: block;
+    transition: all 0.6s ease;
+  }
+  .box-service .icon li a:hover {
+    color: #108dc7;
+    background: #fff;
+  }
+  @media only screen and (max-width: 990px) {
+    .box {
+      margin: 0 0 30px;
+    }
+  }
+  /* ==========================Main Style Start============================= */
+  .custom-accordion .custom-accordion-item {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .custom-accordion .custom-accordion-item button[aria-expanded="true"] {
+    border-bottom: 1px solid #03b5d2;
+  }
+
+  .custom-accordion button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: #7288a2;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+  }
+
+  .custom-accordion button:hover,
+  .custom-accordion button:focus {
+    cursor: pointer;
+    color: #03b5d2;
+  }
+
+  .custom-accordion button:hover::after,
+  .custom-accordion button:focus::after {
+    cursor: pointer;
+    color: #03b5d2;
+    border: 1px solid #03b5d2;
+  }
+
+  .custom-accordion button .custom-accordion-title {
+    padding: 1em 1.5em 1em 0;
+  }
+
+  .custom-accordion button .icon {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid;
+    border-radius: 22px;
+  }
+
+  .custom-accordion button .icon::before {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+  }
+  .custom-accordion button .icon::after {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 5px;
+    left: 9px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+  }
+
+  .custom-accordion button[aria-expanded="true"] {
+    color: #03b5d2;
+  }
+  .custom-accordion button[aria-expanded="true"] .icon::after {
+    width: 0;
+  }
+  .custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
+    opacity: 1;
+    max-height: 9em;
+    transition: all 200ms linear;
+    will-change: opacity, max-height;
+  }
+  .custom-accordion .custom-accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+  }
+  .custom-accordion .custom-accordion-content p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 2em 0;
+  }
+  .more-text {
+    display: none;
+  }
+
+  .gradient-card {
+    height: 155px;
+    background: #0f0c29; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #24243e,
+      #302b63,
+      #0f0c29
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #24243e,
+      #302b63,
+      #0f0c29
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .box-service {
+    background: #302b63;
+    font-family: "Poppins", sans-serif;
+    box-service-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+  }
+  .box-service:before {
+    content: "";
+    background: #fff;
+    width: 200px;
+    opacity: 0.6;
+    transform: skew(-20deg);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    box-service-shadow: 0 0 100px #fff;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover:before {
+    opacity: 1;
+    left: 200%;
+  }
+  .box-service img {
+    width: 100%;
+    height: 400px;
+    max-height: 100%;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover img {
+    opacity: 0.4;
+    filter: grayscale(100%);
+  }
+  .box-service .box-service-content {
+    color: #fff;
+    width: 100%;
+    padding: 0 20px;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    z-index: 1;
+  }
+  .box-service .title {
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    transform: rotateX(90deg);
+    transform-origin: bottom center;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover .title {
+    transform: rotateX(0);
+  }
+  .box-service .post {
+    color: #fff;
+    font-size: 12px;
+    text-align: start;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    transform: rotateX(-90deg);
+    transform-origin: top center;
+    transition: all 0.6s ease;
+    padding-top: 20px;
+  }
+  .box-service:hover .post {
+    transform: rotateX(0);
+  }
+  .box-service .icon {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    transition: all 0.6s ease;
+  }
+  .box-service:hover .icon {
+    opacity: 1;
+  }
+  .box-service .icon li {
+    margin: 0 5px 0 0;
+    display: inline-block;
+  }
+  .box-service .icon li a {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.3);
+    font-size: 15px;
+    text-align: center;
+    line-height: 33px;
+    width: 33px;
+    height: 33px;
+    display: block;
+    transition: all 0.6s ease;
+  }
+  .box-service .icon li a:hover {
+    color: #108dc7;
+    background: #fff;
+  }
+  @media only screen and (max-width: 990px) {
+    .box {
+      margin: 0 0 30px;
+    }
+  }
+  /* ==========================Main Style Start============================= */
+  @media only screen and (max-width: 768px) {
     html,
     body {
-        width: 100%;
-        overflow-x: hidden;
+      width: 100%;
+      overflow-x:hidden;
     }
-}
+  }

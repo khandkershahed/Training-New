@@ -64,7 +64,7 @@
             padding-right: 0;
         }
     </style> --}}
-    <section class="">
+    <section class="showcase">
         <img class="img-fluid" src="{{ asset('frontend/assets/img/all-courses-banner.jpg') }}" alt="Picture">
         {{-- <div class="overlay-courses">
             <h2>Our All Courses</h2>
@@ -77,7 +77,9 @@
                 <h3 class="section-title">Popular Courses We Offer</h3>
                 <div class="divider"></div>
                 <p class="text-muted py-0 py-lg-3 px-lg-5 px-0">
-                    NGenIT Training provides short workshops and seminars covering management, leadership, finance, HR, and Oil & Gas. Participants can connect with professionals from different organizations, gaining fresh insights into common workplace challenges.
+                    NGenIT Training provides short workshops and seminars covering management, leadership, finance, HR, and
+                    Oil & Gas. Participants can connect with professionals from different organizations, gaining fresh
+                    insights into common workplace challenges.
                 </p>
             </div>
         </div>
@@ -173,7 +175,12 @@
                                         </div>
                                     </div>
                                 @empty
-                                    <p>No Course Avaiable</p>
+                                    <div class="text-center py-3">
+                                        <img class="img-fluid" width="210px"
+                                            src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
+                                            alt="No Content">
+                                    </div>
+                                    <h5 class="text-center text-warning">No Course available right now.</h5>
                                 @endforelse
 
                             </div>

@@ -5,84 +5,58 @@
             <img class="img-fluid" src="{{ asset('frontend/images/faq.jpg') }}" alt="Picture" />
         </div>
     </section>
-    <section>
+
+    <section class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="custom-accordion">
-                        <div class="custom-accordion-item">
-                            <button id="custom-accordion-button-1" aria-expanded="false">
-                                <span class="custom-accordion-title">Why is the moon sometimes out during the day?</span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="custom-accordion-content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium viverra suspendisse potenti.
-                                </p>
+
+                        @if (count($faqs) > 0)
+                            @foreach ($faqs as $faq)
+                                <div class="custom-accordion-item">
+                                    <button id="custom-accordion-button-1" aria-expanded="false">
+                                        <span class="custom-accordion-title">{{$faq->question}}</span>
+                                        <span class="icon" aria-hidden="true"></span>
+                                    </button>
+                                    <div class="custom-accordion-content">
+                                        <p>
+                                            {{$faq->answer}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="custom-accordion-item border-0">
+                                <div class="text-center py-3">
+                                    <img class="img-fluid" width="210px" src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg" alt="No Content">
+                                </div>
+                                <h5 class="text-center text-warning">FAQ Will be updated soon.</h5>
                             </div>
-                        </div>
-                        <div class="custom-accordion-item">
-                            <button id="custom-accordion-button-2" aria-expanded="false">
-                                <span class="custom-accordion-title">Why is the sky blue?</span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="custom-accordion-content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium viverra suspendisse potenti.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="custom-accordion-item">
-                            <button id="custom-accordion-button-3" aria-expanded="false">
-                                <span class="custom-accordion-title">Will we ever discover aliens?</span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="custom-accordion-content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium viverra suspendisse potenti.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="custom-accordion-item">
-                            <button id="custom-accordion-button-4" aria-expanded="false">
-                                <span class="custom-accordion-title">How much does the Earth weigh?</span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="custom-accordion-content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium viverra suspendisse potenti.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="custom-accordion-item">
-                            <button id="custom-accordion-button-5" aria-expanded="false">
-                                <span class="custom-accordion-title">How do airplanes stay up?</span>
-                                <span class="icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="custom-accordion-content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor
-                                    pretium viverra suspendisse potenti.
-                                </p>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        const items = document.querySelectorAll(".custom-accordion button");
+
+        function toggleAccordion() {
+            const itemToggle = this.getAttribute("aria-expanded");
+
+            for (i = 0; i < items.length; i++) {
+                items[i].setAttribute("aria-expanded", "false");
+            }
+
+            if (itemToggle == "false") {
+                this.setAttribute("aria-expanded", "true");
+            }
+        }
+
+        items.forEach((item) => item.addEventListener("click", toggleAccordion));
+    </script>
+@endpush

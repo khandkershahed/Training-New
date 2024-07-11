@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class FaqController extends Controller
 {
@@ -12,8 +15,7 @@ class FaqController extends Controller
     public function index()
     {
         return view('admin.pages.faq.index', [
-            'faqs'              => Faq::latest('id')->get(),
-            // 'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicCategory(),
+            'faqs' => Faq::latest('id')->get(),
         ]);
     }
 
@@ -35,12 +37,26 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'order'      => ['required', 'integer', 'max:255', 'unique:' . Faq::class],
+            'question'   => ['required', 'string', 'max:255'],
+            'answer'     => ['required'],
+        ], [
+            'required'      => 'The row title must be required',
+            'question.max'  => 'The FAQ Question may not be greater than 255 characters.',
+        ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors()->all());
+            return redirect()->back()->withInput();
+        }
         Faq::create([
-            'category' => $request->category,
-            'question' => $request->question,
-            'answer'   => $request->answer,
-            'order'    => $request->order,
-            'status'   => $request->status,
+            'category'   => $request->category,
+            'question'   => $request->question,
+            'answer'     => $request->answer,
+            'order'      => $request->order,
+            'status'     => $request->status ?? 'active',
+            'created_at' => Carbon::now(),
         ]);
         // toastr()->success('Data has been saved successfully!');
         return redirect()->back()->with('success', 'Data has been saved successfully!');
@@ -67,14 +83,15 @@ class FaqController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $coupon = Faq::findOrFail($id);
+        $faq = Faq::findOrFail($id);
 
-        $coupon->update([
-            'category' => $request->category,
-            'question' => $request->question,
-            'answer'   => $request->answer,
-            'order'    => $request->order,
-            'status'   => $request->status,
+        $faq->update([
+            'category'   => $request->category,
+            'question'   => $request->question,
+            'answer'     => $request->answer,
+            'order'      => $request->order,
+            'status'     => $request->status,
+            'updated_at' => Carbon::now(),
         ]);
         // toastr()->success('Data has been saved successfully!');
         return redirect()->back()->with('success', 'Data has been updated successfully!');

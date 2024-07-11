@@ -25,7 +25,7 @@ class HomeController extends Controller
 
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
-        
+
         return view('frontend.pages.home',compact('homePage','courseCategorys','courses'));
     }
 
@@ -160,7 +160,7 @@ class HomeController extends Controller
     }
     public function faq()
     {
-        $data['faq_categorys'] = Faq::select('category')->distinct()->get();
+        $data['faqs'] = Faq::orderBy('order','ASC')->get();
         return view('frontend.pages.faq', $data);
     }
 
