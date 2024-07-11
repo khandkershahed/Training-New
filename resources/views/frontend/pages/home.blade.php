@@ -64,18 +64,39 @@
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
                         <option selected disabled>Month</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+
+                        <option value="january">January</option>
+                        <option value="february">February</option>
+                        <option value="march">March</option>
+
+                        <option value="april">April</option>
+                        <option value="may">May</option>
+                        <option value="june">June</option>
+
+                        <option value="july">July</option>
+                        <option value="august">August</option>
+                        <option value="september">September</option>
+
+                        <option value="october">October</option>
+                        <option value="november">November</option>
+                        <option value="december">December</option>
+
+
                     </select>
                 </div>
 
                 <div class="col-lg-2">
                     <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected>Year</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option selected disabled>Year</option>
+
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+
                     </select>
                 </div>
 

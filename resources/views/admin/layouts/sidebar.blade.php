@@ -81,8 +81,6 @@
 
                      <div class="menu-sub menu-sub-accordion">
 
-
-
                          <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.service.index') }}">
                                  <span class="menu-bullet">
@@ -127,6 +125,15 @@
                                  <span class="menu-title">Course Project</span>
                              </a>
                          </div>
+
+                         <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.course_section.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Course Section</span>
+                            </a>
+                        </div>
 
                          <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.course_outline.index') }}">

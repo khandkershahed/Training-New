@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\CourseSection;
 use App\Models\industry;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -26,7 +27,8 @@ class CourseController extends Controller
         $services = Service::latest()->get();
         $industrys = industry::latest()->get();
         $courseCats = CourseCategory::latest()->get();
-        return view('admin.pages.course.create', compact('admins', 'courseCats', 'services', 'industrys'));
+        $courseSections= CourseSection::latest()->get();
+        return view('admin.pages.course.create', compact('admins', 'courseCats', 'services', 'industrys','courseSections'));
     }
 
     public function store(Request $request)
@@ -65,6 +67,8 @@ class CourseController extends Controller
 
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
+
+                'course_section_id' => $request->course_section_id,
 
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "-"),
@@ -115,6 +119,8 @@ class CourseController extends Controller
 
                     'course_category_id' => $request->course_category_id,
                     'course_type' => $request->course_type,
+
+                    'course_section_id' => $request->course_section_id,
 
                     'name' => $request->name,
                     'slug' => Str::slug($request->name, "-"),
@@ -170,7 +176,8 @@ class CourseController extends Controller
         $services = Service::latest()->get();
         $industrys = industry::latest()->get();
         $courseCats = CourseCategory::latest()->get();
-        return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys'));
+        $courseSections= CourseSection::latest()->get();
+        return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys','courseSections'));
     }
 
     public function update(Request $request, $id)
@@ -226,6 +233,8 @@ class CourseController extends Controller
                 
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
+
+                'course_section_id' => $request->course_section_id,
 
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, "-"),
