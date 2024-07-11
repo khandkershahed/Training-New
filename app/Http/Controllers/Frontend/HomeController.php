@@ -177,12 +177,19 @@ class HomeController extends Controller
         return view('frontend.pages.service.service', compact('service'));
     }
 
-    public function getAjaxCourses($id)
-    {
-        dd($id);
-        $subCat = Course::with('categoryName')->where('course_section_id' , $course_section_id)->get();
+    // public function getAjaxCourses($id)
+    // {
+    //     dd($id);
+    //     $subCat = Course::with('categoryName')->where('course_section_id' , $course_section_id)->get();
 
-        return json_encode($subCat);
+    //     return json_encode($subCat);
+    // }
+
+    public function GetCourse($course_section_id)
+    {
+
+        $course = Course::where('course_section_id', $course_section_id)->get();
+        return json_encode($course);
     }
 
     public function termsCondition()
