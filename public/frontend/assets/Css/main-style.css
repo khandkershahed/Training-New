@@ -432,6 +432,7 @@ body::-webkit-scrollbar-thumb {
 
 @media (min-width: 768px) {
     .different_icon_column{
+        height: 9rem;
         border-right: 1px solid black;
     }
     .primary-btn-one {
@@ -592,7 +593,8 @@ body::-webkit-scrollbar-thumb {
 .divider {
     background-color: var(--secondary-color);
     border-bottom: 4px solid var(--secondary-color);
-    width: 30px;
+    /* width: 30px; */
+    width: 10%;
     margin: auto;
 }
 
