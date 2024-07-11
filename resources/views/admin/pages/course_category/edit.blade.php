@@ -37,6 +37,24 @@
                         <div class="col-3 mb-3">
 
                             <div class="form-group">
+                                <label for="course_section_id" class="mb-2">Course Section</label>
+                                <select name="course_section_id" class="form-select form-select-sm"
+                                    id="course_section_id">
+                                    <option value="">Select Course Section</option>
+                                    @foreach ($courseSections as $courseSection)
+                                        <option value="{{ $courseSection->id }}"
+                                            {{ $courseCat->course_section_id == $courseSection->id ? 'selected' : '' }}>
+                                            {{ $courseSection->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-3 mb-3">
+
+                            <div class="form-group">
                                 <label for="" class="mb-2">Name</label>
                                 <input type="text" name="name" placeholder="Course Category Name"
                                     class="form-control form-control-sm" value="{{ $courseCat->name }}">
@@ -44,11 +62,11 @@
 
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Course Category Header</label>
-                                <input type="text" name="header" placeholder="Course Category Header"
-                                    class="form-control form-control-sm" value="{{ $courseCat->header }}">
+
+                                <textarea name="header" placeholder="Course Category Header" class="form-control" cols="3" rows="3">{{ $courseCat->header }}</textarea>
                             </div>
                         </div>
 

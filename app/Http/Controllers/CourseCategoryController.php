@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseCategory;
 use Illuminate\Http\Request;
+use App\Models\CourseSection;
+use App\Models\CourseCategory;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +18,8 @@ class CourseCategoryController extends Controller
 
     public function create()
     {
-        return view('admin.pages.course_category.create');
+        $courseSections = CourseSection::orderBy('name', 'ASC')->latest()->get();
+        return view('admin.pages.course_category.create',compact('courseSections'));
     }
 
     public function store(Request $request)
@@ -74,6 +76,7 @@ class CourseCategoryController extends Controller
 
         // Create course category with file paths
         CourseCategory::create([
+            'course_section_id' => $request->course_section_id,
             'name' => $request->name,
             'header' => $request->header,
             'description' => $request->description,
@@ -86,7 +89,8 @@ class CourseCategoryController extends Controller
     public function edit(Request $request, $id)
     {
         $courseCat = CourseCategory::find($id);
-        return view('admin.pages.course_category.edit', compact('courseCat'));
+        $courseSections = CourseSection::orderBy('name', 'ASC')->latest()->get();
+        return view('admin.pages.course_category.edit', compact('courseCat','courseSections'));
     }
 
     public function update(Request $request, $id)
@@ -113,6 +117,8 @@ class CourseCategoryController extends Controller
         $courseCategory = CourseCategory::findOrFail($id);
 
         // Update course category attributes
+        
+        $courseCategory->course_section_id = $request->course_section_id;
         $courseCategory->name = $request->name;
         $courseCategory->header = $request->header;
         $courseCategory->description = $request->description;

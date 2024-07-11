@@ -1,18 +1,8 @@
 @extends('frontend.master')
 @section('content')
-    <style>
-        .more-text {
-            display: none;
-        }
-    </style>
-    <!-- Banner Section -->
-
     <section class="">
-        @if ($service && $service->banner_image)
-            <img class="img-fluid w-100" src="{{ asset('storage/service/' . $service->banner_image) }}" alt="" />
-        @else
-            <img class="img-fluid w-100" src="" alt="" />
-            {{-- Replace 'placeholder-image.jpg' with the path to your default placeholder image --}}
+        @if (!empty($service->banner_image))
+            <img class="img-fluid" src="{{ asset('storage/service/' . $service->banner_image) }}" alt="Picture" />
         @endif
     </section>
 
@@ -25,93 +15,84 @@
                             <li class="breadcrumb-item">
                                 <a href="{{ route('homepage') }}" class="text-decoration-none main-color">Home</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <span class="text-muted">Service</span>
+                            <li class="breadcrumb-item">
+                                <a href="" class="text-decoration-none main-color">{{ $service->name }}</a>
                             </li>
+
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
     </section>
+
     <section>
         <div class="container py-3">
             <div class="row">
                 <div class="col-lg-9">
                     <div class="text-start py-2 pt-0">
-
-
-                        @if ($service)
-                            <h1 class="main-color">{{ $service->name }}</h1>
-                        @else
-                            <p></p>
-                        @endif
-
-
+                        <h1 class="main-color">
+                            {{ $service->name }}
+                        </h1>
                         <div class="section-devider"
-                            style="background-color: #0a1d5b;height: 2px;width: 10%;margin: start;">
+                            style="
+                  background-color: #0a1d5b;
+                  height: 2px;
+                  width: 10%;
+                  margin: start;
+                ">
                         </div>
-
-
-                        @if ($service)
-                            <p class="pt-3" style="text-align: justify">{{ $service->header }}</p>
-                        @else
-                            <p></p>
-                        @endif
-
-
+                        <p class="pt-3" style="text-align: justify">
+                            {{ $service->header }}
+                        </p>
                     </div>
+                    {{-- <div>
+                        <img class="img-fluid w-100"
+                            src="https://www.promisetrainingglobal.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2017/12/public-course.jpg.webp"
+                            alt="" />
+                    </div> --}}
                     <div>
-
-                        @if ($service && $service->thumbnail_image)
-                            <img class="img-fluid w-100" src="{{ asset('storage/service/' . $service->thumbnail_image) }}"
-                                alt="" />
-                        @else
-                            <img class="img-fluid w-100" src="" alt="" />
-                        @endif
-
-
-                    </div>
-                    <div>
-                        @if ($service)
-                            <p class="py-5" style="text-align: justify">
-                                {!! $service->description !!}
-                            </p>
-                        @else
-                            <p></p>
-                        @endif
-
+                        <p class="py-5" style="text-align: justify">
+                            {!! $service->description !!}
+                        </p>
                     </div>
                 </div>
+
                 <div class="col-lg-3">
                     <h3 class="main-color">Search a Course</h3>
+
+                    @php
+                        $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')->limit(8)->latest()->get();
+                        $courses = App\Models\Course::latest()->get();
+                    @endphp
+
                     <form action="" method="post">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="row gx-1">
+
+                                {{-- <div class="row gx-1">
+
                                     <div class="col-lg-6">
-                                        <select class="form-select rounded-0" aria-label="Default select example">
-                                            <option selected>Select Type</option>
-                                            <option value="1">Corporate</option>
-                                            <option value="2">Professional</option>
-                                            <option value="3">Industry</option>
+                                        <select class="form-select rounded-0" name="course_section_id"
+                                            aria-label="Default select example">
+                                            <option selected disabled>Select Type</option>
+                                            @foreach ($courseSections as $courseSection)
+                                                <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
+
                                     <div class="col-lg-6">
-                                        <select class="form-select rounded-0" aria-label="Default select example">
-                                            <option selected>Select Course</option>
-                                            <option value="1">
-                                                Well Test Design and Analysis
-                                            </option>
-                                            <option value="2">
-                                                Floating Production Storage and Offloading
-                                            </option>
-                                            <option value="3">
-                                                Competency Development for Supervisory
-                                            </option>
+                                        <select class="form-select rounded-0" name="course_name"
+                                            aria-label="Default select example">
+                                            <option selected disabled>Select Course</option>
                                         </select>
                                     </div>
+
+
                                 </div>
+
+
                                 <div class="table-responsive mt-3">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-bordered">
@@ -129,21 +110,119 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="table-group-divider">
+
                                                 <tr>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="text-decoration-none text-muted"
-                                                            title="Administration, Office Management & Secretarial"
-                                                            onclick="toggleText('text1')">Administration<span>...</span></a>
-                                                        <p id="text1" class="more-text">Administration, Office
-                                                            Management & Secretarial</p>
+
+                                                        <p id="courseTitle" class="more-text">
+                                                            
+                                                        </p>
+
                                                     </td>
                                                     <td class="text-muted">Offline</td>
                                                     <td class="text-muted">$5000</td>
                                                 </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
+                                </div> --}}
+
+                                {{-- ========================= --}}
+
+                                {{-- <div class="row gx-1">
+                                    <div class="col-lg-6">
+                                        <select class="form-select rounded-0" name="course_section_id"
+                                            aria-label="Default select example">
+                                            <option selected disabled>Select Type</option>
+                                            @foreach ($courseSections as $courseSection)
+                                                <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                      
+                                        <select class="form-select rounded-0" name="course_name"
+                                            aria-label="Default select example" onchange="updateCourseInfo()">
+                                            <option>Select Course</option>
+                                        </select>
+
+                                    </div>
                                 </div>
+
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="background-color: #0a1d5b; color: white">Course Title</th>
+                                                <th style="background-color: #0a1d5b; color: white">Type</th>
+                                                <th style="background-color: #0a1d5b; color: white">Fees</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-group-divider" id="courseDetails">
+                                            <!-- Default course details row -->
+                                            <tr>
+
+                                                <td>
+                                                    <p id="courseTitle" class="more-text">Course Not Selected</p>
+                                                </td>
+
+                                                <td class="text-muted">Offline</td>
+
+                                                <td id="coursePrice" class="text-muted">$5000</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div> --}}
+
+                                <div class="row gx-1">
+                                    <div class="col-lg-6">
+                                        <select class="form-select rounded-0" name="course_section_id"
+                                            aria-label="Default select example">
+                                            <option selected disabled>Select Type</option>
+                                            @foreach ($courseSections as $courseSection)
+                                                <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <select class="form-select rounded-0" name="course_name"
+                                            aria-label="Default select example" onchange="updateCourseInfo()">
+                                            <option>Select Course</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}" data-type="{{ $course->course_type }}"
+                                                    data-price="{{ $course->offline_price }}">
+                                                    {{ $course->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-striped table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="background-color: #0a1d5b; color: white">Course Title</th>
+                                                <th style="background-color: #0a1d5b; color: white">Type</th>
+                                                <th style="background-color: #0a1d5b; color: white">Fees</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-group-divider" id="courseDetails">
+                                            <!-- Default course details row -->
+                                            <tr>
+                                                <td>
+                                                    <p id="courseTitle" class="more-text">Course Not Selected</p>
+                                                </td>
+                                                <td id="courseType" class="text-muted"></td>
+                                                <td id="coursePrice" class="text-muted">$5000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="#" class="primary-btn-one me-2 rounded-0">Connect Us</a>
                                     <a href="#" class="primary-btn-one rounded-0">Register</a>
@@ -151,8 +230,10 @@
                             </div>
                         </div>
                     </form>
+
                     <div class="mt-3">
-                        <div class="card border-0 rounded-0 shadow-none" style="background-color: #43a8e8">
+
+                        {{-- <div class="card border-0 rounded-0 shadow-none" style="background-color: #43a8e8">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center flex-column text-center p-5 px-3">
                                     <h4 class="text-center text-white pb-4">
@@ -161,8 +242,9 @@
                                     <a href="" class="btn bg-white rounded-pill btn w-100">Explore Now</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card border-0 rounded-0 shadow-none" style="background-color: #0084d9">
+                        </div> --}}
+
+                        {{-- <div class="card border-0 rounded-0 shadow-none" style="background-color: #0084d9">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center flex-column text-center p-5 px-3">
                                     <h4 class="text-center text-white pb-4">
@@ -171,7 +253,7 @@
                                     <a href="" class="btn bg-white rounded-pill btn w-100">Check Now</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card border-0 rounded-0 shadow-none" style="background-color: #eaf6f5">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center flex-column text-center p-5 px-3">
@@ -180,28 +262,47 @@
                                     </h6>
                                     <a href="" class="btn bg-white rounded-pill btn w-100">Connect With Us</a>
                                     <p class="pt-3">
-                                        <i class="fa-solid fa-phone"></i> +97154 459 0666
+                                        <i class="fa-solid fa-phone"></i> {{ optional($setting)->primary_phone }}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
+
+    {{-- ========================== iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii  --}}
+
+
     <section>
         <div class="container mb-5">
             <div class="row align-items-center" style="background-color: #eaf6f5">
+
                 <div class="col-lg-6">
                     <div class="row p-2 py-3" style="background-color: #eaf6f5">
+
+                        @php
+                            $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')
+                                ->limit(8)
+                                ->latest()
+                                ->get();
+                        @endphp
+
                         <div class="col-lg-4">
                             <select class="form-select bg-white rounded-0" aria-label="Default select example">
                                 <option selected>Course Type</option>
-                                <option value="1">Online</option>
-                                <option value="2">Offline</option>
+
+                                @foreach ($courseSections as $key => $courseSection)
+                                    <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
+                                @endforeach
+
+
                             </select>
                         </div>
+
                         <div class="col-lg-4">
                             <select class="form-select bg-white rounded-0" aria-label="Default select example">
                                 <option selected>Category</option>
@@ -212,24 +313,11 @@
                                 <option value="3">Three</option>
                             </select>
                         </div>
-                        <div class="col-lg-4">
-                            <select class="form-select bg-white rounded-0" aria-label="Default select example">
-                                <option selected>Class Type</option>
-                                <option value="1">Online</option>
-                                <option value="2">Offline</option>
-                            </select>
-                        </div>
+
                     </div>
                 </div>
-                <div class="col-lg-6 text-end">
-                    <form class="d-flex w-50 ms-auto" role="search">
-                        <input class="form-control border-0 rounded-0" type="search" placeholder="Search"
-                            aria-label="Search" />
-                        <button class="btn btn-light text-white" style="background-color: #0a1d5b" type="submit">
-                            <i class="fa-solid fa-search"></i>
-                        </button>
-                    </form>
-                </div>
+
+
             </div>
             <!-- All Courses Table -->
             <div class="row">
@@ -238,46 +326,22 @@
                         <table class="table table-bordered table-striped table-hover">
                             <thead class="">
                                 <tr>
-                                    <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
-                                        scope="col">
+                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
                                         Code
                                     </th>
-                                    <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
-                                        scope="col">
+                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
                                         Course Title
                                     </th>
-                                    <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
-                                        scope="col">
+                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
                                         Venue
                                     </th>
-                                    <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
-                                        scope="col">
+                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
                                         Starting Date
                                     </th>
-                                    <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
-                                        scope="col">
+                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
                                         Duration
                                     </th>
-                                    <th style="
-                          background-color: #0a1d5b !important;
-                          color: white;
-                        "
-                                        scope="col">
+                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
                                         Fees
                                     </th>
                                 </tr>
@@ -333,44 +397,95 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="text-center">For More Courses or Our Services</p>
-                    <div class="d-flex justify-content-center">
-                        <nav aria-label="...">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <span class="page-link">Previous</span>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item active" aria-current="page">
-                                    <span class="page-link">2</span>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
     </section>
-@endsection
-@section('scripts')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <script>
-        function toggleText(id) {
-            var element = document.getElementById(id);
-            if (element.style.display === "none" || element.style.display === "") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
+        $(document).ready(function() {
+            $('select[name="course_section_id"]').on('change', function() {
+                var course_section_id = $(this).val();
+                if (course_section_id) {
+                    $.ajax({
+                        url: "{{ url('/course-get/ajax') }}/" + course_section_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="course_name"]').html('');
+                            var d = $('select[name="course_name"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="course_name"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .name + '</option>');
+                            });
+                        },
+
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
+
+    {{-- <script>
+        function updateCourseInfo() {
+            var select = document.getElementsByName('course_name')[0];
+            var selectedOption = select.options[select.selectedIndex].text;
+
+            // Example: Update the course title based on selected option
+            var courseTitleElement = document.getElementById('courseTitle');
+            if (courseTitleElement) {
+                courseTitleElement.textContent = selectedOption;
+            }
+        }
+    </script> --}}
+
+    {{-- <script>
+        function updateCourseInfo() {
+            var select = document.getElementsByName('course_name')[0];
+            var selectedOption = select.options[select.selectedIndex];
+
+            // Update course title
+            var courseTitleElement = document.getElementById('courseTitle');
+            if (courseTitleElement) {
+                courseTitleElement.textContent = selectedOption.text;
+            }
+
+            // Update course price
+            var coursePriceElement = document.getElementById('coursePrice');
+            if (coursePriceElement) {
+                var price = selectedOption.getAttribute('data-price');
+                coursePriceElement.textContent = '$' + price;
+            }
+        }
+    </script> --}}
+
+    <script>
+        function updateCourseInfo() {
+            var select = document.getElementsByName('course_name')[0];
+            var selectedOption = select.options[select.selectedIndex];
+
+            // Update course title
+            var courseTitleElement = document.getElementById('courseTitle');
+            if (courseTitleElement) {
+                courseTitleElement.textContent = selectedOption.text;
+            }
+
+            // Update course type
+            var courseTypeElement = document.getElementById('courseType');
+            if (courseTypeElement) {
+                var type = selectedOption.getAttribute('data-type');
+                courseTypeElement.textContent = type;
+            }
+
+            // Update course price
+            var coursePriceElement = document.getElementById('coursePrice');
+            if (coursePriceElement) {
+                var price = selectedOption.getAttribute('data-price');
+                coursePriceElement.textContent = '$' + price;
             }
         }
     </script>

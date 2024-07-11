@@ -242,22 +242,26 @@ body::-webkit-scrollbar-thumb {
     text-align: start;
     padding: 12px;
 }
+
 .menu-link:hover i {
     margin-left: 5px;
     transition: all 0.5s;
 }
-.mobile-menu-link{
+
+.mobile-menu-link {
     color: #ffffff;
     text-decoration: none;
     width: 100%;
     display: block;
     padding: 10px;
 }
+
 .mobile-menu-link::after {
     position: relative;
     top: 5px;
 }
-.mobile-menu-link:hover{
+
+.mobile-menu-link:hover {
     text-decoration: none;
     color: #fff;
     background: var(--primary-color);
@@ -265,6 +269,7 @@ body::-webkit-scrollbar-thumb {
     display: block;
     padding: 10px;
 }
+
 .courses-tabs-header {
     /* background-color: #fdfbfb !important; */
     background-color: transparent !important;
@@ -331,11 +336,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .slider .slick-slide.text-left:before {
-    background: linear-gradient(
-        to left,
-        rgba(249, 245, 245, 0) 10%,
-        rgb(0, 0, 0)
-    );
+    background: linear-gradient(to left,
+            rgba(249, 245, 245, 0) 10%,
+            rgb(0, 0, 0));
 }
 
 /* .slider .slick-slide.text-right:before {
@@ -432,10 +435,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (min-width: 768px) {
-    .different_icon_column{
+    .different_icon_column {
         height: 9rem;
         border-right: 1px solid black;
     }
+
     .primary-btn-one {
         padding: 14px 22px;
         width: 176px;
@@ -701,17 +705,21 @@ body::-webkit-scrollbar-thumb {
     border-radius: 100%;
     margin: auto;
 }
-.course-title{
+
+.course-title {
     height: 3.5rem;
     display: flex;
     align-items: center;
 }
-.different_icon_description{
+
+.different_icon_description {
     color: #000;
 }
-.different_icon_description:hover{
+
+.different_icon_description:hover {
     color: var(--primary-color);
 }
+
 .service-icons {
     text-align: center;
     padding: 18px;
@@ -1064,10 +1072,8 @@ body::-webkit-scrollbar-thumb {
 .btn-close {
     --bs-btn-close-color: #fff;
     /* Change to white */
-    --bs-btn-close-bg: url(
-        data:image/svg + xml,
-        %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 16 16"fill="%23fff"%3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/%3e%3c/svg%3e
-    );
+    --bs-btn-close-bg: url(data:image/svg + xml,
+ %3csvgxmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23fff" %3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z" /%3e%3c/svg%3e);
     /* SVG with white fill */
     --bs-btn-close-opacity: 0.5;
     --bs-btn-close-hover-opacity: 0.75;
@@ -1217,6 +1223,7 @@ body::-webkit-scrollbar-thumb {
 
 /* Media query for screens with a maximum width of 1368 pixels */
 @media (max-width: 1368px) {
+
     /* Your styles go here */
     .slider .slick-slide {
         border: 0;
@@ -1351,7 +1358,8 @@ body::-webkit-scrollbar-thumb {
     .box .title {
         font-size: 20px;
     }
-    .partners-logo{
+
+    .partners-logo {
         border: none;
     }
 
@@ -1459,8 +1467,7 @@ body::-webkit-scrollbar-thumb {
     z-index: 9999;
 }
 
-.menu-card {
-}
+.menu-card {}
 
 /* ==========================Offcanvas Style Start============================= */
 .offcanvas-sidebar {
@@ -1574,6 +1581,15 @@ body::-webkit-scrollbar-thumb {
     padding: 50px 55px;
     border-radius: 100%;
     border: 1px solid #000;
+}
+
+.dropdown-item {
+    color: white !important;
+}
+
+.dropdown-item:hover {
+    background-color: white !important;
+    color: black !important;
 }
 
 .custom-accordion .custom-accordion-item {

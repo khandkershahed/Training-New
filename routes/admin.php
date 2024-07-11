@@ -133,6 +133,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'course_outline' => CourseOutlineController::class,
             'course_schedule' => CourseScheduleController::class,
             'about' => AboutUsController::class,
+            
             'course_category' => CourseCategoryController::class,
             'service' => ServiceController::class,
             'industry' => IndustryController::class,
