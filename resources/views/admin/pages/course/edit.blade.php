@@ -148,8 +148,9 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Course Category Name</label>
                                 <select name="course_category_id" data-placeholder="Select Row One.."
-                                    class="form-select form-select-sm" data-control="select2"
-                                    data-placeholder="Select an option">
+                                    class="form-select form-select-sm" data-control="select2">
+
+                                    <option selected>Select an option</option>
 
                                     @if (count($courseCats) > 0)
                                         @foreach ($courseCats as $courseCat)
@@ -460,6 +461,34 @@
                     unhighlight: function(element, errorClass, validClass) {
                         $(element).removeClass('is-invalid');
                     },
+                });
+            });
+        </script>
+
+        {{-- Category --}}
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select[name="course_section_id"]').on('change', function() {
+                    var course_section_id = $(this).val();
+                    if (course_section_id) {
+                        $.ajax({
+                            url: "{{ url('/category/ajax') }}/" + course_section_id,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                $('select[name="course_category_id"]').html('');
+                                var d = $('select[name="course_category_id"]').empty();
+                                $.each(data, function(key, value) {
+                                    $('select[name="course_category_id"]').append(
+                                        '<option value="' + value.id + '">' + value
+                                        .name + '</option>');
+                                });
+                            },
+
+                        });
+                    } else {
+                        alert('danger');
+                    }
                 });
             });
         </script>

@@ -15,6 +15,15 @@ use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
+
+    public function GetCategory($course_section_id){
+
+        $subCat = CourseCategory::where('course_section_id' , $course_section_id)->orderBy('name','ASC')->get();
+
+        return json_encode($subCat);
+
+    }
+
     public function index()
     {
         $courses = Course::latest()->get();

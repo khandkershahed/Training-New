@@ -169,8 +169,14 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
 
+    
+
     Route::controller(DynamicCssController::class)->group(function () {
         Route::get('/dynamic-css', 'index')->name('css.index');
         Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');
     });
+});
+
+Route::controller(CourseController::class)->group(function () {
+    Route::get('/category/ajax/{course_section_id}', 'GetCategory');
 });
