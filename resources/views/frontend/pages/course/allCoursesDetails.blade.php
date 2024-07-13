@@ -3,10 +3,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
     <section class="showcase">
         <img src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/course-banner.jpg?id=8892" alt="Picture">
-        <div class="overlay-courses">
-            <h2>Our All Courses</h2>
-            <p>One-Stop Learning &amp; Development Solutions</p>
-        </div>
     </section>
     <section>
         <div class="container">
@@ -110,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-7">
-                                    <img class="img-fluid rounded-5"
+                                    <img class="img-fluid rounded-5 w-100"
                                         src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
                                         alt="" />
                                 </div>
