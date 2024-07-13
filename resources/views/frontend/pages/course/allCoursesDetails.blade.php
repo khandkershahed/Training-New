@@ -556,7 +556,7 @@
                                                             </div>
                                                             <div class="pt-2">
                                                                 <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}"
-                                                                    class="btn btn-light border w-100">See Details
+                                                                    class="btn btn-light border w-100 text-center">See Details
                                                                     <i class="fa-solid fa-arrow-right ps-2"
                                                                         aria-hidden="true"></i></a>
                                                             </div>
@@ -582,23 +582,23 @@
             <div class="card-header border-0 bg-transparent pb-0 pt-2 pe-3 text-end"
                 style="margin-bottom: -30px; position: relative; z-index: 5">
                 <button id="closeButton" class="p-0 border-0 bg-transparent fs-4">
-                    <i class="fa-solid fa-xmark primary-text-color"></i>
+                    <i class="fa-solid fa-xmark text-white"></i>
                 </button>
             </div>
 
             <form method="POST" action="{{ route('course.enroll', $coursedetail->id) }}">
 
                 <div class="card-body p-1">
-                    <div class="container">
+                    <div class="container px-0">
                         <div class="row align-items-center">
                             <div class="col-lg-5">
 
-                                <p>
+                                <p class="mb-0">
                                     <span class="fw-bold text-white">Call This Number:</span>
                                     <span>{{ optional($setting)->primary_phone }}</span>
                                 </p>
                                 <div class="d-flex align-items-center">
-                                    <h2 class="pe-3 fw-bold text-white">BDT
+                                    <h2 class="pe-3 fw-bold text-white mb-0">BDT
                                         {{ number_format($coursedetail->price, 2) }}</h2>
                                     {{-- <h6>
                                     <a href="" class="text-decoration-none text-white"><i

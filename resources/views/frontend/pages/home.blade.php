@@ -2,26 +2,26 @@
 @section('content')
 
     <!-- Banner Section -->
-    @if (!empty($homePage->banner_one_image) || !empty($homePage->banner_two_image) || !empty($homePage->banner_three_image))
+    @if (!empty(optional($homePage)->banner_one_image) || !empty(optional($homePage)->banner_two_image) || !empty(optional($homePage)->banner_three_image))
         <section>
             <div class="slider">
-                @if (!empty($homePage->banner_one_image))
+                @if (!empty(optional($homePage)->banner_one_image))
                     <div class="slick-slide text-right banenr-main"
-                        style="background-image: url({{ asset('storage/homepage/' . $homePage->banner_one_image) }})">
+                        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->banner_one_image) }})">
                     </div>
                     <!-- slick-slide -->
                 @endif
 
-                @if (!empty($homePage->banner_two_image))
+                @if (!empty(optional($homePage)->banner_two_image))
                     <div class="slick-slide text-right banenr-main"
-                        style="background-image: url({{ asset('storage/homepage/' . $homePage->banner_two_image) }})">
+                        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->banner_two_image) }})">
                     </div>
                     <!-- slick-slide -->
                 @endif
 
-                @if (!empty($homePage->banner_three_image))
+                @if (!empty(optional($homePage)->banner_three_image))
                     <div class="slick-slide text-right banenr-main"
-                        style="background-image: url({{ asset('storage/homepage/' . $homePage->banner_three_image) }})">
+                        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->banner_three_image) }})">
                     </div>
                     <!-- slick-slide -->
                 @endif
@@ -113,21 +113,21 @@
             <div class="row py-5 align-items-center">
                 <div class="col-lg-6 bio-area">
                     <h2 class="text-center text-lg-start special-text">
-                        {{ $homePage->row_two_title }}
+                        {{ optional($homePage)->row_two_title }}
                     </h2>
 
                     <p class="text-justify">
-                        {{ $homePage->row_two_description }}
+                        {{ optional($homePage)->row_two_description }}
                     </p>
 
-                    <a href="{{ $homePage->row_two_button_url }}"
-                        class="primary-btn-one">{{ $homePage->row_two_button_name }}</a>
+                    <a href="{{ optional($homePage)->row_two_button_url }}"
+                        class="primary-btn-one">{{ optional($homePage)->row_two_button_name }}</a>
 
                 </div>
                 <div class="col-lg-6">
 
-                    @if (!empty($homePage->row_two_image))
-                        <img class="img-fluid w-100" src="{{ asset('storage/homepage/' . $homePage->row_two_image) }}"
+                    @if (!empty(optional($homePage)->row_two_image))
+                        <img class="img-fluid w-100" src="{{ asset('storage/homepage/' . optional($homePage)->row_two_image) }}"
                             alt="" />
                     @endif
 
@@ -138,14 +138,14 @@
 
     <!-- Row Three Services Section -->
     <section class="service-bg"
-        style="background-image: url('{{ asset('storage/homepage/' . $homePage->row_three_background_image) }}');">
+        style="background-image: url('{{ asset('storage/homepage/' . optional($homePage)->row_three_background_image) }}');">
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">
-                    <h3 class="section-title">{{ $homePage->row_three_title }}</h3>
+                    <h3 class="section-title">{{ optional($homePage)->row_three_title }}</h3>
                     <div class="divider"></div>
                     <p class="text-white py-0 px-0 px-lg-5 py-lg-3">
-                        {{ $homePage->row_three_description }}
+                        {{ optional($homePage)->row_three_description }}
                     </p>
                 </div>
                 <div class="col-lg-10 mx-auto">
@@ -156,19 +156,19 @@
                             <div class="card-body service-card">
                                 <div class="text-center">
                                     <div class="py-3">
-                                        <h4 class="text-white">{{ $homePage->row_three_column_one_title }}</h4>
+                                        <h4 class="text-white">{{ optional($homePage)->row_three_column_one_title }}</h4>
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
-                                        {{ $homePage->row_three_column_one_description }}
+                                        {{ optional($homePage)->row_three_column_one_description }}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ $homePage->row_three_column_one_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_one_url }}" class="">Learn
                                                 More</a>
                                         </div>
-                                        <a href="{{ $homePage->row_three_column_one_button_url }}"
-                                            class="primary-btn-one">{{ $homePage->row_three_column_one_button_name }}</a>
+                                        <a href="{{ optional($homePage)->row_three_column_one_button_url }}"
+                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_one_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -179,19 +179,19 @@
                             <div class="card-body service-card">
                                 <div class="text-center">
                                     <div class="py-3">
-                                        <h4 class="text-white">{{ $homePage->row_three_column_two_title }}</h4>
+                                        <h4 class="text-white">{{ optional($homePage)->row_three_column_two_title }}</h4>
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
-                                        {{ $homePage->row_three_column_two_description }}
+                                        {{ optional($homePage)->row_three_column_two_description }}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ $homePage->row_three_column_two_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_two_url }}" class="">Learn
                                                 More</a>
                                         </div>
-                                        <a href="{{ $homePage->row_three_column_two_button_url }}"
-                                            class="primary-btn-one">{{ $homePage->row_three_column_two_button_name }}</a>
+                                        <a href="{{ optional($homePage)->row_three_column_two_button_url }}"
+                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_two_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -202,19 +202,19 @@
                             <div class="card-body service-card">
                                 <div class="text-center">
                                     <div class="py-3">
-                                        <h4 class="text-white">{{ $homePage->row_three_column_three_title }}</h4>
+                                        <h4 class="text-white">{{ optional($homePage)->row_three_column_three_title }}</h4>
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
-                                        {{ $homePage->row_three_column_three_description }}
+                                        {{ optional($homePage)->row_three_column_three_description }}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ $homePage->row_three_column_three_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_three_url }}" class="">Learn
                                                 More</a>
                                         </div>
-                                        <a href="{{ $homePage->row_three_column_three_button_url }}"
-                                            class="primary-btn-one">{{ $homePage->row_three_column_three_button_name }}</a>
+                                        <a href="{{ optional($homePage)->row_three_column_three_button_url }}"
+                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_three_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -225,19 +225,19 @@
                             <div class="card-body service-card">
                                 <div class="text-center">
                                     <div class="py-3">
-                                        <h4 class="text-white">{{ $homePage->row_three_column_four_title }}</h4>
+                                        <h4 class="text-white">{{ optional($homePage)->row_three_column_four_title }}</h4>
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
-                                        {{ $homePage->row_three_column_four_description }}
+                                        {{ optional($homePage)->row_three_column_four_description }}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ $homePage->row_three_column_four_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_four_url }}" class="">Learn
                                                 More</a>
                                         </div>
-                                        <a href="{{ $homePage->row_three_column_four_button_url }}"
-                                            class="primary-btn-one">{{ $homePage->row_three_column_four_button_name }}</a>
+                                        <a href="{{ optional($homePage)->row_three_column_four_button_url }}"
+                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_four_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -254,21 +254,21 @@
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">
-                    <h3 class="section-title">{{ $homePage->row_four_title }}</h3>
+                    <h3 class="section-title">{{ optional($homePage)->row_four_title }}</h3>
                     <div class="divider"></div>
                     <p class="text-muted py-3 px-5">
-                        {{ $homePage->row_four_header }}
+                        {{ optional($homePage)->row_four_header }}
                     </p>
                 </div>
 
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ $homePage->row_four_column_one_url }}" style="text-decoration: none">
+                    <a href="{{ optional($homePage)->row_four_column_one_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
 
-                                @if (!empty($homePage->row_four_column_one_image))
-                                    <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_one_image) }}"
+                                @if (!empty(optional($homePage)->row_four_column_one_image))
+                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_four_column_one_image) }}"
                                         alt="" style="width: 50px;height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
@@ -277,18 +277,18 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_one_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_one_description }}</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ $homePage->row_four_column_two_url }}" style="text-decoration: none">
+                    <a href="{{ optional($homePage)->row_four_column_two_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
-                                @if (!empty($homePage->row_four_column_two_image))
-                                    <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_two_image) }}"
+                                @if (!empty(optional($homePage)->row_four_column_two_image))
+                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_four_column_two_image) }}"
                                         alt="" style="width: 50px;height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
@@ -296,19 +296,19 @@
                                 @endif
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_two_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_two_description }}</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ $homePage->row_four_column_three_url }}" style="text-decoration: none">
+                    <a href="{{ optional($homePage)->row_four_column_three_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
 
-                                @if (!empty($homePage->row_four_column_three_image))
-                                    <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_three_image) }}"
+                                @if (!empty(optional($homePage)->row_four_column_three_image))
+                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_four_column_three_image) }}"
                                         alt="" style="width: 50px; height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
@@ -317,19 +317,19 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_three_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_three_description }}</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ $homePage->row_four_column_four_url }}" style="text-decoration: none">
+                    <a href="{{ optional($homePage)->row_four_column_four_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
 
-                                @if (!empty($homePage->row_four_column_four_image))
-                                    <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_four_image) }}"
+                                @if (!empty(optional($homePage)->row_four_column_four_image))
+                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_four_column_four_image) }}"
                                         alt="" style="width: 50px;height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
@@ -338,19 +338,19 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_four_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_four_description }}</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ $homePage->row_four_column_five_url }}" style="text-decoration: none">
+                    <a href="{{ optional($homePage)->row_four_column_five_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
 
-                                @if (!empty($homePage->row_four_column_five_image))
-                                    <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_five_image) }}"
+                                @if (!empty(optional($homePage)->row_four_column_five_image))
+                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_four_column_five_image) }}"
                                         alt="" style="width: 50px; height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
@@ -359,19 +359,19 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_five_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_five_description }}</p>
                         </div>
                     </a>
                 </div>
 
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ $homePage->row_four_column_six_url }}" style="text-decoration: none">
+                    <a href="{{ optional($homePage)->row_four_column_six_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
 
-                                @if (!empty($homePage->row_four_column_six_image))
-                                    <img src="{{ asset('storage/homepage/' . $homePage->row_four_column_six_image) }}"
+                                @if (!empty(optional($homePage)->row_four_column_six_image))
+                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_four_column_six_image) }}"
                                         alt="" style="width: 50px; height: 50px;">
                                 @else
                                     <img src="{{ asset('path/to/default/avatar/image.jpg') }}"
@@ -380,15 +380,15 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ $homePage->row_four_column_six_description }}</p>
+                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_six_description }}</p>
                         </div>
                     </a>
                 </div>
 
 
                 <div class="col-lg-12 text-center pt-5">
-                    <a href="{{ $homePage->row_four_button_url }}"
-                        class="primary-btn-one">{{ $homePage->row_four_button_name }}</a>
+                    <a href="{{ optional($homePage)->row_four_button_url }}"
+                        class="primary-btn-one">{{ optional($homePage)->row_four_button_name }}</a>
                 </div>
             </div>
         </div>
@@ -399,45 +399,44 @@
         <div class="container">
 
             <div class="text-center px-5">
-                <h3 class="section-title">{{ $homePage->row_five_title }}</h3>
+                <h3 class="section-title">{{ optional($homePage)->row_five_title }}</h3>
                 <div class="divider"></div>
                 <p class="py-3 px-5">
-                    {{ $homePage->row_five_header }}
+                    {{ optional($homePage)->row_five_header }}
                 </p>
             </div>
 
-            <div class="row mb-5">
+            {{-- <div class="row mb-5">
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <div class="row align-items-center p-3">
 
-                <div class="col-lg-4">
-                    <div class="card shadow-sm border-0">
-                        <div class="card-body">
-                            <div class="row align-items-center p-3">
+                                    <div class="col-lg-5">
+                                        <img class="img-fluid"
+                                            src="{{ asset('storage/course/' . optional($homePage->courseOneHomePage)->thumbnail_image) }}"
+                                            alt="" />
+                                    </div>
 
-                                <div class="col-lg-5">
-                                    <img class="img-fluid"
-                                        src="{{ asset('storage/course/' . optional($homePage->courseOneHomePage)->thumbnail_image) }}"
-                                        alt="" />
-                                </div>
+                                    <div class="col-lg-7">
+                                        <div>
 
-                                <div class="col-lg-7">
-                                    <div>
+                                            <h6 class="fw-bold" style="color: #001430">
+                                                {{ optional($homePage->courseOneHomePage)->name }}
+                                            </h6>
 
-                                        <h6 class="" style="color: #001430">
-                                            {{ optional($homePage->courseOneHomePage)->name }}
-                                        </h6>
-
-                                        <p style="text-align: justify">
-                                            {{ optional($homePage->courseOneHomePage)->short_descp }}
-                                        </p>
-                                        <button class="primary-btn-one w-100 rounded-0">
-                                            Learn More
-                                        </button>
+                                            <p>
+                                                {{ optional($homePage->courseOneHomePage)->short_descp }}
+                                            </p>
+                                            <button class="primary-btn-one w-100 rounded-0">
+                                                Learn More
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
                 <div class="col-lg-4">
                     <div class="card shadow-sm border-0">
@@ -453,11 +452,11 @@
                                 <div class="col-lg-7">
                                     <div>
 
-                                        <h6 class="" style="color: #001430">
+                                        <h6 class="fw-bold" style="color: #001430">
                                             {{ optional($homePage->courseTwoHomePage)->name }}
                                         </h6>
 
-                                        <p style="text-align: justify">
+                                        <p>
                                             {{ optional($homePage->courseTwoHomePage)->short_descp }}
                                         </p>
                                         <button class="primary-btn-one w-100 rounded-0">
@@ -484,11 +483,98 @@
                                 <div class="col-lg-7">
                                     <div>
 
-                                        <h6 class="" style="color: #001430">
+                                        <h6 class="fw-bold" style="color: #001430">
                                             {{ optional($homePage->courseThreeHomePage)->name }}
                                         </h6>
 
-                                        <p style="text-align: justify">
+                                        <p>
+                                            {{ optional($homePage->courseThreeHomePage)->short_descp }}
+                                        </p>
+                                        <button class="primary-btn-one w-100 rounded-0">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> --}}
+            <div class="row mb-5">
+
+                <div class="col-lg-4">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body course-description-card">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12">
+                                    <div class="course-details-img">
+                                        <img class="img-fluid"
+                                        src="{{ asset('storage/course/' . optional($homePage->courseOneHomePage)->thumbnail_image) }}"
+                                        alt="" />
+                                    </div>
+                                    <div class="pt-3">
+                                        <h6 class="fw-bold" style="color: #001430; height: 45px;">
+                                            {{ optional($homePage->courseOneHomePage)->name }}
+                                        </h6>
+
+                                        <p>
+                                            {{ optional($homePage->courseOneHomePage)->short_descp }}
+                                        </p>
+                                        <button class="primary-btn-one w-100 rounded-0">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body course-description-card">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12">
+                                    <div class="course-details-img">
+                                        <img class="img-fluid"
+                                        src="{{ asset('storage/course/' . optional($homePage->courseTwoHomePage)->thumbnail_image) }}"
+                                        alt="" />
+                                    </div>
+                                    <div class="pt-3">
+                                        <h6 class="fw-bold" style="color: #001430; height: 45px;">
+                                            {{ optional($homePage->courseTwoHomePage)->name }}
+                                        </h6>
+
+                                        <p>
+                                            {{ optional($homePage->courseTwoHomePage)->short_descp }}
+                                        </p>
+                                        <button class="primary-btn-one w-100 rounded-0">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body course-description-card">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12">
+                                    <div class="course-details-img">
+                                        <img class="img-fluid"
+                                            src="{{ asset('storage/course/' . optional($homePage->courseThreeHomePage)->thumbnail_image) }}"
+                                            alt="" />
+                                    </div>
+                                    <div class="pt-3">
+                                        <h6 class="fw-bold" style="color: #001430; height: 45px;">
+                                            {{ optional($homePage->courseThreeHomePage)->name }}
+                                        </h6>
+
+                                        <p>
                                             {{ optional($homePage->courseThreeHomePage)->short_descp }}
                                         </p>
                                         <button class="primary-btn-one w-100 rounded-0">
@@ -506,14 +592,14 @@
     </section>
 
     <!-- Row Six Explore SEction -->
-    <section style="background-image: url({{ asset('storage/homepage/' . $homePage->row_six_background_image) }});">
+    <section style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->row_six_background_image) }});">
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">
-                    <h3 class="section-title text-white">{{ $homePage->row_six_title }}</h3>
+                    <h3 class="section-title text-white">{{ optional($homePage)->row_six_title }}</h3>
                     <div class="divider"></div>
                     <p class="text-white py-3 px-5">
-                        {{ $homePage->row_six_header }}
+                        {{ optional($homePage)->row_six_header }}
                     </p>
                 </div>
                 <div class="col-lg-12">
@@ -524,10 +610,10 @@
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
-                                        <p class="mb-0">{{ $homePage->row_six_section_one_title }}</p>
+                                        <p class="mb-0">{{ optional($homePage)->row_six_section_one_title }}</p>
                                     </div>
                                     <div class="">
-                                        <a href="{{ $homePage->row_six_section_one_url }}"><i
+                                        <a href="{{ optional($homePage)->row_six_section_one_url }}"><i
                                                 class="fa-solid fa-arrow-right diffrent-icons service-icons text-white"></i></a>
                                     </div>
                                 </div>
@@ -539,10 +625,10 @@
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
-                                        <p class="mb-0">{{ $homePage->row_six_section_two_title }}</p>
+                                        <p class="mb-0">{{ optional($homePage)->row_six_section_two_title }}</p>
                                     </div>
                                     <div class="">
-                                        <a href="{{ $homePage->row_six_section_two_url }}"><i
+                                        <a href="{{ optional($homePage)->row_six_section_two_url }}"><i
                                                 class="fa-solid fa-arrow-right diffrent-icons service-icons text-white"></i></a>
                                     </div>
                                 </div>
@@ -554,10 +640,10 @@
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
-                                        <p class="mb-0">{{ $homePage->row_six_section_three_title }}</p>
+                                        <p class="mb-0">{{ optional($homePage)->row_six_section_three_title }}</p>
                                     </div>
                                     <div class="">
-                                        <a href="{{ $homePage->row_six_section_three_url }}"><i
+                                        <a href="{{ optional($homePage)->row_six_section_three_url }}"><i
                                                 class="fa-solid fa-arrow-right diffrent-icons service-icons text-white"></i></a>
                                     </div>
                                 </div>
@@ -575,10 +661,10 @@
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
-                                        <p class="mb-0">{{ $homePage->row_six_section_four_title }}</p>
+                                        <p class="mb-0">{{ optional($homePage)->row_six_section_four_title }}</p>
                                     </div>
                                     <div class="">
-                                        <a href="{{ $homePage->row_six_section_four_url }}"><i
+                                        <a href="{{ optional($homePage)->row_six_section_four_url }}"><i
                                                 class="fa-solid fa-arrow-right diffrent-icons service-icons text-white"></i></a>
                                     </div>
                                 </div>
@@ -590,10 +676,10 @@
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
-                                        <p class="mb-0">{{ $homePage->row_six_section_five_title }}</p>
+                                        <p class="mb-0">{{ optional($homePage)->row_six_section_five_title }}</p>
                                     </div>
                                     <div class="">
-                                        <a href="{{ $homePage->row_six_section_five_url }}"><i
+                                        <a href="{{ optional($homePage)->row_six_section_five_url }}"><i
                                                 class="fa-solid fa-arrow-right diffrent-icons service-icons text-white"></i></a>
                                     </div>
                                 </div>
@@ -605,10 +691,10 @@
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
-                                        <p class="mb-0">{{ $homePage->row_six_section_six_title }}</p>
+                                        <p class="mb-0">{{ optional($homePage)->row_six_section_six_title }}</p>
                                     </div>
                                     <div class="">
-                                        <a href="{{ $homePage->row_six_section_six_url }}"><i
+                                        <a href="{{ optional($homePage)->row_six_section_six_url }}"><i
                                                 class="fa-solid fa-arrow-right diffrent-icons service-icons text-white"></i></a>
                                     </div>
                                 </div>
@@ -618,8 +704,8 @@
                     </div>
                 </div>
                 <div class="col-lg-12 text-center pt-5">
-                    <a href="{{ $homePage->row_six_button_url }}" class="primary-btn-two">
-                        {{ $homePage->row_six_button_name }} </a>
+                    <a href="{{ optional($homePage)->row_six_button_url }}" class="primary-btn-two">
+                        {{ optional($homePage)->row_six_button_name }} </a>
                 </div>
             </div>
         </div>
@@ -632,7 +718,7 @@
                 <div class="col-lg-12">
                     <div class="card shape">
                         <div class="card-header">
-                            <h4 class="mb-0">{{ $homePage->row_seven_badge }}</h4>
+                            <h4 class="mb-0">{{ optional($homePage)->row_seven_badge }}</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -642,22 +728,22 @@
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
-                                                    <img src="{{ asset('storage/homepage/' . $homePage->row_seven_section_one_icon) }}"
+                                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_seven_section_one_icon) }}"
                                                         alt="" style="width: 40px; height: 40px;">
                                                 </h1>
                                                 <span class="px-2">|</span>
                                                 <div>
                                                     <p class="mb-0 fw-bold text-muted">
-                                                        {{ $homePage->row_seven_section_one_title }}
+                                                        {{ optional($homePage)->row_seven_section_one_title }}
                                                     </p>
                                                     <small class="text-muted pt-3">
-                                                        {{ $homePage->row_seven_section_one_description }}
+                                                        {{ optional($homePage)->row_seven_section_one_description }}
                                                     </small>
                                                 </div>
                                             </div>
                                             <div>
                                                 <p class="text-end mb-0">
-                                                    <a href="{{ $homePage->row_seven_section_one_url }}"
+                                                    <a href="{{ optional($homePage)->row_seven_section_one_url }}"
                                                         class="text-decoration-none fs-4">+</a>
                                                 </p>
                                             </div>
@@ -670,22 +756,22 @@
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
-                                                    <img src="{{ asset('storage/homepage/' . $homePage->row_seven_section_two_icon) }}"
+                                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_seven_section_two_icon) }}"
                                                         alt="" style="width: 40px; height: 40px;">
                                                 </h1>
                                                 <span class="px-2">|</span>
                                                 <div>
                                                     <p class="mb-0 fw-bold text-muted">
-                                                        {{ $homePage->row_seven_section_two_title }}
+                                                        {{ optional($homePage)->row_seven_section_two_title }}
                                                     </p>
                                                     <small class="text-muted pt-3">
-                                                        {{ $homePage->row_seven_section_two_description }}
+                                                        {{ optional($homePage)->row_seven_section_two_description }}
                                                     </small>
                                                 </div>
                                             </div>
                                             <div>
                                                 <p class="text-end mb-0">
-                                                    <a href="{{ $homePage->row_seven_section_two_url }}"
+                                                    <a href="{{ optional($homePage)->row_seven_section_two_url }}"
                                                         class="text-decoration-none fs-4">+</a>
                                                 </p>
                                             </div>
@@ -698,22 +784,22 @@
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
-                                                    <img src="{{ asset('storage/homepage/' . $homePage->row_seven_section_three_icon) }}"
+                                                    <img src="{{ asset('storage/homepage/' . optional($homePage)->row_seven_section_three_icon) }}"
                                                         alt="" style="width: 40px; height: 40px;">
                                                 </h1>
                                                 <span class="px-2">|</span>
                                                 <div>
                                                     <p class="mb-0 fw-bold text-muted">
-                                                        {{ $homePage->row_seven_section_three_title }}
+                                                        {{ optional($homePage)->row_seven_section_three_title }}
                                                     </p>
                                                     <small class="text-muted pt-3">
-                                                        {{ $homePage->row_seven_section_three_description }}
+                                                        {{ optional($homePage)->row_seven_section_three_description }}
                                                     </small>
                                                 </div>
                                             </div>
                                             <div>
                                                 <p class="text-end mb-0">
-                                                    <a href="{{ $homePage->row_seven_section_three_url }}"
+                                                    <a href="{{ optional($homePage)->row_seven_section_three_url }}"
                                                         class="text-decoration-none fs-4">+</a>
                                                 </p>
                                             </div>
@@ -735,10 +821,10 @@
         <div class="container">
             <div class="row pb-5">
                 <div class="text-center px-5">
-                    <h3 class="section-title">{{ $homePage->row_eight_title }}</h3>
+                    <h3 class="section-title">{{ optional($homePage)->row_eight_title }}</h3>
                     <div class="divider"></div>
                     <p class="text-muted py-lg-3 px-lg-5 py-0 px-0">
-                        {{ $homePage->row_eight_header }}
+                        {{ optional($homePage)->row_eight_header }}
                     </p>
                 </div>
                 <div class="col-lg-12">
@@ -1340,11 +1426,11 @@
             <div class="row">
                 <div class="col-lg-12 py-5">
                     <h2 class="text-center text-white special-text">
-                        {{ $homePage->row_nine_title }}
+                        {{ optional($homePage)->row_nine_title }}
                     </h2>
                     <div class="text-center py-3">
-                        <a href="{{ $homePage->row_nine_button_url }}"
-                            class="btn primary-btn-two text-center">{{ $homePage->row_nine_button_name }}</a>
+                        <a href="{{ optional($homePage)->row_nine_button_url }}"
+                            class="btn primary-btn-two text-center">{{ optional($homePage)->row_nine_button_name }}</a>
                     </div>
                 </div>
             </div>
@@ -1356,10 +1442,10 @@
         <div class="container py-5">
             <div class="row">
                 <div class="text-center px-5">
-                    <h3 class="section-title">{{ $homePage->row_ten_title }}</h3>
+                    <h3 class="section-title">{{ optional($homePage)->row_ten_title }}</h3>
                     <div class="divider"></div>
                     <p class="text-muted py-3 px-5">
-                        {{ $homePage->row_ten_header }}
+                        {{ optional($homePage)->row_ten_header }}
                     </p>
                 </div>
                 <div class="col-lg-12">

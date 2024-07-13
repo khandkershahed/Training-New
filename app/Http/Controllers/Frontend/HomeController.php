@@ -21,7 +21,7 @@ class HomeController extends Controller
     //Homepage
     public function index()
     {
-        $homePage = HomePage::with('courseOneHomePage')->first();
+        $homePage = HomePage::with('courseOneHomePage','courseTwoHomePage','courseThreeHomePage')->first();
 
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
