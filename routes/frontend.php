@@ -31,9 +31,10 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 //Service Created By Ashiquzzaman
-// Route::get('/service', [HomeController::class, 'service'])->name('service');
+
 Route::get('/services/details/{id}/{slug}', [HomeController::class, 'serviceDetails']);
-// Route::get('/course/ajax/{course_section_id}', [HomeController::class, 'getAjaxCourses']);
+Route::get('/category/ajax/{course_section_id}', [HomeController::class, 'GetCategory']);
+Route::get('/course/ajax/{course_category_id}', [HomeController::class, 'getCourseName']);
 
 Route::get('/course-get/ajax/{course_section_id}', [HomeController::class, 'GetCourse']);
 
