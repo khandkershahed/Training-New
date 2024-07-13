@@ -291,8 +291,9 @@
                                 ->get();
                         @endphp
 
-                        <div class="col-lg-4">
-                            <select class="form-select bg-white rounded-0" aria-label="Default select example">
+                        <div class="col-lg-5">
+                            <select class="form-select bg-white rounded-0" name="course_section_id"
+                                aria-label="Default select example">
                                 <option selected>Course Type</option>
 
                                 @foreach ($courseSections as $key => $courseSection)
@@ -303,14 +304,13 @@
                             </select>
                         </div>
 
-                        <div class="col-lg-4">
-                            <select class="form-select bg-white rounded-0" aria-label="Default select example">
-                                <option selected>Category</option>
-                                <option value="1">
-                                    Administration, Office Management & Secretarial
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                        <div class="col-lg-5">
+
+                            <select class="form-select bg-white rounded-0" name="course_id"
+                                aria-label="Default select example" onchange="getCourses(this)">
+
+                                <option>Select Category</option>
+
                             </select>
                         </div>
 
@@ -322,77 +322,8 @@
             <!-- All Courses Table -->
             <div class="row">
                 <div class="col-lg-12 px-0">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead class="">
-                                <tr>
-                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
-                                        Code
-                                    </th>
-                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
-                                        Course Title
-                                    </th>
-                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
-                                        Venue
-                                    </th>
-                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
-                                        Starting Date
-                                    </th>
-                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
-                                        Duration
-                                    </th>
-                                    <th style="background-color: #0a1d5b !important;color: white;" scope="col">
-                                        Fees
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="">
-                                    <td>OG45</td>
-                                    <td>
-                                        Well Test Design and Analysis
-                                        <span><a href=""><i class="fa-solid fa-eye ps-2"></i></a></span>
-                                    </td>
-                                    <td>Dubai - UAE</td>
-                                    <td>24 - Jun - 2024</td>
-                                    <td>5 - Day</td>
-                                    <td>$4,950</td>
-                                </tr>
-                                <tr class="">
-                                    <td>OG45</td>
-                                    <td>
-                                        Well Test Design and Analysis
-                                        <span><a href=""><i class="fa-solid fa-eye ps-2"></i></a></span>
-                                    </td>
-                                    <td>Dubai - UAE</td>
-                                    <td>24 - Jun - 2024</td>
-                                    <td>5 - Day</td>
-                                    <td>$4,950</td>
-                                </tr>
-                                <tr class="">
-                                    <td>OG45</td>
-                                    <td>
-                                        Well Test Design and Analysis
-                                        <span><a href=""><i class="fa-solid fa-eye ps-2"></i></a></span>
-                                    </td>
-                                    <td>Dubai - UAE</td>
-                                    <td>24 - Jun - 2024</td>
-                                    <td>5 - Day</td>
-                                    <td>$4,950</td>
-                                </tr>
-                                <tr class="">
-                                    <td>OG45</td>
-                                    <td>
-                                        Well Test Design and Analysis
-                                        <span><a href=""><i class="fa-solid fa-eye ps-2"></i></a></span>
-                                    </td>
-                                    <td>Dubai - UAE</td>
-                                    <td>24 - Jun - 2024</td>
-                                    <td>5 - Day</td>
-                                    <td>$4,950</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="table-responsive" id="service_course_table">
+                        @include('frontend.pages.service.partials.course_table')
                     </div>
                 </div>
             </div>
@@ -402,90 +333,99 @@
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script>
         $(document).ready(function() {
+            // When course section selection changes
             $('select[name="course_section_id"]').on('change', function() {
                 var course_section_id = $(this).val();
                 if (course_section_id) {
                     $.ajax({
-                        url: "{{ url('/course-get/ajax') }}/" + course_section_id,
+                        url: "{{ url('/category/ajax') }}/" + course_section_id,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
-                            $('select[name="course_name"]').html('');
-                            var d = $('select[name="course_name"]').empty();
+                            // Clear previous options
+                            $('select[name="course_id"]').empty();
+
+                            // Append new options
                             $.each(data, function(key, value) {
-                                $('select[name="course_name"]').append(
+                                $('select[name="course_id"]').append(
                                     '<option value="' + value.id + '">' + value
-                                    .name + '</option>');
+                                    .name + '</option>'
+                                );
                             });
                         },
-
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching categories:', error);
+                            alert('Error fetching categories. Please try again.');
+                        }
                     });
                 } else {
-                    alert('danger');
+                    alert('No course section selected');
                 }
             });
+
+
+            // When course category selection changes
+            // $('select[name="course_id"]').on('change', function() {
+            //     alert(5);
+            //     var course_category_id = $(this).val();
+            //     alert(course_category_id);
+            //     var courseTable = $('#service_course_table');
+            //     if (course_category_id) {
+            //         $.ajax({
+            //             url: "{{ url('/course/ajax') }}/" + course_category_id,
+            //             type: "GET",
+            //             dataType: "json",
+            //             success: function(data) {
+            //                 // Clear previous table row data
+            //                 courseTable.html('');
+            //                 courseTable.html(data.table_view);
+
+            //             },
+            //             error: function(xhr, status, error) {
+            //                 console.error('Error fetching course details:', error);
+            //                 alert('Error fetching course details. Please try again.');
+            //             }
+            //         });
+            //     } else {
+            //         alert('No course category selected');
+            //     }
+            // });
         });
-    </script>
 
-    {{-- <script>
-        function updateCourseInfo() {
-            var select = document.getElementsByName('course_name')[0];
-            var selectedOption = select.options[select.selectedIndex].text;
 
-            // Example: Update the course title based on selected option
-            var courseTitleElement = document.getElementById('courseTitle');
-            if (courseTitleElement) {
-                courseTitleElement.textContent = selectedOption;
-            }
-        }
-    </script> --}}
+        function getCourses(selectElement) {
+            var course_category_id = $(selectElement).val();
+            var courseTable = $('#service_course_table');
 
-    {{-- <script>
-        function updateCourseInfo() {
-            var select = document.getElementsByName('course_name')[0];
-            var selectedOption = select.options[select.selectedIndex];
+            if (course_category_id) {
+                $.ajax({
+                    url: "{{ url('/course/ajax') }}/" + course_category_id,
+                    type: "GET",
+                    dataType: "json",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        if (data.hasOwnProperty('error')) {
+                            alert(data.error);
+                        } else {
+                            // Clear previous table row data
+                            courseTable.find('tbody').empty();
 
-            // Update course title
-            var courseTitleElement = document.getElementById('courseTitle');
-            if (courseTitleElement) {
-                courseTitleElement.textContent = selectedOption.text;
-            }
-
-            // Update course price
-            var coursePriceElement = document.getElementById('coursePrice');
-            if (coursePriceElement) {
-                var price = selectedOption.getAttribute('data-price');
-                coursePriceElement.textContent = '$' + price;
-            }
-        }
-    </script> --}}
-
-    <script>
-        function updateCourseInfo() {
-            var select = document.getElementsByName('course_name')[0];
-            var selectedOption = select.options[select.selectedIndex];
-
-            // Update course title
-            var courseTitleElement = document.getElementById('courseTitle');
-            if (courseTitleElement) {
-                courseTitleElement.textContent = selectedOption.text;
-            }
-
-            // Update course type
-            var courseTypeElement = document.getElementById('courseType');
-            if (courseTypeElement) {
-                var type = selectedOption.getAttribute('data-type');
-                courseTypeElement.textContent = type;
-            }
-
-            // Update course price
-            var coursePriceElement = document.getElementById('coursePrice');
-            if (coursePriceElement) {
-                var price = selectedOption.getAttribute('data-price');
-                coursePriceElement.textContent = '$' + price;
+                            courseTable.find('tbody').html(data.table_view);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', error);
+                        alert('Error: Unable to reach the server. Please try again.');
+                    }
+                });
+            } else {
+                alert('No course category selected');
             }
         }
     </script>

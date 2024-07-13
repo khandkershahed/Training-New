@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
-use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseCurriculum;
-use App\Models\CourseQuery;
 use App\Models\Faq;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
+use App\Models\Course;
+use App\Models\AboutUs;
 use App\Models\Service;
 use App\Models\Setting;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\CourseQuery;
 use Illuminate\Http\Request;
+use App\Models\CourseCategory;
+use App\Models\CourseCurriculum;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,7 @@ class HomeController extends Controller
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
 
-        return view('frontend.pages.home',compact('homePage','courseCategorys','courses'));
+        return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
 
         return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
     }
@@ -162,7 +163,7 @@ class HomeController extends Controller
     }
     public function faq()
     {
-        $data['faqs'] = Faq::orderBy('order','ASC')->get();
+        $data['faqs'] = Faq::orderBy('order', 'ASC')->get();
         return view('frontend.pages.faq', $data);
     }
 
@@ -175,21 +176,39 @@ class HomeController extends Controller
 
     public function serviceDetails($id, $slug)
     {
-        $service = Service::find($id);
-        return view('frontend.pages.service.service', compact('service'));
+        $service = Service::with('courses')->find($id);
+        $courses = $service->courses;
+        return view('frontend.pages.service.service', compact('service', 'courses'));
     }
 
-    // public function getAjaxCourses($id)
-    // {
-    //     dd($id);
-    //     $subCat = Course::with('categoryName')->where('course_section_id' , $course_section_id)->get();
+    public function GetCategory($course_section_id)
+    {
 
-    //     return json_encode($subCat);
-    // }
+        $subCat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();
+
+        return json_encode($subCat);
+
+    }
+
+    public function getCourseName($course_category_id)
+    {
+        // $courses = Course::whereNotNull('course_category_id')->where('course_category_id', $course_category_id)
+        //     ->orderBy('name', 'ASC')
+        //     ->get();
+
+        // Check if courses are found
+        if ($courses->isEmpty()) {
+            return response()->json(['error' => 'No courses found for the selected category.']);
+        }
+
+        // Render the view with the found courses
+        $table_view = View::make('frontend.pages.service.partials.course_table', compact('courses'))->render();
+
+        return response()->json(['table_view' => $table_view]);
+    }
 
     public function GetCourse($course_section_id)
     {
-
         $course = Course::where('course_section_id', $course_section_id)->get();
         return json_encode($course);
     }
