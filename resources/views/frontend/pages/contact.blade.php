@@ -9,11 +9,11 @@
             <div class="row py-5">
                 <div class="col-lg-4">
                     <div class="text-center">
-                        <i class="fa-solid fa-location-dot contact-location-icons text-back"></i>
+                        <i class="fa-solid fa-location-dot contact-location-icons" style="color:var(--primary-color)"></i>
                     </div>
                     <div class="text-center pt-4">
-                        <h5 class="text-back">OUR LOCATION</h5>
-                        <p class="text-back pt-2">
+                        <h5 class="">OUR LOCATION</h5>
+                        <p class=" pt-2">
                             PO Box 97845 Baker st. <br />
                             567, Los Angeles, California, US.
                         </p>
@@ -21,11 +21,11 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="text-center">
-                        <i class="fa-solid fa-phone contact-location-icons text-back"></i>
+                        <i class="fa-solid fa-phone contact-location-icons " style="color:var(--primary-color)"></i>
                     </div>
                     <div class="text-center pt-4">
-                        <h5 class="text-back">CONTACT US</h5>
-                        <p class="text-back pt-2">
+                        <h5 class="">CONTACT US</h5>
+                        <p class=" pt-2">
                             Mobile: (+0123) 465 789 <br />
                             Fax: (+0122) 456 789
                         </p>
@@ -33,11 +33,11 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="text-center">
-                        <i class="fa-solid fa-paper-plane contact-location-icons text-back"></i>
+                        <i class="fa-solid fa-paper-plane contact-location-icons " style="color:var(--primary-color)"></i>
                     </div>
                     <div class="text-center pt-4">
-                        <h5 class="text-back">WRITE SOME WORDS</h5>
-                        <p class="text-back pt-2">
+                        <h5 class="">WRITE SOME WORDS</h5>
+                        <p class=" pt-2">
                             Support247@thimpress.com <br />
                             Info@thimpress.com
                         </p>

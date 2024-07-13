@@ -36,7 +36,7 @@
 <!-- Sidebar Fixed Modal Start -->
 <!-- Button trigger modal -->
 <button type="button" class="toggle-btn-sidebar" data-bs-toggle="modal" data-bs-target="#discountModal">
-    GET DISCOUNT
+    Inquery Now!
 </button>
 
 <!-- Modal -->
@@ -93,7 +93,7 @@
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
                                         checked />
                                     <label class="form-check-label" for="flexCheckChecked">
-                                        Call Me For Details !
+                                        Call For Details !
                                     </label>
                                 </div>
                             </div>

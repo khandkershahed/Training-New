@@ -177,9 +177,9 @@
                             <h5>{{ $about->row_four_column_one_header }}</h5>
                         </div>
                         <div class="pt-3">
-                            <p class="text-end w-75 ms-auto">
+                            <div class="w-75 ms-auto" style="text-align: end !important;">
                                 {!! $about->row_four_column_one_description !!}
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,9 +191,9 @@
                             <h5>{{ $about->row_four_column_two_header }}</h5>
                         </div>
                         <div class="pt-3">
-                            <p class="w-75 me-auto">
+                            <div class="w-75 me-auto">
                                 {!! $about->row_four_column_two_description !!}
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>

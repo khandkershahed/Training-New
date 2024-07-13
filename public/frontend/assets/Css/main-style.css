@@ -11,6 +11,7 @@
 /* Root styles */
 :root {
     --white-color: #ffff;
+    --white: #ffff;
     /* Example primary color */
     --primary-color: #0a1d5b;
     /* Example primary color */
@@ -94,6 +95,14 @@ body::-webkit-scrollbar-thumb {
     font-size: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+a {
+    text-decoration: none;
+    color: #747474;
+}
+a:hover {
+    text-decoration: none;
+    color: var(--primary-color) !important;
+}
 
 /* Default styles for navbar links */
 
@@ -123,6 +132,10 @@ body::-webkit-scrollbar-thumb {
 /* ==========================Header Style Start=========================== */
 .navbar-nav .nav-item .nav-link {
     color: black;
+    font-weight: 500;
+}
+.navbar-nav .nav-item .nav-link:hover {
+    color: var(--primary-color);
     font-weight: 500;
 }
 
@@ -225,7 +238,6 @@ body::-webkit-scrollbar-thumb {
     padding: 12px;
     background: white;
     color: var(--primary-color) !important;
-
 }
 
 /* .cources-category-top {
@@ -336,9 +348,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .slider .slick-slide.text-left:before {
-    background: linear-gradient(to left,
-            rgba(249, 245, 245, 0) 10%,
-            rgb(0, 0, 0));
+    background: linear-gradient(
+        to left,
+        rgba(249, 245, 245, 0) 10%,
+        rgb(0, 0, 0)
+    );
 }
 
 /* .slider .slick-slide.text-right:before {
@@ -417,10 +431,76 @@ body::-webkit-scrollbar-thumb {
     opacity: 1;
     transform: translateY(0);
     transition-duration: 0.35s;
+    color: #fff;
 }
 
 .primary-btn-one:hover:after {
     opacity: 0.5;
+}
+.popover__title {
+    font-size: var(--paragraph-font-size);
+    text-decoration: none;
+    color: var(--white);
+    text-align: center;
+    padding: 4px 0 0px;
+}
+
+.popover__wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.popover__content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: -60px;
+    right: -60px;
+    transform: translate(0, 10px);
+    background-color: var(--white);
+    padding: 1.5rem;
+    box-shadow: var(--custom-shadow);
+    width: auto;
+}
+
+.popover__content:before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    right: calc(50% - 10px);
+    top: -8px;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent var(--white) transparent;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.popover__wrapper:hover .popover__content {
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0px);
+    transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+    background: white;
+}
+
+.popover__message {
+    text-align: center;
+}
+
+.signin {
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 100%;
+    transition: all 0.5s;
+}
+
+.signin:hover {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: #000;
+    text-align: center;
 }
 
 .primary-btn-one:active {
@@ -741,6 +821,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* ==========================Some Cources Style Start============================= */
+.course-images{
+    height: 205px;
+    width: 100%;
+    object-fit: cover;
+}
 .cource-badge {
     background-color: #eaecf0;
     color: black;
@@ -825,17 +910,23 @@ body::-webkit-scrollbar-thumb {
 .showcase {
     width: 100%;
     height: 330px;
-    /* height: 400px; */
     position: relative;
     color: var(--white-color);
     text-align: center;
     object-fit: cover;
 }
-
+.course-description-card{
+    height: 480px;
+    max-height: 100%;
+}
+.course-details-img img{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
 .showcase img {
     width: 100%;
     height: 100%;
-    position: absolute;
     object-fit: cover;
     /* Make the image cover the entire area */
     top: 0;
@@ -1072,8 +1163,10 @@ body::-webkit-scrollbar-thumb {
 .btn-close {
     --bs-btn-close-color: #fff;
     /* Change to white */
-    --bs-btn-close-bg: url(data:image/svg + xml,
- %3csvgxmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23fff" %3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z" /%3e%3c/svg%3e);
+    --bs-btn-close-bg: url(
+        data:image/svg + xml,
+        %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 16 16"fill="%23fff"%3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/%3e%3c/svg%3e
+    );
     /* SVG with white fill */
     --bs-btn-close-opacity: 0.5;
     --bs-btn-close-hover-opacity: 0.75;
@@ -1223,7 +1316,6 @@ body::-webkit-scrollbar-thumb {
 
 /* Media query for screens with a maximum width of 1368 pixels */
 @media (max-width: 1368px) {
-
     /* Your styles go here */
     .slider .slick-slide {
         border: 0;
@@ -1467,7 +1559,8 @@ body::-webkit-scrollbar-thumb {
     z-index: 9999;
 }
 
-.menu-card {}
+.menu-card {
+}
 
 /* ==========================Offcanvas Style Start============================= */
 .offcanvas-sidebar {
@@ -1518,7 +1611,7 @@ body::-webkit-scrollbar-thumb {
     right: -50px;
     z-index: 99999;
     transform: translateY(-50%);
-    padding: 10px;
+    padding: 10px 10px 30px;
     background-color: #001430;
     color: #fff;
     border: none;
@@ -1577,30 +1670,39 @@ body::-webkit-scrollbar-thumb {
 /* About Us End */
 /* Contact Us start */
 .contact-location-icons {
-    font-size: 80px;
-    padding: 50px 55px;
+    font-size: 60px;
+    padding: 30px;
     border-radius: 100%;
-    border: 1px solid #000;
+    border: 1px solid #001430;
+    width: 125px;
+    height: 125px;
+    text-align: center;
 }
 
-.dropdown-item {
+/* .dropdown-item {
     color: white !important;
 }
 
 .dropdown-item:hover {
     background-color: white !important;
     color: black !important;
-}
+} */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    clear: both;
+    font-weight: 400;
+    font-size: 14px;}
 
 .custom-accordion .custom-accordion-item {
     border-bottom: 1px solid #e5e5e5;
-  }
+}
 
-  .custom-accordion .custom-accordion-item button[aria-expanded="true"] {
+.custom-accordion .custom-accordion-item button[aria-expanded="true"] {
     border-bottom: 1px solid #03b5d2;
-  }
+}
 
-  .custom-accordion button {
+.custom-accordion button {
     position: relative;
     display: block;
     text-align: left;
@@ -1612,26 +1714,26 @@ body::-webkit-scrollbar-thumb {
     border: none;
     background: none;
     outline: none;
-  }
+}
 
-  .custom-accordion button:hover,
-  .custom-accordion button:focus {
+.custom-accordion button:hover,
+.custom-accordion button:focus {
     cursor: pointer;
     color: #03b5d2;
-  }
+}
 
-  .custom-accordion button:hover::after,
-  .custom-accordion button:focus::after {
+.custom-accordion button:hover::after,
+.custom-accordion button:focus::after {
     cursor: pointer;
     color: #03b5d2;
     border: 1px solid #03b5d2;
-  }
+}
 
-  .custom-accordion button .custom-accordion-title {
+.custom-accordion button .custom-accordion-title {
     padding: 1em 1.5em 1em 0;
-  }
+}
 
-  .custom-accordion button .icon {
+.custom-accordion button .icon {
     display: inline-block;
     position: absolute;
     top: 18px;
@@ -1640,9 +1742,9 @@ body::-webkit-scrollbar-thumb {
     height: 22px;
     border: 1px solid;
     border-radius: 22px;
-  }
+}
 
-  .custom-accordion button .icon::before {
+.custom-accordion button .icon::before {
     display: block;
     position: absolute;
     content: "";
@@ -1651,8 +1753,8 @@ body::-webkit-scrollbar-thumb {
     width: 10px;
     height: 2px;
     background: currentColor;
-  }
-  .custom-accordion button .icon::after {
+}
+.custom-accordion button .icon::after {
     display: block;
     position: absolute;
     content: "";
@@ -1661,61 +1763,61 @@ body::-webkit-scrollbar-thumb {
     width: 2px;
     height: 10px;
     background: currentColor;
-  }
+}
 
-  .custom-accordion button[aria-expanded="true"] {
+.custom-accordion button[aria-expanded="true"] {
     color: #03b5d2;
-  }
-  .custom-accordion button[aria-expanded="true"] .icon::after {
+}
+.custom-accordion button[aria-expanded="true"] .icon::after {
     width: 0;
-  }
-  .custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
+}
+.custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
     opacity: 1;
     max-height: 9em;
     transition: all 200ms linear;
     will-change: opacity, max-height;
-  }
-  .custom-accordion .custom-accordion-content {
+}
+.custom-accordion .custom-accordion-content {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
     transition: opacity 200ms linear, max-height 200ms linear;
     will-change: opacity, max-height;
-  }
-  .custom-accordion .custom-accordion-content p {
+}
+.custom-accordion .custom-accordion-content p {
     font-size: 1rem;
     font-weight: 300;
     margin: 2em 0;
-  }
-  .more-text {
+}
+.more-text {
     display: none;
-  }
+}
 
-  .gradient-card {
+.gradient-card {
     height: 155px;
     background: #0f0c29; /* fallback for old browsers */
     background: -webkit-linear-gradient(
-      to right,
-      #24243e,
-      #302b63,
-      #0f0c29
+        to right,
+        #24243e,
+        #302b63,
+        #0f0c29
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
-      to right,
-      #24243e,
-      #302b63,
-      #0f0c29
+        to right,
+        #24243e,
+        #302b63,
+        #0f0c29
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
+}
 
-  .box-service {
+.box-service {
     background: #302b63;
     font-family: "Poppins", sans-serif;
     box-service-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     position: relative;
-  }
-  .box-service:before {
+}
+.box-service:before {
     content: "";
     background: #fff;
     width: 200px;
@@ -1727,22 +1829,22 @@ body::-webkit-scrollbar-thumb {
     left: -100%;
     box-service-shadow: 0 0 100px #fff;
     transition: all 0.6s ease;
-  }
-  .box-service:hover:before {
+}
+.box-service:hover:before {
     opacity: 1;
     left: 200%;
-  }
-  .box-service img {
+}
+.box-service img {
     width: 100%;
     height: 400px;
     max-height: 100%;
     transition: all 0.6s ease;
-  }
-  .box-service:hover img {
+}
+.box-service:hover img {
     opacity: 0.4;
     filter: grayscale(100%);
-  }
-  .box-service .box-service-content {
+}
+.box-service .box-service-content {
     color: #fff;
     width: 100%;
     padding: 0 20px;
@@ -1750,8 +1852,8 @@ body::-webkit-scrollbar-thumb {
     bottom: 40px;
     left: 0;
     z-index: 1;
-  }
-  .box-service .title {
+}
+.box-service .title {
     font-size: 25px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -1760,11 +1862,11 @@ body::-webkit-scrollbar-thumb {
     transform: rotateX(90deg);
     transform-origin: bottom center;
     transition: all 0.6s ease;
-  }
-  .box-service:hover .title {
+}
+.box-service:hover .title {
     transform: rotateX(0);
-  }
-  .box-service .post {
+}
+.box-service .post {
     color: #fff;
     font-size: 12px;
     text-align: start;
@@ -1776,11 +1878,11 @@ body::-webkit-scrollbar-thumb {
     transform-origin: top center;
     transition: all 0.6s ease;
     padding-top: 20px;
-  }
-  .box-service:hover .post {
+}
+.box-service:hover .post {
     transform: rotateX(0);
-  }
-  .box-service .icon {
+}
+.box-service .icon {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -1789,15 +1891,15 @@ body::-webkit-scrollbar-thumb {
     right: 5px;
     top: 10px;
     transition: all 0.6s ease;
-  }
-  .box-service:hover .icon {
+}
+.box-service:hover .icon {
     opacity: 1;
-  }
-  .box-service .icon li {
+}
+.box-service .icon li {
     margin: 0 5px 0 0;
     display: inline-block;
-  }
-  .box-service .icon li a {
+}
+.box-service .icon li a {
     color: #fff;
     background: rgba(255, 255, 255, 0.3);
     font-size: 15px;
@@ -1807,26 +1909,26 @@ body::-webkit-scrollbar-thumb {
     height: 33px;
     display: block;
     transition: all 0.6s ease;
-  }
-  .box-service .icon li a:hover {
+}
+.box-service .icon li a:hover {
     color: #108dc7;
     background: #fff;
-  }
-  @media only screen and (max-width: 990px) {
+}
+@media only screen and (max-width: 990px) {
     .box {
-      margin: 0 0 30px;
+        margin: 0 0 30px;
     }
-  }
-  /* ==========================Main Style Start============================= */
-  .custom-accordion .custom-accordion-item {
+}
+/* ==========================Main Style Start============================= */
+.custom-accordion .custom-accordion-item {
     border-bottom: 1px solid #e5e5e5;
-  }
+}
 
-  .custom-accordion .custom-accordion-item button[aria-expanded="true"] {
+.custom-accordion .custom-accordion-item button[aria-expanded="true"] {
     border-bottom: 1px solid #03b5d2;
-  }
+}
 
-  .custom-accordion button {
+.custom-accordion button {
     position: relative;
     display: block;
     text-align: left;
@@ -1838,26 +1940,26 @@ body::-webkit-scrollbar-thumb {
     border: none;
     background: none;
     outline: none;
-  }
+}
 
-  .custom-accordion button:hover,
-  .custom-accordion button:focus {
+.custom-accordion button:hover,
+.custom-accordion button:focus {
     cursor: pointer;
     color: #03b5d2;
-  }
+}
 
-  .custom-accordion button:hover::after,
-  .custom-accordion button:focus::after {
+.custom-accordion button:hover::after,
+.custom-accordion button:focus::after {
     cursor: pointer;
     color: #03b5d2;
     border: 1px solid #03b5d2;
-  }
+}
 
-  .custom-accordion button .custom-accordion-title {
+.custom-accordion button .custom-accordion-title {
     padding: 1em 1.5em 1em 0;
-  }
+}
 
-  .custom-accordion button .icon {
+.custom-accordion button .icon {
     display: inline-block;
     position: absolute;
     top: 18px;
@@ -1866,9 +1968,9 @@ body::-webkit-scrollbar-thumb {
     height: 22px;
     border: 1px solid;
     border-radius: 22px;
-  }
+}
 
-  .custom-accordion button .icon::before {
+.custom-accordion button .icon::before {
     display: block;
     position: absolute;
     content: "";
@@ -1877,8 +1979,8 @@ body::-webkit-scrollbar-thumb {
     width: 10px;
     height: 2px;
     background: currentColor;
-  }
-  .custom-accordion button .icon::after {
+}
+.custom-accordion button .icon::after {
     display: block;
     position: absolute;
     content: "";
@@ -1887,61 +1989,61 @@ body::-webkit-scrollbar-thumb {
     width: 2px;
     height: 10px;
     background: currentColor;
-  }
+}
 
-  .custom-accordion button[aria-expanded="true"] {
+.custom-accordion button[aria-expanded="true"] {
     color: #03b5d2;
-  }
-  .custom-accordion button[aria-expanded="true"] .icon::after {
+}
+.custom-accordion button[aria-expanded="true"] .icon::after {
     width: 0;
-  }
-  .custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
+}
+.custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
     opacity: 1;
     max-height: 9em;
     transition: all 200ms linear;
     will-change: opacity, max-height;
-  }
-  .custom-accordion .custom-accordion-content {
+}
+.custom-accordion .custom-accordion-content {
     opacity: 0;
     max-height: 0;
     overflow: hidden;
     transition: opacity 200ms linear, max-height 200ms linear;
     will-change: opacity, max-height;
-  }
-  .custom-accordion .custom-accordion-content p {
+}
+.custom-accordion .custom-accordion-content p {
     font-size: 1rem;
     font-weight: 300;
     margin: 2em 0;
-  }
-  .more-text {
+}
+.more-text {
     display: none;
-  }
+}
 
-  .gradient-card {
+.gradient-card {
     height: 155px;
     background: #0f0c29; /* fallback for old browsers */
     background: -webkit-linear-gradient(
-      to right,
-      #24243e,
-      #302b63,
-      #0f0c29
+        to right,
+        #24243e,
+        #302b63,
+        #0f0c29
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
-      to right,
-      #24243e,
-      #302b63,
-      #0f0c29
+        to right,
+        #24243e,
+        #302b63,
+        #0f0c29
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
+}
 
-  .box-service {
+.box-service {
     background: #302b63;
     font-family: "Poppins", sans-serif;
     box-service-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     position: relative;
-  }
-  .box-service:before {
+}
+.box-service:before {
     content: "";
     background: #fff;
     width: 200px;
@@ -1953,22 +2055,22 @@ body::-webkit-scrollbar-thumb {
     left: -100%;
     box-service-shadow: 0 0 100px #fff;
     transition: all 0.6s ease;
-  }
-  .box-service:hover:before {
+}
+.box-service:hover:before {
     opacity: 1;
     left: 200%;
-  }
-  .box-service img {
+}
+.box-service img {
     width: 100%;
     height: 400px;
     max-height: 100%;
     transition: all 0.6s ease;
-  }
-  .box-service:hover img {
+}
+.box-service:hover img {
     opacity: 0.4;
     filter: grayscale(100%);
-  }
-  .box-service .box-service-content {
+}
+.box-service .box-service-content {
     color: #fff;
     width: 100%;
     padding: 0 20px;
@@ -1976,8 +2078,8 @@ body::-webkit-scrollbar-thumb {
     bottom: 40px;
     left: 0;
     z-index: 1;
-  }
-  .box-service .title {
+}
+.box-service .title {
     font-size: 25px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -1986,11 +2088,11 @@ body::-webkit-scrollbar-thumb {
     transform: rotateX(90deg);
     transform-origin: bottom center;
     transition: all 0.6s ease;
-  }
-  .box-service:hover .title {
+}
+.box-service:hover .title {
     transform: rotateX(0);
-  }
-  .box-service .post {
+}
+.box-service .post {
     color: #fff;
     font-size: 12px;
     text-align: start;
@@ -2002,11 +2104,11 @@ body::-webkit-scrollbar-thumb {
     transform-origin: top center;
     transition: all 0.6s ease;
     padding-top: 20px;
-  }
-  .box-service:hover .post {
+}
+.box-service:hover .post {
     transform: rotateX(0);
-  }
-  .box-service .icon {
+}
+.box-service .icon {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -2015,15 +2117,15 @@ body::-webkit-scrollbar-thumb {
     right: 5px;
     top: 10px;
     transition: all 0.6s ease;
-  }
-  .box-service:hover .icon {
+}
+.box-service:hover .icon {
     opacity: 1;
-  }
-  .box-service .icon li {
+}
+.box-service .icon li {
     margin: 0 5px 0 0;
     display: inline-block;
-  }
-  .box-service .icon li a {
+}
+.box-service .icon li a {
     color: #fff;
     background: rgba(255, 255, 255, 0.3);
     font-size: 15px;
@@ -2033,21 +2135,21 @@ body::-webkit-scrollbar-thumb {
     height: 33px;
     display: block;
     transition: all 0.6s ease;
-  }
-  .box-service .icon li a:hover {
+}
+.box-service .icon li a:hover {
     color: #108dc7;
     background: #fff;
-  }
-  @media only screen and (max-width: 990px) {
+}
+@media only screen and (max-width: 990px) {
     .box {
-      margin: 0 0 30px;
+        margin: 0 0 30px;
     }
-  }
-  /* ==========================Main Style Start============================= */
-  @media only screen and (max-width: 768px) {
+}
+/* ==========================Main Style Start============================= */
+@media only screen and (max-width: 768px) {
     html,
     body {
-      width: 100%;
-      overflow-x:hidden;
+        width: 100%;
+        overflow-x: hidden;
     }
-  }
+}
