@@ -14,6 +14,9 @@ use Illuminate\Http\Request;
 use App\Models\CourseCategory;
 use App\Models\CourseCurriculum;
 use App\Http\Controllers\Controller;
+use App\Models\CourseOutline;
+use App\Models\CourseProject;
+use App\Models\CourseSchedule;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -47,7 +50,13 @@ class HomeController extends Controller
 
         $courseCurriculams = CourseCurriculum::where('course_id', $coursedetail->id)->get();
 
-        return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams'));
+        $courseSchedules = CourseSchedule::where('course_id', $coursedetail->id)->get();
+
+        $courseOutlines = CourseOutline::where('course_id', $coursedetail->id)->get();
+
+        $courseProjects = CourseProject::where('course_id', $coursedetail->id)->get();
+
+        return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams','courseSchedules','courseOutlines','courseProjects'));
     }
 
     public function courseRegistration()
@@ -190,22 +199,22 @@ class HomeController extends Controller
 
     }
 
-    public function getCourseName($course_category_id)
-    {
-        // $courses = Course::whereNotNull('course_category_id')->where('course_category_id', $course_category_id)
-        //     ->orderBy('name', 'ASC')
-        //     ->get();
+    // public function getCourseName($course_category_id)
+    // {
+    //     // $courses = Course::whereNotNull('course_category_id')->where('course_category_id', $course_category_id)
+    //     //     ->orderBy('name', 'ASC')
+    //     //     ->get();
 
-        // Check if courses are found
-        if ($courses->isEmpty()) {
-            return response()->json(['error' => 'No courses found for the selected category.']);
-        }
+    //     // Check if courses are found
+    //     if ($courses->isEmpty()) {
+    //         return response()->json(['error' => 'No courses found for the selected category.']);
+    //     }
 
-        // Render the view with the found courses
-        $table_view = View::make('frontend.pages.service.partials.course_table', compact('courses'))->render();
+    //     // Render the view with the found courses
+    //     $table_view = View::make('frontend.pages.service.partials.course_table', compact('courses'))->render();
 
-        return response()->json(['table_view' => $table_view]);
-    }
+    //     return response()->json(['table_view' => $table_view]);
+    // }
 
     public function GetCourse($course_section_id)
     {

@@ -59,13 +59,20 @@
                             </div>
                         </div>
 
-
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Short Description</label>
-                                <textarea name="short_description" class="form-control editor" id="" cols="2" rows="2"></textarea>
+                                <input type="text" name="short_description" placeholder="Short Description"
+                                    class="form-control form-control-sm" value="{{ old('short_description') }}">
                             </div>
                         </div>
+
+                        {{-- <div class="col-6 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Short Description</label>
+                                <textarea name="short_description" class="form-control editor"></textarea>
+                            </div>
+                        </div> --}}
 
                         <div class="col-6 mb-3">
                             <div class="form-group">
@@ -150,7 +157,7 @@
         </script>
     @endpush
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Initialize CKEditor for each textarea with the class 'editor'
@@ -165,7 +172,7 @@
                     });
             });
         });
-    </script>
+    </script> --}}
 
 
 </x-admin-app-layout>

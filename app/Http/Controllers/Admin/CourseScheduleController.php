@@ -18,106 +18,53 @@ class CourseScheduleController extends Controller
     public function create()
     {
         $courses = Course::latest()->get();
-        return view('admin.pages.course_schedule.create', compact('courses'));
+        return view('admin.course_schedule.create', compact('courses'));
     }
 
-    // public function store(Request $request)
-    // {
-    //     $mainFile = $request->file('icon');
-    //     $imgPath = storage_path('app/public/course_outline/');
+    public function store(Request $request)
+    {
+        CourseSchedule::insert([
 
+            'course_id' => $request->course_id,
+            'venue' => $request->venue,
+            'country' => $request->country,
+            'starting_date' => $request->starting_date,
+            'duration' => $request->duration,
+            'fees' => $request->fees,
+        ]);
 
-    //     if (empty($mainFile)) {
+        return redirect()->route('admin.course_schedule.index')->with('success', 'Data Inserted Successfully!!');
+    }
 
-    //         CourseOutline::insert([
+    public function edit(Request $request, $id)
+    {
+        $item = CourseSchedule::find($id);
+        $courses = Course::latest()->get();
 
-    //             'course_id' => $request->course_id,
+        return view('admin.pages.course_schedule.edit', compact('courses', 'item'));
+    }
 
-    //             'title' => $request->title,
-    //             'created_at' => now(),
+    public function update(Request $request, $id)
+    {
+        $courseSchedule = CourseSchedule::findOrFail($id);
 
-    //         ]);
-    //     } else {
+        $courseSchedule->update([
 
-    //         $globalFunImg = customUpload($mainFile, $imgPath);
+            'course_id' => $request->course_id,
+            'venue' => $request->venue,
+            'country' => $request->country,
+            'starting_date' => $request->starting_date,
+            'duration' => $request->duration,
+            'fees' => $request->fees,
 
-    //         if ($globalFunImg['status'] == 1) {
+        ]);
 
-    //             CourseOutline::insert([
+        return redirect()->route('admin.course_schedule.index')->with('success', 'Data Update Successfully!!');
+    }
 
-    //                 'course_id' => $request->course_id,
-
-    //                 'title' => $request->title,
-    //                 'icon' => $globalFunImg['file_name'],
-
-    //                 'created_at' => now(),
-
-    //             ]);
-    //         } else {
-    //             return redirect()->back()->withInput()->with('error', 'Image upload failed! plz try again');
-    //         }
-    //     }
-
-    //     return redirect()->route('admin.course_outline.index')->with('success', 'Course Outline Inserted Successfully!!');
-    // }
-
-    // public function edit(Request $request, $id)
-    // {
-    //     $item = CourseOutline::find($id);
-    //     $courses = Course::latest()->get();
-    //     return view('admin.pages.course_outline.edit', compact('courses', 'item'));
-    // }
-
-    // public function update(Request $request, $id)
-    // {
-    //     $course = CourseOutline::findOrFail($id);
-
-    //     $mainFile = $request->file('icon');
-    //     $uploadPath = storage_path('app/public/course_outline/');
-
-    //     if (isset($mainFile)) {
-    //         $globalFunImg = customUpload($mainFile, $uploadPath);
-    //     } else {
-    //         $globalFunImg['status'] = 0;
-    //     }
-
-    //     if (!empty($course)) {
-
-    //         if ($globalFunImg['status'] == 1) {
-    //             if (File::exists(public_path('storage/course_outline/requestImg/') . $course->icon)) {
-    //                 File::delete(public_path('storage/course_outline/requestImg/') . $course->icon);
-    //             }
-    //             if (File::exists(public_path('storage/course_outline/') . $course->icon)) {
-    //                 File::delete(public_path('storage/course_outline/') . $course->icon);
-    //             }
-    //         }
-
-
-    //         $course->update([
-
-    //             'course_id' => $request->course_id,
-
-    //             'title' => $request->title,
-
-    //             'icon' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $course->icon,
-    //         ]);
-    //     }
-
-    //     return redirect()->route('admin.course_outline.index')->with('success', 'Course Outline Update Successfully!!');
-    // }
-
-    // public function destroy($id)
-    // {
-    //     $course = CourseOutline::findOrFail($id);
-
-    //     if (File::exists(public_path('storage/course_outline/requestImg/') . $course->icon)) {
-    //         File::delete(public_path('storage/course_outline/requestImg/') . $course->icon);
-    //     }
-
-    //     if (File::exists(public_path('storage/course_outline/') . $course->icon)) {
-    //         File::delete(public_path('storage/course_outline/') . $course->icon);
-    //     }
-
-    //     $course->delete();
-    // }
+    public function destroy($id)
+    {
+        $course = CourseSchedule::findOrFail($id);
+        $course->delete();
+    }
 }

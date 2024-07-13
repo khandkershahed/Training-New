@@ -63,14 +63,20 @@
                             </div>
                         </div>
 
-                      
-
                         <div class="col-6 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Short Description</label>
+                                <input type="text" name="short_description" placeholder="Short Description"
+                                    class="form-control form-control-sm" value="{{ $item->short_description }}">
+                            </div>
+                        </div>
+
+                        {{-- <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Short Description</label>
                                 <textarea name="short_description" class="form-control editor" id="" cols="2" rows="2">{!! $item->short_description !!}</textarea>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-6 mb-3">
                             <div class="form-group">
@@ -79,7 +85,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="col-5 mb-3">
                             <div class="">
@@ -133,7 +139,7 @@
                             required: true,
                         },
 
-                       
+
 
 
                     },

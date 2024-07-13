@@ -1,11 +1,11 @@
-<x-admin-app-layout :title="'Course Outline'">
+<x-admin-app-layout :title="'Course Schedule Update'">
     <div class="card card-flash">
         <div class="card-header">
             <div class="card-title">
             </div>
 
             <div class="card-toolbar">
-                <a href="{{ route('admin.course_outline.index') }}" class="btn btn-light-primary rounded-2">
+                <a href="{{ route('admin.course_schedule.index') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -23,7 +23,7 @@
         </div>
         <div class="card-body">
 
-            <form id="myForm" method="post" action="{{ route('admin.course_outline.update', $item->id) }}"
+            <form id="myForm" method="post" action="{{ route('admin.course_schedule.update', $item->id) }}"
                 enctype="multipart/form-data">
                 @csrf
 
@@ -57,23 +57,41 @@
 
                         <div class="col-4 mb-3">
                             <div class="form-group">
-                                <label for="" class="mb-2">Title</label>
-                                <input type="text" name="title" placeholder="Title Name"
-                                    class="form-control form-control-sm" value="{{ $item->title }}">
+                                <label for="" class="mb-2">Venue</label>
+                                <input type="text" name="Venue" placeholder="Venue Name"
+                                    class="form-control form-control-sm" value="{{ $item->venue }}">
                             </div>
                         </div>
 
+                        <div class="col-4 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Country</label>
+                                <input type="text" name="country" placeholder="Country Name"
+                                    class="form-control form-control-sm" value="{{ $item->country }}">
+                            </div>
+                        </div>
 
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Starting Date</label>
+                                <input type="date" name="starting_date" placeholder=""
+                                    class="form-control form-control-sm" value="{{ $item->starting_date }}">
+                            </div>
+                        </div>
 
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Duration</label>
+                                <input type="text" name="duration" placeholder="6 Month"
+                                    class="form-control form-control-sm" value="{{ $item->duration }}">
+                            </div>
+                        </div>
 
-                        <div class="col-5 mb-3">
-                            <div class="">
-                                <label for="" class="mb-2">Icon</label>
-                                <input type="file" name="icon" accept="image/*"
-                                    class="form-control form-control-sm mb-3">
-
-                                <img class="" src="{{ asset('storage/course_outline/' . $item->icon) }}"
-                                    height="40" width="40" alt="">
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Fee</label>
+                                <input type="number" name="fees" placeholder="Eg: 10,525"
+                                    class="form-control form-control-sm" value="{{ $item->fees }}">
                             </div>
                         </div>
 
