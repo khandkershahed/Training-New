@@ -1,7 +1,7 @@
 @extends('frontend.master')
 @section('content')
     <section class="">
-        <div>
+        <div class="showcase">
             <img class="img-fluid" src="./assets/img/all-courses-banner.jpg" alt="Picture" />
         </div>
     </section>
@@ -15,7 +15,7 @@
                                 <a href="{{ route('homepage') }}" class="text-decoration-none main-color">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <span class="text-muted">Privacy & Policy</span>
+                                <span class="text-muted">Terms & Condition</span>
                             </li>
                         </ol>
                     </nav>

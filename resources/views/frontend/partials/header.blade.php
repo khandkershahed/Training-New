@@ -94,7 +94,7 @@
             </button>
 
             <div class="collapse navbar-collapse align-items-center" id="navbarScroll">
-                <div class="mx-auto">
+                <div class="ms-5">
                     <div class="btn-group position-static" title="Our Courses">
 
                         <button class="category-btn-header dropdown-toggle text-white" type="button"
@@ -377,7 +377,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
                     </li>
-                    <li class="nav-item dropdown position-static">
+                    {{-- <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
                             role="button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                             aria-expanded="false">Online Learning</a>
@@ -556,7 +556,7 @@
                                 </div>
                             </div>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ route('courses.all') }}">All Courses</a>
                     </li>
@@ -573,7 +573,7 @@
                                 data-bs-auto-close="outside" aria-expanded="false">
                                 Services
                             </button>
-                            <ul class="dropdown-menu py-0 rounded-0 border-0" style="background: #001430;">
+                            <ul class="dropdown-menu py-0 rounded-0 border-0" style="background: #001430; top:57px;">
                                 @forelse ($services as $sercice)
                                     <li class="p-1"><a class="dropdown-item text-white"
                                             href="{{ url('/services/details/' . $sercice->id . '/' . $sercice->slug) }}">{{ $sercice->name }}</a>

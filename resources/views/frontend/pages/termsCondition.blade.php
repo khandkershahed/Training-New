@@ -1,7 +1,7 @@
 @extends('frontend.master')
 @section('content')
     <section class="">
-        <div>
+        <div class="showcase">
             <img class="img-fluid" src="./assets/img/all-courses-banner.jpg" alt="Picture" />
         </div>
     </section>
