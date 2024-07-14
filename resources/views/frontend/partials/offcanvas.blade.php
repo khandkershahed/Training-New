@@ -62,7 +62,7 @@
             <div class="modal-body">
                 <!-- Modal content goes here -->
                 @php
-                    $courses = App\Models\Courses::latest('id')->get();
+                    $courses = App\Models\Course::latest('id')->get();
                 @endphp
                 <div class="container">
                     <form action="{{ route('course.registration.store') }}" method="post"

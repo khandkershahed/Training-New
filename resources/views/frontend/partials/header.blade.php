@@ -377,7 +377,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">Home</a>
                     </li>
-                    <li class="nav-item dropdown position-static">
+                    {{-- <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
                             role="button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                             aria-expanded="false">Online Learning</a>
@@ -556,7 +556,7 @@
                                 </div>
                             </div>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ route('courses.all') }}">All Courses</a>
                     </li>
