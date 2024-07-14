@@ -124,7 +124,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-end pt-3">
-                                    <button type="button" class="primary-btn-one">
+                                    <button type="submit" class="primary-btn-one">
                                         Apply Discount
                                     </button>
                                 </div>
