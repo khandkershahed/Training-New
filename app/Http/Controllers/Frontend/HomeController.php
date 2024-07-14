@@ -11,6 +11,7 @@ use App\Models\HomePage;
 use App\Models\NewsTrend;
 use App\Models\CourseQuery;
 use Illuminate\Http\Request;
+use App\Models\CourseSection;
 use App\Models\CourseCategory;
 use App\Models\CourseCurriculum;
 use App\Http\Controllers\Controller;
@@ -178,7 +179,8 @@ class HomeController extends Controller
     {
         $service = Service::with('courses')->find($id);
         $courses = $service->courses;
-        return view('frontend.pages.service.service', compact('service', 'courses'));
+        $courseSections = CourseCategory::latest('id')->get();
+        return view('frontend.pages.service.service', compact('service', 'courses', 'courseSections'));
     }
 
     public function GetCategory($course_section_id)
@@ -190,11 +192,12 @@ class HomeController extends Controller
 
     }
 
-    public function getCourseName($course_category_id)
+    public function getCourseName(Request $request)
     {
-        // $courses = Course::whereNotNull('course_category_id')->where('course_category_id', $course_category_id)
-        //     ->orderBy('name', 'ASC')
-        //     ->get();
+        $course_category_id = $request->course_category_id;
+        $courses = Course::whereNotNull('course_category_id')->where('course_category_id', $course_category_id)
+            ->orderBy('name', 'ASC')
+            ->get();
 
         // Check if courses are found
         if ($courses->isEmpty()) {
