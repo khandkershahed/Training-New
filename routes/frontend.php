@@ -1,22 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\NewsLetterController;
-use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CourseEnrollController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\JobController;
-use App\Http\Controllers\Frontend\PageController;
-use App\Http\Controllers\Frontend\ShopController;
-use App\Http\Controllers\Payment\StripeController;
 use Illuminate\Support\Facades\Route;
 
 //Homepage
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
-
-
 
 //Training
 Route::get('/training', [HomeController::class, 'training'])->name('training');
@@ -41,17 +32,12 @@ Route::get('/course-get/ajax/{course_section_id}', [HomeController::class, 'GetC
 Route::get('/terms-and-condition', [HomeController::class, 'termsCondition'])->name('termsCondition');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
 
-
 Route::get('/contact/location', [HomeController::class, 'location'])->name('location');
 Route::get('support', [HomeController::class, 'Support'])->name('support');
 Route::get('/newsletter', [NewsletterController::class, 'newsletter']);
 Route::post('/newsletter/store', [NewsLetterController::class, 'store'])->name('newsletter.store');
 
-
-
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
-
-
 
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
