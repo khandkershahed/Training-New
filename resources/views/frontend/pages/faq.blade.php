@@ -1,7 +1,7 @@
 @extends('frontend.master')
 @section('content')
-    <section class="showcase">
-        <div>
+    <section>
+        <div class="showcase">
             <img class="img-fluid" src="{{ asset('frontend/images/faq.jpg') }}" alt="Picture" />
         </div>
     </section>

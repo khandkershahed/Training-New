@@ -35,14 +35,9 @@
                             {{ $service->name }}
                         </h1>
                         <div class="section-devider"
-                            style="
-                  background-color: #0a1d5b;
-                  height: 2px;
-                  width: 10%;
-                  margin: start;
-                ">
+                            style="background-color: #0a1d5b;height: 2px;width: 10%;margin: start;">
                         </div>
-                        <p class="pt-3" style="text-align: justify">
+                        <p class="pt-3 fs-6" style="text-align: justify">
                             {{ $service->header }}
                         </p>
                     </div>
@@ -52,7 +47,7 @@
                             alt="" />
                     </div> --}}
                     <div>
-                        <p class="py-5" style="text-align: justify">
+                        <p class="py-2" style="text-align: justify">
                             {!! $service->description !!}
                         </p>
                     </div>
