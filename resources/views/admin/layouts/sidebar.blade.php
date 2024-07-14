@@ -250,6 +250,7 @@
                                  <span class="menu-title">Learn More Page</span>
                              </a>
                          </div>
+
                          <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.homepage.index') ? 'active' : '' }}"
                                  href="{{ route('admin.homepage.index') }}">
@@ -268,6 +269,24 @@
                                  <span class="menu-title">About</span>
                              </a>
                          </div>
+
+                         <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.terms-and-condition.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Terms & Condition</span>
+                            </a>
+                        </div>
+
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.privacy-policy.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Privacy & Policy</span>
+                            </a>
+                        </div>
 
                      </div>
                  </div>

@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Faq;
-use App\Models\Course;
+use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
-use App\Models\Service;
-use App\Models\Setting;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\CourseQuery;
-use Illuminate\Http\Request;
-use App\Models\CourseSection;
+use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\CourseCurriculum;
-use App\Http\Controllers\Controller;
 use App\Models\CourseOutline;
 use App\Models\CourseProject;
+use App\Models\CourseQuery;
 use App\Models\CourseSchedule;
+use App\Models\Faq;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\PrivacyPolicy;
+use App\Models\Service;
+use App\Models\Setting;
+use App\Models\TermsCondition;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -226,12 +227,13 @@ class HomeController extends Controller
 
     public function termsCondition()
     {
-        $data['terms'] = Service::first();
-        return view('frontend.pages.termsCondition', $data);
+        $terms = TermsCondition::where('status','active')->first();
+
+        return view('frontend.pages.termsCondition', compact('terms'));
     }
     public function privacyPolicy()
     {
-        $data['privacy'] = Service::first();
-        return view('frontend.pages.privacyPolicy', $data);
+        $privacy = PrivacyPolicy::where('status','active')->first();
+        return view('frontend.pages.privacyPolicy', compact('privacy'));
     }
 }

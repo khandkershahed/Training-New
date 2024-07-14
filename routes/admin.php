@@ -103,7 +103,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'email-settings' => EmailSettingController::class,
             'faq' => FaqController::class,
 
-            // Created By Ashiquzzaman 
+            // Created By Ashiquzzaman
             'terms-and-condition' => TermsConditionController::class,
             'privacy-policy' => PrivacyPolicyController::class,
         ],
@@ -136,7 +136,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'course_outline' => CourseOutlineController::class,
             'course_schedule' => CourseScheduleController::class,
             'about' => AboutUsController::class,
-            
+
             'course_category' => CourseCategoryController::class,
             'service' => ServiceController::class,
             'industry' => IndustryController::class,
@@ -172,8 +172,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
     Route::put('/about-us', [AboutUsController::class, 'updateOrcreateAboutUs'])->name('about-us.updateOrCreate');
 
-    
-
     Route::controller(DynamicCssController::class)->group(function () {
         Route::get('/dynamic-css', 'index')->name('css.index');
         Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');
@@ -183,3 +181,11 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 Route::controller(CourseController::class)->group(function () {
     Route::get('/category/ajax/{course_section_id}', 'GetCategory');
 });
+
+// Terms & Condition Status 
+Route::get('/terms-and-condition/{id}/inactive', [TermsConditionController::class, 'inactive'])->name('terms-and-condition.inactive');
+Route::get('/terms-and-condition/{id}/active', [TermsConditionController::class, 'active'])->name('terms-and-condition.active');
+
+// Privacy & Policy 
+Route::get('/privacy/{id}/inactive', [PrivacyPolicyController::class, 'inactive'])->name('privacy-policy.inactive');
+Route::get('/privacy/{id}/active', [PrivacyPolicyController::class, 'active'])->name('privacy-policy.active');

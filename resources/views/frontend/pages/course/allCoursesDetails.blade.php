@@ -126,8 +126,9 @@
                                         </div>
                                     @endif
 
-                                    <div>
-                                        <!-- Course Curriculum -->
+
+                                    <!-- Course Curriculum -->
+                                    @if ($courseCurriculams->isNotEmpty())
                                         <div id="curriculum" class="py-3">
                                             <h5 class="primary-text-color fw-bold">
                                                 Course Curriculum
@@ -137,7 +138,6 @@
                                                     @forelse ($courseCurriculams as $courseCurriculam)
                                                         <div class="accordion-item border-0 shadow-sm">
                                                             <h2 class="accordion-header mb-1">
-
                                                                 <button
                                                                     class="accordion-button border-0 shadow-sm collapsed"
                                                                     type="button" data-bs-toggle="collapse"
@@ -146,29 +146,17 @@
                                                                     <i class="fa-solid fa-arrow-right-long pe-3"></i>
                                                                     {{ $courseCurriculam->title }}
                                                                 </button>
-
                                                             </h2>
                                                             <div id="collapseOne{{ $courseCurriculam->id }}"
                                                                 class="accordion-collapse collapse"
                                                                 data-bs-parent="#accordionExample">
                                                                 <div class="accordion-body">
                                                                     <div class="mb-3 text-center">
-
-                                                                        {{-- <small
-                                                                            class="bg-warning-light p-2 rounded-2 badges"><i
-                                                                                class="fa-solid fa-tv primary-text-color"></i>
-                                                                            12 recorded video</small> --}}
-
                                                                         <small
                                                                             class="bg-warning-light p-2 rounded-2 badges"><i
                                                                                 class="fa-solid fa-tv primary-text-color"></i>
                                                                             {{ $courseCurriculam->class_number }} live
                                                                             class</small>
-
-                                                                        {{-- <small
-                                                                            class="bg-warning-light p-2 rounded-2 badges"><i
-                                                                                class="fa-solid fa-tv primary-text-color"></i>
-                                                                            1 Quiz</small> --}}
                                                                     </div>
                                                                     <p>
                                                                         {!! $courseCurriculam->description !!}
@@ -177,13 +165,16 @@
                                                             </div>
                                                         </div>
                                                     @empty
-                                                        <p>No Course Curriculam Avaiable</p>
+                                                        <p>No Course Curriculum Available</p>
                                                     @endforelse
-
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Course Schedule -->
+                                    @endif
+
+
+                                    <!-- Course Schedule -->
+                                    @if ($courseCurriculams->isNotEmpty())
                                         <div id="schedule" class="py-3">
                                             <h5 class="primary-text-color fw-bold">
                                                 Course Schedule
@@ -194,7 +185,7 @@
                                             </p> --}}
 
 
-                                            @forelse ($courseSchedules as $courseSchedule)
+                                            @forelse ($courseOutlines as $courseSchedule)
                                                 <div class="table-responsive">
                                                     <table class="table table-striped">
                                                         <thead>
@@ -270,16 +261,19 @@
 
 
                                         </div>
+                                    @endif
 
-                                        <!-- Course Projects -->
+
+                                    <!-- Course Projects -->
+                                    @if ($courseProjects->isNotEmpty())
                                         <div id="projects" class="py-3">
                                             <h3 class="primary-text-color fw-bold">
                                                 Course Projects
                                             </h3>
 
-                                            <p class="pt-2">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing
-                                            </p>
+                                            {{-- <p class="pt-2">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing
+                                            </p> --}}
 
                                             <!-- Project Slide -->
                                             <div class="slider-project pt-3">
@@ -321,8 +315,11 @@
                                                 <!-- Add more slider items as needed -->
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
+
+
                                 </div>
+
                                 <div class="col-lg-4 rounded-5 p-4 mt-2 mt-lg-5">
                                     <div class="p-5 py-3 rounded-5" style="background-color: #eee">
                                         <div class="py-4">
@@ -378,91 +375,94 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12">
-                                    <!-- Related Courses -->
-                                    <div id="related" class="py-3">
-                                        <h3 class="primary-text-color fw-bold">
-                                            Related Courses
-                                        </h3>
-                                        <p>
+                                @if ($relatedcourses->isNotEmpty())
+                                    <div class="col-lg-12">
+                                        <!-- Related Courses -->
+                                        <div id="related" class="py-3">
+                                            <h3 class="primary-text-color fw-bold">
+                                                Related Courses
+                                            </h3>
+                                            {{-- <p>
                                             Lorem ipsum dolor sit amet consectetur adipisicing
                                             elit.
-                                        </p>
-                                        <!-- Releted Course slider -->
-                                        <div class="slider-related-courses">
-                                            @forelse ($relatedcourses as $courses)
-                                                <div class="releted-course-items">
-                                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                                        <div class="card-header p-0 bg-transparent">
+                                        </p> --}}
+                                            <!-- Releted Course slider -->
+                                            <div class="slider-related-courses">
+                                                @forelse ($relatedcourses as $courses)
+                                                    <div class="releted-course-items">
+                                                        <div class="card border-0 bg-light shadow-sm rounded-2">
+                                                            <div class="card-header p-0 bg-transparent">
 
-                                                            <div>
-                                                                <img class="rounded-2 img-fluid course-images"
-                                                                    src="{{ asset(!empty($courses->thumbnail_image) ? url('storage/course/' . $courses->thumbnail_image) : url('images/no-shop-imge.png')) }}"
-                                                                    alt="">
+                                                                <div>
+                                                                    <img class="rounded-2 img-fluid course-images"
+                                                                        src="{{ asset(!empty($courses->thumbnail_image) ? url('storage/course/' . $courses->thumbnail_image) : url('images/no-shop-imge.png')) }}"
+                                                                        alt="">
+                                                                </div>
+
+                                                                <div class="p-2 text-center">
+
+                                                                    <small class="pe-3">
+                                                                        <span class="cource-badge rounded-2">
+                                                                            <i class="fa-solid fa-graduation-cap"></i>
+                                                                            Batch 2
+                                                                        </span>
+                                                                    </small>
+                                                                    <small class="pe-3">
+                                                                        <span class="cource-badge rounded-2">
+                                                                            {{-- <i class="fa-solid fa-chair pe-2" aria-hidden="true"></i> --}}
+                                                                            <i class="fa-solid fa-user"></i>
+                                                                            {{ $courses->available_seats }}
+                                                                        </span>
+                                                                    </small>
+                                                                    @php
+                                                                        // Convert registration end date to Unix timestamp
+                                                                        $registrationEndTimestamp = strtotime(
+                                                                            $courses->registration_end_date,
+                                                                        );
+                                                                        // Current time
+                                                                        $currentTime = time();
+                                                                        // Calculate remaining time in seconds
+                                                                        $remainingTime =
+                                                                            $registrationEndTimestamp - $currentTime;
+                                                                        // Convert remaining time to days
+                                                                        $remainingDays = floor(
+                                                                            $remainingTime / (60 * 60 * 24),
+                                                                        );
+                                                                    @endphp
+
+                                                                    <small class="pe-3">
+                                                                        <span class="course-badge rounded-2">
+                                                                            {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
+                                                                            <i class="fa-solid fa-clock"></i>
+                                                                            {{ $remainingDays }} Days
+                                                                        </span>
+                                                                    </small>
+
+                                                                </div>
                                                             </div>
-
-                                                            <div class="p-2 text-center">
-
-                                                                <small class="pe-3">
-                                                                    <span class="cource-badge rounded-2">
-                                                                        <i class="fa-solid fa-graduation-cap"></i>
-                                                                        Batch 2
-                                                                    </span>
-                                                                </small>
-                                                                <small class="pe-3">
-                                                                    <span class="cource-badge rounded-2">
-                                                                        {{-- <i class="fa-solid fa-chair pe-2" aria-hidden="true"></i> --}}
-                                                                        <i class="fa-solid fa-user"></i>
-                                                                        {{ $courses->available_seats }}
-                                                                    </span>
-                                                                </small>
-                                                                @php
-                                                                    // Convert registration end date to Unix timestamp
-                                                                    $registrationEndTimestamp = strtotime(
-                                                                        $courses->registration_end_date,
-                                                                    );
-                                                                    // Current time
-                                                                    $currentTime = time();
-                                                                    // Calculate remaining time in seconds
-                                                                    $remainingTime =
-                                                                        $registrationEndTimestamp - $currentTime;
-                                                                    // Convert remaining time to days
-                                                                    $remainingDays = floor(
-                                                                        $remainingTime / (60 * 60 * 24),
-                                                                    );
-                                                                @endphp
-
-                                                                <small class="pe-3">
-                                                                    <span class="course-badge rounded-2">
-                                                                        {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
-                                                                        <i class="fa-solid fa-clock"></i>
-                                                                        {{ $remainingDays }} Days
-                                                                    </span>
-                                                                </small>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="course-title">
-                                                                <h6 class="mb-0">
-                                                                    {{ $courses->name }}
-                                                                </h6>
-                                                            </div>
-                                                            <div class="pt-2">
-                                                                <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}"
-                                                                    class="btn btn-light border w-100 text-center">See Details
-                                                                    <i class="fa-solid fa-arrow-right ps-2"
-                                                                        aria-hidden="true"></i></a>
+                                                            <div class="card-body">
+                                                                <div class="course-title">
+                                                                    <h6 class="mb-0">
+                                                                        {{ $courses->name }}
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="pt-2">
+                                                                    <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}"
+                                                                        class="btn btn-light border w-100 text-center">See
+                                                                        Details
+                                                                        <i class="fa-solid fa-arrow-right ps-2"
+                                                                            aria-hidden="true"></i></a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @empty
-                                                <p>No Course Avaiable</p>
-                                            @endforelse
+                                                @empty
+                                                    <p>No Course Avaiable</p>
+                                                @endforelse
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
 
                             </div>
                         </div>
@@ -489,7 +489,7 @@
 
                                 <p class="mb-0">
                                     <span class="fw-bold text-white">Call This Number:</span>
-                                    <span>{{ optional($setting)->primary_phone }}</span>
+                                    <span class="text-white">{{ optional($setting)->primary_phone }}</span>
                                 </p>
                                 <div class="d-flex align-items-center">
                                     <h2 class="pe-3 fw-bold text-white mb-0">BDT
