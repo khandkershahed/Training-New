@@ -9,6 +9,10 @@
             text-align: center;
         }
 
+        .form-select option {
+            background-color: #051225;
+            border: none !important;
+        }
 
         .showcase-courses img {
             width: 100%;
