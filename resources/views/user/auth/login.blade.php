@@ -134,7 +134,7 @@
                                             <h6 class="d-flex justify-content-center align-items-center" style="color: #747474">
                                                 {{ __('Forgot your password?') }}
                                                 <a href="{{ route('password.request') }}"
-                                                    class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here...') }}</a>
+                                                    class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here') }}</a>
                                             </h6>
                                         </div>
                                     @endif
