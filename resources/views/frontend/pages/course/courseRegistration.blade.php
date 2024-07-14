@@ -152,6 +152,7 @@
                 </div>
             </div> --}}
 
+            {{-- <form action="{{ route('register' $$ 'course.registration.store') }}" method="post" enctype="multipart/form-data"> --}}
             <form action="{{ route('course.registration.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">

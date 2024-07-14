@@ -21,21 +21,26 @@
                     </a>
                 </div>
             </div>
+
+            @php
+                $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')->limit(8)->latest()->get();
+            @endphp
+
             <div class="col-lg-3 p-4 text-start border-left-side">
                 <ul class="" style="list-style-type: none">
-                    <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="javascript:void(0)">
-                            Professional Courses</a>
-                    </li>
-                    <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="javascript:void(0)">Diploma Courses</a>
-                    </li>
-                    <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="javascript:void(0)">
-                            Industrial Courses</a>
-                    </li>
+
+                    @foreach ($courseSections as $courseSection)
+                        <li class="pt-2">
+
+                            <a class="text-white text-decoration-none" href="{{ url('course-service' . '/' . $courseSection->id . '/' . $courseSection->slug) }}">
+                                {{ $courseSection->name }}</a>
+
+                        </li>
+                    @endforeach
+
                 </ul>
             </div>
+
             <div class="col-lg-4 p-4 d-flex justify-content-between align-items-center social-area">
                 <ul class="" style="list-style-type: none">
                     <li class="pt-2">
@@ -54,16 +59,19 @@
                     {{-- <a class="icons-footer twitter" href="#">
                         <i class="fa-brands fa-twitter"></i>
                     </a> --}}
-                    <a class="icons-footer facebook" href="{{ optional($setting)->social_facebook }}" data-bs-toggle="popover"
-                                data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Facebook">
+                    <a class="icons-footer facebook" href="{{ optional($setting)->social_facebook }}"
+                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom"
+                        data-bs-title="Facebook">
                         <i class="fa-brands fa-facebook-f"></i>
                     </a>
-                    <a class="icons-footer linkedin" href="{{ optional($setting)->social_linkedin }}" data-bs-toggle="popover"
-                                data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Linkedin">
+                    <a class="icons-footer linkedin" href="{{ optional($setting)->social_linkedin }}"
+                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom"
+                        data-bs-title="Linkedin">
                         <i class="fa-brands fa-linkedin-in"></i>
                     </a>
-                    <a class="icons-footer youtube" href="{{ optional($setting)->social_youtube }}" data-bs-toggle="popover"
-                                data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Youtube">
+                    <a class="icons-footer youtube" href="{{ optional($setting)->social_youtube }}"
+                        data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom"
+                        data-bs-title="Youtube">
                         <i class="fa-brands fa-youtube"></i>
                     </a>
                 </div>
@@ -88,10 +96,13 @@
                         </small>
                         <div class="ps-5">
                             {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}
-                            <a href="{{ route('privacyPolicy') }}" class="text-white text-decoration-none pe-2"><small>Privacy
-                                Policy</small></a>
-                            <a href="{{ route('termsCondition') }}" class="text-white text-decoration-none"><small>Terms &
-                                Condition</small></a>
+                            <a href="{{ route('privacyPolicy') }}"
+                                class="text-white text-decoration-none pe-2"><small>Privacy
+                                    Policy</small></a>
+                            <a href="{{ route('termsCondition') }}"
+                                class="text-white text-decoration-none"><small>Terms
+                                    &
+                                    Condition</small></a>
                         </div>
                     </div>
                 </div>
