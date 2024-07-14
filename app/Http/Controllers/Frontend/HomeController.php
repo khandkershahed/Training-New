@@ -15,6 +15,9 @@ use App\Models\CourseSection;
 use App\Models\CourseCategory;
 use App\Models\CourseCurriculum;
 use App\Http\Controllers\Controller;
+use App\Models\CourseOutline;
+use App\Models\CourseProject;
+use App\Models\CourseSchedule;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -23,7 +26,7 @@ class HomeController extends Controller
     //Homepage
     public function index()
     {
-        $homePage = HomePage::with('courseOneHomePage')->first();
+        $homePage = HomePage::with('courseOneHomePage', 'courseTwoHomePage', 'courseThreeHomePage')->first();
 
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
@@ -48,7 +51,13 @@ class HomeController extends Controller
 
         $courseCurriculams = CourseCurriculum::where('course_id', $coursedetail->id)->get();
 
-        return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams'));
+        $courseSchedules = CourseSchedule::where('course_id', $coursedetail->id)->get();
+
+        $courseOutlines = CourseOutline::where('course_id', $coursedetail->id)->get();
+
+        $courseProjects = CourseProject::where('course_id', $coursedetail->id)->get();
+
+        return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams', 'courseSchedules', 'courseOutlines', 'courseProjects'));
     }
 
     public function courseRegistration()
@@ -189,7 +198,6 @@ class HomeController extends Controller
         $subCat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();
 
         return json_encode($subCat);
-
     }
 
     public function getCourseName(Request $request)

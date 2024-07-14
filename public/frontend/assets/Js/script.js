@@ -20,19 +20,19 @@ slider.slick({
   arrows: false,
   vertical: true,
   autoplay: true, // Enable auto slide
-  autoplaySpeed: 3000, // Set auto slide speed in milliseconds (optional)
+  autoplaySpeed: 2000, // Set auto slide speed in milliseconds (optional)
 });
 
 // Vertical Mouse Scroll
-slider.on("wheel", function (e) {
-  e.preventDefault();
+// slider.on("wheel", function (e) {
+//   e.preventDefault();
 
-  if (e.originalEvent.deltaY < 0) {
-    $(this).slick("slickNext");
-  } else {
-    $(this).slick("slickPrev");
-  }
-});
+//   if (e.originalEvent.deltaY < 0) {
+//     $(this).slick("slickNext");
+//   } else {
+//     $(this).slick("slickPrev");
+//   }
+// });
 
 // Animation
 function doAnimations(elements) {

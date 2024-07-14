@@ -23,15 +23,6 @@
         </div>
         <div class="card-body">
 
-            {{-- <form id="myForm" method="post"
-                action="{{ isset($course_schedule) ? route('admin.course_schedule.update', $course_schedule->id) : route('admin.course_schedule.store') }}"
-                enctype="multipart/form-data">
-                @csrf
-
-                @if (isset($course_schedule))
-                    @method('PUT')
-                @endif --}}
-
             <form id="myForm" method="post" action="{{ route('admin.course_schedule.store') }}"
                 enctype="multipart/form-data">
                 @csrf
@@ -46,7 +37,9 @@
                                 <label for="" class="mb-2">Course Name</label>
                                 <select name="course_id" data-placeholder="Select Row One.."
                                     class="form-select form-select-sm" data-control="select2"
-                                    data-placeholder="Select an option">
+                                    >
+
+                                    <option selected disabled>Choose Course Name</option>
 
                                     @if (count($courses) > 0)
                                         @foreach ($courses as $course)

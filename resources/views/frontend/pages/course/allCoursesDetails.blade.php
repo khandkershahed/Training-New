@@ -3,10 +3,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
     <section class="showcase">
         <img src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/course-banner.jpg?id=8892" alt="Picture">
-        <div class="overlay-courses">
-            <h2>Our All Courses</h2>
-            <p>One-Stop Learning &amp; Development Solutions</p>
-        </div>
     </section>
     <section>
         <div class="container">
@@ -61,7 +57,8 @@
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <p class="mb-0">Duration</p>
-                                                            <h3 class="fw-bold pt-2 number-font main-color">{{ $coursedetail->course_duration }}
+                                                            <h3 class="fw-bold pt-2 number-font main-color">
+                                                                {{ $coursedetail->course_duration }}
                                                             </h3>
                                                         </div>
                                                     </div>
@@ -72,7 +69,8 @@
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <p class="mb-0">Lectures</p>
-                                                            <h3 class="fw-bold pt-2 number-font main-color">{{ $coursedetail->lecture }}</h3>
+                                                            <h3 class="fw-bold pt-2 number-font main-color">
+                                                                {{ $coursedetail->lecture }}</h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,7 +80,8 @@
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <p class="mb-0">Projects</p>
-                                                            <h3 class="fw-bold pt-2 number-font main-color">{{ $coursedetail->project }}</h3>
+                                                            <h3 class="fw-bold pt-2 number-font main-color">
+                                                                {{ $coursedetail->project }}</h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -110,7 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-7">
-                                    <img class="img-fluid rounded-5"
+                                    <img class="img-fluid rounded-5 w-100"
                                         src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
                                         alt="" />
                                 </div>
@@ -189,84 +188,46 @@
                                             <h5 class="primary-text-color fw-bold">
                                                 Course Schedule
                                             </h5>
-                                            <p>
+                                            {{-- <p>
                                                 Lorem ipsum dolor sit amet consectetur adipisicing
                                                 elit.
-                                            </p>
-                                            <div>
+                                            </p> --}}
+
+
+                                            @forelse ($courseSchedules as $courseSchedule)
                                                 <div class="table-responsive">
                                                     <table class="table table-striped">
                                                         <thead>
                                                             <tr>
-                                                                <th style="
-                                    background-color: #eee;
-                                    color: black;
-                                    font-size: 15px;
-                                  "
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
                                                                     scope="col">
                                                                     Venue
                                                                 </th>
-                                                                <th style="
-                                    background-color: #eee;
-                                    color: black;
-                                    font-size: 15px;
-                                  "
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
                                                                     scope="col">
                                                                     Starting Date
                                                                 </th>
-                                                                <th style="
-                                    background-color: #eee;
-                                    color: black;
-                                    font-size: 15px;
-                                  "
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
                                                                     scope="col">
                                                                     Duration
                                                                 </th>
-                                                                <th style="
-                                    background-color: #eee;
-                                    color: black;
-                                    font-size: 15px;
-                                  "
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
                                                                     scope="col">
                                                                     Fees
                                                                 </th>
                                                                 <th class="text-center"
-                                                                    style="
-                                    background-color: #eee;
-                                    color: black;
-                                    font-size: 15px;
-                                  "
+                                                                    style="background-color: #eee;color: black;font-size: 15px;"
                                                                     scope="col">
                                                                     Join Now
                                                                 </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr class="">
-                                                                <td>Online - Virtual</td>
-                                                                <td>24 - Jun - 2024</td>
-                                                                <td>2 Hrs * 8 Days</td>
-                                                                <td>$2,100</td>
-                                                                <td class="text-center">
-                                                                    <a href="" class=""><i
-                                                                            class="fa-solid fa-eye text-muted"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="">
-                                                                <td>Online - Virtual</td>
-                                                                <td>24 - Jun - 2024</td>
-                                                                <td>2 Hrs * 8 Days</td>
-                                                                <td>$2,100</td>
-                                                                <td class="text-center">
-                                                                    <a href="" class=""><i
-                                                                            class="fa-solid fa-eye text-muted"></i></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="">
-                                                                <td>Online - Virtual</td>
-                                                                <td>24 - Jun - 2024</td>
-                                                                <td>2 Hrs * 8 Days</td>
-                                                                <td>$2,100</td>
+                                                            <tr>
+                                                                <td>{{ $courseSchedule->venue }}</td>
+                                                                <td>{{ $courseSchedule->starting_date }}</td>
+                                                                <td>{{ $courseSchedule->duration }}</td>
+                                                                <td>{{ $courseSchedule->fees }} Tk</td>
                                                                 <td class="text-center">
                                                                     <a href="" class=""><i
                                                                             class="fa-solid fa-eye text-muted"></i></a>
@@ -275,157 +236,88 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div>
-                                                    <h5 class="primary-text-color fw-bold pt-3">
-                                                        What Will You Learn In This Course?
-                                                    </h5>
-                                                    <div>
-                                                        <div class="row gx-1">
-                                                            <div class="col-lg-6">
-                                                                <div class="card p-0 mb-1 why-choses">
-                                                                    <div class="card-body p-0">
-                                                                        <p class="mb-0 p-3">
-                                                                            <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
-                                                                                alt="" />প্রোগ্রামিং ল্যাংগুয়েজ
-                                                                            হিসেবে শেখানো
-                                                                            হবে পাইথন
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="card p-0 mb-1 why-choses">
-                                                                    <div class="card-body p-0">
-                                                                        <p class="mb-0 p-3">
-                                                                            <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
-                                                                                alt="" />
-                                                                            ব্যাকেন্ডের জন্য আমরা শিখবো DJANGO,
-                                                                            DJANGO REST FRAMEWORK, FLASK
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="card p-0 mb-1 why-choses">
-                                                                    <div class="card-body p-0">
-                                                                        <p class="mb-0 p-3">
-                                                                            <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
-                                                                                alt="" />
-                                                                            ফ্রন্টেন্ডের জন্য শেখানো হবে REACT
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="card p-0 mb-1 why-choses">
-                                                                    <div class="card-body p-0">
-                                                                        <p class="mb-0 p-3">
-                                                                            <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
-                                                                                alt="" />
-                                                                            পাইথন এর এডভান্স কনসেপ্ট
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
+                                            @empty
+                                                <p>No course schedules found.</p>
+                                            @endforelse
+
+
+                                            <h5 class="primary-text-color fw-bold pt-3">
+                                                What Will You Learn In This Course?
+                                            </h5>
+
+                                            <div class="row gx-1">
+
+                                                @forelse ($courseOutlines as $courseOutline)
+                                                    <div class="col-lg-6">
+                                                        <div class="card p-0 mb-1 why-choses">
+                                                            <div class="card-body p-0">
+                                                                <p class="mb-0 p-3">
+                                                                    <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
+                                                                        alt="" />
+                                                                    {{ $courseOutline->title }}
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+
+
+                                                @empty
+                                                    <p>Course Outline Not Avaiable</p>
+                                                @endforelse
+
                                             </div>
+
+
+
                                         </div>
+
                                         <!-- Course Projects -->
                                         <div id="projects" class="py-3">
                                             <h3 class="primary-text-color fw-bold">
                                                 Course Projects
                                             </h3>
+
                                             <p class="pt-2">
                                                 Lorem ipsum dolor sit amet consectetur adipisicing
                                             </p>
+
                                             <!-- Project Slide -->
                                             <div class="slider-project pt-3">
-                                                <div class="slider-items">
-                                                    <div class="project-box">
-                                                        <div class="box p-2">
-                                                            <img class="img-fluid"
-                                                                src="https://cdn.ostad.app/public/upload/2024-03-19T09-42-37.309Z-610cbb29feffc927b046279da1aa10d9.jpg"
-                                                                alt="" />
-                                                            <div class="box-content">
-                                                                <h3 class="title">Kristina</h3>
-                                                                <span class="post">Web designer</span>
-                                                                <ul class="icon">
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-search"></i></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-link"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+
+                                                @forelse ($courseProjects as $courseProject)
+                                                    <div class="slider-items">
+
+                                                        <div class="project-box">
+                                                            <di v class="box p-2">
+
+                                                                <img class="img-fluid"
+                                                                    src="{{ !empty($courseProject->image) ? url('storage/course_project/' . $courseProject->image) : 'https://ui-avatars.com/api/?name=' . urlencode($courseProject->title) }}"
+                                                                    alt="" />
+
+                                                                <div class="box-content">
+                                                                    <h3 class="title">{{ $courseProject->title }}</h3>
+                                                                    <span
+                                                                        class="post">{{ $courseProject->short_description }}</span>
+
+                                                                    <ul class="icon">
+                                                                        <li>
+                                                                            <a href="#"><i
+                                                                                    class="fa fa-search"></i></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#"><i
+                                                                                    class="fa fa-link"></i></a>
+                                                                        </li>
+                                                                    </ul>
+
+                                                                </div>
+                                                            </di>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="slider-items">
-                                                    <div class="project-box p-2">
-                                                        <div class="box">
-                                                            <img width="288px" height="216px"
-                                                                src="https://cdn.ostad.app/public/upload/2024-03-19T09-42-37.309Z-610cbb29feffc927b046279da1aa10d9.jpg"
-                                                                alt="" />
-                                                            <div class="box-content">
-                                                                <h3 class="title">Kristina</h3>
-                                                                <span class="post">Web designer</span>
-                                                                <ul class="icon">
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-search"></i></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-link"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="slider-items">
-                                                    <div class="project-box p-2">
-                                                        <div class="box">
-                                                            <img width="288px" height="216px"
-                                                                src="https://cdn.ostad.app/public/upload/2024-03-19T09-42-37.309Z-610cbb29feffc927b046279da1aa10d9.jpg"
-                                                                alt="" />
-                                                            <div class="box-content">
-                                                                <h3 class="title">Kristina</h3>
-                                                                <span class="post">Web designer</span>
-                                                                <ul class="icon">
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-search"></i></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-link"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="slider-items">
-                                                    <div class="project-box p-2">
-                                                        <div class="box">
-                                                            <img width="288px" height="216px"
-                                                                src="https://cdn.ostad.app/public/upload/2024-03-19T09-42-37.309Z-610cbb29feffc927b046279da1aa10d9.jpg"
-                                                                alt="" />
-                                                            <div class="box-content">
-                                                                <h3 class="title">Kristina</h3>
-                                                                <span class="post">Web designer</span>
-                                                                <ul class="icon">
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-search"></i></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#"><i class="fa fa-link"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @empty
+                                                    <p>No Course Project Avaiable</p>
+                                                @endforelse
+
                                                 <!-- Add more slider items as needed -->
                                             </div>
                                         </div>
@@ -474,8 +366,10 @@
 
 
 
-                                                    <a href="javascript:void(0)" data-amount="{{ $coursedetail->online_price }}" data-id="{{ $coursedetail->id }}"
-                                                        class="primary-btn-one" onclick="addToEnrollOnline(this)">Enroll Now</a>
+                                                    <a href="javascript:void(0)"
+                                                        data-amount="{{ $coursedetail->online_price }}"
+                                                        data-id="{{ $coursedetail->id }}" class="primary-btn-one"
+                                                        onclick="addToEnrollOnline(this)">Enroll Now</a>
 
                                                 </div>
                                             </div>
@@ -556,7 +450,7 @@
                                                             </div>
                                                             <div class="pt-2">
                                                                 <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}"
-                                                                    class="btn btn-light border w-100">See Details
+                                                                    class="btn btn-light border w-100 text-center">See Details
                                                                     <i class="fa-solid fa-arrow-right ps-2"
                                                                         aria-hidden="true"></i></a>
                                                             </div>
@@ -582,23 +476,23 @@
             <div class="card-header border-0 bg-transparent pb-0 pt-2 pe-3 text-end"
                 style="margin-bottom: -30px; position: relative; z-index: 5">
                 <button id="closeButton" class="p-0 border-0 bg-transparent fs-4">
-                    <i class="fa-solid fa-xmark primary-text-color"></i>
+                    <i class="fa-solid fa-xmark text-white"></i>
                 </button>
             </div>
 
             <form method="POST" action="{{ route('course.enroll', $coursedetail->id) }}">
 
                 <div class="card-body p-1">
-                    <div class="container">
+                    <div class="container px-0">
                         <div class="row align-items-center">
                             <div class="col-lg-5">
 
-                                <p>
+                                <p class="mb-0">
                                     <span class="fw-bold text-white">Call This Number:</span>
                                     <span>{{ optional($setting)->primary_phone }}</span>
                                 </p>
                                 <div class="d-flex align-items-center">
-                                    <h2 class="pe-3 fw-bold text-white">BDT
+                                    <h2 class="pe-3 fw-bold text-white mb-0">BDT
                                         {{ number_format($coursedetail->price, 2) }}</h2>
                                     {{-- <h6>
                                     <a href="" class="text-decoration-none text-white"><i
@@ -614,7 +508,8 @@
 
                                     <input type="hidden" name="amount" value="{{ $coursedetail->price }}">
 
-                                    <button type="submit" class="primary-btn-one  ps-3 text-center" style="border: 1px solid white; color: white !important">Enroll Running
+                                    <button type="submit" class="primary-btn-one  ps-3 text-center"
+                                        style="border: 1px solid white; color: white !important">Enroll Running
                                         Batch</button>
 
 
