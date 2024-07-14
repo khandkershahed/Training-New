@@ -521,9 +521,9 @@
                                         <p>
                                             {{ optional($homePage->courseOneHomePage)->short_descp }}
                                         </p>
-                                        <button class="primary-btn-one w-100 rounded-0">
+                                        <a href="{{ url('course' . '/' . optional($homePage->courseOneHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}" class="primary-btn-one w-100 rounded-0">
                                             Learn More
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -549,9 +549,9 @@
                                         <p>
                                             {{ optional($homePage->courseTwoHomePage)->short_descp }}
                                         </p>
-                                        <button class="primary-btn-one w-100 rounded-0">
+                                        <a href="{{ url('course' . '/' . optional($homePage->courseTwoHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}" class="primary-btn-one w-100 rounded-0">
                                             Learn More
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -577,9 +577,9 @@
                                         <p>
                                             {{ optional($homePage->courseThreeHomePage)->short_descp }}
                                         </p>
-                                        <button class="primary-btn-one w-100 rounded-0">
+                                        <a href="{{ url('course' . '/' . optional($homePage->courseThreeHomePage)->id . '/' . optional($homePage->courseThreeHomePage)->slug) }}" class="primary-btn-one w-100 rounded-0">
                                             Learn More
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -606,7 +606,7 @@
                     <div class="row">
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_one_url }}" class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -621,7 +621,7 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_two_url }}" class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -636,7 +636,7 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_three_url }}" class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -657,7 +657,7 @@
                     <div class="row pt-3">
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_four_url }}" class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -672,7 +672,7 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_five_url }}" class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -687,7 +687,7 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_six_url }}" class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -722,9 +722,8 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-
                                 <div class="col-lg-4">
-                                    <a href="" class="text-decoration-none">
+                                    <a href="{{ optional($homePage)->row_seven_section_one_url ?? 'javascript:void(0)' }}" class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
@@ -752,7 +751,7 @@
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <a href="" class="text-decoration-none">
+                                    <a href="{{ optional($homePage)->row_seven_section_two_url ?? 'javascript:void(0)' }}" class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
@@ -780,7 +779,7 @@
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <a href="" class="text-decoration-none">
+                                    <a href="{{ optional($homePage)->row_seven_section_three_url ?? 'javascript:void(0)' }}" class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
@@ -806,8 +805,6 @@
                                         </div>
                                     </a>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -1425,7 +1422,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 py-5">
-                    <h2 class="text-center text-white special-text">
+                    <h2 class="text-center text-white special-text pt-3">
                         {{ optional($homePage)->row_nine_title }}
                     </h2>
                     <div class="text-center py-3">

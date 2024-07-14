@@ -153,7 +153,6 @@
             </div> --}}
 
             <form action="{{ route('course.registration.store') }}" method="post" enctype="multipart/form-data">
-
                 @csrf
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
@@ -193,11 +192,11 @@
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <textarea class="form-control form-color" name="message" rows="1" placeholder="Something Note Here"></textarea>
+                                    <textarea class="form-control form-color" name="address" rows="1" placeholder="Your Address"></textarea>
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <textarea class="form-control form-color" name="address" rows="2" placeholder="Your Address"></textarea>
+                                    <textarea class="form-control form-color" name="message" rows="2" placeholder="Note"></textarea>
                                 </div>
 
                                 <div>
