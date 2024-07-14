@@ -2,7 +2,7 @@
 @section('content')
     <section>
         <div class="showcase">
-            <img class="img-fluid" src="{{ asset('frontend/images/faq.jpg') }}" alt="Picture" />
+            <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->faq_banner) }}" alt="Picture" />
         </div>
     </section>
 

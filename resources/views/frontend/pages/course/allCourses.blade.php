@@ -65,7 +65,7 @@
         }
     </style> --}}
     <section class="showcase">
-        <img class="img-fluid" src="{{ asset('frontend/assets/img/all-courses-banner.jpg') }}" alt="Picture">
+        <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->course_banner) }}" alt="Picture">
         {{-- <div class="overlay-courses">
             <h2>Our All Courses</h2>
             <p>One-Stop Learning &amp; Development Solutions</p>

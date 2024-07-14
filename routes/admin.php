@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TermsConditionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseSectionController;
@@ -142,6 +143,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'industry' => IndustryController::class,
             'homepage' => HomepageController::class,
             'course_section' => CourseSectionController::class,
+
+            'common_banner' => BannerController::class,
 
         ],
     );

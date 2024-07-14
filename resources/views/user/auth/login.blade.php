@@ -78,7 +78,7 @@
     }
 </style>
     <section>
-        <img class="img-fluid" src="{{ asset('frontend/assets/img/login.jpg') }}" alt="LogIn" />
+        <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->course_login_banner) }}" alt="LogIn" />
     </section>
     <section style="background-color: #051225">
         <div class="container py-lg-5 py-3">
