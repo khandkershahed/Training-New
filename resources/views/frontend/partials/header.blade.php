@@ -94,7 +94,7 @@
             </button>
 
             <div class="collapse navbar-collapse align-items-center" id="navbarScroll">
-                <div class="mx-auto">
+                <div class="ms-5">
                     <div class="btn-group position-static" title="Our Courses">
 
                         <button class="category-btn-header dropdown-toggle text-white" type="button"
@@ -573,7 +573,7 @@
                                 data-bs-auto-close="outside" aria-expanded="false">
                                 Services
                             </button>
-                            <ul class="dropdown-menu py-0 rounded-0 border-0" style="background: #001430;">
+                            <ul class="dropdown-menu py-0 rounded-0 border-0" style="background: #001430; top:57px;">
                                 @forelse ($services as $sercice)
                                     <li class="p-1"><a class="dropdown-item text-white"
                                             href="{{ url('/services/details/' . $sercice->id . '/' . $sercice->slug) }}">{{ $sercice->name }}</a>

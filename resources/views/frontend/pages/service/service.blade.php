@@ -37,7 +37,7 @@
                         <div class="section-devider"
                             style="background-color: #0a1d5b;height: 2px;width: 10%;margin: start;">
                         </div>
-                        <p class="pt-3 fs-6" style="text-align: justify">
+                        <p class="pt-3 fs-6 mb-1" style="text-align: justify">
                             {{ $service->header }}
                         </p>
                     </div>
