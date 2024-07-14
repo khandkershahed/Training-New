@@ -102,9 +102,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'permission' => PermissionController::class,
             'email-settings' => EmailSettingController::class,
             'faq' => FaqController::class,
+
+            // Created By Ashiquzzaman 
             'terms-and-condition' => TermsConditionController::class,
             'privacy-policy' => PrivacyPolicyController::class,
         ],
+
         ['except' => ['show']]
     );
 

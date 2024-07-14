@@ -171,7 +171,7 @@
         </script>
     @endpush
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Initialize CKEditor for each textarea with the class 'editor'
@@ -186,7 +186,7 @@
                     });
             });
         });
-    </script>
+    </script> --}}
 
 
 </x-admin-app-layout>
