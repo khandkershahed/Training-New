@@ -34,7 +34,7 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 Route::get('/services/details/{id}/{slug}', [HomeController::class, 'serviceDetails']);
 Route::get('/category/ajax/{course_section_id}', [HomeController::class, 'GetCategory']);
-Route::get('/course/ajax/{course_category_id}', [HomeController::class, 'getCourseName']);
+Route::get('/course/ajax', [HomeController::class, 'getCourseName']);
 
 Route::get('/course-get/ajax/{course_section_id}', [HomeController::class, 'GetCourse']);
 

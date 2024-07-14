@@ -61,10 +61,7 @@
                 <div class="col-lg-3">
                     <h3 class="main-color">Search a Course</h3>
 
-                    @php
-                        $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')->limit(8)->latest()->get();
-                        $courses = App\Models\Course::latest()->get();
-                    @endphp
+
 
                     <form action="" method="post">
                         <div class="row">
@@ -115,7 +112,7 @@
                                                     <td>
 
                                                         <p id="courseTitle" class="more-text">
-                                                            
+
                                                         </p>
 
                                                     </td>
@@ -141,7 +138,7 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-6">
-                                      
+
                                         <select class="form-select rounded-0" name="course_name"
                                             aria-label="Default select example" onchange="updateCourseInfo()">
                                             <option>Select Course</option>
@@ -179,7 +176,7 @@
                                 <div class="row gx-1">
                                     <div class="col-lg-6">
                                         <select class="form-select rounded-0" name="course_section_id"
-                                            aria-label="Default select example">
+                                            aria-label="Default select example" onchange="getCoursesOptions(this)">
                                             <option selected disabled>Select Type</option>
                                             @foreach ($courseSections as $courseSection)
                                                 <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
@@ -190,12 +187,12 @@
                                         <select class="form-select rounded-0" name="course_name"
                                             aria-label="Default select example" onchange="updateCourseInfo()">
                                             <option>Select Course</option>
-                                            @foreach ($courses as $course)
+                                            {{-- @foreach ($courses as $course)
                                                 <option value="{{ $course->id }}" data-type="{{ $course->course_type }}"
                                                     data-price="{{ $course->offline_price }}">
                                                     {{ $course->name }}
                                                 </option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
                                 </div>
@@ -299,8 +296,6 @@
                                 @foreach ($courseSections as $key => $courseSection)
                                     <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
                                 @endforeach
-
-
                             </select>
                         </div>
 
@@ -367,33 +362,6 @@
                 }
             });
 
-
-            // When course category selection changes
-            // $('select[name="course_id"]').on('change', function() {
-            //     alert(5);
-            //     var course_category_id = $(this).val();
-            //     alert(course_category_id);
-            //     var courseTable = $('#service_course_table');
-            //     if (course_category_id) {
-            //         $.ajax({
-            //             url: "{{ url('/course/ajax') }}/" + course_category_id,
-            //             type: "GET",
-            //             dataType: "json",
-            //             success: function(data) {
-            //                 // Clear previous table row data
-            //                 courseTable.html('');
-            //                 courseTable.html(data.table_view);
-
-            //             },
-            //             error: function(xhr, status, error) {
-            //                 console.error('Error fetching course details:', error);
-            //                 alert('Error fetching course details. Please try again.');
-            //             }
-            //         });
-            //     } else {
-            //         alert('No course category selected');
-            //     }
-            // });
         });
 
 
@@ -403,9 +371,12 @@
 
             if (course_category_id) {
                 $.ajax({
-                    url: "{{ url('/course/ajax') }}/" + course_category_id,
+                    url: "{{ url('/course/ajax') }}",
                     type: "GET",
                     dataType: "json",
+                    data: {
+                        course_category_id: course_category_id
+                    },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -414,9 +385,45 @@
                             alert(data.error);
                         } else {
                             // Clear previous table row data
-                            courseTable.find('tbody').empty();
+                            courseTable.empty();
 
-                            courseTable.find('tbody').html(data.table_view);
+                            courseTable.html(data.table_view);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', error);
+                        alert('Error: Unable to reach the server. Please try again.');
+                    }
+                });
+            } else {
+                alert('No course category selected');
+            }
+        }
+
+
+        function getCoursesOptions(selectElement) {
+            var course_category_id = $(selectElement).val();
+            var courseTable = $('#service_course_table');
+
+            if (course_category_id) {
+                $.ajax({
+                    url: "{{ url('/course/ajax') }}",
+                    type: "GET",
+                    dataType: "json",
+                    data: {
+                        course_category_id: course_category_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        if (data.hasOwnProperty('error')) {
+                            alert(data.error);
+                        } else {
+                            // Clear previous table row data
+                            courseTable.empty();
+
+                            courseTable.html(data.table_view);
                         }
                     },
                     error: function(xhr, status, error) {
