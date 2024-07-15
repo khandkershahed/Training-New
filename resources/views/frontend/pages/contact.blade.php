@@ -17,8 +17,7 @@
                     <div class="text-center pt-4">
                         <h5 class="">OUR LOCATION</h5>
                         <p class=" pt-2">
-                            PO Box 97845 Baker st. <br />
-                            567, Los Angeles, California, US.
+                            36-37, Probal Housing,Ring Road <br /> Mohammadpur, Dhaka-1207, Bangladesh
                         </p>
                     </div>
                 </div>
@@ -29,8 +28,8 @@
                     <div class="text-center pt-4">
                         <h5 class="">CONTACT US</h5>
                         <p class=" pt-2">
-                            Mobile: (+0123) 465 789 <br />
-                            Fax: (+0122) 456 789
+                            Phone:(+88) 01958025050 <br />
+                            Tel:(+88) 0255020579
                         </p>
                     </div>
                 </div>
@@ -41,8 +40,8 @@
                     <div class="text-center pt-4">
                         <h5 class="">WRITE SOME WORDS</h5>
                         <p class=" pt-2">
-                            Support247@thimpress.com <br />
-                            Info@thimpress.com
+                            inquiry@ngenitltd.com <br />
+                            training@ngenitltd.com
                         </p>
                     </div>
                 </div>
@@ -65,19 +64,19 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter Your Name" required/>
+                                        aria-describedby="emailHelp" placeholder="Enter Your Name" required />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter Your Email" required/>
+                                        aria-describedby="emailHelp" placeholder="Enter Your Email" required />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="text" name="phone" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Phone Number" required/>
+                                        aria-describedby="emailHelp" placeholder="Phone Number" required />
                                 </div>
                             </div>
                             <div class="col-lg-12">
