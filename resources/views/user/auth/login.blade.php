@@ -121,11 +121,7 @@
                                     {{-- <input type="password" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Your password" /> --}}
                                 </div>
-<<<<<<< HEAD
-                                <div class="">
-=======
                                 <div class="row justify-content-between align-items-center mt-5">
->>>>>>> 71c32dbc6c5667a152fa6d30a88c8bfc75eb310b
                                     <div class="form-check d-flex justify-content-center align-items-center mb-3">
                                         <input class="form-check-input me-2" type="checkbox" value="" id="remember_me"
                                             name="remember" />
@@ -143,7 +139,7 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="row justify-content-between align-items-center">
+                                {{-- <div class="row justify-content-between align-items-center">
                                     <div class="form-check d-flex justify-content-center align-items-center mb-3">
                                         <h6 class="d-flex justify-content-center align-items-center" style="color: #747474">
                                             {{ __('If not register yet, then click here!') }}
@@ -151,14 +147,14 @@
                                                 class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here') }}</a>
                                         </h6>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div>
                                     <button type="submit" class="btn btn-white bg-white w-100 main-color">
                                         {{ __('Log in') }}
                                     </button>
                                 </div>
                                 <div class="text-light mt-3 text-center">
-                                    Already have no an account? <a href="{{ route('course.registration') }}">Sign up </a>
+                                    If not register yet, then click here? <a href="{{ route('course.registration') }}">Sign up </a>
                                 </div>
                             </div>
                             <div class="col-lg-6 d-lg-block d-sm-none">

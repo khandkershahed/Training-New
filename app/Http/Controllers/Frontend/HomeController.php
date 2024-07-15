@@ -33,12 +33,14 @@ class HomeController extends Controller
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
 
-        return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
+        $courseSections = CourseSection::latest()->get();
 
-        return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
+        // return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
+
+        return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courseSections', 'courses'));
     }
 
-    //Learn More
+    //All Course
     public function allCourses()
     {
         $courses = Course::latest()->get();
@@ -235,10 +237,51 @@ class HomeController extends Controller
 
         return view('frontend.pages.termsCondition', compact('terms'));
     }
-    
+
     public function privacyPolicy()
     {
         $privacy = PrivacyPolicy::where('status', 'active')->first();
         return view('frontend.pages.privacyPolicy', compact('privacy'));
     }
+
+    public function searchCourse(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'course_type' => 'required',
+            'course_section_id' => 'required', // Make sure to validate 'course_section_id' as well
+            'course_category_id' => 'required',
+            'month' => 'required',
+            'year' => 'required',
+        ], [
+            'course_type.required' => 'Please select a Course Type.',
+            'course_section_id.required' => 'Please select a Course Section.',
+            'course_category_id.required' => 'Please select a Category.',
+            'month.required' => 'Please select a Month.',
+            'year.required' => 'Please select a Year.',
+        ]);
+
+        // Retrieve input values
+        $courseType = $request->input('course_type');
+        $sectionId = $request->input('course_section_id');
+        $categoryId = $request->input('course_category_id');
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        // Query courses based on the input criteria
+        $courses = Course::where('course_type', $courseType)
+            ->where('course_section_id', $sectionId)
+            ->where('course_category_id', $categoryId)
+            ->whereMonth('created_at', date('m', strtotime($month)))
+            ->whereYear('created_at', $year)
+            ->get();
+
+        // Return view with filtered courses or redirect back with errors
+        if ($courses->isEmpty()) {
+            return redirect()->back()->with('error', 'No courses found matching the criteria.');
+        }
+
+        return view('frontend.pages.course.search_course', compact('courses'));
+    }
+
 }

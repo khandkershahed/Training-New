@@ -2,7 +2,10 @@
 @section('content')
 
     <!-- Banner Section -->
-    @if (!empty(optional($homePage)->banner_one_image) || !empty(optional($homePage)->banner_two_image) || !empty(optional($homePage)->banner_three_image))
+    @if (
+        !empty(optional($homePage)->banner_one_image) ||
+            !empty(optional($homePage)->banner_two_image) ||
+            !empty(optional($homePage)->banner_three_image))
         <section>
             <div class="slider">
                 @if (!empty(optional($homePage)->banner_one_image))
@@ -33,77 +36,103 @@
     <!-- Filter Section -->
     <section class="filter_section">
         <div class="container">
-            <div class="row align-items-center">
 
-                <div class="col-lg-2">
-                    <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected>Course Type</option>
-                        <option value="offline">Offline</option>
-                        <option value="online">Online</option>
-                    </select>
+            <form action="{{ route('search.course') }}" method="post">
+                @csrf
+                <div class="row align-items-center">
+
+                    <div class="col-lg-2">
+                        <select class="form-select mb-lg-0 mb-2 @error('course_type') is-invalid @enderror" required
+                            name="course_type" aria-label="Course Type">
+                            <option selected disabled>Course Type</option>
+                            <option value="offline">Offline</option>
+                            <option value="online">Online</option>
+                        </select>
+                        @error('course_type')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-lg-2">
+                        <select class="form-select mb-lg-0 mb-2 @error('course_section_id') is-invalid @enderror" required
+                            name="course_section_id" aria-label="Course Section">
+                            <option selected disabled>Course Section</option>
+                            @foreach ($courseSections as $courseSection)
+                                <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('course_section_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-lg-2">
+                        <select class="form-select mb-lg-0 mb-2 @error('course_category_id') is-invalid @enderror" required
+                            name="course_category_id" aria-label="Selected Category">
+                            <option selected disabled>Selected Category</option>
+                            @foreach ($courseCategorys as $courseCategory)
+                                <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('course_category_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-lg-2">
+                        <select class="form-select mb-lg-0 mb-2 @error('month') is-invalid @enderror" required
+                            name="month" aria-label="Month">
+                            <option selected disabled>Month</option>
+                            <option value="january">January</option>
+                            <option value="february">February</option>
+                            <option value="march">March</option>
+                            <option value="april">April</option>
+                            <option value="may">May</option>
+                            <option value="june">June</option>
+                            <option value="july">July</option>
+                            <option value="august">August</option>
+                            <option value="september">September</option>
+                            <option value="october">October</option>
+                            <option value="november">November</option>
+                            <option value="december">December</option>
+                        </select>
+                        @error('month')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-lg-2">
+                        <select class="form-select mb-lg-0 mb-2 @error('year') is-invalid @enderror" required name="year"
+                            aria-label="Year">
+                            <option selected disabled>Year</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                        </select>
+                        @error('year')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-lg-2 text-center">
+                        <button type="submit" class="primary-btn-one">Search</button>
+                    </div>
                 </div>
+            </form>
 
-                <div class="col-lg-2">
-                    <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected disabled>Selected Category</option>
-                        @foreach ($courseCategorys as $courseCategory)
-                            <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                {{-- <div class="col-lg-2">
-                    <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected>Venue</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div> --}}
-
-                <div class="col-lg-2">
-                    <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected disabled>Month</option>
-
-                        <option value="january">January</option>
-                        <option value="february">February</option>
-                        <option value="march">March</option>
-
-                        <option value="april">April</option>
-                        <option value="may">May</option>
-                        <option value="june">June</option>
-
-                        <option value="july">July</option>
-                        <option value="august">August</option>
-                        <option value="september">September</option>
-
-                        <option value="october">October</option>
-                        <option value="november">November</option>
-                        <option value="december">December</option>
-
-
-                    </select>
-                </div>
-
-                <div class="col-lg-2">
-                    <select class="form-select mb-lg-0 mb-2" aria-label="Default select example">
-                        <option selected disabled>Year</option>
-
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-
-                        <option value="2027">2027</option>
-                        <option value="2028">2028</option>
-                        <option value="2029">2029</option>
-
-                    </select>
-                </div>
-
-                <div class="col-lg-2 text-center">
-                    <button class="primary-btn-one">Search</button>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -127,8 +156,8 @@
                 <div class="col-lg-6">
 
                     @if (!empty(optional($homePage)->row_two_image))
-                        <img class="img-fluid w-100" src="{{ asset('storage/homepage/' . optional($homePage)->row_two_image) }}"
-                            alt="" />
+                        <img class="img-fluid w-100"
+                            src="{{ asset('storage/homepage/' . optional($homePage)->row_two_image) }}" alt="" />
                     @endif
 
                 </div>
@@ -164,7 +193,8 @@
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_one_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_one_url }}"
+                                                class="">Learn
                                                 More</a>
                                         </div>
                                         <a href="{{ optional($homePage)->row_three_column_one_button_url }}"
@@ -187,7 +217,8 @@
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_two_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_two_url }}"
+                                                class="">Learn
                                                 More</a>
                                         </div>
                                         <a href="{{ optional($homePage)->row_three_column_two_button_url }}"
@@ -202,7 +233,8 @@
                             <div class="card-body service-card">
                                 <div class="text-center">
                                     <div class="py-3">
-                                        <h4 class="text-white">{{ optional($homePage)->row_three_column_three_title }}</h4>
+                                        <h4 class="text-white">{{ optional($homePage)->row_three_column_three_title }}
+                                        </h4>
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
@@ -210,7 +242,8 @@
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_three_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_three_url }}"
+                                                class="">Learn
                                                 More</a>
                                         </div>
                                         <a href="{{ optional($homePage)->row_three_column_three_button_url }}"
@@ -233,7 +266,8 @@
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_four_url }}" class="">Learn
+                                            <a href="{{ optional($homePage)->row_three_column_four_url }}"
+                                                class="">Learn
                                                 More</a>
                                         </div>
                                         <a href="{{ optional($homePage)->row_three_column_four_button_url }}"
@@ -277,7 +311,8 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_one_description }}</p>
+                            <p class="pt-3 different_icon_description">
+                                {{ optional($homePage)->row_four_column_one_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -296,7 +331,8 @@
                                 @endif
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_two_description }}</p>
+                            <p class="pt-3 different_icon_description">
+                                {{ optional($homePage)->row_four_column_two_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -317,7 +353,8 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_three_description }}</p>
+                            <p class="pt-3 different_icon_description">
+                                {{ optional($homePage)->row_four_column_three_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -338,7 +375,8 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_four_description }}</p>
+                            <p class="pt-3 different_icon_description">
+                                {{ optional($homePage)->row_four_column_four_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -359,7 +397,8 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_five_description }}</p>
+                            <p class="pt-3 different_icon_description">
+                                {{ optional($homePage)->row_four_column_five_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -380,7 +419,8 @@
 
                             </div>
 
-                            <p class="pt-3 different_icon_description">{{ optional($homePage)->row_four_column_six_description }}</p>
+                            <p class="pt-3 different_icon_description">
+                                {{ optional($homePage)->row_four_column_six_description }}</p>
                         </div>
                     </a>
                 </div>
@@ -510,8 +550,8 @@
                                 <div class="col-lg-12">
                                     <div class="course-details-img">
                                         <img class="img-fluid"
-                                             src="{{ asset('storage/course/' . optional($homePage->courseOneHomePage)->thumbnail_image) }}"
-                                             alt="Course Image">
+                                            src="{{ asset('storage/course/' . optional($homePage->courseOneHomePage)->thumbnail_image) }}"
+                                            alt="Course Image">
                                     </div>
                                     <div class="pt-3">
                                         <h6 class="fw-bold" style="color: #001430; height: 45px;">
@@ -521,7 +561,8 @@
                                         <p>
                                             {{ optional($homePage->courseOneHomePage)->short_descp }}
                                         </p>
-                                        <a href="{{ url('course' . '/' . optional($homePage->courseOneHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}" class="primary-btn-one w-100 rounded-0">
+                                        <a href="{{ url('course' . '/' . optional($homePage->courseOneHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}"
+                                            class="primary-btn-one w-100 rounded-0">
                                             Learn More
                                         </a>
                                     </div>
@@ -538,8 +579,8 @@
                                 <div class="col-lg-12">
                                     <div class="course-details-img">
                                         <img class="img-fluid"
-                                        src="{{ asset('storage/course/' . optional($homePage->courseTwoHomePage)->thumbnail_image) }}"
-                                        alt="" />
+                                            src="{{ asset('storage/course/' . optional($homePage->courseTwoHomePage)->thumbnail_image) }}"
+                                            alt="" />
                                     </div>
                                     <div class="pt-3">
                                         <h6 class="fw-bold" style="color: #001430; height: 45px;">
@@ -549,7 +590,8 @@
                                         <p>
                                             {{ optional($homePage->courseTwoHomePage)->short_descp }}
                                         </p>
-                                        <a href="{{ url('course' . '/' . optional($homePage->courseTwoHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}" class="primary-btn-one w-100 rounded-0">
+                                        <a href="{{ url('course' . '/' . optional($homePage->courseTwoHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}"
+                                            class="primary-btn-one w-100 rounded-0">
                                             Learn More
                                         </a>
                                     </div>
@@ -577,7 +619,8 @@
                                         <p>
                                             {{ optional($homePage->courseThreeHomePage)->short_descp }}
                                         </p>
-                                        <a href="{{ url('course' . '/' . optional($homePage->courseThreeHomePage)->id . '/' . optional($homePage->courseThreeHomePage)->slug) }}" class="primary-btn-one w-100 rounded-0">
+                                        <a href="{{ url('course' . '/' . optional($homePage->courseThreeHomePage)->id . '/' . optional($homePage->courseThreeHomePage)->slug) }}"
+                                            class="primary-btn-one w-100 rounded-0">
                                             Learn More
                                         </a>
                                     </div>
@@ -592,7 +635,8 @@
     </section>
 
     <!-- Row Six Explore SEction -->
-    <section style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->row_six_background_image) }});">
+    <section
+        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->row_six_background_image) }});">
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">
@@ -606,7 +650,8 @@
                     <div class="row">
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="{{ optional($homePage)->row_six_section_one_url }}" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_one_url }}"
+                                class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -621,7 +666,8 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="{{ optional($homePage)->row_six_section_two_url }}" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_two_url }}"
+                                class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -636,7 +682,8 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="{{ optional($homePage)->row_six_section_three_url }}" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_three_url }}"
+                                class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -657,7 +704,8 @@
                     <div class="row pt-3">
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="{{ optional($homePage)->row_six_section_four_url }}" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_four_url }}"
+                                class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -672,7 +720,8 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="{{ optional($homePage)->row_six_section_five_url }}" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_five_url }}"
+                                class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -687,7 +736,8 @@
                         </div>
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
-                            <a href="{{ optional($homePage)->row_six_section_six_url }}" class="text-decoration-none text-muted">
+                            <a href="{{ optional($homePage)->row_six_section_six_url }}"
+                                class="text-decoration-none text-muted">
                                 <div
                                     class="p-3 bg-white d-flex align-items-center shadow-sm explore-service justify-content-between">
                                     <div>
@@ -723,7 +773,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <a href="{{ optional($homePage)->row_seven_section_one_url ?? 'javascript:void(0)' }}" class="text-decoration-none">
+                                    <a href="{{ optional($homePage)->row_seven_section_one_url ?? 'javascript:void(0)' }}"
+                                        class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
@@ -751,7 +802,8 @@
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <a href="{{ optional($homePage)->row_seven_section_two_url ?? 'javascript:void(0)' }}" class="text-decoration-none">
+                                    <a href="{{ optional($homePage)->row_seven_section_two_url ?? 'javascript:void(0)' }}"
+                                        class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
@@ -779,7 +831,8 @@
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <a href="{{ optional($homePage)->row_seven_section_three_url ?? 'javascript:void(0)' }}" class="text-decoration-none">
+                                    <a href="{{ optional($homePage)->row_seven_section_three_url ?? 'javascript:void(0)' }}"
+                                        class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
                                             <div class="d-flex align-items-center">
                                                 <h1 class="mb-0">
@@ -1492,7 +1545,8 @@
                             <div class="card partners-logo">
                                 <a href="https://www.techfocusltd.com/" target="_blank" rel="noopener noreferrer">
                                     <div class="card-body d-flex justify-content-between align-items-center">
-                                        <img class="img-fluid" src="{{ asset('images/techfocus_logo.png') }}" alt="techfocusltd" />
+                                        <img class="img-fluid" src="{{ asset('images/techfocus_logo.png') }}"
+                                            alt="techfocusltd" />
                                     </div>
                                 </a>
                             </div>

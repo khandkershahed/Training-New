@@ -12,7 +12,7 @@ class RegistrationController extends Controller
     //All Registration
     public function AllRegistration()
     {
-        $registrations = User::with('courseName')->latest()->get();
+        $registrations = User::latest()->get();
         return view('admin.pages.registration.registration', compact('registrations'));
     }
 
