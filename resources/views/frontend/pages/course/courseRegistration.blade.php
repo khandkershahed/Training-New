@@ -1,5 +1,6 @@
 @extends('frontend.master')
 @section('content')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.2/build/css/intlTelInput.css">
     <style>
         .showcase-courses {
             width: 100%;
@@ -154,10 +155,11 @@
             </div> --}}
 
             {{-- <form action="{{ route('register' $$ 'course.registration.store') }}" method="post" enctype="multipart/form-data"> --}}
-            <form action="{{ route('course.registration.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
+
                         <div class="row">
                             <div class="col-lg-6 form-area">
                                 <div class="input-field-gap">
@@ -166,41 +168,68 @@
                                         magic of collaboration illuminate our skies.</p>
                                 </div>
 
+
+
                                 <div class="input-field-gap">
-                                    <input type="text" class="form-control form-color" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" required name="name" placeholder="Your Name Here">
+                                    <input type="text"
+                                        class="form-control form-color @error('name') is-invalid @enderror"
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" required name="name"
+                                        placeholder="Enter Name">
+                                    @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <input type="text" class="form-control form-color" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" required name="email"
-                                        placeholder="Email Id:example@example.com">
+                                    <input type="text"
+                                        class="form-control form-color @error('email') is-invalid @enderror"
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" required name="email"
+                                        placeholder="example@gmail.com">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <input type="tel" class="form-control form-color" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" required name="phone"
-                                        placeholder="Phone;Eg:017*******">
+                                    <input type="tel"
+                                        class="form-control form-color @error('phone') is-invalid @enderror" id=""
+                                        aria-describedby="phoneHelp" required name="phone" placeholder="017*******">
+                                    @error('phone')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <select class="form-select form-color" required name="course_id"
-                                        aria-label="Select Course" data-placeholder="Select Course">
+                                    <select class="form-select form-color @error('course_id') is-invalid @enderror" required
+                                        name="course_id" aria-label="Select Course" data-placeholder="Select Course">
                                         <option value="" disabled selected>Select Course</option>
                                         @foreach ($courses as $course)
                                             <option value="{{ $course->id }}">{{ $course->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('course_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-field-gap">
-                                    <textarea class="form-control form-color" name="address" rows="1" placeholder="Your Address"></textarea>
+                                    <textarea class="form-control form-color @error('address') is-invalid @enderror" name="address" rows="3"
+                                        cols="3" placeholder=" Address"></textarea>
+                                    @error('address')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
-                                <div class="input-field-gap">
-                                    <textarea class="form-control form-color" name="message" rows="2" placeholder="Note"></textarea>
-                                </div>
-                                {{--  --}}
                                 <div class="input-field-gap">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value=""
@@ -210,18 +239,30 @@
                                         </label>
                                     </div>
                                 </div>
+
                                 <div class="input-field-gap">
-                                    <input type="password" class="form-control form-color" id="passwordProtect"
-                                        aria-describedby="password" required name="password"
+                                    <input type="password"
+                                        class="form-control form-color @error('password') is-invalid @enderror"
+                                        id="passwordProtect" aria-describedby="password" required name="password"
                                         placeholder="*******" style="display: none;">
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                {{--  --}}
+
                                 <div>
                                     <button type="submit" class="btn bg-white w-100 fw-bold"
                                         style="color:#111E30">Submit</button>
                                 </div>
 
+
+                                <div class="text-light mt-3 text-center">
+                                    Already have an account? <a href="{{ route('login') }}">Sign in </a>
+                                </div>
                             </div>
+
                             <div class="col-lg-6 d-lg-block d-sm-none">
                                 <div class="sidebar-areas">
                                     <img class="form-side-area" width="516px" height="635px"
@@ -235,11 +276,31 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </form>
         </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.2/build/js/intlTelInput.min.js"></script>
+    <script>
+        const input = document.querySelector("#phone");
+        const iti = window.intlTelInput(input, {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.2/build/js/utils.js",
+        });
+
+        // Validate phone number on form submit
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            const isValid = iti.isValidNumber();
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if phone number is not valid
+                const errorMsg = document.querySelector('#phone-error');
+                errorMsg.textContent = "Please enter a valid phone number.";
+            }
+        });
+    </script>
 @endsection
 
 @push('scripts')

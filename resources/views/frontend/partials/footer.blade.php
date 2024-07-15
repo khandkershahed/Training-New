@@ -23,7 +23,7 @@
             </div>
 
             @php
-                $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')->limit(8)->latest()->get();
+                $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')->limit(3)->get();
             @endphp
 
             <div class="col-lg-3 p-4 text-start border-left-side">

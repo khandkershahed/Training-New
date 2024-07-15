@@ -4,13 +4,9 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -32,20 +28,37 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+
+            'password' => [
+                'required',
+                'string',
+                'min:8', // Minimum length of 8 characters
+                'regex:/[A-Z]/', // Must contain at least one uppercase letter
+                'regex:/[a-z]/', // Must contain at least one lowercase letter
+                'regex:/[0-9]/', // Must contain at least one number
+                'regex:/[@$!%*?&]/', // Must contain at least one special character
+            ],
+
+            'course_id' => ['required'],
+
+            'phone' => ['required', 'string', 'regex:/^01[0-9]{9}$/'], // Adjust regex as needed
+
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'course_id' => $request->course_id,
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        // event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('login')->with('success', 'Register successfully');
     }
 }
