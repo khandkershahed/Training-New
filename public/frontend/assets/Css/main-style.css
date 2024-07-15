@@ -595,7 +595,8 @@ a:hover {
 }
 
 .primary-btn-two:hover {
-    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px, rgba(0, 0, 0, 0.14) 0 4px 5px 0, rgba(0, 0, 0, 0.12) 0 1px 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px -1px,
+        rgba(0, 0, 0, 0.14) 0 4px 5px 0, rgba(0, 0, 0, 0.12) 0 1px 10px 0;
     color: white;
     background-color: #fff !important;
     font-weight: 600;
@@ -822,7 +823,7 @@ a:hover {
 }
 
 /* ==========================Some Cources Style Start============================= */
-.course-images{
+.course-images {
     height: 205px;
     width: 100%;
     object-fit: cover;
@@ -916,7 +917,7 @@ a:hover {
     text-align: center;
     object-fit: cover;
 }
-.course-description-card{
+.course-description-card {
     height: 480px;
     max-height: 100%;
 }
@@ -933,6 +934,10 @@ a:hover {
     position: absolute; /* Position the image absolutely inside its container */
     top: 0; /* Position from the top */
     left: 0; /* Position from the left */
+}
+.menu-drop:hover {
+    color: #00193d !important;
+    background-color: var(--bs-dropdown-link-hover-bg);
 }
 .showcase img {
     width: 100%;
@@ -1702,7 +1707,8 @@ a:hover {
     width: 100%;
     clear: both;
     font-weight: 400;
-    font-size: 14px;}
+    font-size: 14px;
+}
 
 .custom-accordion .custom-accordion-item {
     border-bottom: 1px solid #e5e5e5;

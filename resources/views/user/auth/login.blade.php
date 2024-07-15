@@ -76,6 +76,9 @@
     .form-check-label{
         color: #747474
     }
+    .form-control{
+        background-color: #747474;
+    }
 </style>
     <section>
         <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->course_login_banner) }}" alt="LogIn" />
@@ -104,24 +107,21 @@
                                     <a href="javascript:voide(0)" class="primary-btn-outline text-decoration-none"><i
                                             class="fa-brands fa-facebook-f pe-2"></i> Facebook Login</a>
                                 </div> --}}
-                                <div class="input-field-gap">
-                                    <x-input-label class="form-label" for="email" :value="__('Email')" />
-                                    <x-text-input id="email" class="form-control form-control-solid" type="email"
-                                        name="email" :value="old('email')" required autocomplete="username" />
+                                <div class="input-field-gap mt-4">
+                                    <x-text-input id="email" class="form-control form-control-solid rounded-0" type="email"
+                                        name="email" :value="old('email')" required autocomplete="username" placeholder="Enter User Name" />
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                     {{-- <input type="email" class="form-control" id="exampleFormControlInput1"
                                         placeholder="name@example.com" /> --}}
                                 </div>
                                 <div class="input-field-gap">
-                                    <x-input-label class="form-label" for="password" :value="__('Password')" />
-
-                                    <x-text-input id="password" class="form-control form-control-solid" type="password"
-                                        name="password" required autocomplete="new-password" />
+                                    <x-text-input id="password" class="form-control form-control-solid rounded-0" type="password"
+                                        name="password" required autocomplete="new-password"  placeholder="Enter Password"/>
                                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                     {{-- <input type="password" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Your password" /> --}}
                                 </div>
-                                <div class="row justify-content-between align-items-center">
+                                <div class="row justify-content-between align-items-center mt-5">
                                     <div class="form-check d-flex justify-content-center align-items-center mb-3">
                                         <input class="form-check-input me-2" type="checkbox" value="" id="remember_me"
                                             name="remember" />
@@ -130,7 +130,7 @@
                                         </label>
                                     </div>
                                     @if (Route::has('password.request'))
-                                        <div class="form-check d-flex justify-content-center align-items-center mb-3">
+                                        <div class="form-check d-flex justify-content-center align-items-center">
                                             <h6 class="d-flex justify-content-center align-items-center" style="color: #747474">
                                                 {{ __('Forgot your password?') }}
                                                 <a href="{{ route('password.request') }}"
@@ -138,6 +138,15 @@
                                             </h6>
                                         </div>
                                     @endif
+                                </div>
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="form-check d-flex justify-content-center align-items-center mb-3">
+                                        <h6 class="d-flex justify-content-center align-items-center" style="color: #747474">
+                                            {{ __('If not register yet, then click here!') }}
+                                            <a href="{{ route('course.registration') }}"
+                                                class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here') }}</a>
+                                        </h6>
+                                    </div>
                                 </div>
                                 <div>
                                     <button type="submit" class="btn btn-white bg-white w-100 main-color">
@@ -147,7 +156,7 @@
                             </div>
                             <div class="col-lg-6 d-lg-block d-sm-none">
                                 <div class="sidebar-areas">
-                                    <img class="form-side-area" width="516px" height="530px"
+                                    <img class="form-side-area" width="516px" height="520px"
                                         src="https://t4.ftcdn.net/jpg/04/60/71/01/360_F_460710131_YkD6NsivdyYsHupNvO3Y8MPEwxTAhORh.jpg"
                                         alt="" />
                                     <div class="sidebar-content">

@@ -65,19 +65,19 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter Your Name" />
+                                        aria-describedby="emailHelp" placeholder="Enter Your Name" required/>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter Your Email" />
+                                        aria-describedby="emailHelp" placeholder="Enter Your Email" required/>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="text" name="phone" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Phone Number" />
+                                        aria-describedby="emailHelp" placeholder="Phone Number" required/>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-center pt-5">
-                                    <a href="all-cources.html" class="primary-btn-one">Send Your Message</a>
+                                    <button type="submit" class="primary-btn-one">Send Your Message</button>
                                 </div>
                             </div>
                         </div>
