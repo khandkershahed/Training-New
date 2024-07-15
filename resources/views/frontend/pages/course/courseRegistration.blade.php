@@ -134,7 +134,8 @@
         }
     </style>
     <section class="showcase-courses">
-        <img src="{{ asset('storage/common_banner/' . optional($common_banner)->course_registration_banner) }}" alt="Picture">
+        <img src="{{ asset('storage/common_banner/' . optional($common_banner)->course_registration_banner) }}"
+            alt="Picture">
         <div class="overlay-courses">
             <h2>Course Registration</h2>
             <p>One-Stop Learning &amp; Development Solutions</p>
@@ -199,7 +200,22 @@
                                 <div class="input-field-gap">
                                     <textarea class="form-control form-color" name="message" rows="2" placeholder="Note"></textarea>
                                 </div>
-
+                                {{--  --}}
+                                <div class="input-field-gap">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label ps-2 text-light" for="flexCheckDefault">
+                                            If You Are Not Registered Yet Then Click Here.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field-gap">
+                                    <input type="password" class="form-control form-color" id="passwordProtect"
+                                        aria-describedby="password" required name="password"
+                                        placeholder="*******" style="display: none;">
+                                </div>
+                                {{--  --}}
                                 <div>
                                     <button type="submit" class="btn bg-white w-100 fw-bold"
                                         style="color:#111E30">Submit</button>
@@ -225,3 +241,20 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('flexCheckDefault');
+            const passwordProtect = document.getElementById('passwordProtect');
+
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    passwordProtect.style.display = 'block';
+                } else {
+                    passwordProtect.style.display = 'none';
+                }
+            });
+        });
+    </script>
+@endpush
