@@ -121,7 +121,7 @@
                                     {{-- <input type="password" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Your password" /> --}}
                                 </div>
-                                <div class="row justify-content-between align-items-center">
+                                <div class="">
                                     <div class="form-check d-flex justify-content-center align-items-center mb-3">
                                         <input class="form-check-input me-2" type="checkbox" value="" id="remember_me"
                                             name="remember" />
@@ -143,6 +143,9 @@
                                     <button type="submit" class="btn btn-white bg-white w-100 main-color">
                                         {{ __('Log in') }}
                                     </button>
+                                </div>
+                                <div class="text-light mt-3 text-center">
+                                    Already have no an account? <a href="{{ route('course.registration') }}">Sign up </a>
                                 </div>
                             </div>
                             <div class="col-lg-6 d-lg-block d-sm-none">

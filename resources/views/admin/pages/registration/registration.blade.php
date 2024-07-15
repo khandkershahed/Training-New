@@ -31,7 +31,6 @@
                         <th width="15%">Email</th>
                         <th width="20%">Phone</th>
                         <th width="20%">Address</th>
-                        <th width="20%">Message</th>
                         <th width="100%">Actions</th>
                     </tr>
                 </thead>
@@ -41,12 +40,12 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
-                            <td class="text-start">{{ $registration['courseName']['name']}}</td>
+                            {{-- <td class="text-start">{{ $registration['courseName']['name']}}</td> --}}
+                            <td class="text-start">{{ $registration->courseName->name }}</td>
                             <td class="text-start">{{ $registration->name }}</td>
                             <td class="text-start">{{ $registration->email }}</td>
                             <td class="text-start">{{ $registration->phone }}</td>
                             <td class="text-start">{{ $registration->address }}</td>
-                            <td class="text-start">{{ $registration->message }}</td>
                             
                             
                             <td>
