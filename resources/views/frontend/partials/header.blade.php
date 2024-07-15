@@ -575,7 +575,7 @@
                             </button>
                             <ul class="dropdown-menu py-0 rounded-0 border-0" style="background: #001430; top:57px;">
                                 @forelse ($services as $sercice)
-                                    <li class="p-1"><a class="dropdown-item text-white"
+                                    <li class="p-1"><a class="dropdown-item text-white menu-drop"
                                             href="{{ url('/services/details/' . $sercice->id . '/' . $sercice->slug) }}">{{ $sercice->name }}</a>
                                     </li>
 
