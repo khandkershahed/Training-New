@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\CommonBanner;
 use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
@@ -26,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
 
         if (Schema::hasTable('settings')) {
             View::share('setting', Setting::first());
+        }
+        Paginator::useBootstrap();
+
+        if (Schema::hasTable('common_banners')) {
+            View::share('common_banner', CommonBanner::first());
         }
         Paginator::useBootstrap();
 

@@ -1,11 +1,11 @@
-<x-admin-app-layout :title="'Terms & Condition List'">
+<x-admin-app-layout :title="'Common Banner'">
     <div class="card card-flash">
         <div class="card-header mt-6">
             <div class="card-title">
             </div>
 
             <div class="card-toolbar">
-                <a href="{{ route('admin.terms-and-condition.create') }}" class="btn btn-light-primary rounded-2">
+                <a href="{{ route('admin.common_banner.create') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -24,37 +24,36 @@
             <table class="bannersDT table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
                 <thead>
                     <tr>
-                        <th width="10%">Id</th>
-                        <th width="35%">Template</th>
-                        <th width="10%">Status</th>
-                        <th width="10%">Version</th>
-                        <th width="15%" class="text-center">Actions</th>
+                        <th>Sl No :</th>
+                        <th>Template Number</th>
+                        <th class="text-right">Action</th>
                     </tr>
                 </thead>
+                @php
+                    $words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+                @endphp
                 <tbody class="fw-bold text-gray-600">
-
-                    @if ($successes)
-                        @foreach ($successes as $key => $succes)
+                    @if (count($items) > 0)
+                        @foreach ($items as $key => $item)
                             <tr>
-                                <td>{{ ++$key }}</td>
-                                <td>
-                                    <img class="rounded-circle" src="{{ asset('storage/' . $succes->image) }}"
-                                        height="25px" width="25px" alt="">
+                                <td>{{ $item->id }}</td>
+                                <td>{{ isset($words[$key]) ? 'Template' . ' ' . Str::ucfirst($words[$key]) : 'Number out of range' }}
                                 </td>
-                                <td>{{ $succes->title }}</td>
-                                <td>{{ Str::words($succes->description, 20) }}</td>
-                                <td>
-                                    <a href="{{ route('admin.success.edit', [$succes->id]) }}" class="text-primary">
-                                        <i class="fa-solid fa-pen-to-square me-2 p-1 rounded-circle text-primary"></i>
+                                <td class="">
+                                    <a href="{{ route('admin.common_banner.edit', $item->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
                                     </a>
-                                    <a href="{{ route('admin.success.destroy', [$succes->id]) }}"
-                                        class="text-danger delete">
-                                        <i class="fa-solid fa-trash p-1 rounded-circle text-danger"></i>
+                                    <a href="{{ route('admin.common_banner.destroy', $item->id) }}"
+                                        class="text-danger delete mx-2">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
                                     </a>
-
                                 </td>
                             </tr>
                         @endforeach
+                    @else
+                        <tr>
+                            <td class="text-center" colspan="3">No Data Found</td>
+                        </tr>
                     @endif
                 </tbody>
             </table>

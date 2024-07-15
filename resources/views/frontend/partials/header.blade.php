@@ -102,7 +102,7 @@
                             <i class="fa-solid fa-layer-group fa-fw"></i>
                         </button>
 
-                        {{-- <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 border-0 courses-tabs-header"
+                        <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 border-0 courses-tabs-header"
                             style="border-top: 1px solid #0a1d5b;">
                             @php
                                 $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')
@@ -194,8 +194,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </ul> --}}
-                        <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 py-0" style="border-top: 1px solid #0a1d5b;"
+                        </ul>
+                        {{-- <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 py-0" style="border-top: 1px solid #0a1d5b;"
                             aria-labelledby="navbarScrollingDropdown">
                             <div style="background: #eee">
                                 <div>
@@ -369,7 +369,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </ul>
+                        </ul> --}}
 
                     </div>
                 </div>

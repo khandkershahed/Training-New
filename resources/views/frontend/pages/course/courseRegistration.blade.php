@@ -134,7 +134,7 @@
         }
     </style>
     <section class="showcase-courses">
-        <img src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/course-banner.jpg?id=8892" alt="Picture">
+        <img src="{{ asset('storage/common_banner/' . optional($common_banner)->course_registration_banner) }}" alt="Picture">
         <div class="overlay-courses">
             <h2>Course Registration</h2>
             <p>One-Stop Learning &amp; Development Solutions</p>
@@ -152,6 +152,7 @@
                 </div>
             </div> --}}
 
+            {{-- <form action="{{ route('register' $$ 'course.registration.store') }}" method="post" enctype="multipart/form-data"> --}}
             <form action="{{ route('course.registration.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">

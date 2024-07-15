@@ -78,7 +78,7 @@
     }
 </style>
     <section>
-        <img class="img-fluid" src="{{ asset('frontend/assets/img/login.jpg') }}" alt="LogIn" />
+        <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->course_login_banner) }}" alt="LogIn" />
     </section>
     <section style="background-color: #051225">
         <div class="container py-lg-5 py-3">
@@ -134,7 +134,7 @@
                                             <h6 class="d-flex justify-content-center align-items-center" style="color: #747474">
                                                 {{ __('Forgot your password?') }}
                                                 <a href="{{ route('password.request') }}"
-                                                    class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here...') }}</a>
+                                                    class="btn btn-sm btn-link text-gray fw-bold fs-6">{{ __('Click Here') }}</a>
                                             </h6>
                                         </div>
                                     @endif

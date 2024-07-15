@@ -2,7 +2,7 @@
 @section('content')
     <section class="">
         <div class="showcase">
-            <img class="img-fluid" src="./assets/img/all-courses-banner.jpg" alt="Picture" />
+            <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->term_banner) }}" alt="Picture" />
         </div>
     </section>
     <section>
@@ -27,7 +27,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12">
-                    {{-- {!!  !!} --}}
+                    {!! optional($terms)->content !!}
                 </div>
             </div>
         </div>

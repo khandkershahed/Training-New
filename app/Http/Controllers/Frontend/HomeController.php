@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Faq;
-use App\Models\Course;
+use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
-use App\Models\Service;
-use App\Models\Setting;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\CourseQuery;
-use Illuminate\Http\Request;
-use App\Models\CourseSection;
+use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\CourseCurriculum;
-use App\Http\Controllers\Controller;
 use App\Models\CourseOutline;
 use App\Models\CourseProject;
+use App\Models\CourseQuery;
 use App\Models\CourseSchedule;
+use App\Models\CourseSection;
+use App\Models\Faq;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\PrivacyPolicy;
+use App\Models\Service;
+use App\Models\Setting;
+use App\Models\TermsCondition;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -58,6 +60,14 @@ class HomeController extends Controller
         $courseProjects = CourseProject::where('course_id', $coursedetail->id)->get();
 
         return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams', 'courseSchedules', 'courseOutlines', 'courseProjects'));
+    }
+
+    public function courseServiceDetails($id, $slug)
+    {
+        $courseServicedetail = CourseSection::find($id);
+
+        $courses = Course::where('course_section_id', $courseServicedetail->id)->get();
+        return view('frontend.pages.service.allCoursesService', compact('courses'));
     }
 
     public function courseRegistration()
@@ -164,6 +174,7 @@ class HomeController extends Controller
         $data['storys'] = NewsTrend::inRandomOrder()->limit(7)->get();
         return view('frontend.pages.tech.techglossy_details', $data);
     }
+
     public function StoryDetails($id)
     {
 
@@ -171,18 +182,12 @@ class HomeController extends Controller
         $data['storys'] = NewsTrend::inRandomOrder()->limit(4)->get();
         return view('frontend.pages.story.story_details', $data);
     }
+
     public function faq()
     {
         $data['faqs'] = Faq::orderBy('order', 'ASC')->get();
         return view('frontend.pages.faq', $data);
     }
-
-    //Service
-    // public function service()
-    // {
-    //     $service = Service::first();
-    //     return view('frontend.pages.service.service', compact('service'));
-    // }
 
     public function serviceDetails($id, $slug)
     {
@@ -226,12 +231,14 @@ class HomeController extends Controller
 
     public function termsCondition()
     {
-        $data['terms'] = Service::first();
-        return view('frontend.pages.termsCondition', $data);
+        $terms = TermsCondition::where('status', 'active')->first();
+
+        return view('frontend.pages.termsCondition', compact('terms'));
     }
+    
     public function privacyPolicy()
     {
-        $data['privacy'] = Service::first();
-        return view('frontend.pages.privacyPolicy', $data);
+        $privacy = PrivacyPolicy::where('status', 'active')->first();
+        return view('frontend.pages.privacyPolicy', compact('privacy'));
     }
 }

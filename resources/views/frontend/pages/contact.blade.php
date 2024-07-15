@@ -1,7 +1,10 @@
 @extends('frontend.master')
 @section('content')
     <section>
-        <img class="img-fluid" src="{{ asset('frontend/assets/img/contact_banner.jpg') }}" alt="LogIn" />
+
+        <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->contact_banner) }}"
+            alt="" />
+
     </section>
 
     <section class="" style="background-color: #eee;">
