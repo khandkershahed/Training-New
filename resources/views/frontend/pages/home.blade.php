@@ -510,8 +510,8 @@
                                 <div class="col-lg-12">
                                     <div class="course-details-img">
                                         <img class="img-fluid"
-                                        src="{{ asset('storage/course/' . optional($homePage->courseOneHomePage)->thumbnail_image) }}"
-                                        alt="" />
+                                             src="{{ asset('storage/course/' . optional($homePage->courseOneHomePage)->thumbnail_image) }}"
+                                             alt="Course Image">
                                     </div>
                                     <div class="pt-3">
                                         <h6 class="fw-bold" style="color: #001430; height: 45px;">

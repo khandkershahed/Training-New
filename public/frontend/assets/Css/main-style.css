@@ -101,7 +101,6 @@ a {
 }
 a:hover {
     text-decoration: none;
-    color: var(--primary-color) !important;
 }
 
 /* Default styles for navbar links */
@@ -921,10 +920,19 @@ a:hover {
     height: 480px;
     max-height: 100%;
 }
-.course-details-img img{
-    height: 250px;
-    width: 100%;
-    object-fit: cover;
+.course-details-img {
+    height: 250px; /* Fixed height for the image container */
+    overflow: hidden; /* Hide any overflow from the image */
+    position: relative; /* Ensure proper positioning for absolutely positioned elements */
+}
+
+.course-details-img img {
+    width: 100%; /* Ensure the image takes full width of its container */
+    height: auto; /* Allow the image height to adjust automatically */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    position: absolute; /* Position the image absolutely inside its container */
+    top: 0; /* Position from the top */
+    left: 0; /* Position from the left */
 }
 .showcase img {
     width: 100%;

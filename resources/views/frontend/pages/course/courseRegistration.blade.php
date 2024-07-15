@@ -207,7 +207,7 @@
                             </div>
                             <div class="col-lg-6 d-lg-block d-sm-none">
                                 <div class="sidebar-areas">
-                                    <img class="form-side-area" width="516px" height="580px"
+                                    <img class="form-side-area" width="516px" height="595px"
                                         src="{{ asset('frontend/assets/img/registration.jpg') }}" alt="">
                                     <div class="sidebar-content">
                                         <p>"Skill development is not just about acquiring knowledge;
