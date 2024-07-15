@@ -6,8 +6,11 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-0 text-white">
                             <span><span class="fw-bold text-white">Hotline: </span>
-                                <a href="https://wa.me/{{ optional($setting)->whatsapp }}" target="_blank">
+                                <a href="https://wa.me/{{ optional($setting)->whatsapp }}" class="text-white ps-2" target="_blank">
                                     {{ optional($setting)->whatsapp }}
+                                </a> |
+                                <a href="mailto:{{ optional($setting)->primary_email }}" class="text-white" target="_blank">
+                                    {{ optional($setting)->primary_email }}
                                 </a>
                             </span>
                         </p>
@@ -39,7 +42,8 @@
                                     <a href="{{ route('login') }}" class="btn signin mb-2 rounded-0">Log In</a>
                                     <div class="text-muted">
                                         First time here?
-                                        <a href="{{ route('course.registration') }}" class="main-color">Sign Up</a>
+                                        <a href="{{ route('course.registration') }}" class="main-color"
+                                            style="text-decoration: underline">Sign Up</a>
                                     </div>
                                     <hr class="text-muted">
                                     <ul class="account p-0 text-muted text-start" style="list-style-type: none">
@@ -49,28 +53,24 @@
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope m-2" aria-hidden="true"></i>
-                                            <a href="" class="">My Subscriptions</a>
+                                            <a href="" class="">My Training</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-star m-2" aria-hidden="true"></i>
-                                            <a href="" class="">My Favorites</a>
+                                            <a href="" class="">Favorites Courses</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-list m-2" aria-hidden="true"></i>
-                                            <a href="" class="">My Requests</a>
+                                            <a href="" class="">Notification</a>
                                         </li>
                                     </ul>
-                                    {{-- <hr class="text-muted">
-                                    <ul class="account p-0 text-muted text-start" style="font-size: 7px; list-style-type: none">
+                                    <hr class="text-muted">
+                                    <ul class="account p-0 text-muted text-start mb-0" style="list-style-type: none">
                                         <li>
-                                            Sign in to your manufacturer account
-                                            <a target="_blank" class="main-color">Manufacturer account</a>
+                                            <i class="fa fa-user m-2" aria-hidden="true"></i>
+                                            <a href="" class="">Jobs & Offers</a>
                                         </li>
-                                        <li>
-                                            Sign in to your distributor account
-                                            <a target="_blank" class="main-color">Distributor account</a>
-                                        </li>
-                                    </ul> --}}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -120,8 +120,9 @@
                                                     <button
                                                         class="nav-link cources-category-top-link text-white {{ $key == 0 ? 'active' : '' }}"
                                                         id="tab-{{ $courseSection->id }}" data-bs-toggle="tab"
-                                                        data-bs-target="#section{{ $courseSection->id }}" type="button"
-                                                        role="tab" aria-controls="section{{ $courseSection->id }}"
+                                                        data-bs-target="#section{{ $courseSection->id }}"
+                                                        type="button" role="tab"
+                                                        aria-controls="section{{ $courseSection->id }}"
                                                         aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
                                                         {{ $courseSection->name }}
                                                     </button>
@@ -580,7 +581,8 @@
                                     </li>
 
                                 @empty
-                                    <li class="p-1"><a class="dropdown-item text-white" href="javascript:;">No Service Avaiable/a></li>
+                                    <li class="p-1"><a class="dropdown-item text-white" href="javascript:;">No
+                                            Service Avaiable/a></li>
                                 @endforelse
                             </ul>
                         </div>
