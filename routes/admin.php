@@ -185,10 +185,10 @@ Route::controller(CourseController::class)->group(function () {
     Route::get('/category/ajax/{course_section_id}', 'GetCategory');
 });
 
-// Terms & Condition Status 
+// Terms & Condition Status
 Route::get('/terms-and-condition/{id}/inactive', [TermsConditionController::class, 'inactive'])->name('terms-and-condition.inactive');
 Route::get('/terms-and-condition/{id}/active', [TermsConditionController::class, 'active'])->name('terms-and-condition.active');
 
-// Privacy & Policy 
+// Privacy & Policy
 Route::get('/privacy/{id}/inactive', [PrivacyPolicyController::class, 'inactive'])->name('privacy-policy.inactive');
 Route::get('/privacy/{id}/active', [PrivacyPolicyController::class, 'active'])->name('privacy-policy.active');

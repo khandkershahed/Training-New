@@ -18,7 +18,7 @@ class CourseScheduleController extends Controller
     public function create()
     {
         $courses = Course::latest()->get();
-        return view('admin.course_schedule.create', compact('courses'));
+        return view('admin.pages.course_schedule.create', compact('courses'));
     }
 
     public function store(Request $request)

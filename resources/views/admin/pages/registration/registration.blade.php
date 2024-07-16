@@ -40,8 +40,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
-                            {{-- <td class="text-start">{{ $registration['courseName']['name']}}</td> --}}
-                            <td class="text-start">{{ $registration->courseName->name }}</td>
+                            <td class="text-start">{{ $registration->course_id }}</td>
                             <td class="text-start">{{ $registration->name }}</td>
                             <td class="text-start">{{ $registration->email }}</td>
                             <td class="text-start">{{ $registration->phone }}</td>

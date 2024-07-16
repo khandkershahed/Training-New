@@ -39,8 +39,5 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function courseName()
-    {
-        return $this->hasOne(Course::class,'id','course_id');
-    }
+    
 }

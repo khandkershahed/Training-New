@@ -49,3 +49,6 @@ Route::controller(CourseEnrollController::class)->group(function () {
     Route::post('/add-to-enroll/{course_id}', 'AddToEnroll');
     Route::post('/add-to-enroll-online', 'AddToEnrollOnline');
 });
+
+//Course Search By Home Page
+Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('search.course');

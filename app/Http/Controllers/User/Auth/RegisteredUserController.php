@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\User;
+use App\Models\UserCourse;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -46,6 +49,8 @@ class RegisteredUserController extends Controller
 
         ]);
 
+        $course = Course::find($request->course_id);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -53,6 +58,15 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'course_id' => $request->course_id,
             'password' => Hash::make($request->password),
+        ]);
+
+        UserCourse::create([
+            'user_id' => $user->id,
+            'course_id' => $request->course_id,
+            'enrollment_date' => Carbon::now(),
+            'payment_status' => 'unpaid',
+            'payment_amount' => $course->price,
+            'created_at' => Carbon::now(),
         ]);
 
         // event(new Registered($user));
