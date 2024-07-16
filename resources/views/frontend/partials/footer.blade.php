@@ -25,7 +25,7 @@
             @endphp
 
             <div class="col-lg-3 p-4 text-start border-left-side">
-                <ul class="" style="list-style-type: none">
+                <ul class="ms-0 ps-0" style="list-style-type: none">
 
                     @foreach ($courseSections as $courseSection)
                         <li class="pt-2">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="col-lg-4 p-4 d-flex justify-content-between align-items-center social-area">
-                <ul class="" style="list-style-type: none">
+                <ul class="ms-0 ps-0" style="list-style-type: none">
                     <li class="pt-2">
                         <a class="text-white text-decoration-none" href="javascript:void(0)" style="font-size: 15px;">
                             Our Service</a>
