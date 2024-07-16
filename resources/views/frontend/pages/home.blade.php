@@ -145,7 +145,7 @@
                         {{ optional($homePage)->row_two_title }}
                     </h2>
 
-                    <p class="text-justify">
+                    <p class="text-justify py-3">
                         {{ optional($homePage)->row_two_description }}
                     </p>
 
@@ -285,7 +285,7 @@
 
     <!-- Row Four Why Diffrent -->
     <section>
-        <div class="container py-5">
+        <div class="container py-5 mt-3">
             <div class="row">
                 <div class="text-center px-5">
                     <h3 class="section-title">{{ optional($homePage)->row_four_title }}</h3>
@@ -533,10 +533,10 @@
                 </div>
 
             </div> --}}
-            <div class="row">
+            <div class="row mb-5 pb-2">
 
                 <div class="col-lg-4">
-                    <div class="card shadow-sm border-0">
+                    <div class="card border-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
                         <div class="card-body course-description-card">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
@@ -565,7 +565,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="card shadow-sm border-0">
+                    <div class="card border-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
                         <div class="card-body course-description-card">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
@@ -594,7 +594,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="card shadow-sm border-0">
+                    <div class="card border-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
                         <div class="card-body course-description-card">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
