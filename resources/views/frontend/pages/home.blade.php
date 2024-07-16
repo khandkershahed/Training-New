@@ -172,7 +172,7 @@
             <div class="row py-5">
                 <div class="text-center px-5">
                     <h3 class="section-title text-white">{{ optional($homePage)->row_three_title }}</h3>
-                    <div class="divider"></div>
+                    <div class="divider-extra"></div>
                     <p class="text-white py-0 px-0 px-lg-5 py-lg-3">
                         {!! optional($homePage)->row_three_description !!}
                     </p>
@@ -285,16 +285,15 @@
 
     <!-- Row Four Why Diffrent -->
     <section>
-        <div class="container">
-            <div class="row py-5">
+        <div class="container py-5">
+            <div class="row">
                 <div class="text-center px-5">
                     <h3 class="section-title">{{ optional($homePage)->row_four_title }}</h3>
-                    <div class="divider"></div>
+                    <div class="divider-extra"></div>
                     <p class="text-muted py-3 px-5">
                         {{ optional($homePage)->row_four_header }}
                     </p>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_one_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -316,7 +315,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_two_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -336,7 +334,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_three_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -358,7 +355,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_four_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -380,7 +376,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_five_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -402,7 +397,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_six_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -424,9 +418,7 @@
                         </div>
                     </a>
                 </div>
-
-
-                <div class="col-lg-12 text-center pt-5">
+                <div class="col-lg-12 text-center py-5">
                     <a href="{{ optional($homePage)->row_four_button_url }}"
                         class="primary-btn-one">{{ optional($homePage)->row_four_button_name }}</a>
                 </div>
@@ -541,7 +533,7 @@
                 </div>
 
             </div> --}}
-            <div class="row mb-5">
+            <div class="row">
 
                 <div class="col-lg-4">
                     <div class="card shadow-sm border-0">
@@ -635,17 +627,17 @@
     </section>
 
     <!-- Row Six Explore SEction -->
-    <section
-        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->row_six_background_image) }});background-repeat: no-repeat;">
-        <div class="container">
-            <div class="row py-5">
-                <div class="text-center px-5">
-                    <h3 class="section-title text-white">{{ optional($homePage)->row_six_title }}</h3>
-                    <div class="divider"></div>
-                    <p class="text-white py-3 px-5">
-                        {{ optional($homePage)->row_six_header }}
-                    </p>
-                </div>
+    <section class="explore-bg"
+        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->row_six_background_image) }});">
+        <div class="container explore-section">
+            <div class="text-center pb-5">
+                <h3 class="section-title text-white">{{ optional($homePage)->row_six_title }}</h3>
+                <div class="divider-extra"></div>
+                <p class="text-white">
+                    {{ optional($homePage)->row_six_header }}
+                </p>
+            </div>
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
 
@@ -696,11 +688,7 @@
                                 </div>
                             </a>
                         </div>
-
-
-
                     </div>
-
                     <div class="row pt-3">
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
@@ -753,7 +741,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-12 text-center pt-5">
+                <div class="text-center pt-5">
                     <a href="{{ optional($homePage)->row_six_button_url }}" class="primary-btn-two">
                         {{ optional($homePage)->row_six_button_name }} </a>
                 </div>

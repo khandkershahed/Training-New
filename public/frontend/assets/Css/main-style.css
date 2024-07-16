@@ -532,6 +532,15 @@ a:hover {
     opacity: 1;
 }
 
+.explore-section {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+.explore-bg {
+    height: 510px;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
 @media (min-width: 768px) {
     .different_icon_column {
         height: 9rem;
@@ -705,7 +714,14 @@ a:hover {
     width: 10%;
     margin: auto;
 }
-.sape-icons img{
+.divider-extra {
+    background-color: #eeeeee;
+    border-bottom: 4px solid #eeeeee;
+    /* width: 30px; */
+    width: 3%;
+    margin: auto;
+}
+.sape-icons img {
     object-fit: contain;
 }
 
@@ -848,9 +864,9 @@ a:hover {
 
 /* ==========================Some Cources Style Start============================= */
 .course-images {
-    height: 205px;
+    height: 230px !important;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 .cource-badge {
     background-color: #eaecf0;
@@ -942,13 +958,14 @@ a:hover {
     object-fit: cover;
 }
 .course-description-card {
-    height: 480px;
+    height: 525px;
     max-height: 100%;
 }
 .course-details-img {
-    /* height: 250px;  */
-    overflow: hidden; /* Hide any overflow from the image */
-    position: relative; /* Ensure proper positioning for absolutely positioned elements */
+    height: 290px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 7px;
 }
 
 .course-details-img img {
@@ -2183,7 +2200,7 @@ a:hover {
     color: #108dc7;
     background: #fff;
 }
-.home-select{
+.home-select {
     font-size: 14px;
     padding: 10px;
 }
