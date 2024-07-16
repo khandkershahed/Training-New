@@ -922,7 +922,7 @@ a:hover {
     max-height: 100%;
 }
 .course-details-img {
-    height: 250px; /* Fixed height for the image container */
+    /* height: 250px;  */
     overflow: hidden; /* Hide any overflow from the image */
     position: relative; /* Ensure proper positioning for absolutely positioned elements */
 }
