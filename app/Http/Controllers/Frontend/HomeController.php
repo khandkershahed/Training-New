@@ -249,7 +249,7 @@ class HomeController extends Controller
         // Validate the request
         $request->validate([
             'course_type' => 'required',
-            'course_section_id' => 'required', // Make sure to validate 'course_section_id' as well
+            'course_section_id' => 'required',
             'course_category_id' => 'required',
             'month' => 'required',
             'year' => 'required',
