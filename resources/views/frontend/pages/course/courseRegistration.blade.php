@@ -37,9 +37,10 @@
 
         .effect-1 {
             border: 0;
-            padding: 7px 0;
+            padding: 12px 15px;
             border-bottom: 1px solid #ccc;
             position: relative;
+            color: #ccc;
         }
 
         .effect-1~.focus-border {
@@ -229,6 +230,11 @@
             -webkit-animation: dothatopcheck-19 0.4s ease 0s forwards;
             animation: dothatopcheck-19 0.4s ease 0s forwards;
         }
+
+        option {
+            padding: 10px;
+            /* This might not work in all browsers */
+        }
     </style>
     <section class="section-background">
         <div class="container py-5">
@@ -236,7 +242,7 @@
                 <div class="col-lg-12">
                     <h1 class="text-white text-center pb-5">Course Registration</h1>
                 </div>
-                <div class="col-lg-8 offset-lg-2">
+                <div class="col-lg-6 offset-lg-3">
                     <div class="card border-0 form-card">
                         <div class="card-body p-5" style="background: #001c4182;">
                             <form action="">
@@ -247,102 +253,119 @@
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput4" class="form-label">Name</small>
-                                                    <input class="effect-1" type="text" placeholder="Robert Bruno">
+                                                    <input class="effect-1" type="text" name="user_name"
+                                                        placeholder="Robert Bruno">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput5" class="form-label">Email</small>
-                                                    <input class="effect-1" type="text" placeholder="yourmail@gmail.com">
+                                                    <input class="effect-1" type="text" name="user_email"
+                                                        placeholder="yourmail@gmail.com">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput6" class="form-label">Phone</small>
-                                                    <input class="effect-1" type="text" placeholder="(CC) digit">
-                                                    <span class="focus-border"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="d-flex">
-                                                    <div class="course_registration">
-                                                        <input type="checkbox" id="cbtest-19" />
-                                                        <label for="cbtest-19" class="check-box"></label>
+                                            <div class="col-lg-12">
+                                                <div class="row align-items-center">
+                                                    <div class="col-8">
+                                                        <div class="position-relative ps-0 mb-3">
+                                                            <small for="exampleFormControlInput6" class="form-label">Phone</small>
+                                                            <input class="effect-1" type="text" name="user_phone"
+                                                                placeholder="(CC) digit">
+                                                            <span class="focus-border"></span>
+                                                        </div>
                                                     </div>
-                                                    <p class="ps-3">Call Me</p>
+                                                    <div class="col-4">
+                                                        <div class="d-flex">
+                                                            <div class="course_registration pt-3">
+                                                                <input type="checkbox" name="call_me" id="cbtest-19" />
+                                                                <label for="cbtest-19" class="check-box"></label>
+                                                            </div>
+                                                            <p class="ps-3 text-white pt-3">Call Me</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h4 class="text-white pb-3">Course Info</h4>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput1" class="form-label">Select
                                                         Course Category</small>
-                                                    <select class="effect-1" name="course" id="course">
-                                                        <option value="" disabled selected>Choose Category</option>
-                                                        <option value="course1">Course 1</option>
-                                                        <option value="course2">Course 2</option>
-                                                        <option value="course3">Course 3</option>
-                                                    </select>
-                                                    <span class="focus-border"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput2" class="form-label">Select
-                                                        Level</small>
-                                                    <select class="effect-1" name="level" id="level">
-                                                        <option value="" disabled selected>Choose your level</option>
-                                                        <option value="beginner">Beginner</option>
-                                                        <option value="intermediate">Intermediate</option>
-                                                        <option value="advanced">Advanced</option>
-                                                    </select>
-                                                    <span class="focus-border"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput3" class="form-label">Select
-                                                        Timing</small>
-                                                    <select class="effect-1" name="timing" id="timing">
-                                                        <option value="" disabled selected>Choose your timing</option>
-                                                        <option value="morning">Morning</option>
-                                                        <option value="afternoon">Afternoon</option>
-                                                        <option value="evening">Evening</option>
-                                                    </select>
-                                                    <span class="focus-border"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput3" class="form-label">Select
-                                                        Timing</small>
-                                                    <select class="effect-1" name="timing" id="timing">
-                                                        <option value="" disabled selected>Choose your timing</option>
-                                                        <option value="morning">Morning</option>
-                                                        <option value="afternoon">Afternoon</option>
-                                                        <option value="evening">Evening</option>
-                                                    </select>
-                                                    <span class="focus-border"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput3" class="form-label">Select
-                                                        Timing</small>
-                                                    <select class="effect-1" name="timing" id="timing">
-                                                        <option value="" disabled selected>Choose your timing
+                                                    <select class="effect-1" name="course_category" id="course">
+                                                        <option value="" disabled selected>Choose Course Category
                                                         </option>
-                                                        <option value="morning">Morning</option>
-                                                        <option value="afternoon">Afternoon</option>
-                                                        <option value="evening">Evening</option>
+                                                        <option value="">Diploma Courses</option>
+                                                        <option value="">Industrial Courses</option>
+                                                        <option value="">Professional Courses</option>
                                                     </select>
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput2" class="form-label">Select Sub
+                                                        Category</small>
+                                                    <select class="effect-1" name="sub_category" id="level">
+                                                        <option value="" disabled selected>Choose Category</option>
+                                                        <option value="">Sub One</option>
+                                                        <option value="">Sub Two</option>
+                                                        <option value="">Sub Three</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                        Course Venue</small>
+                                                    <select class="effect-1" name="course_venue" id="timing">
+                                                        <option value="" disabled selected>Choose Course Venue
+                                                        </option>
+                                                        <option value="">Onsite</option>
+                                                        <option value="">Online</option>
+                                                        <option value="">Offline</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                        Venue Location</small>
+                                                    <select class="effect-1" name="venue_location" id="timing">
+                                                        <option value="" disabled selected>Choose Venue Location
+                                                        </option>
+                                                        <option value="">Portugal</option>
+                                                        <option value="">Bangladesh</option>
+                                                        <option value="">India</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput3" class="form-label">Select Date &
+                                                        Time</small>
+                                                    <select class="effect-1" name="timing" id="timing">
+                                                        <option value="" disabled selected>Choose Date & Time
+                                                        </option>
+                                                        <option value="">Morning</option>
+                                                        <option value="">Afternoon</option>
+                                                        <option value="">Evening</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-center pt-2">
+                                            <button type="submit" href="https://training.ngengroup.org/all-courses" class="primary-btn-two w-100" >
+                                                Enroled & Checkout Now <i class="fa-solid fa-check ps-2"></i></button>
                                         </div>
                                     </div>
                                 </div>
