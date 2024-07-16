@@ -3,9 +3,7 @@
         <div class="row text-white align-items-center py-3">
             <div class="col-lg-3 p-4 text-lg-start text-center border-left-side">
                 <div>
-                    {{-- <a class="text-decoration-none text-white"
-                            href="javascript:void(0)">Learn IT , Lead IT</a> --}}
-                    <p class="p-0 m-0 text-white fs-3 fw-bold" style="letter-spacing: 2.5px">Learn IT , Lead IT</p>
+                    <p class="p-0 m-0 text-white fs-3 fw-bold"><span class="pe-2">Learn IT,</span>Lead IT</p>
                 </div>
             </div>
             <div class="col-lg-2 p-4 text-start border-left-side">
@@ -32,7 +30,8 @@
                     @foreach ($courseSections as $courseSection)
                         <li class="pt-2">
 
-                            <a class="text-white text-decoration-none" href="{{ url('course-service' . '/' . $courseSection->id . '/' . $courseSection->slug) }}">
+                            <a class="text-white text-decoration-none"
+                                href="{{ url('course-service' . '/' . $courseSection->id . '/' . $courseSection->slug) }}">
                                 {{ $courseSection->name }}</a>
 
                         </li>
@@ -44,14 +43,14 @@
             <div class="col-lg-4 p-4 d-flex justify-content-between align-items-center social-area">
                 <ul class="" style="list-style-type: none">
                     <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="javascript:void(0)">
+                        <a class="text-white text-decoration-none" href="javascript:void(0)" style="font-size: 15px;">
                             Our Service</a>
                     </li>
                     <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="{{ route('about') }}">About Us</a>
+                        <a class="text-white text-decoration-none" href="{{ route('about') }}" style="font-size: 15px;">About Us</a>
                     </li>
                     <li class="pt-2">
-                        <a class="text-white text-decoration-none" href="{{ route('contact') }}">
+                        <a class="text-white text-decoration-none" href="{{ route('contact') }}" style="font-size: 15px;">
                             Contact Us</a>
                     </li>
                 </ul>
@@ -91,15 +90,15 @@
                         </a>
                     </div> --}}
                     <div class="d-flex align-items-center justify-content-between">
-                        <small class="mb-0 text-white">
+                        <small class="mb-0 text-white" style="font-size: 13px">
                             © Copyright 2024 by NGEN IT LTD..
                         </small>
                         <div class="ps-5">
                             {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}
-                            <a href="{{ route('privacyPolicy') }}"
+                            <a href="{{ route('privacyPolicy') }}" style="font-size: 15px"
                                 class="text-white text-decoration-none pe-2"><small>Privacy
                                     Policy</small></a>
-                            <a href="{{ route('termsCondition') }}"
+                            <a href="{{ route('termsCondition') }}" style="font-size: 15px"
                                 class="text-white text-decoration-none"><small>Terms
                                     &
                                     Condition</small></a>

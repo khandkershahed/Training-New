@@ -99,7 +99,7 @@
 
                         <button class="category-btn-header dropdown-toggle text-white" type="button"
                             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                            <i class="fa-solid fa-layer-group fa-fw"></i>
+                            <i class="fa-solid fa-list fa-fw"></i>
                         </button>
 
                         <ul class="dropdown-menu w-100 m-0 rounded-0 p-0 border-0 courses-tabs-header"
