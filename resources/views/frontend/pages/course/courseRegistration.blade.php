@@ -1,321 +1,382 @@
 @extends('frontend.master')
 @section('content')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.2/build/css/intlTelInput.css">
     <style>
-        .showcase-courses {
-            width: 100%;
-            height: 300px;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
-
-        .form-select option {
-            background-color: #051225;
-            border: none !important;
-        }
-
-        .showcase-courses img {
-            width: 100%;
+        html,
+        body {
+            margin: 0;
+            padding: 0;
             height: 100%;
-            position: absolute;
-            object-fit: cover;
-            /* Make the image cover the entire area */
-            top: 0;
-            left: 0;
-            z-index: 99;
         }
 
-        .showcase-courses .overlay-courses {
-            width: 100%;
-            height: 300px;
-            background-color: rgba(0, 35, 82, 0.7);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 99;
-        }
-
-        .showcase-courses h2 {
-            margin-top: 100px;
-            font-size: 3em;
-        }
-
-        .showcase-courses p {
-            margin-top: 8px;
-            font-size: 1.2em;
-        }
-
-        .page_title {
-            font-size: 50px;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .form-title {
-            font-size: 30px;
-            font-weight: 600;
-        }
-
-        .form-desc {
-            font-size: 16px;
-        }
-
-        .form-area {
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #686868;
-        }
-
-        .form-color {
-            font-size: 15px;
-            font-weight: 400;
-            background-color: #111E30 !important;
-            padding-bottom: 13px !important;
-            border-radius: 5px;
-            border: 1px solid #FFFFFF33;
-            color: #747474;
-        }
-
-        .form-color:focus {
-            font-size: 15px;
-            font-weight: 400;
-            background-color: #111E30 !important;
-            padding-bottom: 13px !important;
-            border-radius: 5px;
-            color: white;
-            border: 1px solid #FFFFFF33;
-        }
-
-        .input-field-gap {
-            margin-bottom: 14px;
-        }
-
-        .form-select:focus {
-            box-shadow: none;
-            outline: none;
-        }
-
-        .form-side-area {
-            border-radius: 12px;
-        }
-
-        .sidebar-content {
-            background-color: rgb(217 217 217 / 70%);
-            width: 464px;
-            height: 104px;
-            position: relative;
-            margin-top: -130px;
-            padding: 18px 15px 5px;
-            border-radius: 11px;
-        }
-
-        .sidebar-areas {
+        .section-background {
+            background-image: url('https://i.ibb.co/jHMSZWq/01.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
-            flex-direction: column;
             align-items: center;
         }
 
-        @media (max-width: 768px) {
-            .page_title {
-                font-size: 40px;
+        input[type="text"],
+        select {
+            font: 15px / 24px 'Muli', sans-serif;
+            color: #333;
+            width: 100%;
+            box-sizing: border-box;
+            letter-spacing: 1px;
+            border: 0;
+            background: #77869b;
+            padding: 10px 15px 10px;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+        }
+
+        .effect-1 {
+            border: 0;
+            padding: 12px 15px;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            color: #ccc;
+        }
+
+        .effect-1~.focus-border {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffff;
+            transition: 0.4s;
+        }
+
+        .effect-1:focus~.focus-border,
+        select:focus~.focus-border {
+            width: 100%;
+            transition: 0.4s;
+        }
+
+        ::placeholder {
+            color: #ccc !important;
+            position: relative;
+            left: 5px;
+        }
+
+        .course_registration {
+            box-sizing: border-box;
+            --background-color: #fff;
+            --checkbox-height: 25px;
+        }
+
+        @-moz-keyframes dothabottomcheck-19 {
+            0% {
+                height: 0;
             }
 
-            .form-title {
-                font-size: 20px;
-                font-weight: 600;
-            }
-
-            .showcase-courses h2 {
-                margin-top: 45px;
-                font-size: 2.7em;
+            100% {
+                height: calc(var(--checkbox-height) / 2);
             }
         }
-    </style>
-    <section class="showcase-courses">
-        <img src="{{ asset('storage/common_banner/' . optional($common_banner)->course_registration_banner) }}"
-            alt="Picture">
-        <div class="overlay-courses">
-            <h2>Course Registration</h2>
-            <p>One-Stop Learning &amp; Development Solutions</p>
-        </div>
-    </section>
-    <section style="background-color: #051225;">
-        <div class="container py-lg-5 py-3">
-            {{-- <div class="row">
-                <div class="col-lg-12">
-                    <div class=" pb-lg-5 pb-3">
-                        <h1 class="page_title">Get Scholarship</h1>
-                        <p class="text-center text-white">Strategies to Maximize Financial Aid Opportunities for Course
-                            Enrollment</p>
-                    </div>
-                </div>
-            </div> --}}
 
-            {{-- <form action="{{ route('register' $$ 'course.registration.store') }}" method="post" enctype="multipart/form-data"> --}}
-            <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1">
-
-                        <div class="row">
-                            <div class="col-lg-6 form-area">
-                                <div class="input-field-gap">
-                                    <h2 class="text-white form-title">Let’s connect constellations</h2>
-                                    <p class="text-white form-desc">Let's align our constellations! Reach out and let the
-                                        magic of collaboration illuminate our skies.</p>
-                                </div>
-
-
-
-                                <div class="input-field-gap">
-                                    <input type="text"
-                                        class="form-control form-color @error('name') is-invalid @enderror"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp" required name="name"
-                                        placeholder="Enter Name">
-                                    @error('name')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                                <div class="input-field-gap">
-                                    <input type="text"
-                                        class="form-control form-color @error('email') is-invalid @enderror"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp" required name="email"
-                                        placeholder="example@gmail.com">
-                                    @error('email')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                                <div class="input-field-gap">
-                                    <input type="tel"
-                                        class="form-control form-color @error('phone') is-invalid @enderror" id=""
-                                        aria-describedby="phoneHelp" required name="phone" placeholder="017*******">
-                                    @error('phone')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                                <div class="input-field-gap">
-                                    <select class="form-select form-color @error('course_id') is-invalid @enderror" required
-                                        name="course_id" aria-label="Select Course" data-placeholder="Select Course">
-                                        <option value="" disabled selected>Select Course</option>
-                                        @foreach ($courses as $course)
-                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('course_id')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                                <div class="input-field-gap">
-                                    <textarea class="form-control form-color @error('address') is-invalid @enderror" name="address" rows="3"
-                                        cols="3" placeholder=" Address"></textarea>
-                                    @error('address')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                                <div class="input-field-gap">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label ps-2 text-light" for="flexCheckDefault">
-                                            If You Are Not Registered Yet Then Click Here.
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="input-field-gap">
-                                    <input type="password"
-                                        class="form-control form-color @error('password') is-invalid @enderror"
-                                        id="passwordProtect" aria-describedby="password" required name="password"
-                                        placeholder="*******" style="display: none;">
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                                <div>
-                                    <button type="submit" class="btn bg-white w-100 fw-bold"
-                                        style="color:#111E30">Submit</button>
-                                </div>
-
-
-                                <div class="text-light mt-3 text-center">
-                                    Already have an account? <a href="{{ route('login') }}">Sign in </a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 d-lg-block d-sm-none">
-                                <div class="sidebar-areas">
-                                    <img class="form-side-area" width="516px" height="635px"
-                                        src="{{ asset('frontend/assets/img/registration.jpg') }}" alt="">
-                                    <div class="sidebar-content">
-                                        <p>"Skill development is not just about acquiring knowledge;
-                                            it's about cultivating the ability to adapt and thrive
-                                            in a rapidly changing world." <span class="fw-bold text-danger">- Tony
-                                                Wagner</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.2/build/js/intlTelInput.min.js"></script>
-    <script>
-        const input = document.querySelector("#phone");
-        const iti = window.intlTelInput(input, {
-            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.3.2/build/js/utils.js",
-        });
-
-        // Validate phone number on form submit
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(event) {
-            const isValid = iti.isValidNumber();
-            if (!isValid) {
-                event.preventDefault(); // Prevent form submission if phone number is not valid
-                const errorMsg = document.querySelector('#phone-error');
-                errorMsg.textContent = "Please enter a valid phone number.";
+        @-webkit-keyframes dothabottomcheck-19 {
+            0% {
+                height: 0;
             }
-        });
-    </script>
+
+            100% {
+                height: calc(var(--checkbox-height) / 2);
+            }
+        }
+
+        @keyframes dothabottomcheck-19 {
+            0% {
+                height: 0;
+            }
+
+            100% {
+                height: calc(var(--checkbox-height) / 2);
+            }
+        }
+
+        @keyframes dothatopcheck-19 {
+            0% {
+                height: 0;
+            }
+
+            50% {
+                height: 0;
+            }
+
+            100% {
+                height: calc(var(--checkbox-height) * 1.2);
+            }
+        }
+
+        @-webkit-keyframes dothatopcheck-19 {
+            0% {
+                height: 0;
+            }
+
+            50% {
+                height: 0;
+            }
+
+            100% {
+                height: calc(var(--checkbox-height) * 1.2);
+            }
+        }
+
+        @-moz-keyframes dothatopcheck-19 {
+            0% {
+                height: 0;
+            }
+
+            50% {
+                height: 0;
+            }
+
+            100% {
+                height: calc(var(--checkbox-height) * 1.2);
+            }
+        }
+
+        .course_registration input[type=checkbox] {
+            display: none;
+        }
+
+        .course_registration .check-box {
+            height: var(--checkbox-height);
+            width: var(--checkbox-height);
+            background-color: transparent;
+            border: calc(var(--checkbox-height) * .1) solid #eee;
+            border-radius: 5px;
+            position: relative;
+            display: inline-block;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -moz-transition: border-color ease 0.2s;
+            -o-transition: border-color ease 0.2s;
+            -webkit-transition: border-color ease 0.2s;
+            transition: border-color ease 0.2s;
+            cursor: pointer;
+        }
+
+        .course_registration .check-box::before,
+        .course_registration .check-box::after {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            position: absolute;
+            height: 0;
+            width: calc(var(--checkbox-height) * .2);
+            background-color: #34b93d;
+            display: inline-block;
+            -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+            -o-transform-origin: left top;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+            border-radius: 5px;
+            content: " ";
+            -webkit-transition: opacity ease 0.5;
+            -moz-transition: opacity ease 0.5;
+            transition: opacity ease 0.5;
+        }
+
+        .course_registration .check-box::before {
+            top: calc(var(--checkbox-height) * .72);
+            left: calc(var(--checkbox-height) * .41);
+            /* box-shadow: 0 0 0 calc(var(--checkbox-height) * .05) var(--background-color); */
+            -moz-transform: rotate(-135deg);
+            -ms-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+        }
+
+        .course_registration .check-box::after {
+            top: calc(var(--checkbox-height) * .37);
+            left: calc(var(--checkbox-height) * .05);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .course_registration input[type=checkbox]:checked+.check-box,
+        .course_registration .check-box.checked {
+            border-color: #34b93d;
+        }
+
+        .course_registration input[type=checkbox]:checked+.check-box::after,
+        .course_registration .check-box.checked::after {
+            height: calc(var(--checkbox-height) / 2);
+            -moz-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+            -o-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+            -webkit-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+            animation: dothabottomcheck-19 0.2s ease 0s forwards;
+        }
+
+        .course_registration input[type=checkbox]:checked+.check-box::before,
+        .course_registration .check-box.checked::before {
+            height: calc(var(--checkbox-height) * 1.2);
+            -moz-animation: dothatopcheck-19 0.4s ease 0s forwards;
+            -o-animation: dothatopcheck-19 0.4s ease 0s forwards;
+            -webkit-animation: dothatopcheck-19 0.4s ease 0s forwards;
+            animation: dothatopcheck-19 0.4s ease 0s forwards;
+        }
+
+        option {
+            padding: 10px;
+            /* This might not work in all browsers */
+        }
+    </style>
+    <section class="section-background">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-white text-center pb-5">Course Registration</h1>
+                </div>
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="card border-0 form-card">
+                        <div class="card-body p-5" style="background: #001c4182;">
+                            <form action="">
+                                <div class="row gx-5">
+                                    <div class="col-lg-12 first-column">
+                                        <h4 class="text-white pb-3">User Info</h4>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput4" class="form-label">Name</small>
+                                                    <input class="effect-1" type="text" name="user_name"
+                                                        placeholder="Robert Bruno">
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput5" class="form-label">Email</small>
+                                                    <input class="effect-1" type="text" name="user_email"
+                                                        placeholder="yourmail@gmail.com">
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="row align-items-center">
+                                                    <div class="col-8">
+                                                        <div class="position-relative ps-0 mb-3">
+                                                            <small for="exampleFormControlInput6" class="form-label">Phone</small>
+                                                            <input class="effect-1" type="text" name="user_phone"
+                                                                placeholder="(CC) digit">
+                                                            <span class="focus-border"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="d-flex">
+                                                            <div class="course_registration pt-3">
+                                                                <input type="checkbox" name="call_me" id="cbtest-19" />
+                                                                <label for="cbtest-19" class="check-box"></label>
+                                                            </div>
+                                                            <p class="ps-3 text-white pt-3">Call Me</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput1" class="form-label">Select
+                                                        Course Category</small>
+                                                    <select class="effect-1" name="course_category" id="course">
+                                                        <option value="" disabled selected>Choose Course Category
+                                                        </option>
+                                                        <option value="">Diploma Courses</option>
+                                                        <option value="">Industrial Courses</option>
+                                                        <option value="">Professional Courses</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput2" class="form-label">Select Sub
+                                                        Category</small>
+                                                    <select class="effect-1" name="sub_category" id="level">
+                                                        <option value="" disabled selected>Choose Category</option>
+                                                        <option value="">Sub One</option>
+                                                        <option value="">Sub Two</option>
+                                                        <option value="">Sub Three</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                        Course Venue</small>
+                                                    <select class="effect-1" name="course_venue" id="timing">
+                                                        <option value="" disabled selected>Choose Course Venue
+                                                        </option>
+                                                        <option value="">Onsite</option>
+                                                        <option value="">Online</option>
+                                                        <option value="">Offline</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                        Venue Location</small>
+                                                    <select class="effect-1" name="venue_location" id="timing">
+                                                        <option value="" disabled selected>Choose Venue Location
+                                                        </option>
+                                                        <option value="">Portugal</option>
+                                                        <option value="">Bangladesh</option>
+                                                        <option value="">India</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput3" class="form-label">Select Date &
+                                                        Time</small>
+                                                    <select class="effect-1" name="timing" id="timing">
+                                                        <option value="" disabled selected>Choose Date & Time
+                                                        </option>
+                                                        <option value="">Morning</option>
+                                                        <option value="">Afternoon</option>
+                                                        <option value="">Evening</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-center pt-2">
+                                            <button type="submit" href="https://training.ngengroup.org/all-courses" class="primary-btn-two w-100" >
+                                                Enroled & Checkout Now <i class="fa-solid fa-check ps-2"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
 
 @push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const checkbox = document.getElementById('flexCheckDefault');
-            const passwordProtect = document.getElementById('passwordProtect');
-
-            checkbox.addEventListener('change', function() {
-                if (this.checked) {
-                    passwordProtect.style.display = 'block';
-                } else {
-                    passwordProtect.style.display = 'none';
-                }
-            });
-        });
-    </script>
 @endpush

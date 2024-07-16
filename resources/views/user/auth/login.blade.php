@@ -121,7 +121,11 @@
                                     {{-- <input type="password" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Your password" /> --}}
                                 </div>
+<<<<<<< HEAD
+                                <div class="">
+=======
                                 <div class="row justify-content-between align-items-center mt-5">
+>>>>>>> c96ba7b46e3aa0bf015c7caf2710c3e0275141d6
                                     <div class="form-check d-flex justify-content-center align-items-center mb-3">
                                         <input class="form-check-input me-2" type="checkbox" value="" id="remember_me"
                                             name="remember" />

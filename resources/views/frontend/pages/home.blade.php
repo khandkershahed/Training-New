@@ -42,7 +42,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-lg-2">
-                        <select class="form-select mb-lg-0 mb-2 @error('course_type') is-invalid @enderror" required
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('course_type') is-invalid @enderror" required
                             name="course_type" aria-label="Course Type">
                             <option selected disabled>Course Type</option>
                             <option value="offline">Offline</option>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select mb-lg-0 mb-2 @error('course_section_id') is-invalid @enderror" required
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('course_section_id') is-invalid @enderror" required
                             name="course_section_id" aria-label="Course Section">
                             <option selected disabled>Course Section</option>
                             @foreach ($courseSections as $courseSection)
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select mb-lg-0 mb-2 @error('course_category_id') is-invalid @enderror" required
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('course_category_id') is-invalid @enderror" required
                             name="course_category_id" aria-label="Selected Category">
                             <option selected disabled>Selected Category</option>
                             @foreach ($courseCategorys as $courseCategory)
@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select mb-lg-0 mb-2 @error('month') is-invalid @enderror" required
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('month') is-invalid @enderror" required
                             name="month" aria-label="Month">
                             <option selected disabled>Month</option>
                             <option value="january">January</option>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select mb-lg-0 mb-2 @error('year') is-invalid @enderror" required name="year"
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('year') is-invalid @enderror" required name="year"
                             aria-label="Year">
                             <option selected disabled>Year</option>
                             <option value="2024">2024</option>
@@ -128,7 +128,7 @@
                     </div>
 
                     <div class="col-lg-2 text-center">
-                        <button type="submit" class="primary-btn-one">Search</button>
+                        <button type="submit" class="primary-btn-one"><i class="fa-solid fa-magnifying-glass pe-2"></i> Search</button>
                     </div>
                 </div>
             </form>
@@ -171,10 +171,10 @@
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">
-                    <h3 class="section-title">{{ optional($homePage)->row_three_title }}</h3>
-                    <div class="divider"></div>
+                    <h3 class="section-title text-white">{{ optional($homePage)->row_three_title }}</h3>
+                    <div class="divider-extra"></div>
                     <p class="text-white py-0 px-0 px-lg-5 py-lg-3">
-                        {{ optional($homePage)->row_three_description }}
+                        {!! optional($homePage)->row_three_description !!}
                     </p>
                 </div>
                 <div class="col-lg-10 mx-auto">
@@ -285,16 +285,15 @@
 
     <!-- Row Four Why Diffrent -->
     <section>
-        <div class="container">
-            <div class="row py-5">
+        <div class="container py-5">
+            <div class="row">
                 <div class="text-center px-5">
                     <h3 class="section-title">{{ optional($homePage)->row_four_title }}</h3>
-                    <div class="divider"></div>
+                    <div class="divider-extra"></div>
                     <p class="text-muted py-3 px-5">
                         {{ optional($homePage)->row_four_header }}
                     </p>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_one_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -316,7 +315,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_two_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -336,7 +334,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_three_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -358,7 +355,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_four_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -380,7 +376,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_five_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -402,7 +397,6 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="col-lg-2 different_icon_column">
                     <a href="{{ optional($homePage)->row_four_column_six_url }}" style="text-decoration: none">
                         <div class="text-center p-3">
@@ -424,9 +418,7 @@
                         </div>
                     </a>
                 </div>
-
-
-                <div class="col-lg-12 text-center pt-5">
+                <div class="col-lg-12 text-center py-5">
                     <a href="{{ optional($homePage)->row_four_button_url }}"
                         class="primary-btn-one">{{ optional($homePage)->row_four_button_name }}</a>
                 </div>
@@ -541,7 +533,7 @@
                 </div>
 
             </div> --}}
-            <div class="row mb-5">
+            <div class="row">
 
                 <div class="col-lg-4">
                     <div class="card shadow-sm border-0">
@@ -635,17 +627,17 @@
     </section>
 
     <!-- Row Six Explore SEction -->
-    <section
+    <section class="explore-bg"
         style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->row_six_background_image) }});">
-        <div class="container">
-            <div class="row py-5">
-                <div class="text-center px-5">
-                    <h3 class="section-title text-white">{{ optional($homePage)->row_six_title }}</h3>
-                    <div class="divider"></div>
-                    <p class="text-white py-3 px-5">
-                        {{ optional($homePage)->row_six_header }}
-                    </p>
-                </div>
+        <div class="container explore-section">
+            <div class="text-center pb-5">
+                <h3 class="section-title text-white">{{ optional($homePage)->row_six_title }}</h3>
+                <div class="divider-extra"></div>
+                <p class="text-white">
+                    {{ optional($homePage)->row_six_header }}
+                </p>
+            </div>
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
 
@@ -696,11 +688,7 @@
                                 </div>
                             </a>
                         </div>
-
-
-
                     </div>
-
                     <div class="row pt-3">
 
                         <div class="col-lg-4 mb-2 mb-lg-0">
@@ -753,7 +741,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-12 text-center pt-5">
+                <div class="text-center pt-5">
                     <a href="{{ optional($homePage)->row_six_button_url }}" class="primary-btn-two">
                         {{ optional($homePage)->row_six_button_name }} </a>
                 </div>
@@ -776,14 +764,13 @@
                                     <a href="{{ optional($homePage)->row_seven_section_one_url ?? 'javascript:void(0)' }}"
                                         class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
-                                            <div class="d-flex align-items-center">
-                                                <h1 class="mb-0">
+                                            <div class="d-flex">
+                                                <h1 class="mb-0 pe-2 sape-icons">
                                                     <img src="{{ asset('storage/homepage/' . optional($homePage)->row_seven_section_one_icon) }}"
-                                                        alt="" style="width: 40px; height: 40px;">
+                                                        alt="" style="width: 50px; height: 50px;">
                                                 </h1>
-                                                <span class="px-2">|</span>
                                                 <div>
-                                                    <p class="mb-0 fw-bold text-muted">
+                                                    <p class="mb-0 fw-bold" style="color: var(--primary-color)">
                                                         {{ optional($homePage)->row_seven_section_one_title }}
                                                     </p>
                                                     <small class="text-muted pt-3">
@@ -794,7 +781,9 @@
                                             <div>
                                                 <p class="text-end mb-0">
                                                     <a href="{{ optional($homePage)->row_seven_section_one_url }}"
-                                                        class="text-decoration-none fs-4">+</a>
+                                                        class="text-decoration-none fs-4">
+                                                    <i class="fa-solid fa-plus fs-6" style="color:var(--primary-color)"></i>
+                                                    </a>
                                                 </p>
                                             </div>
                                         </div>
@@ -805,14 +794,13 @@
                                     <a href="{{ optional($homePage)->row_seven_section_two_url ?? 'javascript:void(0)' }}"
                                         class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
-                                            <div class="d-flex align-items-center">
-                                                <h1 class="mb-0">
+                                            <div class="d-flex">
+                                                <h1 class="mb-0 pe-2 sape-icons">
                                                     <img src="{{ asset('storage/homepage/' . optional($homePage)->row_seven_section_two_icon) }}"
-                                                        alt="" style="width: 40px; height: 40px;">
+                                                        alt="" style="width: 50px; height: 50px;">
                                                 </h1>
-                                                <span class="px-2">|</span>
                                                 <div>
-                                                    <p class="mb-0 fw-bold text-muted">
+                                                    <p class="mb-0 fw-bold" style="color: var(--primary-color)">
                                                         {{ optional($homePage)->row_seven_section_two_title }}
                                                     </p>
                                                     <small class="text-muted pt-3">
@@ -823,7 +811,9 @@
                                             <div>
                                                 <p class="text-end mb-0">
                                                     <a href="{{ optional($homePage)->row_seven_section_two_url }}"
-                                                        class="text-decoration-none fs-4">+</a>
+                                                        class="text-decoration-none fs-4">
+                                                    <i class="fa-solid fa-plus fs-6" style="color:var(--primary-color)"></i>
+                                                    </a>
                                                 </p>
                                             </div>
                                         </div>
@@ -834,14 +824,13 @@
                                     <a href="{{ optional($homePage)->row_seven_section_three_url ?? 'javascript:void(0)' }}"
                                         class="text-decoration-none">
                                         <div class="card rounded-0 border-0 shadow-sm p-3">
-                                            <div class="d-flex align-items-center">
-                                                <h1 class="mb-0">
+                                            <div class="d-flex">
+                                                <h1 class="mb-0 pe-2 sape-icons">
                                                     <img src="{{ asset('storage/homepage/' . optional($homePage)->row_seven_section_three_icon) }}"
-                                                        alt="" style="width: 40px; height: 40px;">
+                                                        alt="" style="width: 50px; height: 50px;">
                                                 </h1>
-                                                <span class="px-2">|</span>
                                                 <div>
-                                                    <p class="mb-0 fw-bold text-muted">
+                                                    <p class="mb-0 fw-bold" style="color: var(--primary-color)">
                                                         {{ optional($homePage)->row_seven_section_three_title }}
                                                     </p>
                                                     <small class="text-muted pt-3">
@@ -852,7 +841,9 @@
                                             <div>
                                                 <p class="text-end mb-0">
                                                     <a href="{{ optional($homePage)->row_seven_section_three_url }}"
-                                                        class="text-decoration-none fs-4">+</a>
+                                                        class="text-decoration-none fs-4">
+                                                    <i class="fa-solid fa-plus fs-6" style="color:var(--primary-color)"></i>
+                                                    </a>
                                                 </p>
                                             </div>
                                         </div>
