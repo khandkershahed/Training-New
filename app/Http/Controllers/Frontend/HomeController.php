@@ -125,7 +125,7 @@ class HomeController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->name),
         ]);
 
         return redirect()->back()->with('success', 'Course Registerd Successfully!!');
