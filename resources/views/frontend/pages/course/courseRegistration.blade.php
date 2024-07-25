@@ -245,33 +245,43 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card border-0 form-card">
                         <div class="card-body p-5" style="background: #001c4182;">
-                            <form action="">
+
+                            <form action="" method="POST">
+
+                                @csrf
+
                                 <div class="row gx-5">
                                     <div class="col-lg-12 first-column">
+
                                         <h4 class="text-white pb-3">User Info</h4>
+
                                         <div class="row">
+
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput4" class="form-label">Name</small>
-                                                    <input class="effect-1" type="text" name="user_name"
+                                                    <input class="effect-1" type="text" name="name"
                                                         placeholder="Robert Bruno">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
+
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput5" class="form-label">Email</small>
-                                                    <input class="effect-1" type="text" name="user_email"
+                                                    <input class="effect-1" type="text" name="email"
                                                         placeholder="yourmail@gmail.com">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-12">
                                                 <div class="row align-items-center">
                                                     <div class="col-8">
                                                         <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput6" class="form-label">Phone</small>
-                                                            <input class="effect-1" type="text" name="user_phone"
+                                                            <small for="exampleFormControlInput6"
+                                                                class="form-label">Phone</small>
+                                                            <input class="effect-1" type="text" name="phone"
                                                                 placeholder="(CC) digit">
                                                             <span class="focus-border"></span>
                                                         </div>
@@ -289,20 +299,39 @@
                                             </div>
                                         </div>
                                         <div class="row">
+
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput1" class="form-label">Select
-                                                        Course Category</small>
-                                                    <select class="effect-1" name="course_category" id="course">
-                                                        <option value="" disabled selected>Choose Course Category
+                                                    <small for="exampleFormControlInput1" class="form-label">Course
+                                                        Section</small>
+                                                    <select class="effect-1" name="course_section_id" id="course">
+                                                        <option disabled selected>Course Section
                                                         </option>
-                                                        <option value="">Diploma Courses</option>
-                                                        <option value="">Industrial Courses</option>
-                                                        <option value="">Professional Courses</option>
+                                                        @foreach ($courseSections as $courseSection)
+                                                            <option value="{{ $courseSection->id }}">
+                                                                {{ $courseSection->name }}</option>
+                                                        @endforeach
+
                                                     </select>
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
+
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <label for="course" class="form-label">Course Category</label>
+                                                    <select class="form-select effect-1" name="course_category_id"
+                                                        id="course">
+
+                                                        <option disabled selected>Select Course Category</option>
+                                                        <option value=""></option>
+
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+
+
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput2" class="form-label">Select Sub
@@ -364,7 +393,8 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="text-center pt-2">
-                                            <button type="submit" href="https://training.ngengroup.org/all-courses" class="primary-btn-two w-100" >
+                                            <button type="submit" href="https://training.ngengroup.org/all-courses"
+                                                class="primary-btn-two w-100">
                                                 Enroled & Checkout Now <i class="fa-solid fa-check ps-2"></i></button>
                                         </div>
                                     </div>

@@ -74,10 +74,10 @@ class HomeController extends Controller
 
     public function courseRegistration()
     {
-        $data = [
-            'courses' => Course::latest('id')->get(),
-        ];
-        return view('frontend.pages.course.courseRegistration', $data);
+        // Fetch all CourseSections, latest first
+        $courseSections = CourseSection::latest()->get();
+
+        return view('frontend.pages.course.courseRegistration', compact('courseSections'));
     }
 
     //Course Registration Store
