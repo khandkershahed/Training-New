@@ -246,7 +246,7 @@
                     <div class="card border-0 form-card">
                         <div class="card-body p-5" style="background: #001c4182;">
 
-                            <form action="" method="POST">
+                            <form action="{{ route('course.registration.store') }}" method="POST">
 
                                 @csrf
 
@@ -320,46 +320,54 @@
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <label for="course" class="form-label">Course Category</label>
+
                                                     <select class="form-select effect-1" name="course_category_id"
                                                         id="course">
 
-                                                        <option disabled selected>Select Course Category</option>
-                                                        <option value=""></option>
+                                                        <option selected disabled>Select Course Category</option>
 
                                                     </select>
+
                                                     <span class="focus-border"></span>
+
                                                 </div>
                                             </div>
 
 
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput2" class="form-label">Select Sub
-                                                        Category</small>
-                                                    <select class="effect-1" name="sub_category" id="level">
-                                                        <option value="" disabled selected>Choose Category</option>
-                                                        <option value="">Sub One</option>
-                                                        <option value="">Sub Two</option>
-                                                        <option value="">Sub Three</option>
+
+                                                    <small for="exampleFormControlInput2" class="form-label">Select
+                                                        Course</small>
+
+                                                    <select class="effect-1" name="course_id" id="level">
+                                                        <option selected disabled>Choose Course</option>
                                                     </select>
+
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
+
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
+
                                                     <small for="exampleFormControlInput3" class="form-label">Select
                                                         Course Venue</small>
-                                                    <select class="effect-1" name="course_venue" id="timing">
-                                                        <option value="" disabled selected>Choose Course Venue
+
+                                                    <select class="effect-1" name="course_type" id="timing">
+
+                                                        <option disabled selected>Choose Course Venue
                                                         </option>
-                                                        <option value="">Onsite</option>
-                                                        <option value="">Online</option>
-                                                        <option value="">Offline</option>
+
+                                                        <option value="online">Online</option>
+                                                        <option value="offline">Offline</option>
+
                                                     </select>
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
+
+                                            {{-- <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput3" class="form-label">Select
                                                         Venue Location</small>
@@ -372,21 +380,18 @@
                                                     </select>
                                                     <span class="focus-border"></span>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+
                                             <div class="col-12">
+
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput3" class="form-label">Select Date &
-                                                        Time</small>
-                                                    <select class="effect-1" name="timing" id="timing">
-                                                        <option value="" disabled selected>Choose Date & Time
-                                                        </option>
-                                                        <option value="">Morning</option>
-                                                        <option value="">Afternoon</option>
-                                                        <option value="">Evening</option>
-                                                    </select>
-                                                    <span class="focus-border"></span>
+                                                    <small for="exampleFormControlInput4" class="form-label">Possible
+                                                        Starting Date</small>
+                                                    <input class="effect-1" type="date" name="course_register_date">
                                                 </div>
+
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -409,4 +414,60 @@
 @endsection
 
 @push('scripts')
+    {{-- Category --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="course_section_id"]').on('change', function() {
+                var course_section_id = $(this).val();
+                if (course_section_id) {
+                    $.ajax({
+                        url: "{{ url('/category-register/ajax') }}/" + course_section_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="course_category_id"]').html('');
+                            var d = $('select[name="course_category_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="course_category_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .name + '</option>');
+                            });
+                        },
+
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+
+        // Show State Data
+
+        $(document).ready(function() {
+            $('select[name="course_category_id"]').on('change', function() {
+                var course_category_id = $(this).val();
+                if (course_category_id) {
+                    //function subcategory() {
+                    $.ajax({
+                        url: "{{ url('/course-get/ajax') }}/" + course_category_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="course_id"]').html('');
+                            var d = $('select[name="course_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="course_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .name + '</option>');
+                            });
+                        },
+
+                    });
+                    //}
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
 @endpush

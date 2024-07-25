@@ -18,6 +18,12 @@ Route::get('/course-service/{id}/{slug}', [HomeController::class, 'courseService
 
 Route::get('/course-registration', [HomeController::class, 'courseRegistration'])->name('course.registration');
 Route::post('/course-registration/store', [HomeController::class, 'courseRegistrationStore'])->name('course.registration.store');
+Route::controller(HomeController::class)->group(function () {
+
+    Route::get('/category-register/ajax/{course_section_id}', 'GetRegisterCategory');
+    Route::get('/course-get/ajax/{course_category_id}', 'GetRegisterCourse');
+
+});
 
 Route::post('/contact_us', [ContactController::class, 'store'])->name('contactus.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
