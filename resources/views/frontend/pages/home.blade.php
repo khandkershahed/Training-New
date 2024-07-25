@@ -42,8 +42,8 @@
                 <div class="row align-items-center">
 
                     <div class="col-lg-2">
-                        <select class="form-select home-select mb-lg-0 mb-2 @error('course_type') is-invalid @enderror" required
-                            name="course_type" aria-label="Course Type">
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('course_type') is-invalid @enderror"
+                            required name="course_type" aria-label="Course Type">
                             <option selected disabled>Course Type</option>
                             <option value="offline">Offline</option>
                             <option value="online">Online</option>
@@ -56,8 +56,9 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select home-select mb-lg-0 mb-2 @error('course_section_id') is-invalid @enderror" required
-                            name="course_section_id" aria-label="Course Section">
+                        <select
+                            class="form-select home-select mb-lg-0 mb-2 @error('course_section_id') is-invalid @enderror"
+                            required name="course_section_id" aria-label="Course Section">
                             <option selected disabled>Course Section</option>
                             @foreach ($courseSections as $courseSection)
                                 <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
@@ -71,8 +72,9 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select home-select mb-lg-0 mb-2 @error('course_category_id') is-invalid @enderror" required
-                            name="course_category_id" aria-label="Selected Category">
+                        <select
+                            class="form-select home-select mb-lg-0 mb-2 @error('course_category_id') is-invalid @enderror"
+                            required name="course_category_id" aria-label="Selected Category">
                             <option selected disabled>Selected Category</option>
                             @foreach ($courseCategorys as $courseCategory)
                                 <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
@@ -110,8 +112,8 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select home-select mb-lg-0 mb-2 @error('year') is-invalid @enderror" required name="year"
-                            aria-label="Year">
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('year') is-invalid @enderror" required
+                            name="year" aria-label="Year">
                             <option selected disabled>Year</option>
                             <option value="2024">2024</option>
                             <option value="2025">2025</option>
@@ -128,7 +130,8 @@
                     </div>
 
                     <div class="col-lg-2 text-center">
-                        <button type="submit" class="primary-btn-one"><i class="fa-solid fa-magnifying-glass pe-2"></i> Search</button>
+                        <button type="submit" class="primary-btn-one"><i class="fa-solid fa-magnifying-glass pe-2"></i>
+                            Search</button>
                     </div>
                 </div>
             </form>
@@ -145,7 +148,7 @@
                         {{ optional($homePage)->row_two_title }}
                     </h2>
 
-                    <p class="text-justify">
+                    <p class="text-justify py-3">
                         {{ optional($homePage)->row_two_description }}
                     </p>
 
@@ -196,9 +199,9 @@
                                             <a href="{{ optional($homePage)->row_three_column_one_url }}"
                                                 class="">Learn
                                                 More</a>
+                                            <a href="{{ optional($homePage)->row_three_column_one_button_url }}"
+                                                class="primary-btn-one mt-3">{{ optional($homePage)->row_three_column_one_button_name }}</a>
                                         </div>
-                                        <a href="{{ optional($homePage)->row_three_column_one_button_url }}"
-                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_one_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -285,11 +288,11 @@
 
     <!-- Row Four Why Diffrent -->
     <section>
-        <div class="container py-5">
+        <div class="container py-5 mt-3">
             <div class="row">
                 <div class="text-center px-5">
                     <h3 class="section-title">{{ optional($homePage)->row_four_title }}</h3>
-                    <div class="divider-extra"></div>
+                    <div class="divider"></div>
                     <p class="text-muted py-3 px-5">
                         {{ optional($homePage)->row_four_header }}
                     </p>
@@ -533,10 +536,10 @@
                 </div>
 
             </div> --}}
-            <div class="row">
+            <div class="row mb-5 pb-2">
 
                 <div class="col-lg-4">
-                    <div class="card shadow-sm border-0">
+                    <div class="card border-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
                         <div class="card-body course-description-card">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
@@ -565,7 +568,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="card shadow-sm border-0">
+                    <div class="card border-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
                         <div class="card-body course-description-card">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
@@ -594,7 +597,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="card shadow-sm border-0">
+                    <div class="card border-0" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
                         <div class="card-body course-description-card">
                             <div class="row align-items-center">
                                 <div class="col-lg-12">
@@ -782,7 +785,8 @@
                                                 <p class="text-end mb-0">
                                                     <a href="{{ optional($homePage)->row_seven_section_one_url }}"
                                                         class="text-decoration-none fs-4">
-                                                    <i class="fa-solid fa-plus fs-6" style="color:var(--primary-color)"></i>
+                                                        <i class="fa-solid fa-plus fs-6"
+                                                            style="color:var(--primary-color)"></i>
                                                     </a>
                                                 </p>
                                             </div>
@@ -812,7 +816,8 @@
                                                 <p class="text-end mb-0">
                                                     <a href="{{ optional($homePage)->row_seven_section_two_url }}"
                                                         class="text-decoration-none fs-4">
-                                                    <i class="fa-solid fa-plus fs-6" style="color:var(--primary-color)"></i>
+                                                        <i class="fa-solid fa-plus fs-6"
+                                                            style="color:var(--primary-color)"></i>
                                                     </a>
                                                 </p>
                                             </div>
@@ -842,7 +847,8 @@
                                                 <p class="text-end mb-0">
                                                     <a href="{{ optional($homePage)->row_seven_section_three_url }}"
                                                         class="text-decoration-none fs-4">
-                                                    <i class="fa-solid fa-plus fs-6" style="color:var(--primary-color)"></i>
+                                                        <i class="fa-solid fa-plus fs-6"
+                                                            style="color:var(--primary-color)"></i>
                                                     </a>
                                                 </p>
                                             </div>

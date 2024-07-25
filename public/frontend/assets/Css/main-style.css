@@ -771,7 +771,7 @@ a:hover {
 }
 
 .service-card a:hover {
-    color: #ffffff;
+    color: var(--primary-color);
     /* Adjust link color on hover if needed */
 }
 
