@@ -1,9 +1,11 @@
 @extends('frontend.master')
 @section('content')
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
+
     <section class="showcase">
-        <img src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/course-banner.jpg?id=8892" alt="Picture">
+        <img src="{{ !empty($coursedetail->course_banner_image) ? url('storage/course/' . $coursedetail->course_banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}" alt="Picture">
     </section>
+
     <section>
         <div class="container">
             <div class="row">

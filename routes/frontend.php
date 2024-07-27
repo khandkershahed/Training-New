@@ -11,11 +11,15 @@ Route::get('/', [HomeController::class, 'index'])->name('homepage');
 
 //Training
 Route::get('/training', [HomeController::class, 'training'])->name('training');
+
+//Course All & Deatils Start
 Route::get('/all-courses', [HomeController::class, 'allCourses'])->name('courses.all');
 Route::get('/course/{id}/{slug}', [HomeController::class, 'courseDetails']);
+//Course All & Deatils End
 
 Route::get('/course-service/{id}/{slug}', [HomeController::class, 'courseServiceDetails']);
 
+// Course Registration Start
 Route::get('/course-registration', [HomeController::class, 'courseRegistration'])->name('course.registration');
 Route::post('/course-registration/store', [HomeController::class, 'courseRegistrationStore'])->name('course.registration.store');
 Route::controller(HomeController::class)->group(function () {
@@ -24,6 +28,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/course-get/ajax/{course_category_id}', 'GetRegisterCourse');
 
 });
+// Course Registration End
 
 Route::post('/contact_us', [ContactController::class, 'store'])->name('contactus.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

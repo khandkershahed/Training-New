@@ -49,6 +49,7 @@ class HomeController extends Controller
         return view('frontend.pages.course.allCourses', compact('courses'));
     }
 
+    //courseDetails
     public function courseDetails($id, $slug)
     {
         $coursedetail = Course::find($id);
