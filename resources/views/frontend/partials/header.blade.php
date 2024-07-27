@@ -6,10 +6,12 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-0 text-white">
                             <span><span class="fw-bold text-white">Hotline: </span>
-                                <a href="https://wa.me/{{ optional($setting)->whatsapp }}" class="text-white ps-2" target="_blank">
+                                <a href="https://wa.me/{{ optional($setting)->whatsapp }}" class="text-white ps-2"
+                                    target="_blank">
                                     {{ optional($setting)->whatsapp }}
                                 </a> |
-                                <a href="mailto:{{ optional($setting)->primary_email }}" class="text-white" target="_blank">
+                                <a href="mailto:{{ optional($setting)->primary_email }}" class="text-white"
+                                    target="_blank">
                                     {{ optional($setting)->primary_email }}
                                 </a>
                             </span>
@@ -135,14 +137,13 @@
                                         <div class="tab-content" id="myTabContent">
                                             @foreach ($courseSections as $key => $courseSection)
                                                 @php
-                                                    $sectionWiseCats = App\Models\Course::where(
+                                                    $sectionWiseCats = App\Models\CourseCategory::where(
                                                         'course_section_id',
                                                         $courseSection->id,
                                                     )
                                                         ->orderBy('name', 'ASC')
                                                         ->limit(3)
-                                                        ->get()
-                                                        ->unique('course_category_id');
+                                                        ->get();
                                                 @endphp
                                                 <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
                                                     id="section{{ $courseSection->id }}" role="tabpanel"
@@ -152,7 +153,7 @@
                                                             <div class="col-lg-4">
 
                                                                 <p class="fw-bold border-bottom text-muted">
-                                                                    {{ $sectionWiseCat->categoryName->name }}
+                                                                    {{ $sectionWiseCat->name }}
                                                                 </p>
 
                                                                 @php

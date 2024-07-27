@@ -25,13 +25,13 @@
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
                 <thead>
                     <tr>
-                        <th width="8%">No</th>
-                        <th width="20%">Course Name</th>
-                        <th width="20%">Name</th>
+                        <th width="5%">No</th>
+                        <th width="15%">Name</th>
                         <th width="15%">Email</th>
-                        <th width="20%">Phone</th>
-                        <th width="20%">Address</th>
-                        <th width="100%">Actions</th>
+                        <th width="15%">Phone</th>
+                        <th width="30%">Course Name</th>
+                        <th width="15%">Course Register Date</th>
+                        <th width="10%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600">
@@ -40,13 +40,13 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
-                            <td class="text-start">{{ $registration->course_id }}</td>
                             <td class="text-start">{{ $registration->name }}</td>
                             <td class="text-start">{{ $registration->email }}</td>
                             <td class="text-start">{{ $registration->phone }}</td>
-                            <td class="text-start">{{ $registration->address }}</td>
-                            
-                            
+                            <td class="text-start">{{ $registration->courseName->name }}</td>
+                            <td class="text-start">{{ $registration->course_register_date }}</td>
+
+
                             <td>
                                 {{-- <a href="{{ route('admin.coupon.edit', $coupon->id) }}" class="text-primary">
                                     <i class="bi bi-pencil text-primary"></i>

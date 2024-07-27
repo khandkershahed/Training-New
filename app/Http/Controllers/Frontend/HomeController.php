@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Faq;
-use App\Models\User;
-use App\Models\Course;
+use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
-use App\Models\Service;
-use App\Models\Setting;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Models\CourseCurriculum;
 use App\Models\CourseOutline;
 use App\Models\CourseProject;
-use App\Models\CourseSection;
-use App\Models\PrivacyPolicy;
-use App\Models\CourseCategory;
+use App\Models\CourseQuery;
 use App\Models\CourseSchedule;
+use App\Models\CourseSection;
+use App\Models\Faq;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\PrivacyPolicy;
+use App\Models\Service;
+use App\Models\Setting;
 use App\Models\TermsCondition;
-use App\Models\CourseCurriculum;
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UserCourseRegistration;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
-use App\Models\UserCourseRegistration;
 
 class HomeController extends Controller
 {
@@ -84,10 +85,8 @@ class HomeController extends Controller
 
     public function GetRegisterCategory($course_section_id)
     {
-
         $cat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();
         return json_encode($cat);
-
     }
 
     public function GetRegisterCourse($course_category_id)
@@ -115,8 +114,6 @@ class HomeController extends Controller
             'location' => $request->location,
             'course_register_date' => $request->course_register_date,
 
-            // 'ip_address' => $request->ip(),
-
             'created_at' => now(),
 
         ]);
@@ -129,8 +126,28 @@ class HomeController extends Controller
             'password' => Hash::make($request->name),
         ]);
 
-        return redirect()->back()->with('success', 'Course Registerd Successfully!!');
+        return redirect()->route('dashboard')->with('success', 'Course Registerd Successfully!!');
     }
+
+    //courseQueryStore
+    public function courseQueryStore(Request $request)
+    {
+        CourseQuery::insert([
+
+            'course_id' => $request->course_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+            'call' => $request->call,
+            'ip_address' => $request->ip(),
+            'created_at' => now(),
+
+        ]);
+
+        return redirect()->back()->with('success', 'Message Send Successfully!!');
+    }
+
 
     //About
     public function about()
