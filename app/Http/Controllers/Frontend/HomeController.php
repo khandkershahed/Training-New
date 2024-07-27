@@ -20,6 +20,7 @@ use App\Models\CourseSchedule;
 use App\Models\TermsCondition;
 use App\Models\CourseCurriculum;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use App\Models\UserCourseRegistration;
@@ -87,7 +88,6 @@ class HomeController extends Controller
 
         $cat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();
         return json_encode($cat);
-
     }
 
     public function GetRegisterCourse($course_category_id)
@@ -120,16 +120,23 @@ class HomeController extends Controller
             'created_at' => now(),
 
         ]);
+        $user_exist = User::where('email', $request->email)->first();
+        if ($user_exist) {
+            Auth::login($user_exist);
+            return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
+        } else {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'password' => Hash::make($request->password), // Use password field from request
+            ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'password' => Hash::make($request->name),
-        ]);
-
-        return redirect()->back()->with('success', 'Course Registerd Successfully!!');
+            // Log in the newly created user
+            Auth::login($user);
+            return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!!');
+        }
     }
 
     //About
@@ -310,5 +317,4 @@ class HomeController extends Controller
 
         return view('frontend.pages.course.search_course', compact('courses'));
     }
-
 }

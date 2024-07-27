@@ -539,7 +539,7 @@
                     setTimeout(function() {
                         document.getElementById("bottomSection").style.display =
                             "block"; // or "flex", "inline-block", etc., based on your layout needs
-                    }, 3000); // 3000 milliseconds = 3 seconds
+                    }, 15000); // 3000 milliseconds = 3 seconds
                 });
         </script>
         <script>
