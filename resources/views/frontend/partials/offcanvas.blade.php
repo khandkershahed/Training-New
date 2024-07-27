@@ -44,7 +44,7 @@
 <!-- Sidebar Fixed Modal Start -->
 <!-- Button trigger modal -->
 <button type="button" class="toggle-btn-sidebar" data-bs-toggle="modal" data-bs-target="#discountModal">
-    Inquery Now!
+    Inquiry Now!
 </button>
 
 <!-- Modal -->

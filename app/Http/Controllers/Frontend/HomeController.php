@@ -19,15 +19,10 @@ use App\Models\PrivacyPolicy;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\TermsCondition;
-<<<<<<< HEAD
 use App\Models\User;
 use App\Models\UserCourseRegistration;
 use Illuminate\Http\Request;
-=======
-use App\Models\CourseCurriculum;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
->>>>>>> 478443a924d462987badd493eccdf85fdccce2dd
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 
@@ -123,6 +118,7 @@ class HomeController extends Controller
             'created_at' => now(),
 
         ]);
+
         $user_exist = User::where('email', $request->email)->first();
         if ($user_exist) {
             Auth::login($user_exist);
@@ -133,25 +129,13 @@ class HomeController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                'password' => Hash::make($request->password), // Use password field from request
+                'password' => !empty($request->password) ? Hash::make($request->password) : Hash::make($request->phone),
             ]);
 
-<<<<<<< HEAD
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'password' => Hash::make($request->name),
-        ]);
-
-        return redirect()->route('dashboard')->with('success', 'Course Registerd Successfully!!');
-=======
             // Log in the newly created user
             Auth::login($user);
             return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!!');
         }
->>>>>>> 478443a924d462987badd493eccdf85fdccce2dd
     }
 
     //courseQueryStore
@@ -172,7 +156,6 @@ class HomeController extends Controller
 
         return redirect()->back()->with('success', 'Message Send Successfully!!');
     }
-
 
     //About
     public function about()
