@@ -3,7 +3,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
 
     <section class="showcase">
-        <img src="{{ !empty($coursedetail->course_banner_image) ? url('storage/course/' . $coursedetail->course_banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}" alt="Picture">
+        <img src="{{ !empty($coursedetail->course_banner_image) ? url('storage/course/' . $coursedetail->course_banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
+            alt="Picture">
     </section>
 
     <section>
@@ -176,8 +177,9 @@
 
 
                                     <!-- Course Schedule -->
-                                    @if ($courseCurriculams->isNotEmpty())
-                                        <div id="schedule" class="py-3">
+
+                                    <div id="schedule" class="py-3">
+                                        @if ($courseSchedules->isNotEmpty())
                                             <h5 class="primary-text-color fw-bold">
                                                 Course Schedule
                                             </h5>
@@ -187,7 +189,7 @@
                                             </p> --}}
 
 
-                                            @forelse ($courseOutlines as $courseSchedule)
+                                            @forelse ($courseSchedules as $courseSchedule)
                                                 <div class="table-responsive">
                                                     <table class="table table-striped">
                                                         <thead>
@@ -232,38 +234,38 @@
                                             @empty
                                                 <p>No course schedules found.</p>
                                             @endforelse
+                                        @endif
 
+                                        @if ($courseOutlines->isNotEmpty())
+                                        <h5 class="primary-text-color fw-bold pt-3">
+                                            What Will You Learn In This Course?
+                                        </h5>
 
-                                            <h5 class="primary-text-color fw-bold pt-3">
-                                                What Will You Learn In This Course?
-                                            </h5>
+                                        <div class="row gx-1">
 
-                                            <div class="row gx-1">
-
-                                                @forelse ($courseOutlines as $courseOutline)
-                                                    <div class="col-lg-6">
-                                                        <div class="card p-0 mb-1 why-choses">
-                                                            <div class="card-body p-0">
-                                                                <p class="mb-0 p-3">
-                                                                    <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
-                                                                        alt="" />
-                                                                    {{ $courseOutline->title }}
-                                                                </p>
-                                                            </div>
+                                            @forelse ($courseOutlines as $courseOutline)
+                                                <div class="col-lg-6">
+                                                    <div class="card p-0 mb-1 why-choses">
+                                                        <div class="card-body p-0">
+                                                            <p class="mb-0 p-3">
+                                                                <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
+                                                                    alt="" />
+                                                                {{ $courseOutline->title }}
+                                                            </p>
                                                         </div>
                                                     </div>
+                                                </div>
 
 
-                                                @empty
-                                                    <p>Course Outline Not Avaiable</p>
-                                                @endforelse
-
-                                            </div>
-
-
+                                            @empty
+                                                <p>Course Outline Not Avaiable</p>
+                                            @endforelse
 
                                         </div>
-                                    @endif
+                                        @endif
+
+                                    </div>
+
 
 
                                     <!-- Course Projects -->
@@ -539,7 +541,7 @@
                     setTimeout(function() {
                         document.getElementById("bottomSection").style.display =
                             "block"; // or "flex", "inline-block", etc., based on your layout needs
-                    }, 3000); // 3000 milliseconds = 3 seconds
+                    }, 15000); // 3000 milliseconds = 3 seconds
                 });
         </script>
         <script>

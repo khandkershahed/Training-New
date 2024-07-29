@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="'User Dashboard'">
     <!--begin::Row-->
     <div class="row gy-5 g-xl-8">
         <!--begin::Col-->

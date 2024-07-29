@@ -1,15 +1,12 @@
 @extends('frontend.master')
 @section('content')
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
+        .form-label {
+            color: white;
         }
 
         .section-background {
-            background-image: url('https://i.ibb.co/jHMSZWq/01.jpg');
+            background: url({{ asset('frontend/images/course_reg.jpg') }});
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -26,7 +23,8 @@
             box-sizing: border-box;
             letter-spacing: 1px;
             border: 0;
-            background: #77869b;
+            /* background: #77869b; */
+            background: #192a42;
             padding: 10px 15px 10px;
         }
 
@@ -38,9 +36,10 @@
         .effect-1 {
             border: 0;
             padding: 12px 15px;
-            border-bottom: 1px solid #ccc;
+            /* border-bottom: 1px solid #ccc; */
             position: relative;
             color: #ccc;
+            background: #192a42;
         }
 
         .effect-1~.focus-border {
@@ -143,8 +142,10 @@
             }
         }
 
-        .course_registration input[type=checkbox] {
-            display: none;
+        .course_registration input[type="checkbox"] {
+            /* display: none; */
+            height: 1.5rem;
+            width: 30px;
         }
 
         .course_registration .check-box {
@@ -246,7 +247,7 @@
                 </div>
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card border-0 form-card">
-                        <div class="card-body p-5" style="background: #001c4182;">
+                        <div class="card-body p-5" style="background: #020f20eb;">
 
                             <form action="{{ route('course.registration.store') }}" method="POST">
 
@@ -261,40 +262,72 @@
 
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput4" class="form-label">Name</small>
-                                                    <input class="effect-1" type="text" name="name"
+                                                    <small for="exampleFormControlInput4"
+                                                        class="form-label mb-2">Name</small>
+                                                    <input class="form-control effect-1" type="text" name="name"
                                                         placeholder="Robert Bruno">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-lg-12">
+                                                <div class="row align-items-center mb-lg-1 mb-3">
+                                                    <div class="col-lg-8">
+                                                        <div class="position-relative ps-0 mb-3">
+                                                            <small for="exampleFormControlInput5"
+                                                                class="form-label mb-2">Email</small>
+                                                            <input class="form-control effect-1" type="text"
+                                                                name="email" placeholder="yourmail@gmail.com">
+                                                            <span class="focus-border"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="position-relative ps-0">
+                                                            <small for="exampleFormControlInput5"
+                                                                class="form-label mb-2" style="font-size:12px;">If You don't have Account?</small>
+                                                            <div class="course_registration">
+                                                                <label for="cbtest-19"
+                                                                    class="text-white d-flex align-items-center pt-2">
+                                                                    <input class="me-3" type="checkbox"
+                                                                        name="create_account" id="cbtest-19"
+                                                                        value="1" />
+                                                                    Create Account
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 account_password" style="display: none">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput5" class="form-label">Email</small>
-                                                    <input class="effect-1" type="text" name="email"
-                                                        placeholder="yourmail@gmail.com">
+                                                    <small for="exampleFormControlInput4" class="form-label mb-2">Account
+                                                        Password</small>
+                                                    <input class="form-control effect-1" type="password" name="password"
+                                                        placeholder="Enter Password">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-12">
-                                                <div class="row align-items-center">
-                                                    <div class="col-8">
+                                                <div class="row align-items-center mb-lg-1 mb-3">
+                                                    <div class="col-lg-8">
                                                         <div class="position-relative ps-0 mb-3">
                                                             <small for="exampleFormControlInput6"
-                                                                class="form-label">Phone</small>
-                                                            <input class="effect-1" type="text" name="phone"
-                                                                placeholder="(CC) digit">
+                                                                class="form-label mb-2">Phone</small>
+                                                            <input class="form-control effect-1" type="text"
+                                                                name="phone" placeholder="(+880)1754******">
                                                             <span class="focus-border"></span>
                                                         </div>
                                                     </div>
-                                                    <div class="col-4">
-                                                        <div class="d-flex">
-                                                            <div class="course_registration pt-3">
-                                                                <input type="checkbox" name="call_me" id="cbtest-19" />
-                                                                <label for="cbtest-19" class="check-box"></label>
-                                                            </div>
-                                                            <p class="ps-3 text-white pt-3">Call Me</p>
+                                                    <div class="col-lg-4">
+                                                        <div class="course_registration">
+                                                            <label for="cbtest-19"
+                                                                class="text-white d-flex align-items-center pt-2">
+                                                                <input class="me-3" type="checkbox" name="call_me"
+                                                                    id="cbtest-19" value="1" />
+                                                                Call Me
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -304,7 +337,7 @@
 
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput1" class="form-label">Course
+                                                    <small for="exampleFormControlInput1" class="form-label mb-2">Course
                                                         Section</small>
                                                     <select class="effect-1" name="course_section_id" id="course">
                                                         <option disabled selected>Course Section
@@ -321,10 +354,9 @@
 
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <label for="course" class="form-label">Course Category</label>
+                                                    <label for="course" class="form-label mb-2">Course Category</label>
 
-                                                    <select class="form-select effect-1" name="course_category_id"
-                                                        id="course">
+                                                    <select class="effect-1" name="course_category_id" id="course">
 
                                                         <option selected disabled>Select Course Category</option>
 
@@ -339,7 +371,7 @@
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
 
-                                                    <small for="exampleFormControlInput2" class="form-label">Select
+                                                    <small for="exampleFormControlInput2" class="form-label mb-2">Select
                                                         Course</small>
 
                                                     <select class="effect-1" name="course_id" id="level">
@@ -353,7 +385,7 @@
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
 
-                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                    <small for="exampleFormControlInput3" class="form-label mb-2">Select
                                                         Course Venue</small>
 
                                                     <select class="effect-1" name="course_type" id="timing">
@@ -371,7 +403,7 @@
 
                                             {{-- <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                    <small for="exampleFormControlInput3" class="form-label mb-2">Select
                                                         Venue Location</small>
                                                     <select class="effect-1" name="venue_location" id="timing">
                                                         <option value="" disabled selected>Choose Venue Location
@@ -387,9 +419,10 @@
                                             <div class="col-12">
 
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput4" class="form-label">Possible
-                                                        Starting Date</small>
-                                                    <input class="effect-1" type="date" name="course_register_date">
+                                                    <label for="course_register_date" class="form-label mb-2">Possible
+                                                        Starting Date</label>
+                                                    <input id="course_register_date" class="form-control effect-1"
+                                                        type="date" name="course_register_date">
                                                 </div>
 
                                             </div>
@@ -418,7 +451,15 @@
 @push('scripts')
     {{-- Category --}}
     <script type="text/javascript">
+
         $(document).ready(function() {
+            $('input[name="create_account"]').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.account_password').show();
+                } else {
+                    $('.account_password').hide();
+                }
+            });
             $('select[name="course_section_id"]').on('change', function() {
                 var course_section_id = $(this).val();
                 if (course_section_id) {

@@ -44,7 +44,7 @@
 <!-- Sidebar Fixed Modal Start -->
 <!-- Button trigger modal -->
 <button type="button" class="toggle-btn-sidebar" data-bs-toggle="modal" data-bs-target="#discountModal">
-    Inquery Now!
+    Inquiry Now!
 </button>
 
 <!-- Modal -->
@@ -65,7 +65,7 @@
                     $courses = App\Models\Course::latest('id')->get();
                 @endphp
                 <div class="container">
-                    <form action="{{ route('course.registration.store') }}" method="post"
+                    <form action="{{ route('course.query.store') }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Name <span
+                                    <label for="exampleInputEmail1" class="form-label">Name<span
                                             class="text-danger">*</span></label>
                                     <input style="background: #e6e8ee" type="text" class="form-control"
                                         name="name" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -94,7 +94,7 @@
                                     <label for="exampleInputEmail1" class="form-label">Email <span
                                             class="text-danger">*</span></label>
                                     <input style="background: #e6e8ee" type="email" class="form-control"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        id="exampleInputEmail1" name="email" aria-describedby="emailHelp" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -102,7 +102,7 @@
                                     <label for="exampleInputEmail1" class="form-label">Phone <span
                                             class="text-danger">*</span></label>
                                     <input style="background: #e6e8ee" type="text" class="form-control"
-                                        id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        id="exampleInputEmail1" name="phone" aria-describedby="emailHelp" />
                                 </div>
                             </div>
                             <div class="col-lg-6">

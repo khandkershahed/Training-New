@@ -26,11 +26,11 @@
                 <thead>
                     <tr>
                         <th width="5%">No</th>
-                        <th width="8%">Course Name</th>
-                        <th width="20%">Name</th>
-                        <th width="20%">Email</th>
+                        <th width="25%">Course Name</th>
+                        <th width="10%">Name</th>
+                        <th width="10%">Email</th>
                         <th width="10%">Phone</th>
-                        <th width="10%">Offer Price</th>
+                        {{-- <th width="10%">Offer Price</th> --}}
                         <th width="20%">Message</th>
                         <th width="100%">Actions</th>
                     </tr>
@@ -40,17 +40,17 @@
                     @foreach ($querys as $key => $query)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td class="text-start">{{ $query->course_id }}</td>
+                            <td class="text-start">{{ $query->courseName->name }}</td>
 
                             <td class="text-start">{{ $query->name }}</td>
                             <td class="text-start">{{ $query->email }}</td>
                             <td class="text-start">{{ $query->phone }}</td>
-                            <td class="text-start">{{ $query->offer_price }} Tk</td>
+                            {{-- <td class="text-start">{{ $query->offer_price }} Tk</td> --}}
                             <td class="text-start">{{ $query->message }} Tk</td>
                             <td>
-                                <a href="{{ route('admin.course_query.edit', $query->id) }}" class="text-primary">
+                                {{-- <a href="{{ route('admin.course_query.edit', $query->id) }}" class="text-primary">
                                     <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                </a> --}}
 
                                 <a href="{{ route('admin.course_query.destroy', $query->id) }}" class="delete">
                                     <i class="bi bi-trash3-fill text-danger"></i>

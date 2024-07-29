@@ -15,4 +15,9 @@ class UserCourseRegistration extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function courseName()
+    {
+        return $this->belongsTo(Course::class,'course_id','id');
+    }
 }

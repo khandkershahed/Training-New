@@ -30,6 +30,9 @@ Route::controller(HomeController::class)->group(function () {
 });
 // Course Registration End
 
+//Course Query
+Route::post('/course-query', [HomeController::class, 'courseQueryStore'])->name('course.query.store');
+
 Route::post('/contact_us', [ContactController::class, 'store'])->name('contactus.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
