@@ -15,9 +15,10 @@ Route::get('/training', [HomeController::class, 'training'])->name('training');
 //Course All & Deatils Start
 Route::get('/all-courses', [HomeController::class, 'allCourses'])->name('courses.all');
 Route::get('/course/{id}/{slug}', [HomeController::class, 'courseDetails']);
-//Course All & Deatils End
 
-//courseServiceDetails
+
+//courseService
+Route::get('/service', [HomeController::class, 'allService'])->name('service.all');
 Route::get('/course-service/{id}/{slug}', [HomeController::class, 'courseServiceDetails']);
 
 //courseCategoryDetails
