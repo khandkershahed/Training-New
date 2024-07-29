@@ -343,8 +343,8 @@
 
                                                     <h5>Course Fee Offline</h5>
 
-                                                    <h3 class="fw-bold">BDT {{ number_format($coursedetail->price, 2) }}
-                                                    </h3>
+                                                    <h4 class="fw-bold py-2">BDT {{ number_format($coursedetail->price, 2) }}
+                                                    </h4>
 
                                                     <input type="hidden" name="payment_amount"
                                                         value="{{ $coursedetail->price }}">
@@ -362,8 +362,8 @@
 
                                                     <h5>Course Fee Online</h5>
 
-                                                    <h3 class="fw-bold">BDT
-                                                        {{ number_format($coursedetail->online_price, 2) }}</h3>
+                                                    <h4 class="fw-bold py-2">BDT
+                                                        {{ number_format($coursedetail->online_price, 2) }}</h4>
 
 
 

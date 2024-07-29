@@ -99,9 +99,9 @@
                                     ->get();
                             @endphp
 
-                            <div class="container">
+                            <div class="container px-0" style="border-top: 1px solid #0a1d5b">
                                 <div class="row gx-0">
-                                    <div class="col-lg-3" style="background: #fff;">
+                                    <div class="col-lg-2" style="background: #fff;">
                                         <ul class="nav nav-tabs flex-column border-0" id="myTab" role="tablist">
                                             @foreach ($courseSections as $key => $courseSection)
                                                 <li class="nav-item cources-category-top" role="presentation">
@@ -119,7 +119,7 @@
 
                                         </ul>
                                     </div>
-                                    <div class="col-lg-9 header-courses">
+                                    <div class="col-lg-10 header-courses">
                                         <div class="tab-content" id="myTabContent">
                                             @foreach ($courseSections as $key => $courseSection)
                                                 @php
@@ -134,12 +134,12 @@
                                                 <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
                                                     id="section{{ $courseSection->id }}" role="tabpanel"
                                                     aria-labelledby="tab-{{ $courseSection->id }}">
-                                                    <div class="row">
+                                                    <div class="row p-3">
                                                         @forelse ($sectionWiseCats as $sectionWiseCat)
                                                             <div class="col-lg-4">
 
                                                                 <a href="{{ url('/category/details/' . $sectionWiseCat->id . '/' . $sectionWiseCat->slug) }}"
-                                                                    class="fw-bold border-bottom text-muted">
+                                                                    class="fw-bold border-bottom text-muted pb-2">
                                                                     {{ $sectionWiseCat->name }}
                                                                 </a>
 
@@ -154,14 +154,13 @@
                                                                         ->get();
                                                                 @endphp
 
-                                                                <ul class="ps-0 ms-0" style="list-style-type: none;">
+                                                                <ul class="ps-0 ms-0 pt-3" style="list-style-type: none;">
 
                                                                     @forelse ($catWiseCourses as $catWiseCourse)
                                                                         <li class="pb-3">
                                                                             <a href="{{ url('course' . '/' . $catWiseCourse->id . '/' . $catWiseCourse->slug) }}"
-                                                                                class="text-decoration-none primary-text-color menu-link">
-                                                                                <i
-                                                                                    class="fa-solid fa-arrow-right-long pe-3"></i>{{ $catWiseCourse->name }}
+                                                                                class="text-decoration-none primary-text-color menu-link menu-link-text">
+                                                                                {{ $catWiseCourse->name }}
                                                                             </a>
                                                                         </li>
                                                                     @empty
@@ -184,7 +183,7 @@
                                 </div>
                             </div>
                         </ul>
-                        
+
 
                     </div>
                 </div>
