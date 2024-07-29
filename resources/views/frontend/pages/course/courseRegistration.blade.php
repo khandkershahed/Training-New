@@ -241,7 +241,9 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="text-white text-center pb-5">Course Registration</h1>
+                    <h1 class="text-white text-center pb-2">Course Registration</h1>
+                    <p class="text-center text-white">Welcome to our Course Registration page! Here, you can explore and <br>
+                        enroll in a variety of courses designed to enhance your skills and knowledge.</p>
                 </div>
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card border-0 form-card">
