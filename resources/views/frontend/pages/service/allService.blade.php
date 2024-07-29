@@ -38,12 +38,12 @@
                             <img src="{{ asset('storage/service/' . $service->thumbnail_image) }}" />
                             <div class="box-service-content">
                                 <h3 class="title">{{ $service->name }}</h3>
-                                <span class="post">{{ $service->header }}
-
-                                    <br>
-
-                                    <a href="{{ url('/services/details/' . $service->id . '/' . $service->slug) }}" class="text-white">See More <i
-                                            class="fa-solid fa-arrow-right-long"></i></a>
+                                <span class="post">
+                                    {{ $service->header }}
+                                </span>
+                                <span class="post">
+                                    <a href="{{ url('/services/details/' . $service->id . '/' . $service->slug) }}"
+                                        class="text-white">See More <i class="fa-solid fa-arrow-right-long"></i></a>
                                 </span>
                             </div>
                         </div>
