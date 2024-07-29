@@ -26,88 +26,97 @@ class CourseCurriculumContentController extends Controller
     {
         // Validate the request
         $request->validate([
-            'course_curriculum_id' => 'required|integer|exists:course_curriculum_contents,id',
+            'course_curriculum_id' => 'required|integer',
             'course_file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
-            'course_video.*' => 'nullable|file|mimes:mp4,mov,avi|max:1048576000', 
+            'course_video.*' => 'nullable|file|mimes:mp4,mov,avi|max:1048576000',
         ]);
 
-        // Path to store the files
-        $filePath = storage_path('app/public/course_curriculum_content/');
+        // Initialize variables
+        $fileName = null;
+        $videoNames = null;
 
         // Process the course file upload
-        $fileName = null;
         if ($request->hasFile('course_file')) {
             $courseFile = $request->file('course_file');
             $fileName = $courseFile->store('files', 'public'); // Store file in public disk
         }
 
         // Process the course video uploads
-        $videoNames = [];
         if ($request->hasFile('course_video')) {
             foreach ($request->file('course_video') as $video) {
-                $videoName = $video->store('videos', 'public'); // Store videos in public disk
-                $videoNames[] = $videoName;
+                if ($video->isValid()) {
+                    $videoName = $video->store('videos', 'public'); // Store videos in public disk
+                    $videoNames[] = $videoName;
+                }
             }
         }
 
-        
+        // Create a new record
         CourseCurriculumContent::create([
             'course_curriculum_id' => $request->course_curriculum_id,
             'course_file' => $fileName,
-            'course_video' => json_encode($videoNames),
+            'course_video' => json_encode($videoNames), // Store video names as JSON
             'created_at' => now(),
         ]);
 
         return redirect()->route('admin.course_curriculum_content.index')->with('success', 'Course Curriculum Content Inserted Successfully!');
     }
 
-    // public function edit(Request $request, $id)
-    // {
-    //     $courseContent = CourseContent::find($id);
-    //     $courses = Course::latest()->get();
+    public function edit(Request $request, $id)
+    {
+        $courseContent = CourseCurriculumContent::find($id);
+        $courseCurriculums = CourseCurriculum::latest()->get();
 
-    //     return view('admin.pages.course_content.edit', compact('courseContent', 'courses'));
-    // }
+        return view('admin.pages.course_curriculum_content.edit', compact('courseContent', 'courseCurriculums'));
+    }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $course = CourseContent::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        $course = CourseCurriculumContent::findOrFail($id);
+        $course->update([
+            'course_curriculum_id' => $request->course_curriculum_id,
+        ]);
 
-    //     $mainFile = $request->file('attachment');
-    //     $uploadPath = storage_path('app/public/course_content/');
+        return redirect()->route('admin.course_curriculum_content.index')->with('success', 'Course Curriculum Content Update Successfully!!');
+    }
 
-    //     if (isset($mainFile)) {
-    //         $globalFunImg = customUpload($mainFile, $uploadPath);
-    //     } else {
-    //         $globalFunImg['status'] = 0;
-    //     }
+    public function UpdateVideo(Request $request)
+    {
+        // Get existing video records
+        $courseContent = CourseCurriculumContent::findOrFail($request->id); // Assuming you pass an ID or some identifier
+        $existingVideos = json_decode($courseContent->course_video, true) ?? [];
 
-    //     if (!empty($course)) {
+        $updatedVideos = [];
 
-    //         if ($globalFunImg['status'] == 1) {
-    //             if (File::exists(public_path('storage/course_content/requestImg/') . $course->attachment)) {
-    //                 File::delete(public_path('storage/course_content/requestImg/') . $course->attachment);
-    //             }
-    //             if (File::exists(public_path('storage/course_content/') . $course->attachment)) {
-    //                 File::delete(public_path('storage/course_content/') . $course->attachment);
-    //             }
+        foreach ($existingVideos as $key => $oldVideo) {
+            // Delete the old video if a new one is uploaded
+            if ($request->hasFile("course_video.$key")) {
+                // Delete the old video from storage
+                $oldVideoPath = storage_path('app/public/' . $oldVideo);
+                if (file_exists($oldVideoPath)) {
+                    unlink($oldVideoPath);
+                }
 
-    //             if (File::exists(public_path('storage/files/') . $course->attachment)) {
-    //                 File::delete(public_path('storage/files/') . $course->attachment);
-    //             }
-    //         }
+                // Handle new video upload
+                $newVideo = $request->file("course_video.$key");
+                if ($newVideo->isValid()) {
+                    $newVideoName = $newVideo->store('videos', 'public');
+                    $updatedVideos[] = $newVideoName;
+                }
+            } else {
+                // If no new video is uploaded, keep the old video
+                $updatedVideos[] = $oldVideo;
+            }
+        }
 
-    //         $course->update([
+        // Update the course video record
+        $courseContent->update([
+            'course_video' => json_encode($updatedVideos),
+        ]);
 
-    //             'course_id' => $request->course_id,
-
-    //             'attachment' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $course->attachment,
-
-    //         ]);
-    //     }
-
-    //     return redirect()->route('admin.course_content.index')->with('success', 'Course Content Update Successfully!!');
-    // }
+        return redirect()->route('admin.course_curriculum_content.index')
+            ->with('success', 'Course Curriculum Content Updated Successfully!');
+    }
 
     // public function destroy($id)
     // {

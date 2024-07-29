@@ -26,10 +26,10 @@
                 <thead>
                     <tr>
                         <th width="10%">No</th>
-                        <th>Course Curriculum Name</th>
-                        <th>File</th>
-                        <th>Course Video</th>
-                        <th>Actions</th>
+                        <th width="20%">Course Curriculum Name</th>
+                        <th width="30%">File</th>
+                        <th width="20%">Course Video</th>
+                        <th class="15%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600">
@@ -39,15 +39,49 @@
                             <td>{{ $key + 1 }}</td>
 
                             <td class="text-start">{{ $courseContent->courseCurriculum->title }}</td>
-                            <td class="text-start">{{ $courseContent->course_file }}</td>
-                            <td class="text-start">{{ $courseContent->course_video }}</td>
+                            <td class="text-start">
+                                @if ($courseContent->course_file)
+                                    <a href="{{ asset('storage/' . $courseContent->course_file) }}" target="_blank"
+                                        class="">
+                                        Download PDF
+                                    </a>
+                                @else
+                                    <p class="text-danger">No file available</p>
+                                @endif
+                            </td>
 
-                            <td>
-                                <a href="{{ route('admin.course_curriculum_content.edit', $courseContent->id) }}" class="text-primary">
+                            <td class="text-start">
+                                @if ($courseContent->course_video)
+                                    @php
+                                        $videos = json_decode($courseContent->course_video, true);
+                                        $videos = is_array($videos) ? $videos : [];
+                                    @endphp
+
+                                    @forelse($videos as $video)
+                                        <video width="70%" height="100" controls>
+                                            <source src="{{ asset('storage/' . $video) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <br>
+                                    @empty
+                                        <p class="text-danger">No videos available</p>
+                                    @endforelse
+                                @else
+                                    <p class="text-danger">No videos available</p>
+                                @endif
+                            </td>
+
+
+
+                            <td class="">
+
+                                <a href="{{ route('admin.course_curriculum_content.edit', $courseContent->id) }}"
+                                    class="text-primary">
                                     <i class="bi bi-pencil text-primary"></i>
                                 </a>
 
-                                <a href="{{ route('admin.course_curriculum_content.destroy', $courseContent->id) }}" class="delete">
+                                <a href="{{ route('admin.course_curriculum_content.destroy', $courseContent->id) }}"
+                                    class="delete">
                                     <i class="bi bi-trash3-fill text-danger"></i>
                                 </a>
 
