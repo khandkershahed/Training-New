@@ -69,6 +69,13 @@ class HomeController extends Controller
         return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams', 'courseSchedules', 'courseOutlines', 'courseProjects'));
     }
 
+    //All Service
+    public function allService()
+    {
+        $services = Service::latest()->get();
+        return view('frontend.pages.service.allservice', compact('services'));
+    }
+
     //courseServiceDetails
     public function courseServiceDetails($id, $slug)
     {
