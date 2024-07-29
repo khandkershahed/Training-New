@@ -255,9 +255,6 @@
 
                                 <div class="row gx-5">
                                     <div class="col-lg-12 first-column">
-
-                                        <h4 class="text-white pb-3">User Info</h4>
-
                                         <div class="row">
 
                                             <div class="col-12">
@@ -335,7 +332,7 @@
                                         </div>
                                         <div class="row">
 
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput1" class="form-label mb-2">Course
                                                         Section</small>
@@ -352,9 +349,9 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <label for="course" class="form-label mb-2">Course Category</label>
+                                                    <small for="exampleFormControlInput1" class="form-label mb-0">Course Category</small>
 
                                                     <select class="effect-1" name="course_category_id" id="course">
 
