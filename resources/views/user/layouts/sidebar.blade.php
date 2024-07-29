@@ -60,18 +60,20 @@
                           </span>
                           <!--end::Svg Icon-->
                       </span>
-                      <span class="menu-title">Category</span>
+                      <span class="menu-title">Register Course</span>
                       <span class="menu-arrow"></span>
                   </span>
                   <div class="menu-sub menu-sub-accordion">
+
                       <div class="menu-item">
-                          <a class="menu-link" href="JavaScript:void(0)">
+                          <a class="menu-link" href="{{ route('user.register.course.list') }}">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
-                              <span class="menu-title">Category List</span>
+                              <span class="menu-title">Course List</span>
                           </a>
                       </div>
+
                       <div class="menu-item">
                           <a class="menu-link" href="JavaScript:void(0)">
                               <span class="menu-bullet">
@@ -80,6 +82,7 @@
                               <span class="menu-title">Add Category</span>
                           </a>
                       </div>
+
                   </div>
               </div>
 

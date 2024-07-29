@@ -20,4 +20,14 @@ class UserCourseRegistration extends Model
     {
         return $this->belongsTo(Course::class,'course_id','id');
     }
+
+    public function courseSection()
+    {
+        return $this->belongsTo(CourseSection::class,'course_section_id','id');
+    }
+
+    public function courseCategory()
+    {
+        return $this->belongsTo(CourseCategory::class,'course_category_id','id');
+    }
 }

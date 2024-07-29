@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CourseContentController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseCurriculamController;
+use App\Http\Controllers\Admin\CourseCurriculumContentController;
 use App\Http\Controllers\Admin\CourseManagentController;
 use App\Http\Controllers\Admin\CourseOutlineController;
 use App\Http\Controllers\Admin\CourseProjectController;
@@ -129,6 +130,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'course' => CourseController::class,
             'course_curriculam' => CourseCurriculamController::class,
             'course_content' => CourseContentController::class,
+            'course_curriculum_content' => CourseCurriculumContentController::class,
             'coupon' => CouponController::class,
             'course_query' => CourseQueryController::class,
 

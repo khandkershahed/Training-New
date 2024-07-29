@@ -16,4 +16,8 @@ class CourseCategory extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function courses() {
+        return $this->hasMany(Course::class,'course_category_id','id');
+    }
 }
