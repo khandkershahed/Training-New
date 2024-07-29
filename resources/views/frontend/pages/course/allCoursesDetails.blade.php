@@ -107,7 +107,10 @@
 
                                         <div class="d-flex mb-lg-0 mb-4">
                                             <a href="" class="primary-btn-one me-3">Admission</a>
-                                            <a href="" class="primary-btn-one">Course Curriculum</a>
+                                            <a href="" class="primary-btn-one me-3">Course Curriculum</a>
+                                            @if (!empty($coursedetail->total_student))
+                                                <a href="" class="primary-btn-one">{{ $coursedetail->total_student }} Students</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -237,31 +240,31 @@
                                         @endif
 
                                         @if ($courseOutlines->isNotEmpty())
-                                        <h5 class="primary-text-color fw-bold pt-3">
-                                            What Will You Learn In This Course?
-                                        </h5>
+                                            <h5 class="primary-text-color fw-bold pt-3">
+                                                What Will You Learn In This Course?
+                                            </h5>
 
-                                        <div class="row gx-1">
+                                            <div class="row gx-1">
 
-                                            @forelse ($courseOutlines as $courseOutline)
-                                                <div class="col-lg-6">
-                                                    <div class="card p-0 mb-1 why-choses">
-                                                        <div class="card-body p-0">
-                                                            <p class="mb-0 p-3">
-                                                                <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
-                                                                    alt="" />
-                                                                {{ $courseOutline->title }}
-                                                            </p>
+                                                @forelse ($courseOutlines as $courseOutline)
+                                                    <div class="col-lg-6">
+                                                        <div class="card p-0 mb-1 why-choses">
+                                                            <div class="card-body p-0">
+                                                                <p class="mb-0 p-3">
+                                                                    <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
+                                                                        alt="" />
+                                                                    {{ $courseOutline->title }}
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
 
-                                            @empty
-                                                <p>Course Outline Not Avaiable</p>
-                                            @endforelse
+                                                @empty
+                                                    <p>Course Outline Not Avaiable</p>
+                                                @endforelse
 
-                                        </div>
+                                            </div>
                                         @endif
 
                                     </div>
@@ -343,7 +346,8 @@
 
                                                     <h5>Course Fee Offline</h5>
 
-                                                    <h4 class="fw-bold py-2">BDT {{ number_format($coursedetail->price, 2) }}
+                                                    <h4 class="fw-bold py-2">BDT
+                                                        {{ number_format($coursedetail->price, 2) }}
                                                     </h4>
 
                                                     <input type="hidden" name="payment_amount"
