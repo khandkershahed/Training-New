@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('user_course_registrations', function (Blueprint $table) {
             $table->id();
 
+            $table->string('user_id')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();

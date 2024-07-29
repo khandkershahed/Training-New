@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class CourseCurriculumContent extends Model
 {
     use HasFactory;
 
@@ -16,14 +16,8 @@ class Course extends Model
      */
     protected $guarded = [];
 
-    public function categoryName()
+    public function courseCurriculum()
     {
-        return $this->belongsTo(CourseCategory::class,'course_category_id','id');
+        return $this->belongsTo(CourseCurriculum::class,'course_curriculum_id','id');
     }
-
-    public function courseCurriculams()
-    {
-        return $this->hasMany(CourseCurriculum::class);
-    }
-
 }
