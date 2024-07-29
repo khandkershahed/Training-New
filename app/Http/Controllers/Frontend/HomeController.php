@@ -73,7 +73,7 @@ class HomeController extends Controller
     public function allService()
     {
         $services = Service::latest()->get();
-        return view('frontend.pages.service.allservice', compact('services'));
+        return view('frontend.pages.service.allService', compact('services'));
     }
 
     //courseServiceDetails
