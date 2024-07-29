@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
-use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseCurriculum;
-use App\Models\CourseOutline;
-use App\Models\CourseProject;
-use App\Models\CourseQuery;
-use App\Models\CourseSchedule;
-use App\Models\CourseSection;
 use App\Models\Faq;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\PrivacyPolicy;
+use App\Models\User;
+use App\Models\Course;
+use App\Models\AboutUs;
 use App\Models\Service;
 use App\Models\Setting;
-use App\Models\TermsCondition;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
 use Illuminate\Http\Request;
+use App\Models\CourseOutline;
+use App\Models\CourseProject;
+use App\Models\CourseSection;
+use App\Models\PrivacyPolicy;
+use App\Models\CourseCategory;
+use App\Models\CourseSchedule;
+use App\Models\TermsCondition;
+use App\Models\CourseCurriculum;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
+use App\Models\UserCourseRegistration;
 
 class HomeController extends Controller
 {
@@ -47,6 +49,7 @@ class HomeController extends Controller
         return view('frontend.pages.course.allCourses', compact('courses'));
     }
 
+    //courseDetails
     public function courseDetails($id, $slug)
     {
         $coursedetail = Course::find($id);
@@ -74,32 +77,56 @@ class HomeController extends Controller
 
     public function courseRegistration()
     {
-        $data = [
-            'courses' => Course::latest('id')->get(),
-        ];
-        return view('frontend.pages.course.courseRegistration', $data);
+        // Fetch all CourseSections, latest first
+        $courseSections = CourseSection::latest()->get();
+        return view('frontend.pages.course.courseRegistration', compact('courseSections'));
+    }
+
+    public function GetRegisterCategory($course_section_id)
+    {
+
+        $cat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();
+        return json_encode($cat);
+
+    }
+
+    public function GetRegisterCourse($course_category_id)
+    {
+        $course = Course::where('course_category_id', $course_category_id)->orderBy('name', 'ASC')->get();
+        return json_encode($course);
     }
 
     //Course Registration Store
     public function courseRegistrationStore(Request $request)
     {
-        CourseQuery::insert([
-
-            'course_id' => $request->course_id,
+        $courseRegister = UserCourseRegistration::insert([
 
             'name' => $request->name,
             'email' => $request->email,
-
             'phone' => $request->phone,
 
-            'message' => $request->message,
-            'address' => $request->address,
-            'call' => $request->call,
+            'call_me' => $request->call_me,
 
-            'ip_address' => $request->ip(),
+            'course_section_id' => $request->course_section_id,
+            'course_category_id' => $request->course_category_id,
+            'course_id' => $request->course_id,
+
+            'course_type' => $request->course_type,
+            'location' => $request->location,
+            'course_register_date' => $request->course_register_date,
+
+            // 'ip_address' => $request->ip(),
 
             'created_at' => now(),
 
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'password' => Hash::make($request->name),
         ]);
 
         return redirect()->back()->with('success', 'Course Registerd Successfully!!');

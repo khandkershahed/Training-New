@@ -91,7 +91,7 @@
                     </div> --}}
                     <div class="d-flex align-items-center justify-content-between">
                         <small class="mb-0 text-white" style="font-size: 13px">
-                            © Copyright 2024 by NGEN IT LTD..
+                            © Copyright 2024 by NGEN IT LTD.
                         </small>
                         <div class="ps-5">
                             {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}

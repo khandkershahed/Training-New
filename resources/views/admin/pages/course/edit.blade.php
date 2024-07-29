@@ -332,20 +332,31 @@
                             </div>
                         </div>
 
-                        <div class="col-7 mb-3">
+                        <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Description</label>
                                 <textarea name="description" class="form-control" id="" cols="2" rows="2">{!! $course->description !!}</textarea>
                             </div>
                         </div>
 
-                        <div class="col-5 mb-3">
+                        <div class="col-3 mb-3">
                             <div class="">
                                 <label for="" class="mb-2">Image</label>
                                 <input type="file" name="thumbnail_image" accept="image/*"
                                     class="form-control form-control-sm mb-3">
 
                                 <img class="" src="{{ asset('storage/course/' . $course->thumbnail_image) }}"
+                                    height="40" width="40" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="">
+                                <label for="" class="mb-2">Course Banner Image</label>
+                                <input type="file" name="course_banner_image" accept="image/*"
+                                    class="form-control form-control-sm mb-3">
+
+                                <img class="" src="{{ asset('storage/course/' . $course->course_banner_image) }}"
                                     height="40" width="40" alt="">
                             </div>
                         </div>

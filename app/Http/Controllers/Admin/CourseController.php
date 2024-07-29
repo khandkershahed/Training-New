@@ -16,9 +16,10 @@ use Illuminate\Support\Str;
 class CourseController extends Controller
 {
 
-    public function GetCategory($course_section_id){
+    public function GetCategory($course_section_id)
+    {
 
-        $subCat = CourseCategory::where('course_section_id' , $course_section_id)->orderBy('name','ASC')->get();
+        $subCat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();
 
         return json_encode($subCat);
 
@@ -36,14 +37,28 @@ class CourseController extends Controller
         $services = Service::latest()->get();
         $industrys = industry::latest()->get();
         $courseCats = CourseCategory::latest()->get();
-        $courseSections= CourseSection::latest()->get();
-        return view('admin.pages.course.create', compact('admins', 'courseCats', 'services', 'industrys','courseSections'));
+        $courseSections = CourseSection::latest()->get();
+        return view('admin.pages.course.create', compact('admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }
 
     public function store(Request $request)
     {
         $mainFile = $request->file('thumbnail_image');
         $imgPath = storage_path('app/public/course/');
+
+        $iconmainFile = $request->file('course_banner_image'); ///////
+        $iconimgPath = storage_path('app/public/course/'); //////
+
+        ////////
+        if (empty($iconmainFile)) {
+
+            $globalFunIconImg['file_name'] = '';
+
+        } else {
+            $globalFunIconImg = customUpload($iconmainFile, $iconimgPath);
+            $globalFunIconImg['file_name'] = $globalFunIconImg['file_name'];
+        }
+        /////////////////////
 
         $instructor = $request->instructor_id;
         if ($instructor !== null) {
@@ -158,6 +173,7 @@ class CourseController extends Controller
                     'registration_end_date' => $request->registration_end_date,
 
                     'thumbnail_image' => $globalFunImg['file_name'],
+                    'course_banner_image' => $globalFunIconImg['file_name'], ////////
 
                     'short_descp' => $request->short_descp,
                     'overview' => $request->overview,
@@ -185,8 +201,8 @@ class CourseController extends Controller
         $services = Service::latest()->get();
         $industrys = industry::latest()->get();
         $courseCats = CourseCategory::latest()->get();
-        $courseSections= CourseSection::latest()->get();
-        return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys','courseSections'));
+        $courseSections = CourseSection::latest()->get();
+        return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }
 
     public function update(Request $request, $id)
@@ -195,6 +211,17 @@ class CourseController extends Controller
 
         $mainFile = $request->file('thumbnail_image');
         $uploadPath = storage_path('app/public/course/');
+
+        $iconmainFile = $request->file('course_banner_image'); ///////
+        $iconimgPath = storage_path('app/public/course/'); //////
+
+        ////////////
+        if (isset($iconmainFile)) {
+            $globalFunIconImg = customUpload($iconmainFile, $iconimgPath);
+        } else {
+            $globalFunIconImg['status'] = 0;
+        }
+        /////////////
 
         $instructor = $request->instructor_id;
         if ($instructor !== null) {
@@ -234,12 +261,25 @@ class CourseController extends Controller
                 }
             }
 
+            ///////////
+
+            if ($globalFunIconImg['status'] == 1) {
+                if (File::exists(public_path('storage/course/requestImg/') . $course->course_banner_image)) {
+                    File::delete(public_path('storage/course/requestImg/') . $course->course_banner_image);
+                }
+                if (File::exists(public_path('storage/course/') . $course->course_banner_image)) {
+                    File::delete(public_path('storage/course/') . $course->course_banner_image);
+                }
+            }
+
+            ////////
+
             $course->update([
 
                 'instructor_id' => $instructors,
                 'service_id' => $services,
                 'industry_id' => $industrys,
-                
+
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
 
@@ -278,6 +318,8 @@ class CourseController extends Controller
                 'description' => $request->description,
 
                 'thumbnail_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $course->thumbnail_image,
+
+                'course_banner_image' => $globalFunIconImg['status'] == 1 ? $globalFunIconImg['file_name'] : $course->course_banner_image, ////
 
             ]);
         }

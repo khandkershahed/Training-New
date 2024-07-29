@@ -247,35 +247,44 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card border-0 form-card">
                         <div class="card-body p-5" style="background: #001c4182;">
-                            <form action="" class="needs-validation" novalidate>
+
+                            <form action="{{ route('course.registration.store') }}" method="POST">
+
+                                @csrf
+
                                 <div class="row gx-5">
                                     <div class="col-lg-12 first-column">
-                                        <h6 class="text-white pb-3">User Info</h6>
+
+                                        <h4 class="text-white pb-3">User Info</h4>
+
                                         <div class="row">
+
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput4" class="form-label">Name</small>
-                                                    <input class="effect-1" type="text" name="user_name" required
+                                                    <input class="effect-1" type="text" name="name"
                                                         placeholder="Robert Bruno">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
+
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput5" class="form-label">Email</small>
-                                                    <input class="effect-1" type="text" name="user_email" required
+                                                    <input class="effect-1" type="text" name="email"
                                                         placeholder="yourmail@gmail.com">
                                                     <span class="focus-border"></span>
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-12">
                                                 <div class="row align-items-center">
                                                     <div class="col-8">
                                                         <div class="position-relative ps-0 mb-3">
                                                             <small for="exampleFormControlInput6"
                                                                 class="form-label">Phone</small>
-                                                            <input class="effect-1" type="text" name="user_phone"
-                                                                required placeholder="(CC) digit">
+                                                            <input class="effect-1" type="text" name="phone"
+                                                                placeholder="(CC) digit">
                                                             <span class="focus-border"></span>
                                                         </div>
                                                     </div>
@@ -292,89 +301,98 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <!-- Select Course Category -->
-                                                    <div class="col-12">
-                                                        <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput1" class="form-label">Select
-                                                                Course Category</small>
-                                                            <select class="effect-1" name="course_category"
-                                                                id="course-category">
-                                                                <option value="" disabled selected>Choose Course
-                                                                    Category</option>
-                                                                <option value="category-one">Category One</option>
-                                                                <option value="category-two">Category Two</option>
-                                                                <option value="category-three">Category Three</option>
-                                                            </select>
-                                                            <span class="focus-border"></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Select Sub Category -->
-                                                    <div class="col-12" id="sub-category-section" style="display: none;">
-                                                        <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput2" class="form-label">Select
-                                                                Sub Category</small>
-                                                            <select class="effect-1" name="sub_category" id="sub-category">
-                                                                <option value="" disabled selected>Choose Sub Category
-                                                                </option>
-                                                                <option value="sub-one">Sub One</option>
-                                                                <option value="sub-two">Sub Two</option>
-                                                                <option value="sub-three">Sub Three</option>
-                                                            </select>
-                                                            <span class="focus-border"></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Select Course Venue -->
-                                                    <div class="col-12" id="course-venue-section" style="display: none;">
-                                                        <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput3" class="form-label">Select
-                                                                Course Venue</small>
-                                                            <select class="effect-1" name="course_venue" id="course-venue">
-                                                                <option value="" disabled selected>Choose Course Venue
-                                                                </option>
-                                                                <option value="onsite">Onsite</option>
-                                                                <option value="online">Online</option>
-                                                                <option value="offline">Offline</option>
-                                                            </select>
-                                                            <span class="focus-border"></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Select Venue Location -->
-                                                    <div class="col-12" id="venue-location-section"
-                                                        style="display: none;">
-                                                        <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput4"
-                                                                class="form-label">Select Venue Location</small>
-                                                            <select class="effect-1" name="venue_location"
-                                                                id="venue-location">
-                                                                <option value="" disabled selected>Choose Venue
-                                                                    Location</option>
-                                                                <option value="portugal">Portugal</option>
-                                                                <option value="bangladesh">Bangladesh</option>
-                                                                <option value="india">India</option>
-                                                            </select>
-                                                            <span class="focus-border"></span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Select Date & Time -->
-                                                    <div class="col-12" id="date-time-section" style="display: none;">
-                                                        <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput5"
-                                                                class="form-label">Select Date & Time</small>
-                                                            <select class="effect-1" name="timing" id="date-time">
-                                                                <option value="" disabled selected>Choose Date & Time
-                                                                </option>
-                                                                <option value="morning">Morning</option>
-                                                                <option value="afternoon">Afternoon</option>
-                                                                <option value="evening">Evening</option>
-                                                            </select>
-                                                            <span class="focus-border"></span>
-                                                        </div>
-                                                    </div>
+
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput1" class="form-label">Course
+                                                        Section</small>
+                                                    <select class="effect-1" name="course_section_id" id="course">
+                                                        <option disabled selected>Course Section
+                                                        </option>
+                                                        @foreach ($courseSections as $courseSection)
+                                                            <option value="{{ $courseSection->id }}">
+                                                                {{ $courseSection->name }}</option>
+                                                        @endforeach
+
+                                                    </select>
+                                                    <span class="focus-border"></span>
                                                 </div>
                                             </div>
 
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <label for="course" class="form-label">Course Category</label>
+
+                                                    <select class="form-select effect-1" name="course_category_id"
+                                                        id="course">
+
+                                                        <option selected disabled>Select Course Category</option>
+
+                                                    </select>
+
+                                                    <span class="focus-border"></span>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+
+                                                    <small for="exampleFormControlInput2" class="form-label">Select
+                                                        Course</small>
+
+                                                    <select class="effect-1" name="course_id" id="level">
+                                                        <option selected disabled>Choose Course</option>
+                                                    </select>
+
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+
+                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                        Course Venue</small>
+
+                                                    <select class="effect-1" name="course_type" id="timing">
+
+                                                        <option disabled selected>Choose Course Venue
+                                                        </option>
+
+                                                        <option value="online">Online</option>
+                                                        <option value="offline">Offline</option>
+
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div>
+
+                                            {{-- <div class="col-12">
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput3" class="form-label">Select
+                                                        Venue Location</small>
+                                                    <select class="effect-1" name="venue_location" id="timing">
+                                                        <option value="" disabled selected>Choose Venue Location
+                                                        </option>
+                                                        <option value="">Portugal</option>
+                                                        <option value="">Bangladesh</option>
+                                                        <option value="">India</option>
+                                                    </select>
+                                                    <span class="focus-border"></span>
+                                                </div>
+                                            </div> --}}
+
+                                            <div class="col-12">
+
+                                                <div class="position-relative ps-0 mb-3">
+                                                    <small for="exampleFormControlInput4" class="form-label">Possible
+                                                        Starting Date</small>
+                                                    <input class="effect-1" type="date" name="course_register_date">
+                                                </div>
+
+                                            </div>
 
                                         </div>
                                     </div>
@@ -398,55 +416,60 @@
 @endsection
 
 @push('scripts')
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const courseCategorySelect = document.getElementById('course-category');
-            const subCategorySection = document.getElementById('sub-category-section');
-            const courseVenueSection = document.getElementById('course-venue-section');
-            const venueLocationSection = document.getElementById('venue-location-section');
-            const dateTimeSection = document.getElementById('date-time-section');
+    {{-- Category --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="course_section_id"]').on('change', function() {
+                var course_section_id = $(this).val();
+                if (course_section_id) {
+                    $.ajax({
+                        url: "{{ url('/category-register/ajax') }}/" + course_section_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="course_category_id"]').html('');
+                            var d = $('select[name="course_category_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="course_category_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .name + '</option>');
+                            });
+                        },
 
-            const subCategorySelect = document.getElementById('sub-category');
-            const courseVenueSelect = document.getElementById('course-venue');
-            const venueLocationSelect = document.getElementById('venue-location');
-            const dateTimeSelect = document.getElementById('date-time');
-
-            courseCategorySelect.addEventListener('change', function() {
-                subCategorySection.style.display = 'block';
-            });
-
-            subCategorySelect.addEventListener('change', function() {
-                courseVenueSection.style.display = 'block';
-            });
-
-            courseVenueSelect.addEventListener('change', function() {
-                venueLocationSection.style.display = 'block';
-            });
-
-            venueLocationSelect.addEventListener('change', function() {
-                dateTimeSection.style.display = 'block';
+                    });
+                } else {
+                    alert('danger');
+                }
             });
         });
-    </script>
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
+        // Show State Data
 
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
+        $(document).ready(function() {
+            $('select[name="course_category_id"]').on('change', function() {
+                var course_category_id = $(this).val();
+                if (course_category_id) {
+                    //function subcategory() {
+                    $.ajax({
+                        url: "{{ url('/course-get/ajax') }}/" + course_category_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="course_id"]').html('');
+                            var d = $('select[name="course_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="course_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .name + '</option>');
+                            });
+                        },
 
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
+                    });
+                    //}
+                } else {
+                    alert('danger');
+                }
+            });
+        });
     </script>
 @endpush

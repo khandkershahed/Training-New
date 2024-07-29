@@ -29,6 +29,7 @@ return new class extends Migration
             
             $table->string('tags')->nullable();
             $table->string('thumbnail_image', 255)->nullable();
+            $table->string('course_banner_image', 255)->nullable();
             $table->string('lecture', 250)->nullable();
             $table->string('project', 250)->nullable();
             $table->string('course_duration', 150)->nullable();
