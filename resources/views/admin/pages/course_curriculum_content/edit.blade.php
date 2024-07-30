@@ -52,7 +52,7 @@
                             </div>
                         </div>
 
-                        {{-- <div class="col-4 mb-3">
+                        <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="course_file" class="mb-2">File</label>
                                 <input type="file" name="course_file" id="course_file"
@@ -67,34 +67,8 @@
                                 @endif
 
                             </div>
-                        </div> --}}
+                        </div>
 
-                        {{-- <div class="col-3 mb-3">
-                            <div class="form-group">
-                                <label for="course_video" class="mb-2">Video</label>
-                                <input type="file" name="course_video[]" multiple id="course_video"
-                                    class="form-control form-control-sm mb-5">
-
-                                @if ($courseContent->course_video)
-                                    @php
-                                        $videos = json_decode($courseContent->course_video, true);
-                                        $videos = is_array($videos) ? $videos : [];
-                                    @endphp
-
-                                    @forelse($videos as $video)
-                                        <video width="40%" height="90" controls>
-                                            <source src="{{ asset('storage/' . $video) }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                        <br>
-                                    @empty
-                                        <p class="text-danger">No videos available</p>
-                                    @endforelse
-                                @else
-                                    <p class="text-danger">No videos available</p>
-                                @endif
-                            </div>
-                        </div> --}}
 
 
                         <div class="col-12 mb-3 mt-4">
@@ -119,70 +93,54 @@
 
                 <div class="row p-4">
 
-                    <div class="col-7">
+                    <div class="col-12">
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h5>Class Video</h5>
-                                <hr>
+                        <h5>Class Video</h5>
+                        <hr>
 
-                                <table class="table mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Sl No</th>
-                                            <th scope="col">Video</th>
-                                            <th scope="col">File</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sl No</th>
+                                    <th scope="col">Video</th>
+                                    <th scope="col">File</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                                        <form action="{{ route('update.video') }}" method="POST"
-                                            enctype="multipart/form-data">
+                                <form action="{{ route('update.video') }}" method="POST" enctype="multipart/form-data">
 
-                                            @csrf
+                                    @csrf
 
-                                            @if ($courseContent->course_video)
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <video width="40%" height="90" controls>
+                                                <source src="{{ asset('storage/' . $courseContent->course_video) }}"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" name="id" value="{{ $courseContent->id }}">
+                                            <input type="file" class="btn-sm"
+                                                value="{{ $courseContent->course_video }}" name="course_video"
+                                                autocomplete="off">
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="submit"
+                                                class="btn btn-light-primary btn-sm p-2">Update</button>
 
-                                                @php
-                                                    $videos = json_decode($courseContent->course_video, true);
-                                                    $videos = is_array($videos) ? $videos : [];
-                                                @endphp
+                                            <a href="{{ route('delete.video', $courseContent->id) }}" class="p-2"><i
+                                                    class="bi bi-trash3-fill fs-5 text-danger"></i></a>
+                                        </td>
+                                    </tr>
 
-                                                @foreach ($videos as $key => $video)
-                                                    <tr>
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td>
-                                                            <video width="40%" height="90" controls>
-                                                                <source src="{{ asset('storage/' . $video) }}"
-                                                                    type="video/mp4">
-                                                                Your browser does not support the video tag.
-                                                            </video>
-                                                        </td>
-                                                        <td>
-                                                            <input type="file" class="btn-sm"
-                                                                name="course_video[{{ $key }}]"
-                                                                autocomplete="off">
-                                                        </td>
-                                                        <td>
-                                                            <button type="submit"
-                                                                class="btn btn-light-primary btn-sm p-2">Update</button>
+                                </form>
 
-                                                            {{-- <a href="{{ route('delete.multiimg', $video->id) }}" 
-                                                                class="btn btn-light-danger btn-sm p-2"><i
-                                                                    class="bi bi-trash3-fill fs-5"></i></a> --}}
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-
-                                            @endif
-
-                                        </form>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
 
                     </div>
 

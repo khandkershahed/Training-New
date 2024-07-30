@@ -195,5 +195,6 @@ Route::get('/terms-and-condition/{id}/active', [TermsConditionController::class,
 Route::get('/privacy/{id}/inactive', [PrivacyPolicyController::class, 'inactive'])->name('privacy-policy.inactive');
 Route::get('/privacy/{id}/active', [PrivacyPolicyController::class, 'active'])->name('privacy-policy.active');
 
-
+// Course Curriculum Video Delete 
 Route::post('/update/video', [CourseCurriculumContentController::class, 'UpdateVideo'])->name('update.video');
+Route::get('/delete/video/{id}', [CourseCurriculumContentController::class, 'DeleteVideo'])->name('delete.video');

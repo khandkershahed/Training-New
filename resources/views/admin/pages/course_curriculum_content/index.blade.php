@@ -34,11 +34,12 @@
                 </thead>
                 <tbody class="fw-bold text-gray-600">
 
-                    @foreach ($courseContents as $key => $courseContent)
+                    {{-- @foreach ($courseContents as $key => $courseContent)
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
                             <td class="text-start">{{ $courseContent->courseCurriculum->title }}</td>
+
                             <td class="text-start">
                                 @if ($courseContent->course_file)
                                     <a href="{{ asset('storage/' . $courseContent->course_file) }}" target="_blank"
@@ -51,24 +52,17 @@
                             </td>
 
                             <td class="text-start">
-                                @if ($courseContent->course_video)
-                                    @php
-                                        $videos = json_decode($courseContent->course_video, true);
-                                        $videos = is_array($videos) ? $videos : [];
-                                    @endphp
 
-                                    @forelse($videos as $video)
-                                        <video width="70%" height="100" controls>
-                                            <source src="{{ asset('storage/' . $video) }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                        <br>
-                                    @empty
-                                        <p class="text-danger">No videos available</p>
-                                    @endforelse
+                                @if ($courseContent->course_video)
+                                    <video width="70%" height="100" controls>
+                                        <source src="{{ asset('storage/' . $courseContent->course_video) }}"
+                                            type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                 @else
                                     <p class="text-danger">No videos available</p>
                                 @endif
+
                             </td>
 
 
@@ -87,7 +81,80 @@
 
                             </td>
                         </tr>
+                    @endforeach --}}
+
+                    @foreach ($groupedCourseContents as $courseCurriculumId => $courseContents)
+                        @php
+                            // Initialize variables to store aggregated data
+                            $files = [];
+                            $videos = [];
+                        @endphp
+
+                        <!-- Iterate through each grouped content and aggregate files and videos -->
+                        @foreach ($courseContents as $courseContent)
+                            @if ($courseContent->course_file)
+                                @php
+                                    $files[] = $courseContent->course_file;
+                                @endphp
+                            @endif
+
+                            @if ($courseContent->course_video)
+                                @php
+                                    $videos[] = $courseContent->course_video;
+                                @endphp
+                            @endif
+                        @endforeach
+
+                        <!-- Display aggregated data -->
+                        <tr>
+                            <!-- Display index (starting from 1) -->
+                            <td>{{ $loop->iteration }}</td>
+
+                            <!-- Display course title (assuming it's the same for grouped items) -->
+                            <td class="text-start">{{ $courseContents->first()->courseCurriculum->title }}</td>
+
+                            <!-- Display download links for files -->
+                            <td class="text-start">
+                                @if (count($files) > 0)
+                                    @foreach ($files as $file)
+                                        <a href="{{ asset('storage/' . $file) }}" target="_blank">
+                                            Download PDF
+                                        </a><br>
+                                    @endforeach
+                                @else
+                                    <p class="text-danger">No file available</p>
+                                @endif
+                            </td>
+
+                            <!-- Display video(s) -->
+                            <td class="text-start">
+                                @if (count($videos) > 0)
+                                    @foreach ($videos as $video)
+                                        <video width="70%" height="100" controls>
+                                            <source src="{{ asset('storage/' . $video) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video><br>
+                                    @endforeach
+                                @else
+                                    <p class="text-danger">No videos available</p>
+                                @endif
+                            </td>
+
+                            <!-- Display edit and delete options -->
+                            <td>
+                                <a href="{{ route('admin.course_curriculum_content.edit', $courseCurriculumId) }}"
+                                    class="text-primary">
+                                    <i class="bi bi-pencil text-primary"></i>
+                                </a>
+                                <a href="{{ route('admin.course_curriculum_content.destroy', $courseCurriculumId) }}"
+                                    class="delete">
+                                    <i class="bi bi-trash3-fill text-danger"></i>
+                                </a>
+                            </td>
+
+                        </tr>
                     @endforeach
+
 
 
                 </tbody>

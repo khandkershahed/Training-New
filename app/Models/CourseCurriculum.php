@@ -20,4 +20,9 @@ class CourseCurriculum extends Model
     {
         return $this->belongsTo(Course::class,'course_id','id');
     }
+
+    public function courseCurriContent()
+    {
+        return $this->belongsTo(CourseCurriculumContent::class,'course_curriculum_id','id');
+    }
 }
