@@ -10,7 +10,7 @@
         </div> --}}
     </section>
 
-    <section style="background-color: #eee">
+    {{-- <section style="background-color: #eee">
         <div class="container">
             <div class="text-center px-lg-5 py-lg-5 px-2 py-5">
                 <h3 class="section-title">Popular Services We Offer</h3>
@@ -26,7 +26,7 @@
                 </p>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- All Servises -->
     <section>
         <div class="container py-5">
