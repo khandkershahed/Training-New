@@ -190,7 +190,7 @@
                 <div class="card card0">
                     <div class="d-flex flex-lg-row flex-column-reverse">
                         <div class="card card1">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="row justify-content-center my-auto">
                                     <div class="col-md-10 col-12">
@@ -207,26 +207,27 @@
                                             <x-input-label class="form-label" for="email" :value="__('Email')" />
                                             <x-text-input id="email"
                                                 class="form-control form-control-solid rounded-0" type="email"
-                                                name="email" :value="old('email')" required autocomplete="username"
-                                                placeholder="Enter User Name" />
+                                                name="email" :value="old('email')" required autocomplete="off"
+                                                placeholder="example@gmail.com" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
 
-                                        <div class="form-outline mb-3">
+                                        <div class="form-outline">
                                             <x-input-label class="form-label" for="password" :value="__('Password')" />
                                             <x-text-input id="password"
                                                 class="form-control form-control-solid rounded-0" type="password"
                                                 name="password" required autocomplete="new-password"
-                                                placeholder="Enter Password" />
+                                                placeholder="*******" />
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                         </div>
+
                                         <div class="row justify-content-center px-3">
                                             <button type="submit" class="btn-block btn-color">Sign In Now</button>
                                         </div>
 
-                                        {{-- <div class="row justify-content-center my-2 text-center pt-3">
-                                        <a href="#"><small class="text-muted">Forgot Password?</small></a>
-                                    </div> --}}
+                                        <div class="row justify-content-center my-2 text-center pt-2">
+                                            <a href="{{ route('password.request') }}"><small class="text-muted">Forgot Password?</small></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="text-center mb-5 pt-4">

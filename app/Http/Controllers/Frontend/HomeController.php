@@ -441,8 +441,7 @@ class HomeController extends Controller
     //RegisterCourseList
     public function RegisterCourseList()
     {
-        $registerCourse = UserCourseRegistration::where('user_id',Auth::id())->get();
-
+        $registerCourse = UserCourseRegistration::with('courseName')->where('user_id',Auth::id())->get();
         return view('user.course.register_course',compact('registerCourse'));
     }
 
@@ -450,7 +449,6 @@ class HomeController extends Controller
     public function RegisterCourseDetails($course_id)
     {
         $course = Course::with('courseCurriculams')->where('id',$course_id)->first();
-        
         return view('user.course.register_course_details',compact('course'));
     }
 

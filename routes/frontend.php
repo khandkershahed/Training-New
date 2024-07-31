@@ -67,8 +67,8 @@ Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
-    Route::post('/course/enroll/{course_id}', 'CourseEnroll')->name('course.enroll');
 
+    Route::post('/course/enroll/{course_id}', 'CourseEnroll')->name('course.enroll');
     //Add To Enroll
     Route::post('/add-to-enroll/{course_id}', 'AddToEnroll');
     Route::post('/add-to-enroll-online', 'AddToEnrollOnline');
@@ -77,6 +77,9 @@ Route::controller(CourseEnrollController::class)->group(function () {
 //Course Search By Home Page
 Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('search.course');
 
+
 // User Register Course List 
+Route::middleware('auth')->group(function () {
 Route::get('/user/register/course/list', [HomeController::class, 'RegisterCourseList'])->name('user.register.course.list');
 Route::get('/user/register/course/details/{course_id}', [HomeController::class, 'RegisterCourseDetails'])->name('register.course.details');
+});

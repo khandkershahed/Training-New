@@ -20,15 +20,17 @@
         <div class="card-body border-top p-9">
             <!--begin::Input group-->
             <div class="row fv-row">
-                <div class="mb-10 col-lg-6">
+
+                <div class="mb-10 col-lg-3">
                     <x-metronic.label for="name"
                         class="form-label">{{ __('Name') }}</x-metronic.label>
                     <x-metronic.input id="name" type="text" name="name" :value="old('name', $user->name)"
                         placeholder="Enter Your name"></x-metronic.input>
                 </div>
                 <!--end::Input group-->
+
                 <!--begin::Input group-->
-                <div class="mb-10 col-lg-6">
+                <div class="mb-10 col-lg-3">
                     <x-metronic.label class="form-label">{{ __('Email') }}</x-metronic.label>
                     <!--end::Label-->
                     <!--begin::Input-->
@@ -58,6 +60,21 @@
 
                 </div>
                 <!--end::Input group-->
+
+                <div class="mb-10 col-lg-3">
+                    <x-metronic.label for="phone"
+                        class="form-label">{{ __('Phone') }}</x-metronic.label>
+                    <x-metronic.input id="phone" type="tel" name="phone" :value="old('phone', $user->phone)"
+                        placeholder="Enter Your phone"></x-metronic.input>
+                </div>
+
+                <div class="mb-10 col-lg-3">
+                    <x-metronic.label for="address"
+                        class="form-label">{{ __('Address') }}</x-metronic.label>
+                    <x-metronic.input id="address" type="text" name="address" :value="old('address', $user->address)"
+                        placeholder="Enter Your Address"></x-metronic.input>
+                </div>
+
             </div>
         </div>
         <!--end::Card body-->
@@ -73,7 +90,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >{{ __('') }}</p>
             @endif
         </div>
         <!--end::Card footer-->

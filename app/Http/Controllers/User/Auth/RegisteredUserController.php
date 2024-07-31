@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Models\Course;
-use App\Models\User;
-use App\Models\UserCourse;
 use Carbon\Carbon;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Course;
 use Illuminate\View\View;
+use App\Models\UserCourse;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
 
 class RegisteredUserController extends Controller
 {
@@ -43,35 +45,20 @@ class RegisteredUserController extends Controller
                 'regex:/[@$!%*?&]/', // Must contain at least one special character
             ],
 
-            'course_id' => ['required'],
-
-            'phone' => ['required', 'string', 'regex:/^01[0-9]{9}$/'], // Adjust regex as needed
-
         ]);
-
-        $course = Course::find($request->course_id);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'course_id' => $request->course_id,
             'password' => Hash::make($request->password),
         ]);
 
-        UserCourse::create([
-            'user_id' => $user->id,
-            'course_id' => $request->course_id,
-            'enrollment_date' => Carbon::now(),
-            'payment_status' => 'unpaid',
-            'payment_amount' => $course->price,
-            'created_at' => Carbon::now(),
-        ]);
+        
+        event(new Registered($user));
 
-        // event(new Registered($user));
-
-        // Auth::login($user);
+        Auth::login($user);
 
         return redirect()->route('login')->with('success', 'Register successfully');
     }
