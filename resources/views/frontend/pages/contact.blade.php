@@ -59,28 +59,35 @@
                             marked.
                         </p>
                     </div>
-                    <form action="" class="pt-5">
+                    <form action="{{ route('contact.store') }}" class="pt-5" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter Your Name" required />
+                                        aria-describedby="emailHelp" placeholder="Mr Khan" required />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Enter Your Email" required />
+                                        aria-describedby="emailHelp" placeholder="example@gmail.com" required />
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <input type="text" name="phone" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Phone Number" required />
+                                        aria-describedby="emailHelp" placeholder="0172*******" required />
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <textarea rows="10" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                <div class="mb-3">
+                                    <input type="text" name="subject" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="Subject" required />
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <textarea rows="5" name="message" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                             </div>
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-center pt-5">

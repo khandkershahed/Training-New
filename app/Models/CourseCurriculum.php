@@ -23,6 +23,6 @@ class CourseCurriculum extends Model
 
     public function courseCurriContent()
     {
-        return $this->belongsTo(CourseCurriculumContent::class,'course_curriculum_id','id');
+        return $this->hasMany(CourseCurriculumContent::class,'course_curriculum_id','id');
     }
 }

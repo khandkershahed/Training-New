@@ -128,9 +128,9 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 
             //Created By Ashiquzzaman
             'course' => CourseController::class,
-            'course_curriculam' => CourseCurriculamController::class,
             'course_content' => CourseContentController::class,
-            'course_curriculum_content' => CourseCurriculumContentController::class,
+            'course_curriculam' => CourseCurriculamController::class,
+            // 'course_curriculum_content' => CourseCurriculumContentController::class,
             'coupon' => CouponController::class,
             'course_query' => CourseQueryController::class,
 
@@ -195,6 +195,18 @@ Route::get('/terms-and-condition/{id}/active', [TermsConditionController::class,
 Route::get('/privacy/{id}/inactive', [PrivacyPolicyController::class, 'inactive'])->name('privacy-policy.inactive');
 Route::get('/privacy/{id}/active', [PrivacyPolicyController::class, 'active'])->name('privacy-policy.active');
 
-// Course Curriculum Video Delete 
-Route::post('/update/video', [CourseCurriculumContentController::class, 'UpdateVideo'])->name('update.video');
-Route::get('/delete/video/{id}', [CourseCurriculumContentController::class, 'DeleteVideo'])->name('delete.video');
+// Course Curriculum Video Delete
+// Route::post('/update/video', [CourseCurriculumContentController::class, 'UpdateVideo'])->name('update.video');
+// Route::get('/delete/video/{id}', [CourseCurriculumContentController::class, 'DeleteVideo'])->name('delete.video');
+
+// Curricum Video Section 
+Route::post('/update/video/curriculum', [CourseCurriculamController::class, 'UpdateVideoCurriculum'])->name('update.video.curriculum');
+Route::get('/delete/multi-video/{id}', [CourseCurriculamController::class, 'DeleteVideoCurriculum'])->name('delete.multi-video');
+Route::post('/store/video/curriculum', [CourseCurriculamController::class, 'StoreVideoCurriculum'])->name('store.new.video');
+
+// Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'StoreFileCurriculum'])->name('store.new.file');
+
+// Curricum Video Section 
+Route::post('/update/file/curriculum', [CourseCurriculamController::class, 'UpdateFileCurriculum'])->name('update.file.curriculum');
+Route::get('/delete/multi-file/{id}', [CourseCurriculamController::class, 'DeleteFileCurriculum'])->name('delete.multi-file');
+Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'StoreFileCurriculum'])->name('store.new.file');

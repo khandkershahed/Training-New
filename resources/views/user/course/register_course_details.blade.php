@@ -100,37 +100,68 @@
                     tabindex="0">
 
 
-                    <div class="card" style="border: 1px solid rgb(43, 42, 42)">
+                    <div class="card">
 
                         <div class="card-body pt-5">
 
-
-
                             <table id="kt_datatable_example_5"
                                 class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
-                                <thead>
-                                    <tr class="fw-bolder fs-6 text-gray-800 px-7">
+                                <thead class="bg-dark">
+                                    <tr class="fw-bolder text-white fs-6 px-7">
+                                        <th>No</th>
                                         <th>Course Curriculum</th>
-                                        <th>Pdf File</th>
                                         <th>Class Video</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                    </tr>
+
+                                    @foreach ($course->courseCurriculams as $courseCurriculam)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $courseCurriculam->title }}</td>
+
+                                            <td>
+                                                @foreach ($courseCurriculam->courseCurriContent as $video)
+                                                    {{--  --}}
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-grey" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal{{ $video->id }}">
+                                                        <i class="fa-solid fa-video"></i> ক্লাস রেকর্ডিং
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal{{ $video->id }}"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5"
+                                                                        id="exampleModalLabel">
+                                                                        {{ $courseCurriculam->title }}</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <video width="100%" height="300px" controls>
+                                                                        <source
+                                                                            src="{{ asset('storage/' . $video->course_video) }}"
+                                                                            type="video/mp4">
+                                                                    </video>
+                                                                    <br>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
-
-
-
 
                         </div>
                     </div>

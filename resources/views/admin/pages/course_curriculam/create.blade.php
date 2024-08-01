@@ -40,6 +40,7 @@
                                     data-placeholder="Select an option">
 
                                     @if (count($courses) > 0)
+                                        <OPtion>Choose Course List</OPtion>
                                         @foreach ($courses as $course)
                                             <option class="form-control" value="{{ $course->id }}">{{ $course->name }}
                                             </option>
@@ -74,11 +75,25 @@
                             </div>
                         </div>
 
-                        <div class="col-3 mb-3">
+                        <div class="col-2 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Class Number</label>
                                 <input type="number" name="class_number" placeholder="10"
                                     class="form-control form-control-sm" value="{{ old('class_number') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Pdf File</label>
+                                <input type="file" name="course_file[]" multiple class="form-control form-control-sm">
+                            </div>
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Class Video</label>
+                                <input type="file" name="course_video[]" multiple class="form-control form-control-sm">
                             </div>
                         </div>
 

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\NewsLetterController;
 use App\Http\Controllers\Frontend\CourseEnrollController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -15,7 +14,6 @@ Route::get('/training', [HomeController::class, 'training'])->name('training');
 //Course All & Deatils Start
 Route::get('/all-courses', [HomeController::class, 'allCourses'])->name('courses.all');
 Route::get('/course/{id}/{slug}', [HomeController::class, 'courseDetails']);
-
 
 //courseService
 Route::get('/service', [HomeController::class, 'allService'])->name('service.all');
@@ -38,8 +36,9 @@ Route::controller(HomeController::class)->group(function () {
 //Course Query
 Route::post('/course-query', [HomeController::class, 'courseQueryStore'])->name('course.query.store');
 
-Route::post('/contact_us', [ContactController::class, 'store'])->name('contactus.store');
+Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 //Service Created By Ashiquzzaman
@@ -77,9 +76,8 @@ Route::controller(CourseEnrollController::class)->group(function () {
 //Course Search By Home Page
 Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('search.course');
 
-
-// User Register Course List 
+// User Register Course List
 Route::middleware('auth')->group(function () {
-Route::get('/user/register/course/list', [HomeController::class, 'RegisterCourseList'])->name('user.register.course.list');
-Route::get('/user/register/course/details/{course_id}', [HomeController::class, 'RegisterCourseDetails'])->name('register.course.details');
+    Route::get('/user/register/course/list', [HomeController::class, 'RegisterCourseList'])->name('user.register.course.list');
+    Route::get('/user/register/course/details/{course_id}', [HomeController::class, 'RegisterCourseDetails'])->name('register.course.details');
 });

@@ -117,14 +117,14 @@
                              </a>
                          </div>
 
-                         <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.course_curriculum_content.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Course Curriculam Content</span>
-                            </a>
-                        </div>
+                         {{-- <div class="menu-item">
+                             <a class="menu-link" href="{{ route('admin.course_curriculum_content.index') }}">
+                                 <span class="menu-bullet">
+                                     <span class="bullet bullet-dot"></span>
+                                 </span>
+                                 <span class="menu-title">Course Curriculam Content</span>
+                             </a>
+                         </div> --}}
 
                          <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.course_project.index') }}">
@@ -136,13 +136,13 @@
                          </div>
 
                          <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.course_section.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Course Section</span>
-                            </a>
-                        </div>
+                             <a class="menu-link" href="{{ route('admin.course_section.index') }}">
+                                 <span class="menu-bullet">
+                                     <span class="bullet bullet-dot"></span>
+                                 </span>
+                                 <span class="menu-title">Course Section</span>
+                             </a>
+                         </div>
 
                          <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.course_outline.index') }}">
@@ -280,31 +280,31 @@
                          </div>
 
                          <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.terms-and-condition.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Terms & Condition</span>
-                            </a>
-                        </div>
+                             <a class="menu-link" href="{{ route('admin.terms-and-condition.index') }}">
+                                 <span class="menu-bullet">
+                                     <span class="bullet bullet-dot"></span>
+                                 </span>
+                                 <span class="menu-title">Terms & Condition</span>
+                             </a>
+                         </div>
 
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.privacy-policy.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Privacy & Policy</span>
-                            </a>
-                        </div>
+                         <div class="menu-item">
+                             <a class="menu-link" href="{{ route('admin.privacy-policy.index') }}">
+                                 <span class="menu-bullet">
+                                     <span class="bullet bullet-dot"></span>
+                                 </span>
+                                 <span class="menu-title">Privacy & Policy</span>
+                             </a>
+                         </div>
 
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{ route('admin.common_banner.index') }}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Common Banner</span>
-                            </a>
-                        </div>
+                         <div class="menu-item">
+                             <a class="menu-link" href="{{ route('admin.common_banner.index') }}">
+                                 <span class="menu-bullet">
+                                     <span class="bullet bullet-dot"></span>
+                                 </span>
+                                 <span class="menu-title">Common Banner</span>
+                             </a>
+                         </div>
 
                      </div>
                  </div>
