@@ -80,4 +80,8 @@ Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('se
 Route::middleware('auth')->group(function () {
     Route::get('/user/register/course/list', [HomeController::class, 'RegisterCourseList'])->name('user.register.course.list');
     Route::get('/user/register/course/details/{course_id}', [HomeController::class, 'RegisterCourseDetails'])->name('register.course.details');
+
+    // Payment
+    Route::post('/course/payment/{id}', [HomeController::class, 'PaymentCourse'])->name('course.payment');
+
 });

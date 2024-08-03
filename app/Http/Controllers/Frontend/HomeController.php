@@ -2,31 +2,32 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Faq;
-use App\Models\User;
-use App\Models\Course;
+use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use App\Models\Contact;
-use App\Models\Service;
-use App\Models\Setting;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\CourseQuery;
-use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Models\CourseCurriculum;
 use App\Models\CourseOutline;
 use App\Models\CourseProject;
-use App\Models\CourseSection;
-use App\Models\PrivacyPolicy;
-use App\Models\CourseCategory;
+use App\Models\CourseQuery;
 use App\Models\CourseSchedule;
+use App\Models\CourseSection;
+use App\Models\Faq;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\PrivacyPolicy;
+use App\Models\Service;
+use App\Models\Setting;
 use App\Models\TermsCondition;
-use App\Models\CourseCurriculum;
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UserCourseRegistration;
+use id;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\View;
-use App\Models\UserCourseRegistration;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -86,7 +87,6 @@ class HomeController extends Controller
         $courses = Course::where('course_section_id', $courseServicedetail->id)->get();
         return view('frontend.pages.service.allCoursesService', compact('courses'));
     }
-
 
     public function courseRegistration()
     {
@@ -510,16 +510,39 @@ class HomeController extends Controller
     //RegisterCourseList
     public function RegisterCourseList()
     {
-        $registerCourse = UserCourseRegistration::with('courseName')->where('user_id',Auth::id())->get();
-        return view('user.course.register_course',compact('registerCourse'));
+        $registerCourse = UserCourseRegistration::with('courseName')->where('user_id', Auth::id())->get();
+        return view('user.course.register_course', compact('registerCourse'));
     }
 
     //RegisterCourseDetails
     public function RegisterCourseDetails($course_id)
     {
-        $course = Course::with('courseCurriculams')->where('id',$course_id)->first();
-        
-        return view('user.course.register_course_details',compact('course'));
+        $course = Course::with('courseCurriculams')->where('id', $course_id)->first();
+        return view('user.course.register_course_details', compact('course'));
+    }
+
+    //Payment Course
+    public function PaymentCourse(Request $request, $id)
+    {
+        // Validate the input
+        $request->validate([
+            'payment_method' => 'required|string',
+            'transcation_id' => 'required|string',
+            'note' => 'nullable|string',
+        ]);
+
+        // Find the registration by ID
+        $registration = UserCourseRegistration::findOrFail($id);
+
+        // Update the registration details
+        $registration->update([
+            'payment_method' => $request->payment_method,
+            'transcation_id' => $request->transcation_id,
+            'note' => $request->note,
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Payment details have been submitted successfully.');
     }
 
 }

@@ -16,7 +16,6 @@ use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CourseContentController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseCurriculamController;
-use App\Http\Controllers\Admin\CourseCurriculumContentController;
 use App\Http\Controllers\Admin\CourseManagentController;
 use App\Http\Controllers\Admin\CourseOutlineController;
 use App\Http\Controllers\Admin\CourseProjectController;
@@ -199,14 +198,20 @@ Route::get('/privacy/{id}/active', [PrivacyPolicyController::class, 'active'])->
 // Route::post('/update/video', [CourseCurriculumContentController::class, 'UpdateVideo'])->name('update.video');
 // Route::get('/delete/video/{id}', [CourseCurriculumContentController::class, 'DeleteVideo'])->name('delete.video');
 
-// Curricum Video Section 
+// Curricum Video Section
 Route::post('/update/video/curriculum', [CourseCurriculamController::class, 'UpdateVideoCurriculum'])->name('update.video.curriculum');
 Route::get('/delete/multi-video/{id}', [CourseCurriculamController::class, 'DeleteVideoCurriculum'])->name('delete.multi-video');
 Route::post('/store/video/curriculum', [CourseCurriculamController::class, 'StoreVideoCurriculum'])->name('store.new.video');
 
 // Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'StoreFileCurriculum'])->name('store.new.file');
 
-// Curricum Video Section 
+// Curricum Video Section
 Route::post('/update/file/curriculum', [CourseCurriculamController::class, 'UpdateFileCurriculum'])->name('update.file.curriculum');
 Route::get('/delete/multi-file/{id}', [CourseCurriculamController::class, 'DeleteFileCurriculum'])->name('delete.multi-file');
 Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'StoreFileCurriculum'])->name('store.new.file');
+
+
+//Payment Type
+Route::get('/payment/paid/{id}', [RegistrationController::class, 'PaymentPaid'])->name('registration.paid');
+Route::get('/payment/unpaid/{id}', [RegistrationController::class, 'PaymentUnpaid'])->name('registration.unpaid');
+

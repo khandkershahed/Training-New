@@ -99,7 +99,6 @@
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                     tabindex="0">
 
-
                     <div class="card">
 
                         <div class="card-body pt-5">
@@ -122,7 +121,6 @@
 
                                             <td>
                                                 @foreach ($courseCurriculam->courseCurriContent as $video)
-                                                    {{--  --}}
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-grey" data-bs-toggle="modal"
                                                         data-bs-target="#exampleModal{{ $video->id }}">
@@ -170,11 +168,51 @@
 
                 {{-- Resource Section --}}
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
-                    tabindex="0">...</div>
+                    tabindex="0">
+
+                    <div class="card">
+
+                        <div class="card-body pt-5">
+
+                            <table id="kt_datatable_example_5"
+                                class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                                <thead class="bg-dark">
+                                    <tr class="fw-bolder text-white fs-6 px-7">
+                                        <th>No</th>
+                                        <th>Course Curriculum</th>
+                                        <th>File</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($course->courseCurriculams as $courseCurriculam)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $courseCurriculam->title }}</td>
+                                            <td>
+                                                @foreach ($courseCurriculam->courseCurriContentFileName as $file)
+                                                    <a href="{{ asset('storage/' . $file->course_file) }}"
+                                                        target="_blank">
+                                                        Download PDF
+                                                    </a>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
 
                 {{-- Certificate Section --}}
                 <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab"
-                    tabindex="0">...</div>
+                    tabindex="0">
+                </div>
+
             </div>
 
         </div>
