@@ -26,6 +26,11 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->date('course_register_date')->nullable();
 
+            $table->string('payment_type')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->string('transcation_id')->nullable();
+            $table->string('note')->nullable();
+
             $table->timestamps();
         });
     }

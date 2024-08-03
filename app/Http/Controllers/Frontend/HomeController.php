@@ -527,6 +527,7 @@ class HomeController extends Controller
         // Validate the input
         $request->validate([
             'payment_method' => 'required|string',
+            'amount' => 'required|string',
             'transcation_id' => 'required|string',
             'note' => 'nullable|string',
         ]);
@@ -537,6 +538,7 @@ class HomeController extends Controller
         // Update the registration details
         $registration->update([
             'payment_method' => $request->payment_method,
+            'amount' => $request->amount,
             'transcation_id' => $request->transcation_id,
             'note' => $request->note,
         ]);

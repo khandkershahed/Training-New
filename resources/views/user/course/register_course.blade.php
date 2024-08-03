@@ -80,7 +80,7 @@
 
                             <div class="row">
                                 <!-- Payment Method -->
-                                <div class="col-6 mb-4">
+                                <div class="col-4 mb-4">
                                     <label for="" class="mb-3">Payment Method</label>
                                     <select name="payment_method"
                                         class="form-select form-select-sm @error('payment_method') is-invalid @enderror">
@@ -103,8 +103,19 @@
                                     @enderror
                                 </div>
 
+                                <div class="col-4 mb-4">
+                                    <label for="" class="mb-3">Amount</label>
+                                    <input type="text" name="amount" value="{{ old('amount') }}"
+                                        class="form-control form-control-sm @error('amount') is-invalid @enderror">
+                                    @error('amount')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
                                 <!-- Transcation Id -->
-                                <div class="col-6 mb-4">
+                                <div class="col-4 mb-4">
                                     <label for="" class="mb-3">Transcation Id</label>
                                     <input type="text" name="transcation_id" value="{{ old('transcation_id') }}"
                                         class="form-control form-control-sm @error('transcation_id') is-invalid @enderror">
