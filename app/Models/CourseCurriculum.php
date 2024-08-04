@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\CourseCurriculumFile;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class CourseCurriculum extends Model
 {
@@ -19,16 +18,19 @@ class CourseCurriculum extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class,'course_id','id');
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }
 
     public function courseCurriContent()
     {
-        return $this->hasMany(CourseCurriculumContent::class,'course_curriculum_id','id');
+        // return $this->hasMany(CourseResource::class, 'course_curriculum_id', 'id');
+        return $this->hasMany(CourseResource::class);
     }
 
     public function courseCurriContentFileName()
     {
-        return $this->hasMany(CourseCurriculumFile::class,'course_curriculum_id','id');
+        // return $this->hasMany(CourseResource::class, 'course_curriculum_id', 'id');
+        return $this->hasMany(CourseResource::class);
     }
+
 }

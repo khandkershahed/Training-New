@@ -18,11 +18,16 @@ class CourseResource extends Model
 
     public function courseName()
     {
-        return $this->belongsTo(Course::class,'course_id','id');
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }
 
     public function courseCurriculum()
     {
-        return $this->belongsTo(CourseCurriculum::class,'course_curriculum_id','id');
+        return $this->belongsTo(CourseCurriculum::class, 'course_curriculum_id', 'id');
+    }
+
+    public function courseCurriContent()
+    {
+        return $this->hasMany(CourseCurriculumContent::class);
     }
 }
