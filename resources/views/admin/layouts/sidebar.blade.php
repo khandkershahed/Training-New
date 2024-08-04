@@ -117,6 +117,15 @@
                              </a>
                          </div>
 
+                         <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.course_resource.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Course Resource</span>
+                            </a>
+                        </div>
+
                          {{-- <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.course_curriculum_content.index') }}">
                                  <span class="menu-bullet">
