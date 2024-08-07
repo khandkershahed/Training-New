@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseCategoryController;
+use App\Http\Controllers\CourseResourceController;
 use App\Http\Controllers\CourseSectionController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\PrivacyPolicyController;
@@ -133,6 +134,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'coupon' => CouponController::class,
             'course_query' => CourseQueryController::class,
 
+            'course_resource' => CourseResourceController::class,
+
             'course_management' => CourseManagentController::class,
             'course_project' => CourseProjectController::class,
             'course_outline' => CourseOutlineController::class,
@@ -186,6 +189,10 @@ Route::controller(CourseController::class)->group(function () {
     Route::get('/category/ajax/{course_section_id}', 'GetCategory');
 });
 
+Route::controller(CourseResourceController::class)->group(function () {
+    Route::get('/course/ajax/{course_id}', 'GetCourseData');
+});
+
 // Terms & Condition Status
 Route::get('/terms-and-condition/{id}/inactive', [TermsConditionController::class, 'inactive'])->name('terms-and-condition.inactive');
 Route::get('/terms-and-condition/{id}/active', [TermsConditionController::class, 'active'])->name('terms-and-condition.active');
@@ -209,7 +216,6 @@ Route::post('/store/video/curriculum', [CourseCurriculamController::class, 'Stor
 Route::post('/update/file/curriculum', [CourseCurriculamController::class, 'UpdateFileCurriculum'])->name('update.file.curriculum');
 Route::get('/delete/multi-file/{id}', [CourseCurriculamController::class, 'DeleteFileCurriculum'])->name('delete.multi-file');
 Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'StoreFileCurriculum'])->name('store.new.file');
-
 
 //Payment Type
 Route::get('/payment/paid/{id}', [RegistrationController::class, 'PaymentPaid'])->name('registration.paid');

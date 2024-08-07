@@ -1,28 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseCurriculum;
 use App\Models\CourseCurriculumContent;
 use App\Models\CourseCurriculumFile;
+use App\Models\CourseResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class CourseCurriculamController extends Controller
+class CourseResourceController extends Controller
 {
+
+    public function GetCourseData($course_id)
+    {
+        $course = CourseCurriculum::where('course_id', $course_id)->orderBy('title', 'ASC')->get();
+        return json_encode($course);
+    }
 
     public function index()
     {
-        $courseCurriculams = CourseCurriculum::latest()->get();
-        return view('admin.pages.course_curriculam.index', compact('courseCurriculams'));
+        $courseCurriculams = CourseResource::latest()->get();
+        return view('admin.pages.course_resource.index', compact('courseCurriculams'));
     }
 
     public function create()
     {
         $courses = Course::latest()->get();
-        return view('admin.pages.course_curriculam.create', compact('courses'));
+        return view('admin.pages.course_resource.create', compact('courses'));
     }
 
     public function store(Request $request)
@@ -36,13 +42,9 @@ class CourseCurriculamController extends Controller
         ]);
 
         // Insert course curriculum and get ID
-        $course_curriculum_id = CourseCurriculum::insertGetId([
+        $course_curriculum_id = CourseResource::insertGetId([
             'course_id' => $request->course_id,
-            'badge' => $request->badge,
-            'title' => $request->title,
-            'duration' => $request->duration,
-            'description' => $request->description,
-            'class_number' => $request->class_number,
+            'course_curriculum_id' => $request->course_curriculum_id,
             'created_at' => now(),
         ]);
 
@@ -78,46 +80,38 @@ class CourseCurriculamController extends Controller
             }
         }
 
-        return redirect()->route('admin.course_curriculam.index')->with('success', 'Course Curriculum Inserted Successfully!');
+        return redirect()->route('admin.course_resource.index')->with('success', 'Data Inserted Successfully!');
     }
 
     public function edit(Request $request, $id)
     {
-        $courseCurriculam = CourseCurriculum::find($id);
+        $courseCurriculam = CourseResource::find($id);
         $courses = Course::latest()->get();
+        $courseCurrums = CourseCurriculum::latest()->get();
 
         $multivideo = CourseCurriculumContent::where('course_curriculum_id', $id)->latest()->get();
         $multifile = CourseCurriculumFile::where('course_curriculum_id', $id)->latest()->get();
 
-        return view('admin.pages.course_curriculam.edit', compact('courseCurriculam', 'courses', 'multivideo', 'multifile'));
+        return view('admin.pages.course_resource.edit', compact('courseCurriculam', 'courses', 'multivideo', 'multifile','courseCurrums'));
     }
 
     public function update(Request $request, $id)
     {
-        $course = CourseCurriculum::findOrFail($id);
+        $course = CourseResource::findOrFail($id);
 
         $course->update([
 
             'course_id' => $request->course_id,
-
-            'badge' => $request->badge,
-            'title' => $request->title,
-
-            'duration' => $request->duration,
-            'description' => $request->description,
-            'class_number' => $request->class_number,
+            'course_curriculum_id' => $request->course_curriculum_id,
 
         ]);
 
-        return redirect()->route('admin.course_curriculam.index')->with('success', 'Course Curriculam Update Successfully!!');
+        return redirect()->route('admin.course_resource.index')->with('success', 'Data Update Successfully!!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        CourseCurriculum::findOrFail($id)->delete();
+        CourseResource::findOrFail($id)->delete();
     }
 
     public function UpdateVideoCurriculum(Request $request)
@@ -155,7 +149,7 @@ class CourseCurriculamController extends Controller
             }
         }
 
-        return redirect()->route('admin.course_curriculam.index')->with('success', 'Course Videos Updated Successfully!');
+        return redirect()->route('admin.course_resource.index')->with('success', 'Course Videos Updated Successfully!');
     }
 
     //Delete Multimage
@@ -179,7 +173,7 @@ class CourseCurriculamController extends Controller
         }
 
         // If the record does not exist, return an error response
-        return redirect()->route('admin.course_curriculam.index')->with('error', 'Video not found!');
+        return redirect()->back()->with('error', 'Video not found!');
     }
 
     public function StoreVideoCurriculum(Request $request)
@@ -216,7 +210,7 @@ class CourseCurriculamController extends Controller
         }
 
         // Redirect with an error message if no file was uploaded
-        return redirect()->route('admin.course_curriculam.index')->with('error', 'No video file uploaded.');
+        return redirect()->back()->with('error', 'No video file uploaded.');
     }
 
     public function UpdateFileCurriculum(Request $request)
@@ -278,7 +272,7 @@ class CourseCurriculamController extends Controller
         }
 
         // If the record does not exist, return an error response
-        return redirect()->route('admin.course_curriculam.index')->with('error', 'Video not found!');
+        return redirect()->back()->with('error', 'Video not found!');
     }
 
     public function StoreFileCurriculum(Request $request)
@@ -315,7 +309,6 @@ class CourseCurriculamController extends Controller
         }
 
         // Redirect with an error message if no file was uploaded
-        return redirect()->route('admin.course_curriculam.index')->with('error', 'No file file uploaded.');
+        return redirect()->back()->with('error', 'No file file uploaded.');
     }
-
 }

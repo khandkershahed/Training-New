@@ -34,11 +34,17 @@
                                 <h5 class="card-title">{{ $registration->courseName->name }}</h5>
 
 
-                                @if ($registration->payment_type == 'unpaid')
+                                @if ($registration->payment_type == 'unpaid' && $registration->transcation_id == !null)
+                                    <a href="javascript:void(0);" style="margin-top: 40px"
+                                        class="btn btn-warning  rounded-1 w-100" data-bs-toggle="modal"
+                                        data-bs-target="#paymentStatus{{ $registration->id }}">
+                                        Pending...
+                                    </a>
+                                @elseif ($registration->payment_type == 'unpaid')
                                     <a href="javascript:void(0);" style="margin-top: 40px"
                                         class="btn btn-danger  rounded-1 w-100" data-bs-toggle="modal"
                                         data-bs-target="#paymentStatus{{ $registration->id }}">
-                                        Pay Fees
+                                        Payment
                                     </a>
                                 @else
                                     <a href="{{ route('register.course.details', $registration->course_id) }}"
@@ -90,7 +96,8 @@
                                         <option value="rocket"
                                             {{ old('payment_method') == 'rocket' ? 'selected' : '' }}>
                                             Rocket</option>
-                                        <option value="nagad" {{ old('payment_method') == 'nagad' ? 'selected' : '' }}>
+                                        <option value="nagad"
+                                            {{ old('payment_method') == 'nagad' ? 'selected' : '' }}>
                                             Nagad</option>
                                         <option value="other"
                                             {{ old('payment_method') == 'other' ? 'selected' : '' }}>
