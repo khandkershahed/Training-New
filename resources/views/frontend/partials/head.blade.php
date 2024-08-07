@@ -12,6 +12,9 @@
 <meta property="og:title" content="{{ optional($setting)->site_name }}" />
 <meta property="og:url" content="" />
 <meta property="og:site_name" content="{{ optional($setting)->site_name }}" />
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <link rel="shortcut icon"
     href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/no-logo(217-55).jpg') }}"
     type="image/x-icon" />

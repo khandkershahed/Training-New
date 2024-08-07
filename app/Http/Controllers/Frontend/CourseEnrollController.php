@@ -3,87 +3,48 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\CourseEnroll;
+use App\Models\Course;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CourseEnrollController extends Controller
 {
-    //Course Enroll
-    public function CourseEnroll(Request $request, $course_id)
+    public function AddToCartCourse(Request $request)
     {
         if (Auth::check()) {
-            $exists = CourseEnroll::where('user_id', Auth::id())->where('course_id', $course_id)->exists();
+            $id = $request->course_id;
 
-            if (!$exists) {
-                CourseEnroll::create([
+            $course = Course::findOrFail($id);
 
-                    'user_id' => Auth::id(),
-                    'course_id' => $course_id,
-                    'amount' => $request->input('payment_amount'),
-                    'enrollment_date' => now(),
+            $cartItem = Cart::search(function ($cartItem, $rowId) use ($id) {
+                return $cartItem->id === $id;
+            });
 
-                ]);
+            if ($cartItem->isNotEmpty()) {
 
-                return redirect()->back()->with('success', 'Course enrolled successfully.');
-            } else {
-                return redirect()->back()->with('error', 'This Course Has Already has been Enrolled');
+                return response()->json(['error' => 'This Course Has Already Added']);
             }
+
+            Cart::add([
+
+                'id' => $id,
+
+                'name' => $course->name,
+                'qty' => 1,
+                'price' => $course->price,
+                'weight' => 1,
+
+                'options' => [
+                    'image' => $course->thumbnail_image,
+                    // 'color' => $request->color,
+                ],
+
+            ]);
+
+            return response()->json(['success' => 'Successfully Added on Your Course']);
         } else {
-            return redirect()->route('login')->with('error', 'Please login to enroll in the course.');
-        }
-    }
-
-    //Add To Enroll
-    public function AddToEnroll(Request $request, $course_id)
-    {
-        if (Auth::check()) {
-            $exists = CourseEnroll::where('user_id', Auth::id())->where('course_id', $course_id)->exists();
-
-            if (!$exists) {
-                CourseEnroll::create([
-
-                    'user_id' => Auth::id(),
-                    'course_id' => $course_id,
-                    'amount' => $request->input('payment_amount'),
-                    'enrollment_date' => now(),
-
-                ]);
-
-                return response()->json(['success' => 'Course enrolled successfully.']);
-
-            } else {
-
-                return response()->json(['error' => 'This Course Has Already has been Enrolled']);
-            }
-        } else {
-            return response()->json(['error' => 'Please login to enroll in the course.']);
-        }
-    }
-
-    //Add To Enroll Online
-    public function AddToEnrollOnline(Request $request)
-    {
-        $course_id = $request->course_id;
-        $amount = $request->amount; // Retrieve the amount parameter
-
-        if (Auth::check()) {
-            $exists = CourseEnroll::where('user_id', Auth::id())->where('course_id', $course_id)->exists();
-
-            if (!$exists) {
-                CourseEnroll::create([
-                    'user_id' => Auth::id(),
-                    'course_id' => $course_id,
-                    'amount' => $amount, // Use the retrieved amount parameter here
-                    'enrollment_date' => now(),
-                ]);
-
-                return response()->json(['success' => 'Course enrolled successfully.']);
-            } else {
-                return response()->json(['error' => 'This course has already been enrolled.']);
-            }
-        } else {
-            return response()->json(['error' => 'Please login to enroll in the course.']);
+            return response()->json(['error' => 'At First Login Your Account']);
         }
     }
 

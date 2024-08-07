@@ -6,12 +6,24 @@
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
 <script src="{{ asset('frontend/assets/Js/script.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     function toggleMenu() {
         var offcanvas = document.querySelector(".offcanvas-sidebar");
         offcanvas.classList.toggle("show");
     }
 </script>
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+</script>
+
 <script>
     // Initialize popover
     var popoverTriggerList = [].slice.call(
@@ -125,4 +137,58 @@
         });
     });
 </script>
+
+<script>
+    $('.add_to_cart_price').click(function() {
+
+        var course_id = $(this).data('course_id');
+
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/cart-store',
+
+            data: {
+                course_id: course_id,
+            },
+
+            success: function(data) {
+
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+                // End Message
+            }
+
+        })
+
+    })
+</script>
+
+
+
+
 @stack('scripts')

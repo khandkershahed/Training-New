@@ -109,7 +109,8 @@
                                             <a href="" class="primary-btn-one me-3">Admission</a>
                                             <a href="" class="primary-btn-one me-3">Course Curriculum</a>
                                             @if (!empty($coursedetail->total_student))
-                                                <a href="" class="primary-btn-one">{{ $coursedetail->total_student }} Students</a>
+                                                <a href="" class="primary-btn-one">{{ $coursedetail->total_student }}
+                                                    Students</a>
                                             @endif
                                         </div>
                                     </div>
@@ -353,8 +354,8 @@
                                                     <input type="hidden" name="payment_amount"
                                                         value="{{ $coursedetail->price }}">
 
-                                                    <a type="submit" id="{{ $coursedetail->id }}"
-                                                        onclick="addToEnroll(this.id)" class="primary-btn-one">Enroll
+                                                    <a type="submit" class="primary-btn-one add_to_cart_price"
+                                                        data-course_id="{{ $coursedetail->id }}">Enroll
                                                         Now</a>
 
                                                 </div>
@@ -369,12 +370,9 @@
                                                     <h4 class="fw-bold py-2">BDT
                                                         {{ number_format($coursedetail->online_price, 2) }}</h4>
 
-
-
-                                                    <a href="javascript:void(0)"
-                                                        data-amount="{{ $coursedetail->online_price }}"
-                                                        data-id="{{ $coursedetail->id }}" class="primary-btn-one"
-                                                        onclick="addToEnrollOnline(this)">Enroll Now</a>
+                                                    <a type="submit" class="primary-btn-one add_to_cart_price"
+                                                        data-course_id="{{ $coursedetail->id }}">Enroll
+                                                        Now</a>
 
                                                 </div>
                                             </div>
@@ -488,47 +486,43 @@
                 </button>
             </div>
 
-            <form method="POST" action="{{ route('course.enroll', $coursedetail->id) }}">
+            {{-- <form method="POST" action="{{ route('course.enroll', $coursedetail->id) }}"> --}}
 
-                <div class="card-body p-1">
-                    <div class="container px-0">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5">
+            <div class="card-body p-1">
+                <div class="container px-0">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
 
-                                <p class="mb-0">
-                                    <span class="fw-bold text-white">Call This Number:</span>
-                                    <span class="text-white">{{ optional($setting)->primary_phone }}</span>
-                                </p>
-                                <div class="d-flex align-items-center">
-                                    <h2 class="pe-3 fw-bold text-white mb-0">BDT
-                                        {{ number_format($coursedetail->price, 2) }}</h2>
-                                    {{-- <h6>
+                            <p class="mb-0">
+                                <span class="fw-bold text-white">Call This Number:</span>
+                                <span class="text-white">{{ optional($setting)->primary_phone }}</span>
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <h2 class="pe-3 fw-bold text-white mb-0">BDT
+                                    {{ number_format($coursedetail->price, 2) }}</h2>
+                                {{-- <h6>
                                     <a href="" class="text-decoration-none text-white"><i
                                             class="fa-solid fa-ticket pe-2"></i>Promo Code</a>
                                 </h6> --}}
-                                </div>
                             </div>
-
-                            <div class="col-lg-7">
-                                <div class="text-end">
-
-                                    @csrf
-
-                                    <input type="hidden" name="amount" value="{{ $coursedetail->price }}">
-
-                                    <button type="submit" class="primary-btn-one  ps-3 text-center"
-                                        style="border: 1px solid white; color: white !important">Enroll Running
-                                        Batch</button>
-
-
-                                </div>
-                            </div>
-
                         </div>
+
+                        <div class="col-lg-7">
+                            <div class="text-end">
+
+                                <a type="submit" data-course_id="{{ $coursedetail->id }}"
+                                    class="add_to_cart_price primary-btn-one  ps-3 text-center"
+                                    style="border: 1px solid white; color: white !important">Enroll Running
+                                    Batch</a>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+            </div>
 
-            </form>
+            {{-- </form> --}}
 
         </div>
     </section>

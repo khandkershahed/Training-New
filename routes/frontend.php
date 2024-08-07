@@ -64,14 +64,20 @@ Route::post('/newsletter/store', [NewsLetterController::class, 'store'])->name('
 
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 
+// Route::middleware('auth')->group(function () {
+
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
 
-    Route::post('/course/enroll/{course_id}', 'CourseEnroll')->name('course.enroll');
-    //Add To Enroll
-    Route::post('/add-to-enroll/{course_id}', 'AddToEnroll');
-    Route::post('/add-to-enroll-online', 'AddToEnrollOnline');
+    // Route::post('/course/enroll/{course_id}', 'CourseEnroll')->name('course.enroll');
+    // //Add To Enroll
+    // Route::post('/add-to-enroll/{course_id}', 'AddToEnroll');
+    // Route::post('/add-to-enroll-online', 'AddToEnrollOnline');
+
+    Route::post('/cart-store', 'AddToCartCourse');
 });
+
+// });
 
 //Course Search By Home Page
 Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('search.course');
