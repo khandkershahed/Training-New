@@ -51,9 +51,19 @@
                                         <h6 class="text-danger fw-bold text-lg-start text-center">
                                             Turn Your Passion into an Artistic Profession
                                         </h6>
-                                        <h2 class="fw-bold text-lg-start text-center main-color">
+
+                                        <h2 name="course_id" class="fw-bold text-lg-start text-center main-color">
                                             {{ $coursedetail->name }}
                                         </h2>
+
+                                        {{-- <h2 name="course_section_id" value="{{ old('course_section_id', $coursedetail->course_section_id) }}" class="fw-bold text-lg-start text-center main-color">
+                                            {{ $coursedetail->course_section_id }}
+                                        </h2>
+
+                                        <h2 name="course_category_id" class="fw-bold text-lg-start text-center main-color">
+                                            {{ $coursedetail->course_category_id }}
+                                        </h2> --}}
+
                                         <div class="row py-3">
                                             <div class="col-md-4">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
@@ -116,9 +126,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-7">
-                                    <img class="img-fluid rounded-5 w-100"
+                                    <img class="img-fluid rounded-3 w-100"
                                         src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
-                                        alt="" />
+                                        alt="" style="height: 450px;" />
                                 </div>
                                 <div class="col-lg-8 py-5">
 
@@ -351,12 +361,14 @@
                                                         {{ number_format($coursedetail->price, 2) }}
                                                     </h4>
 
-                                                    <input type="hidden" name="payment_amount"
-                                                        value="{{ $coursedetail->price }}">
-
                                                     <a type="submit" class="primary-btn-one add_to_cart_price"
-                                                        data-course_id="{{ $coursedetail->id }}">Enroll
-                                                        Now</a>
+                                                        data-course_id="{{ $coursedetail->id }}"
+                                                        data-course_section_id="{{ $coursedetail->course_section_id }}"
+                                                        data-course_category_id="{{ $coursedetail->course_category_id }}"
+                                                        data-course_type="{{ $coursedetail->course_type }}"
+                                                        data-course_amount="{{ $coursedetail->price }}">Enroll
+                                                        Now
+                                                    </a>
 
                                                 </div>
 
@@ -370,9 +382,14 @@
                                                     <h4 class="fw-bold py-2">BDT
                                                         {{ number_format($coursedetail->online_price, 2) }}</h4>
 
-                                                    <a type="submit" class="primary-btn-one add_to_cart_price"
-                                                        data-course_id="{{ $coursedetail->id }}">Enroll
-                                                        Now</a>
+                                                    <a type="submit" class="primary-btn-one add_to_cart_online_price"
+                                                        data-course_id="{{ $coursedetail->id }}"
+                                                        data-course_section_id="{{ $coursedetail->course_section_id }}"
+                                                        data-course_category_id="{{ $coursedetail->course_category_id }}"
+                                                        data-course_type="{{ $coursedetail->course_type }}"
+                                                        data-course_amount="{{ $coursedetail->online_price }}">Enroll
+                                                        Now
+                                                    </a>
 
                                                 </div>
                                             </div>
@@ -510,7 +527,12 @@
                         <div class="col-lg-7">
                             <div class="text-end">
 
-                                <a type="submit" data-course_id="{{ $coursedetail->id }}"
+                                <a type="submit" data-course_section_id="{{ $coursedetail->course_section_id }}"
+                                    data-course_category_id="{{ $coursedetail->course_category_id }}"
+                                    data-course_type="{{ $coursedetail->course_type }}"
+                                    data-course_type="{{ $coursedetail->course_type }}"
+                                    data-course_amount="{{ $coursedetail->price }}"
+                                    data-course_id="{{ $coursedetail->id }}"
                                     class="add_to_cart_price primary-btn-one  ps-3 text-center"
                                     style="border: 1px solid white; color: white !important">Enroll Running
                                     Batch</a>

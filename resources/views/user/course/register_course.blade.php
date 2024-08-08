@@ -27,8 +27,8 @@
 
                             <div class="card-body p-4">
 
-                                <span class="badge text-danger p-0 mb-3">
-                                    {{ \Carbon\Carbon::parse($registration->course_register_date)->format('d M Y') }}
+                                <span class="badge text-light p-0 mb-3 badge bg-success p-1">
+                                    {{ $registration->course_type }}
                                 </span>
 
                                 <h5 class="card-title">{{ $registration->courseName->name }}</h5>

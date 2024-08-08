@@ -138,10 +138,15 @@
     });
 </script>
 
+{{-- Price For Course  --}}
 <script>
     $('.add_to_cart_price').click(function() {
 
         var course_id = $(this).data('course_id');
+        var course_section_id = $(this).data('course_section_id');
+        var course_category_id = $(this).data('course_category_id');
+        var course_type = $(this).data('course_type');
+        var course_amount = $(this).data('course_amount');
 
 
         $.ajax({
@@ -152,6 +157,10 @@
 
             data: {
                 course_id: course_id,
+                course_section_id: course_section_id,
+                course_category_id: course_category_id,
+                course_type: course_type,
+                course_amount: course_amount,
             },
 
             success: function(data) {
@@ -188,6 +197,64 @@
     })
 </script>
 
+{{-- Online Price For Course  --}}
+<script>
+    $('.add_to_cart_online_price').click(function() {
+
+        var course_id = $(this).data('course_id');
+        var course_section_id = $(this).data('course_section_id');
+        var course_category_id = $(this).data('course_category_id');
+        var course_type = $(this).data('course_type');
+        var course_amount = $(this).data('course_amount');
+
+
+        $.ajax({
+
+            type: "POST",
+            dataType: 'json',
+            url: '/cart-store/online-price',
+
+            data: {
+                course_id: course_id,
+                course_section_id: course_section_id,
+                course_category_id: course_category_id,
+                course_type: course_type,
+                course_amount: course_amount,
+            },
+
+            success: function(data) {
+
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                    })
+
+                } else {
+
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                    })
+                }
+                // End Message
+            }
+
+        })
+
+    })
+</script>
 
 
 

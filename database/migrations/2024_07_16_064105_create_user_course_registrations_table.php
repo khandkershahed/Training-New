@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->boolean('call_me')->nullable();
             $table->string('course_type')->nullable();
+            $table->string('course_amount')->nullable();
             $table->unsignedBigInteger('course_section_id')->nullable(); 
             $table->unsignedBigInteger('course_category_id')->nullable();
             $table->unsignedBigInteger('course_id')->nullable();
@@ -29,6 +30,7 @@ return new class extends Migration
             $table->string('payment_type')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('transcation_id')->nullable();
+            $table->string('amount')->nullable();
             $table->string('note')->nullable();
 
             $table->timestamps();
