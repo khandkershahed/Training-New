@@ -14,7 +14,7 @@
 
     <section>
         <div class="showcase">
-            <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->faq_banner) }}"
+            <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->our_category_banner) }}"
                 alt="Picture" />
         </div>
     </section>
