@@ -1754,7 +1754,7 @@ a:hover {
 }
 
 .custom-accordion .custom-accordion-item button[aria-expanded="true"] {
-    border-bottom: 1px solid #03b5d2;
+    border-bottom: 1px solid #001430;
 }
 
 .custom-accordion button {
@@ -1774,14 +1774,14 @@ a:hover {
 .custom-accordion button:hover,
 .custom-accordion button:focus {
     cursor: pointer;
-    color: #03b5d2;
+    color: #001430;
 }
 
 .custom-accordion button:hover::after,
 .custom-accordion button:focus::after {
     cursor: pointer;
-    color: #03b5d2;
-    border: 1px solid #03b5d2;
+    color: #001430;
+    border: 1px solid #001430;
 }
 
 .custom-accordion button .custom-accordion-title {
@@ -1821,7 +1821,7 @@ a:hover {
 }
 
 .custom-accordion button[aria-expanded="true"] {
-    color: #03b5d2;
+    color: #001430;
 }
 .custom-accordion button[aria-expanded="true"] .icon::after {
     width: 0;
@@ -1980,7 +1980,7 @@ a:hover {
 }
 
 .custom-accordion .custom-accordion-item button[aria-expanded="true"] {
-    border-bottom: 1px solid #03b5d2;
+    border-bottom: 1px solid #001430;
 }
 
 .custom-accordion button {
@@ -2000,14 +2000,14 @@ a:hover {
 .custom-accordion button:hover,
 .custom-accordion button:focus {
     cursor: pointer;
-    color: #03b5d2;
+    color: #001430;
 }
 
 .custom-accordion button:hover::after,
 .custom-accordion button:focus::after {
     cursor: pointer;
-    color: #03b5d2;
-    border: 1px solid #03b5d2;
+    color: #001430;
+    border: 1px solid #001430;
 }
 
 .custom-accordion button .custom-accordion-title {
@@ -2047,7 +2047,7 @@ a:hover {
 }
 
 .custom-accordion button[aria-expanded="true"] {
-    color: #03b5d2;
+    color: #001430;
 }
 .custom-accordion button[aria-expanded="true"] .icon::after {
     width: 0;
