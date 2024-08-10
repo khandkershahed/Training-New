@@ -11,12 +11,14 @@
             border-radius: 5px !important;
         }
     </style>
+
     <section>
         <div class="showcase">
             <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->faq_banner) }}"
                 alt="Picture" />
         </div>
     </section>
+
     <section>
         <div class="container">
             <div class="row">
@@ -28,152 +30,122 @@
                                 src="https://www.promisetrainingglobal.com/wp-content/uploads/2019/02/line.jpg"
                                 class="vc_single_image-img attachment-full webpexpress-processed" alt="">
                         </div>
-                        <p>Promise Training and Consultancy offers short-term workshops and training seminars for various
-                            work streams including management, leadership, finance, HR and Oil & Gas. Participants of our
-                            public training program will also have a chance to share their experiences with professionals
-                            from other organisations. This enables them to gain new perspectives on the common challenges
-                            they face at the workplace.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section class="py-5 pt-0">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2" style="background-color: #eee;">
-                    <h5 class="mb-0 py- pt-3 text-center"><span class="fw-bold" style="border-bottom: 1px solid #001c44">Course</span> Categories</h5>
-                    <ul class="nav nav-tabs border-0 flex-column py-3 mt-3" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100 active" id="home-tab"
-                                data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab"
-                                aria-controls="home-tab-pane" aria-selected="true">Diploma Courses</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="profile-tab"
-                                data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                aria-controls="profile-tab-pane" aria-selected="false">Industrial Courses</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="contact-tab"
-                                data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab"
-                                aria-controls="contact-tab-pane" aria-selected="false">Professional Courses</button>
-                        </li>
-                    </ul>
+                <div class="col-lg-2 px-0">
+                    <div class="px-2" style="background-color: #eee;">
+                        <h5 class="mb-0 py- pt-3 text-center"><span class="fw-bold"
+                                style="border-bottom: 1px solid #001c44">Course</span> Section</h5>
+
+                        <ul class="nav nav-tabs border-0 flex-column py-3 mt-3" id="myTab" role="tablist">
+
+                            @foreach ($courseSections as $courseSection)
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link faq-nav-link border-0 rounded-0 text-start w-100 {{ $loop->first ? 'active' : '' }}"
+                                        id="home-{{ $courseSection->id }}" data-bs-toggle="tab"
+                                        data-bs-target="#home-{{ $courseSection->id }}-pane" type="button" role="tab"
+                                        aria-controls="home-{{ $courseSection->id }}-pane"
+                                        aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ $courseSection->name }}
+                                    </button>
+                                </li>
+                            @endforeach
+
+                            {{-- <li class="nav-item" role="presentation">
+                                <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="profile-tab"
+                                    data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab"
+                                    aria-controls="profile-tab-pane" aria-selected="false">Industrial Courses</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="contact-tab"
+                                    data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab"
+                                    aria-controls="contact-tab-pane" aria-selected="false">Professional Courses</button>
+                            </li> --}}
+
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-lg-10">
                     <div class="row">
                         <div class="col-lg-12">
+
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
-                                    aria-labelledby="home-tab" tabindex="0">
-                                    {{-- Content --}}
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="card border-0 shadow-sm">
-                                                <div class="card-header p-0">
-                                                    <div>
-                                                        <img class="img-fluid w-100 rounded-2" src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/c-1.jpg" alt="">
+
+                                @foreach ($courseSections as $courseSection)
+                                    <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
+                                        id="home-{{ $courseSection->id }}-pane" role="tabpanel"
+                                        aria-labelledby="home-{{ $courseSection->id }}" tabindex="0">
+
+                                        @php
+                                            $sectionWiseCats = App\Models\CourseCategory::where(
+                                                'course_section_id',
+                                                $courseSection->id,
+                                            )
+                                                ->orderBy('name', 'ASC')
+                                                ->limit(3)
+                                                ->get();
+                                        @endphp
+                                        <div class="row mb-4">
+
+                                            @forelse ($sectionWiseCats as $sectionWiseCat)
+                                                <div class="col-lg-4">
+                                                    <div class="card border-0 shadow-sm">
+                                                        <div class="card-header p-0">
+                                                            <div>
+                                                                <img class="img-fluid w-100 rounded-2"
+                                                                    src="{{ asset('storage/course_category/' . $sectionWiseCat->thumbnail_image) }}"
+                                                                    alt="" style="height: 220px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <h5>{{ $sectionWiseCat->name }}</h5>
+                                                            <p style="background-color: #001c44; width: 40%; height: 3px;">
+                                                            </p>
+
+                                                            @php
+                                                                $description = $sectionWiseCat->description;
+                                                                $words = explode(' ', strip_tags($description));
+                                                                $limitedWords = array_slice($words, 0, 18);
+                                                                $limitedDescription = implode(' ', $limitedWords);
+                                                            @endphp
+
+
+                                                            <p>{!! $limitedDescription !!}.....</p>
+
+                                                            <a href="{{ url('/category/details/' . $sectionWiseCat->id . '/' . $sectionWiseCat->slug) }}" class="primary-btn-one"> See Details <i
+                                                                    class="fa-solid fa-arrow-right"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5>Administration, Office Management & Secretarial</h5>
-                                                    <p style="background-color: #001c44; width: 40%; height: 3px;"></p>
-                                                    <p>At Promise Training & Consultancy, we understand that at the core of every organization’s success.</p>
-                                                    <a href="" class="primary-btn-one"> See Details <i class="fa-solid fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="card border-0 shadow-sm">
-                                                <div class="card-header p-0">
-                                                    <div>
-                                                        <img class="img-fluid w-100 rounded-2" src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/c-1.jpg" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5>Administration, Office Management & Secretarial</h5>
-                                                    <p style="background-color: #001c44; width: 40%; height: 3px;"></p>
-                                                    <p>At Promise Training & Consultancy, we understand that at the core of every organization’s success.</p>
-                                                    <a href="" class="primary-btn-one"> See Details <i class="fa-solid fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="card border-0 shadow-sm">
-                                                <div class="card-header p-0">
-                                                    <div>
-                                                        <img class="img-fluid w-100 rounded-2" src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/c-1.jpg" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5>Administration, Office Management & Secretarial</h5>
-                                                    <p style="background-color: #001c44; width: 40%; height: 3px;"></p>
-                                                    <p>At Promise Training & Consultancy, we understand that at the core of every organization’s success.</p>
-                                                    <a href="" class="primary-btn-one"> See Details <i class="fa-solid fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-4">
-                                        <div class="col-lg-4">
-                                            <div class="card border-0 shadow-sm">
-                                                <div class="card-header p-0">
-                                                    <div>
-                                                        <img class="img-fluid w-100 rounded-2" src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/c-1.jpg" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5>Administration, Office Management & Secretarial</h5>
-                                                    <p style="background-color: #001c44; width: 40%; height: 3px;"></p>
-                                                    <p>At Promise Training & Consultancy, we understand that at the core of every organization’s success.</p>
-                                                    <a href="" class="primary-btn-one"> See Details <i class="fa-solid fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="card border-0 shadow-sm">
-                                                <div class="card-header p-0">
-                                                    <div>
-                                                        <img class="img-fluid w-100 rounded-2" src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/c-1.jpg" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5>Administration, Office Management & Secretarial</h5>
-                                                    <p style="background-color: #001c44; width: 40%; height: 3px;"></p>
-                                                    <p>At Promise Training & Consultancy, we understand that at the core of every organization’s success.</p>
-                                                    <a href="" class="primary-btn-one"> See Details <i class="fa-solid fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="card border-0 shadow-sm">
-                                                <div class="card-header p-0">
-                                                    <div>
-                                                        <img class="img-fluid w-100 rounded-2" src="https://promisetrainingglobal.com/wp-content/uploads/2019/03/c-1.jpg" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5>Administration, Office Management & Secretarial</h5>
-                                                    <p style="background-color: #001c44; width: 40%; height: 3px;"></p>
-                                                    <p>At Promise Training & Consultancy, we understand that at the core of every organization’s success.</p>
-                                                    <a href="" class="primary-btn-one"> See Details <i class="fa-solid fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
+                                            @empty
+                                                <p>No Category Avaiable</p>
+                                            @endforelse
+
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
+                                @endforeach
+
+                                {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
-                                    {{-- Content --}}
+
                                     Test 2
                                 </div>
+
                                 <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
                                     aria-labelledby="contact-tab" tabindex="0">
-                                    {{-- Content --}}
+
                                     Test 3
-                                </div>
+                                </div> --}}
+
                             </div>
+
                         </div>
                     </div>
                 </div>

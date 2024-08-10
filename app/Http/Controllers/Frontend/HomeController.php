@@ -414,11 +414,12 @@ class HomeController extends Controller
         return view('frontend.pages.service.service', compact('service', 'courses', 'courseSections'));
     }
 
-    // All Category 
+    // All Category
     public function allCategory()
     {
-        $items = Service::latest()->get();
-        return view('frontend.pages.category.allCategory', compact('items'));
+        $courseSections = CourseSection::latest()->get();
+
+        return view('frontend.pages.category.allCategory', compact('courseSections'));
     }
 
     //categoryDetails
