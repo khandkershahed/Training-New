@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
 
             $table->string('course_curriculum_id')->nullable();
-            $table->string('course_file')->nullable();
             $table->string('course_video')->nullable();
 
             $table->timestamps();

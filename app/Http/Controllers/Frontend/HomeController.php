@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Models\Contact;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\CourseCurriculum;
@@ -21,9 +22,11 @@ use App\Models\Setting;
 use App\Models\TermsCondition;
 use App\Models\User;
 use App\Models\UserCourseRegistration;
+use id;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
@@ -84,7 +87,6 @@ class HomeController extends Controller
         $courses = Course::where('course_section_id', $courseServicedetail->id)->get();
         return view('frontend.pages.service.allCoursesService', compact('courses'));
     }
-
 
     public function courseRegistration()
     {
@@ -257,9 +259,76 @@ class HomeController extends Controller
         return view('frontend.pages.about', compact('about'));
     }
 
+    //Contact
     public function contact()
     {
         return view('frontend.pages.contact');
+    }
+    //Contact Store
+    public function contactStore(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:150',
+            'email' => 'required|email|max:150',
+            'phone' => 'nullable|string|max:20',
+            'subject' => 'nullable|string',
+            'message' => 'nullable|string',
+            'ip_address' => 'nullable|ip|max:100',
+            // 'g-recaptcha-response' => ['required', new Recaptcha],
+        ], [
+            'name.required' => 'The name field is required.',
+            'name.string' => 'The name must be a string.',
+            'name.max' => 'The name may not be greater than :max characters.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.max' => 'The email may not be greater than :max characters.',
+            'phone.string' => 'The phone must be a string.',
+            'phone.max' => 'The phone may not be greater than :max characters.',
+            'phone.regex' => 'The phone field must contain only numeric characters and must be proper number.',
+            'subject.string' => 'The subject must be a string.',
+            'message.string' => 'The message must be a string.',
+            'ip_address.ip' => 'Please enter a valid IP address.',
+            'ip_address.max' => 'The IP address may not be greater than :max characters.',
+            // 'g-recaptcha-response.required' => 'The reCAPTCHA field is required.',
+        ]);
+
+        if ($request->filled('phone')) {
+            $validator->sometimes('phone', 'regex:/^[0-9]+$/i', function ($input) {
+                return $input->phone;
+            });
+        }
+
+        // if ($validator->fails()) {
+        //     foreach ($validator->messages()->all() as $message) {
+        //         Session::flash('error',$message);
+        //         // toaster()->error($message, 'Failed', ['timeOut' => 3000]);
+        //         // error($message, 'Failed', ['timeOut' => 3000]);
+
+        //     }
+        //     return redirect()->back()->withInput();
+        // }
+
+        $typePrefix = ($request->type == 'contact') ? 'MSG' : 'SPRT';
+        $today = date('dmy');
+        $lastCode = Contact::where('code', 'like', $typePrefix . '-' . $today . '%')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $newNumber = $lastCode ? (int) explode('-', $lastCode->code)[2] + 1 : 1;
+        $code = $typePrefix . '-' . $today . '-' . $newNumber;
+
+        Contact::create([
+            'code' => $code,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'ip_address' => request()->ip(),
+        ]);
+
+        // success('Thank You. We have received your message. We will contact with you very soon.');
+        return redirect()->back()->with('success', 'Thank You. We have received your message. We will contact with you very soon');
     }
 
     public function Support()
@@ -441,17 +510,41 @@ class HomeController extends Controller
     //RegisterCourseList
     public function RegisterCourseList()
     {
-        $registerCourse = UserCourseRegistration::where('user_id',Auth::id())->get();
-
-        return view('user.course.register_course',compact('registerCourse'));
+        $registerCourse = UserCourseRegistration::with('courseName')->where('user_id', Auth::id())->get();
+        return view('user.course.register_course', compact('registerCourse'));
     }
 
     //RegisterCourseDetails
     public function RegisterCourseDetails($course_id)
     {
-        $course = Course::with('courseCurriculams')->where('id',$course_id)->first();
-        
-        return view('user.course.register_course_details',compact('course'));
+        $course = Course::with('courseCurriculams')->where('id', $course_id)->first();
+        return view('user.course.register_course_details', compact('course'));
+    }
+
+    //Payment Course
+    public function PaymentCourse(Request $request, $id)
+    {
+        // Validate the input
+        $request->validate([
+            'payment_method' => 'required|string',
+            'amount' => 'required|string',
+            'transcation_id' => 'required|string',
+            'note' => 'nullable|string',
+        ]);
+
+        // Find the registration by ID
+        $registration = UserCourseRegistration::findOrFail($id);
+
+        // Update the registration details
+        $registration->update([
+            'payment_method' => $request->payment_method,
+            'amount' => $request->amount,
+            'transcation_id' => $request->transcation_id,
+            'note' => $request->note,
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Payment details have been submitted successfully.');
     }
 
 }

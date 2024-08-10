@@ -427,6 +427,8 @@
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
+                                @auth
+                                
                                 <div class="d-flex flex-column">
                                     <div class="fw-bolder d-flex align-items-center fs-5">
                                         {{ Auth::user()->name }}
@@ -435,6 +437,7 @@
                                         {{ Auth::user()->email }}
                                     </a>
                                 </div>
+                                @endauth
                                 <!--end::Username-->
                             </div>
                         </div>

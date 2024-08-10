@@ -18,49 +18,129 @@
                         </p>
                         <div class="top-social">
 
-                            <div class="popover__wrapper me-5 w-100">
-                                <a href="#">
-                                    <h2 class="popover__title mb-1 fw-bold aos-init aos-animate" data-aos="fade-left">
-                                        <span>
-                                            <i class="fa-solid fa-user primary-text-color fs-6 social-top"></i>
-                                        </span>
-                                    </h2>
-                                </a>
-                                <div class="popover__content text-start">
-                                    <a href="{{ route('login') }}" class="btn signin mb-2 rounded-0">Log In</a>
-                                    <div class="text-muted">
-                                        First time here?
-                                        <a href="{{ route('course.registration') }}" class="main-color"
-                                            style="text-decoration: underline">Sign Up</a>
+                            @if (Auth::user())
+                                <div class="popover__wrapper me-5 w-100">
+                                    <a href="#">
+                                        <h2 class="popover__title mb-1 fw-bold aos-init aos-animate"
+                                            data-aos="fade-left">
+                                            <span>
+                                                <i
+                                                    class="fa-solid fa-user primary-text-color fs-6 social-top me-2"></i>{{ Auth::user()->name }}
+                                            </span>
+                                        </h2>
+                                    </a>
+                                    <div class="popover__content text-start">
+
+                                        {{-- <a href="{{ route('logout') }}" class="btn signin mb-2 rounded-0">Logout</a> --}}
+
+                                        <a href="#"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                            class="btn signin mb-2 rounded-0">Logout</a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+
+
+                                        <hr class="text-muted">
+                                        <ul class="account p-0 text-muted text-start" style="list-style-type: none">
+
+                                            <li>
+                                                <i class="fa fa-user m-2" aria-hidden="true"></i>
+                                                <a href="{{ route('profile.edit') }}" class="">My Profile</a>
+                                            </li>
+
+                                            <li>
+                                                <i class="fa fa-list m-2" aria-hidden="true"></i>
+                                                <a href="" class="">My Cart</a>
+                                            </li>
+
+                                            <li>
+                                                <i class="fa fa-envelope m-2" aria-hidden="true"></i>
+                                                <a href="{{ route('user.register.course.list') }}" class="">My
+                                                    Course</a>
+                                            </li>
+
+                                            <li>
+                                                <i class="fa fa-star m-2" aria-hidden="true"></i>
+                                                <a href="javascript:;" class="">Favorites Courses</a>
+                                            </li>
+
+                                            <li>
+                                                <i class="fa fa-list m-2" aria-hidden="true"></i>
+                                                <a href="javascript:;" class="">Notification</a>
+                                            </li>
+
+                                        </ul>
+                                        <hr class="text-muted">
+                                        <ul class="account p-0 text-muted text-start mb-0"
+                                            style="list-style-type: none">
+                                            <li>
+                                                <i class="fa fa-user m-2" aria-hidden="true"></i>
+                                                <a href="javascript:;" class="">Jobs & Offers</a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <hr class="text-muted">
-                                    <ul class="account p-0 text-muted text-start" style="list-style-type: none">
-                                        <li>
-                                            <i class="fa fa-user m-2" aria-hidden="true"></i>
-                                            <a href="" class="">My Profile</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-envelope m-2" aria-hidden="true"></i>
-                                            <a href="" class="">My Training</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-star m-2" aria-hidden="true"></i>
-                                            <a href="" class="">Favorites Courses</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-list m-2" aria-hidden="true"></i>
-                                            <a href="" class="">Notification</a>
-                                        </li>
-                                    </ul>
-                                    <hr class="text-muted">
-                                    <ul class="account p-0 text-muted text-start mb-0" style="list-style-type: none">
-                                        <li>
-                                            <i class="fa fa-user m-2" aria-hidden="true"></i>
-                                            <a href="" class="">Jobs & Offers</a>
-                                        </li>
-                                    </ul>
                                 </div>
-                            </div>
+                            @else
+                                <div class="popover__wrapper me-5 w-100">
+                                    <a href="#">
+                                        <h2 class="popover__title mb-1 fw-bold aos-init aos-animate"
+                                            data-aos="fade-left">
+                                            <span>
+                                                <i class="fa-solid fa-user primary-text-color fs-6 social-top"></i>
+                                            </span>
+                                        </h2>
+                                    </a>
+                                    <div class="popover__content text-start">
+
+                                        <a href="{{ route('login') }}" class="btn signin mb-2 rounded-0">Log In</a>
+
+                                        <div class="text-muted">
+                                            First time here?
+                                            <a href="{{ route('register') }}" class="main-color"
+                                                style="text-decoration: underline">Sign Up</a>
+                                        </div>
+
+                                        <hr class="text-muted">
+
+                                        <ul class="account p-0 text-muted text-start" style="list-style-type: none">
+
+                                            <li>
+                                                <i class="fa fa-user m-2" aria-hidden="true"></i>
+                                                <a href="{{ route('courses.all') }}" class="">All Courses</a>
+                                            </li>
+
+                                            <li>
+                                                <i class="fa fa-envelope m-2" aria-hidden="true"></i>
+                                                <a href="{{ route('service.all') }}" class="">All Services</a>
+                                            </li>
+
+                                            <li>
+                                                <i class="fa fa-star m-2" aria-hidden="true"></i>
+                                                <a href="" class="">Favorites Courses</a>
+                                            </li>
+
+                                            <li>
+                                                <i class="fa fa-list m-2" aria-hidden="true"></i>
+                                                <a href="" class="">Notification</a>
+                                            </li>
+
+                                        </ul>
+                                        <hr class="text-muted">
+
+                                        <ul class="account p-0 text-muted text-start mb-0"
+                                            style="list-style-type: none">
+                                            <li>
+                                                <i class="fa fa-user m-2" aria-hidden="true"></i>
+                                                <a href="" class="">Jobs & Offers</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -154,7 +234,8 @@
                                                                         ->get();
                                                                 @endphp
 
-                                                                <ul class="ps-0 ms-0 pt-3" style="list-style-type: none;">
+                                                                <ul class="ps-0 ms-0 pt-3"
+                                                                    style="list-style-type: none;">
 
                                                                     @forelse ($catWiseCourses as $catWiseCourse)
                                                                         <li class="pb-3">

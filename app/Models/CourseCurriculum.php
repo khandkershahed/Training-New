@@ -18,6 +18,19 @@ class CourseCurriculum extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class,'course_id','id');
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }
+
+    public function courseCurriContent()
+    {
+        // return $this->hasMany(CourseResource::class, 'course_curriculum_id', 'id');
+        return $this->hasMany(CourseResource::class);
+    }
+
+    public function courseCurriContentFileName()
+    {
+        // return $this->hasMany(CourseResource::class, 'course_curriculum_id', 'id');
+        return $this->hasMany(CourseResource::class);
+    }
+
 }

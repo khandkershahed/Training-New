@@ -1,11 +1,12 @@
-<x-admin-app-layout :title="'Course Content'">
+<x-admin-app-layout :title="'Course Curriculium Content Edit'">
+
     <div class="card card-flash">
         <div class="card-header">
             <div class="card-title">
             </div>
 
             <div class="card-toolbar">
-                <a href="{{ route('admin.course_content.index') }}" class="btn btn-light-primary rounded-2">
+                <a href="{{ route('admin.course_curriculum_content.index') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -23,7 +24,8 @@
         </div>
         <div class="card-body">
 
-            <form id="myForm" method="post" action="{{ route('admin.course_content.update', $courseContent->id) }}"
+            <form id="myForm" method="post"
+                action="{{ route('admin.course_curriculum_content.update', $courseContent->id) }}"
                 enctype="multipart/form-data">
                 @csrf
 
@@ -33,33 +35,40 @@
 
                     <div class="row p-4">
 
-                        <div class="col-8 mb-3">
-
+                        <div class="col-5 mb-3">
                             <div class="form-group">
-                                <label for="" class="mb-2">Course Name</label>
-                                <select name="course_id" data-placeholder="Select Row One.."
+                                <label for="course_curriculum_id" class="mb-2">Course Curriculum Name</label>
+                                <select name="course_curriculum_id" id="course_curriculum_id"
                                     class="form-select form-select-sm" data-control="select2"
                                     data-placeholder="Select an option">
-
-                                    @if (count($courses) > 0)
-                                        @foreach ($courses as $course)
-                                            <option class="form-control" value="{{ $course->id }}"
-                                                {{ $courseContent->course_id == $course->id ? 'selected' : '' }}>
-                                                {{ $course->name }}
-                                            </option>
-                                        @endforeach
-                                    @endif
-
+                                    <option selected disabled>Choose Course Corriculum</option>
+                                    @foreach ($courseCurriculums as $courseCurriculum)
+                                        <option value="{{ $courseCurriculum->id }}"
+                                            {{ $courseContent->course_curriculum_id == $courseCurriculum->id ? 'selected' : '' }}>
+                                            {{ $courseCurriculum->title }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-4 mb-3">
                             <div class="form-group">
-                                <label for="" class="mb-2">Attachment</label>
-                                <input type="file" name="attachment" class="form-control form-control-sm">
+                                <label for="course_file" class="mb-2">File</label>
+                                <input type="file" name="course_file" id="course_file"
+                                    class="form-control form-control-sm mb-5">
+                                @if ($courseContent->course_file)
+                                    <a href="{{ asset('storage/' . $courseContent->course_file) }}" target="_blank"
+                                        class="">
+                                        Download PDF
+                                    </a>
+                                @else
+                                    <p class="text-danger">No file available</p>
+                                @endif
+
                             </div>
                         </div>
+
 
 
                         <div class="col-12 mb-3 mt-4">
@@ -71,6 +80,73 @@
                 </div>
 
             </form>
+
+        </div>
+
+    </div>
+
+    <div class="card card-flash">
+
+        <div class="card-body">
+
+            <div class="card bg-light">
+
+                <div class="row p-4">
+
+                    <div class="col-12">
+
+                        <h5>Class Video</h5>
+                        <hr>
+
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sl No</th>
+                                    <th scope="col">Video</th>
+                                    <th scope="col">File</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <form action="{{ route('update.video') }}" method="POST" enctype="multipart/form-data">
+
+                                    @csrf
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <video width="40%" height="90" controls>
+                                                <source src="{{ asset('storage/' . $courseContent->course_video) }}"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" name="id" value="{{ $courseContent->id }}">
+                                            <input type="file" class="btn-sm"
+                                                value="{{ $courseContent->course_video }}" name="course_video"
+                                                autocomplete="off">
+                                        </td>
+                                        <td class="text-center">
+                                            <button type="submit"
+                                                class="btn btn-light-primary btn-sm p-2">Update</button>
+
+                                            <a href="{{ route('delete.video', $courseContent->id) }}" class="p-2"><i
+                                                    class="bi bi-trash3-fill fs-5 text-danger"></i></a>
+                                        </td>
+                                    </tr>
+
+                                </form>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
 
         </div>
 

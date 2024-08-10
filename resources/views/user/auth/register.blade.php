@@ -190,8 +190,11 @@
                 <div class="card card0">
                     <div class="d-flex flex-lg-row flex-column-reverse">
                         <div class="card card1">
+
                             <form method="POST" action="{{ route('register') }}">
+
                                 @csrf
+
                                 <div class="row justify-content-center my-auto">
                                     <div class="col-md-10 col-12">
                                         <div class="row justify-content-center px-3 mb-3">
@@ -201,7 +204,7 @@
                                         <h3 class="mb-2 text-center heading">Sign Up Now</h3>
 
                                         <div class="form-outline mb-3">
-                                            <x-input-label class="form-label" for="name" :value="__('Full Name')" />
+                                            <x-input-label class="form-label" for="name" :value="__('Name')" />
                                             <x-text-input id="name" class="form-control form-control-solid"
                                                 type="text" name="name" :value="old('name')" required autofocus
                                                 autocomplete="name" />
@@ -214,6 +217,14 @@
                                                 type="email" name="email" :value="old('email')" required
                                                 autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        </div>
+
+                                        <div class="form-outline mb-3">
+                                            <x-input-label class="form-label" for="phone" :value="__('Phone')" />
+                                            <x-text-input id="phone" class="form-control form-control-solid"
+                                                type="text" name="phone" :value="old('phone')" required
+                                                autocomplete="off" />
+                                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                                         </div>
 
                                         <div class="form-outline mb-3">
