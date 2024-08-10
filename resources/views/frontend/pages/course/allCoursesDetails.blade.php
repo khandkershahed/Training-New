@@ -1,5 +1,10 @@
 @extends('frontend.master')
 @section('content')
+    <style>
+        .accordion-item {
+            display: none;
+        }
+    </style>
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
 
     <section class="showcase">
@@ -45,7 +50,7 @@
                 <div class="col-lg-12 px-0">
                     <div>
                         <div id="overview">
-                            <div class="row py-5 gx-5 px-3 px-lg-0">
+                            <div class="row py-5 gx-5 px-3 px-lg-0 align-items-center">
                                 <div class="col-lg-5">
                                     <div class="">
                                         <h6 class="text-danger fw-bold text-lg-start text-center">
@@ -107,15 +112,15 @@
                                             </p>
                                         @endif
 
-                                        @if (!empty($coursedetail->total_student))
+                                        {{-- @if (!empty($coursedetail->total_student))
                                             <p class="text-success text-lg-start text-center">
                                                 {{ $coursedetail->total_student }} Students
                                             </p>
-                                        @endif
+                                        @endif --}}
 
 
 
-                                        <div class="d-flex mb-lg-0 mb-4">
+                                        <div class="d-flex mb-lg-0 mb-4 mt-4">
                                             <a href="" class="primary-btn-one me-3">Admission</a>
                                             <a href="" class="primary-btn-one me-3">Course Curriculum</a>
                                             @if (!empty($coursedetail->total_student))
@@ -152,14 +157,16 @@
                                             </h5>
                                             <div>
                                                 <div class="accordion" id="accordionExample">
-                                                    @forelse ($courseCurriculams as $courseCurriculam)
-                                                        <div class="accordion-item border-0 shadow-sm">
+                                                    @forelse ($courseCurriculams as $index => $courseCurriculam)
+                                                        <div
+                                                            class="accordion-item border-0 shadow-sm accordion-item-{{ $index }}">
                                                             <h2 class="accordion-header mb-1">
                                                                 <button
                                                                     class="accordion-button border-0 shadow-sm collapsed"
                                                                     type="button" data-bs-toggle="collapse"
                                                                     data-bs-target="#collapseOne{{ $courseCurriculam->id }}"
-                                                                    aria-expanded="true" aria-controls="collapseOne">
+                                                                    aria-expanded="true"
+                                                                    aria-controls="collapseOne{{ $courseCurriculam->id }}">
                                                                     <i class="fa-solid fa-arrow-right-long pe-3"></i>
                                                                     {{ $courseCurriculam->title }}
                                                                 </button>
@@ -170,10 +177,12 @@
                                                                 <div class="accordion-body">
                                                                     <div class="mb-3 text-center">
                                                                         <small
-                                                                            class="bg-warning-light p-2 rounded-2 badges"><i
+                                                                            class="bg-warning-light p-2 rounded-2 badges">
+                                                                            <i
                                                                                 class="fa-solid fa-tv primary-text-color"></i>
                                                                             {{ $courseCurriculam->class_number }} live
-                                                                            class</small>
+                                                                            class
+                                                                        </small>
                                                                     </div>
                                                                     <p>
                                                                         {!! $courseCurriculam->description !!}
@@ -184,6 +193,11 @@
                                                     @empty
                                                         <p>No Course Curriculum Available</p>
                                                     @endforelse
+                                                </div>
+                                                <div class="d-flex justify-content-center align-items-center mt-4">
+                                                    <button class="primary-btn-one" id="loadMore">See More <i
+                                                            class="fa-solid fa-arrow-down-long"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -572,6 +586,45 @@
                     document.querySelector(this.getAttribute("href")).scrollIntoView({
                         behavior: "smooth",
                     });
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const accordionItems = document.querySelectorAll('.accordion-item');
+                const loadMoreButton = document.getElementById('loadMore');
+                let visibleItems = 8;
+
+                function showAccordionItems(count) {
+                    accordionItems.forEach((item, index) => {
+                        if (index < count) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    // Change button text based on the visible items
+                    if (count >= accordionItems.length) {
+                        loadMoreButton.textContent = 'See Less';
+                    } else {
+                        loadMoreButton.textContent = 'See More';
+                    }
+                }
+
+                showAccordionItems(visibleItems);
+
+                loadMoreButton.addEventListener('click', function() {
+                    if (loadMoreButton.textContent === 'See More') {
+                        visibleItems += 4;
+                        if (visibleItems >= accordionItems.length) {
+                            visibleItems = accordionItems.length;
+                        }
+                        showAccordionItems(visibleItems);
+                    } else {
+                        visibleItems = 8;
+                        showAccordionItems(visibleItems);
+                    }
                 });
             });
         </script>
