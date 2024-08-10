@@ -24,7 +24,8 @@
                                         <h2 class="popover__title mb-1 fw-bold aos-init aos-animate"
                                             data-aos="fade-left">
                                             <span>
-                                                <i class="fa-solid fa-user primary-text-color fs-6 social-top me-2"></i>{{ Auth::user()->name }}
+                                                <i
+                                                    class="fa-solid fa-user primary-text-color fs-6 social-top me-2"></i>{{ Auth::user()->name }}
                                             </span>
                                         </h2>
                                     </a>
@@ -57,7 +58,8 @@
 
                                             <li>
                                                 <i class="fa fa-envelope m-2" aria-hidden="true"></i>
-                                                <a href="{{ route('user.register.course.list') }}" class="">My Course</a>
+                                                <a href="{{ route('user.register.course.list') }}" class="">My
+                                                    Course</a>
                                             </li>
 
                                             <li>
@@ -69,7 +71,7 @@
                                                 <i class="fa fa-list m-2" aria-hidden="true"></i>
                                                 <a href="javascript:;" class="">Notification</a>
                                             </li>
-                                            
+
                                         </ul>
                                         <hr class="text-muted">
                                         <ul class="account p-0 text-muted text-start mb-0"
@@ -92,11 +94,12 @@
                                         </h2>
                                     </a>
                                     <div class="popover__content text-start">
+
                                         <a href="{{ route('login') }}" class="btn signin mb-2 rounded-0">Log In</a>
 
                                         <div class="text-muted">
                                             First time here?
-                                            <a href="{{ route('course.registration') }}" class="main-color"
+                                            <a href="{{ route('register') }}" class="main-color"
                                                 style="text-decoration: underline">Sign Up</a>
                                         </div>
 

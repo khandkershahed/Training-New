@@ -36,7 +36,7 @@
 
                                 @if ($registration->payment_type == 'unpaid' && $registration->transcation_id == !null)
                                     <a href="javascript:void(0);" style="margin-top: 40px"
-                                        class="btn btn-warning  rounded-1 w-100" data-bs-toggle="modal"
+                                        class="btn btn-primary  rounded-1 w-100" data-bs-toggle="modal"
                                         data-bs-target="#paymentStatus{{ $registration->id }}">
                                         Pending...
                                     </a>

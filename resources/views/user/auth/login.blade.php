@@ -226,8 +226,10 @@
                                         </div>
 
                                         <div class="row justify-content-center my-2 text-center pt-2">
-                                            <a href="{{ route('password.request') }}"><small class="text-muted">Forgot Password?</small></a>
+                                            <a href="{{ route('password.request') }}"><small class="text-muted">Forgot
+                                                    Password?</small></a>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="text-center mb-5 pt-4">
