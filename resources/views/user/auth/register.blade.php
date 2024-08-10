@@ -262,7 +262,7 @@
                         </div>
                         <div class="card card2">
                             <div class="my-auto mx-md-5 px-md-5 right">
-                                <h3 class="text-white">We are more than just a company</h3>
+                                <h3 class="text-white mb-4">We are more than just a company</h3>
                                 <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                                     do
                                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
