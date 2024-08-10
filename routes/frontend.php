@@ -14,6 +14,7 @@ Route::get('/training', [HomeController::class, 'training'])->name('training');
 //Course All & Deatils Start
 Route::get('/all-courses', [HomeController::class, 'allCourses'])->name('courses.all');
 Route::get('/course/{id}/{slug}', [HomeController::class, 'courseDetails']);
+Route::post('/course-search', [HomeController::class, 'courseSearchAll'])->name('courses.all.search');
 
 //courseService
 Route::get('/service', [HomeController::class, 'allService'])->name('service.all');

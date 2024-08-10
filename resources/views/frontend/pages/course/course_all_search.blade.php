@@ -75,7 +75,7 @@
 
     <div class="container">
         <div class="text-center px-0 px-lg-5 py-0 py-lg-5">
-            <h3 class="section-title">Popular Courses We Offer</h3>
+            <h3 class="section-title">Search By Course</h3>
         </div>
     </div>
 
@@ -84,91 +84,48 @@
 
             <div class="row">
 
-                <div class="col-lg-12">
+                {{-- <div class="col-lg-12">
 
+                    <form action="{{ route('courses.all.search') }}" method="POST">
+                        @csrf
 
-                    {{-- <form action="{{ route('courses.all.search') }}" method="POST">
-                        @csrf --}}
-
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-
-                        <div class="d-flex">
-
-                            {{-- <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_section" autocomplete="off"
-                                    aria-label="Select Course Section">
-                                    <option selected disabled>Choose Section</option>
-                                    @forelse ($courseSections as $courseSection)
-                                        <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
-                                    @empty
-                                        <option disabled>No Course Section Available</option>
-                                    @endforelse
-                                </select>
-                            </div> --}}
-
-                            <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_section" autocomplete="off"
-                                    aria-label="Select Course Section" onchange="searchCoursesBySection(this.value)">
-                                    <option selected disabled>Choose Section</option>
-                                    @forelse ($courseSections as $courseSection)
-                                        <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
-                                    @empty
-                                        <option disabled>No Course Section Available</option>
-                                    @endforelse
-                                </select>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex">
+                                <div class="me-3">
+                                    <select class="form-select primary-btn-one" aria-label="Default select example">
+                                        <option selected>Select Category</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                                <div class="me-3">
+                                    <select class="form-select primary-btn-one" aria-label="Default select example">
+                                        <option selected>Select Service</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <script>
-                                function searchCoursesBySection(sectionId) {
-                                    if (sectionId) {
-                                        // Redirect to the courses page with the selected section ID
-                                        window.location.href = `/all-courses?section=${sectionId}`;
-                                    }
-                                }
-                            </script>
-
-
-                            <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_category" autocomplete="off"
-                                    aria-label="Select Course Category" onchange="searchCoursesByCategory(this.value)">
-                                    <option selected disabled>Choose Category</option>
-                                    @forelse ($courseCategories as $courseCategory)
-                                        <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
-                                    @empty
-                                        <option disabled>No Course Category Available</option>
-                                    @endforelse
-                                </select>
-                            </div>
-
-                            <script>
-                                function searchCoursesByCategory(categoryId) {
-                                    if (categoryId) {
-                                        // Redirect to the courses page with the selected section ID
-                                        window.location.href = `/all-courses?category=${categoryId}`;
-                                    }
-                                }
-                            </script>
-
-                        </div>
-
-                        <form action="{{ route('courses.all.search') }}" method="POST">
-                            @csrf
                             <div>
                                 <div class="input-group">
+
                                     <input type="text" class="form-control" autocomplete="off" placeholder="Course Name"
-                                        aria-label="Course Name" name="course_name_search" aria-describedby="basic-addon2">
+                                        aria-label="Recipient's username" name="course_name_search" aria-describedby="basic-addon2">
+
                                     <button type="submit" class="input-group-text primary-btn-one w-25" id="basic-addon2">
                                         <i class="fa-solid fa-search"></i>
                                     </button>
+
                                 </div>
                             </div>
-                        </form>
 
-                    </div>
-                    {{-- </form> --}}
+                        </div>
+                    </form>
 
-
-                </div>
+                </div> --}}
 
                 @forelse ($courses as $course)
                     <div class="col-lg-3 mb-4">
