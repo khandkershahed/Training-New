@@ -484,7 +484,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="">Category</a>
+                        <a class="nav-link " aria-current="page" href="{{ route('all.category') }}">Category</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="{{ route('course.registration') }}">Course
