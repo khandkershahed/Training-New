@@ -261,9 +261,15 @@
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput4"
                                                         class="form-label mb-2">Name</small>
-                                                    <input class="form-control effect-1" type="text" name="name"
-                                                        placeholder="Robert Bruno">
+                                                    <input
+                                                        class="form-control effect-1  @error('name') is-invalid @enderror"
+                                                        type="text" name="name" placeholder="Robert Bruno">
+
                                                     <span class="focus-border"></span>
+
+                                                    @error('name')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -273,15 +279,22 @@
                                                         <div class="position-relative ps-0 mb-3">
                                                             <small for="exampleFormControlInput5"
                                                                 class="form-label mb-2">Email</small>
-                                                            <input class="form-control effect-1" type="text"
-                                                                name="email" placeholder="yourmail@gmail.com">
+                                                            <input
+                                                                class="form-control effect-1 @error('email') is-invalid @enderror"
+                                                                type="text" name="email"
+                                                                placeholder="yourmail@gmail.com">
                                                             <span class="focus-border"></span>
+
+                                                            @error('email')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
+
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="position-relative ps-0">
-                                                            <small for="exampleFormControlInput5"
-                                                                class="form-label mb-2" style="font-size:12px;">If You don't have Account?</small>
+                                                            <small for="exampleFormControlInput5" class="form-label mb-2"
+                                                                style="font-size:12px;">If You don't have Account?</small>
                                                             <div class="course_registration">
                                                                 <label for="cbtest-19"
                                                                     class="text-white d-flex align-items-center pt-2">
@@ -312,9 +325,15 @@
                                                         <div class="position-relative ps-0 mb-3">
                                                             <small for="exampleFormControlInput6"
                                                                 class="form-label mb-2">Phone</small>
-                                                            <input class="form-control effect-1" type="text"
-                                                                name="phone" placeholder="(+880)1754******">
+                                                            <input
+                                                                class="form-control effect-1 @error('phone') is-invalid @enderror"
+                                                                type="text" name="phone"
+                                                                placeholder="(+880)1754******">
                                                             <span class="focus-border"></span>
+
+                                                            @error('phone')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
@@ -336,7 +355,9 @@
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput1" class="form-label mb-2">Course
                                                         Section</small>
-                                                    <select class="effect-1" name="course_section_id" id="course">
+                                                    <select
+                                                        class="effect-1 @error('course_section_id') is-invalid @enderror"
+                                                        name="course_section_id" id="course">
                                                         <option disabled selected>Course Section
                                                         </option>
                                                         @foreach ($courseSections as $courseSection)
@@ -346,20 +367,31 @@
 
                                                     </select>
                                                     <span class="focus-border"></span>
+
+                                                    @error('course_section_id')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
                                             <div class="col-6">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput1" class="form-label mb-0">Course Category</small>
+                                                    <small for="exampleFormControlInput1" class="form-label mb-0">Course
+                                                        Category</small>
 
-                                                    <select class="effect-1" name="course_category_id" id="course">
+                                                    <select
+                                                        class="effect-1 @error('course_category_id') is-invalid @enderror"
+                                                        name="course_category_id" id="course">
 
                                                         <option selected disabled>Select Course Category</option>
 
                                                     </select>
 
                                                     <span class="focus-border"></span>
+
+                                                    @error('course_category_id')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
 
                                                 </div>
                                             </div>
@@ -371,11 +403,16 @@
                                                     <small for="exampleFormControlInput2" class="form-label mb-2">Select
                                                         Course</small>
 
-                                                    <select class="effect-1" name="course_id" id="level">
+                                                    <select class="effect-1 @error('course_id') is-invalid @enderror"
+                                                        name="course_id" id="level">
                                                         <option selected disabled>Choose Course</option>
                                                     </select>
 
                                                     <span class="focus-border"></span>
+
+                                                    @error('course_id')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -398,28 +435,18 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="col-12">
-                                                <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput3" class="form-label mb-2">Select
-                                                        Venue Location</small>
-                                                    <select class="effect-1" name="venue_location" id="timing">
-                                                        <option value="" disabled selected>Choose Venue Location
-                                                        </option>
-                                                        <option value="">Portugal</option>
-                                                        <option value="">Bangladesh</option>
-                                                        <option value="">India</option>
-                                                    </select>
-                                                    <span class="focus-border"></span>
-                                                </div>
-                                            </div> --}}
-
                                             <div class="col-12">
 
                                                 <div class="position-relative ps-0 mb-3">
                                                     <label for="course_register_date" class="form-label mb-2">Possible
                                                         Starting Date</label>
-                                                    <input id="course_register_date" class="form-control effect-1"
+                                                    <input id="course_register_date"
+                                                        class="form-control effect-1 @error('course_register_date') is-invalid @enderror"
                                                         type="date" name="course_register_date">
+
+                                                    @error('course_register_date')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
 
                                             </div>
@@ -437,6 +464,7 @@
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -448,7 +476,6 @@
 @push('scripts')
     {{-- Category --}}
     <script type="text/javascript">
-
         $(document).ready(function() {
             $('input[name="create_account"]').change(function() {
                 if ($(this).is(':checked')) {
