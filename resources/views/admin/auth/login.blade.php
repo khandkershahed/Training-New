@@ -61,7 +61,7 @@
                                 <div class="col-md-8 ps-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
 
-                                        <a href=""
+                                        <a href="{{ route('admin.login') }}"
                                             class="noble-ui-logo logo-light d-block mb-2 text-center mb-4">
 
                                             <img alt="Logo"

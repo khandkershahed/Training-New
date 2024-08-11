@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
@@ -33,17 +34,8 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-
-            'password' => [
-                'required',
-                'string',
-                'min:8', // Minimum length of 8 characters
-                'regex:/[A-Z]/', // Must contain at least one uppercase letter
-                'regex:/[a-z]/', // Must contain at least one lowercase letter
-                'regex:/[0-9]/', // Must contain at least one number
-                'regex:/[@$!%*?&]/', // Must contain at least one special character
-            ],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()],
 
         ]);
 
