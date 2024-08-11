@@ -249,6 +249,8 @@
                     </div>
                     <h5 class="text-center text-warning">No Course available right now.</h5>
                 @endforelse
+
+                
             </div>
         </div>
     </section>

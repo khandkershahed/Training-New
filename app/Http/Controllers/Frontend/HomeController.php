@@ -157,8 +157,11 @@ class HomeController extends Controller
     {
         $courseServicedetail = CourseSection::find($id);
 
+        $courseSections = CourseSection::latest()->get();
+        $courseCategories = CourseCategory::latest()->get();
+
         $courses = Course::where('course_section_id', $courseServicedetail->id)->get();
-        return view('frontend.pages.service.allCoursesService', compact('courses'));
+        return view('frontend.pages.service.allCoursesService', compact('courses','courseSections','courseCategories'));
     }
 
     // Search Service

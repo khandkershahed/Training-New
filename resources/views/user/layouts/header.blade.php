@@ -399,21 +399,23 @@
                 </div>
                 <!--end::Notifications-->
                 <!--begin::Theme mode-->
-                <div class="d-flex align-items-center ms-1 ms-lg-3">
+                {{-- <div class="d-flex align-items-center ms-1 ms-lg-3">
                     <!--begin::Theme mode docs-->
                     <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
                         href="../../demo1/dist/documentation/getting-started/dark-mode.html">
                         <i class="fonticon-sun fs-2"></i>
                     </a>
                     <!--end::Theme mode docs-->
-                </div>
+                </div> --}}
                 <!--end::Theme mode-->
                 <!--begin::User menu-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     <!--begin::Menu wrapper-->
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                         data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" alt="user" />
+
+                        <img src="{{ !empty(Auth::user()->image) ? url('storage/user/' . Auth::user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}" alt="user" />
+
                     </div>
                     <!--begin::User account menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
@@ -423,7 +425,9 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="{{ asset('admin/assets/media/avatars/300-1.jpg') }}" />
+
+                                    <img alt="Logo" src="{{ !empty(Auth::user()->image) ? url('storage/user/' . Auth::user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}" />
+
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
@@ -452,10 +456,11 @@
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
+                        {{-- <div class="separator my-2"></div> --}}
                         <!--end::Menu separator-->
+
                         <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
+                        {{-- <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
                             <a href="#" class="menu-link px-5">
                                 <span class="menu-title position-relative">Language
                                     <span
@@ -519,11 +524,12 @@
                                 <!--end::Menu item-->
                             </div>
                             <!--end::Menu sub-->
-                        </div>
+                        </div> --}}
                         <!--end::Menu item-->
+
                         <!--begin::Menu item-->
                         <div class="menu-item px-5 my-1">
-                            <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
+                            <a href="{{ route('profile.edit') }}" class="menu-link px-5">Password
                                 Settings</a>
                         </div>
                         <!--end::Menu item-->
@@ -540,10 +546,10 @@
 
                         <!--end::Menu item-->
                         <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
+                        {{-- <div class="separator my-2"></div> --}}
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
-                        <div class="menu-item px-5">
+                        {{-- <div class="menu-item px-5">
                             <div class="menu-content px-5">
                                 <label
                                     class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
@@ -555,7 +561,7 @@
                                     <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <!--end::Menu item-->
                     </div>
                     <!--end::User account menu-->
