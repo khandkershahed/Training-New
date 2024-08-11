@@ -272,6 +272,8 @@ class HomeController extends Controller
             Auth::login($new_user);
 
             return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
+
+            
         }
     }
 
