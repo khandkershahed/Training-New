@@ -33,12 +33,12 @@
 
                         <div class="col-3 mb-3">
 
-                            <div class="form-group">
+                            <div class="">
 
                                 <label for="" class="mb-2">Instructor Name</label>
 
-                                <select class="form-select form-select-solid form-select-sm" name="instructor_id[]"
-                                    id="field2" multiple="" multiselect-search="true"
+                                <select
+                                    class="form-select form-select-solid form-select-sm @error('instructor_id') is-invalid @enderror" name="instructor_id[]" id="field2" multiple="" multiselect-search="true"
                                     multiselect-select-all="true" multiselect-max-items="2">
 
                                     @if (count($admins) > 0)
@@ -49,6 +49,10 @@
                                     @endif
 
                                 </select>
+
+                                @error('instructor_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
 
                             </div>
 
@@ -118,11 +122,11 @@
 
                         </div>
 
-                        <div class="col-3 mb-3">
+                        <div class="col-3 mb-3 form-group">
 
-                            <div class="form-group">
+                            <div class="">
                                 <label for="" class="mb-2">Course Section</label>
-                                <select name="course_section_id" data-placeholder="Select Row One.."
+                                <select name="course_section_id" required data-placeholder="Select Row One.."
                                     class="form-select form-select-sm" data-control="select2"autocomplete="off">
 
                                     <option selected>Select an option</option>
@@ -141,23 +145,15 @@
                         </div>
 
 
-                        <div class="col-3 mb-3">
+                        <div class="col-3 mb-3 form-group">
 
-                            <div class="form-group">
+                            <div class="">
                                 <label for="" class="mb-2">Course Category Name</label>
                                 <select name="course_category_id" data-placeholder="Select Row One.."
                                     class="form-select form-select-sm" data-control="select2"
                                     data-placeholder="Select an option">
 
                                     <option class="form-control"></option>
-
-                                    {{-- @if (count($courseCats) > 0)
-                                        @foreach ($courseCats as $courseCat) --}}
-                                    {{-- <option class="form-control" value="{{ $courseCat->id }}">
-                                                {{ $courseCat->name }}
-                                            </option> --}}
-                                    {{-- @endforeach
-                                    @endif --}}
 
                                 </select>
                             </div>
@@ -191,7 +187,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Project</label>
-                                <input type="text" name="project" placeholder="Five Project"
+                                <input type="number" name="project" placeholder="10"
                                     class="form-control form-control-sm" value="{{ old('project') }}">
                             </div>
                         </div>
@@ -231,7 +227,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Currency</label>
-                                <input type="text" name="currency" placeholder="Eg: 10"
+                                <input type="text" name="currency" placeholder="Eg: Taka"
                                     class="form-control form-control-sm" value="{{ old('currency') }}">
                             </div>
                         </div>
@@ -317,21 +313,21 @@
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Short Description</label>
-                                <textarea name="short_descp" class="form-control" id="" cols="3" rows="3"></textarea>
+                                <textarea name="short_descp"  class="form-control editor" id="" cols="3" rows="3"></textarea>
                             </div>
                         </div>
 
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Overview</label>
-                                <textarea name="overview" class="form-control" id="" cols="3" rows="3"></textarea>
+                                <textarea name="overview" class="form-control editor" id="" cols="3" rows="3"></textarea>
                             </div>
                         </div>
 
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Description</label>
-                                <textarea name="description" class="form-control" id="" cols="2" rows="2"></textarea>
+                                <textarea name="description" class="form-control editor" id="" cols="2" rows="2"></textarea>
                             </div>
                         </div>
 
@@ -375,6 +371,14 @@
                             required: true,
                         },
 
+                        course_section_id: {
+                            required: true,
+                        },
+
+                        course_category_id: {
+                            required: true,
+                        },
+
                         name: {
                             required: true,
                         },
@@ -413,6 +417,14 @@
 
                         instructor_id: {
                             required: 'Please Enter Instructor Name',
+                        },
+
+                        course_section_id: {
+                            required: 'Please Enter Course Section Name',
+                        },
+
+                        course_category_id: {
+                            required: 'Please Enter Category Name',
                         },
 
                         name: {

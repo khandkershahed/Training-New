@@ -237,10 +237,10 @@ class HomeController extends Controller
                 'created_at' => now(),
             ]);
 
-            // Log in the existing user
-            Auth::login($user_exist);
+            
+            // Auth::login($user_exist);
 
-            return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
+            return redirect()->route('login')->with('success', 'Login your account');
         } else {
             // Create a new user and get the user ID
             $user_id = User::insertGetId([
