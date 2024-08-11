@@ -142,7 +142,7 @@ class HomeController extends Controller
 
         $courses = $query->get();
 
-        return view('frontend.pages.course.course_all_search', compact('courses', 'item', 'itemSection', 'itemCategory'));
+        return view('frontend.pages.course.course_all_search', compact('courses', 'item'));
     }
 
     //All Service
