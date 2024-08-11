@@ -404,23 +404,34 @@
                                  <span class="menu-bullet">
                                      <span class="bullet bullet-dot"></span>
                                  </span>
-                                 <span class="menu-title">Users</span>
+                                 <span class="menu-title">Admin & User List</span>
                                  <span class="menu-arrow"></span>
                              </span>
 
-                             <div
-                                 class="menu-sub menu-sub-accordion">
+                             <div class="menu-sub menu-sub-accordion">
                                  <div class="menu-item">
-                                     <a class="menu-link" href="{{ route('admin.user-management.index') }}">
+                                     <a class="menu-link" href="{{ route('admin.admin-management.index') }}">
                                          <span class="menu-bullet">
                                              <span class="bullet bullet-dot"></span>
                                          </span>
-                                         <span class="menu-title">Users List</span>
+                                         <span class="menu-title">Admin List</span>
                                      </a>
                                  </div>
                              </div>
+
+                             <div class="menu-sub menu-sub-accordion">
+                                <div class="menu-item">
+                                    <a class="menu-link" href="{{ route('admin.user-management.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Users List</span>
+                                    </a>
+                                </div>
+                            </div>
                          </div>
-                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+
+                         {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                              <span class="menu-link">
                                  <span class="menu-bullet">
                                      <span class="bullet bullet-dot"></span>
@@ -428,6 +439,7 @@
                                  <span class="menu-title">Roles</span>
                                  <span class="menu-arrow"></span>
                              </span>
+
                              <div class="menu-sub menu-sub-accordion">
                                  <div class="menu-item">
                                      <a class="menu-link" href="{{ route('admin.role.index') }}">
@@ -446,15 +458,18 @@
                                      </a>
                                  </div>
                              </div>
-                         </div>
-                         <div class="menu-item">
+                             
+                         </div> --}}
+
+                         {{-- <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.permission.index') }}">
                                  <span class="menu-bullet">
                                      <span class="bullet bullet-dot"></span>
                                  </span>
                                  <span class="menu-title">Permissions</span>
                              </a>
-                         </div>
+                         </div> --}}
+
                      </div>
                  </div>
 

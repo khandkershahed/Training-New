@@ -21,7 +21,6 @@ Route::get('/service', [HomeController::class, 'allService'])->name('service.all
 Route::get('/course-service/{id}/{slug}', [HomeController::class, 'courseServiceDetails']);
 Route::get('/services/search', [HomeController::class, 'search'])->name('services.search');
 
-
 //courseCategoryDetails
 // Route::get('/course/category/{id}/{slug}', [HomeController::class, 'courseCategoryDetails']);
 
@@ -73,7 +72,6 @@ Route::controller(CourseEnrollController::class)->group(function () {
     Route::post('/cart-store', 'AddToCartCourse');
     Route::post('/cart-store/online-price', 'AddToCartOnlineCourse');
 });
-
 
 //Course Search By Home Page
 Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('search.course');
