@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use App\Models\Faq;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\FaqCategory;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,6 +17,7 @@ class FaqController extends Controller
     {
         return view('admin.pages.faq.index', [
             'faqs' => Faq::latest('id')->get(),
+            'faqCats' => FaqCategory::latest('id')->get(),
         ]);
     }
 
@@ -38,12 +40,13 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'order'      => ['required', 'integer', 'max:255', 'unique:' . Faq::class],
-            'question'   => ['required', 'string', 'max:255'],
-            'answer'     => ['required'],
+            'order' => ['required', 'integer', 'max:255', 'unique:' . Faq::class],
+            'category_id' => ['required', 'string', 'max:255'],
+            'question' => ['required', 'string', 'max:255'],
+            'answer' => ['required'],
         ], [
-            'required'      => 'The row title must be required',
-            'question.max'  => 'The FAQ Question may not be greater than 255 characters.',
+            'required' => 'The row title must be required',
+            'question.max' => 'The FAQ Question may not be greater than 255 characters.',
         ]);
 
         if ($validator->fails()) {
@@ -51,11 +54,11 @@ class FaqController extends Controller
             return redirect()->back()->withInput();
         }
         Faq::create([
-            'category'   => $request->category,
-            'question'   => $request->question,
-            'answer'     => $request->answer,
-            'order'      => $request->order,
-            'status'     => $request->status ?? 'active',
+            'category_id' => $request->category_id,
+            'question' => $request->question,
+            'answer' => $request->answer,
+            'order' => $request->order,
+            'status' => $request->status ?? 'active',
             'created_at' => Carbon::now(),
         ]);
         // toastr()->success('Data has been saved successfully!');
@@ -86,11 +89,11 @@ class FaqController extends Controller
         $faq = Faq::findOrFail($id);
 
         $faq->update([
-            'category'   => $request->category,
-            'question'   => $request->question,
-            'answer'     => $request->answer,
-            'order'      => $request->order,
-            'status'     => $request->status,
+            'category_id' => $request->category_id,
+            'question' => $request->question,
+            'answer' => $request->answer,
+            'order' => $request->order,
+            'status' => $request->status,
             'updated_at' => Carbon::now(),
         ]);
         // toastr()->success('Data has been saved successfully!');

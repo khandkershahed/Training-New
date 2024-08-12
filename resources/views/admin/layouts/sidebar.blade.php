@@ -353,6 +353,16 @@
                              </a>
                          </div>
                          <div class="menu-item">
+                             <a class="menu-link {{ Route::is('admin.faq_category.index') ? 'active' : '' }}"
+                                 href="{{ route('admin.faq_category.index') }}">
+                                 <span class="menu-bullet">
+                                     <span class="bullet bullet-dot"></span>
+                                 </span>
+                                 <span class="menu-title">FAQ Category</span>
+                             </a>
+                         </div>
+
+                         <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.faq.index') ? 'active' : '' }}"
                                  href="{{ route('admin.faq.index') }}">
                                  <span class="menu-bullet">

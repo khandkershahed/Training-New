@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use id;
+use App\Models\Faq;
+use App\Models\User;
+use App\Models\Course;
 use App\Models\AboutUs;
 use App\Models\Contact;
-use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseCurriculum;
-use App\Models\CourseOutline;
-use App\Models\CourseProject;
-use App\Models\CourseQuery;
-use App\Models\CourseSchedule;
-use App\Models\CourseSection;
-use App\Models\Faq;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\PrivacyPolicy;
 use App\Models\Service;
 use App\Models\Setting;
-use App\Models\TermsCondition;
-use App\Models\User;
-use App\Models\UserCourseRegistration;
-use id;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\CourseQuery;
+use App\Models\FaqCategory;
 use Illuminate\Http\Request;
+use App\Models\CourseOutline;
+use App\Models\CourseProject;
+use App\Models\CourseSection;
+use App\Models\PrivacyPolicy;
+use App\Models\CourseCategory;
+use App\Models\CourseSchedule;
+use App\Models\TermsCondition;
+use App\Models\CourseCurriculum;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use App\Models\UserCourseRegistration;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -448,8 +449,10 @@ class HomeController extends Controller
 
     public function faq()
     {
-        $data['faqs'] = Faq::orderBy('order', 'ASC')->get();
-        return view('frontend.pages.faq', $data);
+        
+        $faqCats = FaqCategory::latest()->get();
+        
+        return view('frontend.pages.faq', compact('faqCats'));
     }
 
     //serviceDetails

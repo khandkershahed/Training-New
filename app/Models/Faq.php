@@ -15,4 +15,9 @@ class Faq extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function faqName()
+    {
+        return $this->hasOne(FaqCategory::class);
+    }
 }

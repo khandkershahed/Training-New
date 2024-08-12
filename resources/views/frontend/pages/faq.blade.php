@@ -23,68 +23,79 @@
             <div class="row">
                 <div class="col-lg-2" style="background-color: #eee;">
                     <h4 class="mb-0 pt-2 text-center">Faqs</h4>
+
                     <ul class="nav nav-tabs border-0 flex-column py-3" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100 active" id="home-tab"
-                                data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab"
-                                aria-controls="home-tab-pane" aria-selected="true">Home</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="profile-tab"
-                                data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="contact-tab"
-                                data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab"
-                                aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-                        </li>
+
+                        @forelse ($faqCats as $faqCat)
+                            <li class="nav-item" role="presentation">
+                                <button
+                                    class="nav-link faq-nav-link border-0 rounded-0 text-start w-100 {{ $loop->first ? 'active' : '' }}"
+                                    id="home-{{ $faqCat->id }}" data-bs-toggle="tab"
+                                    data-bs-target="#home-{{ $faqCat->id }}-pane" type="button" role="tab"
+                                    aria-controls="home-{{ $faqCat->id }}-pane"
+                                    aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ $faqCat->name }}</button>
+                            </li>
+                        @empty
+                            <p>Faq Category Avaiable</p>
+                        @endforelse
+
+
                     </ul>
                 </div>
                 <div class="col-lg-10">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
-                                    aria-labelledby="home-tab" tabindex="0">
-                                    {{-- Content --}}
-                                    <div class="custom-accordion">
-                                        @if (count($faqs) > 0)
-                                            @foreach ($faqs as $faq)
-                                                <div class="custom-accordion-item">
-                                                    <button id="custom-accordion-button-1" aria-expanded="false">
-                                                        <span class="custom-accordion-title">{{ $faq->question }}</span>
-                                                        <span class="icon" aria-hidden="true"></span>
-                                                    </button>
-                                                    <div class="custom-accordion-content">
-                                                        <p>
-                                                            {{ $faq->answer }}
-                                                        </p>
+
+                                @foreach ($faqCats as $faqCat)
+                                    <div class="tab-pane fade show {{ $loop->first ? 'show active' : '' }}"
+                                        id="home-{{ $faqCat->id }}-pane" role="tabpanel"
+                                        aria-labelledby="home-{{ $faqCat->id }}" tabindex="0">
+                                        
+                                        @php
+                                            $faqs = App\Models\Faq::where('category_id', $faqCat->id)->get();
+                                        @endphp
+
+                                        <div class="custom-accordion">
+                                            @if (count($faqs) > 0)
+                                                @foreach ($faqs as $faq)
+                                                    <div class="custom-accordion-item">
+                                                        <button id="custom-accordion-button-1" aria-expanded="false">
+                                                            <span
+                                                                class="custom-accordion-title">{{ $faq->question }}</span>
+                                                            <span class="icon" aria-hidden="true"></span>
+                                                        </button>
+                                                        <div class="custom-accordion-content">
+                                                            <p>
+                                                                {{ $faq->answer }}
+                                                            </p>
+                                                        </div>
                                                     </div>
+                                                @endforeach
+                                            @else
+                                                <div class="custom-accordion-item border-0">
+                                                    <div class="text-center py-3">
+                                                        <img class="img-fluid" width="210px"
+                                                            src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
+                                                            alt="No Content">
+                                                    </div>
+                                                    <h5 class="text-center text-warning">FAQ Will be updated soon.</h5>
                                                 </div>
-                                            @endforeach
-                                        @else
-                                            <div class="custom-accordion-item border-0">
-                                                <div class="text-center py-3">
-                                                    <img class="img-fluid" width="210px"
-                                                        src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
-                                                        alt="No Content">
-                                                </div>
-                                                <h5 class="text-center text-warning">FAQ Will be updated soon.</h5>
-                                            </div>
-                                        @endif
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
+                                @endforeach
+
+                                {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
-                                    {{-- Content --}}
+                                    
                                     Test 2
                                 </div>
                                 <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
                                     aria-labelledby="contact-tab" tabindex="0">
-                                    {{-- Content --}}
+                                    
                                     Test 3
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
