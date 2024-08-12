@@ -1,5 +1,23 @@
 <x-guest-layout>
+
     <style>
+        .form-outline {
+            position: relative;
+        }
+
+        .bi-eye,
+        .bi-eye-slash {
+            font-size: 1rem;
+            /* Adjust size as needed */
+            color: #6c757d;
+            /* Adjust color as needed */
+        }
+
+        .form-control.pe-5 {
+            padding-right: 2.5rem;
+            /* Add space for the eye icon */
+        }
+
         body {
             color: #000;
             overflow-x: hidden;
@@ -212,14 +230,20 @@
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
 
-                                        <div class="form-outline">
+                                        <div class="form-outline position-relative">
                                             <x-input-label class="form-label" for="password" :value="__('Password')" />
+
                                             <x-text-input id="password"
-                                                class="form-control form-control-solid rounded-0" type="password"
+                                                class="form-control form-control-solid rounded-0 pe-5" type="password"
                                                 name="password" required autocomplete="new-password"
                                                 placeholder="*******" />
+
+                                            <i id="togglePassword" class="bi bi-eye position-absolute"
+                                                style="top: 73%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                         </div>
+
 
                                         <div class="row justify-content-center px-3">
                                             <button type="submit" class="btn-block btn-color">Sign In Now</button>
@@ -256,4 +280,22 @@
             </div>
         </div>
     </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+
+            togglePassword.addEventListener('click', function() {
+                // Toggle the type attribute
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Toggle the eye icon
+                this.classList.toggle('bi-eye');
+                this.classList.toggle('bi-eye-slash');
+            });
+        });
+    </script>
+
 </x-guest-layout>

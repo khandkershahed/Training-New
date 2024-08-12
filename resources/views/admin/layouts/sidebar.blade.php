@@ -4,8 +4,8 @@
      data-kt-drawer-toggle="#kt_aside_mobile_toggle">
      <div class="aside-logo flex-column-auto" id="kt_aside_logo">
          <a href="{{ route('dashboard') }}">
-            <img alt="Logo" src="{{ asset('backend/login/assets/logo/Logo_White.png') }}"
-            style="width: 130px; height: 40px;" class="logo" />
+             <img alt="Logo" src="{{ asset('backend/login/assets/logo/Logo_White.png') }}"
+                 style="width: 130px; height: 40px;" class="logo" />
          </a>
          <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
              data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
@@ -352,6 +352,8 @@
                                  <span class="menu-title">Contact Messages</span>
                              </a>
                          </div>
+
+                         
                          <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.faq_category.index') ? 'active' : '' }}"
                                  href="{{ route('admin.faq_category.index') }}">
@@ -361,6 +363,7 @@
                                  <span class="menu-title">FAQ Category</span>
                              </a>
                          </div>
+                         
 
                          <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.faq.index') ? 'active' : '' }}"
@@ -429,15 +432,15 @@
                              </div>
 
                              <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('admin.user-management.index') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Users List</span>
-                                    </a>
-                                </div>
-                            </div>
+                                 <div class="menu-item">
+                                     <a class="menu-link" href="{{ route('admin.user-management.index') }}">
+                                         <span class="menu-bullet">
+                                             <span class="bullet bullet-dot"></span>
+                                         </span>
+                                         <span class="menu-title">Users List</span>
+                                     </a>
+                                 </div>
+                             </div>
                          </div>
 
                          {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
