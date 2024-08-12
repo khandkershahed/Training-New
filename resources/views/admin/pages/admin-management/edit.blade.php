@@ -69,6 +69,32 @@
                         </div>
                     </div>
 
+                    <div class="col-3 mb-3">
+                        <div class="form-group">
+                            <label for="address" class="mb-2">Role</label>
+                            <select name="role"
+                                class="form-select form-select-sm @error('role') is-invalid @enderror" id="">
+                                <option selected disabled>Choose Role</option>
+                                <option value="super admin" {{ $admin->role == 'super admin' ? 'selected' : '' }}>Super
+                                    Admin</option>
+                                <option value="admin" {{ $admin->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="instructor" {{ $admin->role == 'instructor' ? 'selected' : '' }}>
+                                    Instructor</option>
+                                <option value="hr" {{ $admin->role == 'hr' ? 'selected' : '' }}>Hr</option>
+                                <option value="business" {{ $admin->role == 'business' ? 'selected' : '' }}>Business
+                                </option>
+                                <option value="marketing" {{ $admin->role == 'marketing' ? 'selected' : '' }}>Marketing
+                                </option>
+                                <option value="development" {{ $admin->role == 'development' ? 'selected' : '' }}>
+                                    Development</option>
+                                <option value="other" {{ $admin->role == 'other' ? 'selected' : '' }}>Other</option>
+                            </select>
+                            @error('role')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
                     <!-- Address Field -->
                     <div class="col-3 mb-3">
                         <div class="form-group">

@@ -221,4 +221,3 @@ Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'Store
 //Payment Type
 Route::get('/payment/paid/{id}', [RegistrationController::class, 'PaymentPaid'])->name('registration.paid');
 Route::get('/payment/unpaid/{id}', [RegistrationController::class, 'PaymentUnpaid'])->name('registration.unpaid');
-

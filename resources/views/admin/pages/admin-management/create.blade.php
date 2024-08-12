@@ -85,6 +85,28 @@
 
                         <div class="col-3 mb-3">
                             <div class="form-group">
+                                <label for="address" class="mb-2">Role</label>
+                                <select name="role"
+                                    class="form-select form-select-sm @error('role') is-invalid @enderror"
+                                    id="">
+                                    <option selected disabled>Choose Role</option>
+                                    <option value="super admin">Super Admin</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="instructor">Instructor</option>
+                                    <option value="hr">Hr</option>
+                                    <option value="business">Business</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="development">Development</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                @error('role')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
                                 <label for="address" class="mb-2">Address</label>
                                 <input type="text" id="address" name="address" placeholder="eg: Dhaka,Bangladesh"
                                     class="form-control form-control-sm">
@@ -104,7 +126,7 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
             </form>
 

@@ -399,21 +399,21 @@
                 </div>
                 <!--end::Notifications-->
                 <!--begin::Theme mode-->
-                <div class="d-flex align-items-center ms-1 ms-lg-3">
+                {{-- <div class="d-flex align-items-center ms-1 ms-lg-3">
                     <!--begin::Theme mode docs-->
                     <a class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
                         href="../../demo1/dist/documentation/getting-started/dark-mode.html">
                         <i class="fonticon-sun fs-2"></i>
                     </a>
                     <!--end::Theme mode docs-->
-                </div>
+                </div> --}}
                 <!--end::Theme mode-->
                 <!--begin::User menu-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     <!--begin::Menu wrapper-->
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                         data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img src="{{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}"
+                        <img src="{{ Auth::guard('admin')->user()->image ? asset('storage/images/' . Auth::guard('admin')->user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}"
                             alt="user" />
                     </div>
                     <!--begin::User account menu-->
@@ -425,7 +425,7 @@
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
                                     <img alt="Logo"
-                                        src="{{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}" />
+                                        src="{{ Auth::guard('admin')->user()->image ? asset('storage/images/' . Auth::guard('admin')->user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}" />
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
@@ -449,98 +449,9 @@
                             <a href="{{ route('admin.profile.edit') }}" class="menu-link px-5">My
                                 Profile</a>
                         </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
-                        <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-                            <a href="#" class="menu-link px-5">
-                                <span class="menu-title position-relative">Language
-                                    <span
-                                        class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-                                        <img class="w-15px h-15px rounded-1 ms-2"
-                                            src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
-                                            alt="" /></span></span>
-                            </a>
-                            <!--begin::Menu sub-->
-                            {{-- <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html"
-                                        class="menu-link d-flex px-5 active">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
-                                                alt="" />
-                                        </span>English</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/spain.svg') }}"
-                                                alt="" />
-                                        </span>Spanish</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/germany.svg') }}"
-                                                alt="" />
-                                        </span>German</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/japan.svg') }}"
-                                                alt="" />
-                                        </span>Japanese</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin/assets/media/flags/france.svg') }}"
-                                                alt="" />
-                                        </span>French</a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div> --}}
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                    <div class="menu-item px-3">
-                                        <a rel="alternate" hreflang="{{ $localeCode }}"
-                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
-                                            class="menu-link d-flex px-5">
-                                            <span class="symbol symbol-20px me-4">
-                                                <img class="rounded-1"
-                                                    src="{{ asset('admin/assets/media/flags/' . $localeCode . '.svg') }}"
-                                                    alt="" />
-                                            </span>{{ $properties['native'] }}
-                                        </a>
-                                    </div>
-                                @endforeach
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu sub-->
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
+                        
                         <div class="menu-item px-5 my-1">
-                            <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
-                                Settings</a>
+                            <a href="('admin.profile.edit') }}" class="menu-link px-5">Password Change</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
@@ -554,25 +465,7 @@
                             </form>
                         </div>
 
-                        <!--end::Menu item-->
-                        <!--begin::Menu separator-->
-                        {{-- <div class="separator my-2"></div> --}}
-                        <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        {{-- <div class="menu-item px-5">
-                            <div class="menu-content px-5">
-                                <label
-                                    class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
-                                    for="kt_user_menu_dark_mode_toggle">
-                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1"
-                                        name="mode" id="kt_user_menu_dark_mode_toggle"
-                                        data-kt-url="../../demo1/dist/index.html" />
-                                    <span class="pulse-ring ms-n1"></span>
-                                    <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
-                                </label>
-                            </div>
-                        </div> --}}
-                        <!--end::Menu item-->
+                        
                     </div>
                     <!--end::User account menu-->
                     <!--end::Menu wrapper-->

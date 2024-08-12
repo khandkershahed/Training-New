@@ -41,6 +41,7 @@ class AdminController extends Controller
                     ->numbers()
                     ->symbols(),
             ],
+            'role' => 'required|string|max:255',
             'address' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation rules
         ]);
@@ -60,6 +61,7 @@ class AdminController extends Controller
         $admin->email = $request->input('email');
         $admin->phone = $request->input('phone');
         $admin->password = Hash::make($request->input('password'));
+        $admin->role = $request->input('role');
         $admin->address = $request->input('address');
         $admin->image = $imageName; // Store the image filename in the database
         $admin->save();
@@ -85,6 +87,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:admins,email,' . $id,
             'phone' => 'required|string|max:20',
+            'role' => 'required|string|max:255',
             'address' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation rules
         ]);
@@ -108,6 +111,7 @@ class AdminController extends Controller
         $admin->name = $request->input('name');
         $admin->email = $request->input('email');
         $admin->phone = $request->input('phone');
+        $admin->role = $request->input('role');
         $admin->address = $request->input('address');
         $admin->image = $imageName; // Update the image filename in the database
         $admin->save();

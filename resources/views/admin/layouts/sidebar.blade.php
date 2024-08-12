@@ -4,9 +4,8 @@
      data-kt-drawer-toggle="#kt_aside_mobile_toggle">
      <div class="aside-logo flex-column-auto" id="kt_aside_logo">
          <a href="{{ route('dashboard') }}">
-             <img alt="Logo"
-                 src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}"
-                 class="h-60px logo w-200px">
+            <img alt="Logo" src="{{ asset('backend/login/assets/logo/Logo_White.png') }}"
+            style="width: 130px; height: 40px;" class="logo" />
          </a>
          <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle active"
              data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
@@ -362,7 +361,7 @@
                                  <span class="menu-title">FAQ Lists</span>
                              </a>
                          </div>
-                         <div class="menu-item">
+                         {{-- <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.newsletters.index') ? 'active' : '' }}"
                                  href="{{ route('admin.newsletters.index') }}">
                                  <span class="menu-bullet">
@@ -370,7 +369,7 @@
                                  </span>
                                  <span class="menu-title">Subscribed Emails List</span>
                              </a>
-                         </div>
+                         </div> --}}
                      </div>
                  </div>
 
@@ -559,7 +558,7 @@
                                  <span class="menu-title">Website Setting</span>
                              </a>
                          </div>
-                         <div class="menu-item">
+                         {{-- <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.css.index') ? 'active' : '' }}"
                                  href="{{ route('admin.css.index') }}">
                                  <span class="menu-bullet">
@@ -567,8 +566,8 @@
                                  </span>
                                  <span class="menu-title">CSS Setting</span>
                              </a>
-                         </div>
-                         <div class="menu-item">
+                         </div> --}}
+                         {{-- <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.email-settings.index') ? 'active' : '' }}"
                                  href="{{ route('admin.email-settings.index') }}">
                                  <span class="menu-bullet">
@@ -576,7 +575,7 @@
                                  </span>
                                  <span class="menu-title">Email Setting</span>
                              </a>
-                         </div>
+                         </div> --}}
                          <div class="menu-item">
                              <a class="menu-link" href="{{ route('admin.all.registration') }}">
                                  <span class="menu-bullet">
