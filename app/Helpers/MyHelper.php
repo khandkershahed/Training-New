@@ -1,9 +1,8 @@
 <?php
 
-use App\Models\HomePage;
-use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 if (!function_exists('handaleFileUpload')) {
     function handaleFileUpload(UploadedFile $file, $folder = 'default')
@@ -36,11 +35,16 @@ if (!function_exists('noImage')) {
 if (!function_exists('customUpload')) {
     function customUpload(UploadedFile $mainFile, string $uploadPath, ?int $reqWidth = null, ?int $reqHeight = null): array
     {
+        // $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+        // $hashedName = substr($mainFile->hashName(), -12);
+
+        // $fileName = $originalName . '_' . $hashedName;
+
         $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
-
-        $hashedName = substr($mainFile->hashName(), -12);
-
-        $fileName = $originalName . '_' . $hashedName;
+        $fileExtention = $mainFile->getClientOriginalExtension();
+        $currentTime = Str::random(10) . time();
+        $fileName = $currentTime . '.' . $fileExtention;
 
         if (!is_dir($uploadPath)) {
             if (!mkdir($uploadPath, 0777, true)) {
@@ -80,6 +84,3 @@ if (!function_exists('customUpload')) {
         return array_map('htmlspecialchars', $output);
     }
 }
-
-
-

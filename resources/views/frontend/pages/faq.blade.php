@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2" style="background-color: #eee;">
-                    <h4 class="mb-0 pt-2 text-center">All Faqs</h4>
+                    <h4 class="mb-0 pt-2 text-center">Faqs</h4>
                     <ul class="nav nav-tabs border-0 flex-column py-3" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100 active" id="home-tab"
