@@ -39,6 +39,26 @@
         href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/no-logo(217-55).jpg') }}"
         type="image/x-icon" />
 
+    <style>
+        .position-relative {
+            position: relative;
+        }
+
+        .bi-eye,
+        .bi-eye-slash {
+            font-size: 1rem;
+            /* Adjust size as needed */
+            color: #535151;
+            /* Adjust color as needed */
+        }
+
+        .form-control {
+            padding-right: 2.5rem;
+            /* Add space for the eye icon */
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -87,17 +107,20 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="mb-3">
+                                            <div class="mb-3 position-relative">
                                                 <label for="password" class="form-label">Password</label>
                                                 <input type="password" autocomplete="off" name="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     id="password" autocomplete="current-password" placeholder="">
 
+                                                <i id="togglePassword" class="bi bi-eye position-absolute"
+                                                    style="top: 73%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+
                                                 @error('password')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
-
                                             </div>
+
 
                                             <div class="form-check mb-3">
                                                 <input type="checkbox" class="form-check-input" id="remember_me"
@@ -142,6 +165,25 @@
     <!-- inject:js -->
     <script src="{{ asset('backend/login/assets/vendors/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('backend/login/assets/js/template.js') }}"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+
+            togglePassword.addEventListener('click', function() {
+                // Toggle the type attribute
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Toggle the eye icon
+                this.classList.toggle('bi-eye');
+                this.classList.toggle('bi-eye-slash');
+            });
+        });
+    </script>
+
     <!-- endinject -->
 
 
