@@ -1,56 +1,3 @@
-{{-- <x-mail::message>
-    
-    @if (!empty($greeting))
-        # {{ $greeting }}
-    @else
-        @if ($level === 'error')
-            # @lang('Whoops!')
-        @else
-            # @lang('Hello User!')
-        @endif
-    @endif
-
-    
-    @foreach ($introLines as $line)
-        {{ $line }}
-    @endforeach
-
-    
-    @isset($actionText)
-        <?php
-        $color = match ($level) {
-            'success', 'error' => $level,
-            default => 'primary',
-        };
-        ?>
-        <x-mail::button :url="$actionUrl" :color="$color">
-            {{ $actionText }}
-        </x-mail::button>
-    @endisset
-
-    
-    @foreach ($outroLines as $line)
-        {{ $line }}
-    @endforeach
-
-    
-    @if (!empty($salutation))
-        {{ $salutation }}
-    @else
-        @lang('Regards'),<br>
-       
-    @endif
-
-    
-    @isset($actionText)
-        <x-slot:subcopy>
-            @lang("If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n" . 'into your web browser:', [
-                'actionText' => $actionText,
-            ]) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
-        </x-slot:subcopy>
-    @endisset
-</x-mail::message> --}}
-
 <style>
     html,
     body {
@@ -67,9 +14,11 @@
             <tr>
                 <td align="center" valign="center" style="text-align:center; padding: 40px">
                     <a href="https://training.ngengroup.org/" rel="noopener" target="_blank">
+
                         <img alt="Logo"
                             src="https://training.ngengroup.org/storage/images/settings/26znqdblzfWUKbfm30YplsyXy3U7J32MCaFnMs7g.png"
                             style="width: 100px;" />
+
                     </a>
                 </td>
             </tr>
@@ -85,23 +34,24 @@
                             reset request for your account. To proceed with the password reset please click on the
                             button below:</div>
                         <div style="padding-bottom: 40px; text-align:center;">
-                            <a href="{{ $actionUrl }}" rel="noopener"
+                            <a href="{{ $url }}" rel="noopener"
                                 style="text-decoration:none;display:inline-block;text-align:center;padding:0.75575rem 1.3rem;font-size:0.925rem;line-height:1.5;border-radius:0.35rem;color:#ffffff;background-color:#009EF7;border:0px;margin-right:0.75rem!important;font-weight:600!important;outline:none!important;vertical-align:middle"
                                 target="_blank">Reset Password</a>
                         </div>
-                        <div style="padding-bottom: 30px">This password reset link will expire in 60
+                        <div style="padding-bottom: 30px">This password reset link will expire in {{ $count }}
                             minutes. If you did
                             not request a password reset, no further action is required.</div>
                         <div style="border-bottom: 1px solid #eeeeee; margin: 15px 0"></div>
                         <div style="padding-bottom: 50px; word-wrap: break-all;">
                             <p style="margin-bottom: 10px;">Button not working? Try pasting this URL into your browser:
                             </p>
-                            <a href="{{ $actionUrl }}" rel="noopener" target="_blank"
-                                style="text-decoration:none;color: #009EF7">{{ $actionUrl }}</a>
+                            <a href="{{ $url }}" rel="noopener" target="_blank"
+                                style="text-decoration:none;color: #009EF7">{{ $url }}</a>
                         </div>
                         <!--end:Email content-->
-                        <div style="padding-bottom: 10px">Best Regards<br>The NgenIt Training Team.</div>
-                        
+                        <div style="padding-bottom: 10px">Best regards
+                            <br>NgenIt Training Team.
+                        </div>
             </tr>
             <tr>
                 <td align="center" valign="center"
@@ -112,4 +62,11 @@
                     </p>
                 </td>
             </tr></br>
+</div>
+
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </div>

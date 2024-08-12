@@ -51,24 +51,44 @@ use Illuminate\Support\Facades\Route;
 //     return redirect()->route('admin.dashboard');
 // });
 
-Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
+// Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+//     Route::get('login', [AuthenticatedSessionController::class, 'create'])
+//         ->name('login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+//     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-        ->name('password.request');
+//     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+//         ->name('password.request');
 
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-        ->name('password.email');
+//     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+//         ->name('password.email');
 
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-        ->name('password.reset');
+//     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+//         ->name('password.reset');
 
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-        ->name('password.store');
+//     Route::post('reset-password', [NewPasswordController::class, 'store'])
+//         ->name('password.store');
+// });
+
+Route::middleware('guest:admin')->group(function () {
+
+    Route::get('admin/login', [AuthenticatedSessionController::class, 'create'])
+        ->name('admin.login');
+
+    Route::post('admin/login', [AuthenticatedSessionController::class, 'store']);
+
+    Route::get('admin/forgot-password', [PasswordResetLinkController::class, 'create'])
+        ->name('admin.password.request');
+
+    Route::post('admin/forgot-password', [PasswordResetLinkController::class, 'store'])
+        ->name('admin.password.email');
+
+    Route::get('admin/reset-password/{token}', [NewPasswordController::class, 'create'])
+        ->name('admin.password.reset');
+
+    Route::post('admin/reset-password', [NewPasswordController::class, 'store'])
+        ->name('admin.password.store');
 });
 
 // Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin'])->prefix(LaravelLocalization::setLocale() . '/admin')->name('admin.')->group(function () {
