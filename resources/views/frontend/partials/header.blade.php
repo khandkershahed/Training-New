@@ -453,7 +453,7 @@
                         </ul>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('courses.all') }}">All Courses</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('courses.all') }}">Courses</a>
                     </li>
 
 

@@ -328,7 +328,7 @@
                                                             <input
                                                                 class="form-control effect-1 @error('phone') is-invalid @enderror"
                                                                 type="text" name="phone"
-                                                                placeholder="(+880)1754******">
+                                                                placeholder="01728*******">
                                                             <span class="focus-border"></span>
 
                                                             @error('phone')
@@ -341,7 +341,7 @@
                                                             <label for="cbtest-19"
                                                                 class="text-white d-flex align-items-center pt-2">
                                                                 <input class="me-3" type="checkbox" name="call_me"
-                                                                    id="cbtest-19" checked  value="1" />
+                                                                    id="cbtest-19" checked value="1" />
                                                                 Call Me
                                                             </label>
                                                         </div>
@@ -356,7 +356,7 @@
                                                     <label for="exampleFormControlInput1" class="form-label mb-2">Course
                                                         Section</label>
                                                     <select
-                                                        class="effect-1 @error('course_section_id') is-invalid @enderror"
+                                                        class="effect-1 form-select @error('course_section_id') is-invalid @enderror"
                                                         name="course_section_id" id="course">
                                                         <option disabled selected>Course Section
                                                         </option>
@@ -376,11 +376,11 @@
 
                                             <div class="col-6">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label mb-0">Course
+                                                    <label for="exampleFormControlInput1" class="form-label mb-2">Course
                                                         Category</label>
 
                                                     <select
-                                                        class="effect-1 @error('course_category_id') is-invalid @enderror"
+                                                        class="effect-1 form-select @error('course_category_id') is-invalid @enderror"
                                                         name="course_category_id" id="course">
 
                                                         <option selected disabled>Select Course Category</option>

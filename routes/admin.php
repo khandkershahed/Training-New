@@ -135,7 +135,11 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     );
 
     //Registration
-    Route::get('/registration', [RegistrationController::class, 'AllRegistration'])->name('all.registration');
+    Route::get('/registration', [RegistrationController::class, 'registration'])->name('all.registration');
+
+    Route::get('/pending-registration', [RegistrationController::class, 'registrationPending'])->name('registration.pending');
+    Route::get('/paid-registration', [RegistrationController::class, 'registrationPaid'])->name('registration.paid');
+
     Route::get('/registration-delete/{id}', [RegistrationController::class, 'DeleteRegistration'])->name('delete.registration');
 
     Route::resources(
@@ -241,5 +245,5 @@ Route::get('/delete/multi-file/{id}', [CourseCurriculamController::class, 'Delet
 Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'StoreFileCurriculum'])->name('store.new.file');
 
 //Payment Type
-Route::get('/payment/paid/{id}', [RegistrationController::class, 'PaymentPaid'])->name('registration.paid');
-Route::get('/payment/unpaid/{id}', [RegistrationController::class, 'PaymentUnpaid'])->name('registration.unpaid');
+Route::post('/course-registration/update/{id}', [RegistrationController::class, 'registrationUpdate'])->name('course-registration.update');
+Route::post('/paid-course-registration/update/{id}', [RegistrationController::class, 'registrationCoursePaid'])->name('paid-course-registration.update');

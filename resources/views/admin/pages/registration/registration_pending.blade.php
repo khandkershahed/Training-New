@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Registration'">
+<x-admin-app-layout :title="'Registration Pending'">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
@@ -75,12 +75,9 @@
                                     </a>
                                 @endif
 
-
                             </td>
 
-
                             <td>
-
 
                                 <a style="cursor: pointer" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $registration->id }}" title="Details">
@@ -148,9 +145,8 @@
                                                     {{ $registration->payment_type == 'pending' ? 'selected' : '' }}>
                                                     Pending</option>
 
-                                                {{-- <option value="paid"
-                                                    {{ $registration->payment_type == 'paid' ? 'selected' : '' }}>Paid
-                                                </option> --}}
+                                                {{-- <option value="paid" {{ $registration->payment_type == 'paid' ? 'selected' : '' }}>Paid</option> --}}
+
                                             </select>
                                         </div>
                                         <div class="col-6 mt-3 me-end">

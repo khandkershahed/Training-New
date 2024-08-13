@@ -1,4 +1,4 @@
-<x-admin-app-layout :title="'Registration'">
+<x-admin-app-layout :title="'Registration Pending'">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
@@ -35,8 +35,9 @@
                         <th width="25%">Course Name</th>
                         <th width="15%">Course Amount</th>
                         <th width="15%">Register Date</th>
-                        {{-- <th width="15%">Payment Method</th>
-                        <th width="15%">Transcation</th> --}}
+                        <th width="15%">Payment Method</th>
+                        <th width="15%">Amount</th>
+                        <th width="15%">Transcation</th>
                         <th width="18%">Status</th>
                         <th width="10%">Actions</th>
                     </tr>
@@ -56,8 +57,9 @@
                                 {{ \Carbon\Carbon::parse($registration->course_register_date)->format('F j, Y') }}
                             </td>
 
-                            {{-- <td class="text-start">{{ $registration->payment_method }}</td>
-                            <td class="text-start">{{ $registration->transcation_id }}</td> --}}
+                            <td class="text-start">{{ $registration->payment_method }}</td>
+                            <td class="text-start text-danger">{{ $registration->amount }}</td>
+                            <td class="text-start">{{ $registration->transcation_id }}</td>
 
                             <td>
 
@@ -74,13 +76,10 @@
                                         Paid
                                     </a>
                                 @endif
-
-
+                                
                             </td>
 
-
                             <td>
-
 
                                 <a style="cursor: pointer" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $registration->id }}" title="Details">
@@ -116,20 +115,20 @@
 
                         <div class="row">
                             <div class="col-12">
-                                <form action="{{ route('course-registration.update', $registration->id) }}"
+                                <form action="{{ route('paid-course-registration.update', $registration->id) }}"
                                     method="POST">
                                     @csrf
                                     @method('POST')
                                     <div class="row">
                                         <div class="col-12 mb-3">
                                             <label for="" class="mb-2">Course Name</label>
-                                            <input type="text" readonly class="form-control form-control-sm"
+                                            <input type="text" readonly disabled class="form-control form-control-sm"
                                                 value="{{ optional($registration->courseName)->name }}">
                                         </div>
 
                                         <div class="col-6">
                                             <label for="" class="mb-2">Course Amount</label>
-                                            <input type="number" required class="form-control form-control-sm"
+                                            <input type="number" readonly disabled required class="form-control form-control-sm"
                                                 name="course_amount" value="{{ $registration->course_amount }}"
                                                 placeholder="eg:10,000">
                                         </div>
@@ -140,17 +139,12 @@
                                                 id="">
                                                 <option disabled selected>Choose Payment</option>
 
-                                                <option value="unpaid"
-                                                    {{ $registration->payment_type == 'unpaid' ? 'selected' : '' }}>
-                                                    Unpaid</option>
+                                                {{-- <option value="unpaid" {{ $registration->payment_type == 'unpaid' ? 'selected' : '' }}>Unpaid</option> --}}
 
-                                                <option value="pending"
-                                                    {{ $registration->payment_type == 'pending' ? 'selected' : '' }}>
-                                                    Pending</option>
+                                                <option value="pending" {{ $registration->payment_type == 'pending' ? 'selected' : '' }}>Pending</option>
 
-                                                {{-- <option value="paid"
-                                                    {{ $registration->payment_type == 'paid' ? 'selected' : '' }}>Paid
-                                                </option> --}}
+                                                <option value="paid" {{ $registration->payment_type == 'paid' ? 'selected' : '' }}>Approve</option>
+
                                             </select>
                                         </div>
                                         <div class="col-6 mt-3 me-end">
