@@ -257,13 +257,13 @@
                                     <div class="col-lg-12 first-column">
                                         <div class="row">
 
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput4"
-                                                        class="form-label mb-2">Name</small>
+                                                    <label for="exampleFormControlInput4"
+                                                        class="form-label mb-2">Name</label>
                                                     <input
                                                         class="form-control effect-1  @error('name') is-invalid @enderror"
-                                                        type="text" name="name" placeholder="Robert Bruno">
+                                                        type="text" name="name" placeholder="">
 
                                                     <span class="focus-border"></span>
 
@@ -273,16 +273,16 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-6">
                                                 <div class="row align-items-center mb-lg-1 mb-3">
-                                                    <div class="col-lg-8">
+                                                    <div class="col-lg-12">
                                                         <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput5"
-                                                                class="form-label mb-2">Email</small>
+                                                            <label for="exampleFormControlInput5"
+                                                                class="form-label mb-2">Email</label>
                                                             <input
                                                                 class="form-control effect-1 @error('email') is-invalid @enderror"
                                                                 type="text" name="email"
-                                                                placeholder="yourmail@gmail.com">
+                                                                placeholder="">
                                                             <span class="focus-border"></span>
 
                                                             @error('email')
@@ -291,7 +291,7 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-4">
+                                                    {{-- <div class="col-lg-4">
                                                         <div class="position-relative ps-0">
                                                             <small for="exampleFormControlInput5" class="form-label mb-2"
                                                                 style="font-size:12px;">If You don't have Account?</small>
@@ -305,11 +305,11 @@
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-12 account_password" style="display: none">
+                                            {{-- <div class="col-lg-12 account_password" style="display: none">
                                                 <div class="position-relative ps-0 mb-3">
                                                     <small for="exampleFormControlInput4" class="form-label mb-2">Account
                                                         Password</small>
@@ -317,14 +317,14 @@
                                                         placeholder="Enter Password">
                                                     <span class="focus-border"></span>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-lg-12">
                                                 <div class="row align-items-center mb-lg-1 mb-3">
                                                     <div class="col-lg-8">
                                                         <div class="position-relative ps-0 mb-3">
-                                                            <small for="exampleFormControlInput6"
-                                                                class="form-label mb-2">Phone</small>
+                                                            <label for="exampleFormControlInput6"
+                                                                class="form-label mb-2">Phone</label>
                                                             <input
                                                                 class="form-control effect-1 @error('phone') is-invalid @enderror"
                                                                 type="text" name="phone"
@@ -341,7 +341,7 @@
                                                             <label for="cbtest-19"
                                                                 class="text-white d-flex align-items-center pt-2">
                                                                 <input class="me-3" type="checkbox" name="call_me"
-                                                                    id="cbtest-19" value="1" />
+                                                                    id="cbtest-19" checked  value="1" />
                                                                 Call Me
                                                             </label>
                                                         </div>
@@ -353,8 +353,8 @@
 
                                             <div class="col-6">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput1" class="form-label mb-2">Course
-                                                        Section</small>
+                                                    <label for="exampleFormControlInput1" class="form-label mb-2">Course
+                                                        Section</label>
                                                     <select
                                                         class="effect-1 @error('course_section_id') is-invalid @enderror"
                                                         name="course_section_id" id="course">
@@ -376,8 +376,8 @@
 
                                             <div class="col-6">
                                                 <div class="position-relative ps-0 mb-3">
-                                                    <small for="exampleFormControlInput1" class="form-label mb-0">Course
-                                                        Category</small>
+                                                    <label for="exampleFormControlInput1" class="form-label mb-0">Course
+                                                        Category</label>
 
                                                     <select
                                                         class="effect-1 @error('course_category_id') is-invalid @enderror"
@@ -400,8 +400,8 @@
                                             <div class="col-12">
                                                 <div class="position-relative ps-0 mb-3">
 
-                                                    <small for="exampleFormControlInput2" class="form-label mb-2">Select
-                                                        Course</small>
+                                                    <label for="exampleFormControlInput2" class="form-label mb-2">Select
+                                                        Course</label>
 
                                                     <select class="effect-1 @error('course_id') is-invalid @enderror"
                                                         name="course_id" id="level">
@@ -416,15 +416,15 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
-                                                <div class="position-relative ps-0 mb-3">
+                                            <div class="col-6">
+                                                <div class="position-relative ps-0">
 
-                                                    <small for="exampleFormControlInput3" class="form-label mb-2">Select
-                                                        Course Venue</small>
+                                                    <label for="exampleFormControlInput3" class="form-label">Select
+                                                        Course Venue</label>
 
-                                                    <select class="effect-1" name="course_type" id="timing">
+                                                    <select class="effect-1 form-select"  name="course_type" id="timing">
 
-                                                        <option disabled selected>Choose Course Venue
+                                                        <option disabled selected>Choose Venue
                                                         </option>
 
                                                         <option value="online">Online</option>
@@ -435,10 +435,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-6">
 
-                                                <div class="position-relative ps-0 mb-3">
-                                                    <label for="course_register_date" class="form-label mb-2">Possible
+                                                <div class="position-relative ps-0">
+                                                    <label for="course_register_date" class="form-label">Possible
                                                         Starting Date</label>
                                                     <input id="course_register_date"
                                                         class="form-control effect-1 @error('course_register_date') is-invalid @enderror"

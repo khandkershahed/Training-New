@@ -8,14 +8,11 @@
         .bi-eye,
         .bi-eye-slash {
             font-size: 1rem;
-            /* Adjust size as needed */
             color: #6c757d;
-            /* Adjust color as needed */
         }
 
         .form-control.pe-5 {
             padding-right: 2.5rem;
-            /* Add space for the eye icon */
         }
 
         body {

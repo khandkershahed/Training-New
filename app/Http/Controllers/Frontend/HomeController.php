@@ -2,33 +2,35 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use id;
-use App\Models\Faq;
-use App\Models\User;
-use App\Models\Course;
+use App\Http\Controllers\Controller;
+use App\Mail\CourseRegister;
 use App\Models\AboutUs;
 use App\Models\Contact;
-use App\Models\Service;
-use App\Models\Setting;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\CourseQuery;
-use App\Models\FaqCategory;
-use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Models\CourseCurriculum;
 use App\Models\CourseOutline;
 use App\Models\CourseProject;
-use App\Models\CourseSection;
-use App\Models\PrivacyPolicy;
-use App\Models\CourseCategory;
+use App\Models\CourseQuery;
 use App\Models\CourseSchedule;
+use App\Models\CourseSection;
+use App\Models\Faq;
+use App\Models\FaqCategory;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\PrivacyPolicy;
+use App\Models\Service;
+use App\Models\Setting;
 use App\Models\TermsCondition;
-use App\Models\CourseCurriculum;
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UserCourseRegistration;
+use id;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\View;
-use App\Models\UserCourseRegistration;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -162,7 +164,7 @@ class HomeController extends Controller
         $courseCategories = CourseCategory::latest()->get();
 
         $courses = Course::where('course_section_id', $courseServicedetail->id)->get();
-        return view('frontend.pages.service.allCoursesService', compact('courses','courseSections','courseCategories'));
+        return view('frontend.pages.service.allCoursesService', compact('courses', 'courseSections', 'courseCategories'));
     }
 
     // Search Service
@@ -181,13 +183,6 @@ class HomeController extends Controller
         return view('frontend.pages.service.service_search', compact('services'))->render();
     }
 
-    public function courseRegistration()
-    {
-        // Fetch all CourseSections, latest first
-        $courseSections = CourseSection::latest()->get();
-        return view('frontend.pages.course.courseRegistration', compact('courseSections'));
-    }
-
     public function GetRegisterCategory($course_section_id)
     {
         $cat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();
@@ -200,6 +195,12 @@ class HomeController extends Controller
         return json_encode($course);
     }
 
+    public function courseRegistration()
+    {
+        $courseSections = CourseSection::latest()->get();
+        return view('frontend.pages.course.courseRegistration', compact('courseSections'));
+    }
+
     public function courseRegistrationStore(Request $request)
     {
         // Validate the incoming request
@@ -207,12 +208,10 @@ class HomeController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:100',
             'phone' => 'required|string|max:15',
-            // 'call_me' => 'required|string',
             'course_section_id' => 'required|integer',
             'course_category_id' => 'required|integer',
             'course_id' => 'required|integer',
             'course_type' => 'required|string',
-            // 'location' => 'required|string',
             'course_register_date' => 'required|date',
             'address' => 'nullable|string',
             'password' => 'nullable|string|min:8',
@@ -238,20 +237,32 @@ class HomeController extends Controller
                 'created_at' => now(),
             ]);
 
-            
             // Auth::login($user_exist);
 
             return redirect()->route('login')->with('success', 'Login your account');
         } else {
-            // Create a new user and get the user ID
             $user_id = User::insertGetId([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                'password' => !empty($request->password) ? Hash::make($request->password) : Hash::make($request->phone),
+                // 'password' => !empty($request->password) ? Hash::make($request->password) : Hash::make($request->phone),
+                'password' => Hash::make($request->phone),
                 'created_at' => now(),
             ]);
+
+            // Make Mail Start
+            $course = User::findOrFail($user_id);
+
+            $data = [
+                'name' => $course->name,
+                'email' => $course->email,
+                'phone' => $course->phone,
+            ];
+
+            Mail::to($course->email)->send(new CourseRegister($data));
+
+            // Make Mail End
 
             // Create the course registration
             UserCourseRegistration::create([
@@ -269,15 +280,12 @@ class HomeController extends Controller
                 'created_at' => now(),
             ]);
 
-            // Fetch the newly created user
             $new_user = User::find($user_id);
 
-            // Log in the new user
             Auth::login($new_user);
 
             return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
 
-            
         }
     }
 
@@ -449,9 +457,9 @@ class HomeController extends Controller
 
     public function faq()
     {
-        
+
         $faqCats = FaqCategory::latest()->get();
-        
+
         return view('frontend.pages.faq', compact('faqCats'));
     }
 
