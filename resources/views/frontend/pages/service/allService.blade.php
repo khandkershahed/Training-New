@@ -2,7 +2,7 @@
 @section('content')
     <!-- Banner Section -->
     <section class="showcase">
-        <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->course_banner) }}"
+        <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->our_service_banner) }}"
             alt="Picture">
     </section>
     <!-- All Servises -->
