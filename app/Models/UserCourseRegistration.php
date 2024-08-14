@@ -15,19 +15,4 @@ class UserCourseRegistration extends Model
      * @var array
      */
     protected $guarded = [];
-
-    public function courseName()
-    {
-        return $this->belongsTo(Course::class,'course_id','id');
-    }
-
-    public function courseSection()
-    {
-        return $this->belongsTo(CourseSection::class,'course_section_id','id');
-    }
-
-    public function courseCategory()
-    {
-        return $this->belongsTo(CourseCategory::class,'course_category_id','id');
-    }
 }

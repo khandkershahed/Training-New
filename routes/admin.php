@@ -246,4 +246,5 @@ Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'Store
 
 //Payment Type
 Route::post('/course-registration/update/{id}', [RegistrationController::class, 'registrationUpdate'])->name('course-registration.update');
+
 Route::post('/paid-course-registration/update/{id}', [RegistrationController::class, 'registrationCoursePaid'])->name('paid-course-registration.update');
