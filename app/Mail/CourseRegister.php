@@ -51,10 +51,13 @@ class CourseRegister extends Mailable
     {
         //$mailData = $this->data;
 
-        return $this->from('ashiquzzaman.rajib.cse@gmail.com')
-                    ->view('mail.course_register_mail')
-                    ->with('mailData', $this->data)
-                    ->subject('Course Registration Information');
+        return $this->view('mail.course_register_mail')
+            ->with('mailData', $this->data);
+
+        // return $this->from('ashiquzzaman.rajib.cse@gmail.com')
+        //             ->view('mail.course_register_mail')
+        //             ->with('mailData', $this->data)
+        //             ->subject('Course Registration Information');
 
     }
 }
