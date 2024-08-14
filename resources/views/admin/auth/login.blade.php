@@ -97,12 +97,12 @@
                                             @csrf
 
                                             <div class="mb-3">
-                                                <label for="email" class="form-label">Email Address</label>
-                                                <input type="email" autocomplete="off"
-                                                    class="form-control @error('email') is-invalid @enderror"
-                                                    name="email" id="email" placeholder="">
+                                                <label for="email" class="form-label">Email Or Phone</label>
+                                                <input type="text" autocomplete="off"
+                                                    class="form-control @error('login') is-invalid @enderror"
+                                                    name="login" value="{{ old('login') }}"  id="login" placeholder="">
 
-                                                @error('email')
+                                                @error('login')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>

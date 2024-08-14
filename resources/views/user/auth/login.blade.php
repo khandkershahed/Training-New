@@ -199,12 +199,14 @@
             }
         }
     </style>
+
     <div class="container px-4 py-5 mx-auto">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="card card0">
                     <div class="d-flex flex-lg-row flex-column-reverse">
                         <div class="card card1">
+
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="row justify-content-center my-auto">
@@ -213,18 +215,21 @@
                                             <img id="logo"
                                                 src="https://i.ibb.co/HYRMgr8/26znqdblzf-WUKbfm30-Yplsy-Xy3-U7-J32-MCa-Fn-Ms7g.png">
                                         </div>
+
                                         <h3 class="mb-2 text-center heading">Login To Your Dashboard</h3>
+
                                         <p class="text-black form-desc text-center">
                                             Reach out and let the magic of collaboration illuminate
                                             our skies.
                                         </p>
+
                                         <div class="form-outline mb-3">
-                                            <x-input-label class="form-label" for="email" :value="__('Email')" />
-                                            <x-text-input id="email"
-                                                class="form-control form-control-solid rounded-0" type="email"
-                                                name="email" :value="old('email')" required autocomplete="off"
+                                            <x-input-label class="form-label" for="login" :value="__('Email Or Phone')" />
+                                            <x-text-input id="login"
+                                                class="form-control form-control-solid rounded-0" type="text"
+                                                name="login" :value="old('login')" required autocomplete="off"
                                                 placeholder="example@gmail.com" />
-                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                            <x-input-error :messages="$errors->get('login')" class="mt-2" />
                                         </div>
 
                                         <div class="form-outline position-relative">
@@ -260,16 +265,12 @@
                                     </p>
                                 </div>
                             </form>
+                            
                         </div>
                         <div class="card card2">
                             <div class="my-auto mx-md-5 px-md-5 right">
                                 <h3 class="text-white mb-4">We are more than just a company</h3>
-                                <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                    do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat.</small>
+                                <small class="text-white"></small>
                             </div>
                         </div>
                     </div>
