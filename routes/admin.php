@@ -149,8 +149,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'admin-management' => AdminController::class,
             'newsletters' => NewsletterController::class,
             'contacts' => ContactController::class,
-            'news-trend' => NewsTrendController::class,
-            'learnmore' => LearnMoreController::class,
+            // 'news-trend' => NewsTrendController::class,
+            // 'learnmore' => LearnMoreController::class,
 
             //Created By Ashiquzzaman
             'course' => CourseController::class,

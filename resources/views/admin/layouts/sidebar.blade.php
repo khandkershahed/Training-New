@@ -235,7 +235,7 @@
                          <span class="menu-arrow"></span>
                      </span>
                      <div
-                         class="menu-sub menu-sub-accordion {{ Route::is('admin.feature.index', 'admin.success.index', 'admin.row.index', 'admin.news-trend.index', 'admin.homepage.index', 'admin.whatwedo.index', 'admin.learnmore.index') ? 'menu-active-bg' : '' }}">
+                         class="menu-sub menu-sub-accordion">
 
 
                          <div class="menu-item">
@@ -247,7 +247,7 @@
                              </a>
                          </div>
 
-                         <div class="menu-item">
+                         {{-- <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.news-trend.index') ? 'active' : '' }}"
                                  href="{{ route('admin.news-trend.index') }}">
                                  <span class="menu-bullet">
@@ -255,10 +255,10 @@
                                  </span>
                                  <span class="menu-title">News & Trends</span>
                              </a>
-                         </div>
+                         </div> --}}
 
 
-                         <div class="menu-item">
+                         {{-- <div class="menu-item">
                              <a class="menu-link {{ Route::is('admin.learnmore.index') ? 'active' : '' }}"
                                  href="{{ route('admin.learnmore.index') }}">
                                  <span class="menu-bullet">
@@ -266,10 +266,10 @@
                                  </span>
                                  <span class="menu-title">Learn More Page</span>
                              </a>
-                         </div>
+                         </div> --}}
 
                          <div class="menu-item">
-                             <a class="menu-link {{ Route::is('admin.homepage.index') ? 'active' : '' }}"
+                             <a class="menu-link"
                                  href="{{ route('admin.homepage.index') }}">
                                  <span class="menu-bullet">
                                      <span class="bullet bullet-dot"></span>
@@ -318,7 +318,7 @@
                  </div>
 
                  <div data-kt-menu-trigger="click"
-                     class="menu-item menu-accordion  {{ Route::is('admin.contacts.index', 'admin.newsletters.index') ? 'here show' : '' }}">
+                     class="menu-item menu-accordion">
                      <span class="menu-link">
                          <span class="menu-icon">
                              <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->

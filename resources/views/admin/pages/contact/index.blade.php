@@ -29,8 +29,8 @@
                         <th width="10%">Name</th>
                         <th width="10%">Email</th>
                         <th width="10%">Phone</th>
-                        <th width="10%">Subject</th>
-                        <th width="30%">Message</th>
+                        <th width="15%">Subject</th>
+                        <th width="40%">Message</th>
                         <th width="100%">Actions</th>
                     </tr>
                 </thead>
@@ -46,9 +46,9 @@
                             <td class="text-start">{{ $item->subject }}</td>
                             <td class="text-start">{{ $item->message }}</td>
                             <td>
-                                <a href="{{ route('admin.contacts.edit', $item->id) }}" class="text-primary">
+                                {{-- <a href="{{ route('admin.contacts.edit', $item->id) }}" class="text-primary">
                                     <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                </a> --}}
 
                                 <a href="{{ route('admin.contacts.destroy', $item->id) }}" class="delete">
                                     <i class="bi bi-trash3-fill text-danger"></i>
