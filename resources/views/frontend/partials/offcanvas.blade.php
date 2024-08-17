@@ -71,7 +71,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Course</label>
+                                    <label for="exampleInputEmail1" class="">Course</label>
                                     <select class="form-select" required name="course_id" aria-label="Select Course"
                                         data-placeholder="Select Course">
                                         <option value="" disabled selected>Select Course</option>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Name<span
+                                    <label for="exampleInputEmail1" class="">Name<span
                                             class="text-danger">*</span></label>
                                     <input style="background: #e6e8ee" type="text" class="form-control"
                                         name="name" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -91,7 +91,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Email <span
+                                    <label for="exampleInputEmail1" class="">Email <span
                                             class="text-danger">*</span></label>
                                     <input style="background: #e6e8ee" type="email" class="form-control"
                                         id="exampleInputEmail1" name="email" aria-describedby="emailHelp" />
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Phone <span
+                                    <label for="exampleInputEmail1" class="">Phone <span
                                             class="text-danger">*</span></label>
                                     <input style="background: #e6e8ee" type="text" class="form-control"
                                         id="exampleInputEmail1" name="phone" aria-describedby="emailHelp" />
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <label for="exampleInputEmail1" class="form-label">Message</label>
+                                <label for="exampleInputEmail1" class="">Message</label>
                                 <div class="form-floating">
                                     <textarea class="form-control" name="message" placeholder="Your message" id="floatingTextarea2"
                                         style="height: 100px"></textarea>
