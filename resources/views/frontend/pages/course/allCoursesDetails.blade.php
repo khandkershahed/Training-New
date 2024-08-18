@@ -297,9 +297,6 @@
                                         @endif
 
                                     </div>
-
-
-
                                     <!-- Course Projects -->
                                     @if ($courseProjects->isNotEmpty())
                                         <div id="projects" class="py-3">

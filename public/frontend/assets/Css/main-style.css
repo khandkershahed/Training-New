@@ -1467,8 +1467,9 @@ a:hover {
 }
 
 .box img {
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    object-fit: cover;
+    height: 330px;
     transform: scale(1);
     transition: all 0.3s ease 0s;
 }
