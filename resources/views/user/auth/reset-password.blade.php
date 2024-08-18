@@ -232,22 +232,20 @@
                                     </div>
                                 </div>
                                 <div class="text-center mb-5 ">
-                                    <p href="#" class="sm-text mx-auto mb-3">
-                                        <x-primary-button>
+                                    <p class="sm-text mx-auto mb-3">
+                                        <button class="primary-btn-one" type="submit">
                                             {{ __('Reset Password') }}
-                                        </x-primary-button>
+                                        </button>
                                     </p>
                                 </div>
                             </form>
                         </div>
                         <div class="card card2">
                             <div class="my-auto mx-md-5 px-md-5 right">
-                                <h3 class="text-white mb-4">We are more than just a company</h3>
-                                <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat.</small>
+                                <h3 class="text-white mb-4">Password Recovery Assistance.</h3>
+                                <small class="text-white">Forgot your password? No need to stress! Simply enter your
+                                    email address in the field below, and we'll quickly send you a link to reset your
+                                    password. We're here to help you get back into your account in no time!</small>
                             </div>
                         </div>
                     </div>

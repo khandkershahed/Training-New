@@ -265,12 +265,14 @@
                                     </p>
                                 </div>
                             </form>
-                            
+
                         </div>
                         <div class="card card2">
                             <div class="my-auto mx-md-5 px-md-5 right">
-                                <h3 class="text-white mb-4">We are more than just a company</h3>
-                                <small class="text-white"></small>
+                                <h3 class="text-white mb-4">Welcome Back! Let’s Get You Logged In</h3>
+                                <small class="text-white">Welcome back! To access your account, please enter your
+                                    username and password in the fields below. If you don’t have an account yet, you can
+                                    easily create one by clicking the 'Sign Up' button</small>
                             </div>
                         </div>
                     </div>
