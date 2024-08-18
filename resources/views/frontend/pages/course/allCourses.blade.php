@@ -107,9 +107,9 @@
                             </div> --}}
 
                             <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_section" autocomplete="off"
-                                    aria-label="Select Course Section" onchange="searchCoursesBySection(this.value)">
-                                    <option selected disabled>Choose Section</option>
+                                <select class="example form-select form-select-sm" id="select1" name="course_section"
+                                    autocomplete="off" aria-label="Select Course Section"
+                                    onchange="searchCoursesBySection(this.value)">
                                     @forelse ($courseSections as $courseSection)
                                         <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
                                     @empty
@@ -129,7 +129,7 @@
 
 
                             <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_category" autocomplete="off"
+                                <select class="example form-select form-select-sm" id="select2" name="course_category" autocomplete="off"
                                     aria-label="Select Course Category" onchange="searchCoursesByCategory(this.value)">
                                     <option selected disabled>Choose Category</option>
                                     @forelse ($courseCategories as $courseCategory)
@@ -250,7 +250,7 @@
                     <h5 class="text-center text-warning">No Course available right now.</h5>
                 @endforelse
 
-                
+
             </div>
         </div>
     </section>

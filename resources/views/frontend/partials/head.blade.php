@@ -28,3 +28,4 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/Css/bootstrap.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/Css/main-style.css') }}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/use-bootstrap-select@2.2.0/dist/use-bootstrap-select.min.css">

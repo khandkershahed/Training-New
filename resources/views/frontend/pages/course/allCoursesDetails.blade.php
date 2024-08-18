@@ -4,6 +4,11 @@
         .accordion-item {
             display: none;
         }
+        .course_details-img{
+            height: 400px;
+            width: 600px;
+            object-fit: cover;
+        }
     </style>
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
 
@@ -130,13 +135,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-7">
-                                    <img class="img-fluid rounded-3 w-100"
+                                <div class="col-lg-7 ">
+                                    <div class="text-end">
+                                        <img class="img-fluid rounded-3 course_details-img"
                                         src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
-                                        alt="" style="height: 450px;" />
+                                        alt="" />
+                                    </div>
                                 </div>
                                 <div class="col-lg-8 py-5">
-
                                     @if (!empty($coursedetail->overview))
                                         <div class="">
                                             <h5 class="primary-text-color fw-bold">
@@ -147,8 +153,6 @@
                                             </p>
                                         </div>
                                     @endif
-
-
                                     <!-- Course Curriculum -->
                                     @if ($courseCurriculams->isNotEmpty())
                                         <div id="curriculum" class="py-3">
@@ -309,22 +313,17 @@
 
                                             <!-- Project Slide -->
                                             <div class="slider-project pt-3">
-
                                                 @forelse ($courseProjects as $courseProject)
                                                     <div class="slider-items">
-
                                                         <div class="project-box">
-                                                            <di v class="box p-2">
-
+                                                            <div class="box p-2">
                                                                 <img class="img-fluid"
                                                                     src="{{ !empty($courseProject->image) ? url('storage/course_project/' . $courseProject->image) : 'https://ui-avatars.com/api/?name=' . urlencode($courseProject->title) }}"
                                                                     alt="" />
-
                                                                 <div class="box-content">
                                                                     <h3 class="title">{{ $courseProject->title }}</h3>
                                                                     <span
                                                                         class="post">{{ $courseProject->short_description }}</span>
-
                                                                     <ul class="icon">
                                                                         <li>
                                                                             <a href="#"><i
@@ -335,9 +334,8 @@
                                                                                     class="fa fa-link"></i></a>
                                                                         </li>
                                                                     </ul>
-
                                                                 </div>
-                                                            </di>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @empty

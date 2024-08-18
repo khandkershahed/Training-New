@@ -6,8 +6,18 @@
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
 <script src="{{ asset('frontend/assets/Js/script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/use-bootstrap-select@2.2.0/dist/use-bootstrap-select.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // JavaScript to Initialize UseBootstrapSelect for All Elements with the 'example' Class
+    const elements = document.querySelectorAll('.example');
+
+    elements.forEach(element => {
+        new UseBootstrapSelect(element);
+    });
+</script>
 
 <script>
     function toggleMenu() {
