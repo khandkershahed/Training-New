@@ -1,5 +1,12 @@
 <x-guest-layout>
     <style>
+        .svg-icon {
+            width: 20px;
+            /* Adjust size as needed */
+            height: 20px;
+            /* Adjust size as needed */
+        }
+
         body {
             color: #000;
             overflow-x: hidden;
@@ -203,50 +210,63 @@
                                         </div>
                                         <h3 class="mb-2 text-center heading">Sign Up Now</h3>
 
-                                        <div class="form-outline mb-3">
-                                            <x-input-label class="form-label" for="name" :value="__('Name')" />
+                                        <div class="form-outline mb-1">
+                                            <x-input-label class="form-label mb-0" for="name" :value="__('Name')" />
                                             <x-text-input id="name" class="form-control form-control-solid"
                                                 type="text" name="name" :value="old('name')" required autofocus
                                                 autocomplete="name" />
                                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                         </div>
 
-                                        <div class="form-outline mb-3">
-                                            <x-input-label class="form-label" for="email" :value="__('Email')" />
+                                        <div class="form-outline mb-1">
+                                            <x-input-label class="form-label mb-0" for="email" :value="__('Email')" />
                                             <x-text-input id="email" class="form-control form-control-solid"
                                                 type="email" name="email" :value="old('email')" required
                                                 autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
 
-                                        <div class="form-outline mb-3">
-                                            <x-input-label class="form-label" for="phone" :value="__('Phone')" />
+                                        <div class="form-outline mb-1">
+                                            <x-input-label class="form-label mb-0" for="phone" :value="__('Phone')" />
                                             <x-text-input id="phone" class="form-control form-control-solid"
                                                 type="text" name="phone" :value="old('phone')" required
                                                 autocomplete="off" />
                                             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                                         </div>
 
-                                        <div class="form-outline mb-3">
-                                            <x-input-label class="form-label" for="password" :value="__('Password')" />
-                                            <x-text-input id="password" class="form-control form-control-solid"
-                                                type="password" name="password" required autocomplete="new-password" />
+                                        <!-- HTML -->
+                                        <div class="form-outline mb-1">
+                                            <x-input-label class="form-label mb-0" for="password" :value="__('Password')" />
+                                            <div class="input-group mb-3">
+                                                <input id="password" type="password"
+                                                    class="form-control form-control-solid" name="password" required
+                                                    autocomplete="new-password" aria-describedby="password-toggle-btn">
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    id="password-toggle-btn">
+                                                    <i id="password-icon" class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
                                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                         </div>
 
-                                        <div class="form-outline mb-3">
-                                            <x-input-label class="form-label" for="password_confirmation"
+                                        <div class="form-outline mb-1">
+                                            <x-input-label class="form-label mb-0" for="password_confirmation"
                                                 :value="__('Confirm Password')" />
-                                            <x-text-input id="password_confirmation"
-                                                class="form-control form-control-solid" type="password"
-                                                name="password_confirmation" required autocomplete="new-password" />
+                                            <div class="input-group mb-3">
+                                                <x-text-input id="password_confirmation"
+                                                    class="form-control form-control-solid" type="password"
+                                                    name="password_confirmation" required autocomplete="new-password" />
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    id="password-confirmation-toggle-btn">
+                                                    <i id="password-confirmation-icon" class="bi bi-eye"></i>
+                                                </button>
+                                            </div>
                                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                         </div>
 
                                         <div class="row justify-content-center px-3">
                                             <button type="submit" class="btn-block btn-color">Sign Up Now</button>
                                         </div>
-
                                         {{-- <div class="row justify-content-center my-2 text-center pt-3">
                                         <a href="#"><small class="text-muted">Forgot Password?</small></a>
                                     </div> --}}
@@ -255,17 +275,18 @@
                                 <div class="text-center mb-5 pt-4">
                                     <p href="#" class="sm-text mx-auto mb-3">Already have an account?
                                         <a href="{{ route('login') }}" class="ml-2 ps-2 text-center">Login
-                                            Now</a>
+                                            Now <i class="fa-solid fa-eye"></i></a>
                                     </p>
                                 </div>
                             </form>
                         </div>
                         <div class="card card2">
                             <div class="my-auto mx-md-5 px-md-5 right">
-                                <h3 class="text-white mb-4">Ready to Log In? Let’s Get Started! </h3>
-                                <small class="text-white">Welcome back! We’re thrilled to see you again. To access your
-                                    account, please enter your username and password in the fields below. This will
-                                    securely log you in and give you access to all your account features.</small>
+                                <h3 class="text-white mb-4">Create Your Account - Join Us Today </h3>
+                                <small class="text-white">Welcome! We're excited to have you join our community. Fill
+                                    out the form below to create your account and gain access to all our features.
+                                    Whether you're signing up to enjoy our services or to stay updated, we're here to
+                                    make your experience smooth and enjoyable. </small>
                             </div>
                         </div>
                     </div>
@@ -273,4 +294,31 @@
             </div>
         </div>
     </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function togglePassword(inputId, iconId) {
+                const passwordInput = document.getElementById(inputId);
+                const passwordIcon = document.getElementById(iconId);
+
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    passwordIcon.classList.remove('bi-eye');
+                    passwordIcon.classList.add('bi-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    passwordIcon.classList.remove('bi-eye-slash');
+                    passwordIcon.classList.add('bi-eye');
+                }
+            }
+
+            document.getElementById('password-toggle-btn').addEventListener('click', function() {
+                togglePassword('password', 'password-icon');
+            });
+
+            document.getElementById('password-confirmation-toggle-btn').addEventListener('click', function() {
+                togglePassword('password_confirmation', 'password-confirmation-icon');
+            });
+        });
+    </script>
 </x-guest-layout>

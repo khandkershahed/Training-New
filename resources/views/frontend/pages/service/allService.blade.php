@@ -22,7 +22,7 @@
                         <div>
                             <div class="input-group">
                                 <input type="text" id="serviceSearch" class="form-control" placeholder="Search Service Name" style="width: 350px;" autocomplete="off">
-                                <span class="input-group-text primary-btn-one text-center" style="width: 30px;">
+                                <span class="input-group-text primary-btn-one text-center" style="width: 50px;">
                                     <i class="fa-solid fa-search"></i>
                                 </span>
                             </div>

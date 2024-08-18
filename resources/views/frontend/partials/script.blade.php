@@ -265,7 +265,4 @@
 
     })
 </script>
-
-
-
 @stack('scripts')

@@ -225,14 +225,27 @@
                             </form>
                         </div>
                         <div class="card card2">
-                            <div class="my-auto mx-md-5 px-md-5 right">
-                                <h3 class="text-white mb-4">We are more than just a company</h3>
+                            <div class="my-auto mx-md-5 px-md-5 right py-5">
+                                <h3 class="text-white mb-4">Forgot Your Password? We’ve Got You Covered!</h3>
 
-                                <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat.</small>
-                                    
+                                <small class="text-white">Oops! It looks like you’ve forgotten your password. No
+                                    worries—recovering access to your account is quick and easy. Just follow these
+                                    simple steps to reset your password</small>
+                                    <ul>
+                                        <li class="text-white">
+                                            <strong>Enter Your Email Address:</strong> Provide the email address associated with your account in the form below.
+                                        </li>
+                                        <li class="text-white">
+                                            <strong>Receive a Reset Link:</strong> We’ll send you an email with a secure link to reset your password.
+                                        </li>
+                                        <li class="text-white">
+                                            <strong>Follow the Instructions:</strong> Click the link in the email to access a page where you can create a new password.
+                                        </li>
+                                        <li class="text-white">
+                                            <strong>Reset Your Password:</strong> Set a new password and get back into your account seamlessly.
+                                        </li>
+                                    </ul>
+
                             </div>
                         </div>
                     </div>
