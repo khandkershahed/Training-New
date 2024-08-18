@@ -480,7 +480,7 @@
                                                                 </div>
                                                                 <div class="pt-2">
                                                                     <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}"
-                                                                        class="btn btn-light border w-100 text-center">See
+                                                                        class="primary-btn-one w-100 rounded-0">See
                                                                         Details
                                                                         <i class="fa-solid fa-arrow-right ps-2"
                                                                             aria-hidden="true"></i></a>
