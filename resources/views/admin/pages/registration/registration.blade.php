@@ -8,17 +8,17 @@
 
             <div class="card-toolbar">
 
-                <a href="" class="btn btn-light-danger ms-2 rounded-2">
-                     Unpaid
+                <a href="{{ route('admin.all.registration') }}" class="btn btn-light-danger ms-2 rounded-2">
+                    Unpaid
                 </a>
 
-                <a href="" class="btn btn-light-primary rounded-2 ms-2">
-                     Pending
+                <a href="{{ route('admin.registration.pending') }}" class="btn btn-light-primary rounded-2 ms-2">
+                    Pending
                 </a>
 
-                <a href="" class="btn btn-light-info rounded-2 ms-2">
+                <a href="{{ route('admin.registration.paid') }}" class="btn btn-light-info rounded-2 ms-2">
                     Paid
-               </a>
+                </a>
 
 
             </div>
@@ -26,16 +26,17 @@
         </div>
         <div class="card-body pt-0">
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
-                <thead>
+                <thead class="bg-dark text-light">
                     <tr>
-                        <th width="8%">No</th>
+                        <th width="7%">No</th>
                         <th width="5%">Name</th>
                         <th width="10%">Email</th>
                         <th width="10%">Phone</th>
                         <th width="25%">Course Name</th>
+                        <th width="15%">Course Amount</th>
                         <th width="15%">Register Date</th>
-                        <th width="15%">Payment Method</th>
-                        <th width="15%">Transcation</th>
+                        {{-- <th width="15%">Payment Method</th>
+                        <th width="15%">Transcation</th> --}}
                         <th width="18%">Status</th>
                         <th width="10%">Actions</th>
                     </tr>
@@ -50,38 +51,44 @@
                             <td class="text-start">{{ $registration->email }}</td>
                             <td class="text-start">{{ $registration->phone }}</td>
                             <td class="text-start">{{ optional($registration->courseName)->name }}</td>
+                            <td class="text-start">Tk {{ $registration->course_amount }}</td>
                             <td class="text-start">
                                 {{ \Carbon\Carbon::parse($registration->course_register_date)->format('F j, Y') }}
                             </td>
 
-                            <td class="text-start">{{ $registration->payment_method }}</td>
-                            <td class="text-start">{{ $registration->transcation_id }}</td>
+                            {{-- <td class="text-start">{{ $registration->payment_method }}</td>
+                            <td class="text-start">{{ $registration->transcation_id }}</td> --}}
 
                             <td>
-                                @if ($registration->payment_method == null)
+
+                                @if ($registration->payment_type == 'unpaid')
                                     <a href="javascript:;" class="btn btn-danger btn-sm text-light">
                                         Unpaid
                                     </a>
+                                @elseif ($registration->payment_type == 'pending')
+                                    <a href="javascript:;" class="btn btn-info btn-sm text-light">
+                                        Pending
+                                    </a>
                                 @else
-                                    @if ($registration->payment_type == 'paid')
-                                        <a href="javascript:;" class="btn btn-success btn-sm text-light">
-                                            Paid
-                                        </a>
-                                    @else
-                                        <a href="{{ route('registration.paid', $registration->id) }}"
-                                            class="btn btn-warning btn-sm text-dark">
-                                            Pending
-                                        </a>
-                                    @endif
+                                    <a href="javascript:;" class="btn btn-success btn-sm text-dark">
+                                        Paid
+                                    </a>
                                 @endif
+
+
                             </td>
 
 
                             <td>
-                                
 
-                                <a href="{{ route('admin.delete.registration', $registration->id) }}">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
+
+                                <a style="cursor: pointer" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal{{ $registration->id }}" title="Details">
+                                    <i class="bi bi-view-list text-primary fs-3"></i>
+                                </a>
+
+                                <a href="{{ route('admin.delete.registration', $registration->id) }}" class="delete">
+                                    <i class="bi bi-trash3-fill text-danger fs-3"></i>
                                 </a>
 
                             </td>
@@ -93,6 +100,74 @@
             </table>
         </div>
     </div>
+
+    <!-- Modal -->
+    @foreach ($registrations as $key => $registration)
+        <div class="modal fade" id="exampleModal{{ $registration->id }}" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Course Registration Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <form action="{{ route('course-registration.update', $registration->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <label for="" class="mb-2">Course Name</label>
+                                            <input type="text" readonly class="form-control form-control-sm"
+                                                value="{{ optional($registration->courseName)->name }}">
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label for="" class="mb-2">Course Amount</label>
+                                            <input type="number" required class="form-control form-control-sm"
+                                                name="course_amount" value="{{ $registration->course_amount }}"
+                                                placeholder="eg:10,000">
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label for="" class="mb-2">Course Name</label>
+                                            <select name="payment_type" required class="form-select form-select-sm"
+                                                id="">
+                                                <option disabled selected>Choose Payment</option>
+
+                                                <option value="unpaid"
+                                                    {{ $registration->payment_type == 'unpaid' ? 'selected' : '' }}>
+                                                    Unpaid</option>
+
+                                                <option value="pending"
+                                                    {{ $registration->payment_type == 'pending' ? 'selected' : '' }}>
+                                                    Pending</option>
+
+                                                {{-- <option value="paid"
+                                                    {{ $registration->payment_type == 'paid' ? 'selected' : '' }}>Paid
+                                                </option> --}}
+                                            </select>
+                                        </div>
+                                        <div class="col-6 mt-3 me-end">
+                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
 
     @push('scripts')
         <script>
@@ -114,5 +189,7 @@
             });
         </script>
     @endpush
+
+
 
 </x-admin-app-layout>

@@ -123,6 +123,16 @@
 
                         </div>
 
+                        <div class="col-3 mb-5">
+                            <label for="" class="mb-3">Category Banner</label>
+                            <input type="file" accept="image" name="our_category_banner"
+                                class="form-control form-control-sm image10 mb-3">
+
+                            <img src="{{ !empty($item->our_category_banner) ? url('storage/common_banner/' . $item->our_category_banner) : url('upload/no_image.jpg') }}"
+                                alt="" class="showImage10" style="width: 73px; height: 73px;">
+
+                        </div>
+
 
                     </div>
 
@@ -238,6 +248,17 @@
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('.showImage9').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.image10').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.showImage10').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });

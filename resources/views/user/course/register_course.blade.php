@@ -1,4 +1,4 @@
-<x-app-layout :title="'Register Course'">
+<x-app-layout :title="'User Register Course'">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -27,20 +27,28 @@
 
                             <div class="card-body p-4">
 
-                                <span class="badge text-light p-0 mb-3 badge bg-success p-1">
-                                    {{ $registration->course_type }}
+                                <span class="m">
+                                    @if ($registration->course_type == 'online')
+                                        <span class="badge bg-danger">Online</span>
+                                    @else
+                                        <span class="badge bg-info">Offline</span>
+                                    @endif
                                 </span>
 
-                                <h5 class="card-title">{{ $registration->courseName->name }}</h5>
+                                <h5 class="card-title mt-3">{{ $registration->courseName->name }}</h5>
 
 
-                                @if ($registration->payment_type == 'unpaid' && $registration->transcation_id == !null)
+                                @if ($registration->payment_type == 'unpaid')
                                     <a href="javascript:void(0);" style="margin-top: 40px"
-                                        class="btn btn-warning  rounded-1 w-100" data-bs-toggle="modal"
-                                        data-bs-target="#paymentStatus{{ $registration->id }}">
+                                        class="btn btn-info rounded-1 w-100" onclick="showAlert()">
                                         Pending...
                                     </a>
-                                @elseif ($registration->payment_type == 'unpaid')
+                                    <script>
+                                        function showAlert() {
+                                            alert('NgenIt Training Team Approve Request As Soon');
+                                        }
+                                    </script>
+                                @elseif ($registration->payment_type == 'pending')
                                     <a href="javascript:void(0);" style="margin-top: 40px"
                                         class="btn btn-danger  rounded-1 w-100" data-bs-toggle="modal"
                                         data-bs-target="#paymentStatus{{ $registration->id }}">
@@ -86,6 +94,10 @@
 
                             <div class="row">
                                 <!-- Payment Method -->
+                                <div class="col-12 mb-4">
+                                    <h4 class="fs-3 text-danger text-center fw-bolder">Please payment
+                                        {{ $registration->course_amount }} Taka</h4>
+                                </div>
                                 <div class="col-4 mb-4">
                                     <label for="" class="mb-3">Payment Method</label>
                                     <select name="payment_method"
@@ -96,8 +108,7 @@
                                         <option value="rocket"
                                             {{ old('payment_method') == 'rocket' ? 'selected' : '' }}>
                                             Rocket</option>
-                                        <option value="nagad"
-                                            {{ old('payment_method') == 'nagad' ? 'selected' : '' }}>
+                                        <option value="nagad" {{ old('payment_method') == 'nagad' ? 'selected' : '' }}>
                                             Nagad</option>
                                         <option value="other"
                                             {{ old('payment_method') == 'other' ? 'selected' : '' }}>

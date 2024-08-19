@@ -49,7 +49,7 @@ class CourseCategoryController extends Controller
         ];
 
         $storagePath = storage_path('app/public/course_category/');
-        $publicPath = public_path('images/course_category/'); // Assuming this is your public folder path for storing images
+        $publicPath = public_path('images/course_category/'); 
         $filePaths = [];
 
         foreach ($files as $file) {

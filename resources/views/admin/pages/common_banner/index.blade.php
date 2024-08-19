@@ -4,7 +4,7 @@
             <div class="card-title">
             </div>
 
-            <div class="card-toolbar">
+            {{-- <div class="card-toolbar">
                 <a href="{{ route('admin.common_banner.create') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -18,26 +18,26 @@
                         </svg>
                     </span> Create
                 </a>
-            </div>
+            </div> --}}
         </div>
         <div class="card-body pt-0">
             <table class="bannersDT table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
                 <thead>
                     <tr>
                         <th>Sl No :</th>
-                        <th>Template Number</th>
+                        <th>ALl Banner Image</th>
                         <th class="text-right">Action</th>
                     </tr>
                 </thead>
                 @php
-                    $words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+                    $words = ['Image', 'Image', 'Image', 'Image', 'Image', 'Image'];
                 @endphp
                 <tbody class="fw-bold text-gray-600">
                     @if (count($items) > 0)
                         @foreach ($items as $key => $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ isset($words[$key]) ? 'Template' . ' ' . Str::ucfirst($words[$key]) : 'Number out of range' }}
+                                <td>{{ isset($words[$key]) ? 'Banner' . ' ' . Str::ucfirst($words[$key]) : 'Number out of range' }}
                                 </td>
                                 <td class="">
                                     <a href="{{ route('admin.common_banner.edit', $item->id) }}" class="text-primary">

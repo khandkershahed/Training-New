@@ -116,11 +116,11 @@
                             name="year" aria-label="Year">
                             <option selected disabled>Year</option>
                             <option value="2024">2024</option>
-                            <option value="2025">2025</option>
+                            {{-- <option value="2025">2025</option>
                             <option value="2026">2026</option>
                             <option value="2027">2027</option>
                             <option value="2028">2028</option>
-                            <option value="2029">2029</option>
+                            <option value="2029">2029</option> --}}
                         </select>
                         @error('year')
                             <div class="invalid-feedback">
@@ -1556,3 +1556,42 @@
     </section>
 
 @endsection
+
+@push('scripts')
+    {{-- Course --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('input[name="create_account"]').change(function() {
+                if ($(this).is(':checked')) {
+                    $('.account_password').show();
+                } else {
+                    $('.account_password').hide();
+                }
+            });
+            $('select[name="course_section_id"]').on('change', function() {
+                var course_section_id = $(this).val();
+                if (course_section_id) {
+                    $.ajax({
+                        url: "{{ url('/category-register/ajax') }}/" + course_section_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="course_category_id"]').html('');
+                            var d = $('select[name="course_category_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="course_category_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .name + '</option>');
+                            });
+                        },
+
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+
+        
+    </script>
+@endpush

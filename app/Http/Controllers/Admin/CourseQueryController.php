@@ -83,6 +83,6 @@ class CourseQueryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        CourseQuery::findOrFail($id)->delete();
     }
 }

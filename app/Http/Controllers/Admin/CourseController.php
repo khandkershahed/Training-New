@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseSection;
-use App\Models\industry;
 use App\Models\Service;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use App\Models\industry;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\CourseSection;
+use App\Models\CourseCategory;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseRequest;
+use Illuminate\Support\Facades\File;
 
 class CourseController extends Controller
 {
@@ -38,7 +39,7 @@ class CourseController extends Controller
         return view('admin.pages.course.create', compact('admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }
 
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
         $mainFile = $request->file('thumbnail_image');
         $imgPath = storage_path('app/public/course/');
@@ -63,6 +64,8 @@ class CourseController extends Controller
         } else {
             $instructors = null;
         }
+
+        //dd($instructors);
 
         $service = $request->service_id;
         if ($service !== null) {
@@ -202,7 +205,7 @@ class CourseController extends Controller
         return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CourseRequest $request, $id)
     {
         $course = Course::findOrFail($id);
 

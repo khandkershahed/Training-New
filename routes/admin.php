@@ -41,6 +41,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseResourceController;
 use App\Http\Controllers\CourseSectionController;
+use App\Http\Controllers\FaqCategoryController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ServiceController;
@@ -50,24 +51,44 @@ use Illuminate\Support\Facades\Route;
 //     return redirect()->route('admin.dashboard');
 // });
 
-Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
+// Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+//     Route::get('login', [AuthenticatedSessionController::class, 'create'])
+//         ->name('login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+//     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-        ->name('password.request');
+//     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+//         ->name('password.request');
 
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-        ->name('password.email');
+//     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+//         ->name('password.email');
 
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-        ->name('password.reset');
+//     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+//         ->name('password.reset');
 
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-        ->name('password.store');
+//     Route::post('reset-password', [NewPasswordController::class, 'store'])
+//         ->name('password.store');
+// });
+
+Route::middleware('guest:admin')->group(function () {
+
+    Route::get('admin/login', [AuthenticatedSessionController::class, 'create'])
+        ->name('admin.login');
+
+    Route::post('admin/login', [AuthenticatedSessionController::class, 'store']);
+
+    Route::get('admin/forgot-password', [PasswordResetLinkController::class, 'create'])
+        ->name('admin.password.request');
+
+    Route::post('admin/forgot-password', [PasswordResetLinkController::class, 'store'])
+        ->name('admin.password.email');
+
+    Route::get('admin/reset-password/{token}', [NewPasswordController::class, 'create'])
+        ->name('admin.password.reset');
+
+    Route::post('admin/reset-password', [NewPasswordController::class, 'store'])
+        ->name('admin.password.store');
 });
 
 // Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin'])->prefix(LaravelLocalization::setLocale() . '/admin')->name('admin.')->group(function () {
@@ -114,17 +135,22 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     );
 
     //Registration
-    Route::get('/registration', [RegistrationController::class, 'AllRegistration'])->name('all.registration');
+    Route::get('/registration', [RegistrationController::class, 'registration'])->name('all.registration');
+
+    Route::get('/pending-registration', [RegistrationController::class, 'registrationPending'])->name('registration.pending');
+    Route::get('/paid-registration', [RegistrationController::class, 'registrationPaid'])->name('registration.paid');
+
     Route::get('/registration-delete/{id}', [RegistrationController::class, 'DeleteRegistration'])->name('delete.registration');
 
     Route::resources(
         [
             'user' => UserController::class, //done
             'user-management' => UserManagementController::class,
+            'admin-management' => AdminController::class,
             'newsletters' => NewsletterController::class,
             'contacts' => ContactController::class,
-            'news-trend' => NewsTrendController::class,
-            'learnmore' => LearnMoreController::class,
+            // 'news-trend' => NewsTrendController::class,
+            // 'learnmore' => LearnMoreController::class,
 
             //Created By Ashiquzzaman
             'course' => CourseController::class,
@@ -147,6 +173,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'industry' => IndustryController::class,
             'homepage' => HomepageController::class,
             'course_section' => CourseSectionController::class,
+            'faq_category' => FaqCategoryController::class,
 
             'common_banner' => BannerController::class,
 
@@ -218,6 +245,6 @@ Route::get('/delete/multi-file/{id}', [CourseCurriculamController::class, 'Delet
 Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'StoreFileCurriculum'])->name('store.new.file');
 
 //Payment Type
-Route::get('/payment/paid/{id}', [RegistrationController::class, 'PaymentPaid'])->name('registration.paid');
-Route::get('/payment/unpaid/{id}', [RegistrationController::class, 'PaymentUnpaid'])->name('registration.unpaid');
+Route::post('/course-registration/update/{id}', [RegistrationController::class, 'registrationUpdate'])->name('course-registration.update');
 
+Route::post('/paid-course-registration/update/{id}', [RegistrationController::class, 'registrationCoursePaid'])->name('paid-course-registration.update');

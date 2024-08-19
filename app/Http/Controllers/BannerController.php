@@ -125,6 +125,17 @@ class BannerController extends Controller
             $our_service_banner = $fileName;
         }
 
+        //our_category_banner
+        if (!empty($request->file('our_category_banner'))) {
+            $file = $request->file('our_category_banner');
+
+            @unlink(storage_path('app/public/common_banner/' . $item->our_category_banner));
+
+            $fileName = time() . $file->getClientOriginalName();
+            $file->move(storage_path('app/public/common_banner/'), $fileName);
+            $our_category_banner = $fileName;
+        }
+
         $item->update([
 
             'faq_banner' => (!empty($faq_banner) ? $faq_banner : $item->faq_banner),
@@ -139,6 +150,7 @@ class BannerController extends Controller
 
             'contact_banner' => (!empty($contact_banner) ? $contact_banner : $item->contact_banner),
             'our_service_banner' => (!empty($our_service_banner) ? $our_service_banner : $item->our_service_banner),
+            'our_category_banner' => (!empty($our_category_banner) ? $our_category_banner : $item->our_category_banner),
             
 
         ]);

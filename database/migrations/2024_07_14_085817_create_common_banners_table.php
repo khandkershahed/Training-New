@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('course_login_banner')->nullable();
             $table->string('contact_banner')->nullable();
             $table->string('our_service_banner')->nullable();
+            $table->string('our_category_banner')->nullable();
 
             $table->timestamps();
         });

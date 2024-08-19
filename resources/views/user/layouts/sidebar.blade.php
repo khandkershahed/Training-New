@@ -6,8 +6,9 @@
       <!--begin::Brand-->
       <div class="aside-logo flex-column-auto" id="kt_aside_logo">
           <!--begin::Logo-->
-          <a href="../../demo1/dist/index.html">
-              <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-1-dark.svg') }}" class="h-25px logo" />
+          <a href="{{ route('homepage') }}">
+              <img alt="Logo" src="{{ asset('backend/login/assets/logo/Logo_White.png') }}"
+                  style="width: 130px; height: 40px;" class="logo" />
           </a>
           <!--end::Logo-->
           <!--begin::Aside toggler-->
@@ -74,23 +75,23 @@
                           </a>
                       </div>
 
-                      <div class="menu-item">
+                      {{-- <div class="menu-item">
                           <a class="menu-link" href="JavaScript:void(0)">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
                               <span class="menu-title">Add Category</span>
                           </a>
-                      </div>
+                      </div> --}}
 
                   </div>
               </div>
 
-              
+
           </div>
           <!--end::Menu-->
       </div>
       <!--end::Aside menu-->
-      
+
   </div>
   <!--end::Aside-->

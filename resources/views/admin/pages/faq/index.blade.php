@@ -113,10 +113,10 @@
                                         <div class="col-md-4 mb-2">
                                             <label for="validationCustom04"
                                                 class="form-label required mb-0">Status</label>
-                                            <select class="form-select-sm form-select form-select-solid"
-                                                name="status" data-dropdown-parent="#faqAddModal"
-                                                data-control="select2" data-placeholder="Select an option"
-                                                data-allow-clear="true" data-hide-search="true" required>
+                                            <select class="form-select-sm form-select form-select-solid" name="status"
+                                                data-dropdown-parent="#faqAddModal" data-control="select2"
+                                                data-placeholder="Select an option" data-allow-clear="true"
+                                                data-hide-search="true" required>
                                                 <option></option>
                                                 <option value="active">Active</option>
                                                 <option value="inactive">In Active</option>
@@ -128,17 +128,31 @@
                                             </label>
                                             <input type="number" id="validationCustom01"
                                                 class="form-control form-control-solid form-control-sm" name="order"
-                                                minlength="0" maxlength="100" pattern="^-?[1-9]\d*$" value="{{ old('order') }}"
-                                                placeholder="Enter order" required>
+                                                minlength="0" maxlength="100" pattern="^-?[1-9]\d*$"
+                                                value="{{ old('order') }}" placeholder="Enter order" required>
                                             <div class="invalid-feedback"> Please Enter Order Number</div>
                                         </div>
+
+                                        <div class="col-md-12 mb-2">
+                                            <label for="validationCustom01" class="form-label required mb-0">Faq
+                                                Category Name
+                                            </label>
+                                            <select name="category_id" class="form-select form-select-sm"
+                                                id="">
+                                                <option selected disabled>Choose Category</option>
+                                                @foreach ($faqCats as $faqCat)
+                                                    <option value="{{ $faqCat->id }}">{{ $faqCat->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                         <div class="col-md-12 mb-2">
                                             <label for="validationCustom01" class="form-label required mb-0">Question
                                             </label>
                                             <input type="text"
-                                                class="form-control form-control-solid form-control-sm" maxlength="255"
-                                                name="question" id="validationCustom01" placeholder="Enter Question" value="{{ old('question') }}"
-                                                required>
+                                                class="form-control form-control-solid form-control-sm"
+                                                maxlength="255" name="question" id="validationCustom01"
+                                                placeholder="Enter Question" value="{{ old('question') }}" required>
                                             <div class="invalid-feedback"> Please Enter A Question </div>
                                         </div>
                                         <div class="col-md-12 mb-2">
@@ -207,6 +221,19 @@
                                                     maxlength="100" pattern="^-?[1-9]\d*$" placeholder="Enter order"
                                                     required>
                                                 <div class="invalid-feedback"> Please Enter Order Number</div>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <label for="validationCustom01" class="form-label required mb-0">Faq
+                                                    Category Name
+                                                </label>
+                                                <select name="category_id" class="form-select form-select-sm"
+                                                    id="">
+                                                    <option selected disabled>Choose Category</option>
+                                                    @foreach ($faqCats as $faqCat)
+                                                        <option value="{{ $faqCat->id }}" {{ $faq->category_id == $faqCat->id ? 'selected' : '' }}>{{ $faqCat->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-12 mb-2">
                                                 <label for="validationCustom01"

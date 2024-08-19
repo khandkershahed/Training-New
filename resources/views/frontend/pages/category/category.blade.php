@@ -77,7 +77,7 @@
                                         <select class="form-select rounded-0" name="course_name"
                                             aria-label="Default select example" onchange="updateCourseInfo()">
                                             <option>Select Course</option>
-                                            
+
                                         </select>
                                     </div>
                                 </div>

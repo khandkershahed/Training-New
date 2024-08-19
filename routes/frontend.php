@@ -14,10 +14,12 @@ Route::get('/training', [HomeController::class, 'training'])->name('training');
 //Course All & Deatils Start
 Route::get('/all-courses', [HomeController::class, 'allCourses'])->name('courses.all');
 Route::get('/course/{id}/{slug}', [HomeController::class, 'courseDetails']);
+Route::post('/course-search', [HomeController::class, 'courseSearchAll'])->name('courses.all.search');
 
 //courseService
 Route::get('/service', [HomeController::class, 'allService'])->name('service.all');
 Route::get('/course-service/{id}/{slug}', [HomeController::class, 'courseServiceDetails']);
+Route::get('/services/search', [HomeController::class, 'search'])->name('services.search');
 
 //courseCategoryDetails
 // Route::get('/course/category/{id}/{slug}', [HomeController::class, 'courseCategoryDetails']);
@@ -47,6 +49,7 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/services/details/{id}/{slug}', [HomeController::class, 'serviceDetails']);
 
 //categoryDetails
+Route::get('/category', [HomeController::class, 'allCategory'])->name('all.category');
 Route::get('/category/details/{id}/{slug}', [HomeController::class, 'categoryDetails']);
 
 Route::get('/category/ajax/{course_section_id}', [HomeController::class, 'GetCategory']);
@@ -69,7 +72,6 @@ Route::controller(CourseEnrollController::class)->group(function () {
     Route::post('/cart-store', 'AddToCartCourse');
     Route::post('/cart-store/online-price', 'AddToCartOnlineCourse');
 });
-
 
 //Course Search By Home Page
 Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('search.course');

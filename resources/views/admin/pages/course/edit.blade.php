@@ -33,9 +33,9 @@
 
                     <div class="row p-4">
 
-                        <div class="col-3 mb-3">
+                        <div class="col-3 mb-3 form-group">
 
-                            <div class="form-group">
+                            <div class="">
                                 <label for="" class="mb-2">Instructor Name</label>
                                 <select class="form-select form-select-solid form-select-sm" name="instructor_id[]"
                                     id="field2" multiple="" multiselect-search="true"
@@ -143,7 +143,7 @@
 
                         </div>
 
-                        <div class="col-3 mb-3">
+                        <div class="col-3 mb-3 form-group">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Course Category Name</label>
@@ -193,7 +193,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Project</label>
-                                <input type="text" name="project" placeholder="Five Project"
+                                <input type="number" name="project" placeholder="10"
                                     class="form-control form-control-sm" value="{{ $course->project }}">
                             </div>
                         </div>
@@ -321,21 +321,21 @@
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Short Description</label>
-                                <textarea name="short_descp" class="form-control" id="" cols="3" rows="3">{!! $course->short_descp !!}</textarea>
+                                <textarea name="short_descp" class="form-control editor" id="" cols="3" rows="3">{!! $course->short_descp !!}</textarea>
                             </div>
                         </div>
 
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Overview</label>
-                                <textarea name="overview" class="form-control" id="" cols="3" rows="3">{!! $course->overview !!}</textarea>
+                                <textarea name="overview" class="form-control editor" id="" cols="3" rows="3">{!! $course->overview !!}</textarea>
                             </div>
                         </div>
 
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Description</label>
-                                <textarea name="description" class="form-control" id="" cols="2" rows="2">{!! $course->description !!}</textarea>
+                                <textarea name="description" class="form-control editor" id="" cols="2" rows="2">{!! $course->description !!}</textarea>
                             </div>
                         </div>
 
@@ -356,7 +356,8 @@
                                 <input type="file" name="course_banner_image" accept="image/*"
                                     class="form-control form-control-sm mb-3">
 
-                                <img class="" src="{{ asset('storage/course/' . $course->course_banner_image) }}"
+                                <img class=""
+                                    src="{{ asset('storage/course/' . $course->course_banner_image) }}"
                                     height="40" width="40" alt="">
                             </div>
                         </div>
@@ -382,6 +383,14 @@
                     rules: {
 
                         instructor_id: {
+                            required: true,
+                        },
+
+                        course_section_id: {
+                            required: true,
+                        },
+
+                        course_category_id: {
                             required: true,
                         },
 
@@ -423,6 +432,14 @@
 
                         instructor_id: {
                             required: 'Please Enter Instructor Name',
+                        },
+
+                        course_section_id: {
+                            required: 'Please Enter Course Section Name',
+                        },
+
+                        course_category_id: {
+                            required: 'Please Enter Category Name',
                         },
 
                         name: {
