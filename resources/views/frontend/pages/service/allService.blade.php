@@ -3,7 +3,8 @@
     <!-- Banner Section -->
     <section class="showcase">
         <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->our_service_banner) }}"
-            alt="Picture">
+            alt="Picture"
+            onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';"/>
     </section>
     <!-- All Servises -->
 
@@ -21,7 +22,8 @@
 
                         <div>
                             <div class="input-group">
-                                <input type="text" id="serviceSearch" class="form-control" placeholder="Search Service Name" style="width: 350px;" autocomplete="off">
+                                <input type="text" id="serviceSearch" class="form-control"
+                                    placeholder="Search Service Name" style="width: 350px;" autocomplete="off">
                                 <span class="input-group-text primary-btn-one text-center" style="width: 50px;">
                                     <i class="fa-solid fa-search"></i>
                                 </span>
@@ -34,17 +36,19 @@
             <div class="row" id="servicesContainer">
                 @forelse ($services as $service)
                     <div class="col-md-3 col-sm-6 service-item">
-                        <div class="box-service">
-                            <img src="{{ asset('storage/service/' . $service->thumbnail_image) }}" />
-                            <div class="box-service-content">
-                                <h3 class="title">{{ $service->name }}</h3>
-                                <span class="post">{{ $service->header }}</span>
-                                <span class="post">
-                                    <a href="{{ url('/services/details/' . $service->id . '/' . $service->slug) }}"
-                                        class="text-white">See More <i class="fa-solid fa-arrow-right-long"></i></a>
-                                </span>
+                        <a href="{{ url('/services/details/' . $service->id . '/' . $service->slug) }}">
+                            <div class="box-service">
+                                <img src="{{ asset('storage/service/' . $service->thumbnail_image) }}" />
+                                <div class="box-service-content">
+                                    <h5 class="title text-white">{{ $service->name }}</h5>
+                                    <p class="post">{{ $service->header }}</p> <br>
+                                    <span class="post mt-5">
+                                        <a href="{{ url('/services/details/' . $service->id . '/' . $service->slug) }}"
+                                            class="text-white">See More <i class="fa-solid fa-arrow-right-long"></i></a>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @empty
                     <p>No Service Available</p>

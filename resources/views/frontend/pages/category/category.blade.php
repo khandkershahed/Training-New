@@ -2,7 +2,8 @@
 @section('content')
     <section class="">
         @if (!empty($category->banner_image))
-            <img class="img-fluid" src="{{ asset('storage/course_category/' . $category->banner_image) }}" alt="Picture" />
+            <img class="img-fluid" src="{{ asset('storage/course_category/' . $category->banner_image) }}" alt="Picture"
+                onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';">
         @endif
     </section>
 

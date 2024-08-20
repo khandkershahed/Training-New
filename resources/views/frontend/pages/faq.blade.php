@@ -14,7 +14,8 @@
     <section>
         <div class="showcase">
             <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->faq_banner) }}"
-                alt="Picture" />
+                alt="Picture"
+                onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';" />
         </div>
     </section>
 
@@ -51,7 +52,7 @@
                                     <div class="tab-pane fade show {{ $loop->first ? 'show active' : '' }}"
                                         id="home-{{ $faqCat->id }}-pane" role="tabpanel"
                                         aria-labelledby="home-{{ $faqCat->id }}" tabindex="0">
-                                        
+
                                         @php
                                             $faqs = App\Models\Faq::where('category_id', $faqCat->id)->get();
                                         @endphp
@@ -88,12 +89,12 @@
 
                                 {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
-                                    
+
                                     Test 2
                                 </div>
                                 <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
                                     aria-labelledby="contact-tab" tabindex="0">
-                                    
+
                                     Test 3
                                 </div> --}}
                             </div>
