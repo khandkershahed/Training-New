@@ -4,7 +4,8 @@
         .accordion-item {
             display: none;
         }
-        .course_details-img{
+
+        .course_details-img {
             height: 400px;
             width: 600px;
             object-fit: cover;
@@ -138,8 +139,8 @@
                                 <div class="col-lg-7 ">
                                     <div class="text-end">
                                         <img class="img-fluid rounded-3 course_details-img"
-                                        src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
-                                        alt="" />
+                                            src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
+                                            alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-8 py-5">
@@ -439,36 +440,35 @@
                                                                             Batch 2
                                                                         </span>
                                                                     </small>
+
                                                                     <small class="pe-3">
                                                                         <span class="cource-badge rounded-2">
                                                                             {{-- <i class="fa-solid fa-chair pe-2" aria-hidden="true"></i> --}}
-                                                                            <i class="fa-solid fa-user"></i>
+                                                                            <i class="fa-solid fa-user" title="Available Seat"></i>
                                                                             {{ $courses->available_seats }}
                                                                         </span>
                                                                     </small>
+
                                                                     @php
-                                                                        // Convert registration end date to Unix timestamp
                                                                         $registrationEndTimestamp = strtotime(
                                                                             $courses->registration_end_date,
                                                                         );
-                                                                        // Current time
                                                                         $currentTime = time();
-                                                                        // Calculate remaining time in seconds
                                                                         $remainingTime =
                                                                             $registrationEndTimestamp - $currentTime;
-                                                                        // Convert remaining time to days
                                                                         $remainingDays = floor(
                                                                             $remainingTime / (60 * 60 * 24),
                                                                         );
                                                                     @endphp
 
-                                                                    <small class="pe-3">
-                                                                        <span class="course-badge rounded-2">
-                                                                            {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
-                                                                            <i class="fa-solid fa-clock"></i>
-                                                                            {{ $remainingDays }} Days
-                                                                        </span>
-                                                                    </small>
+                                                                    @if ($remainingDays > 0)
+                                                                        <small class="pe-3">
+                                                                            <span class="course-badge rounded-2">
+                                                                                <i class="fa-solid fa-clock"></i>
+                                                                                {{ $remainingDays }} Days
+                                                                            </span>
+                                                                        </small>
+                                                                    @endif
 
                                                                 </div>
                                                             </div>
