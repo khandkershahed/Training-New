@@ -248,3 +248,7 @@ Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'Store
 Route::post('/course-registration/update/{id}', [RegistrationController::class, 'registrationUpdate'])->name('course-registration.update');
 
 Route::post('/paid-course-registration/update/{id}', [RegistrationController::class, 'registrationCoursePaid'])->name('paid-course-registration.update');
+
+//User Register
+Route::get('/register-user/inactive/{id}', [UserManagementController::class, 'userInactive'])->name('user-register.inactive');
+Route::get('/register-user/active/{id}', [UserManagementController::class, 'userActive'])->name('user-register.active');
