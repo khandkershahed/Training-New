@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Events\ActivityLogged;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Spatie\Permission\Models\Role;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
 
 class UserManagementController extends Controller
 {
@@ -32,7 +28,6 @@ class UserManagementController extends Controller
     {
         return view('admin.pages.user-management.create', ['roles' => Role::get()]);
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -73,8 +68,8 @@ class UserManagementController extends Controller
         ]);
 
         $user->update([
-            'name'     => $request->name ? $request->name  : $user->name,
-            'email'    => $request->email ? $request->email : $user->email,
+            'name' => $request->name ? $request->name : $user->name,
+            'email' => $request->email ? $request->email : $user->email,
             'password' => $request->password ? Hash::make($request->password) : $user->password,
         ]);
 
@@ -98,5 +93,23 @@ class UserManagementController extends Controller
         event(new ActivityLogged('User deleted', $user));
 
         // return redirect()->back()->with('success', 'User deleted successfully');
+    }
+
+    public function userInactive($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'inactive';
+        $user->save();
+
+        return redirect()->back()->with('success', 'User status updated to inactive.');
+    }
+
+    public function userActive($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'active';
+        $user->save();
+
+        return redirect()->back()->with('success', 'User status updated to active.');
     }
 }

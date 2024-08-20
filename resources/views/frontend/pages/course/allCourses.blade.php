@@ -1,77 +1,10 @@
 @extends('frontend.master')
 @section('content')
-    {{-- <style>
-        .showcase-courses {
-            width: 100%;
-            height: 300px;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
 
-        .showcase-courses img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            object-fit: cover;
-            /* Make the image cover the entire area */
-            top: 0;
-            left: 0;
-            z-index: 99;
-        }
-
-        .showcase-courses .overlay-courses {
-            width: 100%;
-            height: 300px;
-            background-color: rgba(0, 35, 82, 0.7);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 99;
-        }
-
-        .showcase-courses h2 {
-            margin-top: 100px;
-            font-size: 3em;
-        }
-
-        .showcase-courses p {
-            margin-top: 8px;
-            font-size: 1.2em;
-        }
-
-        .cources-link {
-            /* background-color: var(--primary-color); */
-            border-radius: 0 !important;
-            color: black;
-            text-align: start;
-            border-bottom: 1px dashed black !important;
-            font-size: 15px;
-            padding-left: 15px;
-        }
-
-        .nav-tabs .nav-item.show .cources-link,
-        .nav-tabs .cources-link.active {
-            /* background-color: var(--secondary-color); */
-            border-bottom: 1px dashed var(--primary-color) !important;
-            border-radius: 0 !important;
-            color: var(--primary-color);
-            text-align: start;
-        }
-
-        .sidebar-area-cources {
-            padding-left: 0;
-            padding-right: 0;
-        }
-    </style> --}}
     <section class="showcase">
         <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->course_banner) }}"
-            alt="Picture"
-            onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';" />
-        {{-- <div class="overlay-courses">
-            <h2>Our All Courses</h2>
-            <p>One-Stop Learning &amp; Development Solutions</p>
-        </div> --}}
+            alt="Picture">
+
     </section>
 
     <div class="container">
@@ -200,27 +133,17 @@
                                     </small>
 
                                     @php
-                                        // Convert registration end date to Unix timestamp
                                         $registrationEndTimestamp = strtotime($course->registration_end_date);
-
-                                        // Current time
                                         $currentTime = time();
-
-                                        // Calculate remaining time in seconds
                                         $remainingTime = $registrationEndTimestamp - $currentTime;
-
-                                        // Convert remaining time to days
                                         $remainingDays = floor($remainingTime / (60 * 60 * 24));
                                     @endphp
 
                                     @if ($remainingDays > 0)
                                         <small class="pe-3">
                                             <span class="course-badge rounded-2">
-                                                {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
                                                 <i class="fa-solid fa-clock"></i>
-
                                                 {{ $remainingDays }} Days
-
                                             </span>
                                         </small>
                                     @endif
