@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('common_banners', function (Blueprint $table) {
             $table->id();
-
             $table->string('faq_banner')->nullable();
             $table->string('term_banner')->nullable();
             $table->string('privacy_banner')->nullable();
