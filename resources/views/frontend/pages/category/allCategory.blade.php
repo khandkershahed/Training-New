@@ -121,7 +121,7 @@
                                                             <p>{!! $limitedDescription !!}.....</p>
 
                                                             <a href="{{ url('/category/details/' . $sectionWiseCat->id . '/' . $sectionWiseCat->slug) }}"
-                                                                class="primary-btn-one"> See Details <i
+                                                                class="primary-btn-one w-100"> See Details <i
                                                                     class="fa-solid fa-arrow-right"></i></a>
                                                         </div>
                                                     </div>
