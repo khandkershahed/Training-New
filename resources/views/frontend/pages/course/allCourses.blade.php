@@ -8,7 +8,9 @@
         <div class="text-center px-0 px-lg-5 py-0 py-lg-5">
             <h3 class="section-title">Popular Courses We Offer</h3>
             <div>
-                <img decoding="async" width="137" height="21" src="https://www.promisetrainingglobal.com/wp-content/uploads/2019/02/line.jpg" class="vc_single_image-img attachment-full webpexpress-processed" alt="">
+                <img decoding="async" width="137" height="21"
+                    src="https://www.promisetrainingglobal.com/wp-content/uploads/2019/02/line.jpg"
+                    class="vc_single_image-img attachment-full webpexpress-processed" alt="">
             </div>
         </div>
     </div>
@@ -16,7 +18,8 @@
         <div class="container py-5 pt-0">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded-3" style="background-color: #eee;">
+                    <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded-3"
+                        style="background-color: #eee;">
                         <div class="d-flex">
                             <div class="me-3">
                                 <select class="example form-select form-select-sm" id="select1" name="course_section"
