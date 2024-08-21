@@ -459,7 +459,7 @@
                                         <div class="text-center pt-2">
                                             <button type="submit" href="https://training.ngengroup.org/all-courses"
                                                 class="primary-btn-two w-100">
-                                                Enroled & Checkout Now <i class="fa-solid fa-check ps-2"></i></button>
+                                                Enrolled Now <i class="fa-solid fa-check ps-2"></i></button>
                                         </div>
                                     </div>
                                 </div>

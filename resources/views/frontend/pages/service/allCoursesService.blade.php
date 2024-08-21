@@ -2,7 +2,8 @@
 @section('content')
     <section class="showcase">
         <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->service_banner) }}"
-            alt="Picture" onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';"/>
+            alt="Picture"
+            onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';" />
 
     </section>
     <section style="background-color: #eee;">
@@ -10,103 +11,14 @@
             <div class="text-center px-0 px-lg-5 py-0 py-lg-5">
                 <h3 class="section-title">Popular Courses We Offer</h3>
                 <div class="divider"></div>
-                {{-- <p class="text-muted py-0 py-lg-3 px-lg-5 px-0">
-                    NGenIT Training provides short workshops and seminars covering management, leadership, finance, HR, and
-                    Oil & Gas. Participants can connect with professionals from different organizations, gaining fresh
-                    insights into common workplace challenges.
-                </p> --}}
+
             </div>
         </div>
     </section>
     <section>
         <div class="container py-5">
+
             <div class="row">
-
-
-                <div class="col-lg-12">
-
-
-                    {{-- <form action="{{ route('courses.all.search') }}" method="POST">
-                        @csrf --}}
-
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-
-                        <div class="d-flex">
-
-                            {{-- <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_section" autocomplete="off"
-                                    aria-label="Select Course Section">
-                                    <option selected disabled>Choose Section</option>
-                                    @forelse ($courseSections as $courseSection)
-                                        <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
-                                    @empty
-                                        <option disabled>No Course Section Available</option>
-                                    @endforelse
-                                </select>
-                            </div> --}}
-
-                            <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_section" autocomplete="off"
-                                    aria-label="Select Course Section" onchange="searchCoursesBySection(this.value)">
-                                    <option selected disabled>Choose Section</option>
-                                    @forelse ($courseSections as $courseSection)
-                                        <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
-                                    @empty
-                                        <option disabled>No Course Section Available</option>
-                                    @endforelse
-                                </select>
-                            </div>
-
-                            <script>
-                                function searchCoursesBySection(sectionId) {
-                                    if (sectionId) {
-                                        // Redirect to the courses page with the selected section ID
-                                        window.location.href = `/all-courses?section=${sectionId}`;
-                                    }
-                                }
-                            </script>
-
-
-                            <div class="me-3">
-                                <select class="form-select primary-btn-one" name="course_category" autocomplete="off"
-                                    aria-label="Select Course Category" onchange="searchCoursesByCategory(this.value)">
-                                    <option selected disabled>Choose Category</option>
-                                    @forelse ($courseCategories as $courseCategory)
-                                        <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
-                                    @empty
-                                        <option disabled>No Course Category Available</option>
-                                    @endforelse
-                                </select>
-                            </div>
-
-                            <script>
-                                function searchCoursesByCategory(categoryId) {
-                                    if (categoryId) {
-                                        // Redirect to the courses page with the selected section ID
-                                        window.location.href = `/all-courses?category=${categoryId}`;
-                                    }
-                                }
-                            </script>
-
-                        </div>
-
-                        <form action="{{ route('courses.all.search') }}" method="POST">
-                            @csrf
-                            <div>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" autocomplete="off" placeholder="Course Name"
-                                        aria-label="Course Name" name="course_name_search" aria-describedby="basic-addon2">
-                                    <button type="submit" class="input-group-text primary-btn-one w-25" id="basic-addon2">
-                                        <i class="fa-solid fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                    {{-- </form> --}}
-
-                </div>
 
                 @forelse ($courses as $course)
                     <div class="col-lg-3 mb-4">
@@ -181,4 +93,24 @@
             </div>
         </div>
     </section>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#serviceSearch').on('keyup', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ route('courses.search') }}",
+                    method: 'GET',
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#servicesContainer').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

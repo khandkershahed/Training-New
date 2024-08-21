@@ -77,7 +77,13 @@
                                             {{ $coursedetail->course_category_id }}
                                         </h2> --}}
 
-                                        <div class="row py-3">
+                                        @if (!empty($coursedetail->short_descp))
+                                            <p class="text-justify">
+                                                {!! $coursedetail->short_descp !!}
+                                            </p>
+                                        @endif
+
+                                        <div class="row">
                                             <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
@@ -125,11 +131,7 @@
                                             </div>
                                         </div>
 
-                                        @if (!empty($coursedetail->short_descp))
-                                            <p class="text-justify">
-                                                {!! $coursedetail->short_descp !!}
-                                            </p>
-                                        @endif
+                                        
 
                                         {{-- @if (!empty($coursedetail->total_student))
                                             <p class="text-success text-lg-start text-center">
@@ -263,11 +265,11 @@
                                                                     scope="col">
                                                                     Fees
                                                                 </th>
-                                                                <th class="text-center"
+                                                                {{-- <th class="text-center"
                                                                     style="background-color: #eee;color: black;font-size: 15px;"
                                                                     scope="col">
                                                                     Join Now
-                                                                </th>
+                                                                </th> --}}
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -276,10 +278,10 @@
                                                                 <td>{{ $courseSchedule->starting_date }}</td>
                                                                 <td>{{ $courseSchedule->duration }}</td>
                                                                 <td>{{ $courseSchedule->fees }} Tk</td>
-                                                                <td class="text-center">
+                                                                {{-- <td class="text-center">
                                                                     <a href="" class=""><i
                                                                             class="fa-solid fa-eye text-muted"></i></a>
-                                                                </td>
+                                                                </td> --}}
                                                             </tr>
                                                         </tbody>
                                                     </table>
