@@ -193,11 +193,22 @@
 
                 } else {
 
-                    Toast.fire({
-                        type: 'error',
-                        icon: 'error',
-                        title: data.error,
-                    })
+                    // Toast.fire({
+                    //     type: 'error',
+                    //     icon: 'error',
+                    //     title: data.error,
+                    // })
+
+                    if (data.redirect) {
+                        // Redirect to login page if needed
+                        window.location.href = data.redirect;
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        });
+                    }
                 }
                 // End Message
             }
@@ -252,11 +263,22 @@
 
                 } else {
 
-                    Toast.fire({
-                        type: 'error',
-                        icon: 'error',
-                        title: data.error,
-                    })
+                    // Toast.fire({
+                    //     type: 'error',
+                    //     icon: 'error',
+                    //     title: data.error,
+                    // })
+
+                    if (data.redirect) {
+                        // Redirect to login page if needed
+                        window.location.href = data.redirect;
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        });
+                    }
                 }
                 // End Message
             }

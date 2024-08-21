@@ -341,7 +341,7 @@
                                                             <label for="cbtest-19"
                                                                 class="text-white d-flex align-items-center pt-2">
                                                                 <input class="me-3" type="checkbox" name="call_me"
-                                                                    id="cbtest-19" checked value="1" />
+                                                                    id="cbtest-19" value="1" />
                                                                 Call Me
                                                             </label>
                                                         </div>

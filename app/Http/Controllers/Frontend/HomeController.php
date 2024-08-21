@@ -488,9 +488,10 @@ class HomeController extends Controller
 
             $new_user = User::find($user_id);
 
-            Auth::login($new_user);
+            // Auth::login($new_user);
 
-            return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
+            // return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
+            return redirect()->back()->with('success', 'Course Registered Successfully!!Please Check to Email');
         }
     }
 
@@ -738,22 +739,23 @@ class HomeController extends Controller
         return view('frontend.pages.privacyPolicy', compact('privacy'));
     }
 
+    //searchCourse
     public function searchCourse(Request $request)
     {
         // Validate the request
-        $request->validate([
-            'course_type' => 'required',
-            'course_section_id' => 'required',
-            'course_category_id' => 'required',
-            'month' => 'required',
-            'year' => 'required',
-        ], [
-            'course_type.required' => 'Please select a Course Type.',
-            'course_section_id.required' => 'Please select a Course Section.',
-            'course_category_id.required' => 'Please select a Category.',
-            'month.required' => 'Please select a Month.',
-            'year.required' => 'Please select a Year.',
-        ]);
+        // $request->validate([
+        //     'course_type' => 'required',
+        //     'course_section_id' => 'required',
+        //     'course_category_id' => 'required',
+        //     'month' => 'required',
+        //     'year' => 'required',
+        // ], [
+        //     'course_type.required' => 'Please select a Course Type.',
+        //     'course_section_id.required' => 'Please select a Course Section.',
+        //     'course_category_id.required' => 'Please select a Category.',
+        //     'month.required' => 'Please select a Month.',
+        //     'year.required' => 'Please select a Year.',
+        // ]);
 
         // Retrieve input values
         $courseType = $request->input('course_type');
@@ -772,7 +774,8 @@ class HomeController extends Controller
 
         // Return view with filtered courses or redirect back with errors
         if ($courses->isEmpty()) {
-            return redirect()->back()->with('error', 'No courses found matching the criteria.');
+            // return redirect()->back()->with('error', 'No courses found matching the criteria.');
+            return view('frontend.pages.course.search_course_empty');
         }
 
         return view('frontend.pages.course.search_course', compact('courses'));

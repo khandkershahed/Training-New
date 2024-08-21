@@ -39,6 +39,45 @@ class CourseEnrollController extends Controller
     //     }
     // }
 
+    // public function AddToCartCourse(Request $request)
+    // {
+    //     if (Auth::check()) {
+    //         $userId = Auth::user()->id;
+    //         $courseId = $request->course_id;
+    //         $courseType = $request->course_type;
+
+    //         // Check if the course is offline and if the user has already added this course to their cart
+    //         if ($courseType === 'offline') {
+    //             $existingRegistration = UserCourseRegistration::where('user_id', $userId)
+    //                 ->where('course_id', $courseId)
+    //                 ->where('course_type', 'offline')
+    //                 ->first();
+
+    //             if ($existingRegistration) {
+    //                 return response()->json(['error' => 'You have already register this course.']);
+    //             }
+    //         }
+
+    //         // Insert the new course registration
+    //         UserCourseRegistration::create([
+    //             'user_id' => $userId,
+    //             'name' => Auth::user()->name,
+    //             'email' => Auth::user()->email,
+    //             'phone' => Auth::user()->phone,
+    //             'course_section_id' => $request->course_section_id,
+    //             'course_category_id' => $request->course_category_id,
+    //             'course_type' => $courseType,
+    //             'course_amount' => $request->course_amount,
+    //             'course_id' => $courseId,
+    //             'course_register_date' => now(),
+    //         ]);
+
+    //         return response()->json(['success' => 'Successfully register this course']);
+    //     } else {
+    //         return response()->json(['error' => 'Please log in first']);
+    //     }
+    // }
+
     public function AddToCartCourse(Request $request)
     {
         if (Auth::check()) {
@@ -54,7 +93,7 @@ class CourseEnrollController extends Controller
                     ->first();
 
                 if ($existingRegistration) {
-                    return response()->json(['error' => 'You have already register this course.']);
+                    return response()->json(['error' => 'You have already registered for this course.']);
                 }
             }
 
@@ -72,9 +111,12 @@ class CourseEnrollController extends Controller
                 'course_register_date' => now(),
             ]);
 
-            return response()->json(['success' => 'Successfully register this course']);
+            return response()->json(['success' => 'Successfully registered for this course']);
         } else {
-            return response()->json(['error' => 'Please log in first']);
+            return response()->json([
+                'error' => 'Please log in first',
+                'redirect' => route('login'), // Provide the login route for redirection
+            ]);
         }
     }
 
@@ -142,49 +184,11 @@ class CourseEnrollController extends Controller
 
             return response()->json(['success' => 'Successfully register this course']);
         } else {
-            return response()->json(['error' => 'Please log in first']);
+            return response()->json([
+                'error' => 'Please log in first',
+                'redirect' => route('login'), // Provide the login route for redirection
+            ]);
         }
     }
-
-    // public function AddToCartCourse(Request $request)
-    // {
-    //     // Validate the request data
-    //     $validated = $request->validate([
-    //         'course_id' => 'required|integer|exists:courses,id', // Adjust as per your schema
-    //         'course_section_id' => 'required|integer',
-    //         'course_category_id' => 'required|integer',
-    //         'course_type' => 'required|string',
-    //     ]);
-
-    //     if (Auth::check()) {
-    //         $userId = Auth::id();
-    //         $courseId = $validated['course_id'];
-
-    //         // Check if the course is already in the user's cart
-    //         $exists = UserCourseRegistration::where('user_id', $userId)
-    //             ->where('course_id', $courseId)
-    //             ->exists();
-
-    //         if (!$exists) {
-    //             UserCourseRegistration::create([
-    //                 'user_id' => $userId,
-    //                 'name' => Auth::user()->name,
-    //                 'email' => Auth::user()->email,
-    //                 'phone' => Auth::user()->phone,
-    //                 'course_section_id' => $validated['course_section_id'],
-    //                 'course_category_id' => $validated['course_category_id'],
-    //                 'course_type' => $validated['course_type'],
-    //                 'course_id' => $courseId,
-    //                 'course_register_date' => now(),
-    //             ]);
-
-    //             return response()->json(['success' => 'Successfully Added to Your Course']);
-    //         } else {
-    //             return response()->json(['error' => 'This Course Is Already in Your Cart']);
-    //         }
-    //     } else {
-    //         return response()->json(['error' => 'Please Login First']);
-    //     }
-    // }
 
 }

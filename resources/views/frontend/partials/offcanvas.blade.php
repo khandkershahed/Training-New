@@ -54,7 +54,7 @@
         <div class="modal-content">
             <div class="modal-header" style="background: #000a18; color: white">
                 <h5 class="modal-title" id="discountModalLabel">
-                    Get Discount On Purchase!
+                    Get Course Query!
                 </h5>
                 <button type="button" class="btn-close" style="color: white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
@@ -108,7 +108,7 @@
                             <div class="col-lg-6">
                                 <div class="form-check" style="padding-top: 37px">
                                     <input class="form-check-input" name="call" type="checkbox" value="1"
-                                        id="flexCheckChecked" checked />
+                                        id="flexCheckChecked" />
                                     <label class="form-check-label" for="flexCheckChecked">
                                         Call For Details !
                                     </label>
@@ -125,7 +125,7 @@
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-end pt-3">
                                     <button type="submit" class="primary-btn-one">
-                                        Apply Discount
+                                        Submit
                                     </button>
                                 </div>
                             </div>

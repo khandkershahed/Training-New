@@ -43,7 +43,7 @@
 
                     <div class="col-lg-2">
                         <select class="form-select home-select mb-lg-0 mb-2 @error('course_type') is-invalid @enderror"
-                            required name="course_type" aria-label="Course Type">
+                             name="course_type" aria-label="Course Type">
                             <option selected disabled>Course Type</option>
                             <option value="offline">Offline</option>
                             <option value="online">Online</option>
@@ -58,7 +58,7 @@
                     <div class="col-lg-2">
                         <select
                             class="form-select home-select mb-lg-0 mb-2 @error('course_section_id') is-invalid @enderror"
-                            required name="course_section_id" aria-label="Course Section">
+                             name="course_section_id" aria-label="Course Section">
                             <option selected disabled>Course Section</option>
                             @foreach ($courseSections as $courseSection)
                                 <option value="{{ $courseSection->id }}">{{ $courseSection->name }}</option>
@@ -74,7 +74,7 @@
                     <div class="col-lg-2">
                         <select
                             class="form-select home-select mb-lg-0 mb-2 @error('course_category_id') is-invalid @enderror"
-                            required name="course_category_id" aria-label="Selected Category">
+                             name="course_category_id" aria-label="Selected Category">
                             <option selected disabled>Selected Category</option>
                             @foreach ($courseCategorys as $courseCategory)
                                 <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select home-select mb-lg-0 mb-2 @error('month') is-invalid @enderror" required
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('month') is-invalid @enderror" 
                             name="month" aria-label="Month">
                             <option selected disabled>Month</option>
                             <option value="january">January</option>
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="col-lg-2">
-                        <select class="form-select home-select mb-lg-0 mb-2 @error('year') is-invalid @enderror" required
+                        <select class="form-select home-select mb-lg-0 mb-2 @error('year') is-invalid @enderror"
                             name="year" aria-label="Year">
                             <option selected disabled>Year</option>
                             <option value="2024">2024</option>
