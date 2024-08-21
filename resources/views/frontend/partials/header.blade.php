@@ -464,20 +464,22 @@
                         @endphp
 
                         <div class="btn-group">
+
                             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" aria-expanded="false">
                                 Services
                             </button>
+
                             <ul class="dropdown-menu py-0 rounded-0 border-0" style="background: #001430; top:57px;">
-                                @forelse ($services as $sercice)
+                                <li class="p-1"><a class="dropdown-item text-white menu-drop"
+                                        href="{{ route('service.all') }}">All
+                                        Services</a>
+                                </li>
+                                @foreach ($services as $sercice)
                                     <li class="p-1"><a class="dropdown-item text-white menu-drop"
                                             href="{{ url('/services/details/' . $sercice->id . '/' . $sercice->slug) }}">{{ $sercice->name }}</a>
                                     </li>
-
-                                @empty
-                                    <li class="p-1"><a class="dropdown-item text-white" href="javascript:;">No
-                                            Service Avaiable/a></li>
-                                @endforelse
+                                @endforeach
                             </ul>
                         </div>
 
