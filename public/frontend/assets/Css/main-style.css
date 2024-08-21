@@ -2155,6 +2155,9 @@ a:hover {
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.service_home_para{
+    height: 70px;
+}
 .home-select {
     font-size: 14px;
     padding: 10px;

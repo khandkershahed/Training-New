@@ -15,7 +15,8 @@
 
     <section class="showcase">
         <img src="{{ !empty($coursedetail->course_banner_image) ? url('storage/course/' . $coursedetail->course_banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
-            alt="Picture" onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';"/>
+            alt="Picture"
+            onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';" />
     </section>
 
     <section>
@@ -127,17 +128,12 @@
 
 
                                         <div class="d-flex mb-lg-0 mb-4 mt-4">
-
-                                            <a href="{{ route('course.registration') }}"
-                                                class="primary-btn-one me-3">Admission</a>
-
-                                            {{-- <a href="" class="primary-btn-one me-3">Course Curriculum</a> --}}
-
-                                            {{-- @if (!empty($coursedetail->total_student))
-                                                <a href="javascript:;" class="primary-btn-one">{{ $coursedetail->total_student }}
+                                            <a href="" class="primary-btn-one me-3">Admission</a>
+                                            <a href="" class="primary-btn-one me-3">Course Curriculum</a>
+                                            @if (!empty($coursedetail->total_student))
+                                                <a href="" class="primary-btn-one">{{ $coursedetail->total_student }}
                                                     Students</a>
-                                            @endif --}}
-
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -218,59 +214,60 @@
 
                                     <div id="schedule" class="py-3">
                                         @if ($courseSchedules->isNotEmpty())
-                                        
                                             <h5 class="primary-text-color fw-bold">
                                                 Course Schedule
                                             </h5>
+                                            {{-- <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing
+                                                elit.
+                                            </p> --}}
 
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Venue
-                                                            </th>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Starting Date
-                                                            </th>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Duration
-                                                            </th>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Fees
-                                                            </th>
-                                                            <th class="text-center"
-                                                                style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Join Now
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
 
-                                                    <tbody>
-
-                                                        @forelse ($courseSchedules as $courseSchedule)
+                                            @forelse ($courseSchedules as $courseSchedule)
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Venue
+                                                                </th>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Starting Date
+                                                                </th>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Duration
+                                                                </th>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Fees
+                                                                </th>
+                                                                <th class="text-center"
+                                                                    style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Join Now
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
                                                             <tr>
                                                                 <td>{{ $courseSchedule->venue }}</td>
                                                                 <td>{{ $courseSchedule->starting_date }}</td>
                                                                 <td>{{ $courseSchedule->duration }}</td>
                                                                 <td>{{ $courseSchedule->fees }} Tk</td>
                                                                 <td class="text-center">
-                                                                    <a href="javascript:;" class=""><i
+                                                                    <a href="" class=""><i
                                                                             class="fa-solid fa-eye text-muted"></i></a>
                                                                 </td>
                                                             </tr>
-                                                        @empty
-                                                            <p>No course schedules found.</p>
-                                                        @endforelse
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @empty
+                                                <p>No course schedules found.</p>
+                                            @endforelse
                                         @endif
 
                                         @if ($courseOutlines->isNotEmpty())
@@ -444,36 +441,36 @@
                                                                             Batch 2
                                                                         </span>
                                                                     </small>
-
                                                                     <small class="pe-3">
                                                                         <span class="cource-badge rounded-2">
                                                                             {{-- <i class="fa-solid fa-chair pe-2" aria-hidden="true"></i> --}}
-                                                                            <i class="fa-solid fa-user"
-                                                                                title="Available Seat"></i>
+                                                                            <i class="fa-solid fa-user"></i>
                                                                             {{ $courses->available_seats }}
                                                                         </span>
                                                                     </small>
-
                                                                     @php
+                                                                        // Convert registration end date to Unix timestamp
                                                                         $registrationEndTimestamp = strtotime(
                                                                             $courses->registration_end_date,
                                                                         );
+                                                                        // Current time
                                                                         $currentTime = time();
+                                                                        // Calculate remaining time in seconds
                                                                         $remainingTime =
                                                                             $registrationEndTimestamp - $currentTime;
+                                                                        // Convert remaining time to days
                                                                         $remainingDays = floor(
                                                                             $remainingTime / (60 * 60 * 24),
                                                                         );
                                                                     @endphp
 
-                                                                    @if ($remainingDays > 0)
-                                                                        <small class="pe-3">
-                                                                            <span class="course-badge rounded-2">
-                                                                                <i class="fa-solid fa-clock"></i>
-                                                                                {{ $remainingDays }} Days
-                                                                            </span>
-                                                                        </small>
-                                                                    @endif
+                                                                    <small class="pe-3">
+                                                                        <span class="course-badge rounded-2">
+                                                                            {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
+                                                                            <i class="fa-solid fa-clock"></i>
+                                                                            {{ $remainingDays }} Days
+                                                                        </span>
+                                                                    </small>
 
                                                                 </div>
                                                             </div>
