@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="https://training.ngengroup.org/storage/images/settings/k9FMJdvteDkFc9sFCsgFgQf1nfSqGTqjP6yxRwoG.png" rel="apple-touch-icon-precomposed" />
-    <link href="https://training.ngengroup.org/storage/images/settings/k9FMJdvteDkFc9sFCsgFgQf1nfSqGTqjP6yxRwoG.png" rel="shortcut icon" type="image/png" />
+    <link href="https://i.ibb.co/52jNg3v/favicon.png" rel="apple-touch-icon-precomposed" />
+    <link href="https://i.ibb.co/52jNg3v/favicon.png" rel="shortcut icon" type="image/png" />
     <meta name="author" content="" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -69,17 +70,6 @@
                         <tr>
                             <td align="center" valign="top" style="text-align: center; padding-bottom: 10px">
                                 <div style="text-align: center; margin: 0 15px 34px 15px">
-                                    <div style="margin-bottom: 10px">
-                                        <a href="#" rel="noopener" target="_blank">
-                                            <img alt="Logo"
-                                                src="https://training.ngengroup.org/storage/images/settings/26znqdblzfWUKbfm30YplsyXy3U7J32MCaFnMs7g.png"
-                                                style="height: 35px" />
-                                        </a>
-                                    </div>
-                                    <div style="margin-bottom: 15px">
-                                        <img alt="Logo"
-                                            src="https://preview.keenthemes.com/metronic8/demo1/assets/media/email/icon-positive-vote-1.svg" />
-                                    </div>
                                     <div
                                         style="
                         font-size: 14px;
@@ -98,8 +88,7 @@
                                             signing up!
                                         </p>
                                         <p style="margin-bottom: 2px; color: #7e8299">
-                                            Welcome aboard! We’re excited to have you with us. <br> Feel free to explore
-                                            and let us know if you have any questions.
+                                            Congratulations! You have registered for this course successfully. Please  log <br> in to your dashboard for further details and make the payment as soon as possible
                                         </p>
                                     </div>
                                     <a href="https://training.ngengroup.org/login" target="_blank"
@@ -111,6 +100,7 @@
                         color: #ffffff;
                         font-size: 14px;
                         font-weight: 500;
+                        margin-top: 10px;
                         text-decoration: none;
                       ">
                                         Activate Account
@@ -120,15 +110,6 @@
                         </tr>
                         <tr>
                             <td align="center" valign="top" style="padding-bottom: 10px">
-                                <p
-                                    style="
-                      color: #181c32;
-                      font-size: 18px;
-                      font-weight: 600;
-                      margin-bottom: 13px;
-                    ">
-                                    What’s next?
-                                </p>
                                 <div
                                     style="
                       background: #f9f9f9;
@@ -136,7 +117,7 @@
                       padding: 35px 30px;
                       text-align: left;
                       margin: 0 auto;
-                      width: 90%;
+                      width: 65%;
                     ">
                                     <div
                                         style="
@@ -237,22 +218,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="center" valign="top" style="padding-bottom: 10px; text-align: center">
+                            <td align="center" valign="top" style="padding-bottom: 10px; padding-top: 30px; text-align: center">
                                 <div style="font-size: 13px">
                                     <p style="color: #7e8299; margin-bottom: 8px">
-                                        If you have any questions, feel free to reach out us
-                                    </p>
-                                    <p style="color: #7e8299; margin-bottom: 8px">
-                                        <a href="mailto:training@ngenitltd.com"
-                                            style="color: #009ef7; text-decoration: none">training@ngenitltd.com</a>
-                                    </p>
-                                    <p style="color: #7e8299; margin-bottom: 8px">
-                                        <a href="tel:01958025050"
-                                            style="color: #009ef7; text-decoration: none">01958025050</a>
-                                    </p>
-                                    <p style="color: #7e8299; margin-bottom: 8px">
-                                        <a href="tel:01958025050"
-                                            style="color: #009ef7; text-decoration: none">https://training.ngengroup.org/</a>
+                                        If you have any questions, feel free to reach out us <a href="mailto:support@ngenitltd.com"
+                                            style="color: #009ef7; text-decoration: none">support@ngenitltd.com</a>
                                     </p>
                                     <p style="color: #7e8299; margin-bottom: 10px">
                                         &copy; 2024 NGenit Training. All rights reserved.
@@ -267,6 +237,7 @@
     </div>
 </body>
 </html>
+
 
 {{-- <!doctype html>
 <html lang="en">

@@ -1,33 +1,20 @@
 @extends('frontend.master')
 @section('content')
-    
     <section class="showcase">
         <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->course_banner) }}"
             alt="Picture">
-        
     </section>
-
     <div class="container">
         <div class="text-center px-0 px-lg-5 py-0 py-lg-5">
             <h3 class="section-title">Popular Courses We Offer</h3>
         </div>
     </div>
-
     <section>
         <div class="container py-5">
-
             <div class="row">
-
                 <div class="col-lg-12">
-
-
-                    {{-- <form action="{{ route('courses.all.search') }}" method="POST">
-                        @csrf --}}
-
                     <div class="d-flex justify-content-between align-items-center mb-3">
-
                         <div class="d-flex">
-
                             {{-- <div class="me-3">
                                 <select class="form-select primary-btn-one" name="course_section" autocomplete="off"
                                     aria-label="Select Course Section">
@@ -39,7 +26,6 @@
                                     @endforelse
                                 </select>
                             </div> --}}
-
                             <div class="me-3">
                                 <select class="example form-select form-select-sm" id="select1" name="course_section"
                                     autocomplete="off" aria-label="Select Course Section"
@@ -51,7 +37,6 @@
                                     @endforelse
                                 </select>
                             </div>
-
                             <script>
                                 function searchCoursesBySection(sectionId) {
                                     if (sectionId) {
@@ -60,11 +45,10 @@
                                     }
                                 }
                             </script>
-
-
                             <div class="me-3">
-                                <select class="example form-select form-select-sm" id="select2" name="course_category" autocomplete="off"
-                                    aria-label="Select Course Category" onchange="searchCoursesByCategory(this.value)">
+                                <select class="example form-select form-select-sm" id="select2" name="course_category"
+                                    autocomplete="off" aria-label="Select Course Category"
+                                    onchange="searchCoursesByCategory(this.value)">
                                     <option selected disabled>Choose Category</option>
                                     @forelse ($courseCategories as $courseCategory)
                                         <option value="{{ $courseCategory->id }}">{{ $courseCategory->name }}</option>
@@ -73,7 +57,6 @@
                                     @endforelse
                                 </select>
                             </div>
-
                             <script>
                                 function searchCoursesByCategory(categoryId) {
                                     if (categoryId) {
@@ -82,9 +65,7 @@
                                     }
                                 }
                             </script>
-
                         </div>
-
                         <form action="{{ route('courses.all.search') }}" method="POST">
                             @csrf
                             <div>
