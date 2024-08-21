@@ -88,3 +88,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/course/payment/{id}', [HomeController::class, 'PaymentCourse'])->name('course.payment');
 
 });
+
+Route::get('/verify/{activation_code}', [HomeController::class, 'verifyEmail'])
+    ->name('verification.verify');
+
+// Route::get('/verify/{activation_code}', 'App\Http\Controllers\Auth\VerificationController@verify')->name('verification.verify');
+

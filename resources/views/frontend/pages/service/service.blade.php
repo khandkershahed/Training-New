@@ -54,15 +54,15 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <h3 class="main-color">Search a Course</h3>
+                    {{-- <h3 class="main-color">Search a Course</h3> --}}
 
 
 
-                    <form action="" method="post">
+                    {{-- <form action="" method="post">
                         <div class="row">
                             <div class="col-lg-12">
 
-                                {{-- <div class="row gx-1">
+                                <div class="row gx-1">
 
                                     <div class="col-lg-6">
                                         <select class="form-select rounded-0" name="course_section_id"
@@ -118,11 +118,10 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </div> --}}
+                                </div>
 
-                                {{-- ========================= --}}
 
-                                {{-- <div class="row gx-1">
+                                <div class="row gx-1">
                                     <div class="col-lg-6">
                                         <select class="form-select rounded-0" name="course_section_id"
                                             aria-label="Default select example">
@@ -166,7 +165,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div> --}}
+                                </div>
 
                                 <div class="row gx-1">
                                     <div class="col-lg-6">
@@ -182,12 +181,12 @@
                                         <select class="form-select rounded-0" name="course_name"
                                             aria-label="Default select example" onchange="updateCourseInfo()">
                                             <option>Select Course</option>
-                                            {{-- @foreach ($courses as $course)
+                                            @foreach ($courses as $course)
                                                 <option value="{{ $course->id }}" data-type="{{ $course->course_type }}"
                                                     data-price="{{ $course->offline_price }}">
                                                     {{ $course->name }}
                                                 </option>
-                                            @endforeach --}}
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -202,7 +201,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="table-group-divider" id="courseDetails">
-                                            <!-- Default course details row -->
+                                            
                                             <tr>
                                                 <td>
                                                     <p id="courseTitle" class="more-text">Course Not Selected</p>
@@ -221,38 +220,17 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <div class="mt-3">
 
-                        {{-- <div class="card border-0 rounded-0 shadow-none" style="background-color: #43a8e8">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center flex-column text-center p-5 px-3">
-                                    <h4 class="text-center text-white pb-4">
-                                        Global Training Venues
-                                    </h4>
-                                    <a href="" class="btn bg-white rounded-pill btn w-100">Explore Now</a>
-                                </div>
-                            </div>
-                        </div> --}}
-
-                        {{-- <div class="card border-0 rounded-0 shadow-none" style="background-color: #0084d9">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center flex-column text-center p-5 px-3">
-                                    <h4 class="text-center text-white pb-4">
-                                        Choice of Training Categories
-                                    </h4>
-                                    <a href="" class="btn bg-white rounded-pill btn w-100">Check Now</a>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="card border-0 rounded-0 shadow-none" style="background-color: #eaf6f5">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center flex-column text-center p-5 px-3">
                                     <h6 class="text-center pb-4" style="color: #00a3af">
                                         Need more information?
                                     </h6>
-                                    <a href="" class="btn bg-white rounded-pill btn w-100">Connect With Us</a>
+                                    <a href="javascript:;" class="btn bg-white rounded-pill btn w-100">Connect With Us</a>
                                     <p class="pt-3">
                                         <i class="fa-solid fa-phone"></i> {{ optional($setting)->primary_phone }}
                                     </p>

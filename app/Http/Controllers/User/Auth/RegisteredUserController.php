@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Course;
-use Illuminate\View\View;
-use App\Models\UserCourse;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
@@ -34,7 +31,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()],
 
         ]);
@@ -45,13 +42,14 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
             'password' => Hash::make($request->password),
+            'activation_code' => Str::random(32), // Generate a random activation code
         ]);
 
-        
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
+        $user->sendEmailVerificationNotification();
 
-        return redirect()->route('login')->with('success', 'Register successfully');
+        return redirect()->route('login')->with('success', 'Check your email');
     }
 }

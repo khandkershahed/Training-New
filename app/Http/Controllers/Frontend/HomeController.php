@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Mail\CourseRegister;
+use id;
+use App\Models\Faq;
+use App\Models\User;
+use App\Models\Course;
 use App\Models\AboutUs;
 use App\Models\Contact;
-use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseCurriculum;
-use App\Models\CourseOutline;
-use App\Models\CourseProject;
-use App\Models\CourseQuery;
-use App\Models\CourseSchedule;
-use App\Models\CourseSection;
-use App\Models\Faq;
-use App\Models\FaqCategory;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\PrivacyPolicy;
 use App\Models\Service;
 use App\Models\Setting;
-use App\Models\TermsCondition;
-use App\Models\User;
-use App\Models\UserCourseRegistration;
-use id;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\CourseQuery;
+use App\Models\FaqCategory;
+use Illuminate\Support\Str;
+use App\Mail\CourseRegister;
 use Illuminate\Http\Request;
+use App\Models\CourseOutline;
+use App\Models\CourseProject;
+use App\Models\CourseSection;
+use App\Models\PrivacyPolicy;
+use App\Models\CourseCategory;
+use App\Models\CourseSchedule;
+use App\Models\TermsCondition;
+use App\Models\CourseCurriculum;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use App\Models\UserCourseRegistration;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -464,6 +465,7 @@ class HomeController extends Controller
                 'phone' => $request->phone,
                 'address' => $request->address,
                 'password' => Hash::make($request->phone),
+                'activation_code' => Str::random(32), // Generate a random activation code
                 'created_at' => now(),
             ]);
 
@@ -508,7 +510,7 @@ class HomeController extends Controller
             // Auth::login($new_user);
 
             // return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
-            return redirect()->back()->with('success', 'Course Registered Successfully!!Please Check to Email');
+            return redirect()->route('login')->with('success', 'Course Registered Successfully!!Please Check to Email');
         }
     }
 
@@ -897,6 +899,21 @@ class HomeController extends Controller
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Payment details have been submitted successfully.');
+    }
+
+    public function verifyEmail($activation_code)
+    {
+        $user = User::where('activation_code', $activation_code)->first();
+
+        if (!$user) {
+            return redirect('/login')->with('error', 'Invalid activation code.');
+        }
+
+        $user->email_verified_at = now();
+        $user->activation_code = null;
+        $user->save();
+
+        return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
 
 }

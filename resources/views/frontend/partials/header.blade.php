@@ -51,10 +51,10 @@
                                                 <a href="{{ route('profile.edit') }}" class="">My Profile</a>
                                             </li>
 
-                                            <li>
+                                            {{-- <li>
                                                 <i class="fa fa-list m-2" aria-hidden="true"></i>
                                                 <a href="" class="">My Cart</a>
-                                            </li>
+                                            </li> --}}
 
                                             <li>
                                                 <i class="fa fa-envelope m-2" aria-hidden="true"></i>
@@ -62,25 +62,28 @@
                                                     Course</a>
                                             </li>
 
-                                            <li>
+                                            {{-- <li>
                                                 <i class="fa fa-star m-2" aria-hidden="true"></i>
                                                 <a href="javascript:;" class="">Favorites Courses</a>
-                                            </li>
+                                            </li> --}}
 
-                                            <li>
+                                            {{-- <li>
                                                 <i class="fa fa-list m-2" aria-hidden="true"></i>
                                                 <a href="javascript:;" class="">Notification</a>
-                                            </li>
+                                            </li> --}}
 
                                         </ul>
-                                        <hr class="text-muted">
-                                        <ul class="account p-0 text-muted text-start mb-0"
+
+                                        {{-- <hr class="text-muted"> --}}
+
+                                        {{-- <ul class="account p-0 text-muted text-start mb-0"
                                             style="list-style-type: none">
                                             <li>
                                                 <i class="fa fa-user m-2" aria-hidden="true"></i>
                                                 <a href="javascript:;" class="">Jobs & Offers</a>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
+
                                     </div>
                                 </div>
                             @else
@@ -117,18 +120,18 @@
                                                 <a href="{{ route('service.all') }}" class="">All Services</a>
                                             </li>
 
-                                            <li>
+                                            {{-- <li>
                                                 <i class="fa fa-star m-2" aria-hidden="true"></i>
                                                 <a href="" class="">Favorites Courses</a>
-                                            </li>
+                                            </li> --}}
 
-                                            <li>
+                                            {{-- <li>
                                                 <i class="fa fa-list m-2" aria-hidden="true"></i>
                                                 <a href="" class="">Notification</a>
-                                            </li>
+                                            </li> --}}
 
                                         </ul>
-                                        <hr class="text-muted">
+                                        {{-- <hr class="text-muted">
 
                                         <ul class="account p-0 text-muted text-start mb-0"
                                             style="list-style-type: none">
@@ -136,7 +139,7 @@
                                                 <i class="fa fa-user m-2" aria-hidden="true"></i>
                                                 <a href="" class="">Jobs & Offers</a>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             @endif

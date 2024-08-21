@@ -6,6 +6,7 @@
             onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';" />
 
     </section>
+
     <section style="background-color: #eee;">
         <div class="container">
             <div class="text-center px-0 px-lg-5 py-0 py-lg-5">
@@ -15,10 +16,91 @@
             </div>
         </div>
     </section>
+
+    <section class="container pt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded-3"
+                    style="background-color: #eee;">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <select class="example form-select form-select-sm" id="select1" name="course_section"
+                                autocomplete="off" aria-label="Select Course Section"
+                                onchange="searchCoursesBySection(this.value)">
+                                <option selected disabled>Choose Section</option>
+                                @forelse ($courseSections as $courseSection)
+                                    <option value="{{ $courseSection->id }}"
+                                        {{ request()->get('section') == $courseSection->id ? 'selected' : '' }}>
+                                        {{ $courseSection->name }}
+                                    </option>
+                                @empty
+                                    <option disabled>No Course Section Available</option>
+                                @endforelse
+                            </select>
+                        </div>
+
+                        <script>
+                            function searchCoursesBySection(sectionId) {
+                                if (sectionId) {
+                                    // Redirect to the courses page with the selected section ID
+                                    window.location.href = `/all-courses?section=${sectionId}`;
+                                }
+                            }
+                        </script>
+
+
+                        <div class="me-3">
+                            <select class="example form-select form-select-sm" id="select2" name="course_category"
+                                autocomplete="off" aria-label="Select Course Category"
+                                onchange="searchCoursesByCategory(this.value)">
+                                <option selected disabled>Choose Category</option>
+                                @forelse ($courseCategories as $courseCategory)
+                                    <option value="{{ $courseCategory->id }}"
+                                        {{ request()->get('category') == $courseCategory->id ? 'selected' : '' }}>
+                                        {{ $courseCategory->name }}
+                                    </option>
+                                @empty
+                                    <option disabled>No Course Category Available</option>
+                                @endforelse
+                            </select>
+                        </div>
+
+                        <script>
+                            function searchCoursesByCategory(categoryId) {
+                                if (categoryId) {
+                                    // Redirect to the courses page with the selected category ID
+                                    window.location.href = `/all-courses?category=${categoryId}`;
+                                }
+                            }
+                        </script>
+
+
+                    </div>
+
+                    {{-- <form action="{{ route('courses.all.search') }}" method="POST"> --}}
+                    {{-- @csrf --}}
+                    <div>
+                        <div class="input-group">
+                            <input type="text" id="serviceSearch" class="form-control" autocomplete="off"
+                                placeholder="Course Name" name="course_name_search">
+                            <span class="input-group-text primary-btn-one text-center" style="width: 50px;">
+                                <i class="fa-solid fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    {{-- </form> --}}
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section>
         <div class="container py-5">
 
-            <div class="row">
+            <div class="row" id="servicesContainer">
 
                 @forelse ($courses as $course)
                     <div class="col-lg-3 mb-4">
@@ -46,24 +128,22 @@
                                             {{ $course->available_seats }}
                                         </span>
                                     </small>
+
                                     @php
-                                        // Convert registration end date to Unix timestamp
                                         $registrationEndTimestamp = strtotime($course->registration_end_date);
-                                        // Current time
                                         $currentTime = time();
-                                        // Calculate remaining time in seconds
                                         $remainingTime = $registrationEndTimestamp - $currentTime;
-                                        // Convert remaining time to days
                                         $remainingDays = floor($remainingTime / (60 * 60 * 24));
                                     @endphp
 
-                                    <small class="pe-3">
-                                        <span class="course-badge rounded-2">
-                                            {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
-                                            <i class="fa-solid fa-clock"></i>
-                                            {{ $remainingDays }} Days
-                                        </span>
-                                    </small>
+                                    @if ($remainingDays > 0)
+                                        <small class="pe-3">
+                                            <span class="course-badge rounded-2">
+                                                <i class="fa-solid fa-clock"></i>
+                                                {{ $remainingDays }} Days
+                                            </span>
+                                        </small>
+                                    @endif
 
                                 </div>
                             </div>
