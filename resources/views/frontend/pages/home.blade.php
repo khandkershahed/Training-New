@@ -180,7 +180,7 @@
                         {!! optional($homePage)->row_three_description !!}
                     </p>
                 </div>
-                <div class="col-lg-10 mx-auto">
+                <div class="col-lg-12">
                     <div class="service-slick-carousel">
 
                         <!-- Service One -->
@@ -191,14 +191,14 @@
                                         <h4 class="text-white">{{ optional($homePage)->row_three_column_one_title }}</h4>
                                         <div class="divider"></div>
                                     </div>
-                                    <p class="text-white">
+                                    <p class="text-white service_home_para">
                                         {{ optional($homePage)->row_three_column_one_description }}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
                                             <a href="{{ optional($homePage)->row_three_column_one_url }}"
                                                 class="">Learn
-                                                More</a>
+                                                More</a> <br>
                                             <a href="{{ optional($homePage)->row_three_column_one_button_url }}"
                                                 class="primary-btn-one mt-3">{{ optional($homePage)->row_three_column_one_button_name }}</a>
                                         </div>

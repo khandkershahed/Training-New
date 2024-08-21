@@ -2,13 +2,12 @@
   <div id="kt_aside" class="aside aside-dark aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside"
       data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
       data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
-      data-kt-drawer-toggle="#kt_aside_mobile_toggle">
+      data-kt-drawer-toggle="#kt_aside_mobile_toggle" style="background-color: #00193d !important;">
       <!--begin::Brand-->
-      <div class="aside-logo flex-column-auto" id="kt_aside_logo">
+      <div class="aside-logo flex-column-auto" id="kt_aside_logo" style="background-color: #00193d !important;">
           <!--begin::Logo-->
           <a href="{{ route('homepage') }}">
-              <img alt="Logo" src="{{ asset('backend/login/assets/logo/Logo_White.png') }}"
-                  style="width: 130px; height: 40px;" class="logo" />
+              <img alt="Logo" src="{{ asset('backend/login/assets/logo/Logo_White.png') }}" class="img-fluid" />
           </a>
           <!--end::Logo-->
           <!--begin::Aside toggler-->
@@ -33,7 +32,6 @@
       </div>
       <!--end::Brand-->
       <!--begin::Aside menu-->
-
       <div class="hover-scroll-overlay-y my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true"
           data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto"
           data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu"
@@ -41,6 +39,19 @@
           <!--begin::Menu-->
           <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
               id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
+              <div class="menu-item">
+                <a
+                  class="menu-link"
+                  href="#"
+                >
+                  <span class="menu-icon">
+                    <i class="fa-solid fa-rocket fs-2">
+                    </i>
+                  </span>
+                  <span class="menu-title">Dahboard</span>
+                </a>
+              </div>
+              
               <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                   <span class="menu-link">
                       <span class="menu-icon">
@@ -65,7 +76,6 @@
                       <span class="menu-arrow"></span>
                   </span>
                   <div class="menu-sub menu-sub-accordion">
-
                       <div class="menu-item">
                           <a class="menu-link" href="{{ route('user.register.course.list') }}">
                               <span class="menu-bullet">
@@ -74,24 +84,28 @@
                               <span class="menu-title">Course List</span>
                           </a>
                       </div>
-
-                      {{-- <div class="menu-item">
+                      <div class="menu-item">
                           <a class="menu-link" href="JavaScript:void(0)">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
                               <span class="menu-title">Add Category</span>
                           </a>
-                      </div> --}}
-
+                      </div>
                   </div>
               </div>
-
-
           </div>
           <!--end::Menu-->
       </div>
       <!--end::Aside menu-->
-
+      <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
+          <a href="javascript:void(0)"
+              class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100">
+              <span class="btn-label">
+                  Log Out
+              </span>
+              <i class="fa-solid fa-right-from-bracket btn-icon fs-2 m-0"></i>
+          </a>
+      </div>
   </div>
   <!--end::Aside-->

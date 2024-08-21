@@ -78,7 +78,7 @@
                                         </h2> --}}
 
                                         <div class="row py-3">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
                                                         <div class="text-center">
@@ -90,7 +90,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
                                                         <div class="text-center">
@@ -101,13 +101,24 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <p class="mb-0">Projects</p>
                                                             <h3 class="fw-bold pt-2 number-font main-color">
                                                                 {{ $coursedetail->project }}</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
+                                                    <div class="card-body">
+                                                        <div class="text-center">
+                                                            <p class="mb-0">Enrolled</p>
+                                                            <h3 class="fw-bold pt-2 number-font main-color">
+                                                                {{ $coursedetail->total_student }}</h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,55 +236,57 @@
                                             <h5 class="primary-text-color fw-bold">
                                                 Course Schedule
                                             </h5>
+                                            {{-- <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing
+                                                elit.
+                                            </p> --}}
 
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Venue
-                                                            </th>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Starting Date
-                                                            </th>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Duration
-                                                            </th>
-                                                            <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Fees
-                                                            </th>
-                                                            <th class="text-center"
-                                                                style="background-color: #eee;color: black;font-size: 15px;"
-                                                                scope="col">
-                                                                Join Now
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
 
-                                                    <tbody>
-
-                                                        @forelse ($courseSchedules as $courseSchedule)
+                                            @forelse ($courseSchedules as $courseSchedule)
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Venue
+                                                                </th>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Starting Date
+                                                                </th>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Duration
+                                                                </th>
+                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Fees
+                                                                </th>
+                                                                <th class="text-center"
+                                                                    style="background-color: #eee;color: black;font-size: 15px;"
+                                                                    scope="col">
+                                                                    Join Now
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
                                                             <tr>
                                                                 <td>{{ $courseSchedule->venue }}</td>
                                                                 <td>{{ $courseSchedule->starting_date }}</td>
                                                                 <td>{{ $courseSchedule->duration }}</td>
                                                                 <td>{{ $courseSchedule->fees }} Tk</td>
                                                                 <td class="text-center">
-                                                                    <a href="javascript:;" class=""><i
+                                                                    <a href="" class=""><i
                                                                             class="fa-solid fa-eye text-muted"></i></a>
                                                                 </td>
                                                             </tr>
-                                                        @empty
-                                                            <p>No course schedules found.</p>
-                                                        @endforelse
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @empty
+                                                <p>No course schedules found.</p>
+                                            @endforelse
                                         @endif
 
                                         @if ($courseOutlines->isNotEmpty())
@@ -447,36 +460,36 @@
                                                                             Batch 2
                                                                         </span>
                                                                     </small>
-
                                                                     <small class="pe-3">
                                                                         <span class="cource-badge rounded-2">
                                                                             {{-- <i class="fa-solid fa-chair pe-2" aria-hidden="true"></i> --}}
-                                                                            <i class="fa-solid fa-user"
-                                                                                title="Available Seat"></i>
+                                                                            <i class="fa-solid fa-user"></i>
                                                                             {{ $courses->available_seats }}
                                                                         </span>
                                                                     </small>
-
                                                                     @php
+                                                                        // Convert registration end date to Unix timestamp
                                                                         $registrationEndTimestamp = strtotime(
                                                                             $courses->registration_end_date,
                                                                         );
+                                                                        // Current time
                                                                         $currentTime = time();
+                                                                        // Calculate remaining time in seconds
                                                                         $remainingTime =
                                                                             $registrationEndTimestamp - $currentTime;
+                                                                        // Convert remaining time to days
                                                                         $remainingDays = floor(
                                                                             $remainingTime / (60 * 60 * 24),
                                                                         );
                                                                     @endphp
 
-                                                                    @if ($remainingDays > 0)
-                                                                        <small class="pe-3">
-                                                                            <span class="course-badge rounded-2">
-                                                                                <i class="fa-solid fa-clock"></i>
-                                                                                {{ $remainingDays }} Days
-                                                                            </span>
-                                                                        </small>
-                                                                    @endif
+                                                                    <small class="pe-3">
+                                                                        <span class="course-badge rounded-2">
+                                                                            {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
+                                                                            <i class="fa-solid fa-clock"></i>
+                                                                            {{ $remainingDays }} Days
+                                                                        </span>
+                                                                    </small>
 
                                                                 </div>
                                                             </div>

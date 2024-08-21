@@ -52,7 +52,7 @@
     data-bs-target="#staticBackdrop">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header" style="background: #000a18; color: white">
+            <div class="modal-header rounded-2" style="background: #0a1d5b; color: white">
                 <h5 class="modal-title" id="discountModalLabel">
                     Get Course Query!
                 </h5>
@@ -72,7 +72,7 @@
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="">Course</label>
-                                    <select class="form-select" required name="course_id" aria-label="Select Course"
+                                    <select class="form-select form-select-sm" required name="course_id" aria-label="Select Course"
                                         data-placeholder="Select Course">
                                         <option value="" disabled selected>Select Course</option>
                                         @foreach ($courses as $course)
@@ -125,7 +125,7 @@
                             <div class="col-lg-12">
                                 <div class="d-flex justify-content-end pt-3">
                                     <button type="submit" class="primary-btn-one">
-                                        Submit
+                                        Submit <i class="fa-solid fa-check ps-3"></i>
                                     </button>
                                 </div>
                             </div>

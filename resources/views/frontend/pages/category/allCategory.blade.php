@@ -151,6 +151,28 @@
                                                                         class="fa-solid fa-arrow-right"></i></a>
                                                             </div>
                                                         </div>
+<<<<<<< HEAD
+=======
+                                                        <div class="card-body">
+                                                            <h5>{{ $sectionWiseCat->name }}</h5>
+                                                            <p style="background-color: #001c44; width: 40%; height: 3px;">
+                                                            </p>
+
+                                                            @php
+                                                                $description = $sectionWiseCat->description;
+                                                                $words = explode(' ', strip_tags($description));
+                                                                $limitedWords = array_slice($words, 0, 18);
+                                                                $limitedDescription = implode(' ', $limitedWords);
+                                                            @endphp
+
+
+                                                            <p>{!! $limitedDescription !!}.....</p>
+
+                                                            <a href="{{ url('/category/details/' . $sectionWiseCat->id . '/' . $sectionWiseCat->slug) }}"
+                                                                class="primary-btn-one w-100"> See Details <i
+                                                                    class="fa-solid fa-arrow-right"></i></a>
+                                                        </div>
+>>>>>>> 560c0220f37790dd6dfcdadb35339288fddbe673
                                                     </div>
                                                 @empty
                                                     <p>No Category Avaiable</p>
