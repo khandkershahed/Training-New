@@ -740,23 +740,64 @@ class HomeController extends Controller
     }
 
     //searchCourse
+    // public function searchCourse(Request $request)
+    // {
+    //     // Validate the request
+    //     // $request->validate([
+    //     //     'course_type' => 'required',
+    //     //     'course_section_id' => 'required',
+    //     //     'course_category_id' => 'required',
+    //     //     'month' => 'required',
+    //     //     'year' => 'required',
+    //     // ], [
+    //     //     'course_type.required' => 'Please select a Course Type.',
+    //     //     'course_section_id.required' => 'Please select a Course Section.',
+    //     //     'course_category_id.required' => 'Please select a Category.',
+    //     //     'month.required' => 'Please select a Month.',
+    //     //     'year.required' => 'Please select a Year.',
+    //     // ]);
+
+    //     // Retrieve input values
+    //     $courseType = $request->input('course_type');
+    //     $sectionId = $request->input('course_section_id');
+    //     $categoryId = $request->input('course_category_id');
+    //     $month = $request->input('month');
+    //     $year = $request->input('year');
+
+    //     // Query courses based on the input criteria
+    //     $courses = Course::where('course_type', $courseType)
+    //         ->where('course_section_id', $sectionId)
+    //         ->where('course_category_id', $categoryId)
+    //         ->whereMonth('created_at', date('m', strtotime($month)))
+    //         ->whereYear('created_at', $year)
+    //         ->get();
+
+    //     if ($courses->isEmpty()) {
+    //         // return redirect()->back()->with('error', 'No courses found matching the criteria.');
+    //         return view('frontend.pages.course.search_course_empty');
+    //     }
+
+    //     return view('frontend.pages.course.search_course', compact('courses'));
+    // }
+
     public function searchCourse(Request $request)
     {
-        // Validate the request
-        // $request->validate([
-        //     'course_type' => 'required',
-        //     'course_section_id' => 'required',
-        //     'course_category_id' => 'required',
-        //     'month' => 'required',
-        //     'year' => 'required',
-        // ], [
-        //     'course_type.required' => 'Please select a Course Type.',
-        //     'course_section_id.required' => 'Please select a Course Section.',
-        //     'course_category_id.required' => 'Please select a Category.',
-        //     'month.required' => 'Please select a Month.',
-        //     'year.required' => 'Please select a Year.',
-        // ]);
+        //Validate the request
 
+        // $request->validate([
+        //     // 'course_type' => 'required',
+        //     // 'course_section_id' => 'required',
+        //     'course_category_id' => 'required',
+        //     // 'month' => 'required',
+        //     // 'year' => 'required',
+        // ], [
+        //     // 'course_type.required' => 'Please select a Course Type.',
+        //     // 'course_section_id.required' => 'Please select a Course Section.',
+        //     'course_category_id.required' => 'Please select a Category.',
+        //     // 'month.required' => 'Please select a Month.',
+        //     // 'year.required' => 'Please select a Year.',
+        // ]);
+    
         // Retrieve input values
         $courseType = $request->input('course_type');
         $sectionId = $request->input('course_section_id');
@@ -764,18 +805,39 @@ class HomeController extends Controller
         $month = $request->input('month');
         $year = $request->input('year');
 
-        // Query courses based on the input criteria
-        $courses = Course::where('course_type', $courseType)
-            ->where('course_section_id', $sectionId)
-            ->where('course_category_id', $categoryId)
-            ->whereMonth('created_at', date('m', strtotime($month)))
-            ->whereYear('created_at', $year)
-            ->get();
+        // Start building the query
+        $query = Course::query();
 
-        // Return view with filtered courses or redirect back with errors
+        // Add filters conditionally
+        if ($courseType) {
+            $query->where('course_type', $courseType);
+        }
+
+        if ($sectionId) {
+            $query->where('course_section_id', $sectionId);
+        }
+
+        if ($categoryId) {
+            $query->where('course_category_id', $categoryId);
+        }
+
+        if ($month && $year) {
+            $formattedMonth = date('m', strtotime($month));
+            $query->whereMonth('created_at', $formattedMonth)
+                ->whereYear('created_at', $year);
+        } elseif ($month) {
+            $formattedMonth = date('m', strtotime($month));
+            $query->whereMonth('created_at', $formattedMonth);
+        } elseif ($year) {
+            $query->whereYear('created_at', $year);
+        }
+
+        // Execute the query and get results
+        $courses = $query->get();
+
+        // Return view based on the results
         if ($courses->isEmpty()) {
-            // return redirect()->back()->with('error', 'No courses found matching the criteria.');
-            return view('frontend.pages.course.search_course_empty');
+            return view('frontend.pages.course.search_course_empty')->with('message', 'No courses found matching the criteria.');
         }
 
         return view('frontend.pages.course.search_course', compact('courses'));

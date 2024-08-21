@@ -15,7 +15,7 @@
 
     <section class="showcase">
         <img src="{{ !empty($coursedetail->course_banner_image) ? url('storage/course/' . $coursedetail->course_banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
-            alt="Picture" onerror="this.onerror=null; this.src='https://images.ctfassets.net/ihx0a8chifpc/GTlzd4xkx4LmWsG1Kw1BB/ad1834111245e6ee1da4372f1eb5876c/placeholder.com-1280x720.png?w=1920&q=60&fm=webp';"/>
+            alt="Picture" />
     </section>
 
     <section>
@@ -57,11 +57,13 @@
                     <div>
                         <div id="overview">
                             <div class="row py-5 gx-5 px-3 px-lg-0 align-items-center">
+
                                 <div class="col-lg-5">
                                     <div class="">
-                                        <h6 class="text-danger fw-bold text-lg-start text-center">
-                                            Turn Your Passion into an Artistic Profession
-                                        </h6>
+
+                                        {{-- <h6 class="text-danger fw-bold text-lg-start text-center">
+                                            {{ $coursedetail->badge }}
+                                        </h6> --}}
 
                                         <h2 name="course_id" class="fw-bold text-lg-start text-center main-color">
                                             {{ $coursedetail->name }}
@@ -126,22 +128,24 @@
 
 
 
-                                        <div class="d-flex mb-lg-0 mb-4 mt-4">
+                                        {{-- <div class="d-flex mb-lg-0 mb-4 mt-4">
 
                                             <a href="{{ route('course.registration') }}"
                                                 class="primary-btn-one me-3">Admission</a>
 
-                                            {{-- <a href="" class="primary-btn-one me-3">Course Curriculum</a> --}}
+                                            <a href="" class="primary-btn-one me-3">Course Curriculum</a>
 
-                                            {{-- @if (!empty($coursedetail->total_student))
+                                            @if (!empty($coursedetail->total_student))
                                                 <a href="javascript:;" class="primary-btn-one">{{ $coursedetail->total_student }}
                                                     Students</a>
-                                            @endif --}}
+                                            @endif
 
-                                        </div>
+                                        </div> --}}
+
                                     </div>
                                 </div>
-                                <div class="col-lg-7 ">
+
+                                <div class="col-lg-7">
                                     <div class="text-end">
                                         <img class="img-fluid rounded-3 course_details-img"
                                             src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
@@ -218,7 +222,6 @@
 
                                     <div id="schedule" class="py-3">
                                         @if ($courseSchedules->isNotEmpty())
-                                        
                                             <h5 class="primary-text-color fw-bold">
                                                 Course Schedule
                                             </h5>
