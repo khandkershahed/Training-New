@@ -78,7 +78,7 @@
                                         </h2> --}}
 
                                         <div class="row py-3">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
                                                         <div class="text-center">
@@ -90,7 +90,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
                                                         <div class="text-center">
@@ -101,13 +101,24 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <p class="mb-0">Projects</p>
                                                             <h3 class="fw-bold pt-2 number-font main-color">
                                                                 {{ $coursedetail->project }}</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
+                                                    <div class="card-body">
+                                                        <div class="text-center">
+                                                            <p class="mb-0">Enrolled</p>
+                                                            <h3 class="fw-bold pt-2 number-font main-color">
+                                                                {{ $coursedetail->total_student }}</h3>
                                                         </div>
                                                     </div>
                                                 </div>
