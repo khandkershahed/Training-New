@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center py-5 w-75 w-lg-100 mx-auto">
-                        <h1>Popular <span class="main_color">Categories</span> We Offer</h1>
+                        <h2>Popular <span class="main_color">Categories</span> We Offer</h2>
                         <div>
                             <img decoding="async" width="137" height="21"
                                 src="https://www.promisetrainingglobal.com/wp-content/uploads/2019/02/line.jpg"
@@ -33,9 +33,32 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex">
+                        <!-- (Optional) Existing dropdowns can stay here -->
+                    </div>
+
+                    <div>
+                        <div class="input-group">
+                            <input type="text" id="categorySearch" class="form-control" placeholder="Category Name"
+                                style="width: 350px;" autocomplete="off">
+                            <span class="input-group-text primary-btn-one text-center" style="width: 50px;">
+                                <i class="fa-solid fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
+        </div>
     </section>
+
+
 
     <section class="py-5 pt-0">
         <div class="container">
@@ -77,6 +100,7 @@
                     <div class="row">
                         <div class="col-lg-12">
 
+
                             <div class="tab-content" id="myTabContent">
 
                                 @foreach ($courseSections as $courseSection)
@@ -95,56 +119,61 @@
                                         @endphp
                                         <div class="row mb-4">
 
-                                            @forelse ($sectionWiseCats as $sectionWiseCat)
-                                                <div class="col-lg-4">
-                                                    <div class="card border-0 shadow-sm">
-                                                        <div class="card-header p-0">
-                                                            <div>
-                                                                <img class="img-fluid w-100 rounded-2"
-                                                                    src="{{ asset('storage/course_category/' . $sectionWiseCat->thumbnail_image) }}"
-                                                                    alt="" style="height: 220px;">
+                                            <div class="row" id="servicesContainer">
+                                                @forelse ($sectionWiseCats as $sectionWiseCat)
+                                                    <div class="col-lg-4">
+                                                        <div class="card border-0 shadow-sm">
+                                                            <div class="card-header p-0">
+                                                                <div>
+                                                                    <img class="img-fluid w-100 rounded-2"
+                                                                        src="{{ asset('storage/course_category/' . $sectionWiseCat->thumbnail_image) }}"
+                                                                        alt="" style="height: 220px;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <h5>{{ $sectionWiseCat->name }}</h5>
+                                                                <p
+                                                                    style="background-color: #001c44; width: 40%; height: 3px;">
+                                                                </p>
+
+                                                                @php
+                                                                    $description = $sectionWiseCat->description;
+                                                                    $words = explode(' ', strip_tags($description));
+                                                                    $limitedWords = array_slice($words, 0, 18);
+                                                                    $limitedDescription = implode(' ', $limitedWords);
+                                                                @endphp
+
+
+                                                                <p>{!! $limitedDescription !!}.....</p>
+
+                                                                <a href="{{ url('/category/details/' . $sectionWiseCat->id . '/' . $sectionWiseCat->slug) }}"
+                                                                    class="primary-btn-one"> See Details <i
+                                                                        class="fa-solid fa-arrow-right"></i></a>
                                                             </div>
                                                         </div>
-                                                        <div class="card-body">
-                                                            <h5>{{ $sectionWiseCat->name }}</h5>
-                                                            <p style="background-color: #001c44; width: 40%; height: 3px;">
-                                                            </p>
-
-                                                            @php
-                                                                $description = $sectionWiseCat->description;
-                                                                $words = explode(' ', strip_tags($description));
-                                                                $limitedWords = array_slice($words, 0, 18);
-                                                                $limitedDescription = implode(' ', $limitedWords);
-                                                            @endphp
-
-
-                                                            <p>{!! $limitedDescription !!}.....</p>
-
-                                                            <a href="{{ url('/category/details/' . $sectionWiseCat->id . '/' . $sectionWiseCat->slug) }}"
-                                                                class="primary-btn-one"> See Details <i
-                                                                    class="fa-solid fa-arrow-right"></i></a>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            @empty
-                                                <p>No Category Avaiable</p>
-                                            @endforelse
+                                                @empty
+                                                    <p>No Category Avaiable</p>
+                                                @endforelse
+                                            </div>
+
+
 
                                         </div>
                                     </div>
                                 @endforeach
 
                                 {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                                    aria-labelledby="profile-tab" tabindex="0">
-
-                                    Test 2
-                                </div>
-
-                                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
-                                    aria-labelledby="contact-tab" tabindex="0">
-
-                                    Test 3
-                                </div> --}}
+                                        aria-labelledby="profile-tab" tabindex="0">
+    
+                                        Test 2
+                                    </div>
+    
+                                    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
+                                        aria-labelledby="contact-tab" tabindex="0">
+    
+                                        Test 3
+                                    </div> --}}
 
                             </div>
 
@@ -154,6 +183,27 @@
             </div>
         </div>
     </section>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#categorySearch').on('keyup', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ route('category.search') }}",
+                    method: 'GET',
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#servicesContainer').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
 
 @push('scripts')

@@ -119,33 +119,34 @@ class HomeController extends Controller
 
     // }
 
-    public function courseSearchAll(Request $request)
+    // public function courseSearchAll(Request $request)
+    // {
+    //     $item = $request->input('course_name_search');
+
+    //     $query = Course::query();
+
+    //     if ($item) {
+    //         $query->where('name', 'LIKE', "%$item%");
+    //     }
+
+    //     $courses = $query->get();
+
+    //     return view('frontend.pages.course.course_all_search', compact('courses', 'item'));
+    // }
+
+    public function searchCourseNAme(Request $request)
     {
-        $item = $request->input('course_name_search');
-        // $itemSection = $request->input('course_section');
-        // $itemCategory = $request->input('course_category');
+        $query = $request->input('query');
 
-        $query = Course::query();
-
-        if ($item) {
-            $query->where('name', 'LIKE', "%$item%");
+        if ($query) {
+            $courses = Course::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $courses = Course::latest()->get();
         }
 
-        // if ($itemSection) {
-        //     $query->whereHas('section', function ($q) use ($itemSection) {
-        //         $q->where('id', $itemSection);
-        //     });
-        // }
-
-        // if ($itemCategory) {
-        //     $query->whereHas('category', function ($q) use ($itemCategory) {
-        //         $q->where('id', $itemCategory);
-        //     });
-        // }
-
-        $courses = $query->get();
-
-        return view('frontend.pages.course.course_all_search', compact('courses', 'item'));
+        return view('frontend.pages.course.course_all_search', compact('courses'))->render();
     }
 
     //All Service
@@ -181,6 +182,22 @@ class HomeController extends Controller
         }
 
         return view('frontend.pages.service.service_search', compact('services'))->render();
+    }
+
+    //searchCategory
+    public function searchCategory(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            $courses = CourseCategory::where('name', 'like', "%{$query}%")
+                ->latest()
+                ->get();
+        } else {
+            $courses = CourseCategory::latest()->get();
+        }
+
+        return view('frontend.pages.category.category_search', compact('courses'))->render();
     }
 
     public function GetRegisterCategory($course_section_id)
@@ -682,7 +699,6 @@ class HomeController extends Controller
     public function allCategory()
     {
         $courseSections = CourseSection::latest()->get();
-
         return view('frontend.pages.category.allCategory', compact('courseSections'));
     }
 
@@ -797,7 +813,7 @@ class HomeController extends Controller
         //     // 'month.required' => 'Please select a Month.',
         //     // 'year.required' => 'Please select a Year.',
         // ]);
-    
+
         // Retrieve input values
         $courseType = $request->input('course_type');
         $sectionId = $request->input('course_section_id');
