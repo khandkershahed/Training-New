@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/verify/{activation_code}', [HomeController::class, 'verifyEmail'])
-    ->name('verification.verify');
+    ->name('verification.verify.user');
 
 // Route::get('/verify/{activation_code}', 'App\Http\Controllers\Auth\VerificationController@verify')->name('verification.verify');
 
