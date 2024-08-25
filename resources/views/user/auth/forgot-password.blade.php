@@ -191,7 +191,7 @@
                     <div class="d-flex flex-lg-row flex-column-reverse">
                         <div class="card card1">
                             <!-- Session Status -->
-                            <x-auth-session-status class="mb-4" :status="session('status')" />
+                            
                             <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
                                 <div class="row justify-content-center my-auto">
@@ -206,6 +206,9 @@
                                             address, and we'll send you instructions to reset your password and regain
                                             access to your account.
                                         </p>
+
+                                        <x-auth-session-status class="mb-4 text-danger" :status="session('status')" />
+
                                         <div class="form-outline mb-3 pt-4">
                                             <x-input-label for="email" :value="__('Email')" />
                                             <x-text-input id="email"

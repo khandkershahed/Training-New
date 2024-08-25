@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             color: #000;
@@ -200,7 +201,7 @@
                                             <img id="logo" class="img-fluid"
                                                 src="https://i.ibb.co/HYRMgr8/26znqdblzf-WUKbfm30-Yplsy-Xy3-U7-J32-MCa-Fn-Ms7g.png">
                                         </div>
-                                        <h3 class="mb-2 text-center heading">Forgot Your Password?</h3>
+                                        <h3 class="mb-2 text-center heading">Reset Your Password?</h3>
                                         <p class="text-black form-desc text-center">
                                             Don't worry, it happens to the best of us! Enter your registered email
                                             address, and we'll send you instructions to reset your password and regain
@@ -210,7 +211,7 @@
                                             <x-input-label for="email" :value="__('Email')" />
                                             <x-text-input id="email"
                                                 class="form-control form-control-solid rounded-0" type="email"
-                                                name="email" :value="old('email', $request->email)" required autofocus
+                                                name="email" readonly :value="old('email', $request->email)" required autofocus
                                                 autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
@@ -237,7 +238,7 @@
                                                     name="password" required autocomplete="new-password" />
                                                 <button type="button" class="btn btn-outline-secondary rounded-0"
                                                     onclick="togglePasswordVisibility('password', this)">
-                                                    <i class="bi bi-eye position-absolute"></i>X
+                                                    <i class="fa-solid fa-eye" id="eye-icon-password"></i>
                                                 </button>
                                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                             </div>
@@ -250,11 +251,12 @@
                                                     name="password_confirmation" required autocomplete="new-password" />
                                                 <button type="button" class="btn btn-outline-secondary rounded-0"
                                                     onclick="togglePasswordVisibility('password_confirmation', this)">
-                                                    <i class="fa-solid fa-eye"></i>X
+                                                    <i class="fa-solid fa-eye" id="eye-icon-password-confirmation"></i>
                                                 </button>
                                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="text-center mb-5 mt-4">
@@ -279,14 +281,12 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
-@push('scripts')
-    <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
+
     <script>
-        function togglePasswordVisibility(id, button) {
-            const input = document.getElementById(id);
-            const icon = button.querySelector('i');
-            console.log('Before:', input.type, icon.className); // Debugging line
+        function togglePasswordVisibility(inputId, button) {
+            var input = document.getElementById(inputId);
+            var icon = button.querySelector('i');
+        
             if (input.type === 'password') {
                 input.type = 'text';
                 icon.classList.remove('fa-eye');
@@ -296,7 +296,7 @@
                 icon.classList.remove('fa-eye-slash');
                 icon.classList.add('fa-eye');
             }
-            console.log('After:', input.type, icon.className); // Debugging line
         }
-    </script>
-@endpush
+        </script>
+</x-guest-layout>
+
