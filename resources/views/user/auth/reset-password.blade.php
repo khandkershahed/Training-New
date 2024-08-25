@@ -214,7 +214,7 @@
                                                 autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                         </div>
-                                        <div class="form-outline mb-3 pt-4">
+                                        {{-- <div class="form-outline mb-3 pt-4">
                                             <x-input-label for="password" :value="__('Password')" />
                                             <x-text-input id="password"
                                                 class="form-control form-control-solid rounded-0" type="password"
@@ -228,14 +228,40 @@
                                                 class="form-control form-control-solid rounded-0" type="password"
                                                 name="password_confirmation" required autocomplete="new-password" />
                                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                        </div> --}}
+                                        <div>
+                                            <p for="password" class="mb-0">Password</p>
+                                            <div class="input-group form-outline">
+                                                <x-text-input id="password"
+                                                    class="form-control form-control-solid rounded-0" type="password"
+                                                    name="password" required autocomplete="new-password" />
+                                                <button type="button" class="btn btn-outline-secondary rounded-0"
+                                                    onclick="togglePasswordVisibility('password', this)">
+                                                    <i class="bi bi-eye position-absolute"></i>X
+                                                </button>
+                                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                            </div>
+                                        </div>
+                                        <div class="pt-3">
+                                            <p for="password_confirmation" class="mb-0">Confirm Password</p>
+                                            <div class="input-group form-outline">
+                                                <x-text-input id="password_confirmation"
+                                                    class="form-control form-control-solid rounded-0" type="password"
+                                                    name="password_confirmation" required autocomplete="new-password" />
+                                                <button type="button" class="btn btn-outline-secondary rounded-0"
+                                                    onclick="togglePasswordVisibility('password_confirmation', this)">
+                                                    <i class="fa-solid fa-eye"></i>X
+                                                </button>
+                                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center mb-5 ">
+                                <div class="text-center mb-5 mt-4">
                                     <p class="sm-text mx-auto mb-3">
-                                        <button class="primary-btn-one" type="submit">
-                                            {{ __('Reset Password') }}
-                                        </button>
+                                        <x-primary-button class="btn-block btn-color" type="submit">
+                                            {{ __('Email Password Reset Link') }}
+                                        </x-primary-button>
                                     </p>
                                 </div>
                             </form>
@@ -254,3 +280,23 @@
         </div>
     </div>
 </x-guest-layout>
+@push('scripts')
+    <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
+    <script>
+        function togglePasswordVisibility(id, button) {
+            const input = document.getElementById(id);
+            const icon = button.querySelector('i');
+            console.log('Before:', input.type, icon.className); // Debugging line
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+            console.log('After:', input.type, icon.className); // Debugging line
+        }
+    </script>
+@endpush
