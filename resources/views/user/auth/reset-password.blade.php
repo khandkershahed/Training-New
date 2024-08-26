@@ -286,7 +286,7 @@
         function togglePasswordVisibility(id, button) {
             const input = document.getElementById(id);
             const icon = button.querySelector('i');
-            console.log('Before:', input.type, icon.className); // Debugging line
+            console.log('Before:', input.type, icon.className);
             if (input.type === 'password') {
                 input.type = 'text';
                 icon.classList.remove('fa-eye');
@@ -296,7 +296,7 @@
                 icon.classList.remove('fa-eye-slash');
                 icon.classList.add('fa-eye');
             }
-            console.log('After:', input.type, icon.className); // Debugging line
+            console.log('After:', input.type, icon.className);
         }
     </script>
 @endpush
