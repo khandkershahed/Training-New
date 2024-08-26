@@ -18,7 +18,7 @@
         input[type="text"],
         select {
             font: 15px / 24px 'Muli', sans-serif;
-            color: #333;
+            color: #fff;
             width: 100%;
             box-sizing: border-box;
             letter-spacing: 1px;
