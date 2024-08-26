@@ -252,3 +252,4 @@ Route::post('/paid-course-registration/update/{id}', [RegistrationController::cl
 //User Register
 Route::get('/register-user/inactive/{id}', [UserManagementController::class, 'userInactive'])->name('user-register.inactive');
 Route::get('/register-user/active/{id}', [UserManagementController::class, 'userActive'])->name('user-register.active');
+
