@@ -410,6 +410,7 @@ class HomeController extends Controller
     //     }
     // }
 
+    // Updated `courseRegistrationStore` method
     public function courseRegistrationStore(Request $request)
     {
         // Validate the incoming request
@@ -427,38 +428,10 @@ class HomeController extends Controller
         ]);
 
         // Check if user exists by email
-        $user_exist = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
-        if ($user_exist) {
-            // Check if the user has already registered for the same course
-            $existingRegistration = UserCourseRegistration::where('user_id', $user_exist->id)
-                ->where('course_id', $request->course_id)
-                ->first();
-
-            if ($existingRegistration) {
-                return redirect()->back()->with('error', 'You have already registered for this course.');
-            }
-
-            // Check if the user has already registered for a different course
-            $newRegistration = UserCourseRegistration::create([
-                'user_id' => $user_exist->id,
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'call_me' => $request->call_me,
-                'course_section_id' => $request->course_section_id,
-                'course_category_id' => $request->course_category_id,
-                'course_id' => $request->course_id,
-                'course_type' => $request->course_type,
-                'location' => $request->location,
-                'course_register_date' => $request->course_register_date,
-                'created_at' => now(),
-            ]);
-
-            // Auth::login($user_exist);
-
-            return redirect()->route('login')->with('success', 'Login to your account');
-        } else {
+        if (!$user) {
+            // Create a new user if not exists
             $user_id = User::insertGetId([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -469,49 +442,57 @@ class HomeController extends Controller
                 'created_at' => now(),
             ]);
 
-            // Send email
-            $course = User::findOrFail($user_id);
-
+            $user = User::findOrFail($user_id);
+            // Send email for new user creation
             $data = [
-                'name' => $course->name,
-                'email' => $course->email,
-                'phone' => $course->phone,
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
             ];
-
-            Mail::to($course->email)->send(new CourseRegister($data));
-
-            // Check if the newly created user has already registered for this course
-            $existingRegistration = UserCourseRegistration::where('user_id', $user_id)
-                ->where('course_id', $request->course_id)
-                ->first();
-
-            if ($existingRegistration) {
-                return redirect()->back()->with('error', 'You have already registered for this course.');
-            }
-
-            // Create the course registration
-            UserCourseRegistration::create([
-                'user_id' => $user_id,
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'call_me' => $request->call_me,
-                'course_section_id' => $request->course_section_id,
-                'course_category_id' => $request->course_category_id,
-                'course_id' => $request->course_id,
-                'course_type' => $request->course_type,
-                'location' => $request->location,
-                'course_register_date' => $request->course_register_date,
-                'created_at' => now(),
-            ]);
-
-            $new_user = User::find($user_id);
-
-            // Auth::login($new_user);
-
-            // return redirect()->route('dashboard')->with('success', 'Course Registered Successfully!');
-            return redirect()->route('login')->with('success', 'Course Registered Successfully!!Please Check to Email');
+            Mail::to($user->email)->send(new CourseRegister($data));
         }
+
+        // Check if the user has already registered for the same course
+        $existingRegistration = UserCourseRegistration::where('user_id', $user->id)
+            ->where('course_id', $request->course_id)
+            ->first();
+
+        if ($existingRegistration) {
+            return redirect()->back()->with('error', 'You have already registered for this course.');
+        }
+
+        // Create the course registration
+        UserCourseRegistration::create([
+            'user_id' => $user->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'call_me' => $request->call_me,
+            'course_section_id' => $request->course_section_id,
+            'course_category_id' => $request->course_category_id,
+            'course_id' => $request->course_id,
+            'course_type' => $request->course_type,
+            'location' => $request->location,
+            'course_register_date' => $request->course_register_date,
+            'created_at' => now(),
+        ]);
+
+        // Fetch course information
+        $course = Course::findOrFail($request->course_id);
+
+        // Prepare email data
+        $data = [
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+            'course_name' => $course->name,
+        ];
+
+        // Send email after registration
+        Mail::to($user->email)->send(new CourseRegister($data));
+
+        // Redirect with success message
+        return redirect()->route('login')->with('success', 'Course Registered Successfully! Please check your email.');
     }
 
     //courseQueryStore

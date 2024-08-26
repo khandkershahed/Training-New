@@ -13,7 +13,7 @@
     <meta name="author" content="" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <title>Welcome NGen IT Training</title>
+    <title>NGenIt Training</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <link href="https://preview.keenthemes.com/metronic8/demo1/assets/plugins/global/plugins.bundle.css"
         rel="stylesheet" type="text/css" />
@@ -111,56 +111,52 @@
                         <tr>
                             <td align="center" valign="top" style="padding-bottom: 10px">
                                 <div
-                                    style="
-                      background: #f9f9f9;
-                      border-radius: 12px;
-                      padding: 35px 30px;
-                      text-align: left;
-                      margin: 0 auto;
-                      width: 65%;
-                    ">
+                                    style="background: #f9f9f9;border-radius: 12px;padding: 35px 30px;text-align: left;margin: 0 auto;width: 65%;">
+
+                                    {{-- New Box --}}
                                     <div
-                                        style="
-                        display: flex;
-                        align-items: center;
-                        margin-bottom: 15px;
-                      ">
+                                        style="display: flex;align-items: center;margin-bottom: 15px;">
                                         <div
-                                            style="
-                          display: flex;
-                          justify-content: center;
-                          align-items: center;
-                          width: 40px;
-                          height: 40px;
-                          margin-right: 13px;
-                          position: relative;
-                        ">
+                                            style="display: flex;justify-content: center;align-items: center;width: 40px;height: 40px;margin-right: 13px;position: relative;">
                                             <img alt="Logo"
                                                 src="https://preview.keenthemes.com/metronic8/demo1/assets/media/email/icon-polygon.svg" />
                                             <span
-                                                style="
-                            position: absolute;
-                            color: #50cd89;
-                            font-size: 16px;
-                            font-weight: 600;
-                          ">
+                                                style="position: absolute;color: #50cd89;font-size: 16px;font-weight: 600;">
                                                 <i class="fa-solid fa-envelope"></i>
                                             </span>
                                         </div>
                                         <div>
                                             <div
-                                                style="
-                            display: flex;
-                            align-items: center;
-                            margin-bottom: 5px;
-                          ">
+                                                style="display: flex;align-items: center;margin-bottom: 5px;">
                                                 <a href="#" target="_blank"
-                                                    style="
-                              text-decoration: none;
-                              color: #181c32;
-                              font-size: 16px;
-                              font-weight: 600;
-                            ">
+                                                    style="text-decoration: none;color: #181c32;font-size: 16px;font-weight: 600;">
+                                                    Register Course:
+                                                </a>
+                                            </div>
+                                            <span style="color: #7e8299">
+                                                {{ $mailData['course_name'] }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {{-- New Box End--}}
+
+                                    {{-- Email Box Start--}}
+                                    <div
+                                        style="display: flex;align-items: center;margin-bottom: 15px;">
+                                        <div
+                                            style="display: flex;justify-content: center;align-items: center;width: 40px;height: 40px;margin-right: 13px;position: relative;">
+                                            <img alt="Logo"
+                                                src="https://preview.keenthemes.com/metronic8/demo1/assets/media/email/icon-polygon.svg" />
+                                            <span
+                                                style="position: absolute;color: #50cd89;font-size: 16px;font-weight: 600;">
+                                                <i class="fa-solid fa-envelope"></i>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div
+                                                style="display: flex;align-items: center;margin-bottom: 5px;">
+                                                <a href="#" target="_blank"
+                                                    style="text-decoration: none;color: #181c32;font-size: 16px;font-weight: 600;">
                                                     Your Email:
                                                 </a>
                                             </div>
@@ -171,23 +167,11 @@
                                     </div>
                                     <div style="display: flex; align-items: center">
                                         <div
-                                            style="
-                          display: flex;
-                          justify-content: center;
-                          align-items: center;
-                          width: 40px;
-                          height: 40px;
-                          margin-right: 13px;
-                          position: relative;
-                        ">
+                                            style="display: flex;justify-content: center;align-items: center;width: 40px;height: 40px;margin-right: 13px;position: relative;">
                                             <img alt="Logo"
                                                 src="https://preview.keenthemes.com/metronic8/demo1/assets/media/email/icon-polygon.svg" />
                                             <span
-                                                style="
-                            position: absolute;
-                            color: #50cd89;
-                            font-size: 16px;
-                            font-weight: 600;
+                                                style="position: absolute;color: #50cd89;font-size: 16px;font-weight: 600;
                           ">
                                                 <i class="fa-solid fa-lock"></i>
                                             </span>
