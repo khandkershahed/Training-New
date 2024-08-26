@@ -26,6 +26,7 @@ Route::get('/services/search', [HomeController::class, 'search'])->name('service
 //courseCategoryDetails
 // Route::get('/course/category/{id}/{slug}', [HomeController::class, 'courseCategoryDetails']);
 
+
 // Course Registration Start
 Route::get('/course-registration', [HomeController::class, 'courseRegistration'])->name('course.registration');
 Route::post('/course-registration/store', [HomeController::class, 'courseRegistrationStore'])->name('course.registration.store');
@@ -45,7 +46,6 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
-//Service Created By Ashiquzzaman
 
 //serviceDetails
 Route::get('/services/details/{id}/{slug}', [HomeController::class, 'serviceDetails']);
