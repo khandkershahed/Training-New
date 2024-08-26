@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Course;
+use App\Models\CourseSection;
+use App\Models\UserCourseRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +16,19 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin/dashboard');
+
+        $sections = CourseSection::withCount('courses')->latest()->get();
+
+        $totalCourse = Course::where('status', 'active')->latest()->get();
+        $totalRegister = UserCourseRegistration::latest()->get();
+
+        $month = date('m');
+        $monthlyRegister = UserCourseRegistration::whereMonth('created_at', $month)->get();
+
+        $today = date('Y-m-d');
+        $dayRegister = UserCourseRegistration::whereDate('created_at', $today)->get();
+
+        return view('admin/dashboard', compact('sections', 'totalCourse', 'totalRegister', 'monthlyRegister', 'dayRegister',));
     }
 
     public function index()

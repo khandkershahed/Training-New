@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class CourseEnrollController extends Controller
 {
     
-
     public function AddToCartCourse(Request $request)
     {
         if (Auth::check()) {
