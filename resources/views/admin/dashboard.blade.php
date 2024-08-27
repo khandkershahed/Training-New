@@ -4,43 +4,46 @@
             <div class="card h-xl-100">
                 <div class="card-header border-0 pt-5">
                     <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bold text-gray-900">All Courses</span>
+                        <span class="card-label fw-bold text-gray-900">Course Section</span>
                     </h3>
                 </div>
 
                 <div class="card-body pt-6">
 
                     @foreach ($sections as $section)
-                    <div class="d-flex flex-stack">
-                        <div class="symbol symbol-40px me-4">
-                            <div class="symbol-label fs-2 fw-semibold bg-danger text-inverse-danger">
-                                B
+                        <div class="d-flex flex-stack">
+                            <div class="symbol  me-5">
+                                <div class="text-inverse-danger">
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($section->name) }}&background=ff5733&color=ffffff"
+                                        alt="Avatar">
+
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+
+                                <div class="flex-grow-1 me-2">
+                                    <a href="https://preview.keenthemes.com/metronic8/demo1/pages/user-profile/overview.html"
+                                        class="text-gray-800 text-hover-primary fs-6 fw-bold">{{ $section->name }}</a>
+
+                                    <span class="text-muted fw-semibold d-block fs-7">{{ $section->courses_count }}+
+                                        Courses</span>
+
+                                </div>
+
+                                <a href="javascript:;"
+                                    class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
+                                    {{ $section->users_count }}
+                                </a>
+
                             </div>
                         </div>
 
-                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
-
-                            <div class="flex-grow-1 me-2">
-                                <a href="https://preview.keenthemes.com/metronic8/demo1/pages/user-profile/overview.html"
-                                    class="text-gray-800 text-hover-primary fs-6 fw-bold">{{$section->name}}</a>
-
-                                <span class="text-muted fw-semibold d-block fs-7">{{ $section->courses_count }}+ Courses</span>
-
-                            </div>
-
-                            <a href="#"
-                                class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                5
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="separator separator-dashed my-4"></div>
+                        <div class="separator separator-dashed my-4"></div>
                     @endforeach
 
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -67,7 +70,8 @@
                                     </div>
 
                                     <div class="m-0">
-                                        <a href="{{route('admin.course.index')}}" class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($totalCourse) }}</a>
+                                        <a href="{{ route('admin.course.index') }}"
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($totalCourse) }}</a>
 
                                         <span class="text-gray-500 fw-semibold fs-6">Total Courses</span>
                                     </div>
@@ -84,7 +88,8 @@
                                     </div>
 
                                     <div class="m-0">
-                                        <a href="{{route('admin.all.registration')}}" class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($totalRegister) }}</a>
+                                        <a href="{{ route('admin.all.registration') }}"
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($totalRegister) }}</a>
 
                                         <span class="text-gray-500 fw-semibold fs-6">Total Enrolled</span>
                                     </div>
@@ -101,9 +106,10 @@
                                     </div>
 
                                     <div class="m-0">
-                                        <span class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{count($monthlyRegister)}}</span>
+                                        <span
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($monthlyRegister) }}</span>
 
-                                        <span class="text-gray-500 fw-semibold fs-6">This Month Enrolled</span>
+                                        <span class="text-gray-500 fw-semibold fs-6">Monthly Enrolled</span>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +124,8 @@
                                     </div>
 
                                     <div class="m-0">
-                                        <span class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{count($dayRegister)}}</span>
+                                        <span
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($dayRegister) }}</span>
 
                                         <span class="text-gray-500 fw-semibold fs-6">Today Enrolled</span>
                                     </div>
@@ -135,9 +142,11 @@
                 <div class="card-header pt-5">
                     <div class="card-title d-flex flex-column">
                         <div class="d-flex align-items-center">
-                            <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span>
+                            {{-- <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span> --}}
 
-                            <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">69,700</span>
+                            <span
+                                class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ number_format($paidAmount, 2) }}
+                                Tk</span>
 
                             <span class="badge badge-light-success fs-base">
                                 <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1"><span
@@ -149,28 +158,33 @@
                     </div>
                 </div>
                 <div class="card-body pt-2 pb-4 d-flex align-items-center flex-column">
+
+                    {{-- ======================== --}}
+
                     <div class="d-flex flex-center me-5 pt-20">
-                        <div id="kt_card_widget_1_chart" style="min-width: 150px; min-height: 150px"
-                            data-kt-size="150" data-kt-line="11">
+                        <div id="kt_card_widget_1_chart" style="min-width: 150px; min-height: 100px" data-kt-size="150"
+                            data-kt-line="11">
                         </div>
                     </div>
 
+                    {{-- ================================== --}}
+
                     <div class="d-flex flex-column content-justify-center w-100 pt-20">
-                        <div class="d-flex fs-6 fw-semibold align-items-center">
+
+
+                        {{-- <div class="d-flex fs-6 fw-semibold align-items-center">
                             <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
-                            <div class="text-gray-500 flex-grow-1 me-4">Refund Ammount</div>
-                            <div class="fw-bolder text-gray-700 text-xxl-end">$7,660</div>
-                        </div>
+                            <div class="text-gray-500 flex-grow-1 me-4">Unpaid Amount</div>
+                            <div class="fw-bolder text-gray-700 text-xxl-end">{{ number_format($unpaidAmount, 2) }}</div>
+                        </div> --}}
+
                         <div class="d-flex fs-6 fw-semibold align-items-center my-3">
                             <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
-                            <div class="text-gray-500 flex-grow-1 me-4">Paid Ammount</div>
-                            <div class="fw-bolder text-gray-700 text-xxl-end">$2,820</div>
+                            <div class="text-gray-500 flex-grow-1 me-4">Today Paid Amount</div>
+                            <div class="fw-bolder text-gray-700 text-xxl-end">{{ number_format($todayPaid, 2) }} Tk
+                            </div>
                         </div>
-                        <div class="d-flex fs-6 fw-semibold align-items-center">
-                            <div class="bullet w-8px h-6px rounded-2 me-3" style="background-color: #E4E6EF"></div>
-                            <div class="text-gray-500 flex-grow-1 me-4">Unpaid Ammount</div>
-                            <div class=" fw-bolder text-gray-700 text-xxl-end">$45,257</div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -182,46 +196,60 @@
                         <span class="text-gray-500 pt-1 fw-semibold fs-2">Courses Info</span>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="kt_datatable_example_5"
-                            class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
-                            <thead>
+
+                <div class="card-body pt-0">
+                    <table id="kt_datatable_example_5"
+                        class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th width="5%">No</th>
+                                <th width="8%">Image</th>
+                                <th>Course Name</th>
+                                <th>Lecture</th>
+                                <th>Seat</th>
+                                <th>Price</th>
+                                <th>Discount Price</th>
+                                {{-- <th width="100%">Actions</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody class="fw-bold text-gray-600">
+
+                            @foreach ($courses as $key => $course)
                                 <tr>
-                                    <th width="5%">No</th>
-                                    <th width="15%">Image</th>
-                                    <th width="30%">Courses Title</th>
-                                    <th width="10%">Total Studet</th>
-                                    <th width="10%">Duration</th>
-                                    <th width="10%">Enrolled</th>
-                                    <th width="10%">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="fw-bold text-gray-600">
-                                <tr>
-                                    <td>1</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td class="">
-                                        <img class="" src="#" height="40" width="40"
-                                            alt="">
-                                    </td>
-                                    <td class="text-start">Web Developement</td>
-                                    <td class="text-start">56</td>
-                                    <td class="text-start">6 Month</td>
-                                    <td class="text-start">56</td>
-                                    <td>
-                                        <a href="#" class="text-primary pe-3">
-                                            <i class="bi bi-pencil text-primary"></i>
-                                        </a>
-                                        <a href="#" class="delete">
-                                            <i class="bi bi-trash3-fill text-danger"></i>
-                                        </a>
+
+                                        <img class=""
+                                            src="{{ !empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($course->name) }}"
+                                            height="40" width="40" alt="">
 
                                     </td>
+
+                                    <td class="text-start">{{ $course->name }}</td>
+                                    <td class="text-start">{{ $course->lecture }}</td>
+                                    <td class="text-start">{{ $course->available_seats }}</td>
+                                    <td class="text-start">{{ $course->price }} Tk</td>
+                                    <td class="text-start">{{ $course->discount_price }} Tk</td>
+
+                                    {{-- <td>
+                                        <a href="{{ route('admin.course.edit', $course->id) }}" class="text-primary">
+                                            <i class="bi bi-pencil text-primary"></i>
+                                        </a>
+        
+                                        <a href="{{ route('admin.course.destroy', $course->id) }}" class="delete">
+                                            <i class="bi bi-trash3-fill text-danger"></i>
+                                        </a>
+        
+                                    </td> --}}
+
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+
+
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
         </div>
     </div>

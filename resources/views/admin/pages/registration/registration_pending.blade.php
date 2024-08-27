@@ -33,6 +33,7 @@
                         <th width="10%">Email</th>
                         <th width="10%">Phone</th>
                         <th width="25%">Course Name</th>
+                        <th width="15%">Course Type</th>
                         <th width="15%">Course Amount</th>
                         <th width="15%">Register Date</th>
                         {{-- <th width="15%">Payment Method</th>
@@ -51,7 +52,13 @@
                             <td class="text-start">{{ $registration->email }}</td>
                             <td class="text-start">{{ $registration->phone }}</td>
                             <td class="text-start">{{ optional($registration->courseName)->name }}</td>
-                            <td class="text-start">Tk {{ $registration->course_amount }}</td>
+                            <td class="text-start">{{ $registration->course_type }}</td>
+                            @if ($registration->course_amount == null)
+                                <td class="text-start text-danger">No Payment</td>
+                            @else
+                                <td class="text-start">Tk {{ $registration->course_amount }}</td>
+                            @endif
+
                             <td class="text-start">
                                 {{ \Carbon\Carbon::parse($registration->course_register_date)->format('F j, Y') }}
                             </td>

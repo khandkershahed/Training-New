@@ -69,6 +69,7 @@ class RegistrationController extends Controller
 
         $registration->update([
             'payment_type' => $request->payment_type,
+            'updated_at' => now(),
         ]);
 
         // Prepare data for email

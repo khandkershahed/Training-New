@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Course;
 use App\Models\CourseSection;
 use App\Models\UserCourseRegistration;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -16,11 +17,17 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-
-        $sections = CourseSection::withCount('courses')->latest()->get();
+        $sections = CourseSection::withCount('courses', 'users')->latest()->get();
 
         $totalCourse = Course::where('status', 'active')->latest()->get();
         $totalRegister = UserCourseRegistration::latest()->get();
+
+        $paidAmount = UserCourseRegistration::where('payment_type', 'paid')->sum('amount');
+        $unpaidAmount = UserCourseRegistration::where('payment_type', 'unpaid')->sum('amount');
+
+        $todayStart = Carbon::today();
+        $todayEnd = Carbon::tomorrow();
+        $todayPaid = UserCourseRegistration::where('payment_type', 'paid')->whereBetween('updated_at', [$todayStart, $todayEnd])->sum('amount');
 
         $month = date('m');
         $monthlyRegister = UserCourseRegistration::whereMonth('created_at', $month)->get();
@@ -28,7 +35,9 @@ class AdminController extends Controller
         $today = date('Y-m-d');
         $dayRegister = UserCourseRegistration::whereDate('created_at', $today)->get();
 
-        return view('admin/dashboard', compact('sections', 'totalCourse', 'totalRegister', 'monthlyRegister', 'dayRegister',));
+        $courses = Course::latest()->get();
+
+        return view('admin/dashboard', compact('sections', 'totalCourse', 'totalRegister', 'monthlyRegister', 'dayRegister', 'courses', 'paidAmount', 'unpaidAmount', 'todayPaid'));
     }
 
     public function index()
