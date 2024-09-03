@@ -11,10 +11,10 @@ class PermissionController extends Controller
     /**
      * The constructor function sets middleware permissions for specific actions in a PHP class.
      */
-    public function __construct()
-    {
-        $this->middleware('permission:view permission|edit permission|delete permission|create permission')->only(['index', 'create', 'edit', 'destroy']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('permission:view permission|edit permission|delete permission|create permission')->only(['index', 'create', 'edit', 'destroy']);
+    // }
 
     /**
      * Display a listing of the resource.

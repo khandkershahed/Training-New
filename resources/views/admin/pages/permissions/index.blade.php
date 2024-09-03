@@ -54,7 +54,7 @@
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th class="min-w-125px">Name</th>
                         <th class="min-w-250px">Assigned to</th>
-                        <th class="min-w-125px">Created Date</th>
+                        {{-- <th class="min-w-125px">Created Date</th> --}}
                         <th class="text-end min-w-100px">Actions</th>
                     </tr>
                     <!--end::Table row-->
@@ -86,7 +86,7 @@
                                     <a href="" class="badge {{ $badgeColor }} fs-7 m-1">{{ $role->name }}</a>
                                 @endforeach
                             </td>
-                            <td>{{ $permission->created_at }}</td>
+                            {{-- <td>{{ $permission->created_at }}</td> --}}
                             <td class="text-end">
                                 <!--begin::Update-->
                                 <a href="{{ route('admin.permission.edit', $permission->id) }}"

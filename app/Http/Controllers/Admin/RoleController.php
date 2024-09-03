@@ -13,10 +13,10 @@ class RoleController extends Controller
     /**
      * The function sets middleware permissions for specific actions in a PHP class constructor.
      */
-    public function __construct()
-    {
-        $this->middleware('permission:view role|edit role|delete role|create role|give permission role|store permission role')->only(['index', 'create', 'edit', 'destroy', 'givePermission', 'storePermission']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('permission:view role|edit role|delete role|create role|give permission role|store permission role')->only(['index', 'create', 'edit', 'destroy', 'givePermission', 'storePermission']);
+    // }
 
     /**
      * Display a listing of the resource.
