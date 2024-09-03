@@ -25,10 +25,8 @@ use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomepageController;
-use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\LogController;
 use App\Http\Controllers\Admin\NewsletterController;
-use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\RoleController;
@@ -149,8 +147,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'admin-management' => AdminController::class,
             'newsletters' => NewsletterController::class,
             'contacts' => ContactController::class,
-            // 'news-trend' => NewsTrendController::class,
-            // 'learnmore' => LearnMoreController::class,
 
             //Created By Ashiquzzaman
             'course' => CourseController::class,
@@ -252,4 +248,3 @@ Route::post('/paid-course-registration/update/{id}', [RegistrationController::cl
 //User Register
 Route::get('/register-user/inactive/{id}', [UserManagementController::class, 'userInactive'])->name('user-register.inactive');
 Route::get('/register-user/active/{id}', [UserManagementController::class, 'userActive'])->name('user-register.active');
-

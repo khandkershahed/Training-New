@@ -89,7 +89,8 @@
                             <td>{{ $permission->created_at }}</td>
                             <td class="text-end">
                                 <!--begin::Update-->
-                                <a href="{{ route('admin.permission.edit',$permission->id) }}" class="btn btn-icon btn-active-light-primary w-30px h-30px me-3">
+                                <a href="{{ route('admin.permission.edit', $permission->id) }}"
+                                    class="btn btn-icon btn-active-light-primary w-30px h-30px me-3">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <i class="fas fa-pen"></i>
@@ -98,7 +99,8 @@
                                 </a>
                                 <!--end::Update-->
                                 <!--begin::Delete-->
-                                <a href="{{ route('admin.permission.destroy',$permission->id) }}" class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
+                                <a href="{{ route('admin.permission.destroy', $permission->id) }}"
+                                    class="btn btn-icon btn-active-light-danger w-30px h-30px delete">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <i class="fas fa-trash-alt"></i>
