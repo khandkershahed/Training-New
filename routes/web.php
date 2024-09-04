@@ -1,11 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\VendorProfileController;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +14,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,11 +27,32 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
-// Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin'])->prefix(LaravelLocalization::setLocale() . '/admin')->name('admin.')->group(function () {
-    Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
+
+    // Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [AdminProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
+
+Route::middleware(['auth:admin', 'verified'])->group(function () {
+
+    //Admin Profile
+    Route::get('/admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
+    Route::post('/admin/profile/update', [AdminProfileController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
+
+    //Admin Password
+    Route::get('/admin-password', [AdminProfileController::class, 'AdminPasswordPage'])->name('admin.password.page');
+    Route::post('/admin/password/update/submit', [AdminProfileController::class, 'AdminPasswordUpdateSubmit'])->name('admin.password.update.submit');
+
+    // //All User
+    // Route::get('/all-user', [AdminProfileController::class, 'AllUser'])->name('all.user');
+    // Route::get('/delete-user/{id}', [AdminProfileController::class, 'DeleteUser'])->name('delete.user');
+
+    // //Active Or Inactive
+    // Route::get('/admin/user-inactive/{id}', [AdminProfileController::class, 'InactiveUserAdmin'])->name('user.inactive.admin');
+    // Route::get('/admin/user-active/{id}', [AdminProfileController::class, 'ActiveUserAdmin'])->name('user.active.admin');
+});
+
 
 
 require __DIR__ . '/auth.php';

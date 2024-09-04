@@ -408,12 +408,17 @@
                     <!--end::Theme mode docs-->
                 </div> --}}
                 <!--end::Theme mode-->
+
+                @php
+                    $id = Auth::guard('admin')->user()->id;
+                    $profileData = App\Models\Admin::find($id);
+                @endphp
                 <!--begin::User menu-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     <!--begin::Menu wrapper-->
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                         data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img src="{{ Auth::guard('admin')->user()->image ? asset('storage/images/' . Auth::guard('admin')->user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}"
+                        <img src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : url('upload/image.jpg') }}"
                             alt="user" />
                     </div>
                     <!--begin::User account menu-->
@@ -433,7 +438,8 @@
                                     <div class="fw-bolder d-flex align-items-center fs-5">
                                         {{ Auth::guard('admin')->user()->name }}
                                     </div>
-                                    <a href="#" class="fw-bold text-muted text-hover-primary fs-7" style="overflow-wrap: anywhere;">
+                                    <a href="#" class="fw-bold text-muted text-hover-primary fs-7"
+                                        style="overflow-wrap: anywhere;">
                                         {{ Auth::guard('admin')->user()->email }}
                                     </a>
                                 </div>
@@ -446,12 +452,12 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="{{ route('admin.profile.edit') }}" class="menu-link px-5">My
+                            <a href="{{ route('admin.profile') }}" class="menu-link px-5">My
                                 Profile</a>
                         </div>
-                        
+
                         <div class="menu-item px-5 my-1">
-                            <a href="('admin.profile.edit') }}" class="menu-link px-5">Password Change</a>
+                            <a href="{{ route('admin.password.page') }}" class="menu-link px-5">Password Change</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
@@ -465,7 +471,7 @@
                             </form>
                         </div>
 
-                        
+
                     </div>
                     <!--end::User account menu-->
                     <!--end::Menu wrapper-->
