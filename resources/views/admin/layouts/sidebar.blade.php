@@ -91,16 +91,25 @@
                      <div
                          class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('admin.service.index', 'admin.course_category.index', 'admin.course.index', 'admin.course_curriculam.index', 'admin.course_resource.index', 'admin.course_project.index', 'admin.course_section.index', 'admin.course_outline.index', 'admin.course_schedule.index', 'admin.course_content.index', 'admin.course_query.index', 'admin.course_management.index', 'admin.coupon.index') ? 'here show' : '' }}">
 
-                         <div class="menu-item">
-                            
-                             <a class="menu-link {{ Request::routeIs('admin.service.index') ? 'active' : '' }}"
-                                 href="{{ route('admin.service.index') }}">
-                                 <span class="menu-bullet">
-                                     <span class="bullet bullet-dot"></span>
-                                 </span>
-                                 <span class="menu-title">Service</span>
-                             </a>
-                         </div>
+                         @if (Auth::guard('admin')->user()->can('service.menu'))
+
+                             <div class="menu-item">
+
+                                 @if (Auth::guard('admin')->user()->can('all.service'))
+                                     <a class="menu-link {{ Request::routeIs('admin.service.index') ? 'active' : '' }}"
+                                         href="{{ route('admin.service.index') }}">
+                                         <span class="menu-bullet">
+                                             <span class="bullet bullet-dot"></span>
+                                         </span>
+                                         <span class="menu-title">Service</span>
+                                     </a>
+                                 @endif
+
+
+                             </div>
+
+                         @endif
+
 
                          <div class="menu-item">
                              <a class="menu-link {{ Request::routeIs('admin.course_category.index') ? 'active' : '' }}"
@@ -391,7 +400,7 @@
 
                  {{-- Management --}}
                  <div data-kt-menu-trigger="click"
-                     class="menu-item menu-accordion {{ Request::routeIs('all.admin.permission','admin.user-management.index') ? 'here show' : '' }}">
+                     class="menu-item menu-accordion {{ Request::routeIs('all.admin.permission', 'admin.user-management.index') ? 'here show' : '' }}">
 
                      <span class="menu-link">
 
@@ -537,7 +546,7 @@
 
                  {{-- Permission & Role  --}}
                  <div data-kt-menu-trigger="click"
-                     class="menu-item menu-accordion {{ Request::routeIs('all.role','all.permission') ? 'here show' : '' }}">
+                     class="menu-item menu-accordion {{ Request::routeIs('all.role', 'all.permission') ? 'here show' : '' }}">
 
                      <span class="menu-link">
                          <span class="menu-icon">
@@ -566,10 +575,11 @@
                      </span>
 
                      <div
-                         class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('all.role','all.permission') ? 'here show' : '' }}">
+                         class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('all.role', 'all.permission') ? 'here show' : '' }}">
 
                          <div class="menu-item">
-                             <a class="menu-link {{ Route::is('all.role') ? 'active' : '' }}" href="{{ route('all.role') }}">
+                             <a class="menu-link {{ Route::is('all.role') ? 'active' : '' }}"
+                                 href="{{ route('all.role') }}">
                                  <span class="menu-bullet">
                                      <span class="bullet bullet-dot"></span>
                                  </span>
@@ -578,7 +588,8 @@
                          </div>
 
                          <div class="menu-item">
-                             <a class="menu-link {{ Route::is('all.permission') ? 'active' : '' }}" href="{{ route('all.permission') }}">
+                             <a class="menu-link {{ Route::is('all.permission') ? 'active' : '' }}"
+                                 href="{{ route('all.permission') }}">
                                  <span class="menu-bullet">
                                      <span class="bullet bullet-dot"></span>
                                  </span>

@@ -250,7 +250,6 @@ Route::post('/paid-course-registration/update/{id}', [RegistrationController::cl
 Route::get('/register-user/inactive/{id}', [UserManagementController::class, 'userInactive'])->name('user-register.inactive');
 Route::get('/register-user/active/{id}', [UserManagementController::class, 'userActive'])->name('user-register.active');
 
-
 Route::controller(RoleController::class)->group(function () {
 
     //Permission
