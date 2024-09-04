@@ -92,13 +92,17 @@
                          class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('admin.service.index', 'admin.course_category.index', 'admin.course.index', 'admin.course_curriculam.index', 'admin.course_resource.index', 'admin.course_project.index', 'admin.course_section.index', 'admin.course_outline.index', 'admin.course_schedule.index', 'admin.course_content.index', 'admin.course_query.index', 'admin.course_management.index', 'admin.coupon.index') ? 'here show' : '' }}">
 
                          <div class="menu-item">
-                             <a class="menu-link {{ Request::routeIs('admin.service.index') ? 'active' : '' }}"
-                                 href="{{ route('admin.service.index') }}">
-                                 <span class="menu-bullet">
-                                     <span class="bullet bullet-dot"></span>
-                                 </span>
-                                 <span class="menu-title">Service</span>
-                             </a>
+
+                             @if (Auth::guard('admin')->user()->can('view.service'))
+                                 <a class="menu-link {{ Request::routeIs('admin.service.index') ? 'active' : '' }}"
+                                     href="{{ route('admin.service.index') }}">
+                                     <span class="menu-bullet">
+                                         <span class="bullet bullet-dot"></span>
+                                     </span>
+                                     <span class="menu-title">Service</span>
+                                 </a>
+                             @endif
+
                          </div>
 
                          <div class="menu-item">
@@ -390,7 +394,7 @@
 
                  {{-- Management --}}
                  <div data-kt-menu-trigger="click"
-                     class="menu-item menu-accordion {{ Request::routeIs('admin.admin-management.index','admin.user-management.index') ? 'here show' : '' }}">
+                     class="menu-item menu-accordion {{ Request::routeIs('admin.admin-management.index', 'admin.user-management.index') ? 'here show' : '' }}">
 
                      <span class="menu-link">
 
@@ -466,7 +470,7 @@
                                      </a>
                                  </div>
                              </div>
-                             
+
                          </div>
 
                          <div class="menu-item">

@@ -132,13 +132,14 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
         ['except' => ['show']]
     );
 
-    //Registration
-    Route::get('/registration', [RegistrationController::class, 'registration'])->name('all.registration');
+    //Registration start
 
+    Route::get('/registration', [RegistrationController::class, 'registration'])->name('all.registration');
     Route::get('/pending-registration', [RegistrationController::class, 'registrationPending'])->name('registration.pending');
     Route::get('/paid-registration', [RegistrationController::class, 'registrationPaid'])->name('registration.paid');
-
     Route::get('/registration-delete/{id}', [RegistrationController::class, 'DeleteRegistration'])->name('delete.registration');
+
+    //Registration end
 
     Route::resources(
         [
@@ -174,6 +175,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'common_banner' => BannerController::class,
 
         ],
+
     );
 
     Route::get('active-mail-configuration', [EmailSettingController::class, 'activeMailConfiguration'])->name('active.mail.configuration');
@@ -242,7 +244,6 @@ Route::post('/store/file/curriculum', [CourseCurriculamController::class, 'Store
 
 //Payment Type
 Route::post('/course-registration/update/{id}', [RegistrationController::class, 'registrationUpdate'])->name('course-registration.update');
-
 Route::post('/paid-course-registration/update/{id}', [RegistrationController::class, 'registrationCoursePaid'])->name('paid-course-registration.update');
 
 //User Register
