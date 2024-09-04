@@ -75,29 +75,20 @@
                             </div>
                         </div>
 
-                        {{-- <div class="col-3 mb-3">
-                            <div class="form-group">
-                                <label for="password_confirmation" class="mb-2">Confirm Password</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation"
-                                    placeholder="*******" class="form-control form-control-sm">
-                            </div>
-                        </div> --}}
-
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="address" class="mb-2">Role</label>
                                 <select name="role"
                                     class="form-select form-select-sm @error('role') is-invalid @enderror"
                                     id="">
+
                                     <option selected disabled>Choose Role</option>
-                                    <option value="super admin">Super Admin</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="instructor">Instructor</option>
-                                    <option value="hr">Hr</option>
-                                    <option value="business">Business</option>
-                                    <option value="marketing">Marketing</option>
-                                    <option value="development">Development</option>
-                                    <option value="other">Other</option>
+
+                                    @foreach ($roles as $role)
+                                        <option>{{ $role->name }}</option>
+                                    @endforeach
+
+
                                 </select>
                                 @error('role')
                                     <div class="invalid-feedback">{{ $message }}</div>

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -47,7 +48,8 @@ class AdminController extends Controller
 
     public function create()
     {
-        return view('admin.pages.admin-management.create');
+        $roles = Role::orderBy('name','ASC')->get();
+        return view('admin.pages.admin-management.create',compact('roles'));
     }
 
     public function store(Request $request)
@@ -98,6 +100,7 @@ class AdminController extends Controller
     {
         return view('admin.pages.admin-management.edit', [
             'admin' => Admin::find($id),
+            'roles' => Role::orderBy('name','ASC')->get(),
         ]);
     }
 
