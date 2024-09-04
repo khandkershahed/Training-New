@@ -54,7 +54,7 @@ class RoleController extends Controller
     public function AllPermission()
     {
         $permissions = Permission::orderBy('group_name', 'ASC')->get();
-        $groups = GroupName::orderBy('group_name', 'ASC')->latest()->get();
+        // $groups = GroupName::orderBy('group_name', 'ASC')->latest()->get();
 
         return view('admin.pages.roles.all_permission', compact('permissions', 'groups'));
     }
