@@ -17,7 +17,7 @@
                     <div class="text-center pt-4">
                         <h5 class="">OUR LOCATION</h5>
                         <p class=" pt-2">
-                            36-37, Probal Housing,Ring Road <br /> Mohammadpur, Dhaka-1207, Bangladesh
+                            {{ $setting->address_line_one }}
                         </p>
                     </div>
                 </div>
@@ -28,8 +28,8 @@
                     <div class="text-center pt-4">
                         <h5 class="">CONTACT US</h5>
                         <p class=" pt-2">
-                            Phone:(+88) 01958025050 <br />
-                            Tel:(+88) 0255020579
+                            Phone:(+88) {{ $setting->primary_phone }} <br />
+                            Tel:(+88) {{ $setting->secondary_phone }}
                         </p>
                     </div>
                 </div>

@@ -430,7 +430,7 @@
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
                                     <img alt="Logo"
-                                        src="{{ Auth::guard('admin')->user()->image ? asset('storage/images/' . Auth::guard('admin')->user()->image) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::guard('admin')->user()->name) }}" />
+                                        src="{{ !empty($profileData->photo) ? url('upload/admin_images/' . $profileData->photo) : url('upload/image.jpg') }}" />
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
