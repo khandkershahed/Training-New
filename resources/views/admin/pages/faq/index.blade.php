@@ -73,16 +73,24 @@
                                         data-bs-toggle="modal" data-bs-target="#faqViewModal_{{ $faq->id }}">
                                         <i class="fa-solid fa-expand"></i>
                                     </a>
-                                    <a href="#"
-                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                        data-bs-toggle="modal" data-bs-target="#faqEditModal_{{ $faq->id }}">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
-                                    <a href="{{ route('admin.faq.destroy', $faq->id) }}"
-                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                        data-kt-docs-table-filter="delete_row">
-                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                    </a>
+
+                                    @if (Auth::guard('admin')->user()->can('edit.faq'))
+                                        <a href="#"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                            data-bs-toggle="modal" data-bs-target="#faqEditModal_{{ $faq->id }}">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                    @endif
+
+                                    @if (Auth::guard('admin')->user()->can('delete.faq'))
+                                        <a href="{{ route('admin.faq.destroy', $faq->id) }}"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                            data-kt-docs-table-filter="delete_row">
+                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                        </a>
+                                    @endif
+
+
                                 </td>
                             </tr>
                         @endforeach
@@ -230,7 +238,9 @@
                                                     id="">
                                                     <option selected disabled>Choose Category</option>
                                                     @foreach ($faqCats as $faqCat)
-                                                        <option value="{{ $faqCat->id }}" {{ $faq->category_id == $faqCat->id ? 'selected' : '' }}>{{ $faqCat->name }}
+                                                        <option value="{{ $faqCat->id }}"
+                                                            {{ $faq->category_id == $faqCat->id ? 'selected' : '' }}>
+                                                            {{ $faqCat->name }}
                                                         </option>
                                                     @endforeach
                                                 </select>

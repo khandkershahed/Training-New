@@ -43,17 +43,21 @@
                             <td class="text-start">{{ $item->venue }}</td>
                             <td class="text-start">{{ $item->country }}</td>
                             <td class="text-start">{{ $item->duration }}</td>
-                            <td class="text-start">{{ $item->starting_date }}</td>   
-                            <td class="text-start">{{ $item->fees }}</td>                            
+                            <td class="text-start">{{ $item->starting_date }}</td>
+                            <td class="text-start">{{ $item->fees }}</td>
 
                             <td>
-                                <a href="{{ route('admin.course_schedule.edit', $item->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.schedule'))
+                                    <a href="{{ route('admin.course_schedule.edit', $item->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.course_schedule.destroy', $item->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.schedule'))
+                                    <a href="{{ route('admin.course_schedule.destroy', $item->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

@@ -58,13 +58,20 @@
                                             class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
                                 @endif
 
-                                <a href="{{ route('admin.terms-and-condition.edit', $term->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.term'))
+                                    <a href="{{ route('admin.terms-and-condition.edit', $term->id) }}"
+                                        class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.terms-and-condition.destroy', $term->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.term'))
+                                    <a href="{{ route('admin.terms-and-condition.destroy', $term->id) }}"
+                                        class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
+
 
                             </td>
                         </tr>

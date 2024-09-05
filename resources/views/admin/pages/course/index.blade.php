@@ -55,13 +55,18 @@
                             <td class="text-start">{{ $course->price }} Tk</td>
                             <td class="text-start">{{ $course->discount_price }} Tk</td>
                             <td>
-                                <a href="{{ route('admin.course.edit', $course->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                
+                                @if (Auth::guard('admin')->user()->can('edit.course'))
+                                    <a href="{{ route('admin.course.edit', $course->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.course.destroy', $course->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.course'))
+                                    <a href="{{ route('admin.course.destroy', $course->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>
@@ -71,7 +76,7 @@
                 </tbody>
             </table>
         </div>
-        
+
     </div>
 
     @push('scripts')

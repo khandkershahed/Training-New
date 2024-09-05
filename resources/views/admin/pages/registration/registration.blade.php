@@ -54,9 +54,9 @@
                             <td class="text-start">{{ optional($registration->courseName)->name }}</td>
                             <td class="text-start">{{ $registration->course_type }}</td>
                             @if ($registration->course_amount == null)
-                            <td class="text-start text-danger">No Payment</td>
+                                <td class="text-start text-danger">No Payment</td>
                             @else
-                            <td class="text-start">Tk {{ $registration->course_amount }}</td>
+                                <td class="text-start">Tk {{ $registration->course_amount }}</td>
                             @endif
                             <td class="text-start">
                                 {{ \Carbon\Carbon::parse($registration->course_register_date)->format('F j, Y') }}
@@ -81,21 +81,21 @@
                                     </a>
                                 @endif
 
-
                             </td>
 
-
                             <td>
-
 
                                 <a style="cursor: pointer" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $registration->id }}" title="Details">
                                     <i class="bi bi-view-list text-primary fs-3"></i>
                                 </a>
 
-                                <a href="{{ route('admin.delete.registration', $registration->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger fs-3"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.registration'))
+                                    <a href="{{ route('admin.delete.registration', $registration->id) }}"
+                                        class="delete">
+                                        <i class="bi bi-trash3-fill text-danger fs-3"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

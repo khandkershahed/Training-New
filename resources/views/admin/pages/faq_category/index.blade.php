@@ -38,13 +38,18 @@
 
                             <td>{{ $faq->name }}</td>
                             <td>
-                                <a href="{{ route('admin.faq_category.edit', $faq->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
 
-                                <a href="{{ route('admin.faq_category.destroy', $faq->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.faq-category'))
+                                    <a href="{{ route('admin.faq_category.edit', $faq->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
+
+                                @if (Auth::guard('admin')->user()->can('delete.faq-category'))
+                                    <a href="{{ route('admin.faq_category.destroy', $faq->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

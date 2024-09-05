@@ -42,7 +42,8 @@
                             <td>{{ $key + 1 }}</td>
                             <td class="">
 
-                                <img class="" src="{{ asset('storage/course_section/' . $item->banner_image) }}" height="40" width="40" alt="">
+                                <img class="" src="{{ asset('storage/course_section/' . $item->banner_image) }}"
+                                    height="40" width="40" alt="">
 
 
                             </td>
@@ -50,14 +51,19 @@
                             <td class="text-start">{{ $item->name }}</td>
                             <td class="text-start">{{ $item->header }}</td>
                             <td>
-                                <a href="{{ route('admin.course_section.edit', $item->id) }}"
-                                    class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
 
-                                <a href="{{ route('admin.course_section.destroy', $item->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.course-section'))
+                                    <a href="{{ route('admin.course_section.edit', $item->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
+
+                                @if (Auth::guard('admin')->user()->can('delete.course-section'))
+                                    <a href="{{ route('admin.course_section.destroy', $item->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
+
 
                             </td>
                         </tr>

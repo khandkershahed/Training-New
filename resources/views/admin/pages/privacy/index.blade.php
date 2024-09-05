@@ -58,13 +58,18 @@
                                             class="bi bi-hand-thumbs-up text-success fs-3"></i></a>
                                 @endif
 
-                                <a href="{{ route('admin.privacy-policy.edit', $item->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.privacy'))
+                                    <a href="{{ route('admin.privacy-policy.edit', $item->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.privacy-policy.destroy', $item->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.privacy'))
+                                    <a href="{{ route('admin.privacy-policy.destroy', $item->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
+
 
                             </td>
                         </tr>

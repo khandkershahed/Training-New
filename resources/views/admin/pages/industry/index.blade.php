@@ -51,13 +51,18 @@
                             <td class="text-start">{{ $industry->name }}</td>
                             <td class="text-start">{{ $industry->header }}</td>
                             <td>
-                                <a href="{{ route('admin.industry.edit', $industry->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
 
-                                <a href="{{ route('admin.industry.destroy', $industry->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.industry'))
+                                    <a href="{{ route('admin.industry.edit', $industry->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
+
+                                @if (Auth::guard('admin')->user()->can('delete.industry'))
+                                    <a href="{{ route('admin.industry.destroy', $industry->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

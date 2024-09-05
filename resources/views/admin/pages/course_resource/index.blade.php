@@ -40,15 +40,21 @@
                             <td class="text-start">{{ $courseCurriculam->courseName->name }}</td>
                             <td class="text-start">{{ $courseCurriculam->courseCurriculum->title }}</td>
                             <td>
-                                <a href="{{ route('admin.course_resource.edit', $courseCurriculam->id) }}"
-                                    class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
 
-                                <a href="{{ route('admin.course_resource.destroy', $courseCurriculam->id) }}"
-                                    class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.resource'))
+                                    <a href="{{ route('admin.course_resource.edit', $courseCurriculam->id) }}"
+                                        class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
+
+                                @if (Auth::guard('admin')->user()->can('delete.resource'))
+                                    <a href="{{ route('admin.course_resource.destroy', $courseCurriculam->id) }}"
+                                        class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
+
 
                             </td>
                         </tr>

@@ -57,13 +57,18 @@
                             <td class="text-start">{{ $item->title }}</td>
                             <td class="text-start">{{ $item->course_id }}</td>
                             <td>
-                                <a href="{{ route('admin.course_project.edit', $item->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                
+                                @if (Auth::guard('admin')->user()->can('edit.project'))
+                                    <a href="{{ route('admin.course_project.edit', $item->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.course_project.destroy', $item->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.project'))
+                                    <a href="{{ route('admin.course_project.destroy', $item->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

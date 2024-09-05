@@ -52,9 +52,11 @@
                                     <i class="bi bi-pencil text-primary"></i>
                                 </a> --}}
 
-                                <a href="{{ route('admin.course_query.destroy', $query->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.course-query'))
+                                    <a href="{{ route('admin.course_query.destroy', $query->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

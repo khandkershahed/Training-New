@@ -43,13 +43,20 @@
                                     {{-- <a href="{{ route('homepage.show', $home->id) }}" class="text-info">
                                         <i class="icon-eye"></i>
                                     </a> --}}
-                                    <a href="{{ route('admin.homepage.edit', $home->id) }}" class="text-primary">
-                                        <i class="bi bi-pencil text-primary"></i>
-                                    </a>
-                                    <a href="{{ route('admin.homepage.destroy', $home->id) }}"
-                                        class="text-danger delete mx-2">
-                                        <i class="bi bi-trash3-fill text-danger"></i>
-                                    </a>
+
+                                    @if (Auth::guard('admin')->user()->can('edit.homepage'))
+                                        <a href="{{ route('admin.homepage.edit', $home->id) }}" class="text-primary">
+                                            <i class="bi bi-pencil text-primary"></i>
+                                        </a>
+                                    @endif
+
+                                    @if (Auth::guard('admin')->user()->can('delete.homepage'))
+                                        <a href="{{ route('admin.homepage.destroy', $home->id) }}"
+                                            class="text-danger delete mx-2">
+                                            <i class="bi bi-trash3-fill text-danger"></i>
+                                        </a>
+                                    @endif
+
                                 </td>
                             </tr>
                         @endforeach

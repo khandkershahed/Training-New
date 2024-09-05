@@ -59,13 +59,17 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('admin.coupon.edit', $coupon->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.coupon'))
+                                    <a href="{{ route('admin.coupon.edit', $coupon->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.coupon.destroy', $coupon->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.coupon'))
+                                    <a href="{{ route('admin.coupon.destroy', $coupon->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

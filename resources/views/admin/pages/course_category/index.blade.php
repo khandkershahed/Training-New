@@ -42,7 +42,9 @@
                             <td>{{ $key + 1 }}</td>
                             <td class="">
 
-                                <img class="" src="{{ asset('storage/course_category/' . $courseCat->banner_image) }}" height="40" width="40" alt="">
+                                <img class=""
+                                    src="{{ asset('storage/course_category/' . $courseCat->banner_image) }}"
+                                    height="40" width="40" alt="">
 
 
                             </td>
@@ -50,14 +52,20 @@
                             <td class="text-start">{{ $courseCat->name }}</td>
                             <td class="text-start">{{ $courseCat->header }}</td>
                             <td>
-                                <a href="{{ route('admin.course_category.edit', $courseCat->id) }}"
-                                    class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
 
-                                <a href="{{ route('admin.course_category.destroy', $courseCat->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.course-category'))
+                                    <a href="{{ route('admin.course_category.edit', $courseCat->id) }}"
+                                        class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
+
+                                @if (Auth::guard('admin')->user()->can('delete.course-category'))
+                                    <a href="{{ route('admin.course_category.destroy', $courseCat->id) }}"
+                                        class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

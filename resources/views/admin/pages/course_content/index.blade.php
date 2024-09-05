@@ -38,13 +38,20 @@
 
                             <td class="text-start">{{ $courseContent->course->name }}</td>
                             <td>
-                                <a href="{{ route('admin.course_content.edit', $courseContent->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+                                
+                                @if (Auth::guard('admin')->user()->can('edit.course-content'))
+                                    <a href="{{ route('admin.course_content.edit', $courseContent->id) }}"
+                                        class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
-                                <a href="{{ route('admin.course_content.destroy', $courseContent->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('delete.course-content'))
+                                    <a href="{{ route('admin.course_content.destroy', $courseContent->id) }}"
+                                        class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

@@ -40,13 +40,21 @@
                                 <td>{{ isset($words[$key]) ? 'Banner' . ' ' . Str::ucfirst($words[$key]) : 'Number out of range' }}
                                 </td>
                                 <td class="">
-                                    <a href="{{ route('admin.common_banner.edit', $item->id) }}" class="text-primary">
-                                        <i class="bi bi-pencil text-primary"></i>
-                                    </a>
-                                    <a href="{{ route('admin.common_banner.destroy', $item->id) }}"
-                                        class="text-danger delete mx-2">
-                                        <i class="bi bi-trash3-fill text-danger"></i>
-                                    </a>
+
+                                    @if (Auth::guard('admin')->user()->can('edit.common-banner'))
+                                        <a href="{{ route('admin.common_banner.edit', $item->id) }}"
+                                            class="text-primary">
+                                            <i class="bi bi-pencil text-primary"></i>
+                                        </a>
+                                    @endif
+
+                                    @if (Auth::guard('admin')->user()->can('delete.common-banner'))
+                                        <a href="{{ route('admin.common_banner.destroy', $item->id) }}"
+                                            class="text-danger delete mx-2">
+                                            <i class="bi bi-trash3-fill text-danger"></i>
+                                        </a>
+                                    @endif
+                                    
                                 </td>
                             </tr>
                         @endforeach

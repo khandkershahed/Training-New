@@ -42,7 +42,8 @@
                             <td>{{ $key + 1 }}</td>
                             <td class="">
 
-                                <img class="" src="{{ asset('storage/service/' . $service->banner_image) }}" height="40" width="40" alt="">
+                                <img class="" src="{{ asset('storage/service/' . $service->banner_image) }}"
+                                    height="40" width="40" alt="">
 
 
                             </td>
@@ -50,14 +51,18 @@
                             <td class="text-start">{{ $service->name }}</td>
                             <td class="text-start">{{ $service->header }}</td>
                             <td>
-                                <a href="{{ route('admin.service.edit', $service->id) }}"
-                                    class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
 
-                                <a href="{{ route('admin.service.destroy', $service->id) }}" class="delete">
-                                    <i class="bi bi-trash3-fill text-danger"></i>
-                                </a>
+                                @if (Auth::guard('admin')->user()->can('edit.service'))
+                                    <a href="{{ route('admin.service.edit', $service->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
+
+                                @if (Auth::guard('admin')->user()->can('delete.service'))
+                                    <a href="{{ route('admin.service.destroy', $service->id) }}" class="delete">
+                                        <i class="bi bi-trash3-fill text-danger"></i>
+                                    </a>
+                                @endif
 
                             </td>
                         </tr>

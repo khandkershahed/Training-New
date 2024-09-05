@@ -57,7 +57,6 @@
 
                  </div>
 
-
                  {{-- Course  --}}
                  <div data-kt-menu-trigger="click"
                      class="menu-item menu-accordion {{ Request::routeIs('admin.service.index', 'admin.course_category.index', 'admin.course.index', 'admin.course_curriculam.index', 'admin.course_resource.index', 'admin.course_project.index', 'admin.course_section.index', 'admin.course_outline.index', 'admin.course_schedule.index', 'admin.course_content.index', 'admin.course_query.index', 'admin.course_management.index', 'admin.coupon.index') ? 'here show' : '' }}">

@@ -49,9 +49,12 @@
 
                             <td class="text-start">{{ $item->row_two_title }}</td>
                             <td>
-                                <a href="{{ route('admin.about.edit', $item->id) }}" class="text-primary">
-                                    <i class="bi bi-pencil text-primary"></i>
-                                </a>
+
+                                @if (Auth::guard('admin')->user()->can('edit.about'))
+                                    <a href="{{ route('admin.about.edit', $item->id) }}" class="text-primary">
+                                        <i class="bi bi-pencil text-primary"></i>
+                                    </a>
+                                @endif
 
                                 {{-- <a href="{{ route('admin.about.destroy', $item->id) }}" class="delete">
                                     <i class="bi bi-trash3-fill text-danger"></i>
