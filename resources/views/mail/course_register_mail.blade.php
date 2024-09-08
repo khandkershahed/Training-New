@@ -88,7 +88,9 @@
                                             signing up!
                                         </p>
                                         <p style="margin-bottom: 2px; color: #7e8299">
-                                            Congratulations! You have registered for this course successfully. Please  log <br> in to your dashboard for further details and make the payment as soon as possible
+                                            Congratulations! You have registered for this course successfully. Please
+                                            log <br> in to your dashboard for further details and make the payment as
+                                            soon as possible
                                         </p>
                                     </div>
                                     <a href="https://training.ngengroup.org/login" target="_blank"
@@ -114,8 +116,7 @@
                                     style="background: #f9f9f9;border-radius: 12px;padding: 35px 30px;text-align: left;margin: 0 auto;width: 65%;">
 
                                     {{-- New Box --}}
-                                    <div
-                                        style="display: flex;align-items: center;margin-bottom: 15px;">
+                                    <div style="display: flex;align-items: center;margin-bottom: 15px;">
                                         <div
                                             style="display: flex;justify-content: center;align-items: center;width: 40px;height: 40px;margin-right: 13px;position: relative;">
                                             <img alt="Logo"
@@ -126,23 +127,21 @@
                                             </span>
                                         </div>
                                         <div>
-                                            <div
-                                                style="display: flex;align-items: center;margin-bottom: 5px;">
+                                            <div style="display: flex;align-items: center;margin-bottom: 5px;">
                                                 <a href="#" target="_blank"
                                                     style="text-decoration: none;color: #181c32;font-size: 16px;font-weight: 600;">
                                                     Register Course:
                                                 </a>
                                             </div>
                                             <span style="color: #7e8299">
-                                                {{ $mailData['course_name'] }}
+                                                {{-- {{ $mailData->courseName->name }} --}}
                                             </span>
                                         </div>
                                     </div>
-                                    {{-- New Box End--}}
+                                    {{-- New Box End --}}
 
-                                    {{-- Email Box Start--}}
-                                    <div
-                                        style="display: flex;align-items: center;margin-bottom: 15px;">
+                                    {{-- Email Box Start --}}
+                                    <div style="display: flex;align-items: center;margin-bottom: 15px;">
                                         <div
                                             style="display: flex;justify-content: center;align-items: center;width: 40px;height: 40px;margin-right: 13px;position: relative;">
                                             <img alt="Logo"
@@ -153,8 +152,7 @@
                                             </span>
                                         </div>
                                         <div>
-                                            <div
-                                                style="display: flex;align-items: center;margin-bottom: 5px;">
+                                            <div style="display: flex;align-items: center;margin-bottom: 5px;">
                                                 <a href="#" target="_blank"
                                                     style="text-decoration: none;color: #181c32;font-size: 16px;font-weight: 600;">
                                                     Your Email:
@@ -202,10 +200,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="center" valign="top" style="padding-bottom: 10px; padding-top: 30px; text-align: center">
+                            <td align="center" valign="top"
+                                style="padding-bottom: 10px; padding-top: 30px; text-align: center">
                                 <div style="font-size: 13px">
                                     <p style="color: #7e8299; margin-bottom: 8px">
-                                        If you have any questions, feel free to reach out us <a href="mailto:support@ngenitltd.com"
+                                        If you have any questions, feel free to reach out us <a
+                                            href="mailto:support@ngenitltd.com"
                                             style="color: #009ef7; text-decoration: none">support@ngenitltd.com</a>
                                     </p>
                                     <p style="color: #7e8299; margin-bottom: 10px">
@@ -220,6 +220,7 @@
         </div>
     </div>
 </body>
+
 </html>
 
 

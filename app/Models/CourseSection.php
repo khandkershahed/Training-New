@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\HasSlug;
 
 class CourseSection extends Model
 {
@@ -17,7 +17,7 @@ class CourseSection extends Model
      * @var array
      */
     protected $guarded = [];
-    
+
     public function courses()
     {
         return $this->hasMany(Course::class);
@@ -26,5 +26,10 @@ class CourseSection extends Model
     public function users()
     {
         return $this->hasMany(UserCourseRegistration::class);
+    }
+
+    public function coursesCount()
+    {
+        return $this->hasMany(Course::class, 'course_section_id');
     }
 }

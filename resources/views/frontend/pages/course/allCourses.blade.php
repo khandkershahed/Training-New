@@ -96,6 +96,7 @@
 
                 <div class="row" id="servicesContainer">
                     @forelse ($courses as $course)
+                    
                         <div class="col-lg-3 mb-4">
                             <div class="card border-0 bg-light shadow-sm rounded-2">
                                 <div class="card-header p-0 bg-transparent">

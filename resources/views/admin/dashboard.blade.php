@@ -145,7 +145,7 @@
             <!-- Code to execute if the user is a Super Admin -->
         @endif --}}
 
-        @endif
+        
         <div class="col-xl-4">
             <div class="card card-flush h-md-100 mb-5 mb-xl-10">
                 <div class="card-header pt-5">
