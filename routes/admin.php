@@ -250,42 +250,41 @@ Route::post('/paid-course-registration/update/{id}', [RegistrationController::cl
 Route::get('/register-user/inactive/{id}', [UserManagementController::class, 'userInactive'])->name('user-register.inactive');
 Route::get('/register-user/active/{id}', [UserManagementController::class, 'userActive'])->name('user-register.active');
 
-Route::controller(RoleController::class)->group(function () {
+// Role In Permission
+Route::middleware(['auth:admin'])->group(function () {
 
-    //Permission
-    Route::get('/all/permission', 'AllPermission')->name('all.permission');
-    Route::post('/store/permission', 'StorePermission')->name('store.permission');
-    Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
-    Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
-    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+    Route::controller(RoleController::class)->group(function () {
 
-    //Group Name
-    // Route::get('/all/group-name', 'AllGroupName')->name('all.group.name');
-    // Route::post('/store/group-name', 'StoreGroupName')->name('store.group.name');
-    // Route::post('/update/group-name', 'UpdateGroupName')->name('update.group.name');
-    // Route::get('/delete/group-name/{id}', 'DeleteGroupName')->name('delete.group.name');
+        //Permission
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+        Route::post('/store/permission', 'StorePermission')->name('store.permission');
+        Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+        Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+        Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
 
-    //Role
-    Route::get('/all/role', 'AllRole')->name('all.role');
-    Route::post('/store/role', 'StoreRole')->name('store.role');
-    Route::post('/update/role', 'UpdateRole')->name('update.role');
-    Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
+        //Role
+        Route::get('/all/role', 'AllRole')->name('all.role');
+        Route::post('/store/role', 'StoreRole')->name('store.role');
+        Route::post('/update/role', 'UpdateRole')->name('update.role');
+        Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
 
-    //Role In Permission
-    Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
-    Route::post('/role/permission/store', 'RolePermissionStore')->name('store.roles.permission');
-    Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
-    Route::get('/admin/edit/roles/{id}', 'AdminRolesEdit')->name('admin.edit.roles');
-    Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
-    Route::get('/admin/delete/roles/{id}', 'AdminRolesDelete')->name('admin.delete.roles');
+        //Role In Permission
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store', 'RolePermissionStore')->name('store.roles.permission');
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+        Route::get('/admin/edit/roles/{id}', 'AdminRolesEdit')->name('admin.edit.roles');
+        Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+        Route::get('/admin/delete/roles/{id}', 'AdminRolesDelete')->name('admin.delete.roles');
 
-    //Admin Role Permission
-    Route::get('/admin-all', 'AdminPermission')->name('all.admin.permission');
-    Route::post('/admin-store', 'StoreAdminPermission')->name('store.admin.permission');
-    Route::get('/admin-edit/{id}', 'EditAdminPermission')->name('edit.admin.permission');
-    Route::post('/admin-update/{id}', 'UpdateAdmin')->name('update.admin');
-    Route::get('/admin-delete/{id}', 'DeleteAdmin')->name('delete.admin');
+        //Admin Role Permission
+        Route::get('/admin-all', 'AdminPermission')->name('all.admin.permission');
+        Route::post('/admin-store', 'StoreAdminPermission')->name('store.admin.permission');
+        Route::get('/admin-edit/{id}', 'EditAdminPermission')->name('edit.admin.permission');
+        Route::post('/admin-update/{id}', 'UpdateAdmin')->name('update.admin');
+        Route::get('/admin-delete/{id}', 'DeleteAdmin')->name('delete.admin');
 
-    Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
-    Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
+        Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
+        Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
+    });
+
 });

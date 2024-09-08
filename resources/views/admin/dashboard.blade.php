@@ -53,7 +53,7 @@
                     style="background-image:url('https://preview.keenthemes.com/metronic8/demo1/assets/media/svg/shapes/top-green.png"
                     data-bs-theme="light">
                     <h3 class="card-title align-items-start flex-column text-white pt-15">
-                        <span class="fw-bold fs-2x mb-3">Student Enrolled</span>
+                        <span class="fw-bold fs-2x mb-3">Information</span>
                     </h3>
                 </div>
 
@@ -97,6 +97,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
                                             <i class="fa-solid fa-award fs-1 text-primary"><span
@@ -106,8 +107,8 @@
                                     </div>
 
                                     <div class="m-0">
-                                        <span
-                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($monthlyRegister) }}</span>
+                                        <a href="{{ route('admin.all.registration') }}"
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($monthlyRegister) }}</a>
 
                                         <span class="text-gray-500 fw-semibold fs-6">Monthly Enrolled</span>
                                     </div>
@@ -115,20 +116,22 @@
                             </div>
                             <div class="col-6">
                                 <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <i class="fa-solid fa-timer fs-1 text-primary"><span
+                                            <i class="fa-solid fa-award fs-1 text-primary"><span
                                                     class="path1"></span><span class="path2"></span><span
                                                     class="path3"></span></i>
                                         </span>
                                     </div>
 
                                     <div class="m-0">
-                                        <span
-                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($dayRegister) }}</span>
+                                        <a href="{{ route('admin.all.registration') }}"
+                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ count($dayRegister) }}</a>
 
                                         <span class="text-gray-500 fw-semibold fs-6">Today Enrolled</span>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -137,29 +140,32 @@
             </div>
 
         </div>
+
+        {{-- @if (Auth::guard('admin')->user()->hasRole('Super Admin'))
+            <!-- Code to execute if the user is a Super Admin -->
+        @endif --}}
+
+        @endif
         <div class="col-xl-4">
             <div class="card card-flush h-md-100 mb-5 mb-xl-10">
                 <div class="card-header pt-5">
                     <div class="card-title d-flex flex-column">
                         <div class="d-flex align-items-center">
-                            {{-- <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span> --}}
-
                             <span
                                 class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ number_format($paidAmount, 2) }}
                                 Tk</span>
 
-                            <span class="badge badge-light-success fs-base">
+                            {{-- <span class="badge badge-light-success fs-base">
                                 <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1"><span
                                         class="path1"></span><span class="path2"></span></i>
                                 2.2%
-                            </span>
+                            </span> --}}
                         </div>
                         <span class="text-gray-500 pt-1 fw-semibold fs-6">Total Earnings</span>
                     </div>
                 </div>
                 <div class="card-body pt-2 pb-4 d-flex align-items-center flex-column">
 
-                    {{-- ======================== --}}
 
                     <div class="d-flex flex-center me-5 pt-20">
                         <div id="kt_card_widget_1_chart" style="min-width: 150px; min-height: 100px" data-kt-size="150"
@@ -167,16 +173,8 @@
                         </div>
                     </div>
 
-                    {{-- ================================== --}}
-
                     <div class="d-flex flex-column content-justify-center w-100 pt-20">
 
-
-                        {{-- <div class="d-flex fs-6 fw-semibold align-items-center">
-                            <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
-                            <div class="text-gray-500 flex-grow-1 me-4">Unpaid Amount</div>
-                            <div class="fw-bolder text-gray-700 text-xxl-end">{{ number_format($unpaidAmount, 2) }}</div>
-                        </div> --}}
 
                         <div class="d-flex fs-6 fw-semibold align-items-center my-3">
                             <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
@@ -189,6 +187,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-xl-12">
             <div class="card card-flush">
                 <div class="card-header pt-5">
@@ -252,6 +251,7 @@
 
             </div>
         </div>
+
     </div>
     @push('scripts')
         <script>

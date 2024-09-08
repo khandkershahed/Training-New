@@ -82,16 +82,7 @@
                                 </li>
                             @endforeach
 
-                            {{-- <li class="nav-item" role="presentation">
-                                <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="profile-tab"
-                                    data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab"
-                                    aria-controls="profile-tab-pane" aria-selected="false">Industrial Courses</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link faq-nav-link border-0 rounded-0 text-start w-100" id="contact-tab"
-                                    data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab"
-                                    aria-controls="contact-tab-pane" aria-selected="false">Professional Courses</button>
-                            </li> --}}
+                            
 
                         </ul>
                     </div>
@@ -163,18 +154,7 @@
                                     </div>
                                 @endforeach
 
-                                {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                                        aria-labelledby="profile-tab" tabindex="0">
-    
-                                        Test 2
-                                    </div>
-    
-                                    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel"
-                                        aria-labelledby="contact-tab" tabindex="0">
-    
-                                        Test 3
-                                    </div> --}}
-
+                                
                             </div>
 
                         </div>
