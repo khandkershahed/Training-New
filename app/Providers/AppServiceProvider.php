@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Exception;
+use App\Models\Service;
 use App\Models\Setting;
 use App\Models\CommonBanner;
 use Illuminate\Pagination\Paginator;
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::share('setting', null);
         View::share('common_banner', null);
+        View::share('services', null);
 
         try {
             // Check for table existence and set actual values
@@ -37,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
 
             if (Schema::hasTable('common_banners')) {
                 View::share('common_banner', CommonBanner::first());
+            }
+            if (Schema::hasTable('services')) {
+                View::share('services', Service::latest('id')->get());
             }
         } catch (Exception $e) {
             // Log the exception if needed

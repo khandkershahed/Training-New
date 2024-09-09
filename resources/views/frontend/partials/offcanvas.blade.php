@@ -15,28 +15,35 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
                     href="{{ route('homepage') }}">Home</a></li>
-            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link" href="{{ route('about') }}">All
-                    Courses</a></li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
+                    href="{{ route('courses.all') }}">All Courses</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle mobile-menu-link text-white" href="#" id="navbarDropdown"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Services
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
+                <ul class="dropdown-menu py-0 rounded-0 border-0" style="background: #001430; top:57px;">
+                    <li class="p-1"><a class="dropdown-item text-white menu-drop"
+                            href="{{ route('service.all') }}">All
+                            Services</a>
                     </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    @foreach ($services as $sercice)
+                        <li class="p-1"><a class="dropdown-item text-white menu-drop"
+                                href="{{ url('/services/details/' . $sercice->id . '/' . $sercice->slug) }}">{{ $sercice->name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </li>
             <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
-                    href="{{ route('contact') }}">Course Registration</a></li>
+                    href="{{ route('all.category') }}">Category</a></li>
             <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
-                    href="{{ route('contact') }}">About Us</a></li>
+                    href="{{ route('course.registration') }}">Course Registration</a></li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
+                    href="{{ route('login') }}">Login</a></li>
             <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
                     href="{{ route('contact') }}">Contact Us</a></li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
+                    href="{{ route('about') }}">About</a></li>
         </ul>
     </div>
 </div>
@@ -65,15 +72,14 @@
                     $courses = App\Models\Course::latest('id')->get();
                 @endphp
                 <div class="container">
-                    <form action="{{ route('course.query.store') }}" method="post"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('course.query.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="">Course</label>
-                                    <select class="form-select form-select-sm" required name="course_id" aria-label="Select Course"
-                                        data-placeholder="Select Course">
+                                    <select class="form-select form-select-sm" required name="course_id"
+                                        aria-label="Select Course" data-placeholder="Select Course">
                                         <option value="" disabled selected>Select Course</option>
                                         @foreach ($courses as $course)
                                             <option value="{{ $course->id }}">{{ $course->name }}</option>
