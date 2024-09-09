@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\CommonBanner;
+use Exception;
 use App\Models\Setting;
+use App\Models\CommonBanner;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -25,14 +26,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        if (Schema::hasTable('settings')) {
-            View::share('setting', Setting::first());
-        }
-        Paginator::useBootstrap();
+        View::share('setting', null);
+        View::share('common_banner', null);
 
-        if (Schema::hasTable('common_banners')) {
-            View::share('common_banner', CommonBanner::first());
+        try {
+            // Check for table existence and set actual values
+            if (Schema::hasTable('settings')) {
+                View::share('setting', Setting::first());
+            }
+
+            if (Schema::hasTable('common_banners')) {
+                View::share('common_banner', CommonBanner::first());
+            }
+        } catch (Exception $e) {
+            // Log the exception if needed
         }
+
         Paginator::useBootstrap();
 
     }
