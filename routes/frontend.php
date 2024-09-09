@@ -93,4 +93,7 @@ Route::get('/verify/{activation_code}', [HomeController::class, 'verifyEmail'])
     ->name('verification.verify');
 
 // Route::get('/verify/{activation_code}', 'App\Http\Controllers\Auth\VerificationController@verify')->name('verification.verify');
+// In routes/web.php or routes/api.php
+
+
 

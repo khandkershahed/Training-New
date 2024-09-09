@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Mail\CourseRegister;
 use App\Models\AboutUs;
+use App\Models\Admin;
 use App\Models\Contact;
 use App\Models\Course;
 use App\Models\CourseCategory;
@@ -24,11 +25,13 @@ use App\Models\Setting;
 use App\Models\TermsCondition;
 use App\Models\User;
 use App\Models\UserCourseRegistration;
+use App\Notifications\UserRegistrationNotification;
 use id;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
@@ -252,14 +255,18 @@ class HomeController extends Controller
             ]);
 
             $user = User::findOrFail($user_id);
+            // $course = Course::findOrFail($request->course_id);
             // Send email for new user creation
             $data = [
                 'name' => $user->name,
                 'email' => $user->email,
                 'phone' => $user->phone,
+                // 'course_name' => $course->name,
             ];
             Mail::to($user->email)->send(new CourseRegister($data));
         }
+
+        
 
         // Check if the user has already registered for the same course
         $existingRegistration = UserCourseRegistration::where('user_id', $user->id)
@@ -288,17 +295,19 @@ class HomeController extends Controller
 
         // Fetch course information
         $course = Course::findOrFail($request->course_id);
-
-        // Prepare email data
         $data = [
             'name' => $user->name,
             'email' => $user->email,
             'phone' => $user->phone,
             'course_name' => $course->name,
         ];
-
         // Send email after registration
         Mail::to($user->email)->send(new CourseRegister($data));
+
+        //Notification
+        $admin = Admin::where('status', 'active')->get();
+        Notification::send($admin, new UserRegistrationNotification($request->name));
+        //Notification
 
         // Redirect with success message
         return redirect()->route('login')->with('success', 'Course Registered Successfully! Please check your email.');
@@ -705,5 +714,7 @@ class HomeController extends Controller
 
         return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
+
+    
 
 }
