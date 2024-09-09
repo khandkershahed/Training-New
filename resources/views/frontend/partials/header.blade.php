@@ -462,10 +462,6 @@
 
                     <li class="nav-item">
 
-                        @php
-                            $services = App\Models\Service::latest()->get();
-                        @endphp
-
                         <div class="btn-group">
 
                             <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
