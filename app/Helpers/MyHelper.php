@@ -70,15 +70,16 @@ if (!function_exists('customUpload')) {
                 chmod($requestImgPath, 0755);
             }
 
-            $img = Image::read($mainFile);
-            $img->save("$uploadPath/$fileName");
-            if ($reqWidth !== null && $reqHeight !== null) {
-                $img->resize($reqWidth, $reqHeight, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
-                $img->save("$requestImgPath/$fileName");
-            }
+            // $img = Image::read($mainFile);
+            // $img->save("$uploadPath/$fileName");
+            // if ($reqWidth !== null && $reqHeight !== null) {
+            //     $img->resize($reqWidth, $reqHeight, function ($constraint) {
+            //         $constraint->aspectRatio();
+            //         $constraint->upsize();
+            //     });
+            //     $img->save("$requestImgPath/$fileName");
+            // }
+            $mainFile->storeAs($requestImgPath, $fileName);
         } else {
             $mainFile->storeAs('public/files/', $fileName);
         }
