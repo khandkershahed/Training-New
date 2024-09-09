@@ -48,7 +48,7 @@ if (!function_exists('customUpload')) {
         $fileName = $currentTime . '.' . $fileExtention;
 
         if (!is_dir($uploadPath)) {
-            if (!mkdir($uploadPath, 0777, true)) {
+            if (!mkdir($uploadPath, 0755, true)) {
                 abort(404, "Failed to create the directory: $uploadPath");
             }
         }
@@ -60,7 +60,7 @@ if (!function_exists('customUpload')) {
             //         abort(404, "Failed to create the directory: $requestImgPath");
             //     }
             // }
-            if (!Storage::exists($requestImgPath)) {
+            if (!is_dir($requestImgPath)) {
                 // Create directory
                 // $localPath = storage_path("app/$fullUploadPath");
                 if (!mkdir($requestImgPath, 0755, true)) {
