@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 if (!function_exists('handaleFileUpload')) {
     function handaleFileUpload(UploadedFile $file, $folder = 'default')
@@ -54,10 +55,19 @@ if (!function_exists('customUpload')) {
 
         if (strpos($mainFile->getMimeType(), 'image') === 0) {
             $requestImgPath = "{$uploadPath}/requestImg";
-            if (!is_dir($requestImgPath)) {
-                if (!mkdir($requestImgPath, 0777, true)) {
+            // if (!is_dir($requestImgPath)) {
+            //     if (!mkdir($requestImgPath, 0777, true)) {
+            //         abort(404, "Failed to create the directory: $requestImgPath");
+            //     }
+            // }
+            if (!Storage::exists($requestImgPath)) {
+                // Create directory
+                // $localPath = storage_path("app/$fullUploadPath");
+                if (!mkdir($requestImgPath, 0755, true)) {
                     abort(404, "Failed to create the directory: $requestImgPath");
                 }
+                // Ensure directory permissions are set correctly
+                chmod($requestImgPath, 0755);
             }
 
             $img = Image::read($mainFile);
