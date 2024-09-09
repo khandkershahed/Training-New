@@ -41,7 +41,7 @@
             
             <div class="row" id="servicesContainer">
                 @forelse ($services as $service)
-                    <div class="col-md-3 col-sm-6 service-item">
+                    <div class="col-md-3 col-sm-6 service-item mb-4">
                         <a href="{{ url('/services/details/' . $service->id . '/' . $service->slug) }}">
                             <div class="box-service">
                                 <img src="{{ asset('storage/service/' . $service->thumbnail_image) }}" />
