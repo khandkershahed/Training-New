@@ -1,12 +1,12 @@
 <section class="footer-area">
     <div class="container">
-        <div class="row text-white align-items-center py-3">
-            <div class="col-lg-3 p-4 text-lg-start text-center border-left-side">
+        <div class="row text-white align-items-center py-3 footer-areas">
+            <div class="col-lg-3 col-12 p-4 text-lg-start text-center border-left-side">
                 <div>
                     <p class="p-0 m-0 text-white fs-3 fw-bold"><span class="pe-2">Learn IT,</span>Lead IT</p>
                 </div>
             </div>
-            <div class="col-lg-2 p-4 text-start border-left-side">
+            <div class="col-lg-2 col-12 p-4 text-lg-start text-center border-left-side">
                 <div>
                     <a class="text-decoration-none text-white" href="{{ route('course.registration') }}">Course
                         Registration
@@ -24,7 +24,7 @@
                 $courseSections = App\Models\CourseSection::orderBy('name', 'ASC')->limit(3)->get();
             @endphp
 
-            <div class="col-lg-3 p-4 text-start border-left-side">
+            <div class="col-lg-3 col-12 p-4 text-lg-start text-center border-left-side">
                 <ul class="ms-0 ps-0" style="list-style-type: none">
 
                     @foreach ($courseSections as $courseSection)
@@ -40,7 +40,7 @@
                 </ul>
             </div>
 
-            <div class="col-lg-4 p-4 d-flex justify-content-between align-items-center social-area">
+            <div class="col-lg-4 col-12 p-4 d-flex justify-content-between align-items-center social-area">
                 <ul class="ms-0 ps-0" style="list-style-type: none">
                     <li class="pt-2">
                         <a class="text-white text-decoration-none" href="{{ route('service.all') }}" style="font-size: 15px;">
@@ -91,7 +91,7 @@
                     </div> --}}
                     <div class="d-flex align-items-center justify-content-between">
                         <small class="mb-0 text-white" style="font-size: 13px">
-                            © Copyright 2024 by NGEN IT LTD.
+                            © 2024 by NGEN IT LTD.
                         </small>
                         <div class="ps-5">
                             {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}
