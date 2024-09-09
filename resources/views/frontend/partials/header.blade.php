@@ -19,7 +19,7 @@
                         <div class="top-social">
 
                             @if (Auth::user())
-                                <div class="popover__wrapper me-5 w-100">
+                                <div class="popover__wrapper me-lg-5 me-100 w-100">
                                     <a href="#">
                                         <h2 class="popover__title mb-1 fw-bold aos-init aos-animate"
                                             data-aos="fade-left">
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="popover__wrapper me-5 w-100">
+                                <div class="popover__wrapper me-lg-5 me-100 w-100">
                                     <a href="#">
                                         <h2 class="popover__title mb-1 fw-bold aos-init aos-animate"
                                             data-aos="fade-left">

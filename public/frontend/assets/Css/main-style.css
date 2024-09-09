@@ -1637,6 +1637,9 @@ a:hover {
     .top-social {
         margin-left: 5px;
         display: flex;
+        align-items: center;
+        top: -8px;
+        position: relative;
     }
 
     .top-social a {
