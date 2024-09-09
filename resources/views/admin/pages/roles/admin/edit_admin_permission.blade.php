@@ -110,6 +110,20 @@
                                         </select>
                                     </div>
 
+                                    <div class="col-2">
+                                        <label for="">Mail Status</label>
+                                        <select name="mail_status" id="" class="form-select form-select-sm">
+                                            <option selected disabled>Select Mail Status</option>
+
+                                            <option value="mail" {{ $users->mail_status == 'mail' ? 'selected' : '' }}>
+                                                Mail</option>
+
+                                            <option value="no_mail"
+                                                {{ $users->mail_status == 'no_mail' ? 'selected' : '' }}>No Mail</option>
+
+                                        </select>
+                                    </div>
+
                                 </div>
 
 

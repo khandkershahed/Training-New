@@ -198,6 +198,9 @@ class RoleController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->status = $request->status;
+
+        $user->mail_status = $request->mail_status;
+
         $user->save();
 
         if ($request->roles) {
@@ -229,6 +232,9 @@ class RoleController extends Controller
         $user->phone = $request->phone;
 
         $user->email = $request->email;
+        $user->status = $request->status;
+        $user->mail_status = $request->mail_status;
+
         $user->save();
 
         $user->roles()->detach();

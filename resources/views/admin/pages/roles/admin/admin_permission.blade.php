@@ -96,6 +96,7 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Status</th>
+                                <th>Mail Status</th>
                                 <th>Action</th>
 
                             </tr>
@@ -120,11 +121,20 @@
                                             <span class="badge badge-pill bg-primary">No roles assigned</span>
                                         @endforelse
                                     </td>
+
                                     <td>
                                         @if ($user->status == 'active')
                                             <span class="badge badge-light-success">Active</span>
                                         @else
                                             <span class="badge badge-light-danger">inactive</span>
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        @if ($user->mail_status == 'mail')
+                                            <span class="badge badge-success">Mail</span>
+                                        @else
+                                            <span class="badge badge-danger">No Mail</span>
                                         @endif
                                     </td>
 
@@ -255,7 +265,7 @@
 
                         <div class="row">
 
-                            <div class="col-6">
+                            <div class="col-4">
                                 <div class="form-group">
                                     <label for="">Role</label>
 
@@ -269,12 +279,21 @@
                                 </div>
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-4">
                                 <label for="">Status</label>
                                 <select name="status" id="" class="form-select form-select-sm">
                                     <option selected disabled>Select Status</option>
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+
+                            <div class="col-4">
+                                <label for="">Mail Status</label>
+                                <select name="mail_status" id="" class="form-select form-select-sm">
+                                    <option selected disabled>Select Mail Status</option>
+                                    <option value="mail">Mail</option>
+                                    <option value="no_mail">No Mail</option>
                                 </select>
                             </div>
 

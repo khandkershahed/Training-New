@@ -2,39 +2,40 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Mail\CourseRegister;
-use App\Models\AboutUs;
-use App\Models\Admin;
-use App\Models\Contact;
-use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseCurriculum;
-use App\Models\CourseOutline;
-use App\Models\CourseProject;
-use App\Models\CourseQuery;
-use App\Models\CourseSchedule;
-use App\Models\CourseSection;
+use id;
 use App\Models\Faq;
-use App\Models\FaqCategory;
-use App\Models\HomePage;
-use App\Models\NewsTrend;
-use App\Models\PrivacyPolicy;
+use App\Models\User;
+use App\Models\Admin;
+use App\Models\Course;
+use App\Models\AboutUs;
+use App\Models\Contact;
 use App\Models\Service;
 use App\Models\Setting;
-use App\Models\TermsCondition;
-use App\Models\User;
-use App\Models\UserCourseRegistration;
-use App\Notifications\UserRegistrationNotification;
-use id;
+use App\Models\HomePage;
+use App\Models\NewsTrend;
+use App\Models\CourseQuery;
+use App\Models\FaqCategory;
+use Illuminate\Support\Str;
+use App\Mail\CourseRegister;
 use Illuminate\Http\Request;
+use App\Models\CourseOutline;
+use App\Models\CourseProject;
+use App\Models\CourseSection;
+use App\Models\PrivacyPolicy;
+use App\Models\CourseCategory;
+use App\Models\CourseSchedule;
+use App\Models\TermsCondition;
+use App\Models\CourseCurriculum;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Str;
+use App\Models\UserCourseRegistration;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Notification;
+use App\Mail\AdminCourseRegistrationNotification;
+use App\Notifications\UserRegistrationNotification;
 
 class HomeController extends Controller
 {
@@ -266,8 +267,6 @@ class HomeController extends Controller
             Mail::to($user->email)->send(new CourseRegister($data));
         }
 
-        
-
         // Check if the user has already registered for the same course
         $existingRegistration = UserCourseRegistration::where('user_id', $user->id)
             ->where('course_id', $request->course_id)
@@ -305,6 +304,14 @@ class HomeController extends Controller
         Mail::to($user->email)->send(new CourseRegister($data));
 
         //Notification
+        
+
+        $admins = Admin::where('mail_status', 'mail')->get();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new AdminCourseRegistrationNotification($user, $course));
+        }
+
         $admin = Admin::where('status', 'active')->get();
         Notification::send($admin, new UserRegistrationNotification($request->name));
         //Notification
@@ -714,7 +721,5 @@ class HomeController extends Controller
 
         return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
-
-    
 
 }
