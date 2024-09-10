@@ -996,6 +996,7 @@ a:hover {
 
 .courses-cat-slide {
     background-color: transparent;
+    cursor: pointer;
 }
 
 .owl-item .item {
@@ -1614,6 +1615,10 @@ a:hover {
         justify-content: center;
         align-items: center;
     }
+}
+.course-toggler-btn {
+    display: flex;
+    justify-content: end;
 }
 @media only screen and (max-width: 479px) {
     .box .title {

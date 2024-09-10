@@ -19,6 +19,29 @@
             }
         }
     </style>
+    <style>
+        .form-check-input {
+            width: 50px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .form-check-input:checked:focus {
+            box-shadow: none;
+        }
+
+        .form-switch .form-check-input {
+            width: 3em;
+        }
+        .form-switch .form-check-input:focus{
+            box-shadow: none;
+        }
+    </style>
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
 
     <section class="showcase">
@@ -392,49 +415,72 @@
                                             </p>
                                         </div>
                                         <div>
-                                            <div class="card join_offline">
-
+                                            <!-- Switch Toggle Button -->
+                                            <div class="d-flex align-items-center justify-content-center mb-3">
+                                                <!-- Offline Label -->
+                                                <label class="form-check-label me-1" for="toggleSwitch"
+                                                    id="offlineLabel">Offline</label>
+                                                <!-- Switch Toggle -->
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="toggleSwitch">
+                                                </div>
+                                                <!-- Online Label -->
+                                                <label class="form-check-label ms-1" for="toggleSwitch"
+                                                    id="onlineLabel">Online</label>
+                                            </div>
+                                            <!-- Offline Course Fee Section -->
+                                            <div id="offlineSection" class="card join_offline">
                                                 <div class="card-body">
-
                                                     <h5>Course Fee Offline</h5>
-
                                                     <h4 class="fw-bold py-2">BDT
-                                                        {{ number_format($coursedetail->price, 2) }}
-                                                    </h4>
-
+                                                        {{ number_format($coursedetail->price, 2) }}</h4>
                                                     <a type="submit" class="primary-btn-one add_to_cart_price"
                                                         data-course_id="{{ $coursedetail->id }}"
                                                         data-course_section_id="{{ $coursedetail->course_section_id }}"
                                                         data-course_category_id="{{ $coursedetail->course_category_id }}"
                                                         data-course_type="{{ $coursedetail->course_type }}"
-                                                        data-course_amount="{{ $coursedetail->price }}">Enroll
-                                                        Now
+                                                        data-course_amount="{{ $coursedetail->price }}">Enroll Now
                                                     </a>
-
                                                 </div>
-
                                             </div>
-
-                                            <div class="card join_offline">
+                                            <!-- Online Course Fee Section (Initially Hidden) -->
+                                            <div id="onlineSection" class="card join_offline d-none">
                                                 <div class="card-body">
-
                                                     <h5>Course Fee Online</h5>
-
                                                     <h4 class="fw-bold py-2">BDT
                                                         {{ number_format($coursedetail->online_price, 2) }}</h4>
-
                                                     <a type="submit" class="primary-btn-one add_to_cart_online_price"
                                                         data-course_id="{{ $coursedetail->id }}"
                                                         data-course_section_id="{{ $coursedetail->course_section_id }}"
                                                         data-course_category_id="{{ $coursedetail->course_category_id }}"
                                                         data-course_type="{{ $coursedetail->course_type }}"
-                                                        data-course_amount="{{ $coursedetail->online_price }}">Enroll
-                                                        Now
+                                                        data-course_amount="{{ $coursedetail->online_price }}">Enroll Now
                                                     </a>
-
                                                 </div>
                                             </div>
-
+                                        </div>
+                                        <div>
+                                            <h5>Need more information?</h5>
+                                            <a type="submit" href="{{ route('contact') }}" class="primary-btn-one add_to_cart_price w-100 rounded-0"
+                                                data-course_id="5" data-course_section_id="1" data-course_category_id="2"
+                                                data-course_type="offline" data-course_amount="15000">Contact Us
+                                            </a>
+                                            <div class="pt-3">
+                                                <a href="">
+                                                    <div class="d-flex align-items-center">
+                                                        <small><i class="fa-solid fa-headphones-simple pe-3"></i></small>
+                                                        <small>{{ optional($setting)->primary_phone ?? '(+88) 01958025050' }}</small>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="">
+                                                    <div class="d-flex align-items-center">
+                                                        <small><i class="fa-regular fa-envelope pe-3"></i></small>
+                                                        <small>{{ optional($setting)->primary_email ?? 'inquiry@ngenitltd.com' }}</small>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -512,7 +558,7 @@
                                                                 </div>
                                                                 <div class="pt-2">
                                                                     <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}"
-                                                                        class="primary-btn-one w-100 rounded-0">See
+                                                                        class="primary-btn-one w-100 rounded-0 rounded-0">See
                                                                         Details
                                                                         <i class="fa-solid fa-arrow-right ps-2"
                                                                             aria-hidden="true"></i></a>
@@ -653,6 +699,16 @@
                         showAccordionItems(visibleItems);
                     }
                 });
+            });
+        </script>
+        <script>
+            document.getElementById('toggleSwitch').addEventListener('change', function() {
+                const offlineSection = document.getElementById('offlineSection');
+                const onlineSection = document.getElementById('onlineSection');
+
+                // Toggle visibility of offline and online sections
+                offlineSection.classList.toggle('d-none');
+                onlineSection.classList.toggle('d-none');
             });
         </script>
     @endpush

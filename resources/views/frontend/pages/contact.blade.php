@@ -40,8 +40,8 @@
                     <div class="text-center pt-4">
                         <h5 class="">WRITE SOME WORDS</h5>
                         <p class=" pt-2">
-                            inquiry@ngenitltd.com <br />
-                            training@ngenitltd.com
+                            {{ optional($setting)->primary_email ?? 'inquiry@ngenitltd.com' }} <br />
+                            {{ optional($setting)->support_email ?? 'training@ngenitltd.com' }}
                         </p>
                     </div>
                 </div>
