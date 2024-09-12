@@ -8,11 +8,11 @@
                             <span><span class="fw-bold text-white">Hotline: </span>
                                 <a href="https://wa.me/{{ optional($setting)->whatsapp }}" class="text-white ps-2 fw-bold"
                                     target="_blank">
-                                    {{ optional($setting)->whatsapp ?? "01958-025050" }}
+                                    {{ optional($setting)->whatsapp ?? '01958-025050' }}
                                 </a> |
                                 <a href="mailto:{{ optional($setting)->primary_email }}" class="text-white fw-bold"
                                     target="_blank">
-                                    {{ optional($setting)->primary_email ?? "inquiry@ngenitltd.com"}}
+                                    {{ optional($setting)->primary_email ?? 'inquiry@ngenitltd.com' }}
                                 </a>
                             </span>
                         </p>
