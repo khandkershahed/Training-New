@@ -47,9 +47,9 @@
                             <h5 class="mb-0">{{ $about->row_two_badge }}</h5>
                         </div>
                         <div class="pt-3">
-                            <h1 class="main-color">
+                            <h3 class="main-color">
                                 {{ $about->row_two_title }}
-                            </h1>
+                            </h3>
                             <p class="para-description">
                                 {!! $about->row_two_description !!}
                             </p>
