@@ -9,9 +9,9 @@
         <section>
             <div class="slider">
                 @if (!empty(optional($homePage)->banner_one_image))
-                    {{-- <div class="slick-slide text-right banenr-main">
+                    <div class="slick-slide text-right banenr-main">
                         <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_one_image) }}" alt="Banner One Image" class="img-fluid">
-                    </div> --}}
+                    </div>
                     <!-- slick-slide -->
                 @endif
 
