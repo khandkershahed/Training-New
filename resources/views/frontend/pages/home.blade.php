@@ -189,7 +189,7 @@
                                 <div>
                                     <div class="card courses-cat-slide">
                                         <div class="card-body border-0 shadow-sm p-2">
-                                            <p class="mb-0 course_title">
+                                            <p class="mb-0 course_title p-3">
                                                 {{ $section->name }}
                                             </p>
                                             {{-- <div>

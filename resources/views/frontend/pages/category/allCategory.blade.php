@@ -82,7 +82,7 @@
                                 </li>
                             @endforeach
 
-                            
+
 
                         </ul>
                     </div>
@@ -113,7 +113,7 @@
                                             <div class="row" id="servicesContainer">
                                                 @forelse ($sectionWiseCats as $sectionWiseCat)
                                                     <div class="col-lg-4">
-                                                        <div class="card border-0 shadow-sm">
+                                                        <div class="card border-0 shadow-sm category-course-card">
                                                             <div class="card-header p-0">
                                                                 <div>
                                                                     <img class="img-fluid w-100 rounded-2"
@@ -130,12 +130,12 @@
                                                                 @php
                                                                     $description = $sectionWiseCat->description;
                                                                     $words = explode(' ', strip_tags($description));
-                                                                    $limitedWords = array_slice($words, 0, 18);
+                                                                    $limitedWords = array_slice($words, 0, 15);
                                                                     $limitedDescription = implode(' ', $limitedWords);
                                                                 @endphp
 
 
-                                                                <p>{!! $limitedDescription !!}.....</p>
+                                                                <p class="catagory-course-desc">{!! $limitedDescription !!}.....</p>
 
                                                                 <a href="{{ url('/category/details/' . $sectionWiseCat->id . '/' . $sectionWiseCat->slug) }}"
                                                                     class="primary-btn-one"> See Details <i
@@ -154,7 +154,7 @@
                                     </div>
                                 @endforeach
 
-                                
+
                             </div>
 
                         </div>
