@@ -93,7 +93,6 @@
 
 
                             <div class="tab-content" id="myTabContent">
-
                                 @foreach ($courseSections as $courseSection)
                                     <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
                                         id="home-{{ $courseSection->id }}-pane" role="tabpanel"
@@ -144,7 +143,10 @@
                                                         </div>
                                                     </div>
                                                 @empty
-                                                    <p>No Category Avaiable</p>
+
+                                                <div>
+                                                    <img src="{{ asset('frontend/images/no-category-found-iamge.jpg') }}" alt="">
+                                                </div>
                                                 @endforelse
                                             </div>
 
@@ -153,8 +155,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-
                             </div>
 
                         </div>
