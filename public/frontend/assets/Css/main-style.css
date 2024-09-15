@@ -299,11 +299,6 @@ a:hover {
 
 /* ==========================Banner Style Start============================= */
 
-.slick-list .draggable {
-    width: 100%;
-    height: 500px;
-}
-
 .slick-list {
     margin-top: -1px;
     margin-bottom: -1px;
@@ -312,7 +307,7 @@ a:hover {
 .slider .slick-slide {
     border: 0;
     z-index: 1;
-    height: 500px;
+    height: auto;
     position: relative;
     background-size: contain;
     background-repeat: no-repeat;
@@ -521,49 +516,11 @@ a:hover {
     }
 }
 /* Default styling for larger screens */
-.banenr-main {
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: 500px; /* Adjust as necessary */
-    object-fit: cover;
-}
-
-/* Tablet devices */
-@media (max-width: 768px) {
-    .banenr-main {
-        height: 400px; /* Slightly reduced height for smaller screens */
-        object-fit: cover;
-    }
-}
-
-/* Mobile devices */
-@media (max-width: 568px) {
-    .banenr-main {
-        width: 100%;
-        height: 7rem;
-        background-size: cover;
-        background-repeat: no-repeat;
-        object-fit: cover;
-    }
-}
 
 /* Extra small devices (e.g., older phones) */
 @media (max-width: 375px) {
-    .banenr-main {
-        height: 95px !important;
-    }
     .slick-dots li {
         display: none !important;
-    }
-    .showcase {
-        width: 100%;
-        height: 95px !important;
-        position: relative;
-        color: var(--white-color);
-        text-align: center;
-        object-fit: fill;
     }
     .section-title {
         padding-top: 15px;
@@ -1047,35 +1004,6 @@ a:hover {
 .menu-drop:hover {
     color: #00193d !important;
     background-color: var(--bs-dropdown-link-hover-bg);
-}
-.showcase img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Make the image cover the entire area */
-    top: 0;
-    left: 0;
-    z-index: 99;
-}
-
-.showcase .overlay {
-    width: 100%;
-    height: 400px;
-    background-color: rgba(0, 35, 82, 0.7);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}
-
-.showcase h2 {
-    margin-top: 170px;
-    font-size: 3em;
-}
-
-.showcase p {
-    margin-top: 8px;
-    font-size: 1.2em;
 }
 
 .cources-link {
@@ -2201,41 +2129,89 @@ a:hover {
     padding: 10px;
 }
 .showcase {
-    width: 100%;
-    height: 330px;
     position: relative;
     color: var(--white-color);
     text-align: center;
+}
+.showcase img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Make the image cover the entire area */
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+/* Mobile devices */
+.showcase .overlay {
+    width: 100%;
+    height: 400px;
+    background-color: rgba(0, 35, 82, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.showcase h2 {
+    margin-top: 170px;
+    font-size: 3em;
+}
+
+.showcase p {
+    margin-top: 8px;
+    font-size: 1.2em;
+}
+
+.showcase img {
+    width: 100%;
+    height: 330px; /* Default height */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+.banenr-main {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 330px; /* Adjust as necessary */
     object-fit: cover;
 }
-@media only screen and (max-width: 1280px) {
-    .showcase {
-        width: 100%;
-        height: 270px;
-        position: relative;
-        color: var(--white-color);
-        text-align: center;
-        object-fit: fill;
-    }
-}
 @media only screen and (max-width: 1350px) {
-    .showcase {
+    .showcase img {
+        height: 270px; /* Adjust image height */
+    }
+    .banenr-main {
         width: 100%;
         height: 270px;
-        position: relative;
-        color: var(--white-color);
-        text-align: center;
-        object-fit: fill;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
     }
 }
-@media only screen and (max-width: 412px) {
-    .showcase {
+
+@media only screen and (max-width: 999px) {
+    .showcase img {
+        height: 170px;
+    }
+    .banenr-main {
         width: 100%;
+        height: 170px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width: 412px) {
+    .showcase img {
         height: 70px !important;
-        position: relative;
-        color: var(--white-color);
-        text-align: center;
-        object-fit: fill;
+    }
+    .banenr-main {
+        width: 100%;
+        height: 70px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
     }
 }
 

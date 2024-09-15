@@ -9,28 +9,29 @@
         <section>
             <div class="slider">
                 @if (!empty(optional($homePage)->banner_one_image))
-                    <div class="slick-slide text-right banenr-main"
-                        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->banner_one_image) }})">
+                    <div class="slick-slide text-right banenr-main">
+                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_one_image) }}" alt="Banner One Image" class="img-fluid">
                     </div>
                     <!-- slick-slide -->
                 @endif
 
                 @if (!empty(optional($homePage)->banner_two_image))
-                    <div class="slick-slide text-right banenr-main"
-                        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->banner_two_image) }})">
+                    <div class="slick-slide text-right banenr-main">
+                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_two_image) }}" alt="Banner Two Image" class="img-fluid">
                     </div>
                     <!-- slick-slide -->
                 @endif
 
                 @if (!empty(optional($homePage)->banner_three_image))
-                    <div class="slick-slide text-right banenr-main"
-                        style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->banner_three_image) }})">
+                    <div class="slick-slide text-right banenr-main">
+                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_three_image) }}" alt="Banner Three Image" class="img-fluid">
                     </div>
                     <!-- slick-slide -->
                 @endif
             </div>
         </section>
     @endif
+
 
 
     <!-- Filter Section -->
