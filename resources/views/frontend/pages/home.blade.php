@@ -192,9 +192,9 @@
                                             <p class="mb-0 course_title">
                                                 {{ $section->name }}
                                             </p>
-                                            <div>
+                                            {{-- <div>
                                                 <small class="">• {{ $totalCourses }} Course</small>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
