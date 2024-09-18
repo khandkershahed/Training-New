@@ -42,7 +42,7 @@
               <div class="menu-item">
                 <a
                   class="menu-link"
-                  href="#"
+                  href="javascript:;"
                 >
                   <span class="menu-icon">
                     <i class="fa-solid fa-rocket fs-2">
@@ -84,14 +84,16 @@
                               <span class="menu-title">Course List</span>
                           </a>
                       </div>
-                      <div class="menu-item">
+
+                      {{-- <div class="menu-item">
                           <a class="menu-link" href="JavaScript:void(0)">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
                               <span class="menu-title">Add Category</span>
                           </a>
-                      </div>
+                      </div> --}}
+
                   </div>
               </div>
           </div>
