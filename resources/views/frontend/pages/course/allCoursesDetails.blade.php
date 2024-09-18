@@ -10,6 +10,37 @@
             width: 600px;
             object-fit: cover;
         }
+
+        @media only screen and (max-width: 479px) {
+            .course_details-img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    </style>
+    <style>
+        .form-check-input {
+            width: 50px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .form-check-input:checked:focus {
+            box-shadow: none;
+        }
+
+        .form-switch .form-check-input {
+            width: 3em;
+        }
+        .form-switch .form-check-input:focus{
+            box-shadow: none;
+        }
     </style>
     <link rel="stylesheet" href="{{ asset('frontend/css/main-style.css') }}">
 
@@ -89,7 +120,7 @@
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <p class="mb-0">Duration</p>
-                                                            <h3 class="fw-bold pt-2 number-font main-color">
+                                                            <h3 class="fw-bold pt-2 number-font main-color duration">
                                                                 {{ $coursedetail->course_duration }}
                                                             </h3>
                                                         </div>
@@ -131,7 +162,7 @@
                                             </div>
                                         </div>
 
-                                        
+
 
                                         {{-- @if (!empty($coursedetail->total_student))
                                             <p class="text-success text-lg-start text-center">
@@ -159,13 +190,13 @@
                                 </div>
 
                                 <div class="col-lg-7">
-                                    <div class="text-end">
+                                    <div class="text-end pt-lg-0 pt-3">
                                         <img class="img-fluid rounded-3 course_details-img"
                                             src="{{ !empty($coursedetail->thumbnail_image) ? url('storage/course/' . $coursedetail->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($coursedetail->name) }}"
                                             alt="" />
                                     </div>
                                 </div>
-                                <div class="col-lg-8 py-5">
+                                <div class="col-lg-8 py-5 pb-lg-5 pb-0">
                                     @if (!empty($coursedetail->overview))
                                         <div class="">
                                             <h5 class="primary-text-color fw-bold">
@@ -179,7 +210,7 @@
                                     <!-- Course Curriculum -->
                                     @if ($courseCurriculams->isNotEmpty())
                                         <div id="curriculum" class="py-3">
-                                            <h5 class="primary-text-color fw-bold">
+                                            <h5 class="primary-text-color fw-bold pb-lg-0 pb-3">
                                                 Course Curriculum
                                             </h5>
                                             <div>
@@ -232,94 +263,95 @@
 
 
                                     <!-- Course Schedule -->
-
-                                    <div id="schedule" class="py-3">
-                                        @if ($courseSchedules->isNotEmpty())
-                                            <h5 class="primary-text-color fw-bold">
-                                                Course Schedule
-                                            </h5>
-                                            {{-- <p>
+                                    @if ($courseSchedules->isNotEmpty() || $courseOutlines->isNotEmpty())
+                                        <div id="schedule" class="py-3">
+                                            @if ($courseSchedules->isNotEmpty())
+                                                <h5 class="primary-text-color fw-bold">
+                                                    Course Schedule
+                                                </h5>
+                                                {{-- <p>
                                                 Lorem ipsum dolor sit amet consectetur adipisicing
                                                 elit.
                                             </p> --}}
 
 
-                                            @forelse ($courseSchedules as $courseSchedule)
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                    scope="col">
-                                                                    Venue
-                                                                </th>
-                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                    scope="col">
-                                                                    Starting Date
-                                                                </th>
-                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                    scope="col">
-                                                                    Duration
-                                                                </th>
-                                                                <th style="background-color: #eee;color: black;font-size: 15px;"
-                                                                    scope="col">
-                                                                    Fees
-                                                                </th>
-                                                                {{-- <th class="text-center"
+                                                @forelse ($courseSchedules as $courseSchedule)
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                        scope="col">
+                                                                        Venue
+                                                                    </th>
+                                                                    <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                        scope="col">
+                                                                        Starting Date
+                                                                    </th>
+                                                                    <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                        scope="col">
+                                                                        Duration
+                                                                    </th>
+                                                                    <th style="background-color: #eee;color: black;font-size: 15px;"
+                                                                        scope="col">
+                                                                        Fees
+                                                                    </th>
+                                                                    {{-- <th class="text-center"
                                                                     style="background-color: #eee;color: black;font-size: 15px;"
                                                                     scope="col">
                                                                     Join Now
                                                                 </th> --}}
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>{{ $courseSchedule->venue }}</td>
-                                                                <td>{{ $courseSchedule->starting_date }}</td>
-                                                                <td>{{ $courseSchedule->duration }}</td>
-                                                                <td>{{ $courseSchedule->fees }} Tk</td>
-                                                                {{-- <td class="text-center">
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{{ $courseSchedule->venue }}</td>
+                                                                    <td>{{ $courseSchedule->starting_date }}</td>
+                                                                    <td>{{ $courseSchedule->duration }}</td>
+                                                                    <td>{{ $courseSchedule->fees }} Tk</td>
+                                                                    {{-- <td class="text-center">
                                                                     <a href="" class=""><i
                                                                             class="fa-solid fa-eye text-muted"></i></a>
                                                                 </td> --}}
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            @empty
-                                                <p>No course schedules found.</p>
-                                            @endforelse
-                                        @endif
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                @empty
+                                                    <p>No course schedules found.</p>
+                                                @endforelse
+                                            @endif
 
-                                        @if ($courseOutlines->isNotEmpty())
-                                            <h5 class="primary-text-color fw-bold pt-3">
-                                                What Will You Learn In This Course?
-                                            </h5>
+                                            @if ($courseOutlines->isNotEmpty())
+                                                <h5 class="primary-text-color fw-bold pt-3">
+                                                    What Will You Learn In This Course?
+                                                </h5>
 
-                                            <div class="row gx-1">
+                                                <div class="row gx-1">
 
-                                                @forelse ($courseOutlines as $courseOutline)
-                                                    <div class="col-lg-6">
-                                                        <div class="card p-0 mb-1 why-choses">
-                                                            <div class="card-body p-0">
-                                                                <p class="mb-0 p-3">
-                                                                    <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
-                                                                        alt="" />
-                                                                    {{ $courseOutline->title }}
-                                                                </p>
+                                                    @forelse ($courseOutlines as $courseOutline)
+                                                        <div class="col-lg-6">
+                                                            <div class="card p-0 mb-1 why-choses">
+                                                                <div class="card-body p-0">
+                                                                    <p class="mb-0 p-3">
+                                                                        <img src="https://cdn.ostad.app/public/upload/2023-10-29T15-06-39.968Z-checkbox-circle-line.svg"
+                                                                            alt="" />
+                                                                        {{ $courseOutline->title }}
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
 
-                                                @empty
-                                                    <p>Course Outline Not Avaiable</p>
-                                                @endforelse
+                                                    @empty
+                                                        <p>Course Outline Not Avaiable</p>
+                                                    @endforelse
 
-                                            </div>
-                                        @endif
+                                                </div>
+                                            @endif
 
-                                    </div>
+                                        </div>
+                                    @endif
                                     <!-- Course Projects -->
                                     @if ($courseProjects->isNotEmpty())
                                         <div id="projects" class="py-3">
@@ -383,49 +415,72 @@
                                             </p>
                                         </div>
                                         <div>
-                                            <div class="card join_offline">
-
+                                            <!-- Switch Toggle Button -->
+                                            <div class="d-flex align-items-center justify-content-center mb-3">
+                                                <!-- Offline Label -->
+                                                <label class="form-check-label me-1" for="toggleSwitch"
+                                                    id="offlineLabel">Offline</label>
+                                                <!-- Switch Toggle -->
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="toggleSwitch">
+                                                </div>
+                                                <!-- Online Label -->
+                                                <label class="form-check-label ms-1" for="toggleSwitch"
+                                                    id="onlineLabel">Online</label>
+                                            </div>
+                                            <!-- Offline Course Fee Section -->
+                                            <div id="offlineSection" class="card join_offline">
                                                 <div class="card-body">
-
                                                     <h5>Course Fee Offline</h5>
-
                                                     <h4 class="fw-bold py-2">BDT
-                                                        {{ number_format($coursedetail->price, 2) }}
-                                                    </h4>
-
+                                                        {{ number_format($coursedetail->price, 2) }}</h4>
                                                     <a type="submit" class="primary-btn-one add_to_cart_price"
                                                         data-course_id="{{ $coursedetail->id }}"
                                                         data-course_section_id="{{ $coursedetail->course_section_id }}"
                                                         data-course_category_id="{{ $coursedetail->course_category_id }}"
                                                         data-course_type="{{ $coursedetail->course_type }}"
-                                                        data-course_amount="{{ $coursedetail->price }}">Enroll
-                                                        Now
+                                                        data-course_amount="{{ $coursedetail->price }}">Enroll Now
                                                     </a>
-
                                                 </div>
-
                                             </div>
-
-                                            <div class="card join_offline">
+                                            <!-- Online Course Fee Section (Initially Hidden) -->
+                                            <div id="onlineSection" class="card join_offline d-none">
                                                 <div class="card-body">
-
                                                     <h5>Course Fee Online</h5>
-
                                                     <h4 class="fw-bold py-2">BDT
                                                         {{ number_format($coursedetail->online_price, 2) }}</h4>
-
                                                     <a type="submit" class="primary-btn-one add_to_cart_online_price"
                                                         data-course_id="{{ $coursedetail->id }}"
                                                         data-course_section_id="{{ $coursedetail->course_section_id }}"
                                                         data-course_category_id="{{ $coursedetail->course_category_id }}"
                                                         data-course_type="{{ $coursedetail->course_type }}"
-                                                        data-course_amount="{{ $coursedetail->online_price }}">Enroll
-                                                        Now
+                                                        data-course_amount="{{ $coursedetail->online_price }}">Enroll Now
                                                     </a>
-
                                                 </div>
                                             </div>
-
+                                        </div>
+                                        <div>
+                                            <h5>Need more information?</h5>
+                                            <a type="submit" href="{{ route('contact') }}" class="primary-btn-one add_to_cart_price w-100 rounded-0"
+                                                data-course_id="5" data-course_section_id="1" data-course_category_id="2"
+                                                data-course_type="offline" data-course_amount="15000">Contact Us
+                                            </a>
+                                            <div class="pt-3">
+                                                <a href="">
+                                                    <div class="d-flex align-items-center">
+                                                        <small><i class="fa-solid fa-headphones-simple pe-3"></i></small>
+                                                        <small>{{ optional($setting)->primary_phone ?? '(+88) 01958025050' }}</small>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="">
+                                                    <div class="d-flex align-items-center">
+                                                        <small><i class="fa-regular fa-envelope pe-3"></i></small>
+                                                        <small>{{ optional($setting)->primary_email ?? 'inquiry@ngenitltd.com' }}</small>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -434,7 +489,7 @@
                                     <div class="col-lg-12">
                                         <!-- Related Courses -->
                                         <div id="related" class="py-3">
-                                            <h3 class="primary-text-color fw-bold">
+                                            <h3 class="primary-text-color fw-bold pb-3 pb-lg-0">
                                                 Related Courses
                                             </h3>
                                             {{-- <p>
@@ -503,7 +558,7 @@
                                                                 </div>
                                                                 <div class="pt-2">
                                                                     <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}"
-                                                                        class="primary-btn-one w-100 rounded-0">See
+                                                                        class="primary-btn-one w-100 rounded-0 rounded-0">See
                                                                         Details
                                                                         <i class="fa-solid fa-arrow-right ps-2"
                                                                             aria-hidden="true"></i></a>
@@ -644,6 +699,16 @@
                         showAccordionItems(visibleItems);
                     }
                 });
+            });
+        </script>
+        <script>
+            document.getElementById('toggleSwitch').addEventListener('change', function() {
+                const offlineSection = document.getElementById('offlineSection');
+                const onlineSection = document.getElementById('onlineSection');
+
+                // Toggle visibility of offline and online sections
+                offlineSection.classList.toggle('d-none');
+                onlineSection.classList.toggle('d-none');
             });
         </script>
     @endpush

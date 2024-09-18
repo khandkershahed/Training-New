@@ -152,9 +152,23 @@ $(document).ready(function () {
         arrows: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 4, // Default for larger screens
         slidesToScroll: 1,
         gap: 15,
+        responsive: [
+            {
+                breakpoint: 768, // Target screen widths below 768px (tablet and smaller)
+                settings: {
+                    slidesToShow: 2, // Show 2 slides on tablet screens
+                },
+            },
+            {
+                breakpoint: 480, // Target screen widths below 480px (mobile)
+                settings: {
+                    slidesToShow: 1, // Show 1 slide on mobile screens
+                },
+            },
+        ],
     });
 });
 
