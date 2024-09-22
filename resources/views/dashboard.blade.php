@@ -21,7 +21,8 @@
             </div>
         </div>
     </div>
-    <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+
+    {{-- <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
         <div class="col-xl-6">
             <div class="card h-xl-100">
                 <div class="card-header position-relative py-0 border-bottom-2">
@@ -968,6 +969,7 @@
             </div>
         </div>
     </div>
+
     <div class="row g-5 g-xl-10">
         <div class="col-xxl-8">
             <div class="card h-xl-100" id="kt_timeline_widget_2_card">
@@ -1752,5 +1754,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
 </x-app-layout>

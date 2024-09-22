@@ -38,7 +38,8 @@
         .form-switch .form-check-input {
             width: 3em;
         }
-        .form-switch .form-check-input:focus{
+
+        .form-switch .form-check-input:focus {
             box-shadow: none;
         }
     </style>
@@ -449,19 +450,24 @@
                                                     <h5>Course Fee Online</h5>
                                                     <h4 class="fw-bold py-2">BDT
                                                         {{ number_format($coursedetail->online_price, 2) }}</h4>
-                                                    <a type="submit" class="primary-btn-one add_to_cart_online_price"
-                                                        data-course_id="{{ $coursedetail->id }}"
-                                                        data-course_section_id="{{ $coursedetail->course_section_id }}"
-                                                        data-course_category_id="{{ $coursedetail->course_category_id }}"
-                                                        data-course_type="{{ $coursedetail->course_type }}"
-                                                        data-course_amount="{{ $coursedetail->online_price }}">Enroll Now
-                                                    </a>
+                                                    @if ($coursedetail->online_price == null)
+                                                    @else
+                                                        <a type="submit" class="primary-btn-one add_to_cart_online_price"
+                                                            data-course_id="{{ $coursedetail->id }}"
+                                                            data-course_section_id="{{ $coursedetail->course_section_id }}"
+                                                            data-course_category_id="{{ $coursedetail->course_category_id }}"
+                                                            data-course_type="{{ $coursedetail->course_type }}"
+                                                            data-course_amount="{{ $coursedetail->online_price }}">Enroll
+                                                            Now
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <h5>Need more information?</h5>
-                                            <a type="submit" href="{{ route('contact') }}" class="primary-btn-one add_to_cart_price w-100 rounded-0"
+                                            <a type="submit" href="{{ route('contact') }}"
+                                                class="primary-btn-one add_to_cart_price w-100 rounded-0"
                                                 data-course_id="5" data-course_section_id="1" data-course_category_id="2"
                                                 data-course_type="offline" data-course_amount="15000">Contact Us
                                             </a>
