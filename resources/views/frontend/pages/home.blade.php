@@ -1,6 +1,5 @@
 @extends('frontend.master')
 @section('content')
-
     <!-- Banner Section -->
     @if (
         !empty(optional($homePage)->banner_one_image) ||
@@ -14,14 +13,12 @@
                     </div>
                     <!-- slick-slide -->
                 @endif
-
                 @if (!empty(optional($homePage)->banner_two_image))
                     <div class="slick-slide text-right banenr-main">
                         <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_two_image) }}" alt="Banner Two Image" class="img-fluid">
                     </div>
                     <!-- slick-slide -->
                 @endif
-
                 @if (!empty(optional($homePage)->banner_three_image))
                     <div class="slick-slide text-right banenr-main">
                         <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_three_image) }}" alt="Banner Three Image" class="img-fluid">
@@ -31,9 +28,6 @@
             </div>
         </section>
     @endif
-
-
-
     <!-- Filter Section -->
     <section class="filter_section">
         <div class="container">
@@ -139,7 +133,6 @@
 
         </div>
     </section>
-
     <!-- Row Two Section -->
     <section>
         <div class="container">
