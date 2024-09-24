@@ -266,7 +266,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Discount Start Date</label>
                                 <input type="date" name="discount_start_date"
-                                    min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+                                    min=""
                                     class="form-control form-control-sm" value="{{ $course->discount_start_date }}">
                             </div>
                         </div>
@@ -275,7 +275,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Discount End Date</label>
                                 <input type="date" name="discount_end_date"
-                                    min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+                                    min=""
                                     class="form-control form-control-sm" value="{{ $course->discount_end_date }}">
                             </div>
                         </div>
@@ -284,7 +284,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Class Start Date</label>
                                 <input type="date" name="class_start_date"
-                                    min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+                                    min=""
                                     class="form-control form-control-sm" value="{{ $course->class_start_date }}">
                             </div>
                         </div>
@@ -293,7 +293,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Class End Date</label>
                                 <input type="date" name="class_end_date"
-                                    min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+                                    min=""
                                     class="form-control form-control-sm" value="{{ $course->class_end_date }}">
                             </div>
                         </div>
@@ -302,7 +302,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Registration Start Date</label>
                                 <input type="date" name="registration_start_date"
-                                    min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+                                    min=""
                                     class="form-control form-control-sm"
                                     value="{{ $course->registration_start_date }}">
                             </div>
@@ -312,7 +312,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Registration End Date</label>
                                 <input type="date" name="registration_end_date"
-                                    min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
+                                    min=""
                                     class="form-control form-control-sm"
                                     value="{{ $course->registration_end_date }}">
                             </div>
