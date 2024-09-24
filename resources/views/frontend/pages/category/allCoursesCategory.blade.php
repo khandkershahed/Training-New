@@ -1,14 +1,14 @@
 @extends('frontend.master')
 @section('content')
-    
+
     <section class="showcase">
         <img class="img-fluid" src="{{ asset('storage/common_banner/' . optional($common_banner)->service_banner) }}" alt="Picture">
-        
+
     </section>
     <section style="background-color: #eee;">
         <div class="container">
             <div class="text-center px-0 px-lg-5 py-0 py-lg-5">
-                <h3 class="section-title">Popular Courses We Offer</h3>
+                <h3 class="section-title">Courses We Offer</h3>
                 <div class="divider"></div>
                 <p class="text-muted py-0 py-lg-3 px-lg-5 px-0">
                     NGenIT Training provides short workshops and seminars covering management, leadership, finance, HR, and

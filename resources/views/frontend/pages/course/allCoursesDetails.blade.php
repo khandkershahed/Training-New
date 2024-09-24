@@ -483,7 +483,7 @@
                                                 <a href="">
                                                     <div class="d-flex align-items-center">
                                                         <small><i class="fa-regular fa-envelope pe-3"></i></small>
-                                                        <small>{{ optional($setting)->primary_email ?? 'inquiry@ngenitltd.com' }}</small>
+                                                        <small>{{ optional($setting)->support_email ?? 'inquiry@ngenitltd.com' }}</small>
                                                     </div>
                                                 </a>
                                             </div>

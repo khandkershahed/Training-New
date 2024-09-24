@@ -95,10 +95,12 @@ body::-webkit-scrollbar-thumb {
     font-size: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 a {
     text-decoration: none;
     color: #747474;
 }
+
 a:hover {
     text-decoration: none;
 }
@@ -133,6 +135,7 @@ a:hover {
     color: black;
     font-weight: 500;
 }
+
 .navbar-nav .nav-item .nav-link:hover {
     color: var(--primary-color);
     font-weight: 500;
@@ -208,6 +211,7 @@ a:hover {
     /* Add transition for smooth rotation */
 }
 
+
 .navbar-toggler-close:hover {
     transform: rotate(180deg);
     /* Rotate the button on hover */
@@ -253,6 +257,7 @@ a:hover {
     text-align: start;
     padding: 12px;
 }
+
 .menu-link-text {
     font-size: 14px;
 }
@@ -345,11 +350,9 @@ a:hover {
 }
 
 .slider .slick-slide.text-left:before {
-    background: linear-gradient(
-        to left,
-        rgba(249, 245, 245, 0) 10%,
-        rgb(0, 0, 0)
-    );
+    background: linear-gradient(to left,
+            rgba(249, 245, 245, 0) 10%,
+            rgb(0, 0, 0));
 }
 
 /* .slider .slick-slide.text-right:before {
@@ -453,6 +456,7 @@ a:hover {
 .primary-btn-one:hover:after {
     opacity: 0.5;
 }
+
 .popover__title {
     font-size: var(--paragraph-font-size);
     text-decoration: none;
@@ -499,11 +503,13 @@ a:hover {
     padding-top: 3rem;
     padding-bottom: 4rem;
 }
+
 .explore-bg {
     height: 510px;
     object-fit: cover;
     background-repeat: no-repeat;
 }
+
 @media (min-width: 768px) {
     .different_icon_column {
         height: 9rem;
@@ -515,6 +521,7 @@ a:hover {
         width: 185px;
     }
 }
+
 /* Default styling for larger screens */
 
 /* Extra small devices (e.g., older phones) */
@@ -522,27 +529,34 @@ a:hover {
     .slick-dots li {
         display: none !important;
     }
+
     .section-title {
         padding-top: 15px;
     }
+
     .row {
         padding-right: 0;
     }
+
     .slick-next {
         position: absolute;
         z-index: 55;
     }
+
     .slick-prev {
         position: absolute;
         z-index: 55;
     }
+
     .course-details-img {
         height: 245px !important;
     }
+
     .explore-bg {
         height: auto !important;
     }
 }
+
 @media (max-width: 568px) {
     .special-text {
         font-size: 30px !important;
@@ -746,6 +760,7 @@ a:hover {
     width: 10%;
     margin: auto;
 }
+
 .divider-extra {
     background-color: #eeeeee;
     border-bottom: 4px solid #eeeeee;
@@ -753,6 +768,7 @@ a:hover {
     width: 3%;
     margin: auto;
 }
+
 .sape-icons img {
     object-fit: contain;
 }
@@ -900,6 +916,7 @@ a:hover {
     width: 100%;
     object-fit: contain;
 }
+
 .cource-badge {
     background-color: #eaecf0;
     color: black;
@@ -986,6 +1003,7 @@ a:hover {
     height: 525px;
     max-height: 100%;
 }
+
 .course-details-img {
     height: 290px;
     overflow: hidden;
@@ -994,13 +1012,20 @@ a:hover {
 }
 
 .course-details-img img {
-    width: 100%; /* Ensure the image takes full width of its container */
-    height: auto; /* Allow the image height to adjust automatically */
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-    position: absolute; /* Position the image absolutely inside its container */
-    top: 0; /* Position from the top */
-    left: 0; /* Position from the left */
+    width: 100%;
+    /* Ensure the image takes full width of its container */
+    height: auto;
+    /* Allow the image height to adjust automatically */
+    object-fit: cover;
+    /* Maintain aspect ratio and cover the container */
+    position: absolute;
+    /* Position the image absolutely inside its container */
+    top: 0;
+    /* Position from the top */
+    left: 0;
+    /* Position from the left */
 }
+
 .menu-drop:hover {
     color: #00193d !important;
     background-color: var(--bs-dropdown-link-hover-bg);
@@ -1215,10 +1240,8 @@ a:hover {
 .btn-close {
     --bs-btn-close-color: #fff;
     /* Change to white */
-    --bs-btn-close-bg: url(
-        data:image/svg + xml,
-        %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 16 16"fill="%23fff"%3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/%3e%3c/svg%3e
-    );
+    --bs-btn-close-bg: url(data:image/svg + xml,
+ %3csvgxmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%23fff" %3e%3cpathd="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z" /%3e%3c/svg%3e);
     /* SVG with white fill */
     --bs-btn-close-opacity: 0.5;
     --bs-btn-close-hover-opacity: 0.75;
@@ -1475,10 +1498,12 @@ a:hover {
     margin: 0 4px;
     display: inline-block;
 }
+
 .duration {
     font-size: 20px;
     line-height: 18px;
 }
+
 .box .icon li a {
     color: #fff;
     font-size: 18px;
@@ -1502,6 +1527,7 @@ a:hover {
         margin-bottom: 30px;
     }
 }
+
 @media (max-width: 768px) {
     .social-area {
         flex-direction: column;
@@ -1509,10 +1535,12 @@ a:hover {
         align-items: center;
     }
 }
+
 .course-toggler-btn {
     display: flex;
     justify-content: end;
 }
+
 @media only screen and (max-width: 479px) {
     .box .title {
         font-size: 20px;
@@ -1629,8 +1657,7 @@ a:hover {
     z-index: 9999;
 }
 
-.menu-card {
-}
+.menu-card {}
 
 /* ==========================Offcanvas Style Start============================= */
 .offcanvas-sidebar {
@@ -1827,6 +1854,7 @@ a:hover {
     height: 2px;
     background: currentColor;
 }
+
 .custom-accordion button .icon::after {
     display: block;
     position: absolute;
@@ -1841,15 +1869,18 @@ a:hover {
 .custom-accordion button[aria-expanded="true"] {
     color: #001430;
 }
+
 .custom-accordion button[aria-expanded="true"] .icon::after {
     width: 0;
 }
-.custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
+
+.custom-accordion button[aria-expanded="true"]+.custom-accordion-content {
     opacity: 1;
     max-height: 9em;
     transition: all 200ms linear;
     will-change: opacity, max-height;
 }
+
 .custom-accordion .custom-accordion-content {
     opacity: 0;
     max-height: 0;
@@ -1857,30 +1888,31 @@ a:hover {
     transition: opacity 200ms linear, max-height 200ms linear;
     will-change: opacity, max-height;
 }
+
 .custom-accordion .custom-accordion-content p {
     font-size: 1rem;
     font-weight: 300;
     margin: 2em 0;
 }
+
 .more-text {
     display: none;
 }
 
 .gradient-card {
     height: 155px;
-    background: #0f0c29; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-        to right,
-        #24243e,
-        #302b63,
-        #0f0c29
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-        to right,
-        #24243e,
-        #302b63,
-        #0f0c29
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #0f0c29;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,
+            #24243e,
+            #302b63,
+            #0f0c29);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,
+            #24243e,
+            #302b63,
+            #0f0c29);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .gradient-card {
@@ -1894,9 +1926,12 @@ a:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     position: relative;
-    width: 100%; /* Ensure the container is responsive */
-    max-width: 450px; /* Fixed maximum width of the container */
-    height: 350px; /* Fixed height of the container */
+    width: 100%;
+    /* Ensure the container is responsive */
+    max-width: 450px;
+    /* Fixed maximum width of the container */
+    height: 350px;
+    /* Fixed height of the container */
 }
 
 .box-service .title,
@@ -1908,37 +1943,48 @@ a:hover {
 .box-service::before {
     content: "";
     background: #302b63;
-    opacity: 0.8; /* Fade out image on hover */
+    opacity: 0.8;
+    /* Fade out image on hover */
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1; /* Overlay is above the image but below the content */
+    z-index: 1;
+    /* Overlay is above the image but below the content */
     transition: all 0.6s ease;
 }
 
 /* Shape effect on hover */
 .box-service:hover::before {
-    background: #fff; /* Change overlay color on hover */
-    opacity: 0.6; /* Adjust opacity on hover */
+    background: #fff;
+    /* Change overlay color on hover */
+    opacity: 0.6;
+    /* Adjust opacity on hover */
     transform: skew(-20deg);
-    left: 200%; /* Move the shape to the right on hover */
+    left: 200%;
+    /* Move the shape to the right on hover */
 }
 
 .box-service img {
     width: 100%;
-    height: 100%; /* Ensure the image fills the container's height */
-    object-fit: cover; /* Cover the container, cropping if necessary */
-    display: block; /* Remove space below the image */
+    height: 100%;
+    /* Ensure the image fills the container's height */
+    object-fit: cover;
+    /* Cover the container, cropping if necessary */
+    display: block;
+    /* Remove space below the image */
     transition: all 0.6s ease;
     position: relative;
-    z-index: 0; /* Ensure image stays below the overlay */
+    z-index: 0;
+    /* Ensure image stays below the overlay */
 }
 
 .box-service:hover img {
-    opacity: 0.6; /* Fade out image on hover */
-    filter: grayscale(100%); /* Apply grayscale on hover */
+    opacity: 0.6;
+    /* Fade out image on hover */
+    filter: grayscale(100%);
+    /* Apply grayscale on hover */
 }
 
 .box-service .box-service-content {
@@ -1948,13 +1994,16 @@ a:hover {
     position: absolute;
     bottom: 40px;
     left: 0;
-    z-index: 2; /* Ensure content is above overlay and image */
+    z-index: 2;
+    /* Ensure content is above overlay and image */
 }
+
 .box-service .box-service-content .title {
     font-size: 22px;
     line-height: 35px;
     margin-bottom: 35px;
 }
+
 .box-service .box-service-content .post {
     margin-bottom: 35px;
     color: #fff;
@@ -1967,14 +2016,16 @@ a:hover {
 
 /* Hover effects on title and post can be adjusted here if needed */
 .box-service:hover .icon {
-    opacity: 0; /* Fade out icons on hover */
+    opacity: 0;
+    /* Fade out icons on hover */
 }
 
 .box-service .icon {
     padding: 0;
     margin: 0;
     list-style: none;
-    opacity: 1; /* Fully visible by default */
+    opacity: 1;
+    /* Fully visible by default */
     position: absolute;
     right: 5px;
     top: 10px;
@@ -1987,8 +2038,10 @@ a:hover {
 }
 
 .box-service .icon li a {
-    color: #108dc7; /* Default color */
-    background: #fff; /* Default background */
+    color: #108dc7;
+    /* Default color */
+    background: #fff;
+    /* Default background */
     font-size: 15px;
     text-align: center;
     line-height: 33px;
@@ -2065,6 +2118,7 @@ a:hover {
     height: 2px;
     background: currentColor;
 }
+
 .custom-accordion button .icon::after {
     display: block;
     position: absolute;
@@ -2079,15 +2133,18 @@ a:hover {
 .custom-accordion button[aria-expanded="true"] {
     color: #001430;
 }
+
 .custom-accordion button[aria-expanded="true"] .icon::after {
     width: 0;
 }
-.custom-accordion button[aria-expanded="true"] + .custom-accordion-content {
+
+.custom-accordion button[aria-expanded="true"]+.custom-accordion-content {
     opacity: 1;
     max-height: 9em;
     transition: all 200ms linear;
     will-change: opacity, max-height;
 }
+
 .custom-accordion .custom-accordion-content {
     opacity: 0;
     max-height: 0;
@@ -2095,44 +2152,48 @@ a:hover {
     transition: opacity 200ms linear, max-height 200ms linear;
     will-change: opacity, max-height;
 }
+
 .custom-accordion .custom-accordion-content p {
     font-size: 1rem;
     font-weight: 300;
     margin: 2em 0;
 }
+
 .more-text {
     display: none;
 }
 
 .gradient-card {
     height: 155px;
-    background: #0f0c29; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-        to right,
-        #24243e,
-        #302b63,
-        #0f0c29
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-        to right,
-        #24243e,
-        #302b63,
-        #0f0c29
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #0f0c29;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,
+            #24243e,
+            #302b63,
+            #0f0c29);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,
+            #24243e,
+            #302b63,
+            #0f0c29);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .service_home_para {
     height: 70px;
 }
+
 .home-select {
     font-size: 14px;
     padding: 10px;
 }
+
 .showcase {
     position: relative;
     color: var(--white-color);
     text-align: center;
 }
+
 .showcase img {
     width: 100%;
     height: 100%;
@@ -2142,6 +2203,7 @@ a:hover {
     left: 0;
     z-index: 99;
 }
+
 /* Mobile devices */
 .showcase .overlay {
     width: 100%;
@@ -2165,21 +2227,28 @@ a:hover {
 
 .showcase img {
     width: 100%;
-    height: 330px; /* Default height */
-    object-fit: cover; /* Maintain aspect ratio */
+    height: 330px;
+    /* Default height */
+    object-fit: cover;
+    /* Maintain aspect ratio */
 }
+
 .banenr-main {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 330px; /* Adjust as necessary */
+    height: 330px;
+    /* Adjust as necessary */
     object-fit: cover;
 }
+
 @media only screen and (max-width: 1350px) {
     .showcase img {
-        height: 270px; /* Adjust image height */
+        height: 270px;
+        /* Adjust image height */
     }
+
     .banenr-main {
         width: 100%;
         height: 270px;
@@ -2193,6 +2262,7 @@ a:hover {
     .showcase img {
         height: 170px;
     }
+
     .banenr-main {
         width: 100%;
         height: 170px;
@@ -2206,6 +2276,7 @@ a:hover {
     .showcase img {
         height: 70px !important;
     }
+
     .banenr-main {
         width: 100%;
         height: 70px;
@@ -2220,6 +2291,7 @@ a:hover {
         margin: 0 0 30px;
     }
 }
+
 /* ==========================Main Style Start============================= */
 #custom-search-box {
     width: 350px;
@@ -2263,6 +2335,7 @@ a:hover {
     transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
     background: white;
 }
+
 .catagory-course-desc {
     text-align: justify;
     word-spacing: 0;
@@ -2274,10 +2347,13 @@ a:hover {
     height: 110px;
     max-height: 100%;
 }
+
 .category-course-card {
     height: 30rem;
 }
+
 @media (max-width: 768px) {
+
     html,
     body {
         width: 100%;
@@ -2321,4 +2397,25 @@ a:hover {
         transition-duration: 0.3s;
         transition-property: transform;
     }
+}
+
+.register-btn {
+    background: #0a1d5b;
+    color: white !important;
+    border-bottom-right-radius: 17px;
+    border-top-left-radius: 17px;
+    border: 1px solid #0a1d5b;
+    margin-left: 1.5rem;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+.register-btn:hover {
+    background: white;
+    color: #0a1d5b !important;
+    transition: all 0.5s;
+    border: 1px solid #0a1d5b;
+    margin-left: 1.5rem;
+    padding: 10px 16px;
+    font-size: 14px;
 }
