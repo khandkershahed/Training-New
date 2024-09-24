@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Session;
 
 class CourseRequest extends FormRequest
 {
@@ -26,8 +27,8 @@ class CourseRequest extends FormRequest
 
         return [
 
-            'instructor_id' => 'required',
-            'course_section_id' => 'required',
+            'instructor_id' => 'nullable',
+            'course_section_id' => 'nullable',
             // 'description' => 'nullable|string',
             // 'specification' => 'nullable|string',
             // 'price' => 'required|numeric',
@@ -76,7 +77,8 @@ class CourseRequest extends FormRequest
         $errorMessages = $validator->errors()->all();
 
         foreach ($errorMessages as $errorMessage) {
-            toastr()->error($errorMessage);
+            Session::flash('error',$errorMessage);
+            // toastr()->error($errorMessage);
         }
     }
 }
