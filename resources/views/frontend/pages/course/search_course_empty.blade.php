@@ -10,7 +10,7 @@
             <div class="row py-5">
                 <div class="col-lg-12">
                     <div>
-                        <h3 class="text-center py-5">Your Searched Product Not Found...</h3>
+                        <h3 class="text-center py-5">Your Searched Course Not Found...</h3>
                     </div>
                     <div class="d-flex justify-content-center align-items-center">
                         <img class="img-fluid"
