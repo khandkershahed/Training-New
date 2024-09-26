@@ -43,6 +43,7 @@ Route::post('/course-query', [HomeController::class, 'courseQueryStore'])->name(
 
 Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/appointment', [HomeController::class, 'appointment'])->name('appointment');
 
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 

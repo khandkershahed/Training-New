@@ -161,6 +161,17 @@ class HomeController extends Controller
         return view('frontend.pages.service.allService', compact('services'));
     }
 
+
+    //appointment
+    public function appointment()
+    {
+        $query= 'counselor';
+        $data = [
+            'counselors' => Admin::where('role', 'like', "%{$query}%")->get(), // Replace 'role' with the actual column name
+        ];
+        return view('frontend.pages.appointment', $data);
+    }
+
     //courseServiceDetails
     public function courseServiceDetails($id, $slug)
     {
@@ -304,7 +315,7 @@ class HomeController extends Controller
         Mail::to($user->email)->send(new CourseRegister($data));
 
         //Notification
-        
+
 
         $admins = Admin::where('mail_status', 'mail')->get();
 

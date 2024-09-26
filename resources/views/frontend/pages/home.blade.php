@@ -9,19 +9,22 @@
             <div class="slider">
                 @if (!empty(optional($homePage)->banner_one_image))
                     <div class="slick-slide text-right banenr-main">
-                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_one_image) }}" alt="Banner One Image" class="img-fluid">
+                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_one_image) }}"
+                            alt="Banner One Image" class="img-fluid">
                     </div>
                     <!-- slick-slide -->
                 @endif
                 @if (!empty(optional($homePage)->banner_two_image))
                     <div class="slick-slide text-right banenr-main">
-                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_two_image) }}" alt="Banner Two Image" class="img-fluid">
+                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_two_image) }}"
+                            alt="Banner Two Image" class="img-fluid">
                     </div>
                     <!-- slick-slide -->
                 @endif
                 @if (!empty(optional($homePage)->banner_three_image))
                     <div class="slick-slide text-right banenr-main">
-                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_three_image) }}" alt="Banner Three Image" class="img-fluid">
+                        <img src="{{ asset('storage/homepage/' . optional($homePage)->banner_three_image) }}"
+                            alt="Banner Three Image" class="img-fluid">
                     </div>
                     <!-- slick-slide -->
                 @endif
@@ -172,6 +175,7 @@
                 @endphp
 
                 <div class="col-lg-12">
+                {{-- <div class="col-lg-12" style="background-color: #eeeeee;padding: 15px;"> --}}
 
                     <div id="sync2" class="owl-carousel owl-theme mb-3 py-3">
 
@@ -282,398 +286,7 @@
                             </div>
                         @endforeach
 
-                        {{-- <div class="item">
 
-                            <div class="row">
-
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 mb-lg-0 mb-3">
-                                    <div class="card border-0 bg-light shadow-sm rounded-2">
-                                        <div class="card-header p-0 bg-transparent">
-                                            <div>
-                                                <img class="rounded-2"
-                                                    src="https://cdn.ostad.app/course/cover/2023-12-04T11-05-21.903Z-Flutter.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="p-2 text-center">
-                                                <small class="pe-1"><span class="cource-badge rounded-2">Batch
-                                                        2</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-solid fa-users pe-2"></i>৭০ সিট
-                                                        বাকি</span></small>
-                                                <small class="pe-1"><span class="cource-badge rounded-2"><i
-                                                            class="fa-regular fa-clock pe-2"></i>২৭ দিন
-                                                        বাকি</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>
-                                                Mastering Social Media Banner Design: The Next Level
-                                            </h6>
-                                            <div class="pt-3">
-                                                <a href="" class="primary-btn-one rounded-0 border w-100">See
-                                                    Details
-                                                    <i class="fa-solid fa-arrow-right ps-2"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
 
                     </div>
 
@@ -706,15 +319,16 @@
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white service_home_para">
-                                        {{ optional($homePage)->row_three_column_one_description }}
+                                        {!! optional($homePage)->row_three_column_one_description !!}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_one_url }}"
+                                            {{-- <a href="{{ optional($homePage)->row_three_column_one_url }}"
                                                 class="">Learn
-                                                More</a> <br>
+                                                More</a> --}}
+                                            <br>
                                             <a href="{{ optional($homePage)->row_three_column_one_button_url }}"
-                                                class="primary-btn-one mt-3">{{ optional($homePage)->row_three_column_one_button_name }}</a>
+                                                class="primary-btn-one">{{ optional($homePage)->row_three_column_one_button_name }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -730,16 +344,17 @@
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
-                                        {{ optional($homePage)->row_three_column_two_description }}
+                                        {!! optional($homePage)->row_three_column_two_description !!}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_two_url }}"
+                                            {{-- <a href="{{ optional($homePage)->row_three_column_two_url }}"
                                                 class="">Learn
-                                                More</a>
+                                                More</a> --}}
+                                            <br>
+                                            <a href="{{ optional($homePage)->row_three_column_two_button_url }}"
+                                                class="primary-btn-one">{{ optional($homePage)->row_three_column_two_button_name }}</a>
                                         </div>
-                                        <a href="{{ optional($homePage)->row_three_column_two_button_url }}"
-                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_two_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -755,16 +370,17 @@
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
-                                        {{ optional($homePage)->row_three_column_three_description }}
+                                        {!! optional($homePage)->row_three_column_three_description !!}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_three_url }}"
+                                            {{-- <a href="{{ optional($homePage)->row_three_column_three_url }}"
                                                 class="">Learn
-                                                More</a>
+                                                More</a> --}}
+                                            <br>
+                                            <a href="{{ optional($homePage)->row_three_column_three_button_url }}"
+                                                class="primary-btn-one">{{ optional($homePage)->row_three_column_three_button_name }}</a>
                                         </div>
-                                        <a href="{{ optional($homePage)->row_three_column_three_button_url }}"
-                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_three_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -779,16 +395,17 @@
                                         <div class="divider"></div>
                                     </div>
                                     <p class="text-white">
-                                        {{ optional($homePage)->row_three_column_four_description }}
+                                        {!! optional($homePage)->row_three_column_four_description !!}
                                     </p>
                                     <div class="text-center">
                                         <div class="py-3 learn-more-btn">
-                                            <a href="{{ optional($homePage)->row_three_column_four_url }}"
+                                            {{-- <a href="{{ optional($homePage)->row_three_column_four_url }}"
                                                 class="">Learn
-                                                More</a>
+                                                More</a> --}}
+                                            <br>
+                                            <a href="{{ optional($homePage)->row_three_column_four_button_url }}"
+                                                class="primary-btn-one">{{ optional($homePage)->row_three_column_four_button_name }}</a>
                                         </div>
-                                        <a href="{{ optional($homePage)->row_three_column_four_button_url }}"
-                                            class="primary-btn-one">{{ optional($homePage)->row_three_column_four_button_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -1068,7 +685,7 @@
                                         </h6>
 
                                         <p>
-                                            {{ optional($homePage->courseOneHomePage)->short_descp }}
+                                            {!! optional($homePage->courseOneHomePage)->short_descp !!}
                                         </p>
                                         <a href="{{ url('course' . '/' . optional($homePage->courseOneHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}"
                                             class="primary-btn-one w-100 rounded-0">
@@ -1097,7 +714,7 @@
                                         </h6>
 
                                         <p>
-                                            {{ optional($homePage->courseTwoHomePage)->short_descp }}
+                                            {!! optional($homePage->courseTwoHomePage)->short_descp !!}
                                         </p>
                                         <a href="{{ url('course' . '/' . optional($homePage->courseTwoHomePage)->id . '/' . optional($homePage->courseOneHomePage)->slug) }}"
                                             class="primary-btn-one w-100 rounded-0">
@@ -1126,7 +743,7 @@
                                         </h6>
 
                                         <p>
-                                            {{ optional($homePage->courseThreeHomePage)->short_descp }}
+                                            {!! optional($homePage->courseThreeHomePage)->short_descp !!}
                                         </p>
                                         <a href="{{ url('course' . '/' . optional($homePage->courseThreeHomePage)->id . '/' . optional($homePage->courseThreeHomePage)->slug) }}"
                                             class="primary-btn-one w-100 rounded-0">
