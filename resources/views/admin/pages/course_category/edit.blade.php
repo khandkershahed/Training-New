@@ -139,7 +139,7 @@
                         //     required: true,
                         // },
 
-                        description: {
+                        course_section_id: {
                             required: true,
                         },
 
@@ -156,8 +156,8 @@
                         //     required: 'Please Enter Banner Image',
                         // },
 
-                        description: {
-                            required: 'Please Enter Description Field',
+                        course_section_id: {
+                            required: 'Please Enter Course Section Name',
                         },
 
 
