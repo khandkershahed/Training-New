@@ -50,7 +50,8 @@
 
                             </td>
 
-                            <td class="text-start">{{ $courseCat->sectionName->name }}</td>
+                            <td class="text-start">{{ optional($courseCat->sectionName)->name }}</td>
+
                             <td class="text-start">{{ $courseCat->name }}</td>
                             <td class="text-start">{{ $courseCat->header }}</td>
                             <td>

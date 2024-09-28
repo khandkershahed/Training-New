@@ -12,7 +12,7 @@ class CourseCategoryController extends Controller
 {
     public function index()
     {
-        $courseCats = CourseCategory::latest()->get();
+        $courseCats = CourseCategory::with('sectionName')->latest()->get();
         return view('admin.pages.course_category.index', compact('courseCats'));
     }
 
