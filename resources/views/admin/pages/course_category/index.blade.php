@@ -29,7 +29,8 @@
                 <thead>
                     <tr>
                         <th width="5%">No</th>
-                        <th width="20%">Image</th>
+                        <th width="10%">Image</th>
+                        <th width="30%">Section</th>
                         <th width="30%">Name</th>
                         <th width="30%">Header</th>
                         <th width="100%">Actions</th>
@@ -49,6 +50,7 @@
 
                             </td>
 
+                            <td class="text-start">{{ $courseCat->section->name }}</td>
                             <td class="text-start">{{ $courseCat->name }}</td>
                             <td class="text-start">{{ $courseCat->header }}</td>
                             <td>
