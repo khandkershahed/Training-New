@@ -144,14 +144,11 @@
                         </div>
 
                         <div class="col-3 mb-3 form-group">
-
-                            <div class="form-group">
+                            <div class="">
                                 <label for="" class="mb-2">Course Category Name</label>
                                 <select name="course_category_id" data-placeholder="Select Row One.."
                                     class="form-select form-select-sm" data-control="select2">
-
                                     <option selected>Select an option</option>
-
                                     @if (count($courseCats) > 0)
                                         @foreach ($courseCats as $courseCat)
                                             <option class="form-control" value="{{ $courseCat->id }}"
@@ -160,11 +157,17 @@
                                             </option>
                                         @endforeach
                                     @endif
-
                                 </select>
-                            </div>
 
+                                <!-- Error Message Display -->
+                                @if ($errors->has('course_category_id'))
+                                    <div class="text-danger mt-1">
+                                        {{ $errors->first('course_category_id') }}
+                                    </div>
+                                @endif
+                            </div>
                         </div>
+
 
                         <div class="col-3 mb-3">
                             <div class="form-group">
@@ -265,8 +268,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Discount Start Date</label>
-                                <input type="date" name="discount_start_date"
-                                    min=""
+                                <input type="date" name="discount_start_date" min=""
                                     class="form-control form-control-sm" value="{{ $course->discount_start_date }}">
                             </div>
                         </div>
@@ -274,8 +276,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Discount End Date</label>
-                                <input type="date" name="discount_end_date"
-                                    min=""
+                                <input type="date" name="discount_end_date" min=""
                                     class="form-control form-control-sm" value="{{ $course->discount_end_date }}">
                             </div>
                         </div>
@@ -283,8 +284,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Class Start Date</label>
-                                <input type="date" name="class_start_date"
-                                    min=""
+                                <input type="date" name="class_start_date" min=""
                                     class="form-control form-control-sm" value="{{ $course->class_start_date }}">
                             </div>
                         </div>
@@ -292,8 +292,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Class End Date</label>
-                                <input type="date" name="class_end_date"
-                                    min=""
+                                <input type="date" name="class_end_date" min=""
                                     class="form-control form-control-sm" value="{{ $course->class_end_date }}">
                             </div>
                         </div>
@@ -301,8 +300,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Registration Start Date</label>
-                                <input type="date" name="registration_start_date"
-                                    min=""
+                                <input type="date" name="registration_start_date" min=""
                                     class="form-control form-control-sm"
                                     value="{{ $course->registration_start_date }}">
                             </div>
@@ -311,8 +309,7 @@
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Registration End Date</label>
-                                <input type="date" name="registration_end_date"
-                                    min=""
+                                <input type="date" name="registration_end_date" min=""
                                     class="form-control form-control-sm"
                                     value="{{ $course->registration_end_date }}">
                             </div>

@@ -211,6 +211,11 @@ class CourseController extends Controller
 
     public function update(CourseRequest $request, $id)
     {
+
+        $validatedData = $request->validate([
+            'course_category_id' => 'required|exists:courses'
+        ]);
+
         $course = Course::findOrFail($id);
 
         $mainFile = $request->file('thumbnail_image');

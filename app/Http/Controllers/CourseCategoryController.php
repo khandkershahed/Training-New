@@ -24,14 +24,16 @@ class CourseCategoryController extends Controller
 
     public function store(Request $request)
     {
-        // Validation rules
         $rules = [
             'description' => 'required', // Add validation for the description field
+            // 'name' => 'required|unique:course_categories,name', // Ensure name is unique
         ];
-
+    
         // Custom error messages
         $messages = [
             'description.required' => 'The description field is required.',
+            // 'name.required' => 'The name field is required.',
+            // 'name.unique' => 'The name has already been taken.', // Custom message for uniqueness
         ];
 
         // Validate the request
