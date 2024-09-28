@@ -31,7 +31,7 @@
                         <th width="5%">No</th>
                         <th width="10%">Image</th>
                         <th width="30%">Section</th>
-                        <th width="30%">Name</th>
+                        <th width="30%">Category Name</th>
                         <th width="30%">Header</th>
                         <th width="100%">Actions</th>
                     </tr>

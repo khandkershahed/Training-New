@@ -197,11 +197,14 @@ class CourseController extends Controller
     public function edit(Request $request, $id)
     {
         $course = Course::find($id);
+
         $admins = Admin::latest()->get();
         $services = Service::latest()->get();
         $industrys = industry::latest()->get();
-        $courseCats = CourseCategory::latest()->get();
+        
         $courseSections = CourseSection::latest()->get();
+        $courseCats = CourseCategory::where('course_section_id', $id)->latest()->get();
+
         return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }
 
@@ -331,13 +334,13 @@ class CourseController extends Controller
     {
         $course = Course::findOrFail($id);
 
-        if (File::exists(public_path('storage/course/requestImg/') . $course->thumbnail_image)) {
-            File::delete(public_path('storage/course/requestImg/') . $course->thumbnail_image);
-        }
+        // if (File::exists(public_path('storage/course/requestImg/') . $course->thumbnail_image)) {
+        //     File::delete(public_path('storage/course/requestImg/') . $course->thumbnail_image);
+        // }
 
-        if (File::exists(public_path('storage/course/') . $course->thumbnail_image)) {
-            File::delete(public_path('storage/course/') . $course->thumbnail_image);
-        }
+        // if (File::exists(public_path('storage/course/') . $course->thumbnail_image)) {
+        //     File::delete(public_path('storage/course/') . $course->thumbnail_image);
+        // }
 
         $course->delete();
     }
