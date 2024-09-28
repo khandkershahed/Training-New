@@ -1,5 +1,6 @@
 @extends('frontend.master')
 @section('content')
+
     <!-- Banner Section -->
     @if (
         !empty(optional($homePage)->banner_one_image) ||
@@ -31,6 +32,7 @@
             </div>
         </section>
     @endif
+
     <!-- Filter Section -->
     <section class="filter_section">
         <div class="container">
@@ -136,6 +138,7 @@
 
         </div>
     </section>
+    
     <!-- Row Two Section -->
     <section>
         <div class="container">
@@ -175,7 +178,7 @@
                 @endphp
 
                 <div class="col-lg-12">
-                {{-- <div class="col-lg-12" style="background-color: #eeeeee;padding: 15px;"> --}}
+                    {{-- <div class="col-lg-12" style="background-color: #eeeeee;padding: 15px;"> --}}
 
                     <div id="sync2" class="owl-carousel owl-theme mb-3 py-3">
 

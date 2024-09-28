@@ -48,7 +48,7 @@ class HomeController extends Controller
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
 
-        $courseSections = CourseSection::latest()->get();
+        $courseSections = CourseSection::orderBy('name','ASC')->latest()->get();
 
         // return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
 
@@ -82,7 +82,7 @@ class HomeController extends Controller
         }
 
         $courses = $courses->get();
-        $courseSections = CourseSection::latest()->get();
+        $courseSections = CourseSection::ordlatest()->get();
         $courseCategories = CourseCategory::latest()->get();
 
         return view('frontend.pages.course.allCourses', compact('courses', 'courseSections', 'courseCategories'));
