@@ -21,8 +21,12 @@ class CourseCategory extends Model
         return $this->hasMany(Course::class,'course_category_id','id');
     }
 
-    public function section()
-    {
-        return $this->belongsTo(CourseSection::class, 'course_section_id');
+    public function sectionName() {
+        return $this->belongsTo(CourseSection::class,'course_section_id','id');
     }
+
+    // public function section()
+    // {
+    //     return $this->belongsTo(CourseSection::class, 'course_section_id');
+    // }
 }
