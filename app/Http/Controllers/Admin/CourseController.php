@@ -194,6 +194,7 @@ class CourseController extends Controller
         return redirect()->route('admin.course.index')->with('success', 'Course Inserted Successfully!!');
     }
 
+    //course edit
     public function edit(Request $request, $id)
     {
         $course = Course::find($id);
