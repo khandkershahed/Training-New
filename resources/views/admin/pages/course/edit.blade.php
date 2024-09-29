@@ -144,29 +144,28 @@
                         </div>
 
                         <div class="col-3 mb-3 form-group">
-                            <div class="">
-                                <label for="" class="mb-2">Course Category Name</label>
-                                <select name="course_category_id" data-placeholder="Select Row One.."
-                                    class="form-select form-select-sm" data-control="select2">
-                                    <option selected>Select an option</option>
-                                    @if (count($courseCats) > 0)
-                                        @foreach ($courseCats as $courseCat)
-                                            <option class="form-control" value="{{ $courseCat->id }}"
-                                                {{ $course->course_category_id == $courseCat->id ? 'selected' : '' }}>
-                                                {{ $courseCat->name }}
-                                            </option>
-                                        @endforeach
-                                    @endif
-                                </select>
-
-                                <!-- Error Message Display -->
-                                @if ($errors->has('course_category_id'))
-                                    <div class="text-danger mt-1">
-                                        {{ $errors->first('course_category_id') }}
-                                    </div>
+                            <label for="course_category_id" class="mb-2">Course Category Name</label>
+                            <select name="course_category_id" data-placeholder="Select Row One.."
+                                class="form-select form-select-sm" data-control="select2">
+                                <option selected>Select an option</option>
+                                @if ($courseCats->isNotEmpty())
+                                    @foreach ($courseCats as $courseCat)
+                                        <option value="{{ $courseCat->id }}"
+                                            {{ $course->course_category_id == $courseCat->id ? 'selected' : '' }}>
+                                            {{ $courseCat->name }}
+                                        </option>
+                                    @endforeach
                                 @endif
-                            </div>
+                            </select>
+
+                            <!-- Error Message Display -->
+                            @if ($errors->has('course_category_id'))
+                                <div class="text-danger mt-1">
+                                    {{ $errors->first('course_category_id') }}
+                                </div>
+                            @endif
                         </div>
+
 
 
                         <div class="col-3 mb-3">

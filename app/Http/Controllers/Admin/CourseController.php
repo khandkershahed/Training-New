@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin;
-use App\Models\Course;
-use App\Models\Service;
-use App\Models\industry;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Models\CourseSection;
-use App\Models\CourseCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
+use App\Models\Admin;
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Models\CourseSection;
+use App\Models\industry;
+use App\Models\Service;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -202,9 +202,9 @@ class CourseController extends Controller
         $admins = Admin::latest()->get();
         $services = Service::latest()->get();
         $industrys = industry::latest()->get();
-        
+
         $courseSections = CourseSection::latest()->get();
-        $courseCats = CourseCategory::where('course_section_id', $id)->latest()->get();
+        $courseCats = CourseCategory::where('course_section_id', $course->course_section_id)->latest()->get();
 
         return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }
@@ -213,7 +213,7 @@ class CourseController extends Controller
     {
 
         $validatedData = $request->validate([
-            'course_category_id' => 'required|exists:courses'
+            'course_category_id' => 'required|exists:courses',
         ]);
 
         $course = Course::findOrFail($id);
