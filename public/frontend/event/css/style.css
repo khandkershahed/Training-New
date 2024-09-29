@@ -361,6 +361,7 @@ strong {
 
 .navbar-blur {
   background-color: #00193d8f;
+  border-radius: 7px !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -506,7 +507,7 @@ strong {
   }
   .navbar-blur {
     margin-top: 0 !important;
-    border-radius: 0 !important;
+    border-radius: 7px !important;
   }
   .action-title {
     font-size: 2rem;

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->text('event_name')->nullable();
+            $table->text('slug')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->integer('max_attendees')->nullable();

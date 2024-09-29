@@ -35,6 +35,7 @@ use App\Models\UserCourseRegistration;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Notification;
 use App\Mail\AdminCourseRegistrationNotification;
+use App\Models\Event;
 use App\Notifications\UserRegistrationNotification;
 
 class HomeController extends Controller
@@ -65,7 +66,18 @@ class HomeController extends Controller
     // }
     public function event()
     {
-        return view('frontend.pages.event');
+        return view('frontend.pages.event.allevent');
+    }
+    public function eventDetails($slug)
+    {
+        $data = [
+          'event' => Event::where('slug' , $slug)->first(),
+        ];
+        return view('frontend.pages.event.eventDetails',$data);
+    }
+    public function eventRegistration()
+    {
+        return view('frontend.pages.event.eventRegistration');
     }
 
     public function allCourses(Request $request)
@@ -736,10 +748,6 @@ class HomeController extends Controller
 
         return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
-    public function event()
-    {
 
-        return view('frontend.pages.event.allevent');
-    }
 
 }

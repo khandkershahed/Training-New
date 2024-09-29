@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12 px-0">
                     <div class="image-container">
-                        <img src="./assets/img/bannerone.jpeg" alt="Event Image" />
+                        <img src="{{ asset('frontend/event/img/bannerone.jpeg') }}" alt="Event Image" />
                         <div class="overlay"></div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -156,7 +156,7 @@
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body text-end">
                             <img class="img-fluid rounded-2 w-100" style="width: 250px !important"
-                                src="./assets/img/Event-Planning.png" alt="" />
+                                src="{{ asset('frontend/event/img/Event-Planning.png') }}" alt="" />
                         </div>
                     </div>
                 </div>

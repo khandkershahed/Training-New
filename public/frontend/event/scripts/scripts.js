@@ -1,3 +1,4 @@
+
 // == Settings ==
 const lang = "EN"; // RU or EN description
 const typeCountdown = "time"; // 'time' to set the countdown to a specific time or 'date' to set the countdown to the designated date
@@ -331,7 +332,7 @@ $(document).ready(function() {
     slidesToScroll: 1,
     arrows: true,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 5000,
     responsive: [
       {
         breakpoint: 639,
