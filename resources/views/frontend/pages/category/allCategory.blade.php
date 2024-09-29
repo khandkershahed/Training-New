@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center py-5 w-75 w-lg-100 mx-auto">
-                        <h2>Popular <span class="main_color">Categories</span> We Offer</h2>
+                        <h2>Course <span class="main_color">Categories</span> We Offer</h2>
                         <div>
                             <img decoding="async" width="137" height="21"
                                 src="https://www.promisetrainingglobal.com/wp-content/uploads/2019/02/line.jpg"

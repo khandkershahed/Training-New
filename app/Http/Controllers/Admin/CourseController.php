@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin;
-use App\Models\Course;
-use App\Models\Service;
-use App\Models\industry;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Models\CourseSection;
-use App\Models\CourseCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
+use App\Models\Admin;
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Models\CourseSection;
+use App\Models\industry;
+use App\Models\Service;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CourseController extends Controller
 {
@@ -194,19 +194,28 @@ class CourseController extends Controller
         return redirect()->route('admin.course.index')->with('success', 'Course Inserted Successfully!!');
     }
 
+    //course edit
     public function edit(Request $request, $id)
     {
         $course = Course::find($id);
+
         $admins = Admin::latest()->get();
         $services = Service::latest()->get();
         $industrys = industry::latest()->get();
-        $courseCats = CourseCategory::latest()->get();
+
         $courseSections = CourseSection::latest()->get();
+        $courseCats = CourseCategory::where('course_section_id', $course->course_section_id)->latest()->get();
+
         return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }
 
     public function update(CourseRequest $request, $id)
     {
+
+        $validatedData = $request->validate([
+            'course_category_id' => 'required|exists:courses',
+        ]);
+
         $course = Course::findOrFail($id);
 
         $mainFile = $request->file('thumbnail_image');
@@ -331,13 +340,13 @@ class CourseController extends Controller
     {
         $course = Course::findOrFail($id);
 
-        if (File::exists(public_path('storage/course/requestImg/') . $course->thumbnail_image)) {
-            File::delete(public_path('storage/course/requestImg/') . $course->thumbnail_image);
-        }
+        // if (File::exists(public_path('storage/course/requestImg/') . $course->thumbnail_image)) {
+        //     File::delete(public_path('storage/course/requestImg/') . $course->thumbnail_image);
+        // }
 
-        if (File::exists(public_path('storage/course/') . $course->thumbnail_image)) {
-            File::delete(public_path('storage/course/') . $course->thumbnail_image);
-        }
+        // if (File::exists(public_path('storage/course/') . $course->thumbnail_image)) {
+        //     File::delete(public_path('storage/course/') . $course->thumbnail_image);
+        // }
 
         $course->delete();
     }

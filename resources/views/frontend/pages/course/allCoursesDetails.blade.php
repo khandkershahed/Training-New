@@ -150,7 +150,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            {{-- <div class="col-md-3">
                                                 <div class="card rounded-4 mx-3 mx-lg-0 mb-2 mb-lg-0">
                                                     <div class="card-body">
                                                         <div class="text-center">
@@ -160,7 +160,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
 
 
@@ -483,7 +483,7 @@
                                                 <a href="">
                                                     <div class="d-flex align-items-center">
                                                         <small><i class="fa-regular fa-envelope pe-3"></i></small>
-                                                        <small>{{ optional($setting)->primary_email ?? 'inquiry@ngenitltd.com' }}</small>
+                                                        <small>{{ optional($setting)->support_email ?? 'inquiry@ngenitltd.com' }}</small>
                                                     </div>
                                                 </a>
                                             </div>

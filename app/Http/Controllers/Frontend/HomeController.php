@@ -48,7 +48,7 @@ class HomeController extends Controller
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
 
-        $courseSections = CourseSection::latest()->get();
+        $courseSections = CourseSection::orderBy('name','ASC')->latest()->get();
 
         // return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
 
@@ -163,6 +163,17 @@ class HomeController extends Controller
     {
         $services = Service::latest()->get();
         return view('frontend.pages.service.allService', compact('services'));
+    }
+
+
+    //appointment
+    public function appointment()
+    {
+        $query= 'counselor';
+        $data = [
+            'counselors' => Admin::where('role', 'like', "%{$query}%")->get(), // Replace 'role' with the actual column name
+        ];
+        return view('frontend.pages.appointment', $data);
     }
 
     //courseServiceDetails

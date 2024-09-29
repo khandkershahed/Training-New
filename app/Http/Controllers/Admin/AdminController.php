@@ -80,6 +80,7 @@ class AdminController extends Controller
         } else {
             $imageName = null; // Or handle a default image if needed
         }
+    //    dd($request->input('role'));
 
         // Create a new admin record
         $admin = new Admin();
@@ -118,7 +119,7 @@ class AdminController extends Controller
             'address' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation rules
         ]);
-
+        // dd($request->input('role'));
         // Handle file upload if an image is present
         if ($request->hasFile('image')) {
             // Delete old image if it exists

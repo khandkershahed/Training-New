@@ -55,7 +55,7 @@
                         <div class="col-3 mb-3">
 
                             <div class="form-group">
-                                <label for="" class="mb-2">Name</label>
+                                <label for="" class="mb-2">Category Name</label>
                                 <input type="text" name="name" placeholder="Course Category Name"
                                     class="form-control form-control-sm" value="{{ $courseCat->name }}">
                             </div>
@@ -139,7 +139,7 @@
                         //     required: true,
                         // },
 
-                        description: {
+                        course_section_id: {
                             required: true,
                         },
 
@@ -156,8 +156,8 @@
                         //     required: 'Please Enter Banner Image',
                         // },
 
-                        description: {
-                            required: 'Please Enter Description Field',
+                        course_section_id: {
+                            required: 'Please Enter Course Section Name',
                         },
 
 

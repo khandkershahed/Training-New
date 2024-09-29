@@ -55,9 +55,7 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <h3 class="main-color">Search a Course</h3>
-
-
+                    {{-- <h3 class="main-color">Search a Course</h3>
 
                     <form action="" method="post">
                         <div class="row">
@@ -112,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <div class="mt-3">
 

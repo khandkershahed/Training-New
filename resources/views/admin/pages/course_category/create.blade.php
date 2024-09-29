@@ -46,14 +46,20 @@
                         </div>
 
                         <div class="col-3 mb-3">
-
                             <div class="form-group">
-                                <label for="" class="mb-2">Name</label>
+                                <label for="" class="mb-2">Category Name</label>
                                 <input type="text" name="name" placeholder="Course Category Name"
-                                    class="form-control form-control-sm" value="{{ old('name') }}">
+                                       class="form-control form-control-sm @error('name') is-invalid @enderror" 
+                                       value="{{ old('name') }}">
+                                
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-
                         </div>
+                        
 
                         <div class="col-6 mb-3">
                             <div class="form-group">
@@ -119,9 +125,14 @@
             $(document).ready(function() {
                 $('#myForm').validate({
                     rules: {
+                        course_section_id: {
+                            required: true,
+                        },
+
                         name: {
                             required: true,
                         },
+
                         banner_image: {
                             required: true,
                         },
@@ -130,6 +141,11 @@
                         },
                     },
                     messages: {
+
+                        course_section_id: {
+                            required: 'Please Enter Course Section Name',
+                        },
+
                         name: {
                             required: 'Please Enter Course Category Name',
                         },

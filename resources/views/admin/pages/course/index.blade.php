@@ -24,15 +24,17 @@
 
         <div class="card-body pt-0">
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
-                <thead>
+                <thead class="bg-dark text-light">
                     <tr>
                         <th width="5%">No</th>
                         <th width="8%">Image</th>
+                        <th width="15%">Section</th>
+                        <th width="15%">Category</th>
                         <th width="20%">Course Name</th>
-                        <th width="20%">Lecture</th>
-                        <th width="10%">Seat</th>
+                        <th width="8%">Lecture</th>
+                        <th width="8%">Seat</th>
                         <th width="10%">Price</th>
-                        <th width="20%">Discount Price</th>
+                        <th width="10%">Discount Price</th>
                         <th width="100%">Actions</th>
                     </tr>
                 </thead>
@@ -41,7 +43,7 @@
                     @foreach ($courses as $key => $course)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td class="text-center">
+                            <td class="">
 
                                 <img class=""
                                     src="{{ !empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($course->name) }}"
@@ -49,6 +51,8 @@
 
                             </td>
 
+                            <td class="text-start">{{ $course->section->name }}</td>
+                            <td class="text-start">{{ $course->category->name }}</td>
                             <td class="text-start">{{ $course->name }}</td>
                             <td class="text-start">{{ $course->lecture }}</td>
                             <td class="text-start">{{ $course->available_seats }}</td>

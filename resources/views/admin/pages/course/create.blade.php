@@ -38,7 +38,8 @@
                                 <label for="" class="mb-2">Instructor Name</label>
 
                                 <select
-                                    class="form-select form-select-solid form-select-sm @error('instructor_id') is-invalid @enderror" name="instructor_id[]" id="field2" multiple multiselect-search="true"
+                                    class="form-select form-select-solid form-select-sm @error('instructor_id') is-invalid @enderror"
+                                    name="instructor_id[]" id="field2" multiple multiselect-search="true"
                                     multiselect-select-all="true" multiselect-max-items="2">
 
                                     @if (count($admins) > 0)
@@ -313,7 +314,7 @@
                         <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Short Description</label>
-                                <textarea name="short_descp"  class="form-control editor" id="" cols="3" rows="3"></textarea>
+                                <textarea name="short_descp" class="form-control editor" id="" cols="3" rows="3"></textarea>
                             </div>
                         </div>
 
