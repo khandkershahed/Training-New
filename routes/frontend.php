@@ -46,6 +46,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/appointment', [HomeController::class, 'appointment'])->name('appointment');
 
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/event', [HomeController::class, 'event'])->name('event');
 
 
 //serviceDetails
