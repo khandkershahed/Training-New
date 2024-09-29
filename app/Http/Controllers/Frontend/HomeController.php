@@ -169,11 +169,11 @@ class HomeController extends Controller
     //appointment
     public function appointment()
     {
-        $query= 'counselor';
-        $data = [
-            'counselors' => Admin::where('role', 'like', "%{$query}%")->get(), // Replace 'role' with the actual column name
-        ];
-        return view('frontend.pages.appointment', $data);
+        // $query= 'counselor';
+        // $data = [
+        //     'counselors' => Admin::where('role', 'like', "%{$query}%")->get(), // Replace 'role' with the actual column name
+        // ];
+        return view('frontend.pages.appointment');
     }
 
     //courseServiceDetails
