@@ -63,6 +63,10 @@ class HomeController extends Controller
     //     $courseCategories = CourseCategory::latest()->get();
     //     return view('frontend.pages.course.allCourses', compact('courses', 'courseSections', 'courseCategories'));
     // }
+    public function event()
+    {
+        return view('frontend.pages.event');
+    }
 
     public function allCourses(Request $request)
     {
@@ -304,7 +308,7 @@ class HomeController extends Controller
         Mail::to($user->email)->send(new CourseRegister($data));
 
         //Notification
-        
+
 
         $admins = Admin::where('mail_status', 'mail')->get();
 

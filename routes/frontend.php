@@ -45,6 +45,7 @@ Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('conta
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/event', [HomeController::class, 'event'])->name('event');
 
 
 //serviceDetails
