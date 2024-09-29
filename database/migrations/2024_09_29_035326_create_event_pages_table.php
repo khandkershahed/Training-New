@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('row_one_title')->nullable();
             $table->string('row_one_image')->nullable();
             $table->longText('row_one_description')->nullable()->comment('text-editor');
-            $table->foreign('added_by')->references('id')->on('admins')->onDelete('set null');
-            $table->foreign('updated_by')->references('id')->on('admins')->onDelete('set null');
+            $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
         });
     }
