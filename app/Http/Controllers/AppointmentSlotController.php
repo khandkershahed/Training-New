@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\AppointmentSlot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+
 
 class AppointmentSlotController extends Controller
 {
@@ -15,7 +18,8 @@ class AppointmentSlotController extends Controller
     public function index()
     {
         $data = [
-            // 'slots' => AppointmentSlot::latest()->get(),
+            'admins' => Admin::latest()->get(),
+            'items' => AppointmentSlot::latest()->get(),
         ];
         return view('admin.pages.appointmentSlot.index', $data);
     }
@@ -36,23 +40,23 @@ class AppointmentSlotController extends Controller
         // Validate the incoming request data
         $request->validate([
             'counselor_id' => 'required|exists:admins,id',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
-            'date' => 'required|date',
-            'added_by' => 'nullable|exists:admins,id',
+            'start_time'   => 'required|date_format:H:i',
+            'end_time'     => 'required|date_format:H:i|after:start_time',
+            'date'         => 'required|date',
+            'added_by'     => 'nullable|exists:admins,id', // Optional field
         ]);
 
         // Create a new appointment slot
         $appointmentSlot = AppointmentSlot::create([
-            'counselor_id' => Auth::guard('admin')->user()->id,
+            'counselor_id' => $request->counselor_id,
             'start_time'   => $request->start_time,
             'end_time'     => $request->end_time,
             'date'         => $request->date,
-            'added_by'     => $request->added_by,
-            'updated_by'   => $request->added_by, // If you want to track who added it
+            'added_by'     => Auth::guard('admin')->user()->id, // Track who added it
+            'updated_by'   => Auth::guard('admin')->user()->id, // Track who updated it
         ]);
 
-        Session::flash('success', 'Slot updated Successfully');
+        // Session::flash('success', 'Slot updated Successfully');
         return redirect()->back();
     }
 
@@ -79,29 +83,36 @@ class AppointmentSlotController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Find the existing appointment slot
-        $appointmentSlot = AppointmentSlot::findOrFail($id);
-
         // Validate the incoming request data
-        $request->validate([
-            'counselor_id' => 'required|exists:admins,id',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
+        $validator = Validator::make($request->all(), [
+            'counselor_id' => 'required|exists:admins,id', // Ensure the selected counselor exists
+            'start_time' => 'required|date_format:H:i', // Validate time format
+            'end_time' => 'required|date_format:H:i|after:start_time', // Ensure end time is after start time
             'date' => 'required|date',
-            'updated_by' => 'nullable|exists:admins,id',
         ]);
 
-        // Update the appointment slot
+        // If validation fails, redirect back with errors
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Find the appointment slot and update it
+        $appointmentSlot = AppointmentSlot::findOrFail($id);
         $appointmentSlot->update([
-            'counselor_id' => Auth::guard('admin')->user()->id,
-            'start_time'   => $request->start_time,
-            'end_time'     => $request->end_time,
-            'date'         => $request->date,
-            'updated_by'   => $request->updated_by,
+            'counselor_id' => $request->input('counselor_id'),
+            'start_time' => $request->input('start_time'),
+            'end_time' => $request->input('end_time'),
+            'date' => $request->input('date'),
+
+            'added_by'     => Auth::guard('admin')->user()->id,
+            'updated_by'   => Auth::guard('admin')->user()->id,
         ]);
 
-        Session::flash('success', 'Slot updated Successfully');
-        return redirect()->back();
+        // Redirect back with a success message
+        return redirect()->route('admin.appointment-slot.index') // Adjust the route as necessary
+            ->with('success', 'Appointment slot updated successfully.');
     }
 
     /**
