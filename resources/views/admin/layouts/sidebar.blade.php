@@ -532,10 +532,10 @@
                          </div>
                      </div>
                  @endif
-                 
+
                  {{-- Setting  --}}
                  <div data-kt-menu-trigger="click"
-                     class="menu-item menu-accordion {{ Request::routeIs('admin.settings.index', 'admin.all.registration','admin.event-page.index','admin.event.index') ? 'here show' : '' }}">
+                     class="menu-item menu-accordion {{ Request::routeIs('admin.settings.index', 'admin.all.registration', 'admin.event-page.index', 'admin.event.index') ? 'here show' : '' }}">
 
                      <span class="menu-link">
                          <span class="menu-icon">
@@ -561,7 +561,7 @@
                      </span>
 
                      <div
-                         class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('admin.settings.index', 'admin.all.registration','admin.event-page.index','admin.event.index') ? 'here show' : '' }}">
+                         class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('admin.settings.index', 'admin.all.registration', 'admin.event-page.index', 'admin.event.index') ? 'here show' : '' }}">
 
                          @if (Auth::guard('admin')->user()->can('setting.menu'))
                              <div class="menu-item">
@@ -590,6 +590,31 @@
                                  @endif
                              </div>
                          @endif
+
+                         <div class="menu-item">
+
+                             <a class="menu-link {{ Route::is('admin.event-page.index') ? 'active' : '' }}"
+                                 href="{{ route('admin.event-page.index') }}">
+                                 <span class="menu-bullet">
+                                     <span class="bullet bullet-dot"></span>
+                                 </span>
+                                 <span class="menu-title">Event Page</span>
+                             </a>
+
+                         </div>
+
+                         <div class="menu-item">
+
+                            <a class="menu-link {{ Route::is('admin.event.index') ? 'active' : '' }}"
+                                href="{{ route('admin.event.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Event</span>
+                            </a>
+
+                        </div>
+
 
                      </div>
                  </div>
