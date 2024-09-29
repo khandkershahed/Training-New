@@ -424,6 +424,7 @@
                      <div
                          class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('admin.contacts.index', 'admin.faq_category.index', 'admin.faq.index') ? 'here show' : '' }}">
 
+                         
                          @if (Auth::guard('admin')->user()->can('contact-message.menu'))
                              <div class="menu-item">
                                  @if (Auth::guard('admin')->user()->can('all.contact-message'))
