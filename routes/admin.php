@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TermsConditionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\AppointmentSlotController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseCategoryController;
@@ -152,10 +153,13 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'contacts' => ContactController::class,
 
             //Created By Ashiquzzaman
+
             'course' => CourseController::class,
             'course_content' => CourseContentController::class,
             'course_curriculam' => CourseCurriculamController::class,
+
             // 'course_curriculum_content' => CourseCurriculumContentController::class,
+
             'coupon' => CouponController::class,
             'course_query' => CourseQueryController::class,
 
@@ -175,8 +179,10 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'faq_category' => FaqCategoryController::class,
 
             'common_banner' => BannerController::class,
+            
             'event-page' => EventPageController::class,
             'event' => EventController::class,
+            'appointment-slot' => AppointmentSlotController::class,
 
         ],
 
@@ -290,5 +296,4 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
-
 });

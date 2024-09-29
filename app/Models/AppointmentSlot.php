@@ -2,18 +2,24 @@
 
 namespace App\Models;
 
-use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class AppointmentSlot extends Model
 {
-    use HasFactory,HasSlug;
-    protected $slugSourceColumn = 'event_name';
+    use HasFactory;
+
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
      */
     protected $guarded = [];
+
+    public function adminName()
+    {
+        return $this->belongsTo(Admin::class,'counselor_id','id');
+    }
+
+
 }
