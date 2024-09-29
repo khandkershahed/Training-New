@@ -26,10 +26,15 @@ return new class extends Migration
             $table->string('row_one_title')->nullable();
             $table->string('row_one_image')->nullable();
             $table->longText('row_one_description')->nullable()->comment('text-editor');
+<<<<<<< HEAD
             
             $table->foreign('added_by')->references('id')->on('admins')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('admins')->onDelete('set null');
 
+=======
+            $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');
+            $table->foreignId('updated_by')->nullable()->constrained('admins')->onDelete('set null');
+>>>>>>> aeaa509f9c672d57754d144569c0cc4d3f9d94b4
             $table->timestamps();
         });
     }
