@@ -15,4 +15,11 @@ class AppointmentSlot extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function adminName()
+    {
+        return $this->belongsTo(Admin::class,'counselor_id','id');
+    }
+
+
 }
