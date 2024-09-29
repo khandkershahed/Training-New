@@ -424,6 +424,7 @@
                      <div
                          class="menu-sub menu-sub-accordion menu-active-bg {{ Request::routeIs('admin.contacts.index', 'admin.faq_category.index', 'admin.faq.index') ? 'here show' : '' }}">
 
+                         
                          @if (Auth::guard('admin')->user()->can('contact-message.menu'))
                              <div class="menu-item">
                                  @if (Auth::guard('admin')->user()->can('all.contact-message'))
@@ -532,7 +533,7 @@
                          </div>
                      </div>
                  @endif
-                 
+
                  {{-- Setting  --}}
                  <div data-kt-menu-trigger="click"
                      class="menu-item menu-accordion {{ Request::routeIs('admin.settings.index', 'admin.all.registration','admin.event-page.index','admin.event.index') ? 'here show' : '' }}">

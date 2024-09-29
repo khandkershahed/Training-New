@@ -71,6 +71,8 @@ Route::post('/newsletter/store', [NewsLetterController::class, 'store'])->name('
 
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 
+Route::get('/events', [HomeController::class, 'event'])->name('event');
+
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
     Route::post('/cart-store', 'AddToCartCourse');

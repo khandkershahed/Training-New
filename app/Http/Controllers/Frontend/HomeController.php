@@ -732,5 +732,10 @@ class HomeController extends Controller
 
         return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
+    public function event()
+    {
+
+        return view('frontend.pages.event.allevent');
+    }
 
 }
