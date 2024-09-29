@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('row_three_title')->nullable();
             $table->text('row_three_description')->nullable()->comment('normal-textarea');
             $table->string('status')->nullable()->comment('canceled','ongoing','upcoming','completed','registration_open','registration_close');
-            $table->string('event_type')->nullable()->comment(['workshop', 'seminar', 'concert', 'conference', 'webinar']);
+            $table->string('event_type')->nullable()->comment('workshop', 'seminar', 'concert', 'conference', 'webinar');
             $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
