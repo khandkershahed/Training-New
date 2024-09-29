@@ -28,10 +28,12 @@
                     <tr>
                         <th width="5%">No</th>
 
-                        <th width="25%">Banner Image</th>
-                        <th width="25%">Event Name</th>
-                        <th width="25%">Start Date</th>
-                        <th width="25%">End Date</th>
+                        <th width="10%">Banner Image</th>
+                        <th width="15%">Event Name</th>
+                        <th width="15%">Start Date</th>
+                        <th width="15%">End Date</th>
+                        <th width="15%">Event Type</th>
+                        <th width="15%">Status</th>
 
                         <th width="100%">Actions</th>
                     </tr>
@@ -52,6 +54,30 @@
                             <td class="text-start">{{ $item->event_name }}</td>
                             <td class="text-start">{{ $item->start_date }}</td>
                             <td class="text-start">{{ $item->end_date }}</td>
+                            <td class="text-start">
+                                <span class="badge 
+                                    @if($item->event_type === 'workshop') bg-primary 
+                                    @elseif($item->event_type === 'seminar') bg-success 
+                                    @elseif($item->event_type === 'concert') bg-danger 
+                                    @elseif($item->event_type === 'conference') bg-warning 
+                                    @elseif($item->event_type === 'webinar') bg-info 
+                                    @endif">
+                                    {{ ucfirst($item->event_type) }}
+                                </span>
+                            </td>
+                            <td class="text-start">
+                                <span class="badge 
+                                    @if($item->status === 'canceled') bg-danger
+                                    @elseif($item->status === 'ongoing') bg-success 
+                                    @elseif($item->status === 'upcoming') bg-info 
+                                    @elseif($item->status === 'completed') bg-dark 
+                                    @elseif($item->status === 'registration_open') bg-primary 
+                                    @elseif($item->status === 'registration_close') bg-warning 
+                                    @endif">
+                                    {{ ucfirst($item->status) }}
+                                </span>
+                            </td>
+                            
 
                             <td>
 
