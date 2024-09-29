@@ -15,8 +15,10 @@
                 <div>
                     <a class="text-decoration-none text-white me-1" href="{{ route('faq') }}">FAQ
                     </a>|
-                    <a class="text-decoration-none text-white ms-1" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#discountModal">Enquiries
+                    <a class="text-decoration-none text-white ms-1" href="{{ route('appointment') }}">Appointment
                     </a>
+                    {{-- <a class="text-decoration-none text-white ms-1" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#discountModal">Enquiries
+                    </a> --}}
                 </div>
             </div>
 
