@@ -4,7 +4,7 @@
             <div class="card-title">
             </div>
 
-            <div class="card-toolbar">
+            {{-- <div class="card-toolbar">
                 <a href="{{ route('admin.homepage.create') }}" class="btn btn-light-primary rounded-2">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -18,7 +18,8 @@
                         </svg>
                     </span> Create
                 </a>
-            </div>
+            </div> --}}
+
         </div>
         <div class="card-body pt-0">
             <table class="bannersDT table align-middle table-row-dashed fs-6 gy-5 mb-0" id="kt_permissions_table">
