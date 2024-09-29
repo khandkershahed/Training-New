@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('event_pages', function (Blueprint $table) {
             $table->id();
+
             $table->string('banner_image')->nullable();
             $table->string('banner_badge')->nullable();
             $table->string('banner_sub_title')->nullable();
@@ -25,8 +26,10 @@ return new class extends Migration
             $table->string('row_one_title')->nullable();
             $table->string('row_one_image')->nullable();
             $table->longText('row_one_description')->nullable()->comment('text-editor');
+            
             $table->foreign('added_by')->references('id')->on('admins')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('admins')->onDelete('set null');
+
             $table->timestamps();
         });
     }

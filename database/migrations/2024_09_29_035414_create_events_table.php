@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+
             $table->text('event_name')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
@@ -38,8 +39,10 @@ return new class extends Migration
             $table->text('row_three_description')->nullable()->comment('normal-textarea');
             $table->string('status')->nullable()->comment('canceled','ongoing','upcoming','completed','registration_open','registration_close');
             $table->string('event_type')->nullable()->comment(['workshop', 'seminar', 'concert', 'conference', 'webinar']);
+            
             $table->foreign('added_by')->references('id')->on('admins')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('admins')->onDelete('set null');
+
             $table->timestamps();
         });
     }
