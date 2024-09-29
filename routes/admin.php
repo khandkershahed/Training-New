@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\CourseQueryController;
 use App\Http\Controllers\Admin\CourseScheduleController;
 use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\EmailSettingController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\EventPageController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\LogController;
@@ -173,6 +175,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'faq_category' => FaqCategoryController::class,
 
             'common_banner' => BannerController::class,
+            'event-page' => EventPageController::class,
+            'event' => EventController::class,
 
         ],
 

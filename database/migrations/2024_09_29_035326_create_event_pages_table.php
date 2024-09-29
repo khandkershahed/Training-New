@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('event_pages', function (Blueprint $table) {
             $table->id();
+
             $table->string('banner_image')->nullable();
             $table->string('banner_badge')->nullable();
             $table->string('banner_sub_title')->nullable();
