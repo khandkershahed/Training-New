@@ -30,7 +30,7 @@
 
                     <div class="row p-4">
 
-                        <div class="col-3 mb-3">
+                        <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Event Name</label>
                                 <input type="text" name="event_name" placeholder="Event Name"
@@ -38,7 +38,7 @@
                             </div>
                         </div>
 
-                        <div class="col-3 mb-3">
+                        <div class="col-2 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Start Date</label>
                                 <input type="date" name="start_date" placeholder="Start Date"
@@ -46,11 +46,35 @@
                             </div>
                         </div>
 
-                        <div class="col-3 mb-3">
+                        <div class="col-2 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Start Time</label>
+                                <input type="time" name="start_time" placeholder="Start Time"
+                                    class="form-control form-control-sm" value="{{ old('start_time') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-2 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">End Date</label>
                                 <input type="date" name="end_date" placeholder="End Date"
                                     class="form-control form-control-sm" value="{{ old('end_date') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-2 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">End Time</label>
+                                <input type="time" name="end_time" placeholder="End Time"
+                                    class="form-control form-control-sm" value="{{ old('end_time') }}">
+                            </div>
+                        </div>
+
+                        <!-- Short Descp -->
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="event_short_descp" class="mb-2">Event Short Descp</label>
+                                <textarea name="event_short_descp" placeholder="Event Short Description" class="form-control form-control-sm" cols="3" rows="3">{{ old('event_short_descp') }}</textarea>
                             </div>
                         </div>
 

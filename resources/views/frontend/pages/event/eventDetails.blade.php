@@ -10,20 +10,20 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="text-container content-box left-text">
-                                    <h6>{{ $event->banner_badge }}</h6>
+                                    <h6>{{ optional($event)->banner_badge }}</h6>
                                     <h2 class="mb-0 pt-5 srpt-font">
-                                        {{ $event->banner_sub_title }}
+                                        {{ optional($event)->banner_sub_title }}
                                     </h2>
-                                    <h1>{{ $event->banner_title }}</h1>
-                                    <p class="pt-5 fw-bold">{{ $event->organizer_text }}</p>
+                                    <h1>{{ optional($event)->banner_title }}</h1>
+                                    <p class="pt-5 fw-bold">{{ optional($event)->organizer_text }}</p>
                                     <div class="pt-2">
-                                        <a href="{{ $event->map_link }}" class="btn btn-outline-light me-2 rounded-pill">
+                                        <a href="{{ optional($event)->map_link }}" class="btn btn-outline-light me-2 rounded-pill">
                                             <i class="fa-solid fa-location-dot pe-2"></i>Map
                                         </a>
-                                        <a href="{{ $event->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
+                                        <a href="{{ optional($event)->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
                                             <i class="fa-solid fa-globe"></i> Training
                                         </a>
-                                        <a href="{{ $event->whatsapp_link }}" class="btn btn-outline-light rounded-pill">
+                                        <a href="{{ optional($event)->whatsapp_link }}" class="btn btn-outline-light rounded-pill">
                                             <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                         </a>
                                     </div>

@@ -43,7 +43,6 @@ class EventController extends Controller
         if (empty($iconmainFile)) {
 
             $globalFunIconImg['file_name'] = '';
-
         } else {
             $globalFunIconImg = customUpload($iconmainFile, $iconimgPath);
             $globalFunIconImg['file_name'] = $globalFunIconImg['file_name'];
@@ -56,7 +55,12 @@ class EventController extends Controller
 
                 'event_name' => $request->event_name,
                 'start_date' => $request->start_date,
+                'start_time' => $request->start_time,
                 'end_date' => $request->end_date,
+                'end_time' => $request->end_time,
+
+                'event_short_descp' => $request->event_short_descp,
+
                 'max_attendees' => $request->max_attendees,
                 'current_attendees' => $request->current_attendees,
 
@@ -99,7 +103,12 @@ class EventController extends Controller
 
                     'event_name' => $request->event_name,
                     'start_date' => $request->start_date,
+                    'start_time' => $request->start_time,
                     'end_date' => $request->end_date,
+                    'end_time' => $request->end_time,
+
+                    'event_short_descp' => $request->event_short_descp,
+
                     'max_attendees' => $request->max_attendees,
                     'current_attendees' => $request->current_attendees,
 
@@ -206,7 +215,12 @@ class EventController extends Controller
 
             'event_name' => $request->event_name,
             'start_date' => $request->start_date,
+            'start_time' => $request->start_time,
             'end_date' => $request->end_date,
+            'end_time' => $request->end_time,
+
+            'event_short_descp' => $request->event_short_descp,
+
             'max_attendees' => $request->max_attendees,
             'current_attendees' => $request->current_attendees,
 

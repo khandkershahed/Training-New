@@ -190,8 +190,7 @@
                                 class="col-form-label fw-bold fs-6 ">{{ __('Row Two Description') }}
                             </x-metronic.label>
 
-                            <x-metronic.textarea id="row_two_description" type="text" name="row_two_description"
-                                placeholder="Enter the Short Description" :value="$homePage->row_two_description"></x-metronic.textarea>
+                            <textarea name="row_two_description" class="form-control form-control-sm editor">{!! $homePage->row_two_description !!}</textarea>
                         </div>
 
                     </div>

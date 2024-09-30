@@ -50,12 +50,38 @@
                             </div>
                         </div>
 
+                        <!-- Start Time -->
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="start_time" class="mb-2">Start Time</label>
+                                <input type="time" name="start_time" class="form-control form-control-sm"
+                                    value="{{ old('start_time', $item->start_time) }}">
+                            </div>
+                        </div>
+
                         <!-- End Date -->
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="end_date" class="mb-2">End Date</label>
                                 <input type="date" name="end_date" class="form-control form-control-sm"
                                     value="{{ old('end_date', $item->end_date) }}">
+                            </div>
+                        </div>
+
+                        <!-- End Date -->
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="end_time" class="mb-2">End Time</label>
+                                <input type="time" name="end_time" class="form-control form-control-sm"
+                                    value="{{ old('end_time', $item->end_time) }}">
+                            </div>
+                        </div>
+
+                        <!-- Short Descp -->
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="event_short_descp" class="mb-2">Event Short Descp</label>
+                                <textarea name="event_short_descp" class="form-control form-control-sm" cols="3" rows="3">{{ old('event_short_descp', $item->event_short_descp) }}</textarea>
                             </div>
                         </div>
 

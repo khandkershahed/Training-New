@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Notification;
 use App\Mail\AdminCourseRegistrationNotification;
 use App\Models\Event;
+use App\Models\EventPage;
 use App\Notifications\UserRegistrationNotification;
 
 class HomeController extends Controller
@@ -64,17 +65,26 @@ class HomeController extends Controller
     //     $courseCategories = CourseCategory::latest()->get();
     //     return view('frontend.pages.course.allCourses', compact('courses', 'courseSections', 'courseCategories'));
     // }
+
+    //event
     public function event()
     {
-        return view('frontend.pages.event.allevent');
+        $eventPage = EventPage::latest('id')->first();
+        $events = Event::latest()->get();
+        
+        return view('frontend.pages.event.allevent',compact('eventPage','events'));
     }
+
+    //eventDetails
     public function eventDetails($slug)
     {
         $data = [
           'event' => Event::where('slug' , $slug)->first(),
         ];
+        
         return view('frontend.pages.event.eventDetails',$data);
     }
+
     public function eventRegistration()
     {
         return view('frontend.pages.event.eventRegistration');
