@@ -6,10 +6,11 @@
                 <div class="col-lg-12 px-0">
                     <div class="image-container">
 
-                        <img src="{{ !empty($event->banner_image) ? url('storage/event/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}" alt="Event Image" />
+                        <img src="{{ !empty($event->banner_image) ? url('storage/event/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                            alt="Event Image" />
 
                         <div class="overlay"></div>
-                        
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="text-container content-box left-text">
@@ -20,13 +21,16 @@
                                     <h1>{{ optional($event)->banner_title }}</h1>
                                     <p class="pt-5 fw-bold">{{ optional($event)->organizer_text }}</p>
                                     <div class="pt-2">
-                                        <a href="{{ optional($event)->map_link }}" class="btn btn-outline-light me-2 rounded-pill">
+                                        <a href="{{ optional($event)->map_link }}"
+                                            class="btn btn-outline-light me-2 rounded-pill">
                                             <i class="fa-solid fa-location-dot pe-2"></i>Map
                                         </a>
-                                        <a href="{{ optional($event)->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
+                                        <a href="{{ optional($event)->website_link }}"
+                                            class="btn btn-outline-light me-2 rounded-pill">
                                             <i class="fa-solid fa-globe"></i> Training
                                         </a>
-                                        <a href="{{ optional($event)->whatsapp_link }}" class="btn btn-outline-light rounded-pill">
+                                        <a href="{{ optional($event)->whatsapp_link }}"
+                                            class="btn btn-outline-light rounded-pill">
                                             <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                         </a>
                                     </div>
@@ -39,16 +43,21 @@
                                             class="card-header border-0 py-0 d-flex justify-content-between align-items-end">
                                             <p class="mb-0 pb-3">
                                                 <small class="cst-font">Start At</small> <br />
-                                                <span class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
+                                                <span
+                                                    class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
                                             </p>
                                             <p class="text-center mb-0">
-                                                <span class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
-                                                <span class="start-date">{{ date('d', strtotime($event->start_date)) }}</span>
-                                                <span class="start-month">{{ date('Y', strtotime($event->start_date)) }}</span>
+                                                <span
+                                                    class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
+                                                <span
+                                                    class="start-date">{{ date('d', strtotime($event->start_date)) }}</span>
+                                                <span
+                                                    class="start-month">{{ date('Y', strtotime($event->start_date)) }}</span>
                                             </p>
                                             <p class="mb-0 pb-3">
                                                 <small class="cst-font">End At</small> <br />
-                                                <span class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime($event->end_time)) }}</span>
+                                                <span
+                                                    class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime($event->end_time)) }}</span>
                                             </p>
                                         </div>
 
@@ -58,7 +67,7 @@
                                             </h3>
                                             <div class="flip-countdown"></div>
                                         </div>
-                                        
+
                                         <div class="card-footer border-0">
                                             <div class="row align-items-center">
                                                 <div class="col-lg-12">
@@ -107,7 +116,9 @@
                 <div class="col-lg-6">
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body">
-                            <img class="img-fluid rounded-2 w-100" src="{{ !empty($event->row_one_image) ? url('storage/event/' . $event->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->row_one_title) }}" alt="" />
+                            <img class="img-fluid rounded-2 w-100"
+                                src="{{ !empty($event->row_one_image) ? url('storage/event/' . $event->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->row_one_title) }}"
+                                alt="" />
                         </div>
                     </div>
                 </div>
@@ -191,7 +202,8 @@
                             <p class="fw-semibold pt-3 ps-4 mb-0">
                                 <strong class="pe-2">Event Name:</strong>{{ $event->event_name }} <br>
                                 <strong class="pe-2">Event Type:</strong>{{ $event->event_type }} <br>
-                                <strong class="pe-2">Date:</strong> {{ date('D, M j, Y', strtotime($event->start_date)) }}
+                                <strong class="pe-2">Date:</strong>
+                                {{ date('D, M j, Y', strtotime($event->start_date)) }}
 
                             </p>
                         </div>
