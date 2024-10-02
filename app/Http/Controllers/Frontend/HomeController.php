@@ -76,13 +76,10 @@ class HomeController extends Controller
     }
 
     //eventDetails
-    public function eventDetails($slug)
+    public function eventDetails($id)
     {
-        $data = [
-          'event' => Event::where('slug' , $slug)->first(),
-        ];
-        
-        return view('frontend.pages.event.eventDetails',$data);
+        $event = Event::findOrFail($id);
+        return view('frontend.pages.event.eventDetails',compact('event'));
     }
 
     public function eventRegistration()

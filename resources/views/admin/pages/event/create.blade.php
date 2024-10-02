@@ -205,14 +205,30 @@
                             </div>
                         </div>
 
-                        <div class="col-12 mb-3">
+                        <div class="col-6 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Map Link</label>
                                 <textarea name="map_link" class="form-control form-control-sm" id="" cols="3" rows="3"></textarea>
                             </div>
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Location</label>
+                                <input type="text" name="location" placeholder="Location"
+                                    class="form-control form-control-sm" value="{{ old('location') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Contact</label>
+                                <input type="number" name="contact" placeholder="contact"
+                                    class="form-control form-control-sm" value="{{ old('contact') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Status</label>
                                 <select name="status" class="form-select form-select-sm" id="">
@@ -227,7 +243,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4 mb-3">
+                        <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Event Type</label>
                                 <select name="event_type" class="form-select form-select-sm" id="">

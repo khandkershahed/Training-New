@@ -87,6 +87,9 @@ class EventController extends Controller
                 'status' => $request->status,
                 'event_type' => $request->event_type,
 
+                'location' => $request->location,
+                'contact' => $request->contact,
+
                 'added_by' => Auth::guard('admin')->user()->id,
                 'updated_by' => Auth::guard('admin')->user()->id,
 
@@ -137,6 +140,9 @@ class EventController extends Controller
 
                     'added_by' => Auth::guard('admin')->user()->id,
                     'updated_by' => Auth::guard('admin')->user()->id,
+
+                    'location' => $request->location,
+                    'contact' => $request->contact,
 
                     'banner_image' => $globalFunImg['file_name'],
                     'row_one_image' => $globalFunIconImg['file_name'], ////////
@@ -246,6 +252,9 @@ class EventController extends Controller
 
             'status' => $request->status,
             'event_type' => $request->event_type,
+
+            'location' => $request->location,
+            'contact' => $request->contact,
 
             'added_by' => Auth::guard('admin')->user()->id,
             'updated_by' => Auth::guard('admin')->user()->id,
