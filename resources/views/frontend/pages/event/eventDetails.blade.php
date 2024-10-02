@@ -190,6 +190,7 @@
                             </div>
                             <p class="fw-semibold pt-3 ps-4 mb-0">
                                 <strong class="pe-2">Event Name:</strong>{{ $event->event_name }} <br>
+                                <strong class="pe-2">Event Type:</strong>{{ $event->event_type }} <br>
                                 <strong class="pe-2">Date:</strong> {{ date('D, M j, Y', strtotime($event->start_date)) }}
 
                             </p>

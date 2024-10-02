@@ -62,7 +62,12 @@
                                                     <div
                                                         class="card-header border-0 d-flex justify-content-between align-items-end">
                                                         <p class="text-center mb-0">
-                                                            {{ date('F j, Y', strtotime($event->start_date)) }}
+                                                            <span
+                                                                class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
+                                                            <span
+                                                                class="start-date">{{ date('d', strtotime($event->start_date)) }}</span>
+                                                            <span
+                                                                class="start-month">{{ date('Y', strtotime($event->start_date)) }}</span>
                                                         </p>
                                                         <p class="mb-0">
                                                             <small class="cst-font">Start At</small> <br />
