@@ -204,7 +204,9 @@ class CourseController extends Controller
         $industrys = industry::latest()->get();
 
         $courseSections = CourseSection::latest()->get();
-        $courseCats = CourseCategory::where('course_section_id', $course->course_section_id)->latest()->get();
+
+        $courseSection = $course->course_section_id;
+        $courseCats = CourseCategory::where('course_section_id', $courseSection)->latest()->get();
 
         return view('admin.pages.course.edit', compact('course', 'admins', 'courseCats', 'services', 'industrys', 'courseSections'));
     }

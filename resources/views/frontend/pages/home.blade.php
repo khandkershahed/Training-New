@@ -149,7 +149,7 @@
                     </h2>
 
                     <p class="text-justify py-3">
-                        {{ optional($homePage)->row_two_description }}
+                        {!! optional($homePage)->row_two_description !!}
                     </p>
 
                     <a href="{{ optional($homePage)->row_two_button_url }}"

@@ -46,7 +46,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/appointment', [HomeController::class, 'appointment'])->name('appointment');
 
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
-Route::get('/event', [HomeController::class, 'event'])->name('event');
+// Route::get('/event', [HomeController::class, 'event'])->name('event');
 
 
 //serviceDetails
@@ -73,7 +73,7 @@ Route::post('/newsletter/store', [NewsLetterController::class, 'store'])->name('
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 
 Route::get('/events', [HomeController::class, 'event'])->name('event');
-Route::get('/events/{slug}', [HomeController::class, 'eventDetails'])->name('event.details');
+Route::get('/events/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
 Route::get('/event/registration', [HomeController::class, 'eventRegistration'])->name('event.registration');
 
 //Course Enroll

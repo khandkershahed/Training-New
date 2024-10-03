@@ -17,8 +17,11 @@ return new class extends Migration
             $table->text('event_name')->nullable();
             $table->text('slug')->nullable();
             $table->date('start_date')->nullable();
+            $table->time('start_time')->nullable();
             $table->date('end_date')->nullable();
+            $table->time('end_time')->nullable();
             $table->integer('max_attendees')->nullable();
+            $table->text('event_short_descp')->nullable();
             $table->integer('current_attendees')->nullable();
             $table->string('banner_image')->nullable();
             $table->string('banner_badge')->nullable();
@@ -40,6 +43,10 @@ return new class extends Migration
             $table->text('row_three_description')->nullable()->comment('normal-textarea');
             $table->string('status')->nullable()->comment('canceled','ongoing','upcoming','completed','registration_open','registration_close');
             $table->string('event_type')->nullable()->comment('workshop', 'seminar', 'concert', 'conference', 'webinar');
+
+            $table->string('location')->nullable();
+            $table->string('contact')->nullable();
+
             $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
