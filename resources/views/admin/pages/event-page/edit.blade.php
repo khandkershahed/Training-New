@@ -40,7 +40,7 @@
                                     class="form-control form-control-sm" value="{{ old('banner_badge', $item->banner_badge ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="banner_title" class="mb-2">Banner Title</label>
@@ -48,7 +48,7 @@
                                     class="form-control form-control-sm" value="{{ old('banner_title', $item->banner_title ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="banner_sub_title" class="mb-2">Banner Sub Title</label>
@@ -56,7 +56,7 @@
                                     class="form-control form-control-sm" value="{{ old('banner_sub_title', $item->banner_sub_title ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="organizer_text" class="mb-2">Organizer Text</label>
@@ -64,7 +64,7 @@
                                     class="form-control form-control-sm" value="{{ old('organizer_text', $item->organizer_text ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="website_link" class="mb-2">Website Link</label>
@@ -72,7 +72,7 @@
                                     class="form-control form-control-sm" value="{{ old('website_link', $item->website_link ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="whatsapp_link" class="mb-2">WhatsApp Link</label>
@@ -80,7 +80,7 @@
                                     class="form-control form-control-sm" value="{{ old('whatsapp_link', $item->whatsapp_link ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="other_link" class="mb-2">Other Link</label>
@@ -88,7 +88,7 @@
                                     class="form-control form-control-sm" value="{{ old('other_link', $item->other_link ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-5 mb-3">
                             <div class="form-group">
                                 <label for="row_one_title" class="mb-2">Row One Title</label>
@@ -96,7 +96,7 @@
                                     class="form-control form-control-sm" value="{{ old('row_one_title', $item->row_one_title ?? '') }}">
                             </div>
                         </div>
-                    
+
                         <div class="col-7 mb-3">
                             <div class="form-group">
                                 <label for="map_link" class="mb-2">Map Link</label>
@@ -104,7 +104,7 @@
                                     placeholder="Enter Map Link">{{ old('map_link', $item->map_link ?? '') }}</textarea>
                             </div>
                         </div>
-                    
+
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="row_one_description" class="mb-2">Description</label>
@@ -112,7 +112,7 @@
                                     placeholder="Enter Description">{{ old('row_one_description', $item->row_one_description ?? '') }}</textarea>
                             </div>
                         </div>
-                    
+
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="row_one_image" class="mb-2">Row One Image</label>
@@ -124,7 +124,7 @@
                                     height="80" width="80" alt="">
                             </div>
                         </div>
-                    
+
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="banner_image" class="mb-2">Banner Image</label>
@@ -136,14 +136,14 @@
                                     height="80" width="80" alt="">
                             </div>
                         </div>
-                    
+
                         <div class="col-12 mb-3 mt-4">
                             <button type="submit"
                                 class="btn btn-primary rounded-0 px-5 btn-sm float-end">Update</button>
                         </div>
-                    
+
                     </div>
-                    
+
 
                 </div>
 
