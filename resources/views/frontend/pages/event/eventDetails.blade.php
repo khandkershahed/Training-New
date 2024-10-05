@@ -117,7 +117,7 @@
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body">
                             <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->row_one_title) }}"
+                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
                                 alt="" />
                         </div>
                     </div>
