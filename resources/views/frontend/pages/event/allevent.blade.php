@@ -7,7 +7,8 @@
                 <div class="row">
                     <div class="col-lg-12 px-0">
                         <div class="image-container">
-                            <img src="{{ !empty(optional($eventPage)->banner_image) ? url('storage/event-page/' . optional($eventPage)->banner_image) : asset('frontend/images/banner-demo.png') }}" alt="Event Image" />
+                            <img src="{{ !empty(optional($eventPage)->banner_image) ? url('storage/event-page/' . optional($eventPage)->banner_image) : asset('frontend/images/banner-demo.png') }}"
+                                alt="Event Image" />
                             <div class="overlay"></div>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -83,7 +84,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-footer border-0 bg-white">
-                                                        <a href="{{ route('event.details', $event->slug) }}" class="animated-button1 w-100">
+                                                        <a href="{{ route('event.details', $event->slug) }}"
+                                                            class="animated-button1 w-100">
                                                             <span></span>
                                                             <span></span>
                                                             <span></span>
