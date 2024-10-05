@@ -72,23 +72,14 @@ class HomeController extends Controller
         $eventPage = EventPage::latest('id')->first();
         $events = Event::latest()->get();
 
-<<<<<<< HEAD
-        return view('frontend.pages.event.allevent', compact('eventPage', 'events'));
-=======
         return view('frontend.pages.event.allevent',compact('eventPage','events'));
->>>>>>> 97e7b06771ecc656fc5387290506ce95dda886a8
     }
 
     //eventDetails
     public function eventDetails($slug)
     {
-<<<<<<< HEAD
-        $event = Event::findOrFail($id);
-        return view('frontend.pages.event.eventDetails', compact('event'));
-=======
         $event = Event::where('slug' , $slug)->first();
         return view('frontend.pages.event.eventDetails',compact('event'));
->>>>>>> 97e7b06771ecc656fc5387290506ce95dda886a8
     }
 
     //event Registration
