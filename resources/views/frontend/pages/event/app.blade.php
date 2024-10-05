@@ -46,6 +46,13 @@
             background-size: 570px 420px;
             /* Adjust width and height as needed */
         }
+
+        .text-container h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 0;
+            width: 80%;
+        }
     </style>
 
 </head>

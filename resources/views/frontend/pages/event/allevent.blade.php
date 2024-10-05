@@ -1,6 +1,5 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
-
     @if (!empty(optional($eventPage)->banner_title))
         <section>
             <div class="container-fluid">
