@@ -35,7 +35,15 @@
     <link href="{{ asset('admin/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     @props(['title'])
-    <title>{{ $title ??  'NGen IT Training' }}</title>
+    <title>{{ $title ?? 'NGen IT Training' }}</title>
+    <style>
+        .text-container h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin: 0;
+            width: 80%;
+        }
+    </style>
 </head>
 
 <body id="kt_body"
