@@ -14,7 +14,19 @@ return new class extends Migration
         Schema::create('usereventregistrations', function (Blueprint $table) {
             $table->id();
 
-            $table->string('');
+            $table->integer('event_id')->nullable();
+            $table->integer('user_id')->nullable();
+
+            $table->string('event_name')->nullable();
+
+            $table->integer('team_member')->nullable();
+            $table->string('team_member_one_name')->nullable();
+            $table->string('team_member_two_name')->nullable();
+
+            $table->string('attactment')->nullable();
+            $table->string('team_member_one_name')->nullable();
+            $table->string('team_member_two_name')->nullable();
+
 
             $table->timestamps();
         });

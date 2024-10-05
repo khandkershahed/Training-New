@@ -1,7 +1,10 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
-        #form2 {
+        .hidden {
             display: none;
         }
     </style>
@@ -237,22 +240,16 @@
                                         </div>
 
                                         <div class="">
-
                                             <div class="row">
                                                 <p>Preferences</p>
                                                 @foreach ($categorys as $index => $category)
                                                     <div class="col-6">
-
                                                         <div class="form-check">
-
                                                             <input type="checkbox" id="check{{ $index }}"
-                                                                name="preferences[]" multiple value="{{ $category->id }}"
+                                                                name="preferences[]" value="{{ $category->id }}"
                                                                 class="form-check-input">
-
-                                                            <label for="check{{ $index }}" class="form-check-label">
-                                                                {{ $category->name }}
-                                                            </label>
-
+                                                            <label for="check{{ $index }}"
+                                                                class="form-check-label">{{ $category->name }}</label>
                                                         </div>
                                                     </div>
                                                     @if (($index + 1) % 2 == 0)
@@ -261,8 +258,6 @@
                                                 @endif
                                                 @endforeach
                                             </div>
-
-
                                         </div>
 
                                         <div class="col-12">
@@ -277,42 +272,94 @@
                             </form>
 
 
-                            <!-- Form 2 (Project Details Form) -->
-                            <!-- Hidden Form 2 -->
+
+                            <!-- Hidden second form for project details -->
                             <form id="form2" class="hidden" method="POST">
+
                                 <div class="row">
-                                    <!-- Project Details Fields -->
-                                    <div class="col-lg-6">
+
+                                    <div class="col-lg-12">
                                         <div class="mb-4">
                                             <label class="fw-semibold mb-1" for="project-name">Project Name:</label>
                                             <input type="text" id="project-name" name="project_name" required
                                                 class="form-control" placeholder="Enter the project name" />
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-lg-6">
+                                        <div class="">
+                                            <label class="fw-semibold mb-1" for="team-members">Team Members:</label>
+                                            <input type="text" id="team-members" name="team_members" required
+                                                class="form-control" placeholder="Enter team members' names" />
+                                        </div>
+                                    </div>
 
                                     <div class="col-lg-6">
-                                        <div class="mb-4">
-                                            <label class="fw-semibold mb-1" for="project-category">Project Category:</label>
-                                            <select id="project-category" name="project_category" required
+                                        <label class="fw-semibold mb-1" for="project-file">Upload Project File:</label>
+                                        <input type="file" id="project-file" name="project_file"
+                                            accept=".pdf, .doc, .docx, .jpg, .png" class="form-control" />
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="pt-3">
+                                            <label class="fw-semibold mb-1" for="project-website">Project Website (if
+                                                applicable):</label>
+                                            <input type="url" id="project-website" name="project_website"
+                                                class="form-control" placeholder="Enter project URL" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="pt-3">
+                                            <label class="fw-semibold mb-1" for="technology-used">Technologies
+                                                Used:</label>
+                                            <input type="text" id="technology-used" name="technology_used"
+                                                class="form-control"
+                                                placeholder="List technologies (e.g., React, Node.js)" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="pt-3">
+                                            <label class="fw-semibold mb-1" for="project-status">Project Status:</label>
+                                            <select id="project-status" name="project_status" required
                                                 class="form-control">
-                                                <option value="">Select a category</option>
-                                                <option value="web">Web Development</option>
-                                                <option value="mobile">Mobile App Development</option>
-                                                <option value="data-science">Data Science</option>
-                                                <option value="ai">Artificial Intelligence</option>
-                                                <option value="other">Other</option>
+                                                <option value="">Select status</option>
+                                                <option value="completed">Completed</option>
+                                                <option value="in-progress">In Progress</option>
+                                                <option value="planned">Planned</option>
                                             </select>
                                         </div>
                                     </div>
 
+                                    <div class="col-lg-6">
+                                        <div class="pt-3">
+                                            <label class="fw-semibold mb-1" for="contact-email">Contact Email:</label>
+                                            <input type="email" id="contact-email" name="contact_email" required
+                                                class="form-control" placeholder="Enter your email" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="pt-3">
+                                            <label class="fw-semibold mb-1" for="project-description">Project
+                                                Description:</label>
+                                            <textarea id="project-description" name="project_description" rows="4" required class="form-control"
+                                                placeholder="Briefly describe your project"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-12 text-center">
                                         <button type="submit"
-                                            class="btn btn-primary reg-btn w-100 mt-3 rounded-2 cst-font">Register
-                                            Now</button>
+                                            class="btn btn-primary reg-btn w-100 mt-3 rounded-2 cst-font">
+                                            Register Now
+                                        </button>
                                     </div>
                                 </div>
-                            </form>
 
+                            </form>
 
 
                             <!-- Second Form -->
@@ -352,47 +399,58 @@
             }
         };
     </script> --}}
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form1 = document.getElementById('form1');
-            const form2 = document.getElementById('form2');
+        // jQuery for handling form submission and form visibility
+        $(document).ready(function() {
+            // Initially hide form2
+            $('#form2').addClass('hidden');
 
-            // Handle the form submission using AJAX
-            form1.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent form from submitting the default way
+            // Handle the first form submission
+            $('#form1').on('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
 
-                // Prepare the form data
-                const formData = new FormData(form1);
+                var formData = $(this).serialize(); // Serialize the form data
 
-                // Log the form data for debugging
-                console.log('Form Data:', ...formData);
+                // Send the form data using AJAX
+                $.ajax({
+                    url: $(this).attr('action'), // Use the form action URL
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        // After successful submission, hide form1 and show form2
+                        $('#form1').addClass('hidden');
+                        $('#form2').removeClass('hidden');
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors (you can display error messages to the user)
+                        alert("An error occurred. Please try again.");
+                    }
+                });
+            });
 
-                // Make the AJAX request
-                fetch(form1.action, {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                        },
-                        body: formData
-                    })
-                    .then(response => {
-                        console.log('Response Status:', response.status);
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Response Data:', data);
-                        if (data.success) {
-                            // Hide form1 and show form2
-                            form1.style.display = 'none';
-                            form2.style.display = 'block';
-                        } else {
-                            alert('There was an error processing your submission: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('AJAX Error:', error);
-                        alert('There was an error processing your submission.');
-                    });
+            // Handle the second form submission (project registration)
+            $('#form2').on('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                var formData = $(this).serialize(); // Serialize the form data
+
+                // Send the form data using AJAX
+                $.ajax({
+                    url: $(this).attr(
+                        'action'), // You need to set the correct action URL for project form
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        // Handle success after second form submission (e.g., redirect or show success message)
+                        alert('Project registered successfully!');
+                        window.location.href = "/success"; // Redirect to a success page
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors (you can display error messages to the user)
+                        alert("An error occurred. Please try again.");
+                    }
+                });
             });
         });
     </script>
