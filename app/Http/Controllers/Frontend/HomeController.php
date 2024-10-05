@@ -71,14 +71,14 @@ class HomeController extends Controller
     {
         $eventPage = EventPage::latest('id')->first();
         $events = Event::latest()->get();
-        
+
         return view('frontend.pages.event.allevent',compact('eventPage','events'));
     }
 
     //eventDetails
-    public function eventDetails($id)
+    public function eventDetails($slug)
     {
-        $event = Event::findOrFail($id);
+        $event = Event::where('slug' , $slug)->first();
         return view('frontend.pages.event.eventDetails',compact('event'));
     }
 
