@@ -50,7 +50,7 @@ class HomeController extends Controller
         $courses = Course::latest()->get();
         $courseCategorys = CourseCategory::latest()->get();
 
-        $courseSections = CourseSection::orderBy('name','ASC')->latest()->get();
+        $courseSections = CourseSection::orderBy('name', 'ASC')->latest()->get();
 
         // return view('frontend.pages.home', compact('homePage', 'courseCategorys', 'courses'));
 
@@ -82,10 +82,14 @@ class HomeController extends Controller
         return view('frontend.pages.event.eventDetails',compact('event'));
     }
 
+    //event Registration
     public function eventRegistration()
     {
-        return view('frontend.pages.event.eventRegistration');
+        $categorys = CourseCategory::latest()->get();
+        return view('frontend.pages.event.eventRegistration',compact('categorys'));
     }
+
+    
 
     public function allCourses(Request $request)
     {
@@ -756,5 +760,5 @@ class HomeController extends Controller
         return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
 
-
+    
 }
