@@ -1,5 +1,10 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
     <section>
         <div class="container-fluid">
             <div class="row">
@@ -22,7 +27,79 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card p-0 bg-light" style="border: 2px solid #eee;">
                         <div class="card-body">
-                            <form action="" method="post">
+                            <!-- First Form -->
+                            <form id="form1" action="" method="post">
+                                @csrf
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="name">Name:</label>
+                                                <input class="form-control form-control-sm" type="text" id="name"
+                                                    name="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="email">Email:</label>
+                                                <input class="form-control form-control-sm" type="email" id="email"
+                                                    name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="phone">Phone Number:</label>
+                                                <input class="form-control form-control-sm" type="number" id="phone"
+                                                    name="phone" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="password">Password:</label>
+                                                <input class="form-control form-control-sm" type="password" id="password"
+                                                    name="password" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="confirm_password">Confirm Password:</label>
+                                                <input class="form-control form-control-sm" type="password"
+                                                    id="confirm_password" name="confirm_password" required>
+                                            </div>
+                                        </div>
+                                        <div class="py-4">
+                                            <div class="col-12">
+                                                <input type="checkbox" id="check1" name="check1">
+                                                <label for="check1">Some Check</label>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <input type="checkbox" id="terms" name="terms" required>
+                                                <label for="terms">Accept Terms and Conditions</label>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <input type="checkbox" id="policy" name="policy" required>
+                                                <label for="policy">Accept Privacy Policy</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div>
+                                                <button type="submit" class="btn btn-primary reg-btn w-100 mt-3 rounded-2 cst-font">Submit Form</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- Second Form -->
+                            <form id="form2" class="hidden">
+                                <h2>Form 2</h2>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                                <button type="submit">Submit Form 2</button>
+                            </form>
+                            {{-- <form action="" method="post">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-4">
@@ -110,13 +187,20 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            </form> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.getElementById("form1").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission for demo purpose
+            document.getElementById("form1").classList.add("hidden");
+            document.getElementById("form2").classList.remove("hidden");
+        });
+    </script>
     <script>
         window.onscroll = function() {
             if (window.pageYOffset >= 50) {
