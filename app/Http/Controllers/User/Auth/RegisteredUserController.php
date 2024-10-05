@@ -36,6 +36,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()],
+            'preferences' => 'nullable', //
 
         ]);
 
@@ -45,7 +46,8 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
             'password' => Hash::make($request->password),
-            'activation_code' => Str::random(32), // Generate a random activation code
+            'activation_code' => Str::random(32),
+            'preferences' => json_encode($request->preferences),
         ]);
 
         event(new Registered($user));
@@ -55,6 +57,7 @@ class RegisteredUserController extends Controller
         Notification::send($admin, new UserRegistrationNotification($request->name));
         //Notification
 
-        return redirect()->route('login')->with('success', 'Check your email');
+        // return redirect()->route('login')->with('success', 'Check your email');
+        return redirect()->back();
     }
 }

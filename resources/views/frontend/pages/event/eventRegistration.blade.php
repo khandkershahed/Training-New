@@ -1,10 +1,11 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
     <style>
-        .hidden {
+        #form2 {
             display: none;
         }
     </style>
+
     <section>
         <div class="container-fluid">
             <div class="row">
@@ -16,20 +17,28 @@
             </div>
         </div>
     </section>
+
     <section class="py-5 registration-section">
+
         <div class="container">
+
             <div class="row">
+
                 <div class="col-lg-12">
                     <div class="pb-4">
                         <h1 class="text-center">Event Registration</h1>
                     </div>
                 </div>
+
                 <div class="col-lg-6 offset-lg-3">
                     <div class="card p-0 bg-light" style="border: 2px solid #eee;">
                         <div class="card-body">
-                            <!-- First Form -->
-                            <form id="form1" action="" method="post">
+
+                            {{-- <!-- First Form -->
+                            <form id="form1" action="{{ route('register') }}" method="post">
+
                                 @csrf
+
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12">
@@ -85,21 +94,17 @@
                                         </div>
                                         <div class="col-12">
                                             <div>
-                                                <button type="submit" class="btn btn-primary reg-btn w-100 mt-3 rounded-2 cst-font">Submit Form</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary reg-btn w-100 mt-3 rounded-2 cst-font">Submit
+                                                    Form</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </form>
 
-                            <!-- Second Form -->
-                            <form id="form2" class="hidden">
-                                <h2>Form 2</h2>
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
-                                <button type="submit">Submit Form 2</button>
-                            </form>
-                            {{-- <form action="" method="post">
+
+                            <form action="" id="form2" class="hidden" method="post">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-4">
@@ -188,13 +193,144 @@
                                     </div>
                                 </div>
                             </form> --}}
+
+                            <!-- Form 1 (Register Form) -->
+                            <form id="form1" method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="container">
+                                    <div class="row">
+                                        <!-- Form Fields -->
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="name">Name:</label>
+                                                <input class="form-control form-control-sm" type="text" id="name"
+                                                    name="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="email">Email:</label>
+                                                <input class="form-control form-control-sm" type="email" id="email"
+                                                    name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="phone">Phone Number:</label>
+                                                <input class="form-control form-control-sm" type="tel" id="phone"
+                                                    name="phone" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="password">Password:</label>
+                                                <input class="form-control form-control-sm" type="password" id="password"
+                                                    name="password" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="confirm_password">Confirm Password:</label>
+                                                <input class="form-control form-control-sm" type="password"
+                                                    id="confirm_password" name="password_confirmation" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="">
+
+                                            <div class="row">
+                                                <p>Preferences</p>
+                                                @foreach ($categorys as $index => $category)
+                                                    <div class="col-6">
+
+                                                        <div class="form-check">
+
+                                                            <input type="checkbox" id="check{{ $index }}"
+                                                                name="preferences[]" multiple value="{{ $category->id }}"
+                                                                class="form-check-input">
+
+                                                            <label for="check{{ $index }}" class="form-check-label">
+                                                                {{ $category->name }}
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+                                                    @if (($index + 1) % 2 == 0)
+                                            </div>
+                                            <div class="row">
+                                                @endif
+                                                @endforeach
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div>
+                                                <button type="submit"
+                                                    class="btn btn-primary reg-btn w-100 mt-3 rounded-2 cst-font">Submit
+                                                    Form</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <!-- Form 2 (Project Details Form) -->
+                            <!-- Hidden Form 2 -->
+                            <form id="form2" class="hidden" method="POST">
+                                <div class="row">
+                                    <!-- Project Details Fields -->
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label class="fw-semibold mb-1" for="project-name">Project Name:</label>
+                                            <input type="text" id="project-name" name="project_name" required
+                                                class="form-control" placeholder="Enter the project name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label class="fw-semibold mb-1" for="project-category">Project Category:</label>
+                                            <select id="project-category" name="project_category" required
+                                                class="form-control">
+                                                <option value="">Select a category</option>
+                                                <option value="web">Web Development</option>
+                                                <option value="mobile">Mobile App Development</option>
+                                                <option value="data-science">Data Science</option>
+                                                <option value="ai">Artificial Intelligence</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 text-center">
+                                        <button type="submit"
+                                            class="btn btn-primary reg-btn w-100 mt-3 rounded-2 cst-font">Register
+                                            Now</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                            <!-- Second Form -->
+                            {{-- <form id="form2" class="hidden">
+                                <h2>Form 2</h2>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                                <button type="submit">Submit Form 2</button>
+                            </form> --}}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
-    <script>
+    {{-- <script>
         document.getElementById("form1").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent form submission for demo purpose
             document.getElementById("form1").classList.add("hidden");
@@ -215,5 +351,49 @@
                 navbar.classList.add("navbar-dark");
             }
         };
+    </script> --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form1 = document.getElementById('form1');
+            const form2 = document.getElementById('form2');
+
+            // Handle the form submission using AJAX
+            form1.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form from submitting the default way
+
+                // Prepare the form data
+                const formData = new FormData(form1);
+
+                // Log the form data for debugging
+                console.log('Form Data:', ...formData);
+
+                // Make the AJAX request
+                fetch(form1.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                        },
+                        body: formData
+                    })
+                    .then(response => {
+                        console.log('Response Status:', response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Response Data:', data);
+                        if (data.success) {
+                            // Hide form1 and show form2
+                            form1.style.display = 'none';
+                            form2.style.display = 'block';
+                        } else {
+                            alert('There was an error processing your submission: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('AJAX Error:', error);
+                        alert('There was an error processing your submission.');
+                    });
+            });
+        });
     </script>
 @endsection

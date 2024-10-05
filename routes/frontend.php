@@ -79,6 +79,7 @@ Route::get('/events', [HomeController::class, 'event'])->name('event');
 Route::get('/events/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
 Route::get('/event/registration', [HomeController::class, 'eventRegistration'])->name('event.registration');
 
+
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
     Route::post('/cart-store', 'AddToCartCourse');
@@ -95,6 +96,7 @@ Route::middleware('auth')->group(function () {
 
     // Payment
     Route::post('/course/payment/{id}', [HomeController::class, 'PaymentCourse'])->name('course.payment');
+
 
 });
 
