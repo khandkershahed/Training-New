@@ -74,7 +74,7 @@
 
                         <div class="col-4 mb-3">
                             <div class="form-group">
-                                <label for="" class="mb-2">Whatup Link</label>
+                                <label for="" class="mb-2">WhatsApp Link</label>
                                 <input type="text" name="whatsapp_link" placeholder=""
                                     class="form-control form-control-sm" value="{{ old('whatsapp_link') }}">
                             </div>

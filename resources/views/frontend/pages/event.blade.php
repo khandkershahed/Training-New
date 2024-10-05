@@ -389,7 +389,8 @@
                                             class="fa-solid fa-location-crosshairs pe-2"></i>Track</button>
                                     <button class="btn btn-outline-light me-2 rounded-pill"><i
                                             class="fa-solid fa-laptop pe-2"></i>Visit</button>
-                                    <button class="btn btn-outline-light rounded-pill"><i
+                                    <button class="btn btn-outline-light rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#sharemodal"><i
                                             class="fa-solid fa-share-nodes pe-2"></i>Share</button>
                                 </div>
                             </div>
@@ -578,11 +579,42 @@
             <div class="container py-5">
                 <div class="row">
                     <div class="col-lg-12">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt adipisci libero explicabo saepe architecto, nihil, provident iste aut sint minima obcaecati aperiam nobis assumenda exercitationem harum odit odio voluptatum recusandae veniam perferendis unde? Obcaecati mollitia illum qui, facilis aliquid excepturi nobis. Impedit, blanditiis. Quam sint magnam maxime qui sit. Ad, laboriosam? Repudiandae maiores ullam rem in error iusto, dolor quisquam libero amet et nisi blanditiis doloribus nesciunt similique aliquid nulla neque fuga magni sint atque molestias veritatis provident. Voluptas accusantium possimus est perferendis quaerat quisquam molestiae deleniti adipisci qui harum libero reiciendis ipsum autem nostrum quae exercitationem facilis fuga laboriosam velit ab laborum, similique vero? Quas accusantium, consequatur eaque praesentium, suscipit repellat ipsum illo quis, tenetur deleniti voluptate laudantium recusandae architecto sapiente excepturi molestias dignissimos ipsa cupiditate deserunt maxime doloribus. Provident, adipisci cumque! Labore pariatur incidunt obcaecati eius quas magni vitae, quisquam perspiciatis cum blanditiis distinctio, veritatis placeat ea non molestiae. Illo suscipit accusantium temporibus repellat officia earum adipisci ipsa aliquid velit quis amet similique, dolor veniam labore laudantium vel officiis repudiandae blanditiis eveniet iste at assumenda? Itaque rerum possimus, aperiam facere nesciunt provident consectetur maxime voluptatem quis iste aliquid commodi veniam voluptates placeat voluptatibus fugit aspernatur perspiciatis minus enim?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt adipisci libero explicabo
+                        saepe architecto, nihil, provident iste aut sint minima obcaecati aperiam nobis assumenda
+                        exercitationem harum odit odio voluptatum recusandae veniam perferendis unde? Obcaecati mollitia
+                        illum qui, facilis aliquid excepturi nobis. Impedit, blanditiis. Quam sint magnam maxime qui
+                        sit. Ad, laboriosam? Repudiandae maiores ullam rem in error iusto, dolor quisquam libero amet et
+                        nisi blanditiis doloribus nesciunt similique aliquid nulla neque fuga magni sint atque molestias
+                        veritatis provident. Voluptas accusantium possimus est perferendis quaerat quisquam molestiae
+                        deleniti adipisci qui harum libero reiciendis ipsum autem nostrum quae exercitationem facilis
+                        fuga laboriosam velit ab laborum, similique vero? Quas accusantium, consequatur eaque
+                        praesentium, suscipit repellat ipsum illo quis, tenetur deleniti voluptate laudantium recusandae
+                        architecto sapiente excepturi molestias dignissimos ipsa cupiditate deserunt maxime doloribus.
+                        Provident, adipisci cumque! Labore pariatur incidunt obcaecati eius quas magni vitae, quisquam
+                        perspiciatis cum blanditiis distinctio, veritatis placeat ea non molestiae. Illo suscipit
+                        accusantium temporibus repellat officia earum adipisci ipsa aliquid velit quis amet similique,
+                        dolor veniam labore laudantium vel officiis repudiandae blanditiis eveniet iste at assumenda?
+                        Itaque rerum possimus, aperiam facere nesciunt provident consectetur maxime voluptatem quis iste
+                        aliquid commodi veniam voluptates placeat voluptatibus fugit aspernatur perspiciatis minus enim?
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="sharemodal" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button class="btn btn-outline-primary btn-sm rounded-circle">FB</button>
+                        <button class="btn btn-outline-primary btn-sm rounded-circle">WP</button>
+                        <button class="btn btn-outline-primary btn-sm rounded-circle">Linkedin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

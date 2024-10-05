@@ -44,20 +44,20 @@
                                             <p class="mb-0 pb-3">
                                                 <small class="cst-font">Start At</small> <br />
                                                 <span
-                                                    class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
+                                                    class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime(optional($event)->start_time)) }}</span>
                                             </p>
                                             <p class="text-center mb-0">
                                                 <span
-                                                    class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
+                                                    class="start-month">{{ date('M', strtotime(optional($event)->start_date)) }}</span>
                                                 <span
-                                                    class="start-date">{{ date('d', strtotime($event->start_date)) }}</span>
+                                                    class="start-date">{{ date('d', strtotime(optional($event)->start_date)) }}</span>
                                                 <span
-                                                    class="start-month">{{ date('Y', strtotime($event->start_date)) }}</span>
+                                                    class="start-month">{{ date('Y', strtotime(optional($event)->start_date)) }}</span>
                                             </p>
                                             <p class="mb-0 pb-3">
                                                 <small class="cst-font">End At</small> <br />
                                                 <span
-                                                    class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime($event->end_time)) }}</span>
+                                                    class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime(optional($event)->end_time)) }}</span>
                                             </p>
                                         </div>
 
@@ -101,9 +101,9 @@
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-6">
                     <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ $event->row_one_title }}</h1>
+                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
                         <p class="fw-semibold" style="text-align: justify">
-                            {!! $event->row_one_description !!}
+                            {!! optional($event)->row_one_description !!}
                         </p>
 
                         <div class="pt-3">
@@ -117,7 +117,7 @@
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body">
                             <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty($event->row_one_image) ? url('storage/event/' . $event->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->row_one_title) }}"
+                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->row_one_title) }}"
                                 alt="" />
                         </div>
                     </div>
@@ -131,11 +131,11 @@
                 <div class="col-lg-12">
 
                     <h1 class="first-color cst-font">
-                        {{ $event->row_two_title }}
+                        {{ optional($event)->row_two_title }}
                     </h1>
 
                     <p class="pt-2">
-                        {!! $event->row_two_description !!}
+                        {!! optional($event)->row_two_description !!}
                     </p>
 
                 </div>
@@ -147,12 +147,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="text-white">
-                        <h3 class="srpt-font">{{ $event->row_three_badge }}</h3>
+                        <h3 class="srpt-font">{{ optional($event)->row_three_badge }}</h3>
                         <h1 class="action-title pb-2 cst-font">
-                            {{ $event->row_three_title }}
+                            {{ optional($event)->row_three_title }}
                         </h1>
                         <p class="fw-bold" style="text-align: justify">
-                            {!! $event->row_three_description !!}
+                            {!! optional($event)->row_three_description !!}
                         </p>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                                 <i class="fa fa-solid fa-location-dot fs-2 second-color"></i>
                             </div>
                             <p class="fw-semibold pt-3 ps-4 mb-0">
-                                {{ $event->location }}
+                                {{ optional($event)->location }}
                             </p>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                                 <i class="fa-solid fa-mobile-screen fa-fw fs-2 second-color"></i>
                             </div>
                             <p class="fw-semibold pt-3 ps-4 mb-0">
-                                <span>Phone: <span class="ps-2">{{ $event->contact }}</span></span>
+                                <span>Phone: <span class="ps-2">{{ optional($event)->contact }}</span></span>
                                 {{-- <br />
                                 <span>Telephone:
                                     <span class="ps-2">(+88) 01958025050</span></span> --}}
@@ -200,10 +200,10 @@
                                 <i class="fa-regular fa-clock fa-fw fs-2 second-color"></i>
                             </div>
                             <p class="fw-semibold pt-3 ps-4 mb-0">
-                                <strong class="pe-2">Event Name:</strong>{{ $event->event_name }} <br>
-                                <strong class="pe-2">Event Type:</strong>{{ $event->event_type }} <br>
+                                <strong class="pe-2">Event Name:</strong>{{ optional($event)->event_name }} <br>
+                                <strong class="pe-2">Event Type:</strong>{{ optional($event)->event_type }} <br>
                                 <strong class="pe-2">Date:</strong>
-                                {{ date('D, M j, Y', strtotime($event->start_date)) }}
+                                {{ date('D, M j, Y', strtotime(optional($event)->start_date)) }}
 
                             </p>
                         </div>

@@ -1,7 +1,7 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
 
-    @if (!empty($eventPage->banner_title))
+    @if (!empty(optional($eventPage)->banner_title))
         <section>
             <div class="container-fluid">
                 <div class="row">
@@ -9,45 +9,35 @@
                         <div class="image-container">
                             <img src="{{ asset('frontend/event/img/bannerone.jpeg') }}" alt="Event Image" />
                             <div class="overlay"></div>
-
-
                             <div class="row">
-
                                 <div class="col-lg-6">
                                     <div class="text-container content-box left-text">
-                                        <h6>{{ $eventPage->banner_badge }}</h6>
+                                        <h6>{{ optional($eventPage)->banner_badge }}</h6>
                                         <h2 class="mb-0 pt-5 srpt-font">
-                                            {{ $eventPage->banner_sub_title }}
+                                            {{ optional($eventPage)->banner_sub_title }}
                                         </h2>
-                                        <h1>{{ $eventPage->banner_title }}</h1>
-                                        <p class="pt-5 fw-bold">{{ $eventPage->organizer_text }}</p>
+                                        <h1>{{ optional($eventPage)->banner_title }}</h1>
+                                        <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
                                         <div class="pt-2">
-
-                                            <a href="{{ $eventPage->map_link }}" target="blank"
+                                            <a href="{{ optional($eventPage)->map_link }}" target="blank"
                                                 class="btn btn-outline-light me-2 rounded-pill">
                                                 <i class="fa-solid fa-location-dot pe-2"></i>Map
                                             </a>
-
-                                            <a href="{{ $eventPage->website_link }}" target="blank"
+                                            <a href="{{ optional($eventPage)->website_link }}" target="blank"
                                                 class="btn btn-outline-light me-2 rounded-pill">
                                                 <i class="fa-solid fa-globe"></i> Training
                                             </a>
-
-                                            <a href="{{ $eventPage->whatsapp_link }}" target="blank"
+                                            <a href="{{ optional($eventPage)->whatsapp_link }}" target="blank"
                                                 class="btn btn-outline-light rounded-pill">
                                                 <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                             </a>
-
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
-
                                     <div class="text-container calander-box right-text mobile-none">
-
                                         <div class="promotions-carousel row">
-
                                             @forelse ($events as $event)
                                                 <div class="card slider-items">
                                                     <div class="card-body pt-5">
@@ -104,14 +94,10 @@
                                             @empty
                                                 <p>No Event Avaiable</p>
                                             @endforelse
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -125,9 +111,9 @@
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-8">
                     <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ $eventPage->row_one_title }}</h1>
+                        <h1 class="pb-3 cst-font first-color">{{ optional($eventPage)->row_one_title }}</h1>
                         <p class="fw-semibold" style="text-align: justify">
-                            {!! $eventPage->row_one_description !!}
+                            {!! optional($eventPage)->row_one_description !!}
                         </p>
                     </div>
                 </div>
@@ -135,7 +121,7 @@
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body text-end">
                             <img class="img-fluid rounded-2 w-100" style="width: 250px !important"
-                                src="{{ !empty($eventPage->row_one_image) ? url('storage/event-page/' . $eventPage->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->row_one_title) }}"
+                                src="{{ !empty(optional($eventPage)->row_one_image) ? url('storage/event-page/' . optional($eventPage)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($eventPage)->row_one_title) }}"
                                 alt="" />
                         </div>
                     </div>
@@ -150,7 +136,6 @@
                 <div class="col-lg-12">
                     <h1 class="pb-3 text-center">All Events</h1>
                 </div>
-
                 <!-- First -->
                 @forelse ($events as $event)
                     <div class="col-lg-4">
@@ -172,20 +157,6 @@
                     <p>No Event Avaiable</p>
                 @endforelse
                 <!-- First End-->
-
-
-                {{-- <div class="col-lg-12 mt-5">
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="animated-button1">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Registraion
-                        </a>
-                    </div>
-                </div> --}}
-
 
             </div>
         </div>
