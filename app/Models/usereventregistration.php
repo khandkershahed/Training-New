@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class usereventregistration extends Model
 {
-    use HasFactory,HasSlug;
+    use HasFactory;
 
-    protected $slugSourceColumn = 'event_name';
     /**
      * The attributes that aren't mass assignable.
      *

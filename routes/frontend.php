@@ -67,14 +67,18 @@ Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('p
 
 Route::get('/contact/location', [HomeController::class, 'location'])->name('location');
 Route::get('support', [HomeController::class, 'Support'])->name('support');
-Route::get('/newsletter', [NewsletterController::class, 'newsletter']);
-Route::post('/newsletter/store', [NewsLetterController::class, 'store'])->name('newsletter.store');
 
+// Route::get('/newsletter', [NewsletterController::class, 'newsletter']);
+// Route::post('/newsletter/store', [NewsLetterController::class, 'store'])->name('newsletter.store');
+
+//About
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 
+//Event
 Route::get('/events', [HomeController::class, 'event'])->name('event');
 Route::get('/events/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
 Route::get('/event/registration', [HomeController::class, 'eventRegistration'])->name('event.registration');
+
 
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
@@ -92,6 +96,7 @@ Route::middleware('auth')->group(function () {
 
     // Payment
     Route::post('/course/payment/{id}', [HomeController::class, 'PaymentCourse'])->name('course.payment');
+
 
 });
 
