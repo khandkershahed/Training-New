@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory,HasSlug;
+
     protected $slugSourceColumn = 'event_name';
     /**
      * The attributes that aren't mass assignable.

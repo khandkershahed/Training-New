@@ -51,7 +51,7 @@ class EventController extends Controller
 
         if (empty($mainFile)) {
 
-            Event::insert([
+            Event::create([
 
                 'event_name' => $request->event_name,
                 'start_date' => $request->start_date,
@@ -102,7 +102,7 @@ class EventController extends Controller
 
             if ($globalFunImg['status'] == 1) {
 
-                Event::insert([
+                Event::create([
 
                     'event_name' => $request->event_name,
                     'start_date' => $request->start_date,

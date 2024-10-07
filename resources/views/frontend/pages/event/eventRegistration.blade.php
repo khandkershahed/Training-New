@@ -1,4 +1,5 @@
 @extends('frontend.pages.event.app')
+
 @section('event-content')
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -115,75 +116,74 @@
                                             <input type="text" id="project-name" name="project_name" required
                                                 class="form-control" placeholder="Enter the project name" />
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-4">
-                                            <label class="fw-semibold mb-1" for="project-category">Project Category:</label>
-                                            <select id="project-category" name="project_category" required
-                                                class="form-control">
-                                                <option value="">Select a category</option>
-                                                <option value="web">Web Development</option>
-                                                <option value="mobile">
-                                                    Mobile App Development
-                                                </option>
-                                                <option value="data-science">Data Science</option>
-                                                <option value="ai">Artificial Intelligence</option>
-                                                <option value="other">Other</option>
+
+                                        <!-- Select Event (Select Input) -->
+                                        <div class="col-12">
+                                            <label for="event" class="form-label">Select Event:</label>
+                                            <select id="event" name="event" class="form-select" required>
+                                                <option value="" disabled selected>Select an event</option>
+                                                <option value="event1">Event 1</option>
+                                                <option value="event2">Event 2</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="">
-                                            <label class="fw-semibold mb-1" for="team-members">Team Members:</label>
-                                            <input type="text" id="team-members" name="team_members" required
-                                                class="form-control" placeholder="Enter team members' names" />
+
+                                        <!-- Upload Project File (File Input) -->
+                                        <div class="col-12">
+                                            <label for="project_file" class="form-label">Upload Project File:</label>
+                                            <input type="file" id="project_file" name="project_file"
+                                                class="form-control" required>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label class="fw-semibold mb-1" for="project-file">Upload Project File:</label>
-                                        <input type="file" id="project-file" name="project_file"
-                                            accept=".pdf, .doc, .docx, .jpg, .png" class="form-control" />
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="project-website">Project Website (if
+
+                                        <!-- Team Members (Number Input) -->
+                                        <div class="col-12">
+                                            <label for="team_members" class="form-label">Team Members:</label>
+                                            <input type="number" id="team_members" name="team_members"
+                                                class="form-control" required>
+                                        </div>
+
+                                        <!-- Project Website (Link Input) -->
+                                        <div class="col-12">
+                                            <label for="project_website" class="form-label">Project Website (if
                                                 applicable):</label>
-                                            <input type="url" id="project-website" name="project_website"
-                                                class="form-control" placeholder="Enter project URL" />
+                                            <input type="url" id="project_website" name="project_website"
+                                                class="form-control">
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="technology-used">Technologies Used:</label>
-                                            <input type="text" id="technology-used" name="technology_used"
-                                                class="form-control"
-                                                placeholder="List technologies (e.g., React, Node.js)" />
+
+                                        <!-- Technologies Used (Tags Input) -->
+                                        <div class="col-12">
+                                            <label for="technologies_used" class="form-label">Technologies Used:</label>
+                                            <input type="text" id="technologies_used" name="technologies_used"
+                                                class="form-control" placeholder="Enter technologies separated by commas">
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="project-status">Project Status:</label>
-                                            <select id="project-status" name="project_status" required class="form-control">
-                                                <option value="">Select status</option>
+
+                                        <!-- Project Status (Select Input) -->
+                                        <div class="col-12">
+                                            <label for="project_status" class="form-label">Project Status:</label>
+                                            <select id="project_status" name="project_status" class="form-select"
+                                                required>
+                                                <option value="" disabled selected>Select status</option>
+                                                <option value="in_progress">In Progress</option>
                                                 <option value="completed">Completed</option>
-                                                <option value="in-progress">In Progress</option>
-                                                <option value="planned">Planned</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="contact-email">Contact Email:</label>
-                                            <input type="email" id="contact-email" name="contact_email" required
-                                                class="form-control" placeholder="Enter your email" />
+
+                                        <!-- Contact Email (Email Input) -->
+                                        <div class="col-12">
+                                            <label for="contact_email" class="form-label">Contact Email:</label>
+                                            <input type="email" id="contact_email" name="contact_email"
+                                                class="form-control" required>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="project-description">Project
+
+                                        <!-- Project Description (Textarea) -->
+                                        <div class="col-12">
+                                            <label for="project_description" class="form-label">Project
                                                 Description:</label>
-                                            <textarea id="project-description" name="project_description" rows="4" required class="form-control"
-                                                placeholder="Briefly describe your project"></textarea>
+                                            <textarea id="project_description" name="project_description" class="form-control" rows="5" required></textarea>
+                                        </div>
+
+                                        <!-- Submit Button -->
+                                        <div class="col-12 mt-3">
+                                            <button type="submit" class="btn btn-primary">Submit Form 2</button>
                                         </div>
                                     </div>
                                 </div>
@@ -285,7 +285,7 @@
                                                 class="form-control" placeholder="Enter the project name" />
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-lg-6">
                                         <div class="">
                                             <label class="fw-semibold mb-1" for="team-members">Team Members:</label>
@@ -348,7 +348,7 @@
                                                 placeholder="Briefly describe your project"></textarea>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 text-center">
@@ -380,19 +380,31 @@
     {{-- <script>
         document.getElementById("form1").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent form submission for demo purpose
+
+            // Retrieve form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const password = document.getElementById("password").value;
+            const confirm_password = document.getElementById("confirm_password").value;
+            const terms = document.getElementById("terms").checked;
+            const policy = document.getElementById("policy").checked;
+
+            // Log form data to console
+            console.log('Form 1 Data:', { name, email, phone, password, confirm_password, terms, policy });
+
+            // Switch to form 2
             document.getElementById("form1").classList.add("hidden");
             document.getElementById("form2").classList.remove("hidden");
         });
-    </script>
-    <script>
+
         window.onscroll = function() {
+            var navbar = document.getElementById("navbar");
             if (window.pageYOffset >= 50) {
-                var navbar = document.getElementById("navbar");
                 navbar.classList.remove("navbar-dark");
                 navbar.classList.add("navbar-light");
                 navbar.classList.add("navbar-blur");
             } else {
-                var navbar = document.getElementById("navbar");
                 navbar.classList.remove("navbar-light");
                 navbar.classList.remove("navbar-blur");
                 navbar.classList.add("navbar-dark");
