@@ -23,7 +23,12 @@ return new class extends Migration
             $table->string('team_member_one_name')->nullable();
             $table->string('team_member_two_name')->nullable();
 
-            $table->string('attactment')->nullable();
+            $table->string('attachment')->nullable();
+
+            
+
+
+            
             $table->string('team_member_one_name')->nullable();
             $table->string('team_member_two_name')->nullable();
 
