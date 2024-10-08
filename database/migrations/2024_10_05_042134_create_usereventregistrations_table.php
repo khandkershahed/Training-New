@@ -13,26 +13,19 @@ return new class extends Migration
     {
         Schema::create('usereventregistrations', function (Blueprint $table) {
             $table->id();
-
-            $table->integer('event_id')->nullable();
-            $table->integer('user_id')->nullable();
-
-            $table->string('event_name')->nullable();
-
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('event_id')->nullable()->constrained('events')->onDelete('cascade');
+            $table->text('project_name')->nullable();
+            $table->string('team_id')->unique()->comment('auto-generate')->nullable();
             $table->integer('team_member')->nullable();
             $table->string('team_member_one_name')->nullable();
             $table->string('team_member_two_name')->nullable();
-
             $table->string('attachment')->nullable();
-
-            
-
-
-            
-            $table->string('team_member_one_name')->nullable();
-            $table->string('team_member_two_name')->nullable();
-
-
+            $table->date('slot')->nullable()->comment('showing only from admin panel, not from frontend.');
+            $table->string('status')->nullable()->comment('showing only from admin panel, not from frontend.');
+            $table->decimal('amount_paid', 8, 2)->nullable();
+            $table->enum('payment_status', ['pending', 'completed', 'failed'])->default('pending');
+            $table->string('transaction_id')->nullable();
             $table->timestamps();
         });
     }
