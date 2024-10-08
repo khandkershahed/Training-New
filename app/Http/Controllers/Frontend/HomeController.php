@@ -86,7 +86,8 @@ class HomeController extends Controller
     public function eventRegistration()
     {
         $categorys = CourseCategory::latest()->get();
-        return view('frontend.pages.event.eventRegistration',compact('categorys'));
+        $events = Event::latest()->get();
+        return view('frontend.pages.event.eventRegistration',compact('categorys','events'));
     }
 
     

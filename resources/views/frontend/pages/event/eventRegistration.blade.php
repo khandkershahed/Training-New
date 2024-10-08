@@ -272,7 +272,6 @@
                             </form>
 
 
-
                             <!-- Hidden second form for project details -->
                             <form id="form2" class="hidden" method="POST">
 
@@ -289,65 +288,50 @@
                                     <div class="col-lg-6">
                                         <div class="">
                                             <label class="fw-semibold mb-1" for="team-members">Team Members:</label>
-                                            <input type="text" id="team-members" name="team_members" required
+                                            <input type="number" id="team-members" name="team_member" required
                                                 class="form-control" placeholder="Enter team members' names" />
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
+                                        <div class="">
+                                            <label class="fw-semibold mb-1" for="team-members">Team Member Name
+                                                One:</label>
+                                            <input type="text" id="team-team_member_one_name" name="team_member_one_name"
+                                                required class="form-control" placeholder="Enter team member name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="">
+                                            <label class="fw-semibold mb-1" for="team-members">Team Member Name
+                                                Two:</label>
+                                            <input type="text" id="team-team_member_two_name"
+                                                name="team_member_two_name" required class="form-control"
+                                                placeholder="Enter team member name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
                                         <label class="fw-semibold mb-1" for="project-file">Upload Project File:</label>
-                                        <input type="file" id="project-file" name="project_file"
+                                        <input type="file" id="project-file" name="attachment"
                                             accept=".pdf, .doc, .docx, .jpg, .png" class="form-control" />
                                     </div>
 
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="project-website">Project Website (if
-                                                applicable):</label>
-                                            <input type="url" id="project-website" name="project_website"
-                                                class="form-control" placeholder="Enter project URL" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="technology-used">Technologies
-                                                Used:</label>
-                                            <input type="text" id="technology-used" name="technology_used"
-                                                class="form-control"
-                                                placeholder="List technologies (e.g., React, Node.js)" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="project-status">Project Status:</label>
-                                            <select id="project-status" name="project_status" required
-                                                class="form-control">
-                                                <option value="">Select status</option>
-                                                <option value="completed">Completed</option>
-                                                <option value="in-progress">In Progress</option>
-                                                <option value="planned">Planned</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="contact-email">Contact Email:</label>
-                                            <input type="email" id="contact-email" name="contact_email" required
-                                                class="form-control" placeholder="Enter your email" />
-                                        </div>
-                                    </div>
-
                                     <div class="col-lg-12">
-                                        <div class="pt-3">
-                                            <label class="fw-semibold mb-1" for="project-description">Project
-                                                Description:</label>
-                                            <textarea id="project-description" name="project_description" rows="4" required class="form-control"
-                                                placeholder="Briefly describe your project"></textarea>
+                                        <div class="mb-4">
+                                            <label class="fw-semibold mb-1" for="project-name">Event Name:</label>
+
+                                            <select name="event_id" id="" class="form-select">
+                                                <option selected disabled>Choose Event</option>
+                                                @foreach ($events as $event)
+                                                    <option value="{{ $event->id }}">{{ $event->event_name }}</option>
+                                                @endforeach
+                                            </select>
+
                                         </div>
                                     </div>
+
 
                                 </div>
                                 <div class="row">
