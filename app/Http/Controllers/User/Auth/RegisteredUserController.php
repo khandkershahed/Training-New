@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
-use App\Models\usereventregistration;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
@@ -58,18 +57,7 @@ class RegisteredUserController extends Controller
         Notification::send($admin, new UserRegistrationNotification($request->name));
         //Notification
 
-        // usereventregistration::create([
-
-        //     'user_id' => $user,
-        //     'event_id' => $request->event_id,
-        //     'project_name' => $request->project_name,
-        //     'team_member' => $request->team_member,
-        //     'team_member_one_name' => $request->team_member_one_name,
-        //     'team_member_two_name' => $request->team_member_two_name,
-        //     'amount_paid' => $request->amount_paid,
-        //     'transaction_id' => $request->transaction_id,
-
-        // ]);
+        
 
         // return redirect()->route('login')->with('success', 'Check your email');
         return redirect()->back();

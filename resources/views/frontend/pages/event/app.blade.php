@@ -82,6 +82,12 @@
         $(window).load(function() {
             $(".loader").fadeOut(100);
         });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     </script>
 </body>
 
