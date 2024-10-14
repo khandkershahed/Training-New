@@ -318,19 +318,44 @@
                                             accept=".pdf, .doc, .docx, .jpg, .png" class="form-control" />
                                     </div>
 
+
                                     <div class="col-lg-12">
                                         <div class="mb-4">
                                             <label class="fw-semibold mb-1" for="project-name">Event Name:</label>
 
-                                            <select name="event_id" id="" class="form-select">
+                                            <select name="event_id" id="event_id" class="form-select">
                                                 <option selected disabled>Choose Event</option>
                                                 @foreach ($events as $event)
-                                                    <option value="{{ $event->id }}">{{ $event->event_name }}</option>
+                                                    <option value="{{ $event->id }}"
+                                                        data-payment-type="{{ $event->payment_type }}">
+                                                        {{ $event->event_name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
 
                                         </div>
                                     </div>
+
+                                    <!-- Amount Field -->
+                                    <div class="col-lg-6" id="amount-field" style="display: none;">
+                                        <div>
+                                            <label class="fw-semibold mb-1" for="team-members">Amount:</label>
+
+                                            <input type="text" id="team-amount_paid" name="amount_paid"
+                                                class="form-control" value="" placeholder="" />
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Transaction Id Field -->
+                                    <div class="col-lg-6" id="transaction-id-field" style="display: none;">
+                                        <div>
+                                            <label class="fw-semibold mb-1" for="team-members">Transaction Id:</label>
+                                            <input type="text" id="team-transaction_id" name="transaction_id"
+                                                class="form-control" placeholder="" />
+                                        </div>
+                                    </div>
+
 
 
                                 </div>
@@ -346,14 +371,6 @@
                             </form>
 
 
-                            <!-- Second Form -->
-                            {{-- <form id="form2" class="hidden">
-                                <h2>Form 2</h2>
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
-                                <button type="submit">Submit Form 2</button>
-                            </form> --}}
-
                         </div>
                     </div>
                 </div>
@@ -361,40 +378,7 @@
         </div>
 
     </section>
-    {{-- <script>
-        document.getElementById("form1").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form submission for demo purpose
 
-            // Retrieve form data
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const password = document.getElementById("password").value;
-            const confirm_password = document.getElementById("confirm_password").value;
-            const terms = document.getElementById("terms").checked;
-            const policy = document.getElementById("policy").checked;
-
-            // Log form data to console
-            console.log('Form 1 Data:', { name, email, phone, password, confirm_password, terms, policy });
-
-            // Switch to form 2
-            document.getElementById("form1").classList.add("hidden");
-            document.getElementById("form2").classList.remove("hidden");
-        });
-
-        window.onscroll = function() {
-            var navbar = document.getElementById("navbar");
-            if (window.pageYOffset >= 50) {
-                navbar.classList.remove("navbar-dark");
-                navbar.classList.add("navbar-light");
-                navbar.classList.add("navbar-blur");
-            } else {
-                navbar.classList.remove("navbar-light");
-                navbar.classList.remove("navbar-blur");
-                navbar.classList.add("navbar-dark");
-            }
-        };
-    </script> --}}
 
     <script>
         // jQuery for handling form submission and form visibility
@@ -448,6 +432,33 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <script>
+        // Wait for the document to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventSelect = document.getElementById('event_id');
+            const amountField = document.getElementById('amount-field');
+            const transactionIdField = document.getElementById('transaction-id-field');
+
+            // Handle the change event of the select element
+            eventSelect.addEventListener('change', function() {
+                const selectedOption = eventSelect.options[eventSelect.selectedIndex];
+                const paymentType = selectedOption.getAttribute('data-payment-type');
+
+                // Show or hide fields based on the payment type
+                if (paymentType === 'paid') {
+                    amountField.style.display = 'block';
+                    transactionIdField.style.display = 'block';
+                } else {
+                    amountField.style.display = 'none';
+                    transactionIdField.style.display = 'none';
+                }
+            });
+
+            // Trigger the change event on page load in case an event is already selected
+            eventSelect.dispatchEvent(new Event('change'));
         });
     </script>
 @endsection
