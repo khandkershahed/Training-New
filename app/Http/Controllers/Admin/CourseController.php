@@ -215,7 +215,7 @@ class CourseController extends Controller
     {
 
         $validatedData = $request->validate([
-            'course_category_id' => 'required|exists:courses',
+            'course_category_id' => 'required|exists:course_categories,id',
         ]);
 
         $course = Course::findOrFail($id);

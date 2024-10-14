@@ -273,7 +273,7 @@
 
 
                             <!-- Hidden second form for project details -->
-                            <form id="form2" class="hidden" method="POST">
+                            <form id="form2" class="hidden" method="POST" action="{{ route('register') }}">
 
                                 <div class="row">
 
@@ -288,8 +288,8 @@
                                     <div class="col-lg-6">
                                         <div class="">
                                             <label class="fw-semibold mb-1" for="team-members">Team Members:</label>
-                                            <input type="number" id="team-members" name="team_member" required
-                                                class="form-control" placeholder="Enter team members' names" />
+                                            <input type="number" id="team_id" name="team_id" required
+                                                class="form-control" placeholder="Eg:05" />
                                         </div>
                                     </div>
 
@@ -359,6 +359,7 @@
 
 
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-lg-12 text-center">
                                         <button type="submit"
