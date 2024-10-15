@@ -119,7 +119,7 @@
 
                             <!-- Hidden second form for project details -->
                             <form id="form2" class="hidden" method="POST"
-                                action="{{ route('user.event.registration') }}">
+                                action="{{ route('user.event.registration') }}" enctype="multipart/form-data">
 
                                 @csrf
 
@@ -163,9 +163,8 @@
                                     </div>
 
                                     <div class="col-lg-6">
-                                        <label class="fw-semibold mb-1" for="project-file">Upload Project File:</label>
-                                        <input type="file" id="project-file" name="attachment"
-                                            accept=".pdf, .doc, .docx, .jpg, .png" class="form-control" />
+                                        <label class="fw-semibold mb-1" for="attachment">Upload Project File:</label>
+                                        <input type="file" id="attachment" name="attachment[]" class="form-control" multiple />
                                     </div>
 
 

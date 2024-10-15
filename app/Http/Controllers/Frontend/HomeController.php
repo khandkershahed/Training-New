@@ -111,26 +111,74 @@ class HomeController extends Controller
         ]);
 
         // Return success response if registration is successful
-        return response()->json(['id'=>$user->id,'success' => true]);
-
+        return response()->json(['id' => $user->id, 'success' => true]);
     }
 
     //userEventRegistration
     public function userEventRegistration(Request $request)
     {
-        
-        usereventregistration::create([
 
-            'user_id' => $request->user_id,
-            'project_name' => $request->project_name,
-            'team_member_one_name' => $request->team_member_one_name,
-            'team_member_two_name' => $request->team_member_two_name,
-            'event_id' => $request->event_id,
-            'amount_paid' => $request->amount_paid,
-            'transaction_id' => $request->transaction_id
-
-        
+        // Validate the request
+        $request->validate([
+            // 'course_file' => 'nullable|array', // Expecting an array of files
+            'attachment.*' => 'file|mimes:pdf,doc,docx|max:2048',
         ]);
+
+
+        // Handle course file uploads
+        if ($request->hasFile('attachment')) {
+            foreach ($request->file('attachment') as $file) {
+                $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+                $destinationPath = 'event/files/';
+                $file->storeAs($destinationPath, $fileName, 'public');
+                $filePath = $destinationPath . $fileName;
+
+                // Insert into CourseCurriculumFile
+                usereventregistration::create([
+
+                    'user_id' => $request->user_id,
+                    'project_name' => $request->project_name,
+                    'team_member' => $request->team_member,
+                    'team_member_one_name' => $request->team_member_one_name,
+                    'team_member_two_name' => $request->team_member_two_name,
+                    'event_id' => $request->event_id,
+                    'amount_paid' => $request->amount_paid,
+                    'transaction_id' => $request->transaction_id,
+                    'created_at' => now(),
+
+                    'attachment' => $filePath,
+                ]);
+            }
+        }
+        else{
+
+            usereventregistration::create([
+
+                'user_id' => $request->user_id,
+                'project_name' => $request->project_name,
+                'team_member' => $request->team_member,
+                'team_member_one_name' => $request->team_member_one_name,
+                'team_member_two_name' => $request->team_member_two_name,
+                'event_id' => $request->event_id,
+                'amount_paid' => $request->amount_paid,
+                'transaction_id' => $request->transaction_id,
+                'created_at' => now(),
+            ]);
+
+        }
+
+        // usereventregistration::create([
+
+        //     'user_id' => $request->user_id,
+        //     'project_name' => $request->project_name,
+        //     'team_member' => $request->team_member,
+        //     'team_member_one_name' => $request->team_member_one_name,
+        //     'team_member_two_name' => $request->team_member_two_name,
+        //     'event_id' => $request->event_id,
+        //     'amount_paid' => $request->amount_paid,
+        //     'transaction_id' => $request->transaction_id
+
+        // ]);
 
         // Redirect with a success message
         return redirect()->back()->with('success', 'Project registered successfully!');
