@@ -15,4 +15,14 @@ class usereventregistration extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function eventUserName()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function eventName()
+    {
+        return $this->belongsTo(Event::class, 'event_id');
+    }
 }

@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Course;
 use App\Models\CourseSection;
 use App\Models\UserCourseRegistration;
+use App\Models\usereventregistration;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,9 +37,9 @@ class AdminController extends Controller
         $today = date('Y-m-d');
         $dayRegister = UserCourseRegistration::whereDate('created_at', $today)->get();
 
-        $courses = Course::latest()->get();
+        $eventregs = usereventregistration::latest()->get();
 
-        return view('admin/dashboard', compact('sections', 'totalCourse', 'totalRegister', 'monthlyRegister', 'dayRegister', 'courses', 'paidAmount', 'unpaidAmount', 'todayPaid'));
+        return view('admin/dashboard', compact('sections', 'totalCourse', 'totalRegister', 'monthlyRegister', 'dayRegister', 'eventregs', 'paidAmount', 'unpaidAmount', 'todayPaid'));
     }
 
     public function index()
@@ -48,8 +49,8 @@ class AdminController extends Controller
 
     public function create()
     {
-        $roles = Role::orderBy('name','ASC')->get();
-        return view('admin.pages.admin-management.create',compact('roles'));
+        $roles = Role::orderBy('name', 'ASC')->get();
+        return view('admin.pages.admin-management.create', compact('roles'));
     }
 
     public function store(Request $request)
@@ -61,7 +62,8 @@ class AdminController extends Controller
             'phone' => 'required|string|max:20',
             'password' => [
                 'required',
-                'string', Rules\Password::min(8)
+                'string',
+                Rules\Password::min(8)
                     ->mixedCase()
                     ->letters()
                     ->numbers()
@@ -80,7 +82,7 @@ class AdminController extends Controller
         } else {
             $imageName = null; // Or handle a default image if needed
         }
-    //    dd($request->input('role'));
+        //    dd($request->input('role'));
 
         // Create a new admin record
         $admin = new Admin();
@@ -101,7 +103,7 @@ class AdminController extends Controller
     {
         return view('admin.pages.admin-management.edit', [
             'admin' => Admin::find($id),
-            'roles' => Role::orderBy('name','ASC')->get(),
+            'roles' => Role::orderBy('name', 'ASC')->get(),
         ]);
     }
 
@@ -160,6 +162,28 @@ class AdminController extends Controller
 
         // Delete the admin record
         $admin->delete();
+    }
 
+    //userEventDelete
+    public function userEventDelete($id)
+    {
+        // Find the admin by ID
+        $admin = usereventregistration::findOrFail($id);
+        $admin->delete();
+
+        return redirect()->back()->with('success', 'Event User deleted successfully.');
+    }
+
+    public function downloadFile($file)
+    {
+        // Check if the file exists in the storage
+        $path = public_path('event/files/' . $file);
+        
+        if (!file_exists($path)) {
+            abort(404); // Return 404 if the file is not found
+        }
+        
+        // Serve the file for download
+        return response()->download($path);
     }
 }

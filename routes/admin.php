@@ -260,6 +260,9 @@ Route::post('/paid-course-registration/update/{id}', [RegistrationController::cl
 Route::get('/register-user/inactive/{id}', [UserManagementController::class, 'userInactive'])->name('user-register.inactive');
 Route::get('/register-user/active/{id}', [UserManagementController::class, 'userActive'])->name('user-register.active');
 
+//User Event 
+Route::get('/admin/user/event/{id}', [AdminController::class, 'userEventDelete'])->name('admin.event.user');
+
 // Role In Permission
 Route::middleware(['auth:admin'])->group(function () {
 
@@ -297,3 +300,5 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
 });
+
+Route::get('download/{file}', [AdminController::class, 'downloadFile'])->name('file.download');

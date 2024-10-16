@@ -145,7 +145,7 @@
             <!-- Code to execute if the user is a Super Admin -->
         @endif --}}
 
-        
+
         <div class="col-xl-4">
             <div class="card card-flush h-md-100 mb-5 mb-xl-10">
                 <div class="card-header pt-5">
@@ -192,7 +192,7 @@
             <div class="card card-flush">
                 <div class="card-header pt-5">
                     <div class="card-title d-flex flex-column">
-                        <span class="text-gray-500 pt-1 fw-semibold fs-2">Courses Info</span>
+                        <span class="text-gray-500 pt-1 fw-semibold fs-2">Event Registration Information</span>
                     </div>
                 </div>
 
@@ -202,44 +202,123 @@
                         <thead class="bg-dark text-light">
                             <tr>
                                 <th width="5%">No</th>
-                                <th width="8%">Image</th>
-                                <th>Course Name</th>
-                                <th>Lecture</th>
-                                <th>Seat</th>
-                                <th>Price</th>
-                                <th>Discount Price</th>
-                                {{-- <th width="100%">Actions</th> --}}
+                                <th>User Id</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Event Id</th>
+                                <th>Project Name</th>
+                                <th>Total Member</th>
+                                <th>Amount Paid</th>
+                                <th>Transcation Id</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
 
-                            @foreach ($courses as $key => $course)
+                            @foreach ($eventregs as $key => $item)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td class="">
+                                    <td class="text-start">{{ $key + 1 }}</td>
 
-                                        <img class=""
-                                            src="{{ !empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : 'https://ui-avatars.com/api/?name=' . urlencode($course->name) }}"
-                                            height="40" width="40" alt="">
+                                    <td class="text-start">{{ $item->eventUserName->name }}</td>
+                                    <td class="text-start">{{ $item->eventUserName->email }}</td>
+                                    <td class="text-start">{{ $item->eventUserName->phone }}</td>
+                                    <td class="text-start">{{ $item->eventName->event_name }}</td>
+                                    <td class="text-start">{{ $item->project_name }}</td>
+                                    <td class="text-start">{{ $item->team_member }}</td>
+                                    <td class="text-start">
+                                        @if ($item->amount_paid == null)
+                                            <p class="badge bg-danger">No Paid</p>
+                                        @else
+                                            {{ $item->amount_paid }} Tk
+                                        @endif
+                                    </td>
+                                    <td class="text-start">
+
+                                        @if ($item->transaction_id == null)
+                                            <p class="badge bg-danger">No Transcation</p>
+                                        @else
+                                            {{ $item->transaction_id }}
+                                        @endif
 
                                     </td>
 
-                                    <td class="text-start">{{ $course->name }}</td>
-                                    <td class="text-start">{{ $course->lecture }}</td>
-                                    <td class="text-start">{{ $course->available_seats }}</td>
-                                    <td class="text-start">{{ $course->price }} Tk</td>
-                                    <td class="text-start">{{ $course->discount_price }} Tk</td>
-
-                                    {{-- <td>
-                                        <a href="{{ route('admin.course.edit', $course->id) }}" class="text-primary">
+                                    <td class="text-start">
+                                        {{-- <a href="{{ route('admin.course.edit', $course->id) }}" class="text-primary">
                                             <i class="bi bi-pencil text-primary"></i>
+                                        </a> --}}
+
+                                        <a href="#" class="view" data-bs-toggle="modal"
+                                            data-bs-target="#viewModal{{ $item->id }}">
+                                            <i class="bi bi-eye-fill text-primary"></i>
                                         </a>
-        
-                                        <a href="{{ route('admin.course.destroy', $course->id) }}" class="delete">
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="viewModal{{ $item->id }}" tabindex="-1"
+                                            aria-labelledby="viewModalLabel{{ $item->id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-xl">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-secondary">
+                                                        <h5 class="modal-title" id="viewModalLabel">View Details</h5>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Fake Data Table -->
+                                                        <table
+                                                            class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                                                            <thead class="bg-dark text-light">
+                                                                <tr>
+                                                                    <th>User Id</th>
+                                                                    <th>Event Id</th>
+                                                                    <th>Project Name</th>
+                                                                    <th>Total Member</th>
+                                                                    <th>Team Member(01)</th>
+                                                                    <th>Team Member(02)</th>
+                                                                    <th>File</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-start">
+                                                                        {{ $item->eventUserName->name }}</td>
+                                                                    <td class="text-start">
+                                                                        {{ $item->eventName->event_name }}</td>
+                                                                    <td class="text-start">{{ $item->project_name }}
+                                                                    </td>
+                                                                    <td class="text-start">{{ $item->team_member }}
+                                                                    </td>
+                                                                    <td class="text-start">
+                                                                        {{ $item->team_member_one_name }}
+                                                                    </td>
+                                                                    <td class="text-start">
+                                                                        {{ $item->team_member_two_name }}
+                                                                    </td>
+                                                                    <td class="text-start">
+                                                                        @if ($item->attachment == null)
+                                                                            <p class="text-danger">No Attachment</p>
+                                                                        @else
+                                                                        <a href="{{ route('file.download', ['file' => $item->attachment]) }}" download="{{ $item->attachment }}">
+                                                                            Download File
+                                                                        </a>
+                                                                        @endif
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <a href="{{ route('admin.event.user', $item->id) }}" class="">
                                             <i class="bi bi-trash3-fill text-danger"></i>
                                         </a>
-        
-                                    </td> --}}
+
+                                    </td>
 
                                 </tr>
                             @endforeach
@@ -253,6 +332,9 @@
         </div>
 
     </div>
+
+
+
     @push('scripts')
         <script>
             $("#kt_datatable_example_5").DataTable({
