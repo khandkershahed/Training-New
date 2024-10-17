@@ -297,9 +297,10 @@
                                                                         @if ($item->attachment == null)
                                                                             <p class="text-danger">No Attachment</p>
                                                                         @else
-                                                                        <a href="{{ route('file.download', ['file' => $item->attachment]) }}" download="{{ $item->attachment }}">
-                                                                            Download File
-                                                                        </a>
+                                                                            <a href="{{ asset('public/event/files/' . $item->attachment) }}"
+                                                                                download>
+                                                                                Download
+                                                                            </a>
                                                                         @endif
                                                                     </td>
                                                                 </tr>

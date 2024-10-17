@@ -301,4 +301,3 @@ Route::middleware(['auth:admin'])->group(function () {
     });
 });
 
-Route::get('download/{file}', [AdminController::class, 'downloadFile'])->name('file.download');

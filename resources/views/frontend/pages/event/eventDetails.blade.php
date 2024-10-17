@@ -83,9 +83,9 @@
                                             </div>
                                         </div>
                                         <div class="card-footer border-0">
-                                            <button class="btn btn-primary reg-btn w-100 fw-bold mb-2 rounded-2 cst-font">
+                                            <a href="{{ route('event.registration') }}" class="btn btn-primary reg-btn w-100 fw-bold mb-2 rounded-2 cst-font">
                                                 Free Registraion
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

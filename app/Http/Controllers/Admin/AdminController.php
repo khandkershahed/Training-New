@@ -173,17 +173,5 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Event User deleted successfully.');
     }
-
-    public function downloadFile($file)
-    {
-        // Check if the file exists in the storage
-        $path = public_path('event/files/' . $file);
-        
-        if (!file_exists($path)) {
-            abort(404); // Return 404 if the file is not found
-        }
-        
-        // Serve the file for download
-        return response()->download($path);
-    }
+    
 }
