@@ -55,13 +55,23 @@
                                                     name="name" required>
                                             </div>
                                         </div>
+
                                         <div class="col-12">
                                             <div class="mb-3">
                                                 <label for="email">Email:</label>
-                                                <input class="form-control form-control-sm" type="email" id="email"
-                                                    name="email" required>
+                                                <input
+                                                    class="form-control form-control-sm @error('email') is-invalid @enderror"
+                                                    type="email" id="email" name="email"
+                                                    value="{{ old('email') }}">
+
+                                                <!-- Display the error message -->
+                                                @error('email')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
+
+
                                         <div class="col-12">
                                             <div class="mb-3">
                                                 <label for="phone">Phone Number:</label>
@@ -69,18 +79,42 @@
                                                     name="phone" required>
                                             </div>
                                         </div>
+
                                         <div class="col-12">
                                             <div class="mb-3">
                                                 <label for="password">Password:</label>
-                                                <input class="form-control form-control-sm" type="password" id="password"
-                                                    name="password" required>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-sm" type="password"
+                                                        id="password" name="password" required>
+
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-eye" id="eyeIcon" onclick="togglePasswordVisibility()"></i>
+                                                    </span>
+
+                                                    <!-- Display the error message -->
+                                                    @error('password')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
+
                                         <div class="col-12">
                                             <div class="mb-3">
                                                 <label for="confirm_password">Confirm Password:</label>
-                                                <input class="form-control form-control-sm" type="password"
-                                                    id="confirm_password" name="password_confirmation" required>
+                                                <div class="input-group">
+                                                    <input class="form-control form-control-sm" type="password"
+                                                        id="confirm_password" name="password_confirmation" required>
+
+                                                    <span class="input-group-text">
+                                                        <i class="fas fa-eye" id="eyeIcon"
+                                                            onclick="toggleConfirmPasswordVisibility()"></i>
+                                                    </span>
+
+                                                    @error('password_confirmation')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
 
@@ -128,7 +162,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-4">
                                             <label class="fw-semibold mb-1" for="project-name">Project Name:</label>
-                                            <input type="hidden" id="user-id" name="user_id" value=""/>
+                                            <input type="hidden" id="user-id" name="user_id" value="" />
                                             <input type="text" id="project-name" name="project_name" required
                                                 class="form-control" placeholder="Enter the project name" />
                                         </div>
@@ -164,7 +198,8 @@
 
                                     <div class="col-lg-6">
                                         <label class="fw-semibold mb-1" for="attachment">Upload Project File:</label>
-                                        <input type="file" id="attachment" name="attachment[]" class="form-control" multiple />
+                                        <input type="file" id="attachment" name="attachment[]" class="form-control"
+                                            multiple />
                                     </div>
 
 
@@ -231,8 +266,20 @@
 
     <div id="loading" style="display: none;">Loading...</div>
 
-
     <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('password');
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+        }
+
+        function toggleConfirmPasswordVisibility() {
+            var confirmPasswordField = document.getElementById('confirm_password');
+            confirmPasswordField.type = confirmPasswordField.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+
+
+    {{-- <script>
         function submitForm1(event) {
             event.preventDefault(); // Prevent normal form submission
 
@@ -263,7 +310,62 @@
                 }
             });
         }
+    </script> --}}
+
+    <script>
+        function submitForm1(event) {
+            event.preventDefault(); // Prevent normal form submission
+
+            var formData = new FormData(document.getElementById("form1"));
+
+            $.ajax({
+                url: "{{ route('register.user.event') }}", // Your form action route
+                method: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#loading').show();
+                },
+                success: function(response) {
+                    $('#loading').hide();
+
+                    // Check if the response indicates success
+                    if (response.success) {
+                        $('#form1').hide(); // Hide form1
+                        $('#user-id').val(response.id); // Optionally store user ID or data
+                        $('#form2').removeClass('hidden').show(); // Show form2
+                    } else {
+                        alert('There was an error. Please try again.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#loading').hide();
+
+                    if (xhr.status === 422) {
+                        // Validation errors returned from Laravel
+                        var errors = xhr.responseJSON.errors;
+
+                        // Clear previous error messages
+                        $('.invalid-feedback').remove();
+
+                        // Loop through each error and display them near the respective fields
+                        $.each(errors, function(field, messages) {
+                            var inputField = $('#' + field);
+                            inputField.addClass('is-invalid'); // Add Bootstrap invalid class
+
+                            // Append the error message
+                            inputField.after('<div class="invalid-feedback">' + messages.join('<br>') +
+                                '</div>');
+                        });
+                    } else {
+                        alert('Something went wrong. Please try again.');
+                    }
+                }
+            });
+        }
     </script>
+
 
 
     {{-- //Amount  --}}
