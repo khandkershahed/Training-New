@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CourseRequest;
 use App\Models\Admin;
 use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseSection;
-use App\Models\industry;
 use App\Models\Service;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use App\Models\industry;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\CourseSection;
+use App\Models\CourseCategory;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CourseController extends Controller
 {
@@ -89,6 +90,8 @@ class CourseController extends Controller
                 'service_id' => $services,
                 'industry_id' => $industrys,
 
+                'added_by' => Auth::gurad('admin')->user()->id,                
+
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
 
@@ -140,6 +143,8 @@ class CourseController extends Controller
                     'instructor_id' => $instructors,
                     'service_id' => $services,
                     'industry_id' => $industrys,
+
+                    'added_by' => Auth::gurad('admin')->user()->id,
 
                     'course_category_id' => $request->course_category_id,
                     'course_type' => $request->course_type,
@@ -290,6 +295,8 @@ class CourseController extends Controller
                 'instructor_id' => $instructors,
                 'service_id' => $services,
                 'industry_id' => $industrys,
+
+                'added_by' => Auth::gurad('admin')->user()->id,
 
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
