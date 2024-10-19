@@ -1,4 +1,17 @@
 <x-admin-app-layout :title="'Course Create'">
+
+
+
+    <style>
+        .image-input-placeholder {
+            background-image: url('{{ asset('upload/no_image.jpg') }}');
+        }
+
+        [data-bs-theme="dark"] .image-input-placeholder {
+            background-image: url('{{ asset('upload/no_image.jpg') }}');
+        }
+    </style>
+
     <div class="card card-flash">
         <div class="card-header">
             <div class="card-title">
@@ -332,20 +345,99 @@
                             </div>
                         </div>
 
-                        <div class="col-3 mb-3">
-                            <div class="">
+                        {{-- size 750*563 --}}
+                        <div class="col-2">
+                            {{-- <div class="">
                                 <label for="" class="mb-2">Image</label>
                                 <input type="file" name="thumbnail_image" accept="image/*"
                                     class="form-control form-control-sm">
+                            </div> --}}
+
+                            <div class="col-12">
+                                <label for="thumbnail_image" class="mb-3">Thumbnail Image</label>
+                                <br>
+                                <!--begin::Image input-->
+                                <div class="image-input image-input-outline" data-kt-image-input="true"
+                                    style="background-image: url('{{ asset('upload/no_image.jpg') }}'); width: 170px;height: 170px;">
+
+                                    <!--begin::Image preview wrapper-->
+                                    <div class="image-input-wrapper"
+                                        style="background-image: url('{{ asset('upload/no_image.jpg') }}'); width: 170px; height: 170px;">
+                                    </div>
+                                    <!--end::Image preview wrapper-->
+
+                                    <!--begin::Edit button-->
+                                    <label
+                                        class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                        data-bs-dismiss="click" title="Maximum Image Size: 2MB, 750x563px">
+                                        <i class="fa-solid fa-pencil"></i>
+
+                                        <!--begin::Inputs-->
+                                        <input type="file" name="thumbnail_image" accept=".png, .jpg, .jpeg"
+                                            onchange="validateImageSize(this)" />
+                                        <input type="hidden" name="thumbnail_image" />
+                                        <!--end::Inputs-->
+                                    </label>
+                                    <!--end::Edit button-->
+
+                                    <!--begin::Cancel button-->
+                                    <span
+                                        class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                        data-bs-dismiss="click" title="Remove Image">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </span>
+                                    <!--end::Cancel button-->
+
+                                    <!--begin::Remove button-->
+                                    <span
+                                        class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                                        data-bs-dismiss="click" title="Remove Image">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </span>
+                                    <!--end::Remove button-->
+                                </div>
+                                <!--end::Image input-->
                             </div>
+
+
+
                         </div>
 
+                        {{-- size 1920*330 --}}
                         <div class="col-3 mb-3">
+
                             <div class="">
                                 <label for="" class="mb-2">Course Banner Image</label>
                                 <input type="file" name="course_banner_image" accept="image/*"
                                     class="form-control form-control-sm">
                             </div>
+                            {{-- <label for="course_banner_image" class="mb-3">Banner Image</label>
+
+                            <!--begin::Form-->
+                            <div class="fv-row">
+                                <!--begin::Dropzone-->
+                                <div class="dropzone" id="kt_dropzonejs_example_1">
+                                    <!--begin::Message-->
+                                    <div class="dz-message needsclick">
+                                        <i class="ki-duotone ki-file-up fs-3x text-primary"><span
+                                                class="path1"></span><span class="path2"></span></i>
+
+                                        <!--begin::Info-->
+                                        <div class="ms-4">
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop Banner Image here or 
+                                                upload.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-500">Upload up to 1
+                                                files (Size 1920*330)</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                </div>
+                                <!--end::Dropzone-->
+                            </div> --}}
+
                         </div>
 
                         <div class="col-12 mb-3 mt-4">
@@ -363,6 +455,63 @@
     </div>
 
     @push('scripts')
+
+        {{-- <script>
+            var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
+                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
+                paramName: "file", // The name that will be used to transfer the file
+                maxFiles: 1,
+                maxFilesize: 10, // MB
+                addRemoveLinks: true,
+                accept: function(file, done) {
+                    if (file.name == "wow.jpg") {
+                        done("Naha, you don't.");
+                    } else {
+                        done();
+                    }
+                }
+            });
+        </script> --}}
+        
+        <script>
+            < script >
+                function validateImageSize(input) {
+                    const file = input.files[0];
+
+                    if (file) {
+                        // Maximum file size: 2MB
+                        const maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
+
+                        // Maximum dimensions: 750x563px
+                        const maxWidth = 750;
+                        const maxHeight = 563;
+
+                        // Check file size
+                        if (file.size > maxFileSize) {
+                            alert("The image size is too large. Please upload an image smaller than 2MB.");
+                            input.value = ''; // Clear the input field
+                            return;
+                        }
+
+                        const img = new Image();
+                        img.onload = function() {
+                            // Check image dimensions
+                            if (img.width > maxWidth || img.height > maxHeight) {
+                                alert(
+                                    `Image dimensions are too large. Please upload an image with a maximum size of ${maxWidth}x${maxHeight} pixels.`
+                                );
+                                input.value = ''; // Clear the input field
+                                return;
+                            }
+                        };
+
+                        // Read and load the image
+                        img.src = URL.createObjectURL(file);
+                    }
+                }
+        </script>
+
+        </script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#myForm').validate({
