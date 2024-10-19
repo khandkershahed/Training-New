@@ -64,8 +64,7 @@
                                 <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <i class="fa-solid fa-flask fs-1 text-primary"><span
-                                                    class="path1"></span><span class="path2"></span></i>
+                                            <img src="{{ asset('images/Total Courses.png') }}" style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
@@ -82,8 +81,7 @@
                                 <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <i class="fa-solid fa-bank fs-1 text-primary"><span
-                                                    class="path1"></span><span class="path2"></span></i>
+                                            <img src="{{ asset('images/Total Enrolled.png') }}" style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
@@ -100,9 +98,7 @@
 
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <i class="fa-solid fa-award fs-1 text-primary"><span
-                                                    class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span></i>
+                                            <img src="{{ asset('images/Monthly Enrolled.png') }}" style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
@@ -119,9 +115,7 @@
 
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <i class="fa-solid fa-award fs-1 text-primary"><span
-                                                    class="path1"></span><span class="path2"></span><span
-                                                    class="path3"></span></i>
+                                            <img src="{{ asset('images/Today Enrolled.png') }}" style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
