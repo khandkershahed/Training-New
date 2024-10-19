@@ -6,14 +6,18 @@ use App\Models\Admin;
 use App\Models\Course;
 use App\Models\Service;
 use App\Models\industry;
+use App\Mail\CourseCreated;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CourseSection;
+use App\Mail\CourseUpdateMail;
 use App\Models\CourseCategory;
+use App\Mail\CourseCreatedMail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 class CourseController extends Controller
 {
@@ -52,7 +56,6 @@ class CourseController extends Controller
         if (empty($iconmainFile)) {
 
             $globalFunIconImg['file_name'] = '';
-
         } else {
             $globalFunIconImg = customUpload($iconmainFile, $iconimgPath);
             $globalFunIconImg['file_name'] = $globalFunIconImg['file_name'];
@@ -84,13 +87,14 @@ class CourseController extends Controller
 
         if (empty($mainFile)) {
 
-            Course::insert([
+            $course = Course::create([
 
                 'instructor_id' => $instructors,
                 'service_id' => $services,
                 'industry_id' => $industrys,
 
-                'added_by' => Auth::gurad('admin')->user()->id,                
+                'added_by' => Auth::guard('admin')->user()->id,
+                'update_by' => Auth::guard('admin')->user()->id,
 
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
@@ -138,13 +142,14 @@ class CourseController extends Controller
 
             if ($globalFunImg['status'] == 1) {
 
-                Course::insert([
+                $course = Course::create([
 
                     'instructor_id' => $instructors,
                     'service_id' => $services,
                     'industry_id' => $industrys,
 
-                    'added_by' => Auth::gurad('admin')->user()->id,
+                    'added_by' => Auth::guard('admin')->user()->id,
+                    'update_by' => Auth::guard('admin')->user()->id,
 
                     'course_category_id' => $request->course_category_id,
                     'course_type' => $request->course_type,
@@ -194,7 +199,14 @@ class CourseController extends Controller
             }
         }
 
-        // flash()->success('');
+
+        // Mail Send
+        $admins = Admin::where('mail_status', 'mail')->get();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new CourseCreatedMail($course));
+        }
+        // Mail Send
 
         return redirect()->route('admin.course.index')->with('success', 'Course Inserted Successfully!!');
     }
@@ -296,7 +308,8 @@ class CourseController extends Controller
                 'service_id' => $services,
                 'industry_id' => $industrys,
 
-                'added_by' => Auth::gurad('admin')->user()->id,
+                'added_by' => Auth::guard('admin')->user()->id,
+                'update_by' => Auth::guard('admin')->user()->id,
 
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
@@ -342,6 +355,14 @@ class CourseController extends Controller
             ]);
         }
 
+        // Mail Send
+        $admins = Admin::where('mail_status', 'mail')->get();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new CourseUpdateMail($course));
+        }
+        // Mail Send
+
         return redirect()->route('admin.course.index')->with('success', 'Course Update Successfully!!');
     }
 
@@ -359,5 +380,4 @@ class CourseController extends Controller
 
         $course->delete();
     }
-
 }

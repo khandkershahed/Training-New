@@ -28,13 +28,15 @@
                     <tr>
                         <th width="5%">No</th>
                         <th width="8%">Image</th>
-                        <th width="15%">Section</th>
-                        <th width="15%">Category</th>
-                        <th width="20%">Course Name</th>
+                        <th width="10%">Section</th>
+                        <th width="10%">Category</th>
+                        <th width="15%">Course Name</th>
                         <th width="8%">Lecture</th>
                         <th width="8%">Seat</th>
                         <th width="10%">Price</th>
                         <th width="10%">Discount Price</th>
+                        <th width="10%">Added By</th>
+                        <th width="10%">Update By</th>
                         <th width="100%">Actions</th>
                     </tr>
                 </thead>
@@ -58,6 +60,8 @@
                             <td class="text-start">{{ $course->available_seats }}</td>
                             <td class="text-start">{{ $course->price }} Tk</td>
                             <td class="text-start">{{ $course->discount_price }} Tk</td>
+                            <td class="text-start">{{ optional($course->addedName)->name }}</td>
+                            <td class="text-start">{{ optional($course->addedName)->name }}</td>
                             <td>
                                 
                                 @if (Auth::guard('admin')->user()->can('edit.course'))
