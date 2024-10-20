@@ -1,6 +1,11 @@
 <x-admin-app-layout :title="'Course List'">
 
     <style>
+        .custom-btn-close {
+            filter: brightness(0) invert(1);
+            /* This makes the close icon white */
+        }
+
         /* Custom Toggle Switch */
         .custom-toggle {
             position: relative;
@@ -85,9 +90,9 @@
                     Delete Selected
                 </button>
             @endif
-            
+
             <p class="float-end">
-                Total Courses 
+                Total Courses
                 <span class="badge bg-danger ms-2">{{ count($courses) }}</span> <!-- Notification badge -->
             </p>
 
@@ -105,13 +110,13 @@
 
                         <th width="8%">Image</th>
                         <th width="10%">Section</th>
-                        <th width="10%">Category</th>
-                        <th width="15%">Course Name</th>
-                        <th width="8%">Lecture</th>
+                        <th width="15%">Category</th>
+                        <th width="20%">Course Name</th>
+                        {{-- <th width="8%">Lecture</th>
                         <th width="8%">Seat</th>
                         <th width="10%">Price</th>
-                        <th width="10%">Discount Price</th>
-                        <th width="5%">Status</th>
+                        <th width="10%">Discount Price</th> --}}
+                        <th width="8%">Status</th>
                         <th width="10%">Added By</th>
                         <th width="10%">Update By</th>
                         <th width="100%">Actions</th>
@@ -138,10 +143,10 @@
                             <td class="text-start">{{ $course->section->name }}</td>
                             <td class="text-start">{{ $course->category->name }}</td>
                             <td class="text-start">{{ $course->name }}</td>
-                            <td class="text-start">{{ $course->lecture }}</td>
+                            {{-- <td class="text-start">{{ $course->lecture }}</td>
                             <td class="text-start">{{ $course->available_seats }}</td>
-                            <td class="text-start">{{ $course->price }} Tk</td>
-                            <td class="text-start">{{ $course->discount_price }} Tk</td>
+                            <td class="text-start">{{ $course->price }} Tk</td> --}}
+                            {{-- <td class="text-start">{{ $course->discount_price }} Tk</td> --}}
 
                             <td class="text-center">
                                 <label class="custom-toggle">
@@ -155,9 +160,123 @@
                             <td class="text-start">{{ optional($course->addedName)->name }}</td>
                             <td class="text-start">{{ optional($course->updateName)->name }}</td>
                             <td>
+
+                                <a href="#" data-bs-toggle="modal"
+                                    data-bs-target="#showCourse{{ $course->id }}" title="View"><i
+                                        class="fa-solid fa-expand text-primary"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="showCourse{{ $course->id }}" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="showCourseLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-xl">
+
+                                        <div class="modal-content">
+
+                                            <div class="modal-header"
+                                                style="background: linear-gradient(45deg, #6a11cb, #356ac4);">
+
+                                                <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Course
+                                                    Details</h1>
+
+                                                <button type="button" class="btn-close custom-btn-close"
+                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                            </div>
+
+
+                                            <div class="card shadow p-3">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="modal-body">
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+                                                                <tbody>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Banner
+                                                                                Image:</strong></td>
+                                                                        <td>
+                                                                            <img class=""
+                                                                                src="{{ !empty($course->course_banner_image) ? url('storage/course/' . $course->course_banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($course->name) }}"
+                                                                                height="10%" width="100%"
+                                                                                alt="">
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Course:</strong>
+                                                                        </td>
+                                                                        <td>{{ $course->name }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Lecturer:</strong>
+                                                                        </td>
+                                                                        <td>{{ $course->lecture }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Available
+                                                                                Seats:</strong></td>
+                                                                        <td>{{ $course->available_seats }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Price:</strong></td>
+                                                                        <td>{{ $course->price }} Tk</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Discounted
+                                                                                Price:</strong></td>
+                                                                        <td>{{ $course->discount_price }} Tk</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Reg Start Day:</strong></td>
+                                                                        <td>{{ $course->registration_start_date }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Reg End Date:</strong></td>
+                                                                        <td>{{ $course->registration_end_date }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Class Start Day:</strong></td>
+                                                                        <td>{{ $course->class_start_date }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Class End Day:</strong></td>
+                                                                        <td>{{ $course->class_end_date }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td width="30%"><strong>Status
+                                                                                :</strong></td>
+                                                                        <td>
+                                                                            @if ($course->status == 'active')
+                                                                                <span class="badge bg-success">{{ $course->status }}</span>
+                                                                            @else
+                                                                            <span class="badge bg-danger">{{ $course->status }}</span>
+                                                                            @endif
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 @if (Auth::guard('admin')->user()->can('edit.course'))
                                     <a href="{{ route('admin.course.edit', $course->id) }}" class="text-primary">
-                                        <i class="bi bi-pencil text-primary"></i>
+                                        <i class="bi bi-pencil text-success"></i>
                                     </a>
                                 @endif
 
@@ -176,6 +295,8 @@
         </div>
 
     </div>
+
+
 
     @push('scripts')
         <script>
