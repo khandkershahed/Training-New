@@ -94,7 +94,7 @@ class CourseController extends Controller
                 'industry_id' => $industrys,
 
                 'added_by' => Auth::guard('admin')->user()->id,
-                'update_by' => Auth::guard('admin')->user()->id,
+                // 'update_by' => Auth::guard('admin')->user()->id,
 
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
@@ -149,7 +149,7 @@ class CourseController extends Controller
                     'industry_id' => $industrys,
 
                     'added_by' => Auth::guard('admin')->user()->id,
-                    'update_by' => Auth::guard('admin')->user()->id,
+                    // 'update_by' => Auth::guard('admin')->user()->id,
 
                     'course_category_id' => $request->course_category_id,
                     'course_type' => $request->course_type,
@@ -308,7 +308,7 @@ class CourseController extends Controller
                 'service_id' => $services,
                 'industry_id' => $industrys,
 
-                'added_by' => Auth::guard('admin')->user()->id,
+                // 'added_by' => Auth::guard('admin')->user()->id,
                 'update_by' => Auth::guard('admin')->user()->id,
 
                 'course_category_id' => $request->course_category_id,

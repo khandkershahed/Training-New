@@ -61,7 +61,7 @@
                             <td class="text-start">{{ $course->price }} Tk</td>
                             <td class="text-start">{{ $course->discount_price }} Tk</td>
                             <td class="text-start">{{ optional($course->addedName)->name }}</td>
-                            <td class="text-start">{{ optional($course->addedName)->name }}</td>
+                            <td class="text-start">{{ optional($course->updateName)->name }}</td>
                             <td>
                                 
                                 @if (Auth::guard('admin')->user()->can('edit.course'))

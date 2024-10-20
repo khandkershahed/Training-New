@@ -10,6 +10,67 @@
         [data-bs-theme="dark"] .image-input-placeholder {
             background-image: url('{{ asset('upload/no_image.jpg') }}');
         }
+
+        /* Basic styling for dropzone */
+        .dropzone {
+            width: 100%;
+            height: 95px;
+            border: 2px dashed #007bff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #007bff;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for dropzone */
+        .dropzone:hover {
+            background-color: #f0f8ff;
+        }
+
+        /* When file is dragged over the dropzone */
+        .dropzone.dragover {
+            background-color: #e9f7ff;
+            border-color: #0056b3;
+        }
+
+        /* Hide input field (it is used for clicking to select files) */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Style for the remove icon on top of the preview */
+        #remove-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #remove-image:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Style for the image size display */
+        #image-size {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 3px;
+        }
     </style>
 
     <div class="card card-flash">
@@ -403,40 +464,55 @@
                             </div>
 
 
-
                         </div>
 
                         {{-- size 1920*330 --}}
                         <div class="col-3 mb-3">
 
-                            <div class="">
+                            {{-- Banner Image  --}}
+                            {{-- <div class="">
                                 <label for="" class="mb-2">Course Banner Image</label>
                                 <input type="file" name="course_banner_image" accept="image/*"
                                     class="form-control form-control-sm">
-                            </div>
-                            {{-- <label for="course_banner_image" class="mb-3">Banner Image</label>
-
-                            <!--begin::Form-->
-                            <div class="fv-row">
-                                <!--begin::Dropzone-->
-                                <div class="dropzone" id="kt_dropzonejs_example_1">
-                                    <!--begin::Message-->
-                                    <div class="dz-message needsclick">
-                                        <i class="ki-duotone ki-file-up fs-3x text-primary"><span
-                                                class="path1"></span><span class="path2"></span></i>
-
-                                        <!--begin::Info-->
-                                        <div class="ms-4">
-                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop Banner Image here or 
-                                                upload.</h3>
-                                            <span class="fs-7 fw-semibold text-gray-500">Upload up to 1
-                                                files (Size 1920*330)</span>
-                                        </div>
-                                        <!--end::Info-->
-                                    </div>
-                                </div>
-                                <!--end::Dropzone-->
                             </div> --}}
+                            {{-- Banner Image  --}}
+
+                            {{-- =================== --}}
+                            <div class="course-banner-container">
+                                <label for="course_banner_image" class="mb-2">Course Banner Image</label>
+
+                                <!-- Dropzone area -->
+                                <div id="dropzone" class="dropzone"
+                                    aria-label="Drag & drop image here or click to select">
+                                    <input type="file" name="course_banner_image" id="course_banner_image"
+                                        accept="image/*" class="form-control form-control-sm" style="display:none;">
+                                    <p>Drag & Drop your image here or click to select (Size 1920 x 500).For Less Than
+                                        5Mb </p>
+                                </div>
+
+                                <!-- Validation message -->
+                                <div id="validation-message" class="text-danger" style="display:none;"></div>
+
+                                <!-- Image preview and remove icon -->
+                                <div id="image-preview" style="display:none; margin-top: 10px; position: relative;">
+                                    <img id="preview-img" src="" alt="Image Preview"
+                                        style="max-width: 100%; max-height: 200px; object-fit: cover; border-radius: 5px;">
+
+                                    <!-- Image size display -->
+                                    <div id="image-size"
+                                        style="position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.5); color: white; padding: 5px; font-size: 14px; border-radius: 3px;">
+                                        1920 x 500
+                                    </div>
+
+                                    <button type="button" id="remove-image"
+                                        style="position: absolute; top: 10px; right: 10px; background: rgba(12, 12, 12, 0.925); color: white; border: none; width:35px;height:35px; border-radius: 50%; padding: 1px; cursor: pointer; font-size: 22px;">
+                                        ×
+                                    </button>
+                                </div>
+                            </div>
+                            {{-- =================== --}}
+
+
 
                         </div>
 
@@ -455,24 +531,109 @@
     </div>
 
     @push('scripts')
+        <!-- Dropzone Script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const dropzone = document.getElementById('dropzone');
+                const fileInput = document.getElementById('course_banner_image');
+                const validationMessage = document.getElementById('validation-message');
+                const imagePreview = document.getElementById('image-preview');
+                const previewImg = document.getElementById('preview-img');
+                const imageSizeDisplay = document.getElementById('image-size');
+                const removeButton = document.getElementById('remove-image');
+                const maxFileSize = 5 * 1024 * 1024; // 5MB max file size
+                const requiredWidth = 1920;
+                const requiredHeight = 500;
 
-        {{-- <script>
-            var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-                url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-                paramName: "file", // The name that will be used to transfer the file
-                maxFiles: 1,
-                maxFilesize: 10, // MB
-                addRemoveLinks: true,
-                accept: function(file, done) {
-                    if (file.name == "wow.jpg") {
-                        done("Naha, you don't.");
-                    } else {
-                        done();
+                // Show the file input when clicking the dropzone
+                dropzone.addEventListener('click', () => {
+                    fileInput.click();
+                });
+
+                // Handle dragover to add visual feedback
+                dropzone.addEventListener('dragover', function(event) {
+                    event.preventDefault();
+                    dropzone.classList.add('dragover');
+                });
+
+                // Handle dragleave to remove visual feedback
+                dropzone.addEventListener('dragleave', function() {
+                    dropzone.classList.remove('dragover');
+                });
+
+                // Handle drop
+                dropzone.addEventListener('drop', function(event) {
+                    event.preventDefault();
+                    dropzone.classList.remove('dragover');
+                    handleFile(event.dataTransfer.files[0]);
+                });
+
+                // Handle file selection via input
+                fileInput.addEventListener('change', function(event) {
+                    handleFile(event.target.files[0]);
+                });
+
+                // Function to handle the file
+                function handleFile(file) {
+                    if (file) {
+                        const fileType = file.type.split('/')[0]; // Get the type (e.g., image)
+                        const fileSize = file.size;
+
+                        // Validate file type and size
+                        if (fileType !== 'image') {
+                            validationMessage.textContent = 'Only image files are allowed.';
+                            validationMessage.style.display = 'block';
+                            fileInput.value = ''; // Reset input
+                            imagePreview.style.display = 'none'; // Hide preview if invalid
+                        } else if (fileSize > maxFileSize) {
+                            validationMessage.textContent = 'File size must be less than 5MB.';
+                            validationMessage.style.display = 'block';
+                            fileInput.value = ''; // Reset input
+                            imagePreview.style.display = 'none'; // Hide preview if invalid
+                        } else {
+                            // Check image dimensions
+                            const img = new Image();
+                            img.onload = function() {
+                                const width = img.width;
+                                const height = img.height;
+
+                                if (width !== requiredWidth || height !== requiredHeight) {
+                                    validationMessage.textContent =
+                                        `Image dimensions must be ${requiredWidth}x${requiredHeight}.`;
+                                    validationMessage.style.display = 'block';
+                                    fileInput.value = ''; // Reset input
+                                    imagePreview.style.display = 'none'; // Hide preview if invalid
+                                } else {
+                                    validationMessage.style.display = 'none'; // Hide validation message
+                                    // Display the image preview
+                                    const reader = new FileReader();
+                                    reader.onload = function(e) {
+                                        previewImg.src = e.target.result;
+                                        imagePreview.style.display = 'block'; // Show the preview container
+
+                                        // Display the image dimensions
+                                        imageSizeDisplay.textContent = `${width} x ${height}`;
+                                    };
+                                    reader.readAsDataURL(file); // Read file as Data URL for preview
+                                }
+                            };
+
+                            img.src = URL.createObjectURL(file); // Set image source to trigger loading
+                        }
                     }
                 }
+
+                // Remove image preview when the "remove" button is clicked
+                removeButton.addEventListener('click', function() {
+                    previewImg.src = ''; // Clear the image source
+                    fileInput.value = ''; // Reset the input field
+                    imagePreview.style.display = 'none'; // Hide the preview container
+                    validationMessage.style.display = 'none'; // Hide any validation message
+                });
             });
-        </script> --}}
-        
+        </script>
+
+
         <script>
             < script >
                 function validateImageSize(input) {
@@ -511,7 +672,7 @@
                 }
         </script>
 
-        </script>
+
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#myForm').validate({
