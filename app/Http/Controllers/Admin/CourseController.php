@@ -22,6 +22,40 @@ use Illuminate\Support\Facades\Mail;
 class CourseController extends Controller
 {
 
+    //Course Status
+    public function updateStatus(Request $request)
+    {
+        // Validate the incoming request
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+            'status' => 'required|in:active,inactive'
+        ]);
+
+        // Find the course and update the status
+        $course = Course::findOrFail($request->course_id);
+        $course->status = $request->status;
+        $course->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    // In your Controller
+    public function bulkDelete(Request $request)
+    {
+        $courseIds = $request->input('course_ids');
+
+        // Validate the input (ensure it's an array)
+        if (is_array($courseIds) && count($courseIds) > 0) {
+            // Perform the deletion
+            Course::whereIn('id', $courseIds)->delete();
+
+            return response()->json(['message' => 'Courses deleted successfully.'], 200);
+        }
+
+        return response()->json(['message' => 'No courses selected.'], 400);
+    }
+
+
     public function GetCategory($course_section_id)
     {
         $subCat = CourseCategory::where('course_section_id', $course_section_id)->orderBy('name', 'ASC')->get();

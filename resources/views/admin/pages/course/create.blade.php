@@ -633,7 +633,6 @@
             });
         </script>
 
-
         <script>
             < script >
                 function validateImageSize(input) {
@@ -671,7 +670,6 @@
                     }
                 }
         </script>
-
 
         <script type="text/javascript">
             $(document).ready(function() {

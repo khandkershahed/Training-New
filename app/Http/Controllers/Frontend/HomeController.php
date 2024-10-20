@@ -192,7 +192,9 @@ class HomeController extends Controller
         $categoryId = $request->input('category');
 
         // Fetch all courses if no section is specified
-        $courses = Course::latest();
+        
+        // $courses = Course::latest();
+        $courses = Course::where('status','active')->latest();
 
         // Apply section filter if section ID is provided
         if ($sectionId) {

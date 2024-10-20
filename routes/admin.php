@@ -301,3 +301,9 @@ Route::middleware(['auth:admin'])->group(function () {
     });
 });
 
+Route::post('/admin/courses/bulk-delete', [CourseController::class, 'bulkDelete'])->name('admin.course.bulkDelete');
+//Course Status
+Route::post('/admin/course/update-status', [CourseController::class, 'updateStatus'])->name('admin.course.updateStatus');
+
+
+
