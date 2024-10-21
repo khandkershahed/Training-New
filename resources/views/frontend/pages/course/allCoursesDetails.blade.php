@@ -510,9 +510,15 @@
                                                             <div class="card-header p-0 bg-transparent">
 
                                                                 <div>
-                                                                    <img class="rounded-2 img-fluid course-images"
-                                                                        src="{{ asset(!empty($courses->thumbnail_image) ? url('storage/course/' . $courses->thumbnail_image) : url('images/no-shop-imge.png')) }}"
-                                                                        alt="">
+
+                                                                    <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}">
+
+                                                                        <img class="rounded-2 img-fluid course-images"
+                                                                            src="{{ asset(!empty($courses->thumbnail_image) ? url('storage/course/' . $courses->thumbnail_image) : url('images/no-shop-imge.png')) }}"
+                                                                            alt="">
+
+                                                                    </a>
+                                                                    
                                                                 </div>
 
                                                                 <div class="p-2 text-center">
@@ -530,29 +536,27 @@
                                                                             {{ $courses->available_seats }}
                                                                         </span>
                                                                     </small>
+
                                                                     @php
-                                                                        // Convert registration end date to Unix timestamp
                                                                         $registrationEndTimestamp = strtotime(
                                                                             $courses->registration_end_date,
                                                                         );
-                                                                        // Current time
                                                                         $currentTime = time();
-                                                                        // Calculate remaining time in seconds
                                                                         $remainingTime =
                                                                             $registrationEndTimestamp - $currentTime;
-                                                                        // Convert remaining time to days
                                                                         $remainingDays = floor(
                                                                             $remainingTime / (60 * 60 * 24),
                                                                         );
                                                                     @endphp
 
-                                                                    <small class="pe-3">
-                                                                        <span class="course-badge rounded-2">
-                                                                            {{-- <i class="far fa-clock " aria-hidden="true"></i> --}}
-                                                                            <i class="fa-solid fa-clock"></i>
-                                                                            {{ $remainingDays }} Days
-                                                                        </span>
-                                                                    </small>
+                                                                    @if ($remainingDays > 0)
+                                                                        <small class="pe-3">
+                                                                            <span class="course-badge rounded-2">
+                                                                                <i class="fa-solid fa-clock"></i>
+                                                                                {{ $remainingDays }} Days
+                                                                            </span>
+                                                                        </small>
+                                                                    @endif
 
                                                                 </div>
                                                             </div>

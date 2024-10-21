@@ -41,8 +41,8 @@ Route::controller(HomeController::class)->group(function () {
 //Course Query
 Route::post('/course-query', [HomeController::class, 'courseQueryStore'])->name('course.query.store');
 
-Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::get('/appointment', [HomeController::class, 'appointment'])->name('appointment');
 
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');

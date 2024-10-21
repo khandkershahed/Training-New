@@ -17,12 +17,12 @@
     <section>
         <div class="container py-5 pt-0">
             <div class="row">
-                
+
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded-3"
                         style="background-color: #eee;">
                         <div class="d-flex">
-                            
+
                             <div class="me-3">
 
                                 <select class="example form-select form-select-sm" id="select1" name="course_section"
@@ -98,12 +98,18 @@
 
                 <div class="row" id="servicesContainer">
                     @forelse ($courses as $course)
-                    
                         <div class="col-lg-3 mb-4">
                             <div class="card border-0 bg-light shadow-sm rounded-2">
                                 <div class="card-header p-0 bg-transparent">
 
                                     <div>
+
+                                        <a href="{{ url('course' . '/' . $course->id . '/' . $course->slug) }}">
+                                            <img class="rounded-2 img-fluid course-images"
+                                                src="{{ asset(!empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : url('images/no-shop-imge.png')) }}"
+                                                alt="">
+                                        </a>
+
                                         <img class="rounded-2 img-fluid course-images"
                                             src="{{ asset(!empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : url('images/no-shop-imge.png')) }}"
                                             alt="">

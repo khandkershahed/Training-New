@@ -108,9 +108,9 @@
                         </p>
 
                         <div class="pt-3">
-                            <button class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
+                            <a href="{{ route('event.registration') }}" class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
                                 Registraion Now
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
