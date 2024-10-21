@@ -397,12 +397,12 @@
                             <div class="text-container right-text">
                                 <div class="card">
                                     <div
-                                        class="card-header border-0 py-0 d-flex justify-content-between align-items-end">
+                                        class="card-header border-0 py-0 d-flex justify-content-between align-items-end pt-3">
                                         <p class="mb-0 pb-3">
                                             <small class="cst-font">Start At</small> <br>
                                             <span class="fs-6 fw-bold first-color cst-font">9:30 AM</span>
                                         </p>
-                                        <p class="text-center mb-0">
+                                        <p class="text-center mb-0 pt-4">
                                             <span class="start-month">Aug</span>
                                             <span class="start-date">18</span>
                                             <span class="start-month ps-2">2024</span>
