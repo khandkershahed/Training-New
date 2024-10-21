@@ -55,8 +55,14 @@
                 items: 1,
                 slideSpeed: 2000,
                 nav: false,
-                autoplay: false,
+                autoplay: true,
                 dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000, // Time between transitions (3 seconds)
+                autoplayHoverPause: true, // Pause on hover
+                smartSpeed: 600, // Speed for the transition
+                animateOut: 'fadeOut', // Transition effect for sliding out
+                animateIn: 'fadeIn', // Transition effect for sliding in
                 loop: true,
                 responsiveRefreshRate: 200,
                 navText: [
@@ -72,11 +78,15 @@
             })
             .owlCarousel({
                 items: slidesPerPage,
-                dots: true,
-                nav: true,
-                smartSpeed: 200,
-                slideSpeed: 500,
-                slideBy: 1, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+                dots: false,
+                nav: false,
+                autoplay: true,
+                autoplayTimeout: 3000, // Time between transitions (3 seconds)
+                autoplayHoverPause: true, // Pause on hover
+                smartSpeed: 600, // Speed for the transition
+                animateOut: 'fadeOut', // Transition effect for sliding out
+                animateIn: 'fadeIn', // Transition effect for sliding in
+                slideBy: 1,
                 responsiveRefreshRate: 100,
                 responsive: {
                     // Breakpoint from 0 up
