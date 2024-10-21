@@ -2393,8 +2393,8 @@ a:hover {
 .register-btn {
     background: #0a1d5b;
     color: white !important;
-    border-bottom-right-radius: 17px;
-    border-top-left-radius: 17px;
+    /* border-bottom-right-radius: 17px;
+    border-top-left-radius: 17px; */
     border: 1px solid #0a1d5b;
     margin-left: 1.5rem;
     padding: 10px 16px;
