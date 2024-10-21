@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TermsConditionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AppointmentSlotController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Controller;
@@ -183,6 +184,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'event-page' => EventPageController::class,
             'event' => EventController::class,
             'appointment-slot' => AppointmentSlotController::class,
+            'appointment' => AppointmentController::class,
 
         ],
 

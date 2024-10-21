@@ -109,10 +109,7 @@
                                                 src="{{ asset(!empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : url('images/no-shop-imge.png')) }}"
                                                 alt="">
                                         </a>
-
-                                        <img class="rounded-2 img-fluid course-images"
-                                            src="{{ asset(!empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : url('images/no-shop-imge.png')) }}"
-                                            alt="">
+                                        
                                     </div>
 
                                     <div class="p-2 text-center">

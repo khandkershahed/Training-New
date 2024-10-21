@@ -149,8 +149,7 @@ class HomeController extends Controller
                     'attachment' => $filePath,
                 ]);
             }
-        }
-        else{
+        } else {
 
             usereventregistration::create([
 
@@ -164,7 +163,6 @@ class HomeController extends Controller
                 'transaction_id' => $request->transaction_id,
                 'created_at' => now(),
             ]);
-
         }
 
         // usereventregistration::create([
@@ -192,9 +190,9 @@ class HomeController extends Controller
         $categoryId = $request->input('category');
 
         // Fetch all courses if no section is specified
-        
+
         // $courses = Course::latest();
-        $courses = Course::where('status','active')->latest();
+        $courses = Course::where('status', 'active')->latest();
 
         // Apply section filter if section ID is provided
         if ($sectionId) {
@@ -285,14 +283,9 @@ class HomeController extends Controller
         return view('frontend.pages.service.allService', compact('services'));
     }
 
-
     //appointment
     public function appointment()
     {
-        // $query= 'counselor';
-        // $data = [
-        //     'counselors' => Admin::where('role', 'like', "%{$query}%")->get(), // Replace 'role' with the actual column name
-        // ];
         return view('frontend.pages.appointment');
     }
 
