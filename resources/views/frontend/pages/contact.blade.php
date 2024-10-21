@@ -27,7 +27,13 @@
                         <h5 class="">CONTACT US</h5>
                         <p class=" pt-2">
                             Phone:(+88) {{ $setting->primary_phone }} <br />
-                            Tel:(+88) {{ $setting->secondary_phone }}
+                            
+                            @if ($setting->secondary_phone == null)
+                            @else
+                                Tel:(+88) {{ $setting->secondary_phone }}
+                            @endif
+
+
                         </p>
                     </div>
                 </div>

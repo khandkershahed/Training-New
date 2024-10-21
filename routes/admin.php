@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TermsConditionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AppointmentSlotController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Controller;
@@ -183,6 +184,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'event-page' => EventPageController::class,
             'event' => EventController::class,
             'appointment-slot' => AppointmentSlotController::class,
+            'appointment' => AppointmentController::class,
 
         ],
 
@@ -260,6 +262,9 @@ Route::post('/paid-course-registration/update/{id}', [RegistrationController::cl
 Route::get('/register-user/inactive/{id}', [UserManagementController::class, 'userInactive'])->name('user-register.inactive');
 Route::get('/register-user/active/{id}', [UserManagementController::class, 'userActive'])->name('user-register.active');
 
+//User Event 
+Route::get('/admin/user/event/{id}', [AdminController::class, 'userEventDelete'])->name('admin.event.user');
+
 // Role In Permission
 Route::middleware(['auth:admin'])->group(function () {
 
@@ -297,3 +302,10 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
 });
+
+Route::post('/admin/courses/bulk-delete', [CourseController::class, 'bulkDelete'])->name('admin.course.bulkDelete');
+//Course Status
+Route::post('/admin/course/update-status', [CourseController::class, 'updateStatus'])->name('admin.course.updateStatus');
+
+
+

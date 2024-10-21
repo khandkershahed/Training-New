@@ -41,8 +41,8 @@ Route::controller(HomeController::class)->group(function () {
 //Course Query
 Route::post('/course-query', [HomeController::class, 'courseQueryStore'])->name('course.query.store');
 
-Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::get('/appointment', [HomeController::class, 'appointment'])->name('appointment');
 
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
@@ -78,6 +78,8 @@ Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/events', [HomeController::class, 'event'])->name('event');
 Route::get('/events/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
 Route::get('/event/registration', [HomeController::class, 'eventRegistration'])->name('event.registration');
+Route::post('/register/user/event', [HomeController::class, 'registerUserEvent'])->name('register.user.event');
+Route::post('/user/event/registration', [HomeController::class, 'userEventRegistration'])->name('user.event.registration');
 
 
 //Course Enroll

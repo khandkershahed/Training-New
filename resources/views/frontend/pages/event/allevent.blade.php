@@ -16,7 +16,9 @@
                                             {{ optional($eventPage)->banner_sub_title }}
                                         </h2>
                                         <h1>{{ optional($eventPage)->banner_title }}</h1>
+
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
+
                                         <div class="pt-2">
                                             <a href="{{ optional($eventPage)->map_link }}" target="blank"
                                                 class="btn btn-outline-light me-2 rounded-pill">
@@ -31,6 +33,7 @@
                                                 <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                             </a>
                                         </div>
+                                        
                                     </div>
                                 </div>
 

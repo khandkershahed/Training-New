@@ -41,8 +41,12 @@ return new class extends Migration
             $table->string('row_three_badge')->nullable();
             $table->string('row_three_title')->nullable();
             $table->text('row_three_description')->nullable()->comment('normal-textarea');
-            $table->string('status')->nullable()->comment('canceled','ongoing','upcoming','completed','registration_open','registration_close');
+            $table->string('status')->nullable()->comment('canceled', 'ongoing', 'upcoming', 'completed', 'registration_open', 'registration_close');
             $table->string('event_type')->nullable()->comment('workshop', 'seminar', 'concert', 'conference', 'webinar');
+
+            $table->string('payment_type')->default('free')->nullable(); // 'free' or 'paid'
+            $table->double('ticket_price', 8, 2)->nullable(); // price of tickets, null if free
+            $table->string('currency')->default('Taka')->nullable();
 
             $table->string('location')->nullable();
             $table->string('contact')->nullable();

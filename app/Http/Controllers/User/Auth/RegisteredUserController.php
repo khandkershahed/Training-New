@@ -57,6 +57,8 @@ class RegisteredUserController extends Controller
         Notification::send($admin, new UserRegistrationNotification($request->name));
         //Notification
 
+        
+
         // return redirect()->route('login')->with('success', 'Check your email');
         return redirect()->back();
     }

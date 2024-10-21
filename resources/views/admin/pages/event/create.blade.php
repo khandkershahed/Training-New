@@ -74,7 +74,8 @@
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="event_short_descp" class="mb-2">Event Short Descp</label>
-                                <textarea name="event_short_descp" placeholder="Event Short Description" class="form-control form-control-sm" cols="3" rows="3">{{ old('event_short_descp') }}</textarea>
+                                <textarea name="event_short_descp" placeholder="Event Short Description" class="form-control form-control-sm"
+                                    cols="3" rows="3">{{ old('event_short_descp') }}</textarea>
                             </div>
                         </div>
 
@@ -151,7 +152,36 @@
                             </div>
                         </div>
 
-                        <div class="col-5 mb-3">
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Payment Type</label>
+                                <select name="payment_type" class="form-select form-select-sm" id="payment_type">
+                                    <option selected disabled>Choose Type</option>
+                                    <option value="free">Free</option>
+                                    <option value="paid">Paid</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Ticket Price and Currency Fields -->
+                        <div class="col-3 mb-3" id="ticket_price_field" style="display: none;">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Ticket Price</label>
+                                <input type="number" name="ticket_price" step="0.01" placeholder="125.00"
+                                    class="form-control form-control-sm" value="{{ old('ticket_price') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3" id="currency_field" style="display: none;">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Currency</label>
+                                <input type="text" name="currency" placeholder="BDT"
+                                    class="form-control form-control-sm" value="{{ old('currency') }}">
+                            </div>
+                        </div>
+
+
+                        <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Row One Title</label>
                                 <input type="text" name="row_one_title" placeholder=""
@@ -256,7 +286,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
 
                         <div class="col-3 mb-3">
                             <div class="">
@@ -287,6 +317,31 @@
         </div>
 
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentTypeSelect = document.getElementById('payment_type');
+            const ticketPriceField = document.getElementById('ticket_price_field');
+            const currencyField = document.getElementById('currency_field');
+
+            // Function to toggle visibility based on payment type
+            function toggleFields() {
+                if (paymentTypeSelect.value === 'paid') {
+                    ticketPriceField.style.display = 'block'; // Show the fields
+                    currencyField.style.display = 'block';
+                } else {
+                    ticketPriceField.style.display = 'none'; // Hide the fields
+                    currencyField.style.display = 'none';
+                }
+            }
+
+            // Initial check on page load
+            toggleFields();
+
+            // Event listener for when payment type changes
+            paymentTypeSelect.addEventListener('change', toggleFields);
+        });
+    </script>
 
 
 </x-admin-app-layout>

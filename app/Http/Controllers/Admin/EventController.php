@@ -87,6 +87,10 @@ class EventController extends Controller
                 'status' => $request->status,
                 'event_type' => $request->event_type,
 
+                'payment_type' => $request->payment_type,
+                'ticket_price' => $request->ticket_price,
+                'currency' => $request->currency,
+
                 'location' => $request->location,
                 'contact' => $request->contact,
 
@@ -137,6 +141,10 @@ class EventController extends Controller
 
                     'status' => $request->status,
                     'event_type' => $request->event_type,
+
+                    'payment_type' => $request->payment_type,
+                    'ticket_price' => $request->ticket_price,
+                    'currency' => $request->currency,
 
                     'added_by' => Auth::guard('admin')->user()->id,
                     'updated_by' => Auth::guard('admin')->user()->id,
@@ -252,6 +260,10 @@ class EventController extends Controller
 
             'status' => $request->status,
             'event_type' => $request->event_type,
+
+            'payment_type' => $request->payment_type,
+            'ticket_price' => $request->ticket_price,
+            'currency' => $request->currency,
 
             'location' => $request->location,
             'contact' => $request->contact,

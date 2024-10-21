@@ -6,12 +6,14 @@ use id;
 use App\Models\Faq;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Event;
 use App\Models\Course;
 use App\Models\AboutUs;
 use App\Models\Contact;
 use App\Models\Service;
 use App\Models\Setting;
 use App\Models\HomePage;
+use App\Models\EventPage;
 use App\Models\NewsTrend;
 use App\Models\CourseQuery;
 use App\Models\FaqCategory;
@@ -31,12 +33,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
+use App\Models\usereventregistration;
 use App\Models\UserCourseRegistration;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Notification;
 use App\Mail\AdminCourseRegistrationNotification;
-use App\Models\Event;
-use App\Models\EventPage;
 use App\Notifications\UserRegistrationNotification;
 
 class HomeController extends Controller
@@ -72,24 +74,115 @@ class HomeController extends Controller
         $eventPage = EventPage::latest('id')->first();
         $events = Event::latest()->get();
 
-        return view('frontend.pages.event.allevent',compact('eventPage','events'));
+        return view('frontend.pages.event.allevent', compact('eventPage', 'events'));
     }
 
     //eventDetails
     public function eventDetails($slug)
     {
-        $event = Event::where('slug' , $slug)->first();
-        return view('frontend.pages.event.eventDetails',compact('event'));
+        $event = Event::where('slug', $slug)->first();
+        return view('frontend.pages.event.eventDetails', compact('event'));
     }
 
     //event Registration
     public function eventRegistration()
     {
         $categorys = CourseCategory::latest()->get();
-        return view('frontend.pages.event.eventRegistration',compact('categorys'));
+        $events = Event::latest()->get();
+        return view('frontend.pages.event.eventRegistration', compact('categorys', 'events'));
     }
 
-    
+    public function registerUserEvent(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed'],
+            'preferences' => 'nullable', // Optional preferences
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address, // If you have this field
+            'password' => Hash::make($request->password),
+            'preferences' => json_encode($request->preferences) // Store preferences as JSON
+        ]);
+
+        // Return success response if registration is successful
+        return response()->json(['id' => $user->id, 'success' => true]);
+    }
+
+    //userEventRegistration
+    public function userEventRegistration(Request $request)
+    {
+
+        // Validate the request
+        $request->validate([
+            // 'course_file' => 'nullable|array', // Expecting an array of files
+            'attachment.*' => 'file|mimes:pdf,doc,docx|max:2048',
+        ]);
+
+
+        // Handle course file uploads
+        if ($request->hasFile('attachment')) {
+            foreach ($request->file('attachment') as $file) {
+                $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+                $destinationPath = 'event/files/';
+                $file->storeAs($destinationPath, $fileName, 'public');
+                $filePath = $destinationPath . $fileName;
+
+                // Insert into CourseCurriculumFile
+                usereventregistration::create([
+
+                    'user_id' => $request->user_id,
+                    'project_name' => $request->project_name,
+                    'team_member' => $request->team_member,
+                    'team_member_one_name' => $request->team_member_one_name,
+                    'team_member_two_name' => $request->team_member_two_name,
+                    'event_id' => $request->event_id,
+                    'amount_paid' => $request->amount_paid,
+                    'transaction_id' => $request->transaction_id,
+                    'created_at' => now(),
+
+                    'attachment' => $filePath,
+                ]);
+            }
+        } else {
+
+            usereventregistration::create([
+
+                'user_id' => $request->user_id,
+                'project_name' => $request->project_name,
+                'team_member' => $request->team_member,
+                'team_member_one_name' => $request->team_member_one_name,
+                'team_member_two_name' => $request->team_member_two_name,
+                'event_id' => $request->event_id,
+                'amount_paid' => $request->amount_paid,
+                'transaction_id' => $request->transaction_id,
+                'created_at' => now(),
+            ]);
+        }
+
+        // usereventregistration::create([
+
+        //     'user_id' => $request->user_id,
+        //     'project_name' => $request->project_name,
+        //     'team_member' => $request->team_member,
+        //     'team_member_one_name' => $request->team_member_one_name,
+        //     'team_member_two_name' => $request->team_member_two_name,
+        //     'event_id' => $request->event_id,
+        //     'amount_paid' => $request->amount_paid,
+        //     'transaction_id' => $request->transaction_id
+
+        // ]);
+
+        // Redirect with a success message
+        return redirect()->back()->with('success', 'Project registered successfully!');
+    }
+
+
 
     public function allCourses(Request $request)
     {
@@ -97,7 +190,9 @@ class HomeController extends Controller
         $categoryId = $request->input('category');
 
         // Fetch all courses if no section is specified
-        $courses = Course::latest();
+
+        // $courses = Course::latest();
+        $courses = Course::where('status', 'active')->latest();
 
         // Apply section filter if section ID is provided
         if ($sectionId) {
@@ -188,14 +283,9 @@ class HomeController extends Controller
         return view('frontend.pages.service.allService', compact('services'));
     }
 
-
     //appointment
     public function appointment()
     {
-        // $query= 'counselor';
-        // $data = [
-        //     'counselors' => Admin::where('role', 'like', "%{$query}%")->get(), // Replace 'role' with the actual column name
-        // ];
         return view('frontend.pages.appointment');
     }
 
@@ -759,6 +849,4 @@ class HomeController extends Controller
 
         return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
-
-    
 }

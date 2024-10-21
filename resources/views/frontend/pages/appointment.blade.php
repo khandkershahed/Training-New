@@ -16,9 +16,7 @@
             src="https://library.gmit.ie/wp-content/uploads/2022/08/Book-appointment.png" alt="Book Appointment" />
     </section>
 
-    <section class="py-5"
-    style="background-color: #eee"
-        {{-- style="background: url('https://t4.ftcdn.net/jpg/06/01/61/21/360_F_601612151_5bNQV6jrBHorhew1E19rVzZg87Cx5Tgr.jpg') no-repeat center center / cover;" --}} >
+    <section class="py-5" style="background-color: #eee" {{-- style="background: url('https://t4.ftcdn.net/jpg/06/01/61/21/360_F_601612151_5bNQV6jrBHorhew1E19rVzZg87Cx5Tgr.jpg') no-repeat center center / cover;" --}}>
         <form action="" method="post">
             <div class="container py-5">
                 <div class="row">
@@ -57,13 +55,13 @@
                         </div>
                         <h6 class="mt-3">Time Slots:</h6>
                         <div class="time-slots">
-                            <div class="slots"></div> <!-- This is where time slots as radio buttons will display -->
+                            <div class="slots"></div>
                         </div>
                         <div class="row gx-2">
                             <div class="col-lg-12 mb-2">
                                 <div class="bg-white p-2">
                                     <label for="exampleFormControlInput1" class="form-label bg-transparent">Name</label>
-                                    <input type="email" class="form-control bg-light border-0 fs-6"
+                                    <input type="text" class="form-control bg-light border-0 fs-6"
                                         id="exampleFormControlInput1" placeholder="Enter Your Name">
                                 </div>
                             </div>
@@ -77,11 +75,12 @@
                             <div class="col-lg-6">
                                 <div class="bg-white p-2">
                                     <label for="exampleFormControlInput1" class="form-label bg-transparent">Phone</label>
-                                    <input type="email" class="form-control bg-light border-0 fs-6"
+                                    <input type="text" class="form-control bg-light border-0 fs-6"
                                         id="exampleFormControlInput1" placeholder="Enter Your Phone">
                                 </div>
                             </div>
                         </div>
+
                         <div class="row mt-4">
                             <div class="col-lg-12">
                                 <button type="submit" class="animated-button1">
@@ -93,6 +92,7 @@
                                 </button>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

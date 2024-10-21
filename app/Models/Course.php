@@ -36,6 +36,14 @@ class Course extends Model
         return $this->belongsTo(CourseCategory::class, 'course_category_id');
     }
 
-    
+    public function addedName()
+    {
+        return $this->belongsTo(Admin::class,'added_by','id');
+    }
+
+    public function updateName()
+    {
+        return $this->belongsTo(Admin::class,'update_by','id');
+    }
 
 }

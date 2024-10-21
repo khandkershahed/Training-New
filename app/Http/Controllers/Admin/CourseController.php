@@ -2,20 +2,59 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CourseRequest;
 use App\Models\Admin;
 use App\Models\Course;
-use App\Models\CourseCategory;
-use App\Models\CourseSection;
-use App\Models\industry;
 use App\Models\Service;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use App\Models\industry;
+use App\Mail\CourseCreated;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\CourseSection;
+use App\Mail\CourseUpdateMail;
+use App\Models\CourseCategory;
+use App\Mail\CourseCreatedMail;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 class CourseController extends Controller
 {
+
+    //Course Status
+    public function updateStatus(Request $request)
+    {
+        // Validate the incoming request
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+            'status' => 'required|in:active,inactive'
+        ]);
+
+        // Find the course and update the status
+        $course = Course::findOrFail($request->course_id);
+        $course->status = $request->status;
+        $course->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    // In your Controller
+    public function bulkDelete(Request $request)
+    {
+        $courseIds = $request->input('course_ids');
+
+        // Validate the input (ensure it's an array)
+        if (is_array($courseIds) && count($courseIds) > 0) {
+            // Perform the deletion
+            Course::whereIn('id', $courseIds)->delete();
+
+            return response()->json(['message' => 'Courses deleted successfully.'], 200);
+        }
+
+        return response()->json(['message' => 'No courses selected.'], 400);
+    }
+
 
     public function GetCategory($course_section_id)
     {
@@ -51,7 +90,6 @@ class CourseController extends Controller
         if (empty($iconmainFile)) {
 
             $globalFunIconImg['file_name'] = '';
-
         } else {
             $globalFunIconImg = customUpload($iconmainFile, $iconimgPath);
             $globalFunIconImg['file_name'] = $globalFunIconImg['file_name'];
@@ -83,11 +121,14 @@ class CourseController extends Controller
 
         if (empty($mainFile)) {
 
-            Course::insert([
+            $course = Course::create([
 
                 'instructor_id' => $instructors,
                 'service_id' => $services,
                 'industry_id' => $industrys,
+
+                'added_by' => Auth::guard('admin')->user()->id,
+                // 'update_by' => Auth::guard('admin')->user()->id,
 
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
@@ -135,11 +176,14 @@ class CourseController extends Controller
 
             if ($globalFunImg['status'] == 1) {
 
-                Course::insert([
+                $course = Course::create([
 
                     'instructor_id' => $instructors,
                     'service_id' => $services,
                     'industry_id' => $industrys,
+
+                    'added_by' => Auth::guard('admin')->user()->id,
+                    // 'update_by' => Auth::guard('admin')->user()->id,
 
                     'course_category_id' => $request->course_category_id,
                     'course_type' => $request->course_type,
@@ -189,7 +233,14 @@ class CourseController extends Controller
             }
         }
 
-        // flash()->success('');
+
+        // Mail Send
+        $admins = Admin::where('mail_status', 'mail')->get();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new CourseCreatedMail($course));
+        }
+        // Mail Send
 
         return redirect()->route('admin.course.index')->with('success', 'Course Inserted Successfully!!');
     }
@@ -215,7 +266,7 @@ class CourseController extends Controller
     {
 
         $validatedData = $request->validate([
-            'course_category_id' => 'required|exists:courses',
+            'course_category_id' => 'required|exists:course_categories,id',
         ]);
 
         $course = Course::findOrFail($id);
@@ -291,6 +342,9 @@ class CourseController extends Controller
                 'service_id' => $services,
                 'industry_id' => $industrys,
 
+                // 'added_by' => Auth::guard('admin')->user()->id,
+                'update_by' => Auth::guard('admin')->user()->id,
+
                 'course_category_id' => $request->course_category_id,
                 'course_type' => $request->course_type,
 
@@ -335,6 +389,14 @@ class CourseController extends Controller
             ]);
         }
 
+        // Mail Send
+        $admins = Admin::where('mail_status', 'mail')->get();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new CourseUpdateMail($course));
+        }
+        // Mail Send
+
         return redirect()->route('admin.course.index')->with('success', 'Course Update Successfully!!');
     }
 
@@ -352,5 +414,4 @@ class CourseController extends Controller
 
         $course->delete();
     }
-
 }

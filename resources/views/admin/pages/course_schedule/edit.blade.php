@@ -58,7 +58,7 @@
                         <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Venue</label>
-                                <input type="text" name="Venue" placeholder="Venue Name"
+                                <input type="text" name="venue" placeholder="Venue Name"
                                     class="form-control form-control-sm" value="{{ $item->venue }}">
                             </div>
                         </div>
