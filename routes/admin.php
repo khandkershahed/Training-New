@@ -184,7 +184,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'event-page' => EventPageController::class,
             'event' => EventController::class,
             'appointment-slot' => AppointmentSlotController::class,
-            'appointment' => AppointmentController::class,
 
         ],
 

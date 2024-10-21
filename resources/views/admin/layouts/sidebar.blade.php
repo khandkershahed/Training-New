@@ -617,15 +617,15 @@
 
                          <div class="menu-item">
 
-                             <a class="menu-link {{ Route::is('admin.appointment-slot.index') ? 'active' : '' }}"
-                                 href="{{ route('admin.appointment-slot.index') }}">
-                                 <span class="menu-bullet">
-                                     <span class="bullet bullet-dot"></span>
-                                 </span>
-                                 <span class="menu-title">Event Appointment</span>
-                             </a>
+                            <a class="menu-link {{ Route::is('admin.appointment-slot.index') ? 'active' : '' }}"
+                                href="{{ route('admin.appointment-slot.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Event Appointment</span>
+                            </a>
 
-                         </div>
+                        </div>
 
 
                      </div>

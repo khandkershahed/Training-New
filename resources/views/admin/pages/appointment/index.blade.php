@@ -5,7 +5,7 @@
             <div class="card-title"></div>
             <div class="card-toolbar">
 
-                <a href="javascript:void(0)" class="btn btn-light-primary rounded-2" data-bs-toggle="modal"
+                <a href="{{ route('admin.appointment.create') }}" class="btn btn-light-primary rounded-2" data-bs-toggle="modal"
                     data-bs-target="#createModal">
 
                     <span class="svg-icon svg-icon-3">
@@ -30,12 +30,12 @@
                 <thead class="bg-dark text-light">
                     <tr>
                         <th width="5%">Sl.</th>
-                        <th width="35%">Counselor Name</th>
-                        <th width="20%">Date</th>
-                        <th width="20%">Time One</th>
-                        <th width="20%">Time Two</th>
-                        <th width="20%">Time Three</th>
-                        <th width="20%">Time Four</th>
+                        <th width="10%">Counselor Name</th>
+                        <th width="10%">Date</th>
+                        <th width="10%">Time One</th>
+                        <th width="10%">Time Two</th>
+                        <th width="10%">Time Three</th>
+                        <th width="10%">Time Four</th>
                         <th width="10%">Actions</th>
                     </tr>
                 </thead>
@@ -170,10 +170,10 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                
+
                                 {{-- Edit Modal  --}}
 
-                                <a href="{{ route('admin.appointment-slot.destroy', $item->id) }}" class="delete">
+                                <a href="{{ route('admin.appointment.destroy', $item->id) }}" class="delete">
                                     <i class="bi bi-trash3-fill text-danger"></i>
                                 </a>
 
@@ -188,97 +188,7 @@
 
     </div>
 
-    {{-- Create Modal --}}
-    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Appointment Slot</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form id="myForm" method="post" action="{{ route('admin.appointment-slot.store') }}"
-                        enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="card bg-light">
-
-                            <div class="row p-4">
-
-                                <div class="col-12 mb-3">
-                                    <div>
-                                        <label for="counselor_id" class="mb-2">Instructor Name</label>
-
-                                        <select
-                                            class="form-select form-select-solid form-select-sm @error('counselor_id') is-invalid @enderror"
-                                            name="counselor_id" required autocomplete="off">
-
-
-                                            <!-- Default option -->
-
-                                            @if ($admins->count() > 0)
-                                                <option selected disabled>Choose Counselor</option>
-                                                @foreach ($admins as $admin)
-                                                    <option class="form-control" value="{{ $admin->id }}">
-                                                        {{ $admin->name }}
-                                                    </option>
-                                                @endforeach
-                                            @endif
-
-                                        </select>
-
-                                        @error('counselor_id')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-
-                                <div class="col-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="" class="mb-2">Start Time</label>
-                                        <input type="time" required name="start_time" placeholder="Start Time"
-                                            class="form-control form-control-sm" value="{{ old('start_time') }}">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="" class="mb-2">End Time</label>
-                                        <input type="time" required name="end_time" placeholder="End Time"
-                                            class="form-control form-control-sm" value="{{ old('end_time') }}">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="" class="mb-2">Date</label>
-                                        <input type="date" required name="date" placeholder="Date"
-                                            class="form-control form-control-sm" value="{{ old('date') }}">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mb-3 mt-4">
-                                    <button type="submit"
-                                        class="btn btn-primary rounded-0 px-5 btn-sm float-end">Submit</button>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-
+    
 
     @push('scripts')
         <script>
