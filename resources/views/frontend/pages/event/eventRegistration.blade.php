@@ -36,6 +36,16 @@
                         <img src="https://cdn.prod.website-files.com/620b4dfc30add2618d5e13a5/6585aff7e3f340e3558fbe50_Harnessing%20Success%20-%207%20Crucial%20Features%20Of%20Event%20Registration%20Platforms_2.webp"
                             alt="Event Image" />
                         <div class="overlay"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="text-container content-box w-100 text-center">
+                                    <h2 class="mb-0 pt-5 srpt-font">
+                                        Join Now For
+                                    </h2>
+                                    <h1 class="w-100">Initiatives <br> Projects 2024</h1>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -280,26 +290,22 @@
                                         @endif
                                         @endforeach
                                     </div>
-                                     <hr class="mt-3">
+                                    <hr class="mt-3">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" id="check1"
-                                                    name="preferences[]" value="1"
-                                                    class="form-check-input">
-                                                <label for="check1"
-                                                    class="form-check-label">Send Emails</label>
+                                                <input type="checkbox" id="check1" name="preferences[]"
+                                                    value="1" class="form-check-input">
+                                                <label for="check1" class="form-check-label">Send Emails</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" id="50"
-                                                    name="preferences[]" value="1"
-                                                    class="form-check-input">
-                                                <label for="50"
-                                                    class="form-check-label">Send Emails</label>
+                                                <input type="checkbox" id="50" name="preferences[]"
+                                                    value="1" class="form-check-input">
+                                                <label for="50" class="form-check-label">Send Emails</label>
                                             </div>
                                         </div>
                                     </div>
