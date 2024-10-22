@@ -94,6 +94,21 @@
                                         &nbsp; {{ optional($course->addedName)->name }}</td>
                                 </tr>
 
+                                <!-- Link to the Course -->
+                                <tr>
+
+                                    <th
+                                        style="min-width:100px;max-width:200px;background-color:#f1f1f1;padding:10px 15px;font-size:12px;text-align:left">
+                                        Course Link</th>
+
+                                    <td style="padding:15px 0;text-align:center;">
+                                        <a href="{{ url('/all-courses') }}"
+                                            style="background-color:#b4b6be;color:white;padding:10px 20px;text-decoration:none;font-size:16px;border-radius:5px;text-align:left">
+                                            View Course
+                                        </a>
+                                    </td>
+                                </tr>
+
                                 {{-- <tr>
                                     <th
                                         style="background-color:#f1f1f1;padding:10px 15px;font-size:12px;text-align:left">

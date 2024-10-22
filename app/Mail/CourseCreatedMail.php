@@ -33,7 +33,7 @@ class CourseCreatedMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('New Course Created')
+        return $this->subject('New Course Created In NgenIt Training')
             ->view('emails.course_created');
     }
 }

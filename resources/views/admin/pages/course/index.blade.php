@@ -148,7 +148,7 @@
                             <td class="text-start">{{ $course->price }} Tk</td> --}}
                             {{-- <td class="text-start">{{ $course->discount_price }} Tk</td> --}}
 
-                            <td class="text-center">
+                            <td class="text-start">
                                 <label class="custom-toggle">
                                     <input type="checkbox" class="status-toggle" data-course-id="{{ $course->id }}"
                                         {{ $course->status == 'active' ? 'checked' : '' }}>
@@ -234,22 +234,26 @@
                                                                     </tr>
 
                                                                     <tr>
-                                                                        <td width="30%"><strong>Reg Start Day:</strong></td>
+                                                                        <td width="30%"><strong>Reg Start
+                                                                                Day:</strong></td>
                                                                         <td>{{ $course->registration_start_date }}</td>
                                                                     </tr>
 
                                                                     <tr>
-                                                                        <td width="30%"><strong>Reg End Date:</strong></td>
+                                                                        <td width="30%"><strong>Reg End
+                                                                                Date:</strong></td>
                                                                         <td>{{ $course->registration_end_date }}</td>
                                                                     </tr>
 
                                                                     <tr>
-                                                                        <td width="30%"><strong>Class Start Day:</strong></td>
+                                                                        <td width="30%"><strong>Class Start
+                                                                                Day:</strong></td>
                                                                         <td>{{ $course->class_start_date }}</td>
                                                                     </tr>
 
                                                                     <tr>
-                                                                        <td width="30%"><strong>Class End Day:</strong></td>
+                                                                        <td width="30%"><strong>Class End
+                                                                                Day:</strong></td>
                                                                         <td>{{ $course->class_end_date }}</td>
                                                                     </tr>
 
@@ -258,9 +262,11 @@
                                                                                 :</strong></td>
                                                                         <td>
                                                                             @if ($course->status == 'active')
-                                                                                <span class="badge bg-success">{{ $course->status }}</span>
+                                                                                <span
+                                                                                    class="badge bg-success">{{ $course->status }}</span>
                                                                             @else
-                                                                            <span class="badge bg-danger">{{ $course->status }}</span>
+                                                                                <span
+                                                                                    class="badge bg-danger">{{ $course->status }}</span>
                                                                             @endif
                                                                         </td>
                                                                     </tr>
