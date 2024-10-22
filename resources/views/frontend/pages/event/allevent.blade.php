@@ -33,7 +33,7 @@
                                                 <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                             </a>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
 
@@ -41,8 +41,8 @@
                                     <div class="text-container calander-box right-text mobile-none">
                                         <div class="promotions-carousel row">
                                             @foreach ($events as $event)
-                                                <div class="card slider-items">
-                                                    <div class="card-body pt-5">
+                                                <div class="card slider-items p-3">
+                                                    <div class="card-body">
                                                         <h3 class="text-center fw-bold pb-2 first-color">
                                                             {{ $event->event_name }}
                                                         </h3>
@@ -52,7 +52,7 @@
                                                         <div class="flip-countdown"></div>
                                                     </div>
                                                     <div
-                                                        class="card-header border-0 d-flex justify-content-between align-items-end">
+                                                        class="card-header border-0 p-2 d-flex justify-content-between align-items-end">
                                                         <p class="text-center mb-0">
                                                             <span
                                                                 class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
@@ -86,10 +86,10 @@
                                                     </div>
                                                     <div class="card-footer border-0 bg-white">
                                                         <a href="{{ route('event.details', $event->slug) }}" class="animated-button1 w-100">
+                                                            {{-- <span></span>
                                                             <span></span>
                                                             <span></span>
-                                                            <span></span>
-                                                            <span></span>
+                                                            <span></span> --}}
                                                             Details
                                                         </a>
                                                     </div>
@@ -142,10 +142,11 @@
                     <div class="col-lg-4">
                         <a href="{{ route('event.details', $event->slug) }}">
                             <div class="event-capsul">
-                                <div class="event-capsul-expire" style="width: 105px;">
-                                    <div class="" style="width: 92px;">
-                                        {{ date('F', strtotime($event->start_date)) }} <br>
-                                        {{ date('d', strtotime($event->start_date)) }} <br>
+                                <div class="event-capsul-expire" style="width: 140px;">
+                                    <div class="text-center" style="width: 92px; position: relative;left: -18px;">
+                                        {{ \Carbon\Carbon::parse($event->start_date)->format('M') }} <br>
+                                        {{-- {{ date('F', strtotime($event->start_date)) }} <br> --}}
+                                        "<strong class="fs-5 event_color">{{ date('d', strtotime($event->start_date)) }}</strong>" <br>
                                         {{ date('Y', strtotime($event->start_date)) }}
                                     </div>
                                 </div>

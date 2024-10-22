@@ -87,7 +87,7 @@
 
         .start-date {
             color: rgba(61, 6, 109, 0.8);
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
             font-family: "Sora", sans-serif;
         }
@@ -320,10 +320,6 @@
 
         .action-title {
             font-size: 4rem
-        }
-
-        strong {
-            color: #a12083;
         }
 
         .navbar-blur {
