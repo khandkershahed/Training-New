@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Mail;
 
 class CourseController extends Controller
 {
-
     //Course Status
     public function updateStatus(Request $request)
     {

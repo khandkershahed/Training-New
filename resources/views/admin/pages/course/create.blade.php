@@ -408,11 +408,6 @@
 
                         {{-- size 750*563 --}}
                         <div class="col-2">
-                            {{-- <div class="">
-                                <label for="" class="mb-2">Image</label>
-                                <input type="file" name="thumbnail_image" accept="image/*"
-                                    class="form-control form-control-sm">
-                            </div> --}}
 
                             <div class="col-12">
                                 <label for="thumbnail_image" class="mb-3">Thumbnail Image</label>
@@ -462,7 +457,6 @@
                                 </div>
                                 <!--end::Image input-->
                             </div>
-
 
                         </div>
 
@@ -633,43 +627,61 @@
             });
         </script>
 
+        {{-- Normal Image  --}}
         <script>
-            < script >
-                function validateImageSize(input) {
-                    const file = input.files[0];
+            function validateImageSize(input) {
+                const file = input.files[0];
 
-                    if (file) {
-                        // Maximum file size: 2MB
-                        const maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
+                if (file) {
+                    // Maximum file size: 2MB
+                    const maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
 
-                        // Maximum dimensions: 750x563px
-                        const maxWidth = 750;
-                        const maxHeight = 563;
+                    // Maximum dimensions: 750x563px
+                    const maxWidth = 750;
+                    const maxHeight = 563;
 
-                        // Check file size
-                        if (file.size > maxFileSize) {
-                            alert("The image size is too large. Please upload an image smaller than 2MB.");
+                    // Get the image wrapper element to manipulate the preview
+                    const imageWrapper = input.closest('.image-input').querySelector('.image-input-wrapper');
+
+                    // Set the error image as the preview immediately on failure
+                    const errorImage = '{{ asset('upload/error_image.jpg') }}'; // Specify your error image here
+
+                    // Set the default image as the preview initially
+                    imageWrapper.style.backgroundImage = `url('{{ asset('upload/no_image.jpg') }}')`;
+
+                    // Check file size
+                    if (file.size > maxFileSize) {
+                        alert("The image size is too large. Please upload an image smaller than 2MB.");
+                        imageWrapper.style.backgroundImage = `url(${errorImage})`; // Show error image if size fails
+                        input.value = ''; // Clear the input field
+                        return;
+                    }
+
+                    const img = new Image();
+                    img.onload = function() {
+                        // Check image dimensions
+                        if (img.width > maxWidth || img.height > maxHeight) {
+                            alert(
+                                `Image dimensions are too large. Please upload an image with a maximum size of ${maxWidth}x${maxHeight} pixels.`
+                            );
+                            imageWrapper.style.backgroundImage =
+                            `url(${errorImage})`; // Show error image if dimensions fail
                             input.value = ''; // Clear the input field
                             return;
                         }
 
-                        const img = new Image();
-                        img.onload = function() {
-                            // Check image dimensions
-                            if (img.width > maxWidth || img.height > maxHeight) {
-                                alert(
-                                    `Image dimensions are too large. Please upload an image with a maximum size of ${maxWidth}x${maxHeight} pixels.`
-                                );
-                                input.value = ''; // Clear the input field
-                                return;
-                            }
-                        };
+                        // If validation passes, show the image preview
+                        imageWrapper.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+                    };
 
-                        // Read and load the image
-                        img.src = URL.createObjectURL(file);
-                    }
+                    // Read and load the image
+                    img.src = URL.createObjectURL(file);
                 }
+            }
         </script>
+
+
+
 
         <script type="text/javascript">
             $(document).ready(function() {
