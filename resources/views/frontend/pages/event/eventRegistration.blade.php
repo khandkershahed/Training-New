@@ -33,8 +33,8 @@
             <div class="row">
                 <div class="col-lg-12 px-0">
                     <div class="image-container" style="height: 800px;">
-                        <img src="{{ asset('frontend/images/Free-Registration-banner_Events.jpg') }}"
-                            alt="Event Image" style="height: 800px;"/>
+                        <img src="{{ asset('frontend/images/Free-Registration-banner_Events.jpg') }}" alt="Event Image"
+                            style="height: 800px;" />
                         <div class="overlay"></div>
                         <div class="row">
                             <div class="col-lg-12">
@@ -59,6 +59,7 @@
                 </div>
                 <div class="stepper stepper-pills mb-4 mt-3" id="kt_stepper_example">
                     <div class="stepper-nav d-flex justify-content-between align-items-center event-step-nav">
+
                         <div class="stepper-item current active" data-step="1">
                             <div class="stepper-wrapper d-flex justify-content-between align-items-center">
                                 <div class="stepper-icon">
@@ -94,12 +95,15 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
+
                         <form class="my-5 mt-0">
+
                             <!-- Step 1 content -->
                             <div class="step-content" id="step-1">
                                 <div class="row p-3 rounded-2 py-4" style="border:1px solid #ddd;">
@@ -170,6 +174,7 @@
                                             class="fa-solid fa-arrow-right-long"></i></button>
                                 </div>
                             </div>
+
                             <!-- Step 2 content -->
                             <div class="step-content d-none" id="step-2">
                                 <div class="row p-3 rounded-2 py-4" style="border:1px solid #ddd;">
@@ -177,35 +182,64 @@
                                         <p class="mb-0">Projects</p>
                                         <div class="line"></div>
                                     </div>
+
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="project_name">Project Name</label>
                                             <input type="text" value="{{ old('project_name') }}"
                                                 class="form-control form-control-sm p-3 @error('project_name') is-invalid @enderror"
-                                                id="project_name" placeholder="Iot & Others Events">
+                                                id="project_name" name="project_name" placeholder="Iot & Others Events">
                                             <!-- Display the error message -->
                                             @error('confirm_password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-4">
+                                            <label for="project_duration">Project Link</label>
+                                            <input type="text" name="project_link" value="{{ old('project_link') }}"
+                                                class="form-control form-control-sm p-3 @error('project_link') is-invalid @enderror"
+                                                id="project_link">
+                                            <!-- Display the error message -->
+                                            @error('project_duration')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-4">
+                                            <label for="file">Upload Project File</label>
+                                            <input type="file" name="file" value="{{ old('file') }}"
+                                                class="form-control form-control-sm p-3 @error('tech_used') is-invalid @enderror"
+                                                id="file">
+                                            @error('tech_used')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="event_name">Event Name</label>
                                             <select
                                                 class="form-select form-select-sm @error('confirm_password') is-invalid @enderror"
-                                                aria-label="Default select example">
+                                                aria-label="Default select example" name="event_id">
                                                 <option selected>Slelect Event</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                @foreach ($events as $event)
+                                                    <option value="{{ $event->id }}">{{ $event->event_name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+
+                                    <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="project_duration">Project Duration</label>
-                                            <input type="text" value="{{ old('project_duration') }}"
+                                            <input type="text" name="project_duration"
+                                                value="{{ old('project_duration') }}"
                                                 class="form-control form-control-sm p-3 @error('project_duration') is-invalid @enderror"
                                                 id="project_duration">
                                             <!-- Display the error message -->
@@ -214,53 +248,61 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group mb-4">
-                                            <label for="project_output">Project Output</label>
-                                            <input type="text" value="{{ old('project_output') }}"
-                                                class="form-control form-control-sm p-3 @error('project_output') is-invalid @enderror"
-                                                id="project_output">
-                                            <!-- Display the error message -->
-                                            @error('project_output')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
+
+
+                                    <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="tech_used">Technology Used</label>
-                                            <input type="text" value="{{ old('tech_used') }}"
-                                                class="form-control form-control-sm p-3 @error('tech_used') is-invalid @enderror"
-                                                id="tech_used">
-                                            <!-- Display the error message -->
-                                            @error('tech_used')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                            <input type="text" name="technology_used" value="{{ old('tech_used') }}"
+                                                class="form-control form-control-sm p-3" id="tech_used">
                                         </div>
                                     </div>
+
                                     <div class="d-flex align-items-center mb-3">
                                         <p class="mb-0">Team</p>
                                         <div class="line"></div>
                                     </div>
-                                    <div class="col-lg-4">
+
+                                    <div class="col-lg-6">
                                         <div class="form-group mb-4">
-                                            <label for="team_member">Member</label>
-                                            <input type="team_member" value="{{ old('team_member') }}"
+                                            <label for="team_member">Num of Member</label>
+                                            <input type="number" max="3" min="1" name="team_member"
+                                                value="{{ old('team_member') }}"
                                                 class="form-control form-control-sm p-3 @error('team_member') is-invalid @enderror"
                                                 id="team_member">
                                         </div>
                                     </div>
-                                    <div class="col-lg-8">
+
+                                    <div class="col-lg-6">
                                         <div class="form-group mb-4">
-                                            <label for="file">Upload Project File</label>
-                                            <input type="file" value="{{ old('file') }}"
-                                                class="form-control form-control-sm p-3 @error('tech_used') is-invalid @enderror"
-                                                id="file">
-                                            @error('tech_used')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                            <label for="team_member">Team Member One</label>
+                                            <input type="text" max="3" name="team_member_one"
+                                                value="{{ old('team_member_one') }}"
+                                                class="form-control form-control-sm p-3" id="team_member_one">
                                         </div>
                                     </div>
+
+                                    <div id="additional_fields" style="display: none;">
+                                        {{-- <div class="form-group mb-4">
+                                            <label for="member_1">Member 1</label>
+                                            <input type="text" name="member_1" class="form-control form-control-sm">
+                                        </div> --}}
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-4" id="member_2_field" style="display: none;">
+                                                    <label for="member_2">Member 2</label>
+                                                    <input type="text" name="team_member_two" class="form-control form-control-sm p-3">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-4" id="member_3_field" style="display: none;">
+                                                    <label for="member_3">Member 3</label>
+                                                    <input type="text" name="team_member_three" class="form-control form-control-sm p-3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="toStep1">Back</button>
@@ -317,6 +359,7 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -371,6 +414,20 @@
         });
     </script> --}}
     {{-- Multi Step Form End --}}
-    </div>
-    </section>
+    <script>
+        document.getElementById('team_member').addEventListener('input', function() {
+            const numMembers = parseInt(this.value);
+            const additionalFields = document.getElementById('additional_fields');
+            const member2Field = document.getElementById('member_2_field');
+            const member3Field = document.getElementById('member_3_field');
+
+            if (numMembers > 0) {
+                additionalFields.style.display = 'block';
+                member2Field.style.display = (numMembers >= 2) ? 'block' : 'none';
+                member3Field.style.display = (numMembers === 3) ? 'block' : 'none';
+            } else {
+                additionalFields.style.display = 'none';
+            }
+        });
+    </script>
 @endsection
