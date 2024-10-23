@@ -78,7 +78,7 @@
 
                         {{-- <form action="{{ route('courses.all.search') }}" method="POST"> --}}
                         {{-- @csrf --}}
-                        <div class="w-lg-auto">
+                        <div class="w-100 w-lg-auto">
                             <div class="input-group">
                                 <input type="text" id="serviceSearch" class="form-control" autocomplete="off"
                                     placeholder="Course Name" name="course_name_search">

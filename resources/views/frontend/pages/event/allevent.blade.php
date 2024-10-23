@@ -1,12 +1,69 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+        .swiper {
+            width: 350px;
+            height: 500px;
+        }
+
+        .swiper-slide {
+            position: relative;
+            /* Required for positioning the overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-image: url('https://www.i-eventplanner.com/wp-content/uploads/2018/07/Event_planning.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .swiper-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 80%);
+            /* Black overlay with 50% opacity */
+            z-index: 1;
+            /* Ensures the overlay stays below the content */
+            border-radius: 18px;
+            /* Matches the border radius of the slide */
+        }
+
+        .swiper-slide .content {
+            position: relative;
+            z-index: 2;
+            /* Ensures the text content stays above the overlay */
+        }
+
+        .events-card {
+            background-color: rgba(255, 255, 255, 0.733);
+        }
+        .evenet-content{
+            width: 80%;
+            margin: auto;
+        }
+        .event-color{
+            color: rgba(186, 52, 166, 0.829);
+        }
+    </style>
     @if (!empty(optional($eventPage)->banner_title))
         <section>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 px-0">
                         <div class="image-container">
-                            <img src="{{ !empty(optional($eventPage)->banner_image) ? url('storage/event-page/' . optional($eventPage)->banner_image) : asset('frontend/images/banner-demo.png') }}" alt="Event Image" />
+                            <img src="{{ !empty(optional($eventPage)->banner_image) ? url('storage/event-page/' . optional($eventPage)->banner_image) : asset('frontend/images/banner-demo.png') }}"
+                                alt="Event Image" />
                             <div class="overlay"></div>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -39,62 +96,70 @@
 
                                 <div class="col-lg-6">
                                     <div class="text-container calander-box right-text mobile-none">
-                                        <div class="promotions-carousel row">
-                                            @foreach ($events as $event)
-                                                <div class="card slider-items p-3">
-                                                    <div class="card-body">
-                                                        <h3 class="text-center fw-bold pb-2 first-color">
-                                                            {{ $event->event_name }}
-                                                        </h3>
-                                                        <p class="text-center">
-                                                            {!! Str::words($event->event_short_descp, 20) !!}
-                                                        </p>
-                                                        <div class="flip-countdown"></div>
-                                                    </div>
-                                                    <div
-                                                        class="card-header border-0 p-2 d-flex justify-content-between align-items-end">
-                                                        <p class="text-center mb-0">
-                                                            <span
-                                                                class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
-                                                            <span
-                                                                class="start-date">{{ date('d', strtotime($event->start_date)) }}</span>
-                                                            <span
-                                                                class="start-month">{{ date('Y', strtotime($event->start_date)) }}</span>
-                                                        </p>
-                                                        <p class="mb-0">
-                                                            <small class="cst-font">Start At</small> <br />
-                                                            <span
-                                                                class="fs-6 fw-bold first-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="card-footer border-0 bg-white pb-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-lg-12">
-                                                                {{-- <div
-                                                                    class="d-flex p-3 align-items-center justify-content-between">
-                                                                    <h5
-                                                                        class="mb-0 fw-bold cst-font first-color text-end pe-2">
-                                                                        Event Registraion:
-                                                                    </h5>
-                                                                    <h6
-                                                                        class="mb-0 fw-bold fee cst-font text-white text-end border rounded-pill px-3 p-2">
-                                                                        Free
-                                                                    </h6>
-                                                                </div> --}}
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="swiper mySwiper">
+                                                    <div class="swiper-wrapper">
+                                                        @foreach ($events as $event)
+                                                            <div class="swiper-slide">
+                                                                <div class="content">
+                                                                    <div class="card bg-transparent p-0 border-0">
+                                                                        <div class="card-body evenet-content">
+                                                                            <h4 class="text-center pt-5 fw-bold pb-2 text-white">
+                                                                                {{ $event->event_name }}
+                                                                            </h4>
+                                                                            <p class="text-center text-white" style="font-size: 14px;">
+                                                                                {!! Str::words($event->event_short_descp, 20) !!}
+                                                                            </p>
+                                                                            {{-- <div class="flip-countdown"></div> --}}
+                                                                        </div>
+                                                                        <div
+                                                                            class="card-header p-2 mt-3 d-flex justify-content-between align-items-end events-card">
+                                                                            <p class="text-center mb-0">
+                                                                                <span
+                                                                                    class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
+                                                                                <span
+                                                                                    class="start-date">{{ date('d', strtotime($event->start_date)) }}</span>
+                                                                                <span
+                                                                                    class="start-month">{{ date('Y', strtotime($event->start_date)) }}</span>
+                                                                            </p>
+                                                                            <p class="mb-0">
+                                                                                <small class="cst-font">Start At</small>
+                                                                                <br />
+                                                                                <span class="fs-6 fw-bold event-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="card-footer border-0 events-card pb-0">
+                                                                            <div class="row align-items-center">
+                                                                                <div class="col-lg-12">
+
+                                                                                    <div
+                                                                                        class="d-flex p-3 align-items-center justify-content-between ">
+                                                                                        <h5
+                                                                                            class="mb-0 fw-bold cst-font text-whtie text-end pe-2">
+                                                                                            Registraion:
+                                                                                        </h5>
+                                                                                        <h6
+                                                                                            class="mb-0 fw-bold cst-font text-end rounded-pill px-3 p-2 event-color">
+                                                                                            <del>2000 TK</del>
+                                                                                            Free
+                                                                                        </h6>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <a href="{{ route('event.details', $event->slug) }}"
+                                                                                class="animated-button1 w-100">
+                                                                                Details
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer border-0 bg-white">
-                                                        <a href="{{ route('event.details', $event->slug) }}" class="animated-button1 w-100">
-                                                            {{-- <span></span>
-                                                            <span></span>
-                                                            <span></span>
-                                                            <span></span> --}}
-                                                            Details
-                                                        </a>
+                                                        @endforeach
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -144,9 +209,9 @@
                             <div class="event-capsul">
                                 <div class="event-capsul-expire" style="width: 140px;">
                                     <div class="text-center" style="width: 92px; position: relative;left: -18px;">
-                                        {{ \Carbon\Carbon::parse($event->start_date)->format('M') }} <br>
+                                        {{ \Carbon\Carbon::parse($event->start_date)->format('M') }}
                                         {{-- {{ date('F', strtotime($event->start_date)) }} <br> --}}
-                                        "<strong class="fs-5 event_color">{{ date('d', strtotime($event->start_date)) }}</strong>" <br>
+                                        <strong class="fs-5">{{ date('d', strtotime($event->start_date)) }}</strong> <br>
                                         {{ date('Y', strtotime($event->start_date)) }}
                                     </div>
                                 </div>
@@ -165,4 +230,41 @@
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // var swiper = new Swiper(".mySwiper", {
+        //     effect: "cards",
+        //     grabCursor: true,
+        //     centeredSlides: true,
+        //     slidesPerView: 'auto',
+        //     loop: true,
+        //     initialSlide: 2,
+        //     autoplay: {
+        //         delay: 3000,
+        //         disableOnInteraction: false,
+        //     },
+        // });
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards", // Use the "cards" effect
+            initialSlide: 1, // Start with the second slide if needed
+            centeredSlides: true, // Center the active slide
+            grabCursor: true, // Change the cursor to grab
+            loop: false, // Disable infinite looping of slides
+            autoplay: {
+                delay: 5000, // Auto-slide with 5 seconds delay
+                disableOnInteraction: false, // Auto-slide continues even after interaction
+            },
+
+        });
+        // Pause autoplay on hover
+        var swiperContainer = document.querySelector('.mySwiper');
+
+        swiperContainer.addEventListener('mouseenter', function() {
+            swiper.autoplay.stop(); // Stop autoplay
+        });
+
+        swiperContainer.addEventListener('mouseleave', function() {
+            swiper.autoplay.start(); // Start autoplay
+        });
+    </script>
 @endsection

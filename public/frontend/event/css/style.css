@@ -531,8 +531,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button::before {
@@ -725,8 +724,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button1::before {
@@ -876,8 +874,6 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .animated-button2::before {
@@ -1027,8 +1023,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button3::before {
@@ -1178,8 +1173,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button4::before {
@@ -1329,8 +1323,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button5::before {
@@ -1480,8 +1473,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button6::before {
@@ -1631,8 +1623,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button7::before {
@@ -1782,8 +1773,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button8::before {
@@ -1933,8 +1923,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button9::before {
@@ -2085,8 +2074,6 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .animated-button10::before {
@@ -2236,8 +2223,6 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .animated-button11::before {
@@ -2387,8 +2372,7 @@ label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
 }
 
 .animated-button12::before {
@@ -2632,7 +2616,7 @@ a {
 .stepper-item.active .stepper-icon,
 .stepper-item.active {
     background-color: rgba(61, 6, 109, 0.8);
-    padding: 10px 20px;
+    padding: 10px 12px;
     color: white;
     font-size: 18px;
     border-radius: 5px;
@@ -2640,11 +2624,13 @@ a {
 
 .stepper-icon {
     background: rgba(61, 6, 109, 0.8);
-    padding: 15px;
+    padding: 10px 12px;
     color: white;
     border-radius: 5px;
 }
-
+.stepper-label{
+    width: 125px;
+}
 .form-control {
     background-color: rgba(61, 6, 109, 0.8);
     border-color: rgba(61, 6, 109, 0.8);
@@ -2662,9 +2648,12 @@ a {
     padding: 10px 50px;
 }
 .event-step-nav {
-    border: 1px solid rgba(61, 6, 109, 0.8);
     border-radius: 5px;
     padding: 10px;
-    width: 50%;
+    width: 55%;
     margin: auto;
+    background: #eee;
+}
+.stepper-desc{
+    font-size: 14px;
 }

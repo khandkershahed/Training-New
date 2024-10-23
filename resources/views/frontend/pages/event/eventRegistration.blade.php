@@ -32,9 +32,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 px-0">
-                    <div class="image-container">
-                        <img src="https://cdn.prod.website-files.com/620b4dfc30add2618d5e13a5/6585aff7e3f340e3558fbe50_Harnessing%20Success%20-%207%20Crucial%20Features%20Of%20Event%20Registration%20Platforms_2.webp"
-                            alt="Event Image" />
+                    <div class="image-container" style="height: 800px;">
+                        <img src="{{ asset('frontend/images/Free-Registration-banner_Events.jpg') }}"
+                            alt="Event Image" style="height: 800px;"/>
                         <div class="overlay"></div>
                         <div class="row">
                             <div class="col-lg-12">
@@ -57,7 +57,7 @@
                         <h1 class="text-center pt-4">Registration</h1>
                     </div>
                 </div>
-                <div class="stepper stepper-pills my-5 mt-3" id="kt_stepper_example">
+                <div class="stepper stepper-pills mb-4 mt-3" id="kt_stepper_example">
                     <div class="stepper-nav d-flex justify-content-between align-items-center event-step-nav">
                         <div class="stepper-item current active" data-step="1">
                             <div class="stepper-wrapper d-flex justify-content-between align-items-center">
@@ -65,7 +65,7 @@
                                     <i class="fa fa-user"></i>
                                 </div>
                                 <div class="stepper-label ms-3">
-                                    <h5 class="stepper-title mb-0">Step 1</h5>
+                                    <h6 class="fw-bold stepper-title mb-0">Step 1</h6>
                                     <div class="stepper-desc">Personal Info</div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <div class="stepper-label ms-3">
-                                    <h5 class="stepper-title mb-0">Step 2</h5>
+                                    <h6 class="fw-bold stepper-title mb-0">Step 2</h6>
                                     <div class="stepper-desc">Event Details</div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                                     <i class="fa fa-check"></i>
                                 </div>
                                 <div class="stepper-label ms-3">
-                                    <h5 class="stepper-title mb-0">Step 3</h5>
+                                    <h6 class="fw-bold stepper-title mb-0">Step 3</h6>
                                     <div class="stepper-desc">Confirm Details</div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                         <div class="form-group mb-3">
                                             <label for="name">Name</label>
                                             <input type="text" name="name" value="{{ old('name') }}"
-                                                class="form-control form-control-sm @error('name') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('name') is-invalid @enderror"
                                                 id="name" placeholder="Jhone Doe">
                                             <!-- Display the error message -->
                                             @error('name')
@@ -119,7 +119,7 @@
                                         <div class="form-group mb-3">
                                             <label for="email">Email</label>
                                             <input type="email" name="email" value="{{ old('email') }}"
-                                                class="form-control form-control-sm @error('email') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('email') is-invalid @enderror"
                                                 id="email" placeholder="jhone@mail.com">
                                             <!-- Display the error message -->
                                             @error('email')
@@ -131,7 +131,7 @@
                                         <div class="form-group mb-3">
                                             <label for="phone">Phone Number</label>
                                             <input type="text" name="phone" value="{{ old('phone') }}"
-                                                class="form-control form-control-sm @error('phone') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('phone') is-invalid @enderror"
                                                 id="phone" placeholder="+880156854584">
                                             <!-- Display the error message -->
                                             @error('email')
@@ -143,7 +143,7 @@
                                         <div class="form-group mb-3">
                                             <label for="password">Password</label>
                                             <input type="password" name="password" value="{{ old('password') }}"
-                                                class="form-control form-control-sm @error('password') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('password') is-invalid @enderror"
                                                 id="password">
                                             <!-- Display the error message -->
                                             @error('password')
@@ -156,7 +156,7 @@
                                             <label for="confirm_password">Confirm Password</label>
                                             <input type="confirm_password" name="confirm_password"
                                                 value="{{ old('confirm_password') }}"
-                                                class="form-control form-control-sm @error('confirm_password') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('confirm_password') is-invalid @enderror"
                                                 id="confirm_password">
                                             <!-- Display the error message -->
                                             @error('confirm_password')
@@ -181,7 +181,7 @@
                                         <div class="form-group mb-4">
                                             <label for="project_name">Project Name</label>
                                             <input type="text" value="{{ old('project_name') }}"
-                                                class="form-control form-control-sm @error('project_name') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('project_name') is-invalid @enderror"
                                                 id="project_name" placeholder="Iot & Others Events">
                                             <!-- Display the error message -->
                                             @error('confirm_password')
@@ -206,7 +206,7 @@
                                         <div class="form-group mb-4">
                                             <label for="project_duration">Project Duration</label>
                                             <input type="text" value="{{ old('project_duration') }}"
-                                                class="form-control form-control-sm @error('project_duration') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('project_duration') is-invalid @enderror"
                                                 id="project_duration">
                                             <!-- Display the error message -->
                                             @error('project_duration')
@@ -218,7 +218,7 @@
                                         <div class="form-group mb-4">
                                             <label for="project_output">Project Output</label>
                                             <input type="text" value="{{ old('project_output') }}"
-                                                class="form-control form-control-sm @error('project_output') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('project_output') is-invalid @enderror"
                                                 id="project_output">
                                             <!-- Display the error message -->
                                             @error('project_output')
@@ -230,7 +230,7 @@
                                         <div class="form-group mb-4">
                                             <label for="tech_used">Technology Used</label>
                                             <input type="text" value="{{ old('tech_used') }}"
-                                                class="form-control form-control-sm @error('tech_used') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('tech_used') is-invalid @enderror"
                                                 id="tech_used">
                                             <!-- Display the error message -->
                                             @error('tech_used')
@@ -246,7 +246,7 @@
                                         <div class="form-group mb-4">
                                             <label for="team_member">Member</label>
                                             <input type="team_member" value="{{ old('team_member') }}"
-                                                class="form-control form-control-sm @error('team_member') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('team_member') is-invalid @enderror"
                                                 id="team_member">
                                         </div>
                                     </div>
@@ -254,7 +254,7 @@
                                         <div class="form-group mb-4">
                                             <label for="file">Upload Project File</label>
                                             <input type="file" value="{{ old('file') }}"
-                                                class="form-control form-control-sm @error('tech_used') is-invalid @enderror"
+                                                class="form-control form-control-sm p-3 @error('tech_used') is-invalid @enderror"
                                                 id="file">
                                             @error('tech_used')
                                                 <div class="invalid-feedback">{{ $message }}</div>
