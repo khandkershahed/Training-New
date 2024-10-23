@@ -7,11 +7,11 @@
     <div class="container">
         <div class="text-center px-0 px-lg-5 py-0 py-lg-5">
             <h3 class="section-title">Popular Courses We Offer</h3>
-            <div>
+            {{-- <div>
                 <img decoding="async" width="137" height="21"
                     src="https://www.promisetrainingglobal.com/wp-content/uploads/2019/02/line.jpg"
                     class="vc_single_image-img attachment-full webpexpress-processed" alt="">
-            </div>
+            </div> --}}
         </div>
     </div>
     <section>
@@ -19,13 +19,11 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded-3"
+                    <div class="d-flex justify-content-between all-coueses-filter align-items-center mb-3 p-2 rounded-3"
                         style="background-color: #eee;">
-                        <div class="d-flex">
-
-                            <div class="me-3">
-
-                                <select class="example form-select form-select-sm" id="select1" name="course_section"
+                        <div class="d-flex all-coueses-filter">
+                            <div class="me-0 me-lg-3">
+                                <select class="example form-select form-select-sm w-100" id="select1" name="course_section"
                                     autocomplete="off" aria-label="Select Course Section"
                                     onchange="searchCoursesBySection(this.value)">
                                     <option selected disabled>Choose Section</option>
@@ -50,8 +48,8 @@
                             </script>
 
 
-                            <div class="me-3">
-                                <select class="example form-select form-select-sm" id="select2" name="course_category"
+                            <div class="me-0 me-lg-3">
+                                <select class="example form-select form-select-sm w-100" id="select2" name="course_category"
                                     autocomplete="off" aria-label="Select Course Category"
                                     onchange="searchCoursesByCategory(this.value)">
                                     <option selected disabled>Choose Category</option>
@@ -80,7 +78,7 @@
 
                         {{-- <form action="{{ route('courses.all.search') }}" method="POST"> --}}
                         {{-- @csrf --}}
-                        <div>
+                        <div class="w-lg-auto">
                             <div class="input-group">
                                 <input type="text" id="serviceSearch" class="form-control" autocomplete="off"
                                     placeholder="Course Name" name="course_name_search">
@@ -109,7 +107,7 @@
                                                 src="{{ asset(!empty($course->thumbnail_image) ? url('storage/course/' . $course->thumbnail_image) : url('images/no-shop-imge.png')) }}"
                                                 alt="">
                                         </a>
-                                        
+
                                     </div>
 
                                     <div class="p-2 text-center">

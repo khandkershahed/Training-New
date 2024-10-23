@@ -495,13 +495,9 @@
                                     <div class="col-lg-12">
                                         <!-- Related Courses -->
                                         <div id="related" class="py-3">
-                                            <h3 class="primary-text-color fw-bold pb-3 pb-lg-0">
+                                            <h3 class="primary-text-color fw-bold ps-3 pb-lg-0 mb-4">
                                                 Related Courses
                                             </h3>
-                                            {{-- <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit.
-                                        </p> --}}
                                             <!-- Releted Course slider -->
                                             <div class="slider-related-courses">
                                                 @forelse ($relatedcourses as $courses)
@@ -518,7 +514,7 @@
                                                                             alt="">
 
                                                                     </a>
-                                                                    
+
                                                                 </div>
 
                                                                 <div class="p-2 text-center">

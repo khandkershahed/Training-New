@@ -154,7 +154,7 @@ $(document).ready(function () {
         speed: 500,
         slidesToShow: 4, // Default for larger screens
         slidesToScroll: 1,
-        gap: 15,
+        gap: 0,
         responsive: [
             {
                 breakpoint: 768, // Target screen widths below 768px (tablet and smaller)

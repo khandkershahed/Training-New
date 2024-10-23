@@ -47,18 +47,18 @@
     $(document).ready(function() {
         var sync1 = $("#sync1");
         var sync2 = $("#sync2");
-        var slidesPerPage = 4; //globaly define number of elements per page
+        var slidesPerPage = 5; //globaly define number of elements per page
         var syncedSecondary = true;
 
         sync1
             .owlCarousel({
                 items: 1,
                 slideSpeed: 2000,
-                nav: false,
-                autoplay: true,
+                nav: true,
+                autoplay: false,
                 dots: false,
-                autoplay: true,
-                autoplayTimeout: 3000, // Time between transitions (3 seconds)
+                autoplay: false,
+                autoplayTimeout: 5000, // Time between transitions (3 seconds)
                 autoplayHoverPause: true, // Pause on hover
                 smartSpeed: 600, // Speed for the transition
                 animateOut: 'fadeOut', // Transition effect for sliding out
@@ -66,8 +66,8 @@
                 loop: true,
                 responsiveRefreshRate: 200,
                 navText: [
-                    '<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>',
-                    '<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>',
+                    '<span class="sync-1-right"><i class="fa-solid fa-chevron-left"></i></span>',
+                    '<span class="sync-1-left"> <i class="fa-solid fa-chevron-right"></i></span>',
                 ],
             })
             .on("changed.owl.carousel", syncPosition);
@@ -80,9 +80,9 @@
                 items: slidesPerPage,
                 dots: false,
                 nav: false,
-                autoplay: true,
+                autoplay: false,
                 autoplayTimeout: 3000, // Time between transitions (3 seconds)
-                autoplayHoverPause: true, // Pause on hover
+                autoplayHoverPause: false, // Pause on hover
                 smartSpeed: 600, // Speed for the transition
                 animateOut: 'fadeOut', // Transition effect for sliding out
                 animateIn: 'fadeIn', // Transition effect for sliding in
