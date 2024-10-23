@@ -194,7 +194,7 @@
                                             <label for="event_name">Event Name</label>
                                             <select
                                                 class="form-select form-select-sm @error('confirm_password') is-invalid @enderror"
-                                                aria-label="Default select example">
+                                                aria-label="Default select example" style="height: 50px">
                                                 <option selected>Slelect Event</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>

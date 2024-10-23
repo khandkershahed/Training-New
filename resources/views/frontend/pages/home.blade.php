@@ -190,7 +190,7 @@
                                 @php
                                     $totalCourses = App\Models\Course::where('course_section_id', $section->id)->count();
                                 @endphp
-                                <div class="item">
+                                <div class="item sync-slider-items">
                                     <div>
                                         <div class="card courses-cat-slide">
                                             <div class="card-body border-0 shadow-sm p-2">
@@ -309,7 +309,7 @@
         <div class="container">
             <div class="row py-5">
                 <div class="text-center px-5">
-                    <h3 class="section-title text-white">{{ optional($homePage)->row_three_title }}</h3>
+                    <h3 class="text-white">{{ optional($homePage)->row_three_title }}</h3>
                     <div class="divider-extra"></div>
                     <p class="text-white py-0 px-0 px-lg-5 py-lg-3">
                         {!! optional($homePage)->row_three_description !!}

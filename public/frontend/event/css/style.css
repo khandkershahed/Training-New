@@ -2623,7 +2623,7 @@ a {
 }
 
 .stepper-icon {
-    background: rgba(61, 6, 109, 0.8);
+    background: #6c757d;
     padding: 10px 12px;
     color: white;
     border-radius: 5px;
@@ -2656,4 +2656,14 @@ a {
 }
 .stepper-desc{
     font-size: 14px;
+}
+
+.custom-navigation-next{
+    background: #eee;
+}
+.custom-navigation-prev{
+    background: #eee;
+}
+.sync-slider-items{
+    margin: 3px;
 }

@@ -64,6 +64,7 @@
                 animateOut: 'fadeOut', // Transition effect for sliding out
                 animateIn: 'fadeIn', // Transition effect for sliding in
                 loop: true,
+                gap: 0,
                 responsiveRefreshRate: 200,
                 navText: [
                     '<span class="sync-1-right"><i class="fa-solid fa-chevron-left"></i></span>',

@@ -31,7 +31,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgb(0 0 0 / 80%);
+            background: linear-gradient(to right,
+                    rgba(61, 6, 109, 0.8),
+                    rgba(186, 52, 166, 0.829));
             /* Black overlay with 50% opacity */
             z-index: 1;
             /* Ensures the overlay stays below the content */
@@ -48,12 +50,50 @@
         .events-card {
             background-color: rgba(255, 255, 255, 0.733);
         }
-        .evenet-content{
+
+        .evenet-content {
             width: 80%;
             margin: auto;
         }
-        .event-color{
+
+        .event-color {
             color: rgba(186, 52, 166, 0.829);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #fff;
+            /* Change icon color */
+            font-size: 24px;
+            /* Increase icon size */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Add a background for better visibility */
+            border-radius: 50%;
+            /* Make the background circular */
+            padding: 10px;
+            width: 50px;
+            /* Adjust button width */
+            height: 50px;
+            /* Adjust button height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Change background color on hover */
+        }
+
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            content: 'none';
+        }
+
+        .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-prev:after {
+            content: 'none';
         }
     </style>
     @if (!empty(optional($eventPage)->banner_title))
@@ -75,22 +115,19 @@
                                         <h1>{{ optional($eventPage)->banner_title }}</h1>
 
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
-
                                         <div class="pt-2">
-                                            <a href="{{ optional($eventPage)->map_link }}" target="blank"
-                                                class="btn btn-outline-light me-2 rounded-pill">
+                                            <a href="javascript:void(0)" class="btn me-2 btn-outline-light rounded-pill"
+                                                data-bs-toggle="modal" data-bs-target="#mapEvet">
                                                 <i class="fa-solid fa-location-dot pe-2"></i>Map
                                             </a>
-                                            <a href="{{ optional($eventPage)->website_link }}" target="blank"
-                                                class="btn btn-outline-light me-2 rounded-pill">
+                                            <a href="{{ optional($eventPage)->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
                                                 <i class="fa-solid fa-globe"></i> Training
                                             </a>
-                                            <a href="{{ optional($eventPage)->whatsapp_link }}" target="blank"
-                                                class="btn btn-outline-light rounded-pill">
+                                            <a href="javascript:void(0)" class="btn btn-outline-light rounded-pill"
+                                                data-bs-toggle="modal" data-bs-target="#shareEvet">
                                                 <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                             </a>
                                         </div>
-
                                     </div>
                                 </div>
 
@@ -105,16 +142,18 @@
                                                                 <div class="content">
                                                                     <div class="card bg-transparent p-0 border-0">
                                                                         <div class="card-body evenet-content">
-                                                                            <h4 class="text-center pt-5 fw-bold pb-2 text-white">
+                                                                            <h4
+                                                                                class="text-center pt-5 fw-bold pb-2 text-white">
                                                                                 {{ $event->event_name }}
                                                                             </h4>
-                                                                            <p class="text-center text-white" style="font-size: 14px;">
+                                                                            <p class="text-center text-white"
+                                                                                style="font-size: 14px;">
                                                                                 {!! Str::words($event->event_short_descp, 20) !!}
                                                                             </p>
                                                                             {{-- <div class="flip-countdown"></div> --}}
                                                                         </div>
                                                                         <div
-                                                                            class="card-header p-2 mt-3 d-flex justify-content-between align-items-end events-card">
+                                                                            class="card-body p-2 mt-3 d-flex justify-content-between align-items-end events-card">
                                                                             <p class="text-center mb-0">
                                                                                 <span
                                                                                     class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
@@ -126,7 +165,8 @@
                                                                             <p class="mb-0">
                                                                                 <small class="cst-font">Start At</small>
                                                                                 <br />
-                                                                                <span class="fs-6 fw-bold event-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
+                                                                                <span
+                                                                                    class="fs-6 fw-bold event-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
                                                                             </p>
                                                                         </div>
                                                                         <div class="card-footer border-0 events-card pb-0">
@@ -157,6 +197,13 @@
                                                                 </div>
                                                             </div>
                                                         @endforeach
+                                                    </div>
+                                                    <!-- Add Navigation -->
+                                                    <div class="swiper-button-next custom-navigation-next">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </div>
+                                                    <div class="swiper-button-prev custom-navigation-prev">
+                                                        <i class="fas fa-chevron-left"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,10 +296,15 @@
             initialSlide: 1, // Start with the second slide if needed
             centeredSlides: true, // Center the active slide
             grabCursor: true, // Change the cursor to grab
+
             loop: false, // Disable infinite looping of slides
             autoplay: {
                 delay: 5000, // Auto-slide with 5 seconds delay
                 disableOnInteraction: false, // Auto-slide continues even after interaction
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
             },
 
         });

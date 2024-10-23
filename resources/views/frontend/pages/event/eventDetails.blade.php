@@ -18,12 +18,11 @@
                                     <h1 class="w-50">{{ optional($event)->banner_title }}</h1>
                                     <p class="pt-5 fw-bold">{{ optional($event)->organizer_text }}</p>
                                     <div class="pt-2">
-                                        <a href="{{ optional($event)->map_link }}"
-                                            class="btn btn-outline-light me-2 rounded-pill">
+                                        <a href="javascript:void(0)" class="btn me-2 btn-outline-light rounded-pill"
+                                            data-bs-toggle="modal" data-bs-target="#mapEvet">
                                             <i class="fa-solid fa-location-dot pe-2"></i>Map
                                         </a>
-                                        <a href="{{ optional($event)->website_link }}"
-                                            class="btn btn-outline-light me-2 rounded-pill">
+                                        <a href="{{ optional($eventPage)->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
                                             <i class="fa-solid fa-globe"></i> Training
                                         </a>
                                         <a href="javascript:void(0)" class="btn btn-outline-light rounded-pill"
@@ -334,6 +333,30 @@
 
     {{-- Share Modal --}}
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="mapEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header rounded-0" style=" background: rgba(61, 6, 109, 0.8); ">
+                    <h5 class="modal-title text-white" id="modalTitleId">
+                        Event Location
+                    </h5>
+                    <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.473499558464!2d90.35587677605153!3d23.76614748817024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a568a70445%3A0x89dff0189e12966d!2sNGEN%20IT%20LTD.!5e0!3m2!1sen!2sbd!4v1729579396491!5m2!1sen!2sbd&zoom=1"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Share Modal End --}}
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div class="modal fade" id="shareEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
         role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
@@ -347,10 +370,15 @@
                 </div>
                 <div class="modal-body p-0">
                     <div>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.473499558464!2d90.35587677605153!3d23.76614748817024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a568a70445%3A0x89dff0189e12966d!2sNGEN%20IT%20LTD.!5e0!3m2!1sen!2sbd!4v1729579396491!5m2!1sen!2sbd&zoom=1"
-                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <img class="img-fluid"
+                            src="{{ !empty($event->banner_image) ? url('storage/event/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                            alt="Event Image" />
+                    </div>
+                    <div class="p-3">
+                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
+                        <p class="fw-semibold" style="text-align: justify">
+                            {!! optional($event)->row_one_description !!}
+                        </p>
                     </div>
                 </div>
                 <div class="modal-footer rounded-0 justify-content-center align-items-center"
