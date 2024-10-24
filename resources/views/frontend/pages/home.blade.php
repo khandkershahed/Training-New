@@ -437,7 +437,7 @@
                     </p>
                 </div>
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ optional($homePage)->row_four_column_one_url }}" style="text-decoration: none">
+                    <a href="{{ route('solutionsPortfolio') }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
@@ -458,7 +458,7 @@
                     </a>
                 </div>
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ optional($homePage)->row_four_column_two_url }}" style="text-decoration: none">
+                    <a href="{{ route('learningExpertise') }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
@@ -477,7 +477,7 @@
                     </a>
                 </div>
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ optional($homePage)->row_four_column_three_url }}" style="text-decoration: none">
+                    <a href="{{ route('guarantedResults') }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
@@ -498,7 +498,7 @@
                     </a>
                 </div>
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ optional($homePage)->row_four_column_four_url }}" style="text-decoration: none">
+                    <a href="{{ route('relevance') }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
@@ -519,7 +519,7 @@
                     </a>
                 </div>
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ optional($homePage)->row_four_column_five_url }}" style="text-decoration: none">
+                    <a href="{{ route('facilitation') }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">
@@ -540,7 +540,7 @@
                     </a>
                 </div>
                 <div class="col-lg-2 different_icon_column">
-                    <a href="{{ optional($homePage)->row_four_column_six_url }}" style="text-decoration: none">
+                    <a href="{{ route('guidingPrinciple') }}" style="text-decoration: none">
                         <div class="text-center p-3">
 
                             <div class="diffrent-icons text-center" style="background-color:transparent;">

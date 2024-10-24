@@ -849,4 +849,30 @@ class HomeController extends Controller
 
         return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
     }
+
+
+    public function solutionsPortfolio()
+    {
+        return view('frontend.pages.solutionsPortfolio');
+    }
+    public function learningExpertise()
+    {
+        return view('frontend.pages.learningExpertise');
+    }
+    public function guarantedResults()
+    {
+        return view('frontend.pages.guarantedResults');
+    }
+    public function relevance()
+    {
+        return view('frontend.pages.relevance');
+    }
+    public function facilitation()
+    {
+        return view('frontend.pages.facilitation');
+    }
+    public function guidingPrinciple()
+    {
+        return view('frontend.pages.guidingPrinciple');
+    }
 }

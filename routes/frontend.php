@@ -110,3 +110,10 @@ Route::get('/verify/{activation_code}', [HomeController::class, 'verifyEmail'])
 
 
 
+
+Route::get('/solution-portfolio', [HomeController::class, 'solutionsPortfolio'])->name('solutionsPortfolio');
+Route::get('/learning-expertise', [HomeController::class, 'learningExpertise'])->name('learningExpertise');
+Route::get('/guaranted-results', [HomeController::class, 'guarantedResults'])->name('guarantedResults');
+Route::get('/relevance', [HomeController::class, 'relevance'])->name('relevance');
+Route::get('/facilitation', [HomeController::class, 'facilitation'])->name('facilitation');
+Route::get('/guiding-principle', [HomeController::class, 'guidingPrinciple'])->name('guidingPrinciple');
