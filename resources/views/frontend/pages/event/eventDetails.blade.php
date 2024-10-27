@@ -22,7 +22,7 @@
                                             data-bs-toggle="modal" data-bs-target="#mapEvet">
                                             <i class="fa-solid fa-location-dot pe-2"></i>Map
                                         </a>
-                                        <a href="{{ optional($eventPage)->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
+                                        <a href="{{ optional($event)->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
                                             <i class="fa-solid fa-globe"></i> Training
                                         </a>
                                         <a href="javascript:void(0)" class="btn btn-outline-light rounded-pill"
