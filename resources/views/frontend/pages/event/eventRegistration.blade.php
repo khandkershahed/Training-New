@@ -114,7 +114,9 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
 
-                        <form class="my-5 mt-0">
+                        <form class="my-5 mt-0" method="POST" action="{{ route('register.user.event') }}"
+                            enctype="multipart/form-data">
+                            @csrf
 
                             <!-- Step 1 content -->
                             <div class="step-content" id="step-1">
@@ -167,10 +169,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                                         <div class="form-group mb-3">
                                             <label for="confirm_password">Confirm Password</label>
-                                            <input type="confirm_password" name="confirm_password"
+                                            <input type="password" name="confirm_password"
                                                 value="{{ old('confirm_password') }}"
                                                 class="form-control form-control-sm p-3 @error('confirm_password') is-invalid @enderror"
                                                 id="confirm_password">
@@ -179,7 +181,7 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="toStep2">Next <i
@@ -225,10 +227,10 @@
                                         <div class="form-group mb-4">
                                             <label for="file">Upload Project File <small class="text-primary">(doc,
                                                     ppt, pdf,)</small></label>
-                                            <input type="file" name="file" value="{{ old('file') }}"
-                                                class="form-control form-control-sm p-3 @error('tech_used') is-invalid @enderror"
+                                            <input type="file" name="attachment" value="{{ old('attachment') }}"
+                                                class="form-control form-control-sm p-3 @error('attachment') is-invalid @enderror"
                                                 id="file">
-                                            @error('tech_used')
+                                            @error('attachment')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -239,7 +241,7 @@
                                             <label for="event_name">Event Name</label>
                                             <select
                                                 class="form-select form-select-sm @error('confirm_password') is-invalid @enderror"
-                                                aria-label="Default select example" style="height: 50px">
+                                                aria-label="Default select example" name="event_id" style="height: 50px">
                                                 <option selected>Slelect Event</option>
                                                 @foreach ($events as $event)
                                                     <option value="{{ $event->id }}">{{ $event->event_name }}</option>
@@ -292,26 +294,24 @@
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="team_member">Team Member 1</label>
-                                            <input type="text" max="3" name="team_member_one"
-                                                value="{{ old('team_member_one') }}" placeholder="Khandker Shahed"
+                                            <input type="text" max="3" name="team_member_one_name"
+                                                value="{{ old('team_member_one') }}" placeholder=""
                                                 class="form-control form-control-sm p-3" id="team_member_one">
                                         </div>
                                     </div>
 
                                     <div id="additional_fields" style="display: none;">
-                                        {{-- <div class="form-group mb-4">
-                                            <label for="member_1">Member 1</label>
-                                            <input type="text" name="member_1" class="form-control form-control-sm">
-                                        </div> --}}
+
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group mb-4" id="member_2_field" style="display: none;">
                                                     <label for="member_2">Team Member 2</label>
-                                                    <input type="text" name="team_member_two"
+                                                    <input type="text" name="team_member_two_name"
                                                         class="form-control form-control-sm p-3">
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                                 </div>
@@ -355,7 +355,7 @@
                                             <div class="col-6">
                                                 <div class="form-check">
                                                     <input type="checkbox" id="check{{ $index }}"
-                                                        name="preferences[]" value="{{ $category->id }}"
+                                                        name="career[]" value="{{ $category->id }}"
                                                         class="form-check-input">
                                                     <label for="check{{ $index }}"
                                                         class="form-check-label">{{ $category->name }}</label>
@@ -371,30 +371,33 @@
                                         <p class="mb-0">Terms & Policy</p>
                                         <div class="line"></div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" id="check2" name="preferences[]"
-                                                    value="1" class="form-check-input">
+                                                <input type="checkbox" id="check2" name="send_email" value="1"
+                                                    class="form-check-input">
                                                 <label for="check2" class="form-check-label">Send confirmation
                                                     emails</label>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" id="check2" name="next_events[]"
+                                                <input type="checkbox" id="check2" name="event_notification"
                                                     value="1" class="form-check-input">
                                                 <label for="check2" class="form-check-label">Send notification for
                                                     others or next events</label>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" id="check3" name="terms_conditions[]"
+                                                <input type="checkbox" id="check3" name="terms_condition"
                                                     value="1" class="form-check-input">
                                                 <label for="check3" class="form-check-label">I agree to the <a
                                                         class="text-primary" href="{{ route('termsCondition') }}">Terms
@@ -403,6 +406,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="backToStep2">Back</button>
@@ -454,18 +458,7 @@
             document.getElementById('step-2').classList.remove('d-none');
         });
     </script>
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Find the element(s) with the 'fixed-top' class
-            const fixedTopElements = document.querySelectorAll('.fixed-top');
 
-            // Loop through each element and remove the 'fixed-top' class
-            fixedTopElements.forEach(element => {
-                element.classList.remove('fixed-top');
-            });
-        });
-    </script> --}}
-    {{-- Multi Step Form End --}}
     <script>
         document.getElementById('team_member').addEventListener('input', function() {
             const numMembers = parseInt(this.value);

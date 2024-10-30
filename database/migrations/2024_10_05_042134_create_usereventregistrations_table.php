@@ -26,6 +26,13 @@ return new class extends Migration
             $table->string('team_member_two_name')->nullable();//
             $table->string('attachment')->nullable();//
 
+            $table->string('project_link')->nullable();//
+            $table->string('project_duration')->nullable();//
+            $table->string('technology_used')->nullable();//
+            $table->string('send_email')->default(1);//
+            $table->string('event_notification')->default(1);//
+            $table->string('terms_condition')->default(1);//
+
             $table->date('slot')->nullable()->comment('showing only from admin panel, not from frontend.');//
             $table->string('status')->nullable()->comment('showing only from admin panel, not from frontend.');//
 
