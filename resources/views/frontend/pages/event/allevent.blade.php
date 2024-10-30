@@ -48,11 +48,11 @@
         }
 
         .events-card {
-            background-color: rgba(255, 255, 255, 0.733);
+            background-color: #fff;
         }
 
         .evenet-content {
-            width: 80%;
+            width: 100%;
             margin: auto;
         }
 
@@ -142,10 +142,10 @@
                                                                 <div class="content">
                                                                     <div class="card bg-transparent p-0 border-0">
                                                                         <div class="card-body evenet-content">
-                                                                            <h4
+                                                                            <h5
                                                                                 class="text-center pt-5 fw-bold pb-2 text-white">
                                                                                 {{ $event->event_name }}
-                                                                            </h4>
+                                                                            </h5>
                                                                             <p class="text-center text-white"
                                                                                 style="font-size: 14px;">
                                                                                 {!! Str::words($event->event_short_descp, 20) !!}
@@ -153,7 +153,7 @@
                                                                             {{-- <div class="flip-countdown"></div> --}}
                                                                         </div>
                                                                         <div
-                                                                            class="card-body p-2 mt-3 d-flex justify-content-between align-items-end events-card">
+                                                                            class="card-body p-2 px-4 mt-3 d-flex justify-content-between align-items-center events-card">
                                                                             <p class="text-center mb-0">
                                                                                 <span
                                                                                     class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
@@ -174,22 +174,24 @@
                                                                                 <div class="col-lg-12">
 
                                                                                     <div
-                                                                                        class="d-flex p-3 align-items-center justify-content-between ">
+                                                                                        class="d-flex px-0 p-3 align-items-center justify-content-between ">
                                                                                         <h5
                                                                                             class="mb-0 fw-bold cst-font text-whtie text-end pe-2">
                                                                                             Registraion:
                                                                                         </h5>
-                                                                                        <h6
-                                                                                            class="mb-0 fw-bold cst-font text-end rounded-pill px-3 p-2 event-color">
-                                                                                            <del>2000 TK</del>
-                                                                                            Free
-                                                                                        </h6>
+                                                                                        <div class="px-3">
+                                                                                            <del class="text-end">2000 TK</del> <br>
+                                                                                            <h5
+                                                                                                class="mb-0 pe-0 pb-0 fw-bold cst-font text-end rounded-pill event-color">
+                                                                                                Free
+                                                                                            </h5>
+                                                                                        </div>
                                                                                     </div>
 
                                                                                 </div>
                                                                             </div>
                                                                             <a href="{{ route('event.details', $event->slug) }}"
-                                                                                class="animated-button1 w-100">
+                                                                                class="animated-button1 w-100 mb-4">
                                                                                 Details
                                                                             </a>
                                                                         </div>
@@ -279,18 +281,6 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // var swiper = new Swiper(".mySwiper", {
-        //     effect: "cards",
-        //     grabCursor: true,
-        //     centeredSlides: true,
-        //     slidesPerView: 'auto',
-        //     loop: true,
-        //     initialSlide: 2,
-        //     autoplay: {
-        //         delay: 3000,
-        //         disableOnInteraction: false,
-        //     },
-        // });
         var swiper = new Swiper(".mySwiper", {
             effect: "cards", // Use the "cards" effect
             initialSlide: 1, // Start with the second slide if needed

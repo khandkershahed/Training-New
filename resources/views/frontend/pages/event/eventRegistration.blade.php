@@ -1,5 +1,6 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <style>
         .form-control {
             background-color: #eee;
@@ -26,6 +27,17 @@
             background-color: #646464;
             width: 130px;
             height: 2px;
+        }
+
+        .form-check-input:checked {
+            background-color: #5f3386;
+            border-color: #5f3386;
+        }
+
+        .form-check-input:focus {
+            border-color: #5f3386;
+            outline: 0;
+            box-shadow: none;
         }
     </style>
     <section>
@@ -54,7 +66,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="text-center pt-4">Registration</h1>
+                        <h1 class="text-center pt-5">Registration</h1>
                     </div>
                 </div>
                 <div class="stepper stepper-pills mb-4 mt-3" id="kt_stepper_example">
@@ -75,11 +87,11 @@
                         <div class="stepper-item" data-step="2">
                             <div class="stepper-wrapper d-flex justify-content-between align-items-center">
                                 <div class="stepper-icon">
-                                    <i class="fa fa-envelope"></i>
+                                    <i class="fa-regular fa-lightbulb"></i>
                                 </div>
                                 <div class="stepper-label ms-3">
                                     <h6 class="fw-bold stepper-title mb-0">Step 2</h6>
-                                    <div class="stepper-desc">Event Details</div>
+                                    <div class="stepper-desc">Project Details</div>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +103,7 @@
                                 </div>
                                 <div class="stepper-label ms-3">
                                     <h6 class="fw-bold stepper-title mb-0">Step 3</h6>
-                                    <div class="stepper-desc">Confirm Details</div>
+                                    <div class="stepper-desc">Preferences</div>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +118,7 @@
 
                             <!-- Step 1 content -->
                             <div class="step-content" id="step-1">
-                                <div class="row p-3 rounded-2 py-4" style="border:1px solid #ddd;">
+                                <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
                                             <label for="name">Name</label>
@@ -177,11 +189,11 @@
 
                             <!-- Step 2 content -->
                             <div class="step-content d-none" id="step-2">
-                                <div class="row p-3 rounded-2 py-4" style="border:1px solid #ddd;">
-                                    <div class="d-flex align-items-center mb-3">
+                                <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
+                                    {{-- <div class="d-flex align-items-center mb-3">
                                         <p class="mb-0">Projects</p>
                                         <div class="line"></div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
@@ -201,7 +213,7 @@
                                             <label for="project_duration">Project Link</label>
                                             <input type="text" name="project_link" value="{{ old('project_link') }}"
                                                 class="form-control form-control-sm p-3 @error('project_link') is-invalid @enderror"
-                                                id="project_link">
+                                                id="project_link" placeholder="https://www.ngenittraining.com">
                                             <!-- Display the error message -->
                                             @error('project_duration')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -211,7 +223,8 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
-                                            <label for="file">Upload Project File</label>
+                                            <label for="file">Upload Project File <small class="text-primary">(doc,
+                                                    ppt, pdf,)</small></label>
                                             <input type="file" name="file" value="{{ old('file') }}"
                                                 class="form-control form-control-sm p-3 @error('tech_used') is-invalid @enderror"
                                                 id="file">
@@ -226,11 +239,7 @@
                                             <label for="event_name">Event Name</label>
                                             <select
                                                 class="form-select form-select-sm @error('confirm_password') is-invalid @enderror"
-<<<<<<< HEAD
                                                 aria-label="Default select example" style="height: 50px">
-=======
-                                                aria-label="Default select example" name="event_id">
->>>>>>> ddeb41c55a087c2c934707a4bc00c6966b548fdd
                                                 <option selected>Slelect Event</option>
                                                 @foreach ($events as $event)
                                                     <option value="{{ $event->id }}">{{ $event->event_name }}</option>
@@ -243,7 +252,7 @@
                                         <div class="form-group mb-4">
                                             <label for="project_duration">Project Duration</label>
                                             <input type="text" name="project_duration"
-                                                value="{{ old('project_duration') }}"
+                                                value="{{ old('project_duration') }}" placeholder="7-6 Month"
                                                 class="form-control form-control-sm p-3 @error('project_duration') is-invalid @enderror"
                                                 id="project_duration">
                                             <!-- Display the error message -->
@@ -257,31 +266,34 @@
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="tech_used">Technology Used</label>
-                                            <input type="text" name="technology_used" value="{{ old('tech_used') }}"
-                                                class="form-control form-control-sm p-3" id="tech_used">
+                                            {{-- <input type="text" name="technology_used" value="{{ old('tech_used') }}"
+                                                class="form-control form-control-sm p-3" id="tech_used"> --}}
+                                            <input class="form-control form-control-sm p-2" id="tech_used"
+                                                name="technology_used" value='Next.Js' autofocus>
                                         </div>
                                     </div>
 
-                                    <div class="d-flex align-items-center mb-3">
+                                    {{-- <div class="d-flex align-items-center mb-3">
                                         <p class="mb-0">Team</p>
                                         <div class="line"></div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
-                                            <label for="team_member">Num of Member</label>
-                                            <input type="number" max="3" min="1" name="team_member"
-                                                value="{{ old('team_member') }}"
+                                            <label for="team_member">Number of Member <small class="text-primary">(Max Two
+                                                    Members Allowed)</small></label>
+                                            <input type="number" max="2" min="1" name="team_member"
+                                                value="{{ old('team_member') }}" placeholder="Eg: 1/2"
                                                 class="form-control form-control-sm p-3 @error('team_member') is-invalid @enderror"
-                                                id="team_member">
+                                                id="team_member" oninput="validateTeamMember(this)">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
-                                            <label for="team_member">Team Member One</label>
+                                            <label for="team_member">Team Member 1</label>
                                             <input type="text" max="3" name="team_member_one"
-                                                value="{{ old('team_member_one') }}"
+                                                value="{{ old('team_member_one') }}" placeholder="Khandker Shahed"
                                                 class="form-control form-control-sm p-3" id="team_member_one">
                                         </div>
                                     </div>
@@ -292,16 +304,11 @@
                                             <input type="text" name="member_1" class="form-control form-control-sm">
                                         </div> --}}
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <div class="form-group mb-4" id="member_2_field" style="display: none;">
-                                                    <label for="member_2">Member 2</label>
-                                                    <input type="text" name="team_member_two" class="form-control form-control-sm p-3">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group mb-4" id="member_3_field" style="display: none;">
-                                                    <label for="member_3">Member 3</label>
-                                                    <input type="text" name="team_member_three" class="form-control form-control-sm p-3">
+                                                    <label for="member_2">Team Member 2</label>
+                                                    <input type="text" name="team_member_two"
+                                                        class="form-control form-control-sm p-3">
                                                 </div>
                                             </div>
                                         </div>
@@ -317,9 +324,12 @@
 
                             <!-- Step 3 content -->
                             <div class="step-content d-none" id="step-3">
-                                <div class="row p-3 rounded-2 py-4" style="border:1px solid #ddd;">
+                                <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
                                     <div class="row">
-                                        <p>Preferences</p>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <p class="mb-0">Industry Preference</p>
+                                            <div class="line"></div>
+                                        </div>
                                         @foreach ($categorys as $index => $category)
                                             <div class="col-6">
                                                 <div class="form-check">
@@ -336,26 +346,63 @@
                                         @endif
                                         @endforeach
                                     </div>
-                                    <hr class="mt-3">
+                                    <div class="row pt-3">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <p class="mb-0">Career Development</p>
+                                            <div class="line"></div>
+                                        </div>
+                                        @foreach ($categorys as $index => $category)
+                                            <div class="col-6">
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check{{ $index }}"
+                                                        name="preferences[]" value="{{ $category->id }}"
+                                                        class="form-check-input">
+                                                    <label for="check{{ $index }}"
+                                                        class="form-check-label">{{ $category->name }}</label>
+                                                </div>
+                                            </div>
+                                            @if (($index + 1) % 2 == 0)
+                                    </div>
+                                    <div class="row">
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3 mt-4">
+                                        <p class="mb-0">Terms & Policy</p>
+                                        <div class="line"></div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" id="check1" name="preferences[]"
+                                                <input type="checkbox" id="check2" name="preferences[]"
                                                     value="1" class="form-check-input">
-                                                <label for="check1" class="form-check-label">Send Emails</label>
+                                                <label for="check2" class="form-check-label">Send confirmation
+                                                    emails</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
-                                                <input type="checkbox" id="50" name="preferences[]"
+                                                <input type="checkbox" id="check2" name="next_events[]"
                                                     value="1" class="form-check-input">
-                                                <label for="50" class="form-check-label">Send Emails</label>
+                                                <label for="check2" class="form-check-label">Send notification for
+                                                    others or next events</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="pt-3 text-center">Confirm your details before submitting.</p>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="check3" name="terms_conditions[]"
+                                                    value="1" class="form-check-input">
+                                                <label for="check3" class="form-check-label">I agree to the <a
+                                                        class="text-primary" href="{{ route('termsCondition') }}">Terms
+                                                        and Conditions</a>, including the privacy policy, code of conduct,
+                                                    and cancellation policy.</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="backToStep2">Back</button>
@@ -370,7 +417,8 @@
 
         </div>
     </section>
-
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <script>
         function activateStep(step) {
             // Remove active from all steps
@@ -433,5 +481,18 @@
                 additionalFields.style.display = 'none';
             }
         });
+    </script>
+    <script>
+        // The DOM element you wish to replace with Tagify
+        var input = document.querySelector('input[name=technology_used]');
+
+        // initialize Tagify on the above input node reference
+        new Tagify(input)
+
+        function validateTeamMember(input) {
+            if (input.value !== "1" && input.value !== "2") {
+                input.value = ""; // Clear the input if the value is not 1 or 2
+            }
+        }
     </script>
 @endsection
