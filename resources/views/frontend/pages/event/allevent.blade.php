@@ -224,7 +224,7 @@
     <section style="background-color: #eee">
         <div class="container py-5 overview-section">
             <div class="row gx-5 align-items-center">
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="py-5">
                         <h1 class="pb-3 cst-font first-color">{{ optional($eventPage)->row_one_title }}</h1>
                         <p class="fw-semibold" style="text-align: justify">
@@ -232,10 +232,10 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body text-end">
-                            <img class="img-fluid rounded-2 w-100" style="width: 250px !important"
+                            <img class="img-fluid rounded-2 w-100"
                                 src="{{ !empty(optional($eventPage)->row_one_image) ? url('storage/event-page/' . optional($eventPage)->row_one_image) : asset('frontend/images/brandPage-prod-no-img(376-282).png') }}"
                                 alt="" />
                         </div>

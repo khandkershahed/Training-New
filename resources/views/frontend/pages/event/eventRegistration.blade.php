@@ -1,7 +1,8 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
-    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
         .form-control {
             background-color: #eee;
             border-color: #eee;
@@ -39,22 +40,36 @@
             outline: 0;
             box-shadow: none;
         }
+
+        .rg-title {
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 600;
+            font-size: 70px;
+            line-height: 1.3;
+        }
+
+        .rg-sub-title {
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 500;
+            font-size: 34px;
+            letter-spacing: 3px;
+        }
     </style>
     <section>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 px-0">
-                    <div class="image-container" style="height: 800px;">
+                    <div class="image-container" style="height: 500px;">
                         <img src="{{ asset('frontend/images/Free-Registration-banner_Events.jpg') }}" alt="Event Image"
-                            style="height: 800px;" />
+                            style="height: 500px;" />
                         <div class="overlay"></div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="text-container content-box w-100 text-center">
-                                    <h2 class="mb-0 pt-5 srpt-font">
+                                    <h2 class="mb-0 pt-5 pb-0 mb-0 text-center w-100 rg-sub-title text-uppercase">
                                         Join Now For
                                     </h2>
-                                    <h1 class="w-100">Initiatives <br> Projects 2024</h1>
+                                    <h2 class="w-100 rg-title">Initiatives Projects 2024</h2>
                                 </div>
                             </div>
                         </div>
@@ -150,9 +165,9 @@
                                             <label for="phone">Phone Number</label>
                                             <input type="text" name="phone" value="{{ old('phone') }}"
                                                 class="form-control form-control-sm p-3 @error('phone') is-invalid @enderror"
-                                                id="phone" placeholder="+880156854584">
+                                                id="phone" placeholder="+880 1**** ****">
                                             <!-- Display the error message -->
-                                            @error('email')
+                                            @error('phone')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -162,26 +177,26 @@
                                             <label for="password">Password</label>
                                             <input type="password" name="password" value="{{ old('password') }}"
                                                 class="form-control form-control-sm p-3 @error('password') is-invalid @enderror"
-                                                id="password">
+                                                id="password" placeholder="******">
                                             <!-- Display the error message -->
                                             @error('password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- <div class="col-lg-6">
+                                    <div class="col-lg-6">
                                         <div class="form-group mb-3">
                                             <label for="confirm_password">Confirm Password</label>
                                             <input type="password" name="confirm_password"
                                                 value="{{ old('confirm_password') }}"
                                                 class="form-control form-control-sm p-3 @error('confirm_password') is-invalid @enderror"
-                                                id="confirm_password">
+                                                id="confirm_password" placeholder="******">
                                             <!-- Display the error message -->
                                             @error('confirm_password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="toStep2">Next <i
@@ -192,11 +207,6 @@
                             <!-- Step 2 content -->
                             <div class="step-content d-none" id="step-2">
                                 <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
-                                    {{-- <div class="d-flex align-items-center mb-3">
-                                        <p class="mb-0">Projects</p>
-                                        <div class="line"></div>
-                                    </div> --}}
-
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
                                             <label for="project_name">Project Name</label>
@@ -293,7 +303,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
-                                            <label for="team_member">Team Member 1</label>
+                                            <label for="team_member">Team Member 1 Name</label>
                                             <input type="text" max="3" name="team_member_one_name"
                                                 value="{{ old('team_member_one') }}" placeholder=""
                                                 class="form-control form-control-sm p-3" id="team_member_one">
@@ -305,7 +315,7 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group mb-4" id="member_2_field" style="display: none;">
-                                                    <label for="member_2">Team Member 2</label>
+                                                    <label for="member_2">Team Member 2 Name</label>
                                                     <input type="text" name="team_member_two_name"
                                                         class="form-control form-control-sm p-3">
                                                 </div>
@@ -325,224 +335,218 @@
                             <!-- Step 3 content -->
                             <div class="step-content d-none" id="step-3">
                                 <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
-                                    <div class="row">
-
-                                        <div class="d-flex align-items-center mb-3">
-                                            <p class="mb-0">Industry Preference</p>
-                                            <div class="line"></div>
-                                        </div>
-
-                                        <div class="col-6">
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="industrial_smart_management" class="form-check-input">
-                                                <label for="check" class="form-check-label">Industrial Smart Management
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="industrial_automation_robotics" class="form-check-input">
-                                                <label for="check" class="form-check-label">Industrial Automation &
-                                                    Robotics
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="industrial_ioT_for_energy_utilities" class="form-check-input">
-                                                <label for="check" class="form-check-label">Industrial IoT for Energy &
-                                                    Utilities
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="predictive_maintenance_asset_management"
-                                                    class="form-check-input">
-                                                <label for="check" class="form-check-label">Predictive Maintenance &
-                                                    Asset Management
-
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ioT_sensor_connectivity" class="form-check-input">
-                                                <label for="check" class="form-check-label">IoT Sensor &
-                                                    Connectivity</label>
-                                            </div>
-
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ioT_sensor_for_power_infrastructures" class="form-check-input">
-                                                <label for="check" class="form-check-label">IoT Sensor for Power
-                                                    Infrastructures
-                                                </label>
-                                            </div>
-
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="renewable_energy_monitoring" class="form-check-input">
-                                                <label for="check" class="form-check-label">Renewable Energy Monitoring
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="energy_storage_battery_management" class="form-check-input">
-                                                <label for="check" class="form-check-label">Energy Storage & Battery
-                                                    Management
-
-                                                </label>
-                                            </div>
-
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="smart_livestock_solution" class="form-check-input">
-                                                <label for="check" class="form-check-label">Smart Livestock Solution
-
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="smart_environment_solution" class="form-check-input">
-                                                <label for="check" class="form-check-label">Smart Environment
-                                                    Solution</label>
-                                            </div>
-
-                                            <div class="form-check">
-
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_for_smart_mobility_transportation" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">AI for Smart Mobility and
-                                                    Transportation</label>
-                                            </div>
-
-
-                                            <div class="form-check">
-
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_for_agriculture" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">AI for Agriculture</label>
-                                            </div>
-
-                                            <div class="form-check">
-
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_for_manufacturing" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">AI for
-                                                    Manufacturing</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_for_public_service_delivery" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">AI for Public Service
-                                                    Delivery</label>
-                                            </div>
-
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_for_finance_and_trade" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">AI for Finance and Trade
-                                                </label>
-                                            </div>
-
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_for_eCommerce" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">AI for eCommerce</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_for_smart_office_management" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">Ai for Smart Office
-                                                    Management
-                                                </label>
-                                            </div>
-
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="data_engineering" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">Data Engineering</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="data_analysis" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">Data Analysis</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]" value="big_data"
-                                                    class="form-check-input">
-
-                                                <label for="check" class="form-check-label">Big Data</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="data_science" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">Data Science</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="testing_quality_assurance" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">Testing & Quality
-                                                    Assurance</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="iot_esting" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">IoT Testing</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="ai_testing" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">AI Testing</label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <input type="checkbox" id="check" name="industry[]"
-                                                    value="smart_application_testing" class="form-check-input">
-
-                                                <label for="check" class="form-check-label">Smart Application
-                                                    Testing</label>
-                                            </div>
-
-                                        </div>
-
-
-
+                                    <div class="d-flex align-items-center mb-3">
+                                        <p class="mb-0">Industry Preference</p>
+                                        <div class="line"></div>
                                     </div>
-                                    <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="industrial_smart_management" class="form-check-input">
+                                                    <label for="check" class="form-check-label">Industrial Smart Management
+                                                    </label>
+                                                </div>
 
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="industrial_automation_robotics" class="form-check-input">
+                                                    <label for="check" class="form-check-label">Industrial Automation &
+                                                        Robotics
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="industrial_ioT_for_energy_utilities" class="form-check-input">
+                                                    <label for="check" class="form-check-label">Industrial IoT for Energy &
+                                                        Utilities
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="predictive_maintenance_asset_management"
+                                                        class="form-check-input">
+                                                    <label for="check" class="form-check-label">Predictive Maintenance &
+                                                        Asset Management
+
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ioT_sensor_connectivity" class="form-check-input">
+                                                    <label for="check" class="form-check-label">IoT Sensor &
+                                                        Connectivity</label>
+                                                </div>
+
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ioT_sensor_for_power_infrastructures" class="form-check-input">
+                                                    <label for="check" class="form-check-label">IoT Sensor for Power
+                                                        Infrastructures
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="renewable_energy_monitoring" class="form-check-input">
+                                                    <label for="check" class="form-check-label">Renewable Energy Monitoring
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="energy_storage_battery_management" class="form-check-input">
+                                                    <label for="check" class="form-check-label">Energy Storage & Battery
+                                                        Management
+
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="smart_livestock_solution" class="form-check-input">
+                                                    <label for="check" class="form-check-label">Smart Livestock Solution
+
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="smart_environment_solution" class="form-check-input">
+                                                    <label for="check" class="form-check-label">Smart Environment
+                                                        Solution</label>
+                                                </div>
+
+                                                <div class="form-check">
+
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_for_smart_mobility_transportation" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">AI for Smart Mobility and
+                                                        Transportation</label>
+                                                </div>
+
+
+                                                <div class="form-check">
+
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_for_agriculture" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">AI for Agriculture</label>
+                                                </div>
+
+                                                <div class="form-check">
+
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_for_manufacturing" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">AI for
+                                                        Manufacturing</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_for_public_service_delivery" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">AI for Public Service
+                                                        Delivery</label>
+                                                </div>
+
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_for_finance_and_trade" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">AI for Finance and Trade
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_for_eCommerce" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">AI for eCommerce</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_for_smart_office_management" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">Ai for Smart Office
+                                                        Management
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="data_engineering" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">Data Engineering</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="data_analysis" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">Data Analysis</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]" value="big_data"
+                                                        class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">Big Data</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="data_science" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">Data Science</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="testing_quality_assurance" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">Testing & Quality
+                                                        Assurance</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="iot_esting" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">IoT Testing</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="ai_testing" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">AI Testing</label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input type="checkbox" id="check" name="industry[]"
+                                                        value="smart_application_testing" class="form-check-input">
+
+                                                    <label for="check" class="form-check-label">Smart Application
+                                                        Testing</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row pt-3">
                                         <div class="d-flex align-items-center mb-3">
@@ -562,14 +566,10 @@
                                         @endforeach
 
                                     </div>
-                                    <div class="row">
-
-                                    </div>
                                     <div class="d-flex align-items-center mb-3 mt-4">
                                         <p class="mb-0">Terms & Policy</p>
                                         <div class="line"></div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
@@ -580,7 +580,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
@@ -591,7 +590,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
@@ -604,7 +602,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="backToStep2">Back</button>
