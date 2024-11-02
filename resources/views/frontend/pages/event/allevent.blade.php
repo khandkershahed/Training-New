@@ -279,34 +279,4 @@
             </div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cards", // Use the "cards" effect
-            initialSlide: 1, // Start with the second slide if needed
-            centeredSlides: true, // Center the active slide
-            grabCursor: true, // Change the cursor to grab
-
-            loop: false, // Disable infinite looping of slides
-            autoplay: {
-                delay: 5000, // Auto-slide with 5 seconds delay
-                disableOnInteraction: false, // Auto-slide continues even after interaction
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-
-        });
-        // Pause autoplay on hover
-        var swiperContainer = document.querySelector('.mySwiper');
-
-        swiperContainer.addEventListener('mouseenter', function() {
-            swiper.autoplay.stop(); // Stop autoplay
-        });
-
-        swiperContainer.addEventListener('mouseleave', function() {
-            swiper.autoplay.start(); // Start autoplay
-        });
-    </script>
 @endsection
