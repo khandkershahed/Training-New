@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('team_member_two_name')->nullable();//
             $table->string('attachment')->nullable();//
 
+            $table->json('industry')->nullable();//
+            $table->json('career')->nullable();//
+
             $table->string('project_link')->nullable();//
             $table->string('project_duration')->nullable();//
             $table->string('technology_used')->nullable();//

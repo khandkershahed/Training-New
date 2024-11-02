@@ -91,6 +91,7 @@ class HomeController extends Controller
     {
         $categorys = CourseCategory::latest()->get();
         $events = Event::latest()->get();
+
         return view('frontend.pages.event.eventRegistration', compact('categorys', 'events'));
     }
 
@@ -165,8 +166,8 @@ class HomeController extends Controller
             'email' => strtolower($request->email),
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'preferences' => json_encode($request->preferences),
-            'career' => json_encode($request->career)
+            // 'preferences' => json_encode($request->preferences),
+
         ]);
 
         $mainFile = $request->file('attachment');
@@ -188,6 +189,10 @@ class HomeController extends Controller
                 'event_notification' => $request->event_notification ?? "0",
                 'terms_condition' => $request->terms_condition ?? "0",
                 'event_id' => $request->event_id,
+
+                'industry' => json_encode($request->industry),
+                'career' => json_encode($request->career),
+
                 'created_at' => now(),
 
             ]);
@@ -211,6 +216,9 @@ class HomeController extends Controller
                     'event_notification' => $request->event_notification ?? "0",
                     'terms_condition' => $request->terms_condation ?? "0",
                     'event_id' => $request->event_id,
+
+                    'industry' => json_encode($request->industry),
+                    'career' => json_encode($request->career),
 
                     'attachment' => $globalFunImg['file_name'],
 
