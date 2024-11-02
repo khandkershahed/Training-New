@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Course;
+use App\Models\CourseCategory;
 use App\Models\CourseSection;
 use App\Models\UserCourseRegistration;
 use App\Models\usereventregistration;
@@ -38,8 +39,9 @@ class AdminController extends Controller
         $dayRegister = UserCourseRegistration::whereDate('created_at', $today)->get();
 
         $eventregs = usereventregistration::latest()->get();
+        $categorys = CourseCategory::all();
 
-        return view('admin/dashboard', compact('sections', 'totalCourse', 'totalRegister', 'monthlyRegister', 'dayRegister', 'eventregs', 'paidAmount', 'unpaidAmount', 'todayPaid'));
+        return view('admin/dashboard', compact('sections', 'totalCourse', 'totalRegister', 'monthlyRegister', 'dayRegister', 'eventregs', 'paidAmount', 'unpaidAmount', 'todayPaid','categorys'));
     }
 
     public function index()
