@@ -188,15 +188,7 @@
                                             <h3 class="text-center fw-bold pb-2">
                                                 Let's Countdown
                                             </h3>
-                                            <div id="countdown">
-                                                <div id='tiles'></div>
-                                                <div class="labels">
-                                                    <li>Days</li>
-                                                    <li>Hours</li>
-                                                    <li>Mins</li>
-                                                    <li>Secs</li>
-                                                </div>
-                                            </div>
+                                            {{-- Coundown Time Nov 15 2024 --}}
                                         </div>
 
                                         <div class="card-footer border-0">

@@ -54,6 +54,9 @@
             font-size: 34px;
             letter-spacing: 3px;
         }
+        .overlay-register{
+            background: linear-gradient(to right, rgb(61 6 109 / 50%), rgb(186 52 166 / 55%)) !important;
+        }
     </style>
     <section>
         <div class="container-fluid">
@@ -62,7 +65,7 @@
                     <div class="image-container" style="height: 500px;">
                         <img src="{{ asset('frontend/images/Free-Registration-banner_Events.jpg') }}" alt="Event Image"
                             style="height: 500px;" />
-                        <div class="overlay"></div>
+                        <div class="overlay overlay-register"></div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="text-container content-box w-100 text-center">

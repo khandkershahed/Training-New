@@ -112,7 +112,7 @@
                                         <h2 class="mb-0 pt-5 srpt-font">
                                             {{ optional($eventPage)->banner_sub_title }}
                                         </h2>
-                                        <h1>{{ optional($eventPage)->banner_title }}</h1>
+                                        <h1 class="pt-2">{{ optional($eventPage)->banner_title }}</h1>
 
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
                                         <div class="pt-2">
