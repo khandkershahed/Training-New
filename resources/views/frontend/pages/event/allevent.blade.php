@@ -96,6 +96,145 @@
             content: 'none';
         }
     </style>
+    <style>
+        .stepsWrapper {
+            padding: 0 100px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #00193d;
+            display: inline-block;
+            color: white;
+            height: 260px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+        }
+
+        .stepsWrapper .step {
+            margin: 0 20px;
+            height: 100%;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -ms-flex-align: start;
+            -webkit-align-items: start;
+            -webkit-box-align: start;
+            align-items: start;
+        }
+
+        .stepsWrapper .step .counter {
+            float: left;
+            font-size: 46px;
+            font-weight: bold;
+            line-height: 180px;
+            height: 100%;
+            position: relative;
+            z-index: 0;
+            box-sizing: border-box;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .stepsWrapper .step .counter:after {
+            transform: skewX(-15deg);
+            transform-origin: bottom left;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(186, 52, 166, 0.829);
+            position: absolute;
+            top: 0;
+            left: -15%;
+            content: '';
+            margin: 0;
+            z-index: -1;
+        }
+
+        .stepsWrapper .step .stepDetails {
+            float: left;
+            margin-left: 60px;
+            position: relative;
+            top: 50px;
+        }
+
+        .stepsWrapper .step .stepDetails .detailHeading {
+            margin: 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .stepsWrapper .step .stepDetails .detailText {
+            margin-top: 20px;
+            max-width: 350px;
+            max-height: 260px;
+            overflow: hidden;
+        }
+
+        .amount {
+            position: relative;
+            left: 25px;
+            top: 35px;
+        }
+
+        @media all and (max-width: 1290px) {
+
+            .stepsWrapper {
+                flex-wrap: wrap;
+                padding: 0;
+            }
+
+            .stepsWrapper .step {
+                width: 100%;
+            }
+
+            .stepsWrapper .step .counter {
+                background-color: rgba(186, 52, 166, 0.829);
+            }
+
+            .stepsWrapper .step .counter:after {
+                display: none;
+            }
+
+            .stepsWrapper .step .stepDetails {
+                float: none;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                -webkit-box-align: center;
+                align-items: center;
+            }
+
+            .stepsWrapper .step .stepDetails .detailText {
+                max-width: initial;
+            }
+        }
+        @media all and (min-width: 1490px) {
+            .amount {
+            position: relative;
+            left: 20px !important;
+            top: 35px;
+        }
+            .stepsWrapper {
+                height: 260px !important;
+            }
+        }
+        @media only screen and (min-width: 1200px) {
+            .stepsWrapper {
+                height: 100%;
+            }
+
+            .stepsWrapper .step {
+                height: auto;
+            }
+
+            .amount {
+                position: relative;
+                left: 0px;
+                top: 35px;
+            }
+            .stepsWrapper .step .counter{
+                width: 100px;
+            }
+        }
+    </style>
     @if (!empty(optional($eventPage)->banner_title))
         <section>
             <div class="container-fluid">
@@ -120,7 +259,8 @@
                                                 data-bs-toggle="modal" data-bs-target="#mapEvet">
                                                 <i class="fa-solid fa-location-dot pe-2"></i>Map
                                             </a>
-                                            <a href="{{ optional($eventPage)->website_link }}" class="btn btn-outline-light me-2 rounded-pill">
+                                            <a href="{{ optional($eventPage)->website_link }}"
+                                                class="btn btn-outline-light me-2 rounded-pill">
                                                 <i class="fa-solid fa-globe"></i> Training
                                             </a>
                                             <a href="javascript:void(0)" class="btn btn-outline-light rounded-pill"
@@ -177,10 +317,11 @@
                                                                                         class="d-flex px-0 p-3 align-items-center justify-content-between ">
                                                                                         <h5
                                                                                             class="mb-0 fw-bold cst-font text-whtie text-end pe-2">
-                                                                                            Registraion:
+                                                                                            Registration:
                                                                                         </h5>
                                                                                         <div class="px-3">
-                                                                                            <del class="text-end">2000 TK</del> <br>
+                                                                                            <del class="text-end">2000
+                                                                                                TK</del> <br>
                                                                                             <h5
                                                                                                 class="mb-0 pe-0 pb-0 fw-bold cst-font text-end rounded-pill event-color">
                                                                                                 Free
@@ -220,7 +361,6 @@
         </section>
     @endif
 
-
     <section style="background-color: #eee">
         <div class="container py-5 overview-section">
             <div class="row gx-5 align-items-center">
@@ -244,8 +384,107 @@
             </div>
         </div>
     </section>
-
-    <section class="py-5">
+    <section>
+        <div class="container-fluid overview-section px-0">
+            <div class="row">
+                {{-- <div class="col-lg-12">
+                    <div class="py-5">
+                        <h1 class="pb-3 cst-font first-color">Event Highlights</h1>
+                    </div>
+                </div> --}}
+                <div class="col-lg-12 px-0">
+                    <div class="stepsWrapper">
+                        <div class="step">
+                            <span class="counter">
+                                <span class="amount">1</span>
+                            </span>
+                            <div class="stepDetails">
+                                <h4 class="detailHeading">Technology Seminars</h4>
+                                <div class="detailText">
+                                    Industry and academic experts will deliver keynotes on the latest innovations, offering
+                                    insights and real-world examples of how these advancements are transforming sectors.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="counter">
+                                <span class="amount">
+                                    2
+                                </span>
+                            </span>
+                            <div class="stepDetails">
+                                <h4 class="detailHeading">Presentation Workshops</h2>
+                                    <div class="detailText">
+                                        Hands-on workshops provide experience with AI, blockchain, and data analysis,
+                                        building skills and inspiring creative solutions.
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="counter">
+                                <span class="amount">
+                                    3
+                                </span>
+                            </span>
+                            <div class="stepDetails">
+                                <h4 class="detailHeading">Discussion Sessions</h2>
+                                    <div class="detailText">Open forums and panels enable participants to connect with
+                                        experts and peers, fostering collaboration and inspiring innovative solutions.
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- Event Benefit --}}
+    <section style="background-color: #eee">
+        <div class="container py-5 overview-section">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-5">
+                    <div class="">
+                        <h1 class="pb-3 cst-font first-color">Event Benifites</h1>
+                    </div>
+                    <div>
+                        <img class="img-fluid rounded-2 " style="width: 400px"
+                            src="{{ asset('frontend/images/Event-Benefits.png') }}" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div>
+                        <strong>
+                            Support for Innovation:
+                        </strong> We are committed to nurturing the next generation of tech
+                        leaders by
+                        providing robust support for innovative project ideas. Participants will have access to mentorship
+                        opportunities, allowing them to develop and refine their concepts with guidance from experienced
+                        professionals.
+                        <br><br>
+                        <strong>
+                            Career Advancement:
+                        </strong> Our events also focus on facilitating work opportunities within the
+                        IT industry.
+                        We are dedicated to supporting innovative project ideas that emerge from our community. Participants
+                        will have the opportunity to pitch their concepts, receive constructive feedback from mentors, and
+                        collaborate with like-minded individuals. Our goal is to empower attendees to transform their ideas
+                        into viable projects that contribute to the IT industry.
+                        <br><br>
+                        <strong>Community Building:</strong> By fostering a vibrant community of like-minded individuals
+                        passionate about
+                        technology, we aim to create a network that encourages continuous learning and collaboration long
+                        after the events conclude. Additionally, our events will serve as a launchpad for career
+                        development. We collaborate with leading organizations to provide networking opportunities,
+                        internships, and job placements. Throughout the event, dedicated career support sessions will focus
+                        on resume enhancement, interview strategies, and effective networking techniques to equip attendees
+                        with the tools needed to advance their careers in tech.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- Event Benefit --}}
+    <section class="py-5" style="background-color: #fff">
         <div class="container">
             <div class="row g-2 justify-content-center">
                 <div class="col-lg-12">
@@ -260,7 +499,8 @@
                                     <div class="text-center" style="width: 92px; position: relative;left: -18px;">
                                         {{ \Carbon\Carbon::parse($event->start_date)->format('M') }}
                                         {{-- {{ date('F', strtotime($event->start_date)) }} <br> --}}
-                                        <strong class="fs-5">{{ date('d', strtotime($event->start_date)) }}</strong> <br>
+                                        <strong class="fs-5">{{ date('d', strtotime($event->start_date)) }}</strong>
+                                        <br>
                                         {{ date('Y', strtotime($event->start_date)) }}
                                     </div>
                                 </div>
@@ -276,6 +516,29 @@
                 @endforelse
                 <!-- First End-->
 
+            </div>
+        </div>
+    </section>
+    {{-- Join Us Section --}}
+    <section style="background-color: #eee">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="cst-font first-color">Join Us Now !</h1>
+                    <p style="text-align: justify">Register now to secure your spot and become part of a forward-thinking
+                        community dedicated to exploring and shaping the future of technology. Together, we can harness the
+                        power of IoT, AI, Blockchain, Big Data, Cloud, and Cybersecurity to build a better, more innovative
+                        future. Don’t miss this opportunity to enhance your skills, expand your network, and drive your
+                        career forward!</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-end">
+                        <a href="{{ route('event.registration') }}" class="animated-button1 mt-4 py-3"
+                            style="border-radius: 0">
+                            Registration Now
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
