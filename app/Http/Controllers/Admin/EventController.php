@@ -56,8 +56,8 @@ class EventController extends Controller
 
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $filePath = storage_path('app/public/' . $key);
-                $uploadedFiles[$key] = customUpload($file, $filePath);
+                $filePath = 'events/' . $key;
+                $uploadedFiles[$key] = newUpload($file, $filePath);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
                 }
