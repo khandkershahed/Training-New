@@ -88,8 +88,10 @@ class EventController extends Controller
             'other_link'            => $request->other_link,
             'row_one_title'         => $request->row_one_title,
             'row_one_description'   => $request->row_one_description,
+
             'row_one_button_name'   => $request->row_one_button_name,
             'row_one_button_link'   => $request->row_one_button_link,
+
             'row_two_title'         => $request->row_two_title,
             'row_two_description'   => $request->row_two_description,
             'row_three_badge'       => $request->row_three_badge,
@@ -97,6 +99,7 @@ class EventController extends Controller
             'row_three_description' => $request->row_three_description,
             'row_three_button_name' => $request->row_three_button_name,
             'row_three_button_link' => $request->row_three_button_link,
+
             'row_four_badge'        => $request->row_four_badge,
             'row_four_title'        => $request->row_four_title,
             'row_four_description'  => $request->row_four_description,
@@ -106,6 +109,7 @@ class EventController extends Controller
             'row_five_description'  => $request->row_five_description,
             'row_five_button_name'  => $request->row_five_button_name,
             'row_five_button_link'  => $request->row_five_button_link,
+
             'status'                => $request->status,
             'event_type'            => $request->event_type,
             'payment_type'          => $request->payment_type,
@@ -116,10 +120,11 @@ class EventController extends Controller
             'added_by'              => Auth::guard('admin')->user()->id,
             'updated_by'            => Auth::guard('admin')->user()->id,
             'created_at'            => now(),
-            'banner_image'          => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
-            'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_name'] : null,
-            'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_name'] : null,
-            'row_five_image'        => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_name'] : null,
+
+            'banner_image'          => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
+            'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_path'] : null,
+            'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_path'] : null,
+            'row_five_image'        => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_path'] : null,
         ]);
 
         return redirect()->route('admin.event.index')->with('success', 'Data Inserted Successfully!');
@@ -207,6 +212,10 @@ class EventController extends Controller
 
             'row_one_title'         => $request->row_one_title,
             'row_one_description'   => $request->row_one_description,
+            'row_one_title'         => $request->row_one_title,
+            'row_one_description'   => $request->row_one_description,
+            'row_one_button_name'   => $request->row_one_button_name,
+            'row_one_button_link'   => $request->row_one_button_link,
 
             'row_two_title'         => $request->row_two_title,
             'row_two_description'   => $request->row_two_description,
@@ -214,6 +223,18 @@ class EventController extends Controller
             'row_three_badge'       => $request->row_three_badge,
             'row_three_title'       => $request->row_three_title,
             'row_three_description' => $request->row_three_description,
+
+            'status'                => $request->status,
+            'event_type'            => $request->event_type,
+            'row_four_badge'        => $request->row_four_badge,
+            'row_four_title'        => $request->row_four_title,
+            'row_four_description'  => $request->row_four_description,
+            'row_four_button_name'  => $request->row_four_button_name,
+            'row_four_button_link'  => $request->row_four_button_link,
+            'row_five_title'        => $request->row_five_title,
+            'row_five_description'  => $request->row_five_description,
+            'row_five_button_name'  => $request->row_five_button_name,
+            'row_five_button_link'  => $request->row_five_button_link,
 
             'status'                => $request->status,
             'event_type'            => $request->event_type,
@@ -231,6 +252,8 @@ class EventController extends Controller
             'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_name'] : $item->row_one_image,
             'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_name'] : $item->row_three_image,
             'row_five_image'        => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_name'] : $item->row_five_image,
+
+
 
         ]);
 
