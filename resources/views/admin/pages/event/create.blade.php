@@ -189,6 +189,22 @@
                             </div>
                         </div>
 
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row One Button Name</label>
+                                <input type="text" name="row_one_button_name" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_one_button_name') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row One Button Link</label>
+                                <input type="text" name="row_one_button_link" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_one_button_link') }}">
+                            </div>
+                        </div>
+
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Row One Description</label>
@@ -228,10 +244,98 @@
                             </div>
                         </div>
 
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Three Button Name</label>
+                                <input type="text" name="row_three_button_name" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_three_button_name') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Three Button Link</label>
+                                <input type="text" name="row_three_button_link" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_three_button_link') }}">
+                            </div>
+                        </div>
+
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Three Description</label>
                                 <textarea name="row_three_description" class="form-control editor" id="" cols="3" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Four Badge</label>
+                                <input type="text" name="row_four_badge" placeholder="Row Four Badge"
+                                    class="form-control form-control-sm" value="{{ old('row_four_badge') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Four Title</label>
+                                <input type="text" name="row_four_title" placeholder="Row Four Title"
+                                    class="form-control form-control-sm" value="{{ old('row_four_title') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Four Button Name</label>
+                                <input type="text" name="row_four_button_name" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_four_button_name') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Four Button Link</label>
+                                <input type="text" name="row_four_button_link" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_four_button_link') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Four Description</label>
+                                <textarea name="row_four_description" class="form-control editor" id="" cols="3" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        {{-- ============== Five ============== --}}
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Five Title</label>
+                                <input type="text" name="row_five_title" placeholder="Row Five Title"
+                                    class="form-control form-control-sm" value="{{ old('row_five_title') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Five Button Name</label>
+                                <input type="text" name="row_five_button_name" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_five_button_name') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Five Button Link</label>
+                                <input type="text" name="row_five_button_link" placeholder=""
+                                    class="form-control form-control-sm" value="{{ old('row_five_button_link') }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Row Five Description</label>
+                                <textarea name="row_five_description" class="form-control editor" id="" cols="3" rows="3"></textarea>
                             </div>
                         </div>
 
@@ -292,6 +396,22 @@
                             <div class="">
                                 <label for="" class="mb-2">Row One Image</label>
                                 <input type="file" name="row_one_image" accept="image/*"
+                                    class="form-control form-control-sm">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="">
+                                <label for="" class="mb-2">Row Three Image</label>
+                                <input type="file" name="row_three_image" accept="image/*"
+                                    class="form-control form-control-sm">
+                            </div>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <div class="">
+                                <label for="" class="mb-2">Row Five Image</label>
+                                <input type="file" name="row_five_image" accept="image/*"
                                     class="form-control form-control-sm">
                             </div>
                         </div>
