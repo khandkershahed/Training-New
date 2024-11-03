@@ -131,7 +131,7 @@
             <div class="row">
                 <div class="col-lg-12 px-0">
                     <div class="image-container">
-                        <img src="{{ !empty($event->banner_image) ? url('storage/event/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                        <img src="{{ !empty($event->banner_image) ? url('storage/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
                             alt="Event Image" />
                         <div class="overlay"></div>
                         <div class="row">
@@ -236,7 +236,7 @@
                         <div class="pt-3">
                             <a href="{{ route('event.registration') }}"
                                 class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
-                                Registraion Now
+                                {{ optional($event)->row_one_button_name }}
                             </a>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body">
                             <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
+                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
                                 alt="" />
                         </div>
                     </div>
