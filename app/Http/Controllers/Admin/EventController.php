@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -153,87 +154,84 @@ class EventController extends Controller
         $item = Event::findOrFail($id);
 
         // Define upload paths
-        $uploadPath = storage_path('app/public/event/');
+        $uploadedFiles = [];
 
-        // Handle banner image upload
-        $mainFile = $request->file('banner_image');
-        $globalFunImg = ['status' => 0, 'file_name' => null];
+        // Array of files to upload
+        $files = [
+            'banner_image'    => $request->file('banner_image'),
+            'row_one_image'   => $request->file('row_one_image'),
+            'row_three_image' => $request->file('row_three_image'),
+            'row_five_image'  => $request->file('row_five_image'),
+        ];
 
-        if ($mainFile) {
-            $globalFunImg = customUpload($mainFile, $uploadPath);
-            // Delete the old banner image if a new one was successfully uploaded
-            if ($globalFunImg['status'] == 1 && $item->banner_image) {
-                $oldBannerImagePath = public_path('storage/event-page/') . $item->banner_image;
-                if (File::exists($oldBannerImagePath)) {
-                    File::delete($oldBannerImagePath);
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $filePath = 'events/' . $key;
+                $oldFile = $item->$key ?? null;
+
+                if ($oldFile) {
+                    Storage::delete("public/" . $oldFile);
                 }
-            }
-        }
-
-        // Handle row one image upload
-        $iconmainFile = $request->file('row_one_image');
-        $globalFunIconImg = ['status' => 0, 'file_name' => null];
-
-        if ($iconmainFile) {
-            $globalFunIconImg = customUpload($iconmainFile, $uploadPath);
-            // Delete the old row one image if a new one was successfully uploaded
-            if ($globalFunIconImg['status'] == 1 && $item->row_one_image) {
-                $oldRowOneImagePath = public_path('storage/event-page/') . $item->row_one_image;
-                if (File::exists($oldRowOneImagePath)) {
-                    File::delete($oldRowOneImagePath);
+                $uploadedFiles[$key] = customUpload($file, $filePath);
+                if ($uploadedFiles[$key]['status'] === 0) {
+                    return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
                 }
+            } else {
+                $uploadedFiles[$key] = ['status' => 0];
             }
         }
 
         // Update the item with new values
         $item->update([
 
-            'event_name' => $request->event_name,
-            'start_date' => $request->start_date,
-            'start_time' => $request->start_time,
-            'end_date' => $request->end_date,
-            'end_time' => $request->end_time,
+            'event_name'            => $request->event_name,
+            'start_date'            => $request->start_date,
+            'start_time'            => $request->start_time,
+            'end_date'              => $request->end_date,
+            'end_time'              => $request->end_time,
 
-            'event_short_descp' => $request->event_short_descp,
+            'event_short_descp'     => $request->event_short_descp,
 
-            'max_attendees' => $request->max_attendees,
-            'current_attendees' => $request->current_attendees,
+            'max_attendees'         => $request->max_attendees,
+            'current_attendees'     => $request->current_attendees,
 
-            'banner_badge' => $request->banner_badge,
-            'banner_sub_title' => $request->banner_sub_title,
-            'banner_title' => $request->banner_title,
-            'organizer_text' => $request->organizer_text,
+            'banner_badge'          => $request->banner_badge,
+            'banner_sub_title'      => $request->banner_sub_title,
+            'banner_title'          => $request->banner_title,
+            'organizer_text'        => $request->organizer_text,
 
-            'map_link' => $request->map_link,
-            'website_link' => $request->website_link,
-            'whatsapp_link' => $request->whatsapp_link,
-            'other_link' => $request->other_link,
+            'map_link'              => $request->map_link,
+            'website_link'          => $request->website_link,
+            'whatsapp_link'         => $request->whatsapp_link,
+            'other_link'            => $request->other_link,
 
-            'row_one_title' => $request->row_one_title,
-            'row_one_description' => $request->row_one_description,
+            'row_one_title'         => $request->row_one_title,
+            'row_one_description'   => $request->row_one_description,
 
-            'row_two_title' => $request->row_two_title,
-            'row_two_description' => $request->row_two_description,
+            'row_two_title'         => $request->row_two_title,
+            'row_two_description'   => $request->row_two_description,
 
-            'row_three_badge' => $request->row_three_badge,
-            'row_three_title' => $request->row_three_title,
+            'row_three_badge'       => $request->row_three_badge,
+            'row_three_title'       => $request->row_three_title,
             'row_three_description' => $request->row_three_description,
 
-            'status' => $request->status,
-            'event_type' => $request->event_type,
+            'status'                => $request->status,
+            'event_type'            => $request->event_type,
 
-            'payment_type' => $request->payment_type,
-            'ticket_price' => $request->ticket_price,
-            'currency' => $request->currency,
+            'payment_type'          => $request->payment_type,
+            'ticket_price'          => $request->ticket_price,
+            'currency'              => $request->currency,
 
-            'location' => $request->location,
-            'contact' => $request->contact,
+            'location'              => $request->location,
+            'contact'               => $request->contact,
 
-            'added_by' => Auth::guard('admin')->user()->id,
-            'updated_by' => Auth::guard('admin')->user()->id,
+            'added_by'              => Auth::guard('admin')->user()->id,
+            'updated_by'            => Auth::guard('admin')->user()->id,
+            'banner_image'          => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : $item->banner_image,
+            'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_name'] : $item->row_one_image,
+            'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_name'] : $item->row_three_image,
+            'row_five_image'        => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_name'] : $item->row_five_image,
 
-            'banner_image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $item->banner_image,
-            'row_one_image' => $globalFunIconImg['status'] == 1 ? $globalFunIconImg['file_name'] : $item->row_one_image,
         ]);
 
         return redirect()->route('admin.event.index')->with('success', 'Data Updated Successfully!!');
@@ -245,6 +243,21 @@ class EventController extends Controller
     public function destroy(string $id)
     {
         $item = Event::findOrFail($id);
+
+        $files = [
+            'banner_image'    => $item->banner_image,
+            'row_one_image'   => $item->row_one_image,
+            'row_three_image' => $item->row_three_image,
+            'row_five_image'  => $item->row_five_image,
+        ];
+        foreach ($files as $key => $file) {
+            if (!empty($file)) {
+                $oldFile = $item->$key ?? null;
+                if ($oldFile) {
+                    Storage::delete("public/" . $oldFile);
+                }
+            }
+        }
         $item->delete();
     }
 }
