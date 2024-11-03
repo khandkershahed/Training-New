@@ -46,7 +46,7 @@
                             <td class="">
 
                                 <img class=""
-                                    src="{{ !empty($item->banner_image) ? url('storage/event/' . $item->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->banner_title) }}"
+                                    src="{{ !empty($item->banner_image) ? url('storage/' . $item->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->banner_title) }}"
                                     height="40" width="40" alt="">
 
                             </td>

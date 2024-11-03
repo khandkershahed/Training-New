@@ -180,8 +180,10 @@
                                 <label for="" class="mb-2">Payment Type</label>
                                 <select name="payment_type" class="form-select form-select-sm" id="payment_type">
                                     <option selected disabled>Choose Type</option>
-                                    <option value="free" {{ $item->payment_type == 'free' ? 'selected' : '' }}>Free</option>
-                                    <option value="paid" {{ $item->payment_type == 'paid' ? 'selected' : '' }}>Paid</option>
+                                    <option value="free" {{ $item->payment_type == 'free' ? 'selected' : '' }}>Free
+                                    </option>
+                                    <option value="paid" {{ $item->payment_type == 'paid' ? 'selected' : '' }}>Paid
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -191,7 +193,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Ticket Price</label>
                                 <input type="number" name="ticket_price" step="0.01" placeholder="125.00"
-                                    class="form-control form-control-sm" value="{{ old('ticket_price',$item->ticket_price) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('ticket_price', $item->ticket_price) }}">
                             </div>
                         </div>
 
@@ -199,7 +202,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Currency</label>
                                 <input type="text" name="currency" placeholder="BDT"
-                                    class="form-control form-control-sm" value="{{ old('currency',$item->currency) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('currency', $item->currency) }}">
                             </div>
                         </div>
 
@@ -225,7 +229,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row One Button Name</label>
                                 <input type="text" name="row_one_button_name" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_one_button_name',$item->row_one_button_name) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_one_button_name', $item->row_one_button_name) }}">
                             </div>
                         </div>
 
@@ -233,7 +238,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row One Button Link</label>
                                 <input type="text" name="row_one_button_link" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_one_button_link',$item->row_one_button_link) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_one_button_link', $item->row_one_button_link) }}">
                             </div>
                         </div>
 
@@ -287,7 +293,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Three Button Name</label>
                                 <input type="text" name="row_three_button_name" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_three_button_name',$item->row_three_button_name) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_three_button_name', $item->row_three_button_name) }}">
                             </div>
                         </div>
 
@@ -295,16 +302,18 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Three Button Link</label>
                                 <input type="text" name="row_three_button_link" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_three_button_link',$item->row_three_button_link) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_three_button_link', $item->row_three_button_link) }}">
                             </div>
                         </div>
 
-                        
+
                         <div class="col-3 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Four Badge</label>
                                 <input type="text" name="row_four_badge" placeholder="Row Four Badge"
-                                    class="form-control form-control-sm" value="{{ old('row_four_badge',$item->row_four_badge) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_four_badge', $item->row_four_badge) }}">
                             </div>
                         </div>
 
@@ -312,7 +321,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Four Title</label>
                                 <input type="text" name="row_four_title" placeholder="Row Four Title"
-                                    class="form-control form-control-sm" value="{{ old('row_four_title',$item->row_four_title) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_four_title', $item->row_four_title) }}">
                             </div>
                         </div>
 
@@ -320,7 +330,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Four Button Name</label>
                                 <input type="text" name="row_four_button_name" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_four_button_name',$item->row_four_button_name) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_four_button_name', $item->row_four_button_name) }}">
                             </div>
                         </div>
 
@@ -328,7 +339,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Four Button Link</label>
                                 <input type="text" name="row_four_button_link" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_four_button_link',$item->row_four_button_link) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_four_button_link', $item->row_four_button_link) }}">
                             </div>
                         </div>
 
@@ -343,7 +355,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Five Title</label>
                                 <input type="text" name="row_five_title" placeholder="Row Five Title"
-                                    class="form-control form-control-sm" value="{{ old('row_five_title',$item->row_five_title) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_five_title', $item->row_five_title) }}">
                             </div>
                         </div>
 
@@ -351,7 +364,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Five Button Name</label>
                                 <input type="text" name="row_five_button_name" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_five_button_name',$item->row_five_button_name) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_five_button_name', $item->row_five_button_name) }}">
                             </div>
                         </div>
 
@@ -359,7 +373,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Row Five Button Link</label>
                                 <input type="text" name="row_five_button_link" placeholder=""
-                                    class="form-control form-control-sm" value="{{ old('row_five_button_link',$item->row_five_button_link) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('row_five_button_link', $item->row_five_button_link) }}">
                             </div>
                         </div>
 
@@ -382,7 +397,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Location</label>
                                 <input type="text" name="location" placeholder="Location"
-                                    class="form-control form-control-sm" value="{{ old('location',$item->location) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('location', $item->location) }}">
                             </div>
                         </div>
 
@@ -390,7 +406,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Contact</label>
                                 <input type="number" name="contact" placeholder="contact"
-                                    class="form-control form-control-sm" value="{{ old('contact',$item->contact) }}">
+                                    class="form-control form-control-sm" value="{{ old('contact', $item->contact) }}">
                             </div>
                         </div>
 
@@ -436,7 +452,7 @@
                                 <input type="file" name="row_one_image" accept="image/*"
                                     class="form-control form-control-sm mb-2">
                                 @if ($item->row_one_image)
-                                    <img src="{{ !empty($item->row_one_image) ? url('storage/event/' . $item->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode('"Event') }}"
+                                    <img src="{{ !empty($item->row_one_image) ? url('storage/' . $item->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode('"Event') }}"
                                         alt="Row One Image" style="width: 80px; height: 80px;">
                                 @endif
                             </div>
@@ -448,7 +464,7 @@
                                 <input type="file" name="row_three_image" accept="image/*"
                                     class="form-control form-control-sm mb-2">
                                 @if ($item->row_three_image)
-                                    <img src="{{ !empty($item->row_three_image) ? url('storage/event/' . $item->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Event') }}"
+                                    <img src="{{ !empty($item->row_three_image) ? url('storage/' . $item->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Event') }}"
                                         alt="Row Three Image" style="width: 80px; height: 80px;">
                                 @endif
                             </div>
@@ -460,7 +476,7 @@
                                 <input type="file" name="row_five_image" accept="image/*"
                                     class="form-control form-control-sm mb-2">
                                 @if ($item->row_five_image)
-                                    <img src="{{ !empty($item->row_five_image) ? url('storage/event/' . $item->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode("Event") }}"
+                                    <img src="{{ !empty($item->row_five_image) ? url('storage/' . $item->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Event') }}"
                                         alt="Row Three Image" style="width: 80px; height: 80px;">
                                 @endif
                             </div>
@@ -473,7 +489,7 @@
                                 <input type="file" name="banner_image" accept="image/*"
                                     class="form-control form-control-sm mb-2">
                                 @if ($item->banner_image)
-                                    <img src="{{ !empty($item->banner_image) ? url('storage/event/' . $item->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->banner_title) }}"
+                                    <img src="{{ !empty($item->banner_image) ? url('storage/' . $item->banner_image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->banner_title) }}"
                                         alt="Banner Image" style="width: 80px; height: 80px;">
                                 @endif
                             </div>
