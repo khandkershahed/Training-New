@@ -36,11 +36,25 @@ return new class extends Migration
             $table->string('row_one_title')->nullable();
             $table->string('row_one_image')->nullable();
             $table->longText('row_one_description')->nullable()->comment('text-editor');
+            $table->string('row_one_button_name')->nullable();
+            $table->string('row_one_button_link')->nullable();
             $table->string('row_two_title')->nullable();
             $table->longText('row_two_description')->nullable()->comment('text-editor');
-            $table->string('row_three_badge')->nullable();
             $table->string('row_three_title')->nullable();
-            $table->text('row_three_description')->nullable()->comment('normal-textarea');
+            $table->string('row_three_image')->nullable();
+            $table->longText('row_three_description')->nullable()->comment('text-editor');
+            $table->string('row_three_button_name')->nullable();
+            $table->string('row_three_button_link')->nullable();
+            $table->string('row_four_badge')->nullable();
+            $table->string('row_four_title')->nullable();
+            $table->text('row_four_description')->nullable()->comment('normal-textarea');
+            $table->string('row_four_button_name')->nullable();
+            $table->string('row_four_button_link')->nullable();
+            $table->string('row_five_title')->nullable();
+            $table->string('row_five_image')->nullable();
+            $table->longText('row_five_description')->nullable()->comment('text-editor');
+            $table->string('row_five_button_name')->nullable();
+            $table->string('row_five_button_link')->nullable();
             $table->string('status')->nullable()->comment('canceled', 'ongoing', 'upcoming', 'completed', 'registration_open', 'registration_close');
             $table->string('event_type')->nullable()->comment('workshop', 'seminar', 'concert', 'conference', 'webinar');
 
