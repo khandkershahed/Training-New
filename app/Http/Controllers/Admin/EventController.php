@@ -42,21 +42,21 @@ class EventController extends Controller
             // Add validation for other fields as necessary
         ]);
 
-  
+
         $uploadedFiles = [];
 
         // Array of files to upload
         $files = [
-            'banner_image' => $request->file('banner_image'),
-            'row_one_image' => $request->file('row_one_image'),
+            'banner_image'    => $request->file('banner_image'),
+            'row_one_image'   => $request->file('row_one_image'),
             'row_three_image' => $request->file('row_three_image'),
-            'row_five_image' => $request->file('row_five_image'),
+            'row_five_image'  => $request->file('row_five_image'),
         ];
 
-        
+
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $filePath = 'events/' . $key;
+                $filePath = storage_path('app/public/' . $key);
                 $uploadedFiles[$key] = customUpload($file, $filePath);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
@@ -69,63 +69,62 @@ class EventController extends Controller
 
         // Create the event in the database
         Event::create([
-            'event_name' => $request->event_name,
-            'start_date' => $request->start_date,
-            'start_time' => $request->start_time,
-            'end_date' => $request->end_date,
-            'end_time' => $request->end_time,
-            'event_short_descp' => $request->event_short_descp,
-            'max_attendees' => $request->max_attendees,
-            'current_attendees' => $request->current_attendees,
-            'banner_badge' => $request->banner_badge,
-            'banner_sub_title' => $request->banner_sub_title,
-            'banner_title' => $request->banner_title,
-            'organizer_text' => $request->organizer_text,
-            'map_link' => $request->map_link,
-            'website_link' => $request->website_link,
-            'whatsapp_link' => $request->whatsapp_link,
-            'other_link' => $request->other_link,
-            'row_one_title' => $request->row_one_title,
-            'row_one_description' => $request->row_one_description,
-            'row_one_button_name' => $request->row_one_button_name,
-            'row_one_button_link' => $request->row_one_button_link,
-            'row_two_title' => $request->row_two_title,
-            'row_two_description' => $request->row_two_description,
-            'row_three_badge' => $request->row_three_badge,
-            'row_three_title' => $request->row_three_title,
+            'event_name'            => $request->event_name,
+            'start_date'            => $request->start_date,
+            'start_time'            => $request->start_time,
+            'end_date'              => $request->end_date,
+            'end_time'              => $request->end_time,
+            'event_short_descp'     => $request->event_short_descp,
+            'max_attendees'         => $request->max_attendees,
+            'current_attendees'     => $request->current_attendees,
+            'banner_badge'          => $request->banner_badge,
+            'banner_sub_title'      => $request->banner_sub_title,
+            'banner_title'          => $request->banner_title,
+            'organizer_text'        => $request->organizer_text,
+            'map_link'              => $request->map_link,
+            'website_link'          => $request->website_link,
+            'whatsapp_link'         => $request->whatsapp_link,
+            'other_link'            => $request->other_link,
+            'row_one_title'         => $request->row_one_title,
+            'row_one_description'   => $request->row_one_description,
+            'row_one_button_name'   => $request->row_one_button_name,
+            'row_one_button_link'   => $request->row_one_button_link,
+            'row_two_title'         => $request->row_two_title,
+            'row_two_description'   => $request->row_two_description,
+            'row_three_badge'       => $request->row_three_badge,
+            'row_three_title'       => $request->row_three_title,
             'row_three_description' => $request->row_three_description,
             'row_three_button_name' => $request->row_three_button_name,
             'row_three_button_link' => $request->row_three_button_link,
-            'row_four_badge' => $request->row_four_badge,
-            'row_four_title' => $request->row_four_title,
-            'row_four_description' => $request->row_four_description,
-            'row_four_button_name' => $request->row_four_button_name,
-            'row_four_button_link' => $request->row_four_button_link,
-            'row_five_title' => $request->row_five_title,
-            'row_five_description' => $request->row_five_description,
-            'row_five_button_name' => $request->row_five_button_name,
-            'row_five_button_link' => $request->row_five_button_link,
-            'status' => $request->status,
-            'event_type' => $request->event_type,
-            'payment_type' => $request->payment_type,
-            'ticket_price' => $request->ticket_price,
-            'currency' => $request->currency,
-            'location' => $request->location,
-            'contact' => $request->contact,
-            'added_by' => Auth::guard('admin')->user()->id,
-            'updated_by' => Auth::guard('admin')->user()->id,
-            'created_at' => now(),
-            
-            'banner_image' => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
-            'row_one_image' => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_path'] : null,
-            'row_three_image' => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_path'] : null,
-            'row_five_image' => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_path'] : null,
+            'row_four_badge'        => $request->row_four_badge,
+            'row_four_title'        => $request->row_four_title,
+            'row_four_description'  => $request->row_four_description,
+            'row_four_button_name'  => $request->row_four_button_name,
+            'row_four_button_link'  => $request->row_four_button_link,
+            'row_five_title'        => $request->row_five_title,
+            'row_five_description'  => $request->row_five_description,
+            'row_five_button_name'  => $request->row_five_button_name,
+            'row_five_button_link'  => $request->row_five_button_link,
+            'status'                => $request->status,
+            'event_type'            => $request->event_type,
+            'payment_type'          => $request->payment_type,
+            'ticket_price'          => $request->ticket_price,
+            'currency'              => $request->currency,
+            'location'              => $request->location,
+            'contact'               => $request->contact,
+            'added_by'              => Auth::guard('admin')->user()->id,
+            'updated_by'            => Auth::guard('admin')->user()->id,
+            'created_at'            => now(),
+            'banner_image'          => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
+            'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_name'] : null,
+            'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_name'] : null,
+            'row_five_image'        => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_name'] : null,
         ]);
 
         return redirect()->route('admin.event.index')->with('success', 'Data Inserted Successfully!');
     }
 
-    
+
 
 
     /**
