@@ -177,7 +177,7 @@ class EventController extends Controller
                 if ($oldFile) {
                     Storage::delete("public/" . $oldFile);
                 }
-                $uploadedFiles[$key] = customUpload($file, $filePath);
+                $uploadedFiles[$key] = newUpload($file, $filePath);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
                 }
@@ -248,10 +248,10 @@ class EventController extends Controller
 
             'added_by'              => Auth::guard('admin')->user()->id,
             'updated_by'            => Auth::guard('admin')->user()->id,
-            'banner_image'          => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : $item->banner_image,
-            'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_name'] : $item->row_one_image,
-            'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_name'] : $item->row_three_image,
-            'row_five_image'        => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_name'] : $item->row_five_image,
+            'banner_image'          => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : $item->banner_image,
+            'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_path'] : $item->row_one_image,
+            'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_path'] : $item->row_three_image,
+            'row_five_image'        => $uploadedFiles['row_five_image']['status'] == 1 ? $uploadedFiles['row_five_image']['file_path'] : $item->row_five_image,
 
 
 
