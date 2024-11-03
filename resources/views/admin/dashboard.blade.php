@@ -64,7 +64,8 @@
                                 <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <img src="{{ asset('images/Total Courses.png') }}" style="width:25px;height:25px;" alt="">
+                                            <img src="{{ asset('images/Total Courses.png') }}"
+                                                style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
@@ -81,7 +82,8 @@
                                 <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <img src="{{ asset('images/Total Enrolled.png') }}" style="width:25px;height:25px;" alt="">
+                                            <img src="{{ asset('images/Total Enrolled.png') }}"
+                                                style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
@@ -98,7 +100,8 @@
 
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <img src="{{ asset('images/Monthly Enrolled.png') }}" style="width:25px;height:25px;" alt="">
+                                            <img src="{{ asset('images/Monthly Enrolled.png') }}"
+                                                style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
@@ -115,7 +118,8 @@
 
                                     <div class="symbol symbol-30px me-5 mb-8">
                                         <span class="symbol-label">
-                                            <img src="{{ asset('images/Today Enrolled.png') }}" style="width:25px;height:25px;" alt="">
+                                            <img src="{{ asset('images/Today Enrolled.png') }}"
+                                                style="width:25px;height:25px;" alt="">
                                         </span>
                                     </div>
 
@@ -196,14 +200,14 @@
                         <thead class="bg-dark text-light">
                             <tr>
                                 <th width="5%">No</th>
-                                <th>User Id</th>
+                                <th>User Name</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
                                 <th>Event Id</th>
                                 <th>Project Name</th>
                                 <th>Total Member</th>
-                                <th>Amount Paid</th>
-                                <th>Transcation Id</th>
+                                <th>Industry</th>
+                                <th>Career</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -216,24 +220,43 @@
                                     <td class="text-start">{{ $item->eventUserName->name }}</td>
                                     <td class="text-start">{{ $item->eventUserName->email }}</td>
                                     <td class="text-start">{{ $item->eventUserName->phone }}</td>
-                                    <td class="text-start">{{ $item->eventName->event_name }}</td>
+                                    <td class="text-start">{{ optional($item->eventName)->event_name }}</td>
                                     <td class="text-start">{{ $item->project_name }}</td>
                                     <td class="text-start">{{ $item->team_member }}</td>
                                     <td class="text-start">
-                                        @if ($item->amount_paid == null)
-                                            <p class="badge bg-danger">No Paid</p>
+                                        @php
+                                            $industries = json_decode($item->industry);
+                                        @endphp
+                                        @if (is_array($industries) || is_object($industries))
+                                            <ul>
+                                                @foreach ($industries as $industry)
+                                                    <li>{{ ucfirst($industry) }}</li>
+                                                @endforeach
+                                            </ul>
                                         @else
-                                            {{ $item->amount_paid }} Tk
+                                            <p>{{ $industries }}</p>
                                         @endif
                                     </td>
+
                                     <td class="text-start">
-
-                                        @if ($item->transaction_id == null)
-                                            <p class="badge bg-danger">No Transcation</p>
+                                        @php
+                                            $carriers = json_decode($item->career);
+                                        @endphp
+                                        @if (is_array($carriers) || is_object($carriers))
+                                            <ul>
+                                                @foreach ($carriers as $careerId)
+                                                    @php
+                                                        $careerName = optional($categorys->firstWhere('id', $careerId))
+                                                            ->name;
+                                                    @endphp
+                                                    @if ($careerName)
+                                                        <li>{{ $careerName }}</li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
                                         @else
-                                            {{ $item->transaction_id }}
+                                            <p>{{ $carriers }}</p>
                                         @endif
-
                                     </td>
 
                                     <td class="text-start">
@@ -276,7 +299,8 @@
                                                                     <td class="text-start">
                                                                         {{ $item->eventUserName->name }}</td>
                                                                     <td class="text-start">
-                                                                        {{ $item->eventName->event_name }}</td>
+                                                                        {{ optional($item->eventName)->event_name }}
+                                                                    </td>
                                                                     <td class="text-start">{{ $item->project_name }}
                                                                     </td>
                                                                     <td class="text-start">{{ $item->team_member }}

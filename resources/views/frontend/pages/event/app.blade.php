@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/event/css/style.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <style>
         .flip-countdown {
             display: none !important;
@@ -77,6 +77,9 @@
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <script src="{{ asset('frontend/event/scripts/scripts.js') }}"></script>
     <script>
         $(window).load(function() {
@@ -88,6 +91,121 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+    </script>
+    {{-- All Event --}}
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards", // Use the "cards" effect
+            initialSlide: 1, // Start with the second slide if needed
+            centeredSlides: true, // Center the active slide
+            grabCursor: true, // Change the cursor to grab
+
+            loop: false, // Disable infinite looping of slides
+            autoplay: {
+                delay: 5000, // Auto-slide with 5 seconds delay
+                disableOnInteraction: false, // Auto-slide continues even after interaction
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+        });
+        // Pause autoplay on hover
+        var swiperContainer = document.querySelector('.mySwiper');
+
+        swiperContainer.addEventListener('mouseenter', function() {
+            swiper.autoplay.stop(); // Stop autoplay
+        });
+
+        swiperContainer.addEventListener('mouseleave', function() {
+            swiper.autoplay.start(); // Start autoplay
+        });
+    </script>
+    {{-- All Event End --}}
+    {{-- Event Registration --}}
+
+    <script>
+        function activateStep(step) {
+            // Remove active from all steps
+            document.querySelectorAll('.stepper-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active to the current step
+            document.querySelector(`.stepper-item[data-step="${step}"]`).classList.add('active');
+        }
+
+        document.getElementById('toStep2').addEventListener('click', function() {
+            activateStep(2); // Activate step 2
+            document.getElementById('step-1').classList.add('d-none');
+            document.getElementById('step-2').classList.remove('d-none');
+        });
+
+        document.getElementById('toStep3').addEventListener('click', function() {
+            activateStep(3); // Activate step 3
+            document.getElementById('step-2').classList.add('d-none');
+            document.getElementById('step-3').classList.remove('d-none');
+        });
+
+        document.getElementById('toStep1').addEventListener('click', function() {
+            activateStep(1); // Activate step 1
+            document.getElementById('step-2').classList.add('d-none');
+            document.getElementById('step-1').classList.remove('d-none');
+        });
+
+        document.getElementById('backToStep2').addEventListener('click', function() {
+            activateStep(2); // Activate step 2
+            document.getElementById('step-3').classList.add('d-none');
+            document.getElementById('step-2').classList.remove('d-none');
+        });
+    </script>
+
+    <script>
+        document.getElementById('team_member').addEventListener('input', function() {
+            const numMembers = parseInt(this.value);
+            const additionalFields = document.getElementById('additional_fields');
+            const member2Field = document.getElementById('member_2_field');
+            const member3Field = document.getElementById('member_3_field');
+
+            if (numMembers > 0) {
+                additionalFields.style.display = 'block';
+                member2Field.style.display = (numMembers >= 2) ? 'block' : 'none';
+                member3Field.style.display = (numMembers === 3) ? 'block' : 'none';
+            } else {
+                additionalFields.style.display = 'none';
+            }
+        });
+    </script>
+    <script>
+        // The DOM element you wish to replace with Tagify
+        var input = document.querySelector('input[name=technology_used]');
+
+        // initialize Tagify on the above input node reference
+        new Tagify(input)
+
+        function validateTeamMember(input) {
+            if (input.value !== "1" && input.value !== "2") {
+                input.value = ""; // Clear the input if the value is not 1 or 2
+            }
+        }
+    </script>
+    {{-- Event Registration End --}}
+    <script>
+        // Smmoth Header
+        window.onscroll = function() {
+            if (window.pageYOffset >= 50) {
+                var navbar = document.getElementById("navbar");
+                navbar.classList.remove("navbar-dark");
+                navbar.classList.add("navbar-light");
+                navbar.classList.add("navbar-blur");
+            } else {
+                var navbar = document.getElementById("navbar");
+                navbar.classList.remove("navbar-light");
+                navbar.classList.remove("navbar-blur");
+                navbar.classList.add("navbar-dark");
+            }
+        };
     </script>
 </body>
 

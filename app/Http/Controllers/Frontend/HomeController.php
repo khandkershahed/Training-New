@@ -28,6 +28,7 @@ use App\Models\CourseCategory;
 use App\Models\CourseSchedule;
 use App\Models\TermsCondition;
 use App\Models\CourseCurriculum;
+use App\Mail\EventRegistrationMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +41,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Notification;
 use App\Mail\AdminCourseRegistrationNotification;
 use App\Notifications\UserRegistrationNotification;
+use Illuminate\Validation\Rules;
 
 class HomeController extends Controller
 {
@@ -89,30 +91,155 @@ class HomeController extends Controller
     {
         $categorys = CourseCategory::latest()->get();
         $events = Event::latest()->get();
+
         return view('frontend.pages.event.eventRegistration', compact('categorys', 'events'));
     }
 
+    //registerUserEvent
+    // public function registerUserEvent(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+    //         'password' => ['required', 'confirmed'],
+    //     ]);
+
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'phone' => $request->phone,
+    //         'address' => $request->address, // If you have this field
+    //         'password' => Hash::make($request->password),
+    //         'preferences' => json_encode($request->preferences) // Store preferences as JSON
+    //     ]);
+
+    //     // Handle course file uploads
+    //     if ($request->hasFile('attachment')) {
+    //         foreach ($request->file('attachment') as $file) {
+    //             $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+    //             $destinationPath = 'event/files/';
+    //             $file->storeAs($destinationPath, $fileName, 'public');
+    //             $filePath = $destinationPath . $fileName;
+
+    //             // Insert into CourseCurriculumFile
+    //             usereventregistration::create([
+
+    //                 'user_id' => $user->id,
+    //                 'project_name' => $request->project_name,
+
+    //                 'project_link' => $request->project_link,
+    //                 'project_duration' => $request->project_duration,
+    //                 'technology_used' => $request->technology_used,
+
+    //                 'team_member' => $request->team_member,
+    //                 'team_member_one_name' => $request->team_member_one_name,
+    //                 'team_member_two_name' => $request->team_member_two_name,
+
+    //                 'send_email'     => isset($request->send_email) ? $request->send_email : "0",
+    //                 'event_notification'     => isset($request->event_notification) ? $request->event_notification : "0",
+    //                 'terms_condition'     => isset($request->terms_condation) ? $request->terms_condation : "0",
+
+    //                 'event_id' => $request->event_id,
+    //                 'created_at' => now(),
+
+    //                 'attachment' => $filePath,
+    //             ]);
+    //         }
+    //     }
+
+    //     return redirect()->back()->with('success', 'Event Registration Successfully!!!');
+    // }
+
     public function registerUserEvent(Request $request)
     {
+        // Validate incoming request
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed'],
-            'preferences' => 'nullable', // Optional preferences
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'], // Adjusted for the users table
+            'password' => ['required', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()],
+            // 'attachment.*' => 'file|mimes:jpg,png,pdf|max:2048', // Example file validation
         ]);
 
+        // Create the user
         $user = User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'email' => strtolower($request->email),
             'phone' => $request->phone,
-            'address' => $request->address, // If you have this field
             'password' => Hash::make($request->password),
-            'preferences' => json_encode($request->preferences) // Store preferences as JSON
+            // 'preferences' => json_encode($request->preferences),
+
         ]);
 
-        // Return success response if registration is successful
-        return response()->json(['id' => $user->id, 'success' => true]);
+        $mainFile = $request->file('attachment');
+        $imgPath = storage_path('app/public/files/');
+
+        if (empty($mainFile)) {
+
+            usereventregistration::insert([
+
+                'user_id' => $user->id,
+                'project_name' => $request->project_name,
+                'project_link' => $request->project_link,
+                'project_duration' => $request->project_duration,
+                'technology_used' => $request->technology_used,
+                'team_member' => $request->team_member,
+                'team_member_one_name' => $request->team_member_one_name,
+                'team_member_two_name' => $request->team_member_two_name,
+                'send_email' => $request->send_email ?? "0",
+                'event_notification' => $request->event_notification ?? "0",
+                'terms_condition' => $request->terms_condition ?? "0",
+                'event_id' => $request->event_id,
+
+                'industry' => json_encode($request->industry),
+                'career' => json_encode($request->career),
+
+                'created_at' => now(),
+
+            ]);
+        } else {
+
+            $globalFunImg = customUpload($mainFile, $imgPath);
+
+            if ($globalFunImg['status'] == 1) {
+
+                usereventregistration::insert([
+
+                    'user_id' => $user->id,
+                    'project_name' => $request->project_name,
+                    'project_link' => $request->project_link,
+                    'project_duration' => $request->project_duration,
+                    'technology_used' => $request->technology_used,
+                    'team_member' => $request->team_member,
+                    'team_member_one_name' => $request->team_member_one_name,
+                    'team_member_two_name' => $request->team_member_two_name,
+                    'send_email' => $request->send_email ?? "0",
+                    'event_notification' => $request->event_notification ?? "0",
+                    'terms_condition' => $request->terms_condation ?? "0",
+                    'event_id' => $request->event_id,
+
+                    'industry' => json_encode($request->industry),
+                    'career' => json_encode($request->career),
+
+                    'attachment' => $globalFunImg['file_name'],
+
+                    'created_at' => now(),
+
+                ]);
+            } else {
+                return redirect()->back()->withInput()->with('error', 'Upload failed! plz try again');
+            }
+        }
+
+
+        // Send email notification
+        Mail::to($user->email)->send(new EventRegistrationMail($user, [
+            'project_name' => $request->project_name,
+        ]));
+
+        return redirect()->back()->with('success', 'Event Registration Successfully!!!');
     }
+
+
 
     //userEventRegistration
     public function userEventRegistration(Request $request)
@@ -123,63 +250,6 @@ class HomeController extends Controller
             // 'course_file' => 'nullable|array', // Expecting an array of files
             'attachment.*' => 'file|mimes:pdf,doc,docx|max:2048',
         ]);
-
-
-        // Handle course file uploads
-        if ($request->hasFile('attachment')) {
-            foreach ($request->file('attachment') as $file) {
-                $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-                $destinationPath = 'event/files/';
-                $file->storeAs($destinationPath, $fileName, 'public');
-                $filePath = $destinationPath . $fileName;
-
-                // Insert into CourseCurriculumFile
-                usereventregistration::create([
-
-                    'user_id' => $request->user_id,
-                    'project_name' => $request->project_name,
-                    'team_member' => $request->team_member,
-                    'team_member_one_name' => $request->team_member_one_name,
-                    'team_member_two_name' => $request->team_member_two_name,
-                    'event_id' => $request->event_id,
-                    'amount_paid' => $request->amount_paid,
-                    'transaction_id' => $request->transaction_id,
-                    'created_at' => now(),
-
-                    'attachment' => $filePath,
-                ]);
-            }
-        } else {
-
-            usereventregistration::create([
-
-                'user_id' => $request->user_id,
-                'project_name' => $request->project_name,
-                'team_member' => $request->team_member,
-                'team_member_one_name' => $request->team_member_one_name,
-                'team_member_two_name' => $request->team_member_two_name,
-                'event_id' => $request->event_id,
-                'amount_paid' => $request->amount_paid,
-                'transaction_id' => $request->transaction_id,
-                'created_at' => now(),
-            ]);
-        }
-
-        // usereventregistration::create([
-
-        //     'user_id' => $request->user_id,
-        //     'project_name' => $request->project_name,
-        //     'team_member' => $request->team_member,
-        //     'team_member_one_name' => $request->team_member_one_name,
-        //     'team_member_two_name' => $request->team_member_two_name,
-        //     'event_id' => $request->event_id,
-        //     'amount_paid' => $request->amount_paid,
-        //     'transaction_id' => $request->transaction_id
-
-        // ]);
-
-        // Redirect with a success message
-        return redirect()->back()->with('success', 'Project registered successfully!');
     }
 
 

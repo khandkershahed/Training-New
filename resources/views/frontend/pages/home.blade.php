@@ -773,7 +773,7 @@
         style="background-image: url({{ asset('storage/homepage/' . optional($homePage)->row_six_background_image) }});">
         <div class="container explore-section">
             <div class="text-center pb-5">
-                <h3 class="section-title text-white">{{ optional($homePage)->row_six_title }}</h3>
+                <h3 class=" text-white">{{ optional($homePage)->row_six_title }}</h3>
                 <div class="divider-extra"></div>
                 <p class="text-white">
                     {{ optional($homePage)->row_six_header }}
@@ -893,7 +893,7 @@
 
     <!-- Row Seven Popular -->
     <section>
-        <div class="container my-5 mt-0">
+        <div class="container my-5">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card shape">

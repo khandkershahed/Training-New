@@ -48,11 +48,11 @@
         }
 
         .events-card {
-            background-color: rgba(255, 255, 255, 0.733);
+            background-color: #fff;
         }
 
         .evenet-content {
-            width: 80%;
+            width: 100%;
             margin: auto;
         }
 
@@ -112,7 +112,7 @@
                                         <h2 class="mb-0 pt-5 srpt-font">
                                             {{ optional($eventPage)->banner_sub_title }}
                                         </h2>
-                                        <h1>{{ optional($eventPage)->banner_title }}</h1>
+                                        <h1 class="pt-2">{{ optional($eventPage)->banner_title }}</h1>
 
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
                                         <div class="pt-2">
@@ -142,10 +142,10 @@
                                                                 <div class="content">
                                                                     <div class="card bg-transparent p-0 border-0">
                                                                         <div class="card-body evenet-content">
-                                                                            <h4
+                                                                            <h5
                                                                                 class="text-center pt-5 fw-bold pb-2 text-white">
                                                                                 {{ $event->event_name }}
-                                                                            </h4>
+                                                                            </h5>
                                                                             <p class="text-center text-white"
                                                                                 style="font-size: 14px;">
                                                                                 {!! Str::words($event->event_short_descp, 20) !!}
@@ -153,7 +153,7 @@
                                                                             {{-- <div class="flip-countdown"></div> --}}
                                                                         </div>
                                                                         <div
-                                                                            class="card-body p-2 mt-3 d-flex justify-content-between align-items-end events-card">
+                                                                            class="card-body p-2 px-4 mt-3 d-flex justify-content-between align-items-center events-card">
                                                                             <p class="text-center mb-0">
                                                                                 <span
                                                                                     class="start-month">{{ date('M', strtotime($event->start_date)) }}</span>
@@ -174,22 +174,24 @@
                                                                                 <div class="col-lg-12">
 
                                                                                     <div
-                                                                                        class="d-flex p-3 align-items-center justify-content-between ">
+                                                                                        class="d-flex px-0 p-3 align-items-center justify-content-between ">
                                                                                         <h5
                                                                                             class="mb-0 fw-bold cst-font text-whtie text-end pe-2">
                                                                                             Registraion:
                                                                                         </h5>
-                                                                                        <h6
-                                                                                            class="mb-0 fw-bold cst-font text-end rounded-pill px-3 p-2 event-color">
-                                                                                            <del>2000 TK</del>
-                                                                                            Free
-                                                                                        </h6>
+                                                                                        <div class="px-3">
+                                                                                            <del class="text-end">2000 TK</del> <br>
+                                                                                            <h5
+                                                                                                class="mb-0 pe-0 pb-0 fw-bold cst-font text-end rounded-pill event-color">
+                                                                                                Free
+                                                                                            </h5>
+                                                                                        </div>
                                                                                     </div>
 
                                                                                 </div>
                                                                             </div>
                                                                             <a href="{{ route('event.details', $event->slug) }}"
-                                                                                class="animated-button1 w-100">
+                                                                                class="animated-button1 w-100 mb-4">
                                                                                 Details
                                                                             </a>
                                                                         </div>
@@ -222,7 +224,7 @@
     <section style="background-color: #eee">
         <div class="container py-5 overview-section">
             <div class="row gx-5 align-items-center">
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <div class="py-5">
                         <h1 class="pb-3 cst-font first-color">{{ optional($eventPage)->row_one_title }}</h1>
                         <p class="fw-semibold" style="text-align: justify">
@@ -230,10 +232,10 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-5">
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body text-end">
-                            <img class="img-fluid rounded-2 w-100" style="width: 250px !important"
+                            <img class="img-fluid rounded-2 w-100"
                                 src="{{ !empty(optional($eventPage)->row_one_image) ? url('storage/event-page/' . optional($eventPage)->row_one_image) : asset('frontend/images/brandPage-prod-no-img(376-282).png') }}"
                                 alt="" />
                         </div>
@@ -277,46 +279,4 @@
             </div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        // var swiper = new Swiper(".mySwiper", {
-        //     effect: "cards",
-        //     grabCursor: true,
-        //     centeredSlides: true,
-        //     slidesPerView: 'auto',
-        //     loop: true,
-        //     initialSlide: 2,
-        //     autoplay: {
-        //         delay: 3000,
-        //         disableOnInteraction: false,
-        //     },
-        // });
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cards", // Use the "cards" effect
-            initialSlide: 1, // Start with the second slide if needed
-            centeredSlides: true, // Center the active slide
-            grabCursor: true, // Change the cursor to grab
-
-            loop: false, // Disable infinite looping of slides
-            autoplay: {
-                delay: 5000, // Auto-slide with 5 seconds delay
-                disableOnInteraction: false, // Auto-slide continues even after interaction
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-
-        });
-        // Pause autoplay on hover
-        var swiperContainer = document.querySelector('.mySwiper');
-
-        swiperContainer.addEventListener('mouseenter', function() {
-            swiper.autoplay.stop(); // Stop autoplay
-        });
-
-        swiperContainer.addEventListener('mouseleave', function() {
-            swiper.autoplay.start(); // Start autoplay
-        });
-    </script>
 @endsection
