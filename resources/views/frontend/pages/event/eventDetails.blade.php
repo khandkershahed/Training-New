@@ -131,7 +131,7 @@
             <div class="row">
                 <div class="col-lg-12 px-0">
                     <div class="image-container">
-                        <img src="{{ !empty($event->banner_image) ? url('storage/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                        <img src="{{ !empty(optional($event)->banner_image) && file_exists(public_path('storage/' . optional($event)->banner_image)) ? url('storage/' . optional($event)->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
                             alt="Event Image" />
                         <div class="overlay"></div>
                         <div class="row">
@@ -233,12 +233,14 @@
                             {!! optional($event)->row_one_description !!}
                         </p>
 
-                        <div class="pt-3">
-                            <a href="{{ route('event.registration') }}"
-                                class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
-                                {{ optional($event)->row_one_button_name }}
-                            </a>
-                        </div>
+                        @if (optional($event)->row_one_button_link && optional($event)->row_one_button_name)
+                            <div class="pt-3">
+                                <a href="{{ optional($event)->row_one_button_link }}"
+                                    class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
+                                    {{ optional($event)->row_one_button_name }}
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -270,7 +272,7 @@
             </div>
         </div>
     </section>
-    <section id="overview-section" style="background-color: #eee">
+    {{-- <section id="overview-section" style="background-color: #eee">
         <div class="container py-5 mobile-none">
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-8">
@@ -312,18 +314,20 @@
                             <img class="img-fluid rounded-2 w-100"
                                 src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
                                 alt="" />
-                            <div class="pt-3">
-                                <a href="{{ route('event.registration') }}"
-                                    class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
-                                    Registraion Now
-                                </a>
-                            </div>
+                                @if (optional($event)->row_one_button_link && optional($event)->row_one_button_name)
+                                <div class="pt-3">
+                                    <a href="{{ route('event.registration') }}"
+                                        class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
+                                        Registraion Now
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="action-bg py-5">
         <div class="container">
             <div class="row align-items-center">
