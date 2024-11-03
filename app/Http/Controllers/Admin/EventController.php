@@ -115,6 +115,7 @@ class EventController extends Controller
             'added_by'              => Auth::guard('admin')->user()->id,
             'updated_by'            => Auth::guard('admin')->user()->id,
             'created_at'            => now(),
+            
             'banner_image'          => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_name'] : null,
             'row_one_image'         => $uploadedFiles['row_one_image']['status'] == 1 ? $uploadedFiles['row_one_image']['file_name'] : null,
             'row_three_image'       => $uploadedFiles['row_three_image']['status'] == 1 ? $uploadedFiles['row_three_image']['file_name'] : null,
