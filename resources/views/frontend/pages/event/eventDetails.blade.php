@@ -566,7 +566,8 @@
     @push('scripts')
         <script>
             const lang = 'EN';
-            const startDate = '2014-11-20T00:00:00'; // November 20, 2014
+            // const startDate = '2014-11-20T00:00:00'; // November 20, 2014
+            const startDate = '{{ optional($event)->start_date }}T00:00:00'; // November 20, 2014
             const ColorDigitEnd = '#bfbfbf';
 
             // Language settings
