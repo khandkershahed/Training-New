@@ -239,6 +239,7 @@
                                 {{ optional($event)->row_one_button_name }}
                             </a>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -289,7 +290,7 @@
                     <div class="card rounded-2 border-0 bg-transparent">
                         <div class="card-body">
                             <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode("Row Three") }}"
+                                src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
                                 alt="" />
                             <div class="pt-3">
                                 <a href="{{ route('event.registration') }}"
@@ -338,7 +339,7 @@
                                 src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
                                 alt="" /> --}}
                             <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_five_image) ? url('storage/' . optional($event)->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode("Row Three") }}"
+                                src="{{ !empty(optional($event)->row_five_image) ? url('storage/' . optional($event)->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
                                 alt="" />
                             <div class="pt-3">
                                 <a href="{{ route('event.registration') }}"
