@@ -247,7 +247,7 @@
         display: flex;
         justify-content: center;
         font-family: "Roboto", sans-serif;
-        font-size: 2.1em;
+        font-size: 3.1em;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
@@ -463,7 +463,9 @@
         --color: #613587;
         --delay: 4s;
     }
-
+    .animated-button1:hover{
+        color: white !important;
+    }
     /* Popup styling */
     .popup {
         width: 321.6px;
@@ -487,7 +489,10 @@
     .timeline-point:nth-child(even) .popup {
         top: 221.1px;
     }
-
+ /* Hide all list items except the first by default */
+ #industryList li:not(:first-child) {
+            display: none;
+        }
     /* Popup number styling */
     .popup-number {
         grid-row: span 2;
@@ -779,7 +784,7 @@
         text-align: end;
     }
 
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 600px) {
         /* .overview-section {
             display: none;
         } */
@@ -887,5 +892,9 @@
         .event-step-nav {
             width: 65%;
         }
+        .event-titles-home{
+            width: 100%;
+        }
     }
+
 </style>
