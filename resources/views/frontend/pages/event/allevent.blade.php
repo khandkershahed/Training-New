@@ -95,9 +95,7 @@
         .swiper-rtl .swiper-button-prev:after {
             content: 'none';
         }
-    </style>
 
-    <style>
         .stepsWrapper {
             padding: 0 100px;
             width: 100%;
@@ -575,4 +573,54 @@
             </div>
         </div>
     </div>
+
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="shareEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header rounded-0" style=" background: rgba(61, 6, 109, 0.8); ">
+                    <h5 class="modal-title text-white" id="modalTitleId">
+                        Share This Event
+                    </h5>
+                    <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div>
+                        <img class="img-fluid"
+                            src="{{ !empty(optional($event)->banner_image) ? url('storage/' . optional($event)->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                            alt="Event Image" />
+                    </div>
+                    <div class="p-3">
+                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
+                        <p class="fw-semibold" style="text-align: justify">
+                            {!! optional($event)->row_one_description !!}
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer rounded-0 justify-content-center align-items-center"
+                    style=" background: rgba(61, 6, 109, 0.8); ">
+                    <span class="text-white">Share On:</span>
+                    <div class="">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="{{ optional($event)->website_link }}" type="button"
+                                class="border-0 btn btn-outline-light">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="{{ optional($event)->whatsapp_link }}" type="button"
+                                class="border-0 btn btn-outline-light">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="{{ optional($event)->website_link }}" type="button"
+                                class="border-0 btn btn-outline-light">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Share Modal End --}}
 @endsection

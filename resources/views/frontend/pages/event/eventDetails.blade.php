@@ -1,5 +1,6 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
+
     <style>
         @-webkit-keyframes last_rotate {
             0% {
@@ -204,9 +205,7 @@
         .form-check-input:focus {
             box-shadow: none;
         }
-    </style>
-    {{-- Timeline Agenda --}}
-    <style>
+
         /* Timeline container styling */
         .timeline-container {
             display: flex;
@@ -641,7 +640,7 @@
             </div>
         </section>
     @endif
-{{-- Check Availidi --}}
+    {{-- Check Availidi --}}
     <section style="background-color: #eee">
         <div class="container py-5">
             <div class="row">
@@ -838,7 +837,7 @@
             </div>
         </div>
     </section>
-{{-- Check Availidi End--}}
+    {{-- Check Availidi End --}}
     @if (!empty(optional($event)->row_four_title) && !empty(optional($event)->row_four_description))
         <section class="action-bg py-5">
             <div class="container">
@@ -1111,88 +1110,88 @@
     </div>
     {{-- Share Modal End --}}
     @push('scripts')
-    <script>
-        const lang = 'EN';
-        const startDate = '2014-11-20T00:00:00'; // November 20, 2014
-        const ColorDigitEnd = '#bfbfbf';
+        <script>
+            const lang = 'EN';
+            const startDate = '2014-11-20T00:00:00'; // November 20, 2014
+            const ColorDigitEnd = '#bfbfbf';
 
-        // Language settings
-        const dayLang = lang === 'EN' ? 'Days' : 'Дней';
-        const hourLang = lang === 'EN' ? 'Hours' : 'Часов';
-        const minLang = lang === 'EN' ? 'Minutes' : 'Минут';
-        const secLang = lang === 'EN' ? 'Seconds' : 'Секунд';
+            // Language settings
+            const dayLang = lang === 'EN' ? 'Days' : 'Дней';
+            const hourLang = lang === 'EN' ? 'Hours' : 'Часов';
+            const minLang = lang === 'EN' ? 'Minutes' : 'Минут';
+            const secLang = lang === 'EN' ? 'Seconds' : 'Секунд';
 
-        class CountUp {
-            constructor({
-                cont,
-                startDate,
-                lang
-            }) {
-                this.cont = cont;
-                this.startDate = new Date(startDate);
-                this.lang = lang;
-                this.interval = null;
-            }
+            class CountUp {
+                constructor({
+                    cont,
+                    startDate,
+                    lang
+                }) {
+                    this.cont = cont;
+                    this.startDate = new Date(startDate);
+                    this.lang = lang;
+                    this.interval = null;
+                }
 
-            start() {
-                this.interval = setInterval(() => {
-                    const diff = Date.now() - this.startDate;
-                    if (diff <= 0) {
-                        clearInterval(this.interval);
-                        this.cont.innerHTML = 'Time has not started yet';
-                        return;
-                    }
+                start() {
+                    this.interval = setInterval(() => {
+                        const diff = Date.now() - this.startDate;
+                        if (diff <= 0) {
+                            clearInterval(this.interval);
+                            this.cont.innerHTML = 'Time has not started yet';
+                            return;
+                        }
 
-                    // Calculate time components
-                    const days = Math.floor(diff / 86400000);
-                    const hours = Math.floor((diff % 86400000) / 3600000);
-                    const minutes = Math.floor((diff % 3600000) / 60000);
-                    const seconds = Math.floor((diff % 60000) / 1000);
+                        // Calculate time components
+                        const days = Math.floor(diff / 86400000);
+                        const hours = Math.floor((diff % 86400000) / 3600000);
+                        const minutes = Math.floor((diff % 3600000) / 60000);
+                        const seconds = Math.floor((diff % 60000) / 1000);
 
-                    // Update the display
-                    this.cont.innerHTML = `
+                        // Update the display
+                        this.cont.innerHTML = `
                     <div>${days} ${this.lang.day}</div>
                     <div>${hours} ${this.lang.hour}</div>
                     <div>${minutes} ${this.lang.minute}</div>
                     <div>${seconds} ${this.lang.second}</div>
                 `;
-                }, 1000);
+                    }, 1000);
+                }
             }
-        }
 
-        const cu = new CountUp({
-            cont: document.querySelector('.flip-countdown'),
-            startDate: startDate,
-            lang: {
-                day: dayLang,
-                hour: hourLang,
-                minute: minLang,
-                second: secLang
+            const cu = new CountUp({
+                cont: document.querySelector('.flip-countdown'),
+                startDate: startDate,
+                lang: {
+                    day: dayLang,
+                    hour: hourLang,
+                    minute: minLang,
+                    second: secLang
+                }
+            });
+            cu.start();
+        </script>
+        <script>
+            function showContent(type) {
+                // Hide all content divs
+                document.querySelector('.seminar_show').style.display = 'none';
+                document.querySelector('.knowledge_show').style.display = 'none';
+                document.querySelector('.project_show').style.display = 'none';
+
+                // Show the selected content
+                if (type === 'seminar') {
+                    document.querySelector('.seminar_show').style.display = 'block';
+                } else if (type === 'knowledge') {
+                    document.querySelector('.knowledge_show').style.display = 'block';
+                } else if (type === 'project') {
+                    document.querySelector('.project_show').style.display = 'block';
+                }
             }
-        });
-        cu.start();
-    </script>
-    <script>
-        function showContent(type) {
-            // Hide all content divs
-            document.querySelector('.seminar_show').style.display = 'none';
-            document.querySelector('.knowledge_show').style.display = 'none';
-            document.querySelector('.project_show').style.display = 'none';
 
-            // Show the selected content
-            if (type === 'seminar') {
-                document.querySelector('.seminar_show').style.display = 'block';
-            } else if (type === 'knowledge') {
-                document.querySelector('.knowledge_show').style.display = 'block';
-            } else if (type === 'project') {
-                document.querySelector('.project_show').style.display = 'block';
-            }
-        }
-
-        // Call showContent on page load to show the default div for "project"
-        window.onload = function() {
-            showContent('seminar');
-        };
-    </script>
-@endpush
+            // Call showContent on page load to show the default div for "project"
+            window.onload = function() {
+                showContent('seminar');
+            };
+        </script>
+    @endpush
 @endsection
