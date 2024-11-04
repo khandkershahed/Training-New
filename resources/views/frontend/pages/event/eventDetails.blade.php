@@ -456,7 +456,7 @@
             <div class="row">
                 <div class="col-lg-12 px-0">
                     <div class="image-container">
-                        <img src="{{ !empty($event->banner_image) ? url('storage/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                        <img src="{{ !empty(optional($event)->banner_image) && file_exists(public_path('storage/' . optional($event)->banner_image)) ? url('storage/' . optional($event)->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
                             alt="Event Image" />
                         <div class="overlay"></div>
                         <div class="row">
@@ -548,410 +548,160 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="container py-5 mobile-none">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-7">
-                    <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
-                        <p class="fw-semibold" style="text-align: justify">
-                            {!! optional($event)->row_one_description !!}
+    @if (!empty(optional($event)->row_one_title) && !empty(optional($event)->row_one_description))
+        <section id="overview-section" style="background-color: #eee">
+            <div class="container py-5 mobile-none">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
+                            <p class="fw-semibold" style="text-align: justify">
+                                {!! optional($event)->row_one_description !!}
+                            </p>
+
+                            @if (optional($event)->row_one_button_link && optional($event)->row_one_button_name)
+                                <div class="pt-3">
+                                    <a href="{{ optional($event)->row_one_button_link }}"
+                                        class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
+                                        {{ optional($event)->row_one_button_name }}
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    @if (!empty(optional($event)->row_one_image))
+                        <div class="col-lg-6">
+                            <div class="card rounded-2 border-0 bg-transparent">
+                                <div class="card-body">
+                                    <img class="img-fluid rounded-2 w-100"
+                                        src="{{ !empty(optional($event)->row_one_image) ? url('storage/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($event)->row_one_title) }}"
+                                        alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </section>
+    @endif
+    @if (!empty(optional($event)->row_two_title) && !empty(optional($event)->row_two_description))
+        <section id="details-requirements">
+            <div class="container py-5">
+                <div class="row" style="text-align: justify">
+                    <div class="col-lg-12">
+
+                        <h1 class="first-color cst-font">
+                            {{ optional($event)->row_two_title }}
+                        </h1>
+
+                        <p class="pt-2">
+                            {!! optional($event)->row_two_description !!}
                         </p>
 
-                        <div class="pt-3">
-                            <a href="{{ route('event.registration') }}"
-                                class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
-                                {{ optional($event)->row_one_button_name }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="card rounded-2 border-0 bg-transparent">
-                        <div class="card-body">
-                            <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
-                                alt="" />
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section style="background-color: #eee">
-        <div class="container py-5">
-            <div class="row" style="text-align: justify">
-                <div class="col-lg-12">
-
-                    <h1 class="first-color cst-font">
-                        {{ optional($event)->row_two_title }}
-                    </h1>
-
-                    <p class="pt-2">
-                        {!! optional($event)->row_two_description !!}
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container py-5 mobile-none">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-8">
-                    <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_three_badge }}</h1>
-                        <div>
-                            <p>{{ optional($event)->row_three_badge }}</p>
-                            <p class="fw-semibold" style="text-align: justify">
-                                {!! optional($event)->row_three_description !!}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card rounded-2 border-0 bg-transparent">
-                        <div class="card-body">
-                            <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
-                                alt="" />
-                            <div class="pt-3">
-                                <a href="{{ route('event.registration') }}"
-                                    class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
-                                    {{ optional($event)->row_three_button_name }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section style="background-color: #eee">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="">
-                        <h1 class="cst-font first-color">Check your Eligibility to Participate</h1>
-                        <p>To identify eligible work opportunities for visionary IIoT and AI projects, consider the
-                            following criteria and areas of focus.</p>
-
-                        <div class="d-flex align-items-center">
-                            <p class="pe-2 mb-0 pb-0">I want to Participate</p>
+        </section>
+    @endif
+    @if (!empty(optional($event)->row_three_title) && !empty(optional($event)->row_three_description))
+        <section id="overview-section" style="background-color: #eee">
+            <div class="container py-5 mobile-none">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_three_badge }}</h1>
                             <div>
-                                <div class="d-flex">
-                                    <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
-                                        <input class="form-check-input me-1" type="radio" name="options"
-                                            value="seminar" onclick="showContent('seminar')" checked />
-                                        for Seminar Only
-                                    </label>
-                                    <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
-                                        <input class="form-check-input me-1" type="radio" name="options"
-                                            value="speech" onclick="showContent('knowledge')" />
-                                        to give a speech and share my knowledge
-                                    </label>
-                                    <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
-                                        <input class="form-check-input me-1" type="radio" name="options"
-                                            value="project" onclick="showContent('project')" />
-                                        with Innovative Project Idea & Work
-                                    </label>
-                                </div>
+                                <h5 class="mb-2">{{ optional($event)->row_three_title }}</h5>
+                                <p class="fw-semibold" style="text-align: justify">
+                                    {!! optional($event)->row_three_description !!}</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div>
-                        <div class="seminar_show" style="display: block;">
-                            <div class="row align-items-center mt-3">
-                                <div class="col-lg-12">
-                                    <div>
-                                        <h2>Excellent</h2> Our tailored event designed to share knowledge, speakers'
-                                        keynotes, talking with industry experts and project idea sharing and many more. You
-                                        will also be able to get information about our Training Programs that may help you
-                                        guide
-                                        your career path in IoT, AI, Web & Apps Development, Blockchain, Cloud Secuirty and
-                                        so
-                                        many.
-                                    </div>
-                                    <div class="pt-3 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6>Please ensure that you are fulfilling one of the below -</h6>
-                                            <ul>
-                                                <li>You are Final Year / Graduate Student</li>
-                                                <li>You want to learn more / Want to Join our training programms</li>
-                                                <li>You have registered with our Training Institute for a Training Program
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="text-end">
-                                            <a href="{{ route('event.registration') }}"
-                                                class="animated-button1 mb-2 py-3" style="border-radius: 0">
-                                                Registration Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="knowledge_show" style="display: none;">
-                            <div class="row align-items-center mt-3">
-                                <div class="col-lg-12">
-                                    <div>
-                                        <h2>Great!</h2> We love to hear from you. Your knowledge, skills on the related
-                                    </div>
-                                    <div class="pt-3 d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6>Following are some topics on what you can write up and submit us to Register
-                                                for this interest -</h6>
-                                            <ul>
-                                                <li>Ideas you may have on Emerging Trends of AI, IoT or Robotics </li>
-                                                <li>The specific idea of Industrial & Office automations</li>
-                                                <li>Livestocks Project concept and implemnetation Idea</li>
-                                                <li>An details analysis of Industrial needs on Smart IoT/Automation in
-                                                    Bangladesh</li>
-                                                <li>Respective Industries and their needs of IIoT SOlutions immediately</li>
-                                                <li>What are existing Global IoT Solutions and what still lacking in
-                                                    Bangladesh ?</li>
-                                            </ul>
-                                            <p>Best Analysis, Report , write up will allowed you to give speech in the
-                                                session. Also you will have a Certificate</p>
-                                        </div>
-                                        <div class="text-end">
-                                            <a href="{{ route('event.registration') }}"
-                                                class="animated-button1 mb-2 py-3" style="border-radius: 0">
-                                                Registration Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project_show" style="display: none;">
-                            <div class="row align-items-center mt-3">
-                                <div class="col-lg-12">
-                                    <div>
-                                        <h2>Awesome!</h2>You are the one of the priority pariticipants today. Please see the
-                                        below and understand about Scope of Projects and submission details here -
-                                    </div>
+                    <div class="col-lg-4">
+                        <div class="card rounded-2 border-0 bg-transparent">
+                            <div class="card-body">
+                                <img class="img-fluid rounded-2 w-100"
+                                    src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
+                                    alt="" />
+                                @if (optional($event)->row_three_button_link && optional($event)->row_three_button_name)
                                     <div class="pt-3">
-                                        <div>
-                                            <h6>Please ensure that you are fulfilling one of the below -</h6>
-                                            <ol>
-                                                <li class="mt-3">
-                                                    <h5>Industry Required--</h5>
-                                                    <strong>Industry Needs:</strong> ( Do you have existing project,
-                                                    concept, idea and skill ? ) <br>
-                                                    <strong>Manufacturing:</strong> Look for projects aimed at optimizing
-                                                    production lines through predictive maintenance, quality control, and
-                                                    process automation. <br>
-                                                    <strong>Healthcare:</strong> Explore opportunities that leverage IIoT
-                                                    for remote patient monitoring, smart medical devices, and AI-driven
-                                                    diagnostics.<br>
-                                                    <strong>Smart Cities:</strong> Investigate initiatives focused on urban
-                                                    infrastructure, traffic management, and environmental monitoring using
-                                                    connected devices.<br>
-                                                    <strong>Energy Management:</strong> Seek projects that integrate IIoT
-                                                    for smart grids, renewable energy management, and efficient energy
-                                                    consumption.<br>
-                                                </li>
-                                                <li class="mt-3">
-                                                    <h5>Project Details--</h5>
-                                                    <strong>Project Scope:</strong> ( Are you intending to share, develop
-                                                    and particiapte the scope of several activities / projects ? ) <br>
-                                                    <strong>Research and Development:</strong> Identify roles in R&D for
-                                                    innovative solutions that combine AI algorithms with IIoT devices for
-                                                    data analysis and automation.<br>
-                                                    <strong>Implementation and Integration:</strong> Look for positions
-                                                    involving the deployment and integration of IIoT systems within existing
-                                                    infrastructures.<br>
-                                                    <strong>Data Analysis and Machine Learning:</strong> Explore
-                                                    opportunities for data scientists and analysts to work on AI models that
-                                                    enhance IIoT functionalities.<br>
-                                                </li>
-                                                <li class="mt-3">
-                                                    <h5>Skills Required--</h5>
-                                                    <strong>Technical Skills:</strong> Familiarity with programming
-                                                    languages (e.g., Python, C/C++), cloud platforms (AWS, Azure), and IoT
-                                                    protocols (MQTT, CoAP).<br>
-                                                    <strong>AI and Machine Learning Knowledge:</strong> Understanding of
-                                                    machine learning frameworks (e.g., TensorFlow, PyTorch) and experience
-                                                    in developing AI models.<br>
-                                                    <strong>Connectivity and Networking:</strong> Knowledge of networking
-                                                    technologies relevant to IoT (e.g., LPWAN, Zigbee) and cybersecurity
-                                                    measures.
-                                                </li>
-                                                <li class="mt-3">
-                                                    <h5>Types of Roles--</h5>
-                                                    <strong>IoT Solutions Architect:</strong> Familiarity with programming
-                                                    languages (e.g., Python, C/C++), cloud platforms (AWS, Azure), and IoT
-                                                    protocols (MQTT, CoAP).<br>
-                                                    <strong>Data Scientist/AI Engineer:</strong> Understanding of machine
-                                                    learning frameworks (e.g., TensorFlow, PyTorch) and experience in
-                                                    developing AI models.<br>
-                                                    <strong>Systems Engineer:</strong> Overseeing the integration of IIoT
-                                                    systems with existing infrastructure and ensuring seamless
-                                                    functionality. <br>
-                                                    <strong>Project Manager:</strong> Leading projects focused on IIoT and
-                                                    AI development, coordinating between technical teams and stakeholders.
-                                                </li>
-                                                <li class="mt-3">
-                                                    <h5>Collaboration Opportunities--</h5>
-                                                    <strong>Partnerships with Startups:</strong> Engage with startups
-                                                    focused on innovative IIoT and AI solutions for potential project
-                                                    collaboration.<br>
-                                                    <strong>Academic Institutions:</strong> Collaborate on research projects
-                                                    that explore new frontiers in IIoT and AI, benefiting from academic
-                                                    expertise and resources.Industry Conferences and Workshops: Attend
-                                                    events focused on IIoT and AI to network with potential employers and
-                                                    partners.
-                                                </li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                    <div class="text-start pt-3">
-                                        <a href="{{ route('event.registration') }}" class="animated-button1 mb-2 py-3"
-                                            style="border-radius: 0">
-                                            Registration Now
+                                        <a href="{{ optional($event)->row_three_button_link }}"
+                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
+                                            {{ optional($event)->row_three_button_name }}
                                         </a>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="action-bg py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-9">
-                    <div class="text-white">
-                        <h3 class="srpt-font">{{ optional($event)->row_four_badge }}</h3>
-                        <h1 class="action-title pb-2 cst-font">
-                            {{ optional($event)->row_four_title }}
-                        </h1>
-                        <p class="fw-bold" style="text-align: justify">
-                            {!! implode(' ', array_slice(explode(' ', optional($event)->row_four_description), 0, 500)) !!}
-                        </p>
+        </section>
+    @endif
+    @if (!empty(optional($event)->row_four_title) && !empty(optional($event)->row_four_description))
+        <section class="action-bg py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-10">
+                        <div class="text-white">
+                            <h3 class="srpt-font">{{ optional($event)->row_four_badge }}</h3>
+                            <h1 class="action-title pb-2 cst-font">
+                                {{ optional($event)->row_four_title }}
+                            </h1>
+                            <p class="fw-bold" style="text-align: justify">
+                                {!! optional($event)->row_four_description !!}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <a href="{{ route('event.registration') }}" class="btn btn-outline-light rouned-0 py-3 px-5 cst-font"
-                        style="border-radius: 0">
-                        {{ optional($event)->row_four_button_name }}
-                    </a>
+                    @if (optional($event)->row_four_button_link && optional($event)->row_four_button_name)
+                        <div class="col-lg-2">
+                            <a href="{{ optional($event)->row_four_button_link }}"
+                                class="btn btn-outline-light rouned-0 py-3 cst-font" style="border-radius: 0">
+                                {{ optional($event)->row_four_button_name }}
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
-        </div>
-    </section>
-    {{-- Agenda --}}
-    <section>
-        <div class="container" style="height: 800px;">
-            <!-- Main timeline container -->
-            <div class="timeline-container">
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-icons"></i>
-                    <div class="popup">
-                        <div class="popup-number">1</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Keynote Sessions</div>
-                            <p class="text-black"> By Industry Experts & Brilliant Students . Insights into the challenges
-                                and opportunities of implementing smart automation solutions.Expert speakers.</p>
-                        </div>
-                    </div>
-                </div>
+        </section>
+    @endif
 
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-copyright"></i>
-                    <div class="popup">
-                        <div class="popup-number">2</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Workshops</div>
-                            <p class="text-black">Integrating AI with IIoT: Explore tools and platforms that facilitate the
-                                integration of AI capabilities into IoT frameworks.</p>
+    @if (!empty(optional($event)->row_five_title) && !empty(optional($event)->row_five_description))
+        <section id="overview-section">
+            <div class="container py-5 mobile-none">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-4">
+                        <div class="card rounded-2 border-0 bg-transparent">
+                            <div class="card-body">
+                                {{-- <img class="img-fluid rounded-2 w-100"
+                                    src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
+                                    alt="" /> --}}
+                                <img class="img-fluid rounded-2 w-100"
+                                    src="{{ !empty(optional($event)->row_five_image) ? url('storage/' . optional($event)->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
+                                    alt="" />
+                                @if (optional($event)->row_five_button_link && optional($event)->row_five_button_name)
+                                    <div class="pt-3">
+                                        <a href="{{ optional($event)->row_five_button_link }}"
+                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
+                                            {{ optional($event)->row_five_button_name }}
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-bullseye"></i>
-                    <div class="popup">
-                        <div class="popup-number">3</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Panel Discussions</div>
-                            <p class="text-black"> Engage with a panel of industry experts discussing the future of AI in
-                                industrial automation and addressing audience questions.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-compass"></i>
-                    <div class="popup">
-                        <div class="popup-number">4</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Networking Sessions</div>
-                            <p class="text-black">Opportunities to connect with fellow participants, speakers, and industry
-                                leaders.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-face-grin-beam-sweat"></i>
-                    <div class="popup">
-                        <div class="popup-number">5</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Case Studies</div>
-                            <p class="text-black"> Presentations highlighting successful implementations of AI-powered IIoT
-                                solutions, showcasing their impact on operational.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    {{-- Agenda End --}}
-    <section style="background-color: #eee">
-        <div class="container py-5 mobile-none">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-4">
-                    <div class="card rounded-2 border-0 bg-transparent">
-                        <div class="card-body">
-                            {{-- <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
-                                alt="" /> --}}
-                            <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_five_image) ? url('storage/' . optional($event)->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
-                                alt="" />
-                            <div class="pt-3">
-                                <a href="{{ route('event.registration') }}"
-                                    class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
-                                    {{ optional($event)->row_five_button_name }}
-                                </a>
+                    <div class="col-lg-8">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_five_title }}</h1>
+                            <div>
+                                <p>{!! optional($event)->row_five_description !!}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_five_title }}</h1>
-                        <div>
-                            <p>{!! optional($event)->row_five_description !!}</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section id="projects">
         <div class="container py-5">
@@ -1053,7 +803,7 @@
                 <div class="modal-body p-0">
                     <div>
                         <img class="img-fluid"
-                            src="{{ !empty($event->banner_image) ? url('storage/event/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                            src="{{ !empty(optional($event)->banner_image) ? url('storage/' . optional($event)->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
                             alt="Event Image" />
                     </div>
                     <div class="p-3">
@@ -1090,7 +840,7 @@
     @push('scripts')
         <script>
             const lang = 'EN';
-            const startDate = '2014-11-20T00:00:00'; // November 20, 2014
+            const targetDate = '{{ optional($event)->start_date }}T00:00:00'; // Future event date
             const ColorDigitEnd = '#bfbfbf';
 
             // Language settings
@@ -1099,24 +849,24 @@
             const minLang = lang === 'EN' ? 'Minutes' : 'Минут';
             const secLang = lang === 'EN' ? 'Seconds' : 'Секунд';
 
-            class CountUp {
+            class CountDown {
                 constructor({
                     cont,
-                    startDate,
+                    targetDate,
                     lang
                 }) {
                     this.cont = cont;
-                    this.startDate = new Date(startDate);
+                    this.targetDate = new Date(targetDate);
                     this.lang = lang;
                     this.interval = null;
                 }
 
                 start() {
                     this.interval = setInterval(() => {
-                        const diff = Date.now() - this.startDate;
+                        const diff = this.targetDate - Date.now();
                         if (diff <= 0) {
                             clearInterval(this.interval);
-                            this.cont.innerHTML = 'Time has not started yet';
+                            this.cont.innerHTML = 'Event has started!';
                             return;
                         }
 
@@ -1127,19 +877,18 @@
                         const seconds = Math.floor((diff % 60000) / 1000);
 
                         // Update the display
-                        this.cont.innerHTML = `
-                        <div>${days} ${this.lang.day}</div>
-                        <div>${hours} ${this.lang.hour}</div>
-                        <div>${minutes} ${this.lang.minute}</div>
-                        <div>${seconds} ${this.lang.second}</div>
-                    `;
+                        this.cont.innerHTML =
+                            `<div>${days} ${this.lang.day}</div>
+                     <div>${hours} ${this.lang.hour}</div>
+                     <div>${minutes} ${this.lang.minute}</div>
+                     <div>${seconds} ${this.lang.second}</div>`;
                     }, 1000);
                 }
             }
 
-            const cu = new CountUp({
+            const cd = new CountDown({
                 cont: document.querySelector('.flip-countdown'),
-                startDate: startDate,
+                targetDate: targetDate,
                 lang: {
                     day: dayLang,
                     hour: hourLang,
@@ -1147,7 +896,29 @@
                     second: secLang
                 }
             });
-            cu.start();
+            cd.start();
+        </script>
+        <script>
+            function showContent(type) {
+                // Hide all content divs
+                document.querySelector('.seminar_show').style.display = 'none';
+                document.querySelector('.knowledge_show').style.display = 'none';
+                document.querySelector('.project_show').style.display = 'none';
+
+                // Show the selected content
+                if (type === 'seminar') {
+                    document.querySelector('.seminar_show').style.display = 'block';
+                } else if (type === 'knowledge') {
+                    document.querySelector('.knowledge_show').style.display = 'block';
+                } else if (type === 'project') {
+                    document.querySelector('.project_show').style.display = 'block';
+                }
+            }
+
+            // Call showContent on page load to show the default div for "project"
+            window.onload = function() {
+                showContent('seminar');
+            };
         </script>
         <script>
             function showContent(type) {
