@@ -105,6 +105,7 @@ class HomeController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'], // Adjusted for the users table
+            'event_id' => ['required'], // Adjusted for the users table
             // 'password' => ['required', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()],
             'password' => ['required'],
             // 'attachment.*' => 'file|mimes:jpg,png,pdf|max:2048', // Example file validation

@@ -197,12 +197,15 @@
                                             <label for="event_name">Event Name</label>
                                             <select
                                                 class="form-select form-select-sm @error('confirm_password') is-invalid @enderror"
-                                                aria-label="Default select example" name="event_id" style="height: 50px">
+                                                aria-label="Default select example" name="event_id" style="height: 50px" required>
                                                 <option selected>Slelect Event</option>
                                                 @foreach ($events as $event)
                                                     <option value="{{ $event->id }}">{{ $event->event_name }}</option>
                                                 @endforeach
                                             </select>
+                                            @error('event_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -550,7 +553,7 @@
                                         <p class="mb-0">Terms & Policy</p>
                                         <div class="line"></div>
                                     </div>
-                                    <div class="row">
+                                    {{-- <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
                                                 <input type="checkbox" id="check27" name="send_email" value="1"
@@ -559,7 +562,7 @@
                                                     emails</label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
