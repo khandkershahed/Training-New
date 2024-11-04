@@ -75,7 +75,7 @@ Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 
 //Event
 Route::get('/event', [HomeController::class, 'event'])->name('event');
-Route::get('/event/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
+Route::get('/event-details/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
 Route::get('/event/registration', [HomeController::class, 'eventRegistration'])->name('event.registration');
 Route::post('/register/user/event', [HomeController::class, 'registerUserEvent'])->name('register.user.event');
 Route::post('/user/event/registration', [HomeController::class, 'userEventRegistration'])->name('user.event.registration');
