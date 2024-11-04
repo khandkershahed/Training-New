@@ -1,244 +1,6 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <!-- Demo styles -->
-    <style>
-        .swiper {
-            width: 350px;
-            height: 500px;
-        }
-
-        .swiper-slide {
-            position: relative;
-            /* Required for positioning the overlay */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-            font-weight: bold;
-            color: #fff;
-            background-image: url('https://www.i-eventplanner.com/wp-content/uploads/2018/07/Event_planning.jpg');
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
-        }
-
-        .swiper-slide::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right,
-                    rgba(61, 6, 109, 0.8),
-                    rgba(186, 52, 166, 0.829));
-            /* Black overlay with 50% opacity */
-            z-index: 1;
-            /* Ensures the overlay stays below the content */
-            border-radius: 18px;
-            /* Matches the border radius of the slide */
-        }
-
-        .swiper-slide .content {
-            position: relative;
-            z-index: 2;
-            /* Ensures the text content stays above the overlay */
-        }
-
-        .events-card {
-            background-color: #fff;
-        }
-
-        .evenet-content {
-            width: 100%;
-            margin: auto;
-        }
-
-        .event-color {
-            color: rgba(186, 52, 166, 0.829);
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #fff;
-            /* Change icon color */
-            font-size: 24px;
-            /* Increase icon size */
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Add a background for better visibility */
-            border-radius: 50%;
-            /* Make the background circular */
-            padding: 10px;
-            width: 50px;
-            /* Adjust button width */
-            height: 50px;
-            /* Adjust button height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-            /* Change background color on hover */
-        }
-
-        .swiper-button-next:after,
-        .swiper-rtl .swiper-button-prev:after {
-            content: 'none';
-        }
-
-        .swiper-button-prev:after,
-        .swiper-rtl .swiper-button-prev:after {
-            content: 'none';
-        }
-    </style>
-    <style>
-        .stepsWrapper {
-            padding: 0 100px;
-            width: 100%;
-            box-sizing: border-box;
-            background-color: #00193d;
-            display: inline-block;
-            color: white;
-            height: 260px;
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-around;
-        }
-
-        .stepsWrapper .step {
-            margin: 0 20px;
-            height: 100%;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -ms-flex-align: start;
-            -webkit-align-items: start;
-            -webkit-box-align: start;
-            align-items: start;
-        }
-
-        .stepsWrapper .step .counter {
-            float: left;
-            font-size: 46px;
-            font-weight: bold;
-            line-height: 180px;
-            height: 100%;
-            position: relative;
-            z-index: 0;
-            box-sizing: border-box;
-            padding: 0 40px;
-            text-align: center;
-        }
-
-        .stepsWrapper .step .counter:after {
-            transform: skewX(-15deg);
-            transform-origin: bottom left;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(186, 52, 166, 0.829);
-            position: absolute;
-            top: 0;
-            left: -15%;
-            content: '';
-            margin: 0;
-            z-index: -1;
-        }
-
-        .stepsWrapper .step .stepDetails {
-            float: left;
-            margin-left: 60px;
-            position: relative;
-            top: 50px;
-        }
-
-        .stepsWrapper .step .stepDetails .detailHeading {
-            margin: 0;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .stepsWrapper .step .stepDetails .detailText {
-            margin-top: 20px;
-            max-width: 350px;
-            max-height: 260px;
-            overflow: hidden;
-        }
-
-        .amount {
-            position: relative;
-            left: 25px;
-            top: 35px;
-        }
-
-        @media all and (max-width: 1290px) {
-
-            .stepsWrapper {
-                flex-wrap: wrap;
-                padding: 0;
-            }
-
-            .stepsWrapper .step {
-                width: 100%;
-            }
-
-            .stepsWrapper .step .counter {
-                background-color: rgba(186, 52, 166, 0.829);
-            }
-
-            .stepsWrapper .step .counter:after {
-                display: none;
-            }
-
-            .stepsWrapper .step .stepDetails {
-                float: none;
-                -ms-flex-align: center;
-                -webkit-align-items: center;
-                -webkit-box-align: center;
-                align-items: center;
-            }
-
-            .stepsWrapper .step .stepDetails .detailText {
-                max-width: initial;
-            }
-        }
-
-        @media all and (min-width: 1490px) {
-            .amount {
-                position: relative;
-                left: 20px !important;
-                top: 35px;
-            }
-
-            .stepsWrapper {
-                height: 260px !important;
-            }
-        }
-
-        @media only screen and (min-width: 1200px) {
-            .stepsWrapper {
-                height: 100%;
-            }
-
-            .stepsWrapper .step {
-                height: auto;
-            }
-
-            .amount {
-                position: relative;
-                left: 0px;
-                top: 35px;
-            }
-
-            .stepsWrapper .step .counter {
-                width: 100px;
-            }
-        }
-    </style>
+    @include('frontend.pages.event.partials.event-style')
     @if (!empty(optional($eventPage)->banner_title))
         <section>
             <div class="container-fluid">
@@ -255,8 +17,7 @@
                                         <h2 class="mb-0 pt-5 srpt-font">
                                             {{ optional($eventPage)->banner_sub_title }}
                                         </h2>
-                                        <h1 class="pt-2">{{ optional($eventPage)->banner_title }}</h1>
-
+                                        <h2 class="pt-2 event-titles-home">{{ optional($eventPage)->banner_title }}</h2>
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
                                         <div class="pt-2">
                                             <a href="javascript:void(0)" class="btn me-2 btn-outline-light rounded-pill"
@@ -364,12 +125,11 @@
             </div>
         </section>
     @endif
-
     <section style="background-color: #eee">
-        <div class="container py-5 overview-section">
+        <div class="container py-lg-5 py-3  overview-section">
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-7">
-                    <div class="py-5">
+                    <div class="py-lg-5 py-3">
                         <h1 class="pb-3 cst-font first-color">{{ optional($eventPage)->row_one_title }}</h1>
                         <p class="fw-semibold" style="text-align: justify">
                             {!! optional($eventPage)->row_one_description !!}
@@ -389,52 +149,54 @@
         </div>
     </section>
     <section>
-        <div class="container-fluid overview-section px-0">
-            <div class="row">
-                {{-- <div class="col-lg-12">
-                    <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">Event Highlights</h1>
-                    </div>
-                </div> --}}
-                <div class="col-lg-12 px-0">
-                    <div class="stepsWrapper">
-                        <div class="step">
-                            <span class="counter">
-                                <span class="amount">1</span>
-                            </span>
-                            <div class="stepDetails">
-                                <h4 class="detailHeading">Technology Seminars</h4>
-                                <div class="detailText">
-                                    Industry and academic experts will deliver keynotes on the latest innovations, offering
-                                    insights and real-world examples of how these advancements are transforming sectors.
+        <div class="container-fluid">
+            <div class="overview-section px-0">
+                <div class="row">
+                    {{-- <div class="col-lg-12">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">Event Highlights</h1>
+                        </div>
+                    </div> --}}
+                    <div class="col-lg-12 px-0">
+                        <div class="stepsWrapper">
+                            <div class="step">
+                                <span class="counter">
+                                    <span class="amount">1</span>
+                                </span>
+                                <div class="stepDetails">
+                                    <h4 class="detailHeading">Technology Seminars</h4>
+                                    <div class="detailText">
+                                        Industry and academic experts will deliver keynotes on the latest innovations, offering
+                                        insights and real-world examples of how these advancements are transforming sectors.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="step">
-                            <span class="counter">
-                                <span class="amount">
-                                    2
+                            <div class="step">
+                                <span class="counter">
+                                    <span class="amount">
+                                        2
+                                    </span>
                                 </span>
-                            </span>
-                            <div class="stepDetails">
-                                <h4 class="detailHeading">Presentation Workshops</h2>
-                                    <div class="detailText">
-                                        Hands-on workshops provide experience with AI, blockchain, and data analysis,
-                                        building skills and inspiring creative solutions.
-                                    </div>
+                                <div class="stepDetails">
+                                    <h4 class="detailHeading">Presentation Workshops</h2>
+                                        <div class="detailText">
+                                            Hands-on workshops provide experience with AI, blockchain, and data analysis,
+                                            building skills and inspiring creative solutions.
+                                        </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="step">
-                            <span class="counter">
-                                <span class="amount">
-                                    3
+                            <div class="step">
+                                <span class="counter">
+                                    <span class="amount">
+                                        3
+                                    </span>
                                 </span>
-                            </span>
-                            <div class="stepDetails">
-                                <h4 class="detailHeading">Discussion Sessions</h2>
-                                    <div class="detailText">Open forums and panels enable participants to connect with
-                                        experts and peers, fostering collaboration and inspiring innovative solutions.
-                                    </div>
+                                <div class="stepDetails">
+                                    <h4 class="detailHeading">Discussion Sessions</h2>
+                                        <div class="detailText">Open forums and panels enable participants to connect with
+                                            experts and peers, fostering collaboration and inspiring innovative solutions.
+                                        </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -456,7 +218,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div>
+                    <div class="py-lg-0 py-3">
                         <strong>
                             Support for Innovation:
                         </strong> We are committed to nurturing the next generation of tech
@@ -528,16 +290,21 @@
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="cst-font first-color">Join Us Now !</h1>
-                    <p style="text-align: justify">Register now to secure your spot and become part of a forward-thinking
-                        community dedicated to exploring and shaping the future of technology. Together, we can harness the
-                        power of IoT, AI, Blockchain, Big Data, Cloud, and Cybersecurity to build a better, more innovative
-                        future. Don’t miss this opportunity to enhance your skills, expand your network, and drive your
-                        career forward!</p>
+                    <div class="join-content">
+                        <h1 class="cst-font first-color ">Join Us Now !</h1>
+                        <p style="text-align: justify">Register now to secure your spot and become part of a
+                            forward-thinking
+                            community dedicated to exploring and shaping the future of technology. Together, we can harness
+                            the
+                            power of IoT, AI, Blockchain, Big Data, Cloud, and Cybersecurity to build a better, more
+                            innovative
+                            future. Don’t miss this opportunity to enhance your skills, expand your network, and drive your
+                            career forward!</p>
+                    </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="text-end">
-                        <a href="{{ route('event.registration') }}" class="animated-button1 mt-4 py-3"
+                    <div class="join-register">
+                        <a href="{{ route('event.registration') }}" class="animated-button1 mt-4 py-lg-3 py-2 px-lg-3 px-2"
                             style="border-radius: 0">
                             Registration Now
                         </a>
@@ -546,4 +313,78 @@
             </div>
         </div>
     </section>
+    {{-- Share Modal --}}
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="mapEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header rounded-0" style=" background: rgba(61, 6, 109, 0.8); ">
+                    <h5 class="modal-title text-white" id="modalTitleId">
+                        Event Location
+                    </h5>
+                    <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.473499558464!2d90.35587677605153!3d23.76614748817024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a568a70445%3A0x89dff0189e12966d!2sNGEN%20IT%20LTD.!5e0!3m2!1sen!2sbd!4v1729579396491!5m2!1sen!2sbd&zoom=1"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Share Modal End --}}
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="shareEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header rounded-0" style=" background: rgba(61, 6, 109, 0.8); ">
+                    <h5 class="modal-title text-white" id="modalTitleId">
+                        Share This Event
+                    </h5>
+                    <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div>
+                        <img class="img-fluid"
+                            src="{{ !empty(optional($event)->banner_image) ? url('storage/' . optional($event)->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                            alt="Event Image" />
+                    </div>
+                    <div class="p-3">
+                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
+                        <p class="fw-semibold" style="text-align: justify">
+                            {!! optional($event)->row_one_description !!}
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer rounded-0 justify-content-center align-items-center"
+                    style=" background: rgba(61, 6, 109, 0.8); ">
+                    <span class="text-white">Share On:</span>
+                    <div class="">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <a href="{{ optional($event)->website_link }}" type="button"
+                                class="border-0 btn btn-outline-light">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="{{ optional($event)->whatsapp_link }}" type="button"
+                                class="border-0 btn btn-outline-light">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="{{ optional($event)->website_link }}" type="button"
+                                class="border-0 btn btn-outline-light">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Share Modal End --}}
 @endsection

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top container px-0 custom-menu" id="navbar">
-    <div class="container">
+    <div class="container mx-0">
         <a class="navbar-brand" href="{{ route('homepage') }}">
             <img class="img-fluid" style="width: 95px" src="{{ asset('frontend/event/img/logo-white.png') }}" alt="" />
         </a>

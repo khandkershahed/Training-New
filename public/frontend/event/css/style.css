@@ -70,13 +70,6 @@ label {
 }
 
 
-.text-container h1 {
-    font-size: 4rem;
-    font-weight: bold;
-    margin: 0;
-    width: 60%;
-}
-
 .start-month {
     font-size: 1.5rem;
     color: rgba(186, 52, 166, 0.829);
@@ -339,25 +332,12 @@ label {
     }
 }
 
-
-
 @media (max-width: 468px) {
-    .text-container h1 {
-        font-size: 2rem;
-        font-weight: bold;
-        margin: 0;
-    }
     .mobile-none {
-        display: none;
-    }
-    .overview-section {
         display: none;
     }
     p {
         font-size: 12px;
-    }
-    .event-title {
-        font-size: 15px;
     }
     .events-all {
         margin-bottom: 20px;
@@ -367,11 +347,6 @@ label {
     }
     .large-none {
         display: block;
-    }
-
-    .for-mobile {
-        background: rgba(186, 52, 166, 0.829);
-        padding: 14px;
     }
     .menu-items {
         font-size: 14px !important;
@@ -387,10 +362,7 @@ label {
         margin-top: 0;
         padding-top: 0;
     }
-    .text-container {
-        position: absolute;
-        top: 45%;
-    }
+
     .navbar-blur {
         margin-top: 0 !important;
         border-radius: 7px !important;

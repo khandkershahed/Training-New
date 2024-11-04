@@ -1,4 +1,126 @@
 <x-admin-app-layout :title="'Event Update'">
+    {{-- <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="py-5">
+                    <div class="d-flex flex-column flex-md-row rounded border bg-white">
+                        <ul class="nav nav-tabs nav-pills flex-row border-0 flex-md-column me-5 mb-3 mb-md-0 fs-6 min-w-lg-200px"
+                            role="tablist">
+                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                                <a class="nav-link w-100 btn btn-flex btn-active-primary" data-bs-toggle="tab"
+                                    href="#kt_vtab_pane_14" aria-selected="false" role="tab" tabindex="-1">
+                                    <i
+                                        class="ki-duotone ki-icons/duotune/general/gen001.svg fs-2 text-black me-3"></i>
+                                    <span class="d-flex flex-column align-items-start">
+                                        <span class="fs-4 fw-bold">Event Details</span>
+                                        <span class="fs-7">Details</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                                <a class="nav-link w-100 btn btn-flex btn-active-primary" data-bs-toggle="tab"
+                                    href="#kt_vtab_pane_15" aria-selected="false" role="tab" tabindex="-1">
+                                    <i
+                                        class="ki-duotone ki-icons/duotune/general/gen001.svg fs-2 text-black me-3"></i>
+                                    <span class="d-flex flex-column align-items-start">
+                                        <span class="fs-4 fw-bold">Banners</span>
+                                        <span class="fs-7">Details</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                                <a class="nav-link w-100 btn btn-flex btn-active-primary" data-bs-toggle="tab"
+                                    href="#kt_vtab_pane_4" aria-selected="false" role="tab" tabindex="-1">
+                                    <i
+                                        class="ki-duotone ki-icons/duotune/general/gen001.svg fs-2 text-black me-3"></i>
+                                    <span class="d-flex flex-column align-items-start">
+                                        <span class="fs-4 fw-bold">Event Overview</span>
+                                        <span class="fs-7">Row One</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
+                                <a class="nav-link w-100 btn btn-flex btn-active-primary" data-bs-toggle="tab"
+                                    href="#kt_vtab_pane_5" aria-selected="false" role="tab" tabindex="-1">
+                                    <i class="ki-duotone ki-icons/duotune/general/gen003.svg fs-2 text-black"></i>
+                                    <span class="d-flex flex-column align-items-start">
+                                        <span class="fs-4 fw-bold">Event Objects</span>
+                                        <span class="fs-7">Row Two</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item w-100" role="presentation">
+                                <a class="nav-link w-100 btn btn-flex btn-active-primary active"
+                                    data-bs-toggle="tab" href="#kt_vtab_pane_6" aria-selected="true" role="tab">
+                                    <i class="ki-duotone ki-icons/duotune/general/gen017.svg fs-2 text-black"></i>
+                                    <span class="d-flex flex-column align-items-start">
+                                        <span class="fs-4 fw-bold">Another</span>
+                                        <span class="fs-7">Row Three</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade" id="kt_vtab_pane_14" role="tabpanel">
+                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui
+                                minim occaecat veniam.
+                                Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim.
+                                Velit non irure adipisicing aliqua
+                                ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat.
+                                Amet duis do nisi duis veniam non est eiusmod
+                                tempor incididunt tempor dolor ipsum in qui sit.
+                            </div>
+                            <div class="tab-pane fade" id="kt_vtab_pane_15" role="tabpanel">
+                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui
+                                minim occaecat veniam.
+                                Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim.
+                                Velit non irure adipisicing aliqua
+                                ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat.
+                                Amet duis do nisi duis veniam non est eiusmod
+                                tempor incididunt tempor dolor ipsum in qui sit.
+                            </div>
+                            <div class="tab-pane fade" id="kt_vtab_pane_4" role="tabpanel">
+                                Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui
+                                minim occaecat veniam.
+                                Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim.
+                                Velit non irure adipisicing aliqua
+                                ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat.
+                                Amet duis do nisi duis veniam non est eiusmod
+                                tempor incididunt tempor dolor ipsum in qui sit.
+                            </div>
+
+                            <div class="tab-pane fade" id="kt_vtab_pane_5" role="tabpanel">
+                                Nulla est ullamco ut irure incididunt nulla Lorem Lorem minim irure officia enim
+                                reprehenderit.
+                                Magna duis labore cillum sint adipisicing exercitation ipsum. Nostrud ut anim non
+                                exercitation velit laboris fugiat cupidatat.
+                                Commodo esse dolore fugiat sint velit ullamco magna consequat voluptate minim amet
+                                aliquip ipsum aute laboris nisi.
+                                Labore labore veniam irure irure ipsum pariatur mollit magna in cupidatat dolore magna
+                                irure esse tempor ad mollit.
+                                Dolore commodo nulla minim amet ipsum officia consectetur amet ullamco voluptate nisi
+                                commodo ea sit eu.
+                            </div>
+
+                            <div class="tab-pane fade active show" id="kt_vtab_pane_6" role="tabpanel">
+                                Sint sit mollit irure quis est nostrud cillum consequat Lorem esse do quis dolor esse
+                                fugiat sunt do.
+                                Eu ex commodo veniam Lorem aliquip laborum occaecat qui Lorem esse mollit dolore anim
+                                cupidatat.
+                                eserunt officia id Lorem nostrud aute id commodo elit eiusmod enim irure amet eiusmod
+                                qui reprehenderit nostrud tempor.
+                                Fugiat ipsum excepteur in aliqua non et quis aliquip ad irure in labore cillum elit
+                                enim. Consequat aliquip incididunt
+                                ipsum et minim laborum laborum laborum et cillum labore. Deserunt adipisicing cillum id
+                                nulla minim nostrud labore eiusmod et amet.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
     <div class="card card-flash">
         <div class="card-header">
             <div class="card-title">
@@ -406,7 +528,8 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Contact</label>
                                 <input type="number" name="contact" placeholder="contact"
-                                    class="form-control form-control-sm" value="{{ old('contact', $item->contact) }}">
+                                    class="form-control form-control-sm"
+                                    value="{{ old('contact', $item->contact) }}">
                             </div>
                         </div>
 
@@ -450,8 +573,10 @@
                                 <label for="" class="mb-2">Event Status</label>
                                 <select name="event_status" class="form-select form-select-sm" id="">
                                     <option selected disabled>Choose....</option>
-                                    <option value="active" {{ $item->event_status == 'active' ? 'selected' : '' }}>Active</option>
-                                    <option value="inactive" {{ $item->event_status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                    <option value="active" {{ $item->event_status == 'active' ? 'selected' : '' }}>
+                                        Active</option>
+                                    <option value="inactive"
+                                        {{ $item->event_status == 'inactive' ? 'selected' : '' }}>Inactive</option>
                                 </select>
                             </div>
                         </div>

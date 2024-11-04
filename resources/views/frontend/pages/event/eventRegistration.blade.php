@@ -1,64 +1,6 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
-
-        .form-control {
-            background-color: #eee;
-            border-color: #eee;
-            color: #000000;
-            border: 0;
-            transition: color 0.2s ease;
-        }
-
-        .dropdown.show>.form-control,
-        .form-control.active,
-        .form-control.focus,
-        .form-control:active,
-        .form-control:focus {
-            background-color: #eee;
-            border-color: #eee;
-            color: #000000;
-            border: 0;
-            transition: color 0.2s ease;
-        }
-
-        .line {
-            margin-left: 7px;
-            background-color: #646464;
-            width: 130px;
-            height: 2px;
-        }
-
-        .form-check-input:checked {
-            background-color: #5f3386;
-            border-color: #5f3386;
-        }
-
-        .form-check-input:focus {
-            border-color: #5f3386;
-            outline: 0;
-            box-shadow: none;
-        }
-
-        .rg-title {
-            font-family: "Rajdhani", sans-serif;
-            font-weight: 600;
-            font-size: 70px;
-            line-height: 1.3;
-        }
-
-        .rg-sub-title {
-            font-family: "Rajdhani", sans-serif;
-            font-weight: 500;
-            font-size: 34px;
-            letter-spacing: 3px;
-        }
-
-        .overlay-register {
-            background: linear-gradient(to right, rgb(61 6 109 / 50%), rgb(186 52 166 / 55%)) !important;
-        }
-    </style>
+@include('frontend.pages.event.partials.event-style')
     <section>
         <div class="container-fluid">
             <div class="row">

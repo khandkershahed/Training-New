@@ -30,8 +30,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-
         .loader {
             position: fixed;
             left: 0px;
@@ -42,13 +42,6 @@
             background: #050117 url("../img/loader.gif") no-repeat 50% 50%;
             background-size: 570px 420px;
             /* Adjust width and height as needed */
-        }
-
-        .text-container h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin: 0;
-            width: 80%;
         }
     </style>
 

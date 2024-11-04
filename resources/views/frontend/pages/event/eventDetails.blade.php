@@ -1,457 +1,8 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
-    <style>
-        @-webkit-keyframes last_rotate {
-            0% {
-                -webkit-transform: rotateX(0deg);
-                transform: rotateX(0deg);
-                z-index: 1;
-            }
-
-            100% {
-                -webkit-transform: rotateX(-180deg);
-                transform: rotateX(-180deg);
-                z-index: 0;
-            }
-        }
-
-        @keyframes last_rotate {
-            0% {
-                -webkit-transform: rotateX(0deg);
-                transform: rotateX(0deg);
-                z-index: 1;
-            }
-
-            100% {
-                -webkit-transform: rotateX(-180deg);
-                transform: rotateX(-180deg);
-                z-index: 0;
-            }
-        }
-
-        @-webkit-keyframes new_rotate {
-            0% {
-                -webkit-transform: rotateX(0deg);
-                transform: rotateX(0deg);
-                z-index: 0;
-            }
-
-            100% {
-                -webkit-transform: rotateX(-180deg);
-                transform: rotateX(-180deg);
-                z-index: 1;
-            }
-        }
-
-        @keyframes new_rotate {
-            0% {
-                -webkit-transform: rotateX(0deg);
-                transform: rotateX(0deg);
-                z-index: 0;
-            }
-
-            100% {
-                -webkit-transform: rotateX(-180deg);
-                transform: rotateX(-180deg);
-                z-index: 1;
-            }
-        }
-
-        .flip-countdown {
-            display: flex;
-            justify-content: center;
-            font-family: "Roboto", sans-serif;
-            font-size: 2.1em;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            overflow: hidden;
-        }
-
-        .interval_cont {
-            display: flex;
-            justify-content: space-around;
-            width: auto;
-            overflow: hidden;
-        }
-
-        .interval_cont:nth-child(n+1):not(:last-child) {
-            margin-right: 0.15em;
-        }
-
-        .description {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 0.5em;
-            margin-right: 0.55em;
-            font-size: 0.29em;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #7791a8;
-            text-shadow: 0.05em 0.05em 0.1em rgba(136, 110, 87, 0.3);
-            overflow: hidden;
-        }
-
-        .digit_cont {
-            position: relative;
-            width: 1.2em;
-            height: 1.5em;
-            font-weight: 900;
-            line-height: 1.5em;
-            border-radius: 0.25em;
-            color: #4c6377;
-            border-bottom: 0.01em solid rgba(76, 99, 119, 0.1);
-            box-shadow: 0 0.2em 0.3em -0.1em rgba(76, 99, 119, 0.1);
-            -webkit-perspective: 3em;
-            perspective: 3em;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .digit_cont:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            height: 0.015em;
-            background: rgba(141, 163, 182, 0.25);
-            box-shadow: 0 0.01em 0.02em 0 rgba(255, 255, 255, 0.1);
-            z-index: 1;
-        }
-
-        .digit_cont:nth-child(n+1):not(:last-child) {
-            margin-right: 0.05em;
-        }
-
-        .digit_cont span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            bottom: 50%;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .digit_cont .last_placeholder,
-        .digit_cont .new_placeholder,
-        .digit_cont .last_rotate,
-        .digit_cont .new_rotate {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            text-align: center;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .digit_cont .last_placeholder {
-            bottom: 0;
-            border-radius: 0 0 0.25em 0.25em;
-            background: linear-gradient(to bottom, #dae1e8 -90%, #fff 100%), #dae1e8;
-        }
-
-        .digit_cont .new_placeholder {
-            box-shadow: inset 0 0.01em 0 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .digit_cont .new_placeholder,
-        .digit_cont .last_rotate,
-        .digit_cont .new_rotate {
-            top: 0;
-            border-radius: 0.25em 0.25em 0 0;
-            background: linear-gradient(to bottom, #dae1e8 10%, #fff 200%), #dae1e8;
-        }
-
-        .digit_cont .last_rotate {
-            -webkit-transform-origin: 100% 100%;
-            transform-origin: 100% 100%;
-            -webkit-animation: last_rotate 0.5s linear forwards;
-            animation: last_rotate 0.5s linear forwards;
-        }
-
-        .digit_cont .new_rotate {
-            border-top: 0.01em solid rgba(76, 99, 119, 0.3);
-            background: linear-gradient(to top, #dae1e8 -90%, #fff 100%), #dae1e8;
-            -webkit-transform-origin: 100% 100%;
-            transform-origin: 100% 100%;
-            -webkit-animation: new_rotate 0.5s linear forwards;
-            animation: new_rotate 0.5s linear forwards;
-        }
-
-        .digit_cont .new_rotate .rotated {
-            width: 100%;
-            height: 100%;
-            border-radius: 0 0 0.25em 0.25em;
-            -webkit-transform: rotateX(180deg);
-            transform: rotateX(180deg);
-            overflow: hidden;
-        }
-
-        .list-group-item {
-            cursor: pointer;
-        }
-
-        .form-check-input:checked {
-            background-color: #613587;
-            border: 2px solid #613587;
-        }
-
-        .form-check-input:focus {
-            box-shadow: none;
-        }
-    </style>
-    {{-- Timeline Agenda --}}
-    <style>
-        /* Timeline container styling */
-        .timeline-container {
-            display: flex;
-            gap: 33.5px;
-            width: 100%;
-            height: 134px;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 67px;
-            position: relative;
-            top: 335px;
-        }
-
-        /* Individual timeline point styling */
-        .timeline-point {
-            transition-duration: 0.5s;
-            border-radius: 50%;
-            background-image: linear-gradient(to right, #6b207a, #6b207a, #6b207a, #6b207a, #6b207a, #75207c, #80207e, #8a2080, #a12083, #b82084, #ce2284, #e32782);
-            display: grid;
-            place-items: center;
-            width: 134px;
-            position: relative;
-            color: #ffff;
-        }
-
-        .timeline-point::before {
-            content: "";
-            width: 200px;
-            height: 200px;
-            z-index: -1;
-            border-radius: 50%;
-            position: absolute;
-            background: conic-gradient(var(--color) var(--angle),
-                    transparent 0deg 360deg);
-            animation: rotateBorder 1s linear var(--delay) forwards;
-        }
-
-        .timeline-point:nth-child(odd)::before {
-            transform: rotate(-90deg);
-        }
-
-        .timeline-point:nth-child(even)::before {
-            transform: rotate(90deg) scaleY(-1);
-        }
-
-        /* Common styling for timeline points */
-        .timeline-point:nth-child(1) {
-            --color: #613587;
-            --delay: 0s;
-        }
-
-        .timeline-point:nth-child(2) {
-            --color: #613587;
-            --delay: 1s;
-        }
-
-        .timeline-point:nth-child(3) {
-            --color: #613587;
-            --delay: 2s;
-        }
-
-        .timeline-point:nth-child(4) {
-            --color: #613587;
-            --delay: 3s;
-        }
-
-        .timeline-point:nth-child(5) {
-            --color: #613587;
-            --delay: 4s;
-        }
-
-        /* Popup styling */
-        .popup {
-            width: 321.6px;
-            height: auto;
-            max-height: 0;
-            background-color: var(--color);
-            display: grid;
-            grid-template-columns: 16% 84%;
-            position: absolute;
-            color: white;
-            border-radius: 30px;
-
-            transform-origin: bottom bottom;
-            animation: expandPopup 0.5s linear calc(var(--delay) + 0.5s) forwards;
-        }
-
-        .timeline-point:nth-child(odd) .popup {
-            bottom: 221.1px;
-        }
-
-        .timeline-point:nth-child(even) .popup {
-            top: 221.1px;
-        }
-
-        /* Popup number styling */
-        .popup-number {
-            grid-row: span 2;
-            display: grid;
-            font-size: 2rem;
-            font-weight: bold;
-            place-items: center;
-            cursor: auto;
-            animation: fadeIn 0.5s linear calc(var(--delay) + 0.7s) forwards;
-            opacity: 0;
-            height: 100%;
-        }
-
-        /* Popup title styling */
-        .popup-title {
-            color: var(--color);
-            padding-bottom: 6.7px;
-            font-size: 20.1px;
-            font-weight: 900;
-        }
-
-        /* Popup details styling */
-        .popup-details {
-            padding: 20.1px;
-            border-radius: 30px;
-            opacity: 0;
-            font-weight: 500;
-            user-select: none;
-            cursor: auto;
-            overflow: hidden;
-            font-size: 0.8rem;
-            text-align: justify;
-            background: linear-gradient(145deg, #fff, #fff);
-            margin: 3.35px;
-            animation: fadeIn 0.5s linear calc(var(--delay) + 0.7s) forwards;
-        }
-
-        .popup::before {
-            content: "";
-            width: 6.7px;
-            height: 0;
-            border-radius: 20px;
-            background-color: var(--color);
-            position: absolute;
-            left: 50%;
-            top: -41.9px;
-            display: flex;
-            animation: drawLine 0.5s linear var(--delay) forwards;
-        }
-
-        .timeline-point:nth-child(odd) .popup:before {
-            top: calc(100% + 47px);
-            transform: rotateX(180deg);
-            transform-origin: top;
-        }
-
-        /* Hover effect for timeline points */
-        .timeline-point:hover {
-            background-image: linear-gradient(to right, #6b207a, #6b207a, #6b207a, #6b207a, #6b207a, #75207c, #80207e, #8a2080, #a12083, #b82084, #ce2284, #e32782);
-            color: white;
-        }
-
-        /* Animation for border rotation */
-        @keyframes rotateBorder {
-            from {
-                --angle: 0deg;
-            }
-
-            to {
-                --angle: 180deg;
-            }
-        }
-
-        /* Animation for popup expansion */
-        @keyframes expandPopup {
-            0% {
-                max-height: 0;
-            }
-
-            100% {
-                max-height: 200px;
-            }
-        }
-
-        /* Animation for line drawing */
-        @keyframes drawLine {
-            0% {
-                height: 0%;
-                opacity: 0;
-            }
-
-            100% {
-                height: 33.5px;
-                opacity: 1;
-            }
-        }
-
-        /* Animation for fade-in effect */
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 1050px) {
-            body {
-                height: auto;
-                display: block;
-            }
-
-            .timeline-container {
-                flex-direction: column;
-                height: auto;
-                width: 100%;
-                padding: 100px 0px;
-            }
-
-            .timeline-point {
-                height: 134px;
-                flex-shrink: 0;
-                left: calc(-321px / 2);
-                margin: 0px auto;
-                position: relative;
-            }
-
-            .timeline-point:nth-child(odd)::before {
-                transform: rotate(0deg);
-            }
-
-            .timeline-point:nth-child(even)::before {
-                transform: rotate(0deg) scaleX(-1);
-            }
-
-            .timeline-point .popup:before {
-                display: none;
-            }
-
-            .timeline-point:nth-child(odd) .popup {
-                bottom: auto;
-                right: -370.1px;
-            }
-
-            .timeline-point:nth-child(even) .popup {
-                top: auto;
-                right: -370.1px;
-            }
-        }
-    </style>
-
-    <section id="homepage">
+    @include('frontend.pages.event.partials.event-style')
+    {{-- Banner Section start --}}
+    <section>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 px-0">
@@ -466,7 +17,7 @@
                                     <h2 class="mb-0 pt-5 srpt-font">
                                         {{ optional($event)->banner_sub_title }}
                                     </h2>
-                                    <h1 class="w-50">{{ optional($event)->banner_title }}</h1>
+                                    <h1 class="">{{ optional($event)->banner_title }}</h1>
                                     <p class="pt-5 fw-bold">{{ optional($event)->organizer_text }}</p>
                                     <div class="pt-2">
                                         <a href="javascript:void(0)" class="btn me-2 btn-outline-light rounded-pill"
@@ -510,16 +61,14 @@
                                         </div>
 
                                         <div class="card-body py-5">
-                                            <h3 class="text-center fw-bold pb-2">
-                                                Let's Countdown
-                                            </h3>
                                             <div class="flip-countdown"></div>
                                         </div>
 
                                         <div class="card-footer border-0">
                                             <div class="row align-items-center">
                                                 <div class="col-lg-12">
-                                                    <div class="d-flex p-3 py-0 align-items-center justify-content-between">
+                                                    <div
+                                                        class="d-flex p-3 px-0 py-0 align-items-center justify-content-between">
                                                         <h5 class="mb-0 fw-bold cst-font first-color text-end pe-2">
                                                             Registration:
                                                         </h5>
@@ -548,22 +97,23 @@
             </div>
         </div>
     </section>
-
+    {{-- Banner Section End --}}
+    {{-- Event Overview --}}
     @if (!empty(optional($event)->row_one_title) && !empty(optional($event)->row_one_description))
-        <section id="overview-section">
+        <section>
             <div class="container py-5 mobile-none">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="py-5">
                             <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
-                            <p class="fw-semibold" style="text-align: justify">
+                            <p class="fw-semibold">
                                 {!! optional($event)->row_one_description !!}
                             </p>
 
                             @if (optional($event)->row_one_button_link && optional($event)->row_one_button_name)
                                 <div class="pt-3">
                                     <a href="{{ optional($event)->row_one_button_link }}"
-                                        class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
+                                        class="btn btn-primary reg-btn mb-2 rounded-2 cst-font px-5">
                                         {{ optional($event)->row_one_button_name }}
                                     </a>
                                 </div>
@@ -571,7 +121,7 @@
                         </div>
                     </div>
                     @if (!empty(optional($event)->row_one_image))
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <div class="card rounded-2 border-0 bg-transparent">
                                 <div class="card-body">
                                     <img class="img-fluid rounded-2 w-100"
@@ -585,9 +135,10 @@
             </div>
         </section>
     @endif
-
+    {{-- Event Overview End --}}
+    {{-- Event Objectives start --}}
     @if (!empty(optional($event)->row_two_title) && !empty(optional($event)->row_two_description))
-        <section id="details-requirements" style="background-color: #eee">
+        <section style="background-color: #eee">
             <div class="container py-5">
                 <div class="row" style="text-align: justify">
                     <div class="col-lg-12">
@@ -605,69 +156,35 @@
             </div>
         </section>
     @endif
-
-    @if (!empty(optional($event)->row_three_title) && !empty(optional($event)->row_three_description))
-        <section id="overview-section">
-            <div class="container py-5 mobile-none">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-8">
-                        <div class="py-5">
-                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_three_badge }}</h1>
-                            <div>
-                                <h5 class="mb-2">{{ optional($event)->row_three_title }}</h5>
-                                <p class="fw-semibold" style="text-align: justify">
-                                    {!! optional($event)->row_three_description !!}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card rounded-2 border-0 bg-transparent">
-                            <div class="card-body">
-                                <img class="img-fluid rounded-2 w-100"
-                                    src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
-                                    alt="" />
-                                @if (optional($event)->row_three_button_link && optional($event)->row_three_button_name)
-                                    <div class="pt-3">
-                                        <a href="{{ optional($event)->row_three_button_link }}"
-                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
-                                            {{ optional($event)->row_three_button_name }}
-                                        </a>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-{{-- Check Availidi --}}
-    <section style="background-color: #eee">
+    {{-- Event Objectives End --}}
+    {{-- Check Availidi --}}
+    <section>
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="">
+                    <div class="check-avil-section">
                         <h1 class="cst-font first-color">Check your Eligibility to Participate</h1>
-                        <p>To identify eligible work opportunities for visionary IIoT and AI projects, consider the
+                        <p class="participage-text">To identify eligible work opportunities for visionary IIoT and AI
+                            projects, consider the
                             following criteria and areas of focus.</p>
 
-                        <div class="d-flex align-items-center">
-                            <p class="pe-2 mb-0 pb-0">I want to Participate</p>
-                            <div>
-                                <div class="d-flex">
+                        <div class="d-flex align-items-center check_eligibility">
+                            <p class="pe-2 mb-0 pb-0 participage-text">I want to Participate</p>
+                            <div class="pt-lg-0 pt-3">
+                                <div class="d-flex check_eligibility">
                                     <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
-                                        <input class="form-check-input me-1" type="radio" name="options"
-                                            value="seminar" onclick="showContent('seminar')" checked />
+                                        <input class="form-check-input me-1" type="radio" name="options" value="seminar"
+                                            onclick="showContent('seminar')" checked />
                                         for Seminar Only
                                     </label>
                                     <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
-                                        <input class="form-check-input me-1" type="radio" name="options"
-                                            value="speech" onclick="showContent('knowledge')" />
+                                        <input class="form-check-input me-1" type="radio" name="options" value="speech"
+                                            onclick="showContent('knowledge')" />
                                         to give a speech and share my knowledge
                                     </label>
                                     <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
-                                        <input class="form-check-input me-1" type="radio" name="options"
-                                            value="project" onclick="showContent('project')" />
+                                        <input class="form-check-input me-1" type="radio" name="options" value="project"
+                                            onclick="showContent('project')" />
                                         with Innovative Project Idea & Work
                                     </label>
                                 </div>
@@ -689,7 +206,7 @@
                                         so
                                         many.
                                     </div>
-                                    <div class="pt-3 d-flex justify-content-between align-items-center">
+                                    <div class="pt-3 d-flex justify-content-between align-items-center check_eligibility">
                                         <div>
                                             <h6>Please ensure that you are fulfilling one of the below -</h6>
                                             <ul>
@@ -701,7 +218,8 @@
                                         </div>
                                         <div class="text-end">
                                             <a href="{{ route('event.registration') }}"
-                                                class="animated-button1 mb-2 py-3" style="border-radius: 0">
+                                                class="animated-button1 mb-2 py-lg-3 py-2 px-lg-3 px-2"
+                                                style="border-radius: 0">
                                                 Registration Now
                                             </a>
                                         </div>
@@ -715,7 +233,7 @@
                                     <div>
                                         <h2>Great!</h2> We love to hear from you. Your knowledge, skills on the related
                                     </div>
-                                    <div class="pt-3 d-flex justify-content-between align-items-center">
+                                    <div class="pt-3 d-flex justify-content-between align-items-center check_eligibility">
                                         <div>
                                             <h6>Following are some topics on what you can write up and submit us to Register
                                                 for this interest -</h6>
@@ -734,7 +252,8 @@
                                         </div>
                                         <div class="text-end">
                                             <a href="{{ route('event.registration') }}"
-                                                class="animated-button1 mb-2 py-3" style="border-radius: 0">
+                                                class="animated-button1 mb-2 py-lg-3 py-2 px-lg-3 px-2"
+                                                style="border-radius: 0">
                                                 Registration Now
                                             </a>
                                         </div>
@@ -825,7 +344,8 @@
                                         </div>
                                     </div>
                                     <div class="text-start pt-3">
-                                        <a href="{{ route('event.registration') }}" class="animated-button1 mb-2 py-3"
+                                        <a href="{{ route('event.registration') }}"
+                                            class="animated-button1 mb-2 py-lg-3 py-2 px-lg-3 px-2"
                                             style="border-radius: 0">
                                             Registration Now
                                         </a>
@@ -838,7 +358,45 @@
             </div>
         </div>
     </section>
-{{-- Check Availidi End--}}
+    {{-- Check Availidi End --}}
+    {{-- Row Three --}}
+    @if (!empty(optional($event)->row_three_title) && !empty(optional($event)->row_three_description))
+        <section style="background-color: #eee">
+            <div class="container py-5 mobile-none">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_three_badge }}</h1>
+                            <div>
+                                <h5 class="mb-2">{{ optional($event)->row_three_title }}</h5>
+                                <p class="fw-semibold" style="text-align: justify">
+                                    {!! optional($event)->row_three_description !!}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card rounded-2 border-0 bg-transparent">
+                            <div class="card-body">
+                                <img class="img-fluid rounded-2 w-100"
+                                    src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
+                                    alt="" />
+                                @if (optional($event)->row_three_button_link && optional($event)->row_three_button_name)
+                                    <div class="pt-3">
+                                        <a href="{{ optional($event)->row_three_button_link }}"
+                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
+                                            {{ optional($event)->row_three_button_name }}
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    {{-- Row Three --}}
+    {{-- Call To Action --}}
     @if (!empty(optional($event)->row_four_title) && !empty(optional($event)->row_four_description))
         <section class="action-bg py-5">
             <div class="container">
@@ -866,9 +424,10 @@
             </div>
         </section>
     @endif
-
+    {{-- Call To Action End --}}
+    {{-- Certificate Start --}}
     @if (!empty(optional($event)->row_five_title) && !empty(optional($event)->row_five_description))
-        <section id="overview-section">
+        <section style="background-color: #eee">
             <div class="container py-5 mobile-none">
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-4">
@@ -883,7 +442,7 @@
                                 @if (optional($event)->row_five_button_link && optional($event)->row_five_button_name)
                                     <div class="pt-3">
                                         <a href="{{ optional($event)->row_five_button_link }}"
-                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
+                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
                                             {{ optional($event)->row_five_button_name }}
                                         </a>
                                     </div>
@@ -903,80 +462,71 @@
             </div>
         </section>
     @endif
-    {{-- Agenda --}}
+    {{-- Certificate End --}}
     <section>
-        <div class="container" style="height: 800px;">
-            <!-- Main timeline container -->
-            <div class="timeline-container">
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-icons"></i>
-                    <div class="popup">
-                        <div class="popup-number">1</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Keynote Sessions</div>
-                            <p class="text-black"> By Industry Experts & Brilliant Students . Insights into the challenges
-                                and opportunities of implementing smart automation solutions.Expert speakers.</p>
+        <div class="container py-lg-5 py-3">
+            <div class="row">
+                <div class="col-lg-12">
+                   <div class="">
+                    <h1 class="pb-1 cst-font first-color">Event Shedule</h1>
+                     <h4>For<strong class="text-primary fs-2 ps-2">22 December 2024!</strong></h4>
+                   </div>
+                </div>
+                <div class="col-lg-12 mt-4">
+                    <div class="d-flex align-items-center py-3">
+                        <div class="event-shedule-title">
+                            <h5>Keynote Sessions</h5>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                        </div>
+                        <div class="event-shedule-description">
+                            <p class="mb-0">By Industry Experts & Brilliant Students </p>
+                            <p class="mb-0">Insights into the challenges and opportunities of implementing smart automation solutions.</p>
+                            <p class="mb-0">Expert speakers will discuss the latest trends and advancements in AI and IoT.</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-copyright"></i>
-                    <div class="popup">
-                        <div class="popup-number">2</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Workshops</div>
-                            <p class="text-black">Integrating AI with IIoT: Explore tools and platforms that facilitate the
-                                integration of AI capabilities into IoT frameworks.</p>
+                    <div class="d-flex align-items-center py-3">
+                        <div class="event-shedule-title">
+                            <h5>Workshops</h5>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                        </div>
+                        <div class="event-shedule-description">
+                            <p class="mb-0">Designing Smart IoT Solutions: Hands-on session focusing on the architecture and components of effective IoT systems.</p>
+                            <p class="mb-0">AI Algorithms for Automation: Learn how to implement machine learning algorithms to optimize industrial processes.</p>
+                            <p class="mb-0">Integrating AI with IIoT: Explore tools and platforms that facilitate the integration of AI capabilities into IoT frameworks.</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-bullseye"></i>
-                    <div class="popup">
-                        <div class="popup-number">3</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Panel Discussions</div>
-                            <p class="text-black"> Engage with a panel of industry experts discussing the future of AI in
-                                industrial automation and addressing audience questions.</p>
+                    <div class="d-flex align-items-center py-3">
+                        <div class="event-shedule-title">
+                            <h5>Panel Discussions</h5>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                        </div>
+                        <div class="event-shedule-description">
+                            <p class="mb-0">Engage with a panel of industry experts discussing the future of AI in industrial <br> automation and addressing audience questions.</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-compass"></i>
-                    <div class="popup">
-                        <div class="popup-number">4</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Networking Sessions</div>
-                            <p class="text-black">Opportunities to connect with fellow participants, speakers, and industry
-                                leaders.</p>
+                    <div class="d-flex align-items-center py-3">
+                        <div class="event-shedule-title">
+                            <h5>Networking Sessions</h5>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                        </div>
+                        <div class="event-shedule-description">
+                            <p class="mb-0">Opportunities to connect with fellow participants, speakers, and industry leaders.</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Individual timeline point -->
-                <div class="timeline-point">
-                    <i class="fa-solid fa-face-grin-beam-sweat"></i>
-                    <div class="popup">
-                        <div class="popup-number">5</div>
-                        <div class="popup-details">
-                            <div class="popup-title">Case Studies</div>
-                            <p class="text-black"> Presentations highlighting successful implementations of AI-powered IIoT
-                                solutions, showcasing their impact on operational.</p>
+                    <div class="d-flex align-items-center py-3">
+                        <div class="event-shedule-title">
+                            <h5>Case Studies</h5>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                        </div>
+                        <div class="event-shedule-description">
+                            <p class="mb-0">Presentations highlighting successful implementations of AI-powered IIoT solutions, <br> showcasing their impact on operational efficiency and productivity.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- Agenda End --}}
-    <section id="projects">
+    <section style="background-color: #eee">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-4 mb-3 mb-lg-0">
@@ -1035,7 +585,6 @@
             </div>
         </div>
     </section>
-
     {{-- Share Modal --}}
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div class="modal fade" id="mapEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -1111,88 +660,88 @@
     </div>
     {{-- Share Modal End --}}
     @push('scripts')
-    <script>
-        const lang = 'EN';
-        const startDate = '2014-11-20T00:00:00'; // November 20, 2014
-        const ColorDigitEnd = '#bfbfbf';
+        <script>
+            const lang = 'EN';
+            const startDate = '2014-11-20T00:00:00'; // November 20, 2014
+            const ColorDigitEnd = '#bfbfbf';
 
-        // Language settings
-        const dayLang = lang === 'EN' ? 'Days' : 'Дней';
-        const hourLang = lang === 'EN' ? 'Hours' : 'Часов';
-        const minLang = lang === 'EN' ? 'Minutes' : 'Минут';
-        const secLang = lang === 'EN' ? 'Seconds' : 'Секунд';
+            // Language settings
+            const dayLang = lang === 'EN' ? 'Days' : 'Дней';
+            const hourLang = lang === 'EN' ? 'Hours' : 'Часов';
+            const minLang = lang === 'EN' ? 'Minutes' : 'Минут';
+            const secLang = lang === 'EN' ? 'Seconds' : 'Секунд';
 
-        class CountUp {
-            constructor({
-                cont,
-                startDate,
-                lang
-            }) {
-                this.cont = cont;
-                this.startDate = new Date(startDate);
-                this.lang = lang;
-                this.interval = null;
-            }
+            class CountUp {
+                constructor({
+                    cont,
+                    startDate,
+                    lang
+                }) {
+                    this.cont = cont;
+                    this.startDate = new Date(startDate);
+                    this.lang = lang;
+                    this.interval = null;
+                }
 
-            start() {
-                this.interval = setInterval(() => {
-                    const diff = Date.now() - this.startDate;
-                    if (diff <= 0) {
-                        clearInterval(this.interval);
-                        this.cont.innerHTML = 'Time has not started yet';
-                        return;
-                    }
+                start() {
+                    this.interval = setInterval(() => {
+                        const diff = Date.now() - this.startDate;
+                        if (diff <= 0) {
+                            clearInterval(this.interval);
+                            this.cont.innerHTML = 'Time has not started yet';
+                            return;
+                        }
 
-                    // Calculate time components
-                    const days = Math.floor(diff / 86400000);
-                    const hours = Math.floor((diff % 86400000) / 3600000);
-                    const minutes = Math.floor((diff % 3600000) / 60000);
-                    const seconds = Math.floor((diff % 60000) / 1000);
+                        // Calculate time components
+                        const days = Math.floor(diff / 86400000);
+                        const hours = Math.floor((diff % 86400000) / 3600000);
+                        const minutes = Math.floor((diff % 3600000) / 60000);
+                        const seconds = Math.floor((diff % 60000) / 1000);
 
-                    // Update the display
-                    this.cont.innerHTML = `
+                        // Update the display
+                        this.cont.innerHTML = `
                     <div>${days} ${this.lang.day}</div>
                     <div>${hours} ${this.lang.hour}</div>
                     <div>${minutes} ${this.lang.minute}</div>
                     <div>${seconds} ${this.lang.second}</div>
                 `;
-                }, 1000);
+                    }, 1000);
+                }
             }
-        }
 
-        const cu = new CountUp({
-            cont: document.querySelector('.flip-countdown'),
-            startDate: startDate,
-            lang: {
-                day: dayLang,
-                hour: hourLang,
-                minute: minLang,
-                second: secLang
+            const cu = new CountUp({
+                cont: document.querySelector('.flip-countdown'),
+                startDate: startDate,
+                lang: {
+                    day: dayLang,
+                    hour: hourLang,
+                    minute: minLang,
+                    second: secLang
+                }
+            });
+            cu.start();
+        </script>
+        <script>
+            function showContent(type) {
+                // Hide all content divs
+                document.querySelector('.seminar_show').style.display = 'none';
+                document.querySelector('.knowledge_show').style.display = 'none';
+                document.querySelector('.project_show').style.display = 'none';
+
+                // Show the selected content
+                if (type === 'seminar') {
+                    document.querySelector('.seminar_show').style.display = 'block';
+                } else if (type === 'knowledge') {
+                    document.querySelector('.knowledge_show').style.display = 'block';
+                } else if (type === 'project') {
+                    document.querySelector('.project_show').style.display = 'block';
+                }
             }
-        });
-        cu.start();
-    </script>
-    <script>
-        function showContent(type) {
-            // Hide all content divs
-            document.querySelector('.seminar_show').style.display = 'none';
-            document.querySelector('.knowledge_show').style.display = 'none';
-            document.querySelector('.project_show').style.display = 'none';
 
-            // Show the selected content
-            if (type === 'seminar') {
-                document.querySelector('.seminar_show').style.display = 'block';
-            } else if (type === 'knowledge') {
-                document.querySelector('.knowledge_show').style.display = 'block';
-            } else if (type === 'project') {
-                document.querySelector('.project_show').style.display = 'block';
-            }
-        }
-
-        // Call showContent on page load to show the default div for "project"
-        window.onload = function() {
-            showContent('seminar');
-        };
-    </script>
-@endpush
+            // Call showContent on page load to show the default div for "project"
+            window.onload = function() {
+                showContent('seminar');
+            };
+        </script>
+    @endpush
 @endsection
