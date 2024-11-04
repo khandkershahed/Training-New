@@ -284,7 +284,7 @@
                                             <div class="col-lg-12">
                                                 <div class="pt-3" style="display: none;" id="speech">
                                                     <label class="form-check-label" for="speech">
-                                                        Add Speech
+                                                        Submit Your Speech
                                                     </label>
                                                     <textarea class="form-control" name="speech" rows="3" placeholder="Give me the speech..."></textarea>
                                                 </div>
@@ -538,11 +538,11 @@
                                         @foreach ($categorys as $category)
                                             <div class="col-6">
                                                 <div class="form-check">
-                                                    <input type="checkbox" id="check{{ $category->id }}" name="career[]"
-                                                        value="{{ $category->id }}"
-                                                        class="form-check-input">{{ $category->name }}
-                                                    <label for="check{{ $category->id }}"
-                                                        class="form-check-label"></label>
+                                                    <label for="check{{ $category->id }}" class="form-check-label">
+                                                        <input type="checkbox" id="check{{ $category->id }}"
+                                                            name="career[]" value="{{ $category->id }}"
+                                                            class="form-check-input">{{ $category->name }}
+                                                    </label>
                                                 </div>
                                             </div>
                                         @endforeach
