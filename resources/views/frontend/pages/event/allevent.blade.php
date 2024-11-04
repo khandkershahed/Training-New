@@ -96,6 +96,7 @@
             content: 'none';
         }
     </style>
+
     <style>
         .stepsWrapper {
             padding: 0 100px;
@@ -239,6 +240,7 @@
             }
         }
     </style>
+
     @if (!empty(optional($eventPage)->banner_title))
         <section>
             <div class="container-fluid">
@@ -259,7 +261,7 @@
 
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
                                         <div class="pt-2">
-                                            <a href="javascript:void(0)" class="btn me-2 btn-outline-light rounded-pill"
+                                            <a href="{{ optional($eventPage)->map_link }}" class="btn me-2 btn-outline-light rounded-pill"
                                                 data-bs-toggle="modal" data-bs-target="#mapEvet">
                                                 <i class="fa-solid fa-location-dot pe-2"></i>Map
                                             </a>
@@ -267,7 +269,7 @@
                                                 class="btn btn-outline-light me-2 rounded-pill">
                                                 <i class="fa-solid fa-globe"></i> Training
                                             </a>
-                                            <a href="javascript:void(0)" class="btn btn-outline-light rounded-pill"
+                                            <a href="{{ optional($eventPage)->other_link }}" class="btn btn-outline-light rounded-pill"
                                                 data-bs-toggle="modal" data-bs-target="#shareEvet">
                                                 <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                             </a>
