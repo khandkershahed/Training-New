@@ -20,16 +20,20 @@
                                         <h2 class="pt-2 event-titles-home">{{ optional($eventPage)->banner_title }}</h2>
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
                                         <div class="pt-2">
-                                            <a href="javascript:void(0)" class="btn me-2 btn-outline-light rounded-pill"
-                                                data-bs-toggle="modal" data-bs-target="#mapEvet">
+
+                                            <a href="{{ optional($eventPage)->map_link }}"
+                                                class="btn me-2 btn-outline-light rounded-pill" data-bs-toggle="modal"
+                                                data-bs-target="#mapEvet">
                                                 <i class="fa-solid fa-location-dot pe-2"></i>Map
                                             </a>
+
                                             <a href="{{ optional($eventPage)->website_link }}"
                                                 class="btn btn-outline-light me-2 rounded-pill">
                                                 <i class="fa-solid fa-globe"></i> Training
                                             </a>
-                                            <a href="javascript:void(0)" class="btn btn-outline-light rounded-pill"
-                                                data-bs-toggle="modal" data-bs-target="#shareEvet">
+                                            <a href="{{ optional($eventPage)->other_link }}"
+                                                class="btn btn-outline-light rounded-pill" data-bs-toggle="modal"
+                                                data-bs-target="#shareEvet">
                                                 <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                             </a>
                                         </div>
@@ -313,8 +317,7 @@
             </div>
         </div>
     </section>
-    {{-- Share Modal --}}
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+
     <div class="modal fade" id="mapEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
         role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
@@ -337,7 +340,7 @@
             </div>
         </div>
     </div>
-    {{-- Share Modal End --}}
+
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     <div class="modal fade" id="shareEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
         role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
@@ -376,10 +379,10 @@
                                 class="border-0 btn btn-outline-light">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
-                            <a href="{{ optional($event)->website_link }}" type="button"
+                            {{-- <a href="{{ optional($event)->website_link }}" type="button"
                                 class="border-0 btn btn-outline-light">
                                 <i class="fab fa-linkedin-in"></i> LinkedIn
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>

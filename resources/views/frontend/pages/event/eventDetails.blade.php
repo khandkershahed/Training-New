@@ -648,10 +648,10 @@
                                 class="border-0 btn btn-outline-light">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
-                            <a href="{{ optional($event)->website_link }}" type="button"
+                            {{-- <a href="{{ optional($event)->website_link }}" type="button"
                                 class="border-0 btn btn-outline-light">
                                 <i class="fab fa-linkedin-in"></i> LinkedIn
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
