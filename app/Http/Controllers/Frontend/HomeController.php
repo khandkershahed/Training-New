@@ -124,10 +124,13 @@ class HomeController extends Controller
             ]);
         }
 
-
-        $mainFile = $request->file('attachment');
-        $imgPath = storage_path('app/public/files/');
-        $globalFunImg = customUpload($mainFile, $imgPath);
+        if ($request->file('attachment')) {
+            $mainFile = $request->file('attachment');
+            $imgPath = storage_path('app/public/files/');
+            $globalFunImg = customUpload($mainFile, $imgPath); // Extract the image filename
+        } else {
+            $globalFunImg['status'] = null; // Or handle a default image if needed
+        }
 
         $events = usereventregistration::insert([
             'user_id'              => $user->id,
