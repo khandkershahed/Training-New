@@ -164,12 +164,6 @@ class HomeController extends Controller
     }
 
 
-
-
-
-
-
-
     public function allCourses(Request $request)
     {
         $sectionId = $request->input('section');
