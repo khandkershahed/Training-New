@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\CourseCategory;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\usereventregistration;
 
 class EventController extends Controller
 {
-    public function userAllEvent() {
-        return view('user.event.all');
+    public function userAllEvent()
+    {
+
+        $eventregs = usereventregistration::where('user_id', Auth::id())->get();
+        $categorys = CourseCategory::all();
+
+        return view('user.event.all', compact('categorys','eventregs'));
     }
-    // public function userAllEvent() {
-    //     return view('user.event.all');
-    // }
 }
