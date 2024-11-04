@@ -391,6 +391,17 @@
                             </div>
                         </div>
 
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Event Status</label>
+                                <select name="event_status" class="form-select form-select-sm" id="">
+                                    <option selected disabled>Choose....</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="col-3 mb-3">
                             <div class="">

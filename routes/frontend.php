@@ -34,7 +34,6 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/category-register/ajax/{course_section_id}', 'GetRegisterCategory');
     Route::get('/course-get/ajax/{course_category_id}', 'GetRegisterCourse');
-
 });
 // Course Registration End
 
@@ -81,7 +80,6 @@ Route::get('/event/registration', [HomeController::class, 'eventRegistration'])-
 Route::post('/register/user/event', [HomeController::class, 'registerUserEvent'])->name('register.user.event');
 Route::post('/user/event/registration', [HomeController::class, 'userEventRegistration'])->name('user.event.registration');
 
-
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
     Route::post('/cart-store', 'AddToCartCourse');
@@ -95,11 +93,8 @@ Route::post('/search-course', [HomeController::class, 'SearchCourse'])->name('se
 Route::middleware('auth')->group(function () {
     Route::get('/user/register/course/list', [HomeController::class, 'RegisterCourseList'])->name('user.register.course.list');
     Route::get('/user/register/course/details/{course_id}', [HomeController::class, 'RegisterCourseDetails'])->name('register.course.details');
-
     // Payment
     Route::post('/course/payment/{id}', [HomeController::class, 'PaymentCourse'])->name('course.payment');
-
-
 });
 
 Route::get('/verify/{activation_code}', [HomeController::class, 'verifyEmail'])

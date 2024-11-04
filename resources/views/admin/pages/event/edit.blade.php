@@ -445,6 +445,17 @@
                             </div>
                         </div>
 
+                        <div class="col-3 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Event Status</label>
+                                <select name="event_status" class="form-select form-select-sm" id="">
+                                    <option selected disabled>Choose....</option>
+                                    <option value="active" {{ $item->event_status == 'active' ? 'selected' : '' }}>Active</option>
+                                    <option value="inactive" {{ $item->event_status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- Row One Image -->
                         <div class="col-3 mb-3">
                             <div class="form-group">

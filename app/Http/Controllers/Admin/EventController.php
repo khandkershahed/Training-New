@@ -117,6 +117,9 @@ class EventController extends Controller
             'currency'              => $request->currency,
             'location'              => $request->location,
             'contact'               => $request->contact,
+
+            'event_status'               => $request->event_status,
+
             'added_by'              => Auth::guard('admin')->user()->id,
             'updated_by'            => Auth::guard('admin')->user()->id,
             'created_at'            => now(),
@@ -209,6 +212,7 @@ class EventController extends Controller
             'website_link'          => $request->website_link,
             'whatsapp_link'         => $request->whatsapp_link,
             'other_link'            => $request->other_link,
+            'event_status'            => $request->event_status,
 
             'row_one_title'         => $request->row_one_title,
             'row_one_description'   => $request->row_one_description,

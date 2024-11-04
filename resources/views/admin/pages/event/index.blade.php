@@ -1,6 +1,6 @@
 <x-admin-app-layout :title="'Event List'">
 
-    
+
 
     <div class="card card-flash">
         <div class="card-header mt-6">
@@ -34,6 +34,7 @@
                         <th width="15%">End Date</th>
                         <th width="15%">Event Type</th>
                         <th width="15%">Status</th>
+                        <th width="15%">Status</th>
 
                         <th width="100%">Actions</th>
                     </tr>
@@ -55,29 +56,36 @@
                             <td class="text-start">{{ $item->start_date }}</td>
                             <td class="text-start">{{ $item->end_date }}</td>
                             <td class="text-start">
-                                <span class="badge 
-                                    @if($item->event_type === 'workshop') bg-primary 
+                                <span
+                                    class="badge 
+                                    @if ($item->event_type === 'workshop') bg-primary 
                                     @elseif($item->event_type === 'seminar') bg-success 
                                     @elseif($item->event_type === 'concert') bg-danger 
                                     @elseif($item->event_type === 'conference') bg-warning 
-                                    @elseif($item->event_type === 'webinar') bg-info 
-                                    @endif">
+                                    @elseif($item->event_type === 'webinar') bg-info @endif">
                                     {{ ucfirst($item->event_type) }}
                                 </span>
                             </td>
                             <td class="text-start">
-                                <span class="badge 
-                                    @if($item->status === 'canceled') bg-danger
+                                <span
+                                    class="badge 
+                                    @if ($item->status === 'canceled') bg-danger
                                     @elseif($item->status === 'ongoing') bg-success 
                                     @elseif($item->status === 'upcoming') bg-info 
                                     @elseif($item->status === 'completed') bg-dark 
                                     @elseif($item->status === 'registration_open') bg-primary 
-                                    @elseif($item->status === 'registration_close') bg-warning 
-                                    @endif">
+                                    @elseif($item->status === 'registration_close') bg-warning @endif">
                                     {{ ucfirst($item->status) }}
                                 </span>
                             </td>
-                            
+
+                            <td class="text-start">
+                                @if ($item->event_status == 'active')
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-danger">Inactive</span>
+                                @endif
+                            </td>
 
                             <td>
 
