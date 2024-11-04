@@ -227,6 +227,8 @@ class EventController extends Controller
             'row_three_badge'       => $request->row_three_badge,
             'row_three_title'       => $request->row_three_title,
             'row_three_description' => $request->row_three_description,
+            'row_three_button_name' => $request->row_three_button_name,
+            'row_three_button_link' => $request->row_three_button_link,
 
             'status'                => $request->status,
             'event_type'            => $request->event_type,
