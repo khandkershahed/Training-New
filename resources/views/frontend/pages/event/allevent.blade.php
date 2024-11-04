@@ -261,16 +261,20 @@
 
                                         <p class="pt-5 fw-bold">{{ optional($eventPage)->organizer_text }}</p>
                                         <div class="pt-2">
-                                            <a href="{{ optional($eventPage)->map_link }}" class="btn me-2 btn-outline-light rounded-pill"
-                                                data-bs-toggle="modal" data-bs-target="#mapEvet">
+
+                                            <a href="{{ optional($eventPage)->map_link }}"
+                                                class="btn me-2 btn-outline-light rounded-pill" data-bs-toggle="modal"
+                                                data-bs-target="#mapEvet">
                                                 <i class="fa-solid fa-location-dot pe-2"></i>Map
                                             </a>
+
                                             <a href="{{ optional($eventPage)->website_link }}"
                                                 class="btn btn-outline-light me-2 rounded-pill">
                                                 <i class="fa-solid fa-globe"></i> Training
                                             </a>
-                                            <a href="{{ optional($eventPage)->other_link }}" class="btn btn-outline-light rounded-pill"
-                                                data-bs-toggle="modal" data-bs-target="#shareEvet">
+                                            <a href="{{ optional($eventPage)->other_link }}"
+                                                class="btn btn-outline-light rounded-pill" data-bs-toggle="modal"
+                                                data-bs-target="#shareEvet">
                                                 <i class="fa-solid fa-share-nodes pe-2"></i>Share
                                             </a>
                                         </div>
@@ -548,4 +552,27 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="mapEvet" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header rounded-0" style=" background: rgba(61, 6, 109, 0.8); ">
+                    <h5 class="modal-title text-white" id="modalTitleId">
+                        Event Location
+                    </h5>
+                    <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.473499558464!2d90.35587677605153!3d23.76614748817024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a568a70445%3A0x89dff0189e12966d!2sNGEN%20IT%20LTD.!5e0!3m2!1sen!2sbd!4v1729579396491!5m2!1sen!2sbd&zoom=1"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
