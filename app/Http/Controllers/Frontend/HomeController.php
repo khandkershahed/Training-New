@@ -152,13 +152,10 @@ class HomeController extends Controller
 
         ]);
 
-
-
         // Send email notification
         Mail::to($user->email)->send(new EventRegistrationMail($user, [
             'project_name' => $request->project_name,
         ]));
-
 
         //Admin Mail
         $admins = Admin::where('mail_status', 'mail')->get();
@@ -166,7 +163,7 @@ class HomeController extends Controller
             Mail::to($admin->email)->send(new AdminEventMail($user, $events));
         }
 
-        return redirect()->back()->with('success', 'Event Registration Successfully!!!');
+        return redirect()->route('dashboard')->with('success', 'Event Registration Successfully!!!');
     }
 
 

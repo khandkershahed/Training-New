@@ -256,20 +256,39 @@
                                         </div>
                                     </div>
 
-                                    <div id="additional_fields" style="display: none;">
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="form-group mb-4" id="member_2_field" style="display: none;">
-                                                    <label for="member_2">Team Member 2 Name</label>
-                                                    <input type="text" name="team_member_two_name"
-                                                        class="form-control form-control-sm p-3">
+                                    <div class="col-lg-12">
+                                        <div id="additional_fields" style="display: none;">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-4" id="member_2_field" style="display: none;">
+                                                        <label for="member_2">Team Member 2 Name</label>
+                                                        <input type="text" name="team_member_two_name"
+                                                            class="form-control form-control-sm p-3">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" name="speech_check" id="speech_check" onclick="toggleSpeech()">
+                                                    <label class="form-check-label" for="speech_check">
+                                                        Do you want to deliver a speech at the event?
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="pt-3" style="display: none;" id="speech">
+                                                    <label class="form-check-label" for="speech">
+                                                        Add Speech
+                                                    </label>
+                                                    <textarea class="form-control"  name="speech" rows="3" placeholder="Give me the speech..." ></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="toStep1">Back</button>
@@ -277,7 +296,6 @@
                                             class="fa-solid fa-arrow-right-long"></i></button>
                                 </div>
                             </div>
-
                             <!-- Step 3 content -->
                             <div class="step-content d-none" id="step-3">
                                 <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
@@ -570,11 +588,18 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
+    @push('scripts')
+    <script>
+        function toggleSpeech() {
+            var checkbox = document.getElementById("speech_check");
+            var textarea = document.getElementById("speech");
+            textarea.style.display = checkbox.checked ? "block" : "none";
+        }
+    </script>
+    @endpush
 @endsection
