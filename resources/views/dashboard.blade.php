@@ -1,5 +1,28 @@
 <x-app-layout :title="'Your Dashboard'">
     <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
+        <h1 class="fw-bold text-center">Upcoming Registered Events</h1>
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-primary h-xl-100">
+                <div class="card-header">
+                    <h4 class="text-center"></h4>
+                </div>
+                <div class="card-body d-flex flex-column pt-13 pb-14">
+                    <div class="m-0">
+                        <h1 class="fw-semibold text-white text-center lh-lg mb-9">
+                            Having Trouble with the Course? <span class="fw-bolder"> Here we are to Help</span>
+                        </h1>
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-sm btn-success btn-color-white me-2">
+                            Support </a>
+                        <a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="#">
+                            Contact </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
         <div class="col-xl-4">
             <div class="card bg-primary h-xl-100">
                 <div class="card-body d-flex flex-column pt-13 pb-14">

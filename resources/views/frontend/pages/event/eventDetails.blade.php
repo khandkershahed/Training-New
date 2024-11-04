@@ -172,20 +172,20 @@
                             <p class="pe-2 mb-0 pb-0 participage-text">I want to Participate</p>
                             <div class="pt-lg-0 pt-3">
                                 <div class="d-flex check_eligibility">
-                                    <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
+                                    <label class="list-group-item rounded-pill p-2 px-4 border me-4 shadow-sm text-start">
                                         <input class="form-check-input me-1" type="radio" name="options" value="seminar"
                                             onclick="showContent('seminar')" checked />
-                                        for Seminar Only
+                                        for seminar Only
                                     </label>
-                                    <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
+                                    <label class="list-group-item rounded-pill p-2 border me-4 shadow-sm px-4 text-start">
                                         <input class="form-check-input me-1" type="radio" name="options" value="speech"
                                             onclick="showContent('knowledge')" />
                                         to give a speech and share my knowledge
                                     </label>
-                                    <label class="list-group-item rounded-pill p-2 border me-2 shadow-sm">
+                                    <label class="list-group-item rounded-pill p-2 border me-4 shadow-sm px-4 text-start">
                                         <input class="form-check-input me-1" type="radio" name="options" value="project"
                                             onclick="showContent('project')" />
-                                        with Innovative Project Idea & Work
+                                        with innovative project idea & work
                                     </label>
                                 </div>
                             </div>
@@ -271,81 +271,50 @@
                                     <div class="pt-3">
                                         <div>
                                             <h6>Please ensure that you are fulfilling one of the below -</h6>
-                                            <ol>
+                                            <ol id="industryList">
                                                 <li class="mt-3">
-                                                    <h5>Industry Required--</h5>
-                                                    <strong>Industry Needs:</strong> ( Do you have existing project,
-                                                    concept, idea and skill ? ) <br>
-                                                    <strong>Manufacturing:</strong> Look for projects aimed at optimizing
-                                                    production lines through predictive maintenance, quality control, and
-                                                    process automation. <br>
-                                                    <strong>Healthcare:</strong> Explore opportunities that leverage IIoT
-                                                    for remote patient monitoring, smart medical devices, and AI-driven
-                                                    diagnostics.<br>
-                                                    <strong>Smart Cities:</strong> Investigate initiatives focused on urban
-                                                    infrastructure, traffic management, and environmental monitoring using
-                                                    connected devices.<br>
-                                                    <strong>Energy Management:</strong> Seek projects that integrate IIoT
-                                                    for smart grids, renewable energy management, and efficient energy
-                                                    consumption.<br>
+                                                    <h5>Industry Required-</h5>
+                                                    <strong>Industry Needs:</strong> ( Do you have an existing project, concept, idea, and skill? ) <br>
+                                                    <strong>Manufacturing:</strong> Look for projects aimed at optimizing production lines through predictive maintenance, quality control, and process automation. <br>
+                                                    <strong>Healthcare:</strong> Explore opportunities that leverage IIoT for remote patient monitoring, smart medical devices, and AI-driven diagnostics.<br>
+                                                    <strong>Smart Cities:</strong> Investigate initiatives focused on urban infrastructure, traffic management, and environmental monitoring using connected devices.<br>
+                                                    <strong>Energy Management:</strong> Seek projects that integrate IIoT for smart grids, renewable energy management, and efficient energy consumption.<br>
                                                 </li>
-                                                <li class="mt-3">
-                                                    <h5>Project Details--</h5>
-                                                    <strong>Project Scope:</strong> ( Are you intending to share, develop
-                                                    and particiapte the scope of several activities / projects ? ) <br>
-                                                    <strong>Research and Development:</strong> Identify roles in R&D for
-                                                    innovative solutions that combine AI algorithms with IIoT devices for
-                                                    data analysis and automation.<br>
-                                                    <strong>Implementation and Integration:</strong> Look for positions
-                                                    involving the deployment and integration of IIoT systems within existing
-                                                    infrastructures.<br>
-                                                    <strong>Data Analysis and Machine Learning:</strong> Explore
-                                                    opportunities for data scientists and analysts to work on AI models that
-                                                    enhance IIoT functionalities.<br>
+                                                <li class="mt-3" style="display: none;">
+                                                    <h5>Project Details-</h5>
+                                                    <strong>Project Scope:</strong> ( Are you intending to share, develop, and participate in the scope of several activities/projects? ) <br>
+                                                    <strong>Research and Development:</strong> Identify roles in R&D for innovative solutions that combine AI algorithms with IIoT devices for data analysis and automation.<br>
+                                                    <strong>Implementation and Integration:</strong> Look for positions involving the deployment and integration of IIoT systems within existing infrastructures.<br>
+                                                    <strong>Data Analysis and Machine Learning:</strong> Explore opportunities for data scientists and analysts to work on AI models that enhance IIoT functionalities.<br>
                                                 </li>
-                                                <li class="mt-3">
-                                                    <h5>Skills Required--</h5>
-                                                    <strong>Technical Skills:</strong> Familiarity with programming
-                                                    languages (e.g., Python, C/C++), cloud platforms (AWS, Azure), and IoT
-                                                    protocols (MQTT, CoAP).<br>
-                                                    <strong>AI and Machine Learning Knowledge:</strong> Understanding of
-                                                    machine learning frameworks (e.g., TensorFlow, PyTorch) and experience
-                                                    in developing AI models.<br>
-                                                    <strong>Connectivity and Networking:</strong> Knowledge of networking
-                                                    technologies relevant to IoT (e.g., LPWAN, Zigbee) and cybersecurity
-                                                    measures.
+                                                <li class="mt-3" style="display: none;">
+                                                    <h5>Skills Required-</h5>
+                                                    <strong>Technical Skills:</strong> Familiarity with programming languages (e.g., Python, C/C++), cloud platforms (AWS, Azure), and IoT protocols (MQTT, CoAP).<br>
+                                                    <strong>AI and Machine Learning Knowledge:</strong> Understanding of machine learning frameworks (e.g., TensorFlow, PyTorch) and experience in developing AI models.<br>
+                                                    <strong>Connectivity and Networking:</strong> Knowledge of networking technologies relevant to IoT (e.g., LPWAN, Zigbee) and cybersecurity measures.
                                                 </li>
-                                                <li class="mt-3">
-                                                    <h5>Types of Roles--</h5>
-                                                    <strong>IoT Solutions Architect:</strong> Familiarity with programming
-                                                    languages (e.g., Python, C/C++), cloud platforms (AWS, Azure), and IoT
-                                                    protocols (MQTT, CoAP).<br>
-                                                    <strong>Data Scientist/AI Engineer:</strong> Understanding of machine
-                                                    learning frameworks (e.g., TensorFlow, PyTorch) and experience in
-                                                    developing AI models.<br>
-                                                    <strong>Systems Engineer:</strong> Overseeing the integration of IIoT
-                                                    systems with existing infrastructure and ensuring seamless
-                                                    functionality. <br>
-                                                    <strong>Project Manager:</strong> Leading projects focused on IIoT and
-                                                    AI development, coordinating between technical teams and stakeholders.
+                                                <li class="mt-3" style="display: none;">
+                                                    <h5>Types of Roles-</h5>
+                                                    <strong>IoT Solutions Architect:</strong> Familiarity with programming languages (e.g., Python, C/C++), cloud platforms (AWS, Azure), and IoT protocols (MQTT, CoAP).<br>
+                                                    <strong>Data Scientist/AI Engineer:</strong> Understanding of machine learning frameworks (e.g., TensorFlow, PyTorch) and experience in developing AI models.<br>
+                                                    <strong>Systems Engineer:</strong> Overseeing the integration of IIoT systems with existing infrastructure and ensuring seamless functionality. <br>
+                                                    <strong>Project Manager:</strong> Leading projects focused on IIoT and AI development, coordinating between technical teams and stakeholders.
                                                 </li>
-                                                <li class="mt-3">
-                                                    <h5>Collaboration Opportunities--</h5>
-                                                    <strong>Partnerships with Startups:</strong> Engage with startups
-                                                    focused on innovative IIoT and AI solutions for potential project
-                                                    collaboration.<br>
-                                                    <strong>Academic Institutions:</strong> Collaborate on research projects
-                                                    that explore new frontiers in IIoT and AI, benefiting from academic
-                                                    expertise and resources.Industry Conferences and Workshops: Attend
-                                                    events focused on IIoT and AI to network with potential employers and
-                                                    partners.
+                                                <li class="mt-3" style="display: none;">
+                                                    <h5>Collaboration Opportunities-</h5>
+                                                    <strong>Partnerships with Startups:</strong> Engage with startups focused on innovative IIoT and AI solutions for potential project collaboration.<br>
+                                                    <strong>Academic Institutions:</strong> Collaborate on research projects that explore new frontiers in IIoT and AI, benefiting from academic expertise and resources.<br>
+                                                    <strong>Industry Conferences and Workshops:</strong> Attend events focused on IIoT and AI to network with potential employers and partners.
                                                 </li>
                                             </ol>
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <button class="btn btn-sm animated-button1 px-3 rounded-0" id="toggleButton" onclick="toggleList()"><i class="fa-solid fa-chevron-down pe-2"></i>More</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="text-start pt-3">
+                                    <div class="text-end pt-3">
                                         <a href="{{ route('event.registration') }}"
-                                            class="animated-button1 mb-2 py-lg-3 py-2 px-lg-3 px-2"
+                                            class="animated-button1 mb-2 py-lg-4 py-2 px-lg-3 px-2"
                                             style="border-radius: 0">
                                             Registration Now
                                         </a>
@@ -467,16 +436,16 @@
         <div class="container py-lg-5 py-3">
             <div class="row">
                 <div class="col-lg-12">
-                   <div class="">
+                   <div class="d-flex justify-content-between align-items-center">
                     <h1 class="pb-1 cst-font first-color">Event Shedule</h1>
-                     <h4>For<strong class="text-primary fs-2 ps-2">22 December 2024!</strong></h4>
+                     <h5>For<strong class="first-color fs-5 ps-2">23 November 2024!</strong></h5>
                    </div>
                 </div>
                 <div class="col-lg-12 mt-4">
                     <div class="d-flex align-items-center py-3">
                         <div class="event-shedule-title">
                             <h5>Keynote Sessions</h5>
-                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20am</p>
                         </div>
                         <div class="event-shedule-description">
                             <p class="mb-0">By Industry Experts & Brilliant Students </p>
@@ -487,7 +456,7 @@
                     <div class="d-flex align-items-center py-3">
                         <div class="event-shedule-title">
                             <h5>Workshops</h5>
-                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20am</p>
                         </div>
                         <div class="event-shedule-description">
                             <p class="mb-0">Designing Smart IoT Solutions: Hands-on session focusing on the architecture and components of effective IoT systems.</p>
@@ -498,7 +467,7 @@
                     <div class="d-flex align-items-center py-3">
                         <div class="event-shedule-title">
                             <h5>Panel Discussions</h5>
-                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20am</p>
                         </div>
                         <div class="event-shedule-description">
                             <p class="mb-0">Engage with a panel of industry experts discussing the future of AI in industrial <br> automation and addressing audience questions.</p>
@@ -507,7 +476,7 @@
                     <div class="d-flex align-items-center py-3">
                         <div class="event-shedule-title">
                             <h5>Networking Sessions</h5>
-                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20am</p>
                         </div>
                         <div class="event-shedule-description">
                             <p class="mb-0">Opportunities to connect with fellow participants, speakers, and industry leaders.</p>
@@ -516,7 +485,7 @@
                     <div class="d-flex align-items-center py-3">
                         <div class="event-shedule-title">
                             <h5>Case Studies</h5>
-                            <p class="cst-font first-color" style="font-style: italic;">02:20Am</p>
+                            <p class="cst-font first-color" style="font-style: italic;">02:20am</p>
                         </div>
                         <div class="event-shedule-description">
                             <p class="mb-0">Presentations highlighting successful implementations of AI-powered IIoT solutions, <br> showcasing their impact on operational efficiency and productivity.</p>
@@ -743,5 +712,22 @@
                 showContent('seminar');
             };
         </script>
+        <script>
+        function toggleList() {
+            const listItems = document.querySelectorAll("#industryList li");
+            const button = document.getElementById("toggleButton");
+
+            listItems.forEach((item, index) => {
+                if (index > 0) { // Skip the first item
+                    item.style.display = item.style.display === "none" ? "block" : "none";
+                }
+            });
+
+            // Toggle button HTML
+            button.innerHTML = button.innerHTML.includes("More")
+                ? '<i class="fa-solid fa-chevron-up"></i> Less'
+                : '<i class="fa-solid fa-chevron-down"></i> More';
+        }
+    </script>
     @endpush
 @endsection
