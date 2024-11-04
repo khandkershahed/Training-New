@@ -37,6 +37,8 @@
             <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
                     href="{{ route('all.category') }}">Category</a></li>
             <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
+                    href="{{ route('event') }}">Events</a></li>
+            <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
                     href="{{ route('course.registration') }}">Course Registration</a></li>
             <li class="text-style-none text-decoration-none"><a class="mobile-menu-link"
                     href="{{ route('login') }}">Login</a></li>
