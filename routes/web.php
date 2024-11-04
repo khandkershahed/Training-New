@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/user/all-events/', [EventController::class, 'userAllEvent'])->name('user.all.event');
+    Route::get('/user/event-details/{slug}', [EventController::class, 'userEventDetails'])->name('user.event.details');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
