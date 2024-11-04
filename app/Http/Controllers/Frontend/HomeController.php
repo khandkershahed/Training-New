@@ -18,6 +18,7 @@ use App\Models\NewsTrend;
 use App\Models\CourseQuery;
 use App\Models\FaqCategory;
 use Illuminate\Support\Str;
+use App\Mail\AdminEventMail;
 use App\Mail\CourseRegister;
 use Illuminate\Http\Request;
 use App\Models\CourseOutline;
@@ -28,6 +29,7 @@ use App\Models\CourseCategory;
 use App\Models\CourseSchedule;
 use App\Models\TermsCondition;
 use App\Models\CourseCurriculum;
+use Illuminate\Validation\Rules;
 use App\Mail\EventRegistrationMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +43,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Notification;
 use App\Mail\AdminCourseRegistrationNotification;
 use App\Notifications\UserRegistrationNotification;
-use Illuminate\Validation\Rules;
 
 class HomeController extends Controller
 {
@@ -74,7 +75,7 @@ class HomeController extends Controller
     public function event()
     {
         $eventPage = EventPage::latest('id')->first();
-        $events = Event::where('event_status','active')->orderBy('start_date', 'ASC')->get();
+        $events = Event::where('event_status', 'active')->orderBy('start_date', 'ASC')->get();
 
 
         return view('frontend.pages.event.allevent', compact('eventPage', 'events'));
@@ -96,67 +97,14 @@ class HomeController extends Controller
         return view('frontend.pages.event.eventRegistration', compact('categorys', 'events'));
     }
 
-    //registerUserEvent
-    // public function registerUserEvent(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-    //         'password' => ['required', 'confirmed'],
-    //     ]);
 
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'phone' => $request->phone,
-    //         'address' => $request->address, // If you have this field
-    //         'password' => Hash::make($request->password),
-    //         'preferences' => json_encode($request->preferences) // Store preferences as JSON
-    //     ]);
-
-    //     // Handle course file uploads
-    //     if ($request->hasFile('attachment')) {
-    //         foreach ($request->file('attachment') as $file) {
-    //             $fileName = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-    //             $destinationPath = 'event/files/';
-    //             $file->storeAs($destinationPath, $fileName, 'public');
-    //             $filePath = $destinationPath . $fileName;
-
-    //             // Insert into CourseCurriculumFile
-    //             usereventregistration::create([
-
-    //                 'user_id' => $user->id,
-    //                 'project_name' => $request->project_name,
-
-    //                 'project_link' => $request->project_link,
-    //                 'project_duration' => $request->project_duration,
-    //                 'technology_used' => $request->technology_used,
-
-    //                 'team_member' => $request->team_member,
-    //                 'team_member_one_name' => $request->team_member_one_name,
-    //                 'team_member_two_name' => $request->team_member_two_name,
-
-    //                 'send_email'     => isset($request->send_email) ? $request->send_email : "0",
-    //                 'event_notification'     => isset($request->event_notification) ? $request->event_notification : "0",
-    //                 'terms_condition'     => isset($request->terms_condation) ? $request->terms_condation : "0",
-
-    //                 'event_id' => $request->event_id,
-    //                 'created_at' => now(),
-
-    //                 'attachment' => $filePath,
-    //             ]);
-    //         }
-    //     }
-
-    //     return redirect()->back()->with('success', 'Event Registration Successfully!!!');
-    // }
 
     public function registerUserEvent(Request $request)
     {
         // Validate incoming request
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'], // Adjusted for the users table
+            'email' => ['required', 'string', 'email', 'max:255'], // Adjusted for the users table
             'password' => ['required', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()],
             // 'attachment.*' => 'file|mimes:jpg,png,pdf|max:2048', // Example file validation
         ]);
@@ -176,7 +124,7 @@ class HomeController extends Controller
 
         if (empty($mainFile)) {
 
-            usereventregistration::insert([
+            $events = usereventregistration::insert([
 
                 'user_id' => $user->id,
                 'project_name' => $request->project_name,
@@ -203,7 +151,7 @@ class HomeController extends Controller
 
             if ($globalFunImg['status'] == 1) {
 
-                usereventregistration::insert([
+                $events = usereventregistration::insert([
 
                     'user_id' => $user->id,
                     'project_name' => $request->project_name,
@@ -237,21 +185,20 @@ class HomeController extends Controller
             'project_name' => $request->project_name,
         ]));
 
+
+        //Admin Mail
+        $admins = Admin::where('mail_status', 'mail')->get();
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new AdminEventMail($user, $events));
+        }
+
         return redirect()->back()->with('success', 'Event Registration Successfully!!!');
     }
 
 
 
-    //userEventRegistration
-    public function userEventRegistration(Request $request)
-    {
 
-        // Validate the request
-        $request->validate([
-            // 'course_file' => 'nullable|array', // Expecting an array of files
-            'attachment.*' => 'file|mimes:pdf,doc,docx|max:2048',
-        ]);
-    }
+
 
 
 

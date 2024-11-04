@@ -465,7 +465,7 @@
                                     <h2 class="mb-0 pt-5 srpt-font">
                                         {{ optional($event)->banner_sub_title }}
                                     </h2>
-                                    <h1 class="w-50">{{ optional($event)->banner_title }}</h1>
+                                    <h1 class="">{{ optional($event)->banner_title }}</h1>
                                     <p class="pt-5 fw-bold">{{ optional($event)->organizer_text }}</p>
                                     <div class="pt-2">
                                         <a href="javascript:void(0)" class="btn me-2 btn-outline-light rounded-pill"
@@ -1098,10 +1098,10 @@
                                 class="border-0 btn btn-outline-light">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
-                            <a href="{{ optional($event)->website_link }}" type="button"
+                            {{-- <a href="{{ optional($event)->website_link }}" type="button"
                                 class="border-0 btn btn-outline-light">
                                 <i class="fab fa-linkedin-in"></i> LinkedIn
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
