@@ -120,16 +120,15 @@ class HomeController extends Controller
                 'email' => strtolower($request->email),
                 'phone' => $request->phone,
                 'password' => Hash::make($request->password),
-                // 'preferences' => json_encode($request->preferences),
             ]);
         }
 
         if ($request->file('attachment')) {
             $mainFile = $request->file('attachment');
             $imgPath = storage_path('app/public/files/');
-            $globalFunImg = customUpload($mainFile, $imgPath); // Extract the image filename
+            $globalFunImg = customUpload($mainFile, $imgPath);
         } else {
-            $globalFunImg['status'] = null; // Or handle a default image if needed
+            $globalFunImg['status'] = null;
         }
 
         $events = usereventregistration::insert([
@@ -152,6 +151,9 @@ class HomeController extends Controller
 
         ]);
 
+        // Log in the user
+        Auth::login($user);
+
         // Send email notification
         Mail::to($user->email)->send(new EventRegistrationMail($user, [
             'project_name' => $request->project_name,
@@ -166,7 +168,7 @@ class HomeController extends Controller
         return redirect()->route('dashboard')->with('success', 'Event Registration Successfully!!!');
     }
 
-
+    //allCourses
     public function allCourses(Request $request)
     {
         $sectionId = $request->input('section');
@@ -211,38 +213,7 @@ class HomeController extends Controller
         return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams', 'courseSchedules', 'courseOutlines', 'courseProjects'));
     }
 
-    //courseSearchAll
 
-    // public function courseSearchAll(Request $request)
-    // {
-    //     // $request->validate(['course_name_search' => "required"]);
-
-    //     $item = $request->course_name_search;
-    //     $itemSection = $request->course_section;
-    //     $itemCategory = $request->course_category;
-
-    //     $courses = Course::where('name', 'LIKE', "%$item%")->get();
-    //     $courses = CourseSection::where('name', 'LIKE', "%$itemSection%")->get();
-    //     $courses = CourseCategory::where('name', 'LIKE', "%$itemCategory%")->get();
-
-    //     return view('frontend.pages.course.course_all_search', compact('courses', 'item','itemSection','itemCategory'));
-
-    // }
-
-    // public function courseSearchAll(Request $request)
-    // {
-    //     $item = $request->input('course_name_search');
-
-    //     $query = Course::query();
-
-    //     if ($item) {
-    //         $query->where('name', 'LIKE', "%$item%");
-    //     }
-
-    //     $courses = $query->get();
-
-    //     return view('frontend.pages.course.course_all_search', compact('courses', 'item'));
-    // }
 
     public function searchCourseNAme(Request $request)
     {

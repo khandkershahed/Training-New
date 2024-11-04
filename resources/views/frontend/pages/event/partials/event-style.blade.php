@@ -774,7 +774,8 @@
         margin: 0;
         width: 80%;
     }
-    .join-register{
+
+    .join-register {
         text-align: end;
     }
 
@@ -873,6 +874,18 @@
 
         .event-shedule-description {
             width: 50%;
+        }
+
+        .event-step-nav {
+            flex-direction: column;
+        }
+
+        .stepper-item {
+            margin-bottom: 11px;
+        }
+
+        .event-step-nav {
+            width: 65%;
         }
     }
 </style>
