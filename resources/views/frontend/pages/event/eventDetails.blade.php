@@ -640,7 +640,7 @@
                     <span class="text-white">Share On:</span>
                     <div class="">
                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <a href="{{ optional($event)->website_link }}" type="button"
+                            <a href="{{ optional($event)->other_link }}" type="button"
                                 class="border-0 btn btn-outline-light">
                                 <i class="fab fa-facebook-f"></i> Facebook
                             </a>
