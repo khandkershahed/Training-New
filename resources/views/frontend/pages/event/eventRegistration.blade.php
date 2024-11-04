@@ -280,7 +280,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
-                                                <div class="pt-3" style="display: none;" >
+                                                <div class="pt-3" style="display: none;" id="speech">
                                                     <label class="form-check-label" for="speech">
                                                         Add Speech
                                                     </label>
