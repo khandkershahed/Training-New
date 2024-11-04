@@ -401,21 +401,7 @@
                                 {{ optional($event)->row_four_button_name }}
                             </a>
                         </div>
-<<<<<<< HEAD
-
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card rounded-2 border-0 bg-transparent">
-                        <div class="card-body">
-                            <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
-                                alt="" />
-                        </div>
-                    </div>
-=======
                     @endif
->>>>>>> 952c5bbc47ee3e41a7ffd65a92b4be7d1b3ba40f
                 </div>
             </div>
         </section>
@@ -445,95 +431,18 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                </div>
-                <div class="col-lg-4">
-                    <div class="card rounded-2 border-0 bg-transparent">
-                        <div class="card-body">
-                            <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
-                                alt="" />
-                            <div class="pt-3">
-                                <a href="{{ route('event.registration') }}"
-                                    class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
-                                    {{ optional($event)->row_three_button_name }}
-                                </a>
-=======
                     <div class="col-lg-8">
                         <div class="py-5">
                             <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_five_title }}</h1>
                             <div>
                                 <p>{!! optional($event)->row_five_description !!}</p>
->>>>>>> 952c5bbc47ee3e41a7ffd65a92b4be7d1b3ba40f
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-        </div>
-    </section>
-
-    <section class="action-bg py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-10">
-                    <div class="text-white">
-                        <h3 class="srpt-font">{{ optional($event)->row_four_badge }}</h3>
-                        <h1 class="action-title pb-2 cst-font">
-                            {{ optional($event)->row_four_title }}
-                        </h1>
-                        <p class="fw-bold" style="text-align: justify">
-                            {!! implode(' ', array_slice(explode(' ', optional($event)->row_four_description), 0, 500)) !!}
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <a href="{{ route('event.registration') }}" class="btn btn-outline-light rouned-0 py-3 cst-font"
-                        style="border-radius: 0">
-                        {{ optional($event)->row_four_button_name }}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="overview-section">
-        <div class="container py-5 mobile-none">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-4">
-                    <div class="card rounded-2 border-0 bg-transparent">
-                        <div class="card-body">
-                            {{-- <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
-                                alt="" /> --}}
-                            <img class="img-fluid rounded-2 w-100"
-                                src="{{ !empty(optional($event)->row_five_image) ? url('storage/' . optional($event)->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
-                                alt="" />
-                            <div class="pt-3">
-                                <a href="{{ route('event.registration') }}"
-                                    class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
-                                    {{ optional($event)->row_five_button_name }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_five_title }}</h1>
-                        <div>
-                            <p>{!! optional($event)->row_five_description !!}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-=======
         </section>
     @endif
->>>>>>> 952c5bbc47ee3e41a7ffd65a92b4be7d1b3ba40f
 
     <section id="projects" style="background-color: #eee">
         <div class="container py-5">
