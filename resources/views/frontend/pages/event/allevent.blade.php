@@ -206,16 +206,19 @@
                 max-width: initial;
             }
         }
+
         @media all and (min-width: 1490px) {
             .amount {
-            position: relative;
-            left: 20px !important;
-            top: 35px;
-        }
+                position: relative;
+                left: 20px !important;
+                top: 35px;
+            }
+
             .stepsWrapper {
                 height: 260px !important;
             }
         }
+
         @media only screen and (min-width: 1200px) {
             .stepsWrapper {
                 height: 100%;
@@ -230,7 +233,8 @@
                 left: 0px;
                 top: 35px;
             }
-            .stepsWrapper .step .counter{
+
+            .stepsWrapper .step .counter {
                 width: 100px;
             }
         }

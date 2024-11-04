@@ -74,7 +74,8 @@ class HomeController extends Controller
     public function event()
     {
         $eventPage = EventPage::latest('id')->first();
-        $events = Event::latest()->get();
+        $events = Event::where('event_status','active')->orderBy('start_date', 'ASC')->get();
+
 
         return view('frontend.pages.event.allevent', compact('eventPage', 'events'));
     }

@@ -73,6 +73,8 @@ return new class extends Migration
             $table->string('location')->nullable();//
             $table->string('contact')->nullable();//
 
+            $table->string('event_status')->nullable();
+
             $table->foreignId('added_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->foreignId('updated_by')->nullable()->constrained('admins')->onDelete('set null');
 
