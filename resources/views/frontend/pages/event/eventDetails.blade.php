@@ -191,7 +191,266 @@
             transform: rotateX(180deg);
             overflow: hidden;
         }
+
+        .list-group-item {
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: #613587;
+            border: 2px solid #613587;
+        }
+
+        .form-check-input:focus {
+            box-shadow: none;
+        }
     </style>
+    {{-- Timeline Agenda --}}
+    <style>
+        /* Timeline container styling */
+        .timeline-container {
+            display: flex;
+            gap: 33.5px;
+            width: 100%;
+            height: 134px;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 67px;
+            position: relative;
+            top: 335px;
+        }
+
+        /* Individual timeline point styling */
+        .timeline-point {
+            transition-duration: 0.5s;
+            border-radius: 50%;
+            background-image: linear-gradient(to right, #6b207a, #6b207a, #6b207a, #6b207a, #6b207a, #75207c, #80207e, #8a2080, #a12083, #b82084, #ce2284, #e32782);
+            display: grid;
+            place-items: center;
+            width: 134px;
+            position: relative;
+            color: #ffff;
+        }
+
+        .timeline-point::before {
+            content: "";
+            width: 200px;
+            height: 200px;
+            z-index: -1;
+            border-radius: 50%;
+            position: absolute;
+            background: conic-gradient(var(--color) var(--angle),
+                    transparent 0deg 360deg);
+            animation: rotateBorder 1s linear var(--delay) forwards;
+        }
+
+        .timeline-point:nth-child(odd)::before {
+            transform: rotate(-90deg);
+        }
+
+        .timeline-point:nth-child(even)::before {
+            transform: rotate(90deg) scaleY(-1);
+        }
+
+        /* Common styling for timeline points */
+        .timeline-point:nth-child(1) {
+            --color: #613587;
+            --delay: 0s;
+        }
+
+        .timeline-point:nth-child(2) {
+            --color: #613587;
+            --delay: 1s;
+        }
+
+        .timeline-point:nth-child(3) {
+            --color: #613587;
+            --delay: 2s;
+        }
+
+        .timeline-point:nth-child(4) {
+            --color: #613587;
+            --delay: 3s;
+        }
+
+        .timeline-point:nth-child(5) {
+            --color: #613587;
+            --delay: 4s;
+        }
+
+        /* Popup styling */
+        .popup {
+            width: 321.6px;
+            height: auto;
+            max-height: 0;
+            background-color: var(--color);
+            display: grid;
+            grid-template-columns: 16% 84%;
+            position: absolute;
+            color: white;
+            border-radius: 30px;
+
+            transform-origin: bottom bottom;
+            animation: expandPopup 0.5s linear calc(var(--delay) + 0.5s) forwards;
+        }
+
+        .timeline-point:nth-child(odd) .popup {
+            bottom: 221.1px;
+        }
+
+        .timeline-point:nth-child(even) .popup {
+            top: 221.1px;
+        }
+
+        /* Popup number styling */
+        .popup-number {
+            grid-row: span 2;
+            display: grid;
+            font-size: 2rem;
+            font-weight: bold;
+            place-items: center;
+            cursor: auto;
+            animation: fadeIn 0.5s linear calc(var(--delay) + 0.7s) forwards;
+            opacity: 0;
+            height: 100%;
+        }
+
+        /* Popup title styling */
+        .popup-title {
+            color: var(--color);
+            padding-bottom: 6.7px;
+            font-size: 20.1px;
+            font-weight: 900;
+        }
+
+        /* Popup details styling */
+        .popup-details {
+            padding: 20.1px;
+            border-radius: 30px;
+            opacity: 0;
+            font-weight: 500;
+            user-select: none;
+            cursor: auto;
+            overflow: hidden;
+            font-size: 0.8rem;
+            text-align: justify;
+            background: linear-gradient(145deg, #fff, #fff);
+            margin: 3.35px;
+            animation: fadeIn 0.5s linear calc(var(--delay) + 0.7s) forwards;
+        }
+
+        .popup::before {
+            content: "";
+            width: 6.7px;
+            height: 0;
+            border-radius: 20px;
+            background-color: var(--color);
+            position: absolute;
+            left: 50%;
+            top: -41.9px;
+            display: flex;
+            animation: drawLine 0.5s linear var(--delay) forwards;
+        }
+
+        .timeline-point:nth-child(odd) .popup:before {
+            top: calc(100% + 47px);
+            transform: rotateX(180deg);
+            transform-origin: top;
+        }
+
+        /* Hover effect for timeline points */
+        .timeline-point:hover {
+            background-image: linear-gradient(to right, #6b207a, #6b207a, #6b207a, #6b207a, #6b207a, #75207c, #80207e, #8a2080, #a12083, #b82084, #ce2284, #e32782);
+            color: white;
+        }
+
+        /* Animation for border rotation */
+        @keyframes rotateBorder {
+            from {
+                --angle: 0deg;
+            }
+
+            to {
+                --angle: 180deg;
+            }
+        }
+
+        /* Animation for popup expansion */
+        @keyframes expandPopup {
+            0% {
+                max-height: 0;
+            }
+
+            100% {
+                max-height: 200px;
+            }
+        }
+
+        /* Animation for line drawing */
+        @keyframes drawLine {
+            0% {
+                height: 0%;
+                opacity: 0;
+            }
+
+            100% {
+                height: 33.5px;
+                opacity: 1;
+            }
+        }
+
+        /* Animation for fade-in effect */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1050px) {
+            body {
+                height: auto;
+                display: block;
+            }
+
+            .timeline-container {
+                flex-direction: column;
+                height: auto;
+                width: 100%;
+                padding: 100px 0px;
+            }
+
+            .timeline-point {
+                height: 134px;
+                flex-shrink: 0;
+                left: calc(-321px / 2);
+                margin: 0px auto;
+                position: relative;
+            }
+
+            .timeline-point:nth-child(odd)::before {
+                transform: rotate(0deg);
+            }
+
+            .timeline-point:nth-child(even)::before {
+                transform: rotate(0deg) scaleX(-1);
+            }
+
+            .timeline-point .popup:before {
+                display: none;
+            }
+
+            .timeline-point:nth-child(odd) .popup {
+                bottom: auto;
+                right: -370.1px;
+            }
+
+            .timeline-point:nth-child(even) .popup {
+                top: auto;
+                right: -370.1px;
+            }
+        }
+    </style>
+    {{-- Timeline Agenda End --}}
     <section id="homepage">
         <div class="container-fluid">
             <div class="row">
@@ -444,7 +703,7 @@
         </section>
     @endif
 
-    <section id="projects" style="background-color: #eee">
+    <section id="projects">
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-4 mb-3 mb-lg-0">
@@ -638,6 +897,50 @@
                 }
             });
             cd.start();
+        </script>
+        <script>
+            function showContent(type) {
+                // Hide all content divs
+                document.querySelector('.seminar_show').style.display = 'none';
+                document.querySelector('.knowledge_show').style.display = 'none';
+                document.querySelector('.project_show').style.display = 'none';
+
+                // Show the selected content
+                if (type === 'seminar') {
+                    document.querySelector('.seminar_show').style.display = 'block';
+                } else if (type === 'knowledge') {
+                    document.querySelector('.knowledge_show').style.display = 'block';
+                } else if (type === 'project') {
+                    document.querySelector('.project_show').style.display = 'block';
+                }
+            }
+
+            // Call showContent on page load to show the default div for "project"
+            window.onload = function() {
+                showContent('seminar');
+            };
+        </script>
+        <script>
+            function showContent(type) {
+                // Hide all content divs
+                document.querySelector('.seminar_show').style.display = 'none';
+                document.querySelector('.knowledge_show').style.display = 'none';
+                document.querySelector('.project_show').style.display = 'none';
+
+                // Show the selected content
+                if (type === 'seminar') {
+                    document.querySelector('.seminar_show').style.display = 'block';
+                } else if (type === 'knowledge') {
+                    document.querySelector('.knowledge_show').style.display = 'block';
+                } else if (type === 'project') {
+                    document.querySelector('.project_show').style.display = 'block';
+                }
+            }
+
+            // Call showContent on page load to show the default div for "project"
+            window.onload = function() {
+                showContent('seminar');
+            };
         </script>
     @endpush
 @endsection

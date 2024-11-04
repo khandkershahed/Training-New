@@ -78,6 +78,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <script src="{{ asset('frontend/event/scripts/scripts.js') }}"></script>
+
+    @stack('scripts')
     <script>
         $(window).load(function() {
             $(".loader").fadeOut(100);
