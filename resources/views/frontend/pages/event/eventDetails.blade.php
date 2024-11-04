@@ -1,129 +1,195 @@
 @extends('frontend.pages.event.app')
 @section('event-content')
     <style>
-        #countdown {
-            width: 465px;
-            height: 112px;
-            text-align: center;
-            background: #222;
-            background-image: -webkit-linear-gradient(top, #222, #333, #333, #222);
-            background-image: -moz-linear-gradient(top, #222, #333, #333, #222);
-            background-image: -ms-linear-gradient(top, #222, #333, #333, #222);
-            background-image: -o-linear-gradient(top, #222, #333, #333, #222);
-            border: 1px solid #111;
-            border-radius: 5px;
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
-            margin: auto;
-            padding: 24px 0;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+        @-webkit-keyframes last_rotate {
+            0% {
+                -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+                z-index: 1;
+            }
+
+            100% {
+                -webkit-transform: rotateX(-180deg);
+                transform: rotateX(-180deg);
+                z-index: 0;
+            }
         }
 
-        #countdown:before {
-            content: "";
-            width: 8px;
-            height: 65px;
-            background: #444;
-            background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -o-linear-gradient(top, #555, #444, #444, #555);
-            border: 1px solid #111;
-            border-top-left-radius: 6px;
-            border-bottom-left-radius: 6px;
-            display: block;
-            position: absolute;
-            top: 48px;
-            left: -10px;
+        @keyframes last_rotate {
+            0% {
+                -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+                z-index: 1;
+            }
+
+            100% {
+                -webkit-transform: rotateX(-180deg);
+                transform: rotateX(-180deg);
+                z-index: 0;
+            }
         }
 
-        #countdown:after {
-            content: "";
-            width: 8px;
-            height: 65px;
-            background: #444;
-            background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
-            background-image: -o-linear-gradient(top, #555, #444, #444, #555);
-            border: 1px solid #111;
-            border-top-right-radius: 6px;
-            border-bottom-right-radius: 6px;
-            display: block;
-            position: absolute;
-            top: 48px;
-            right: -10px;
+        @-webkit-keyframes new_rotate {
+            0% {
+                -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+                z-index: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateX(-180deg);
+                transform: rotateX(-180deg);
+                z-index: 1;
+            }
         }
 
-        #countdown #tiles {
+        @keyframes new_rotate {
+            0% {
+                -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+                z-index: 0;
+            }
+
+            100% {
+                -webkit-transform: rotateX(-180deg);
+                transform: rotateX(-180deg);
+                z-index: 1;
+            }
+        }
+
+        .flip-countdown {
+            display: flex;
+            justify-content: center;
+            font-family: "Roboto", sans-serif;
+            font-size: 2.1em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .interval_cont {
+            display: flex;
+            justify-content: space-around;
+            width: auto;
+            overflow: hidden;
+        }
+
+        .interval_cont:nth-child(n+1):not(:last-child) {
+            margin-right: 0.15em;
+        }
+
+        .description {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5em;
+            margin-right: 0.55em;
+            font-size: 0.29em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #7791a8;
+            text-shadow: 0.05em 0.05em 0.1em rgba(136, 110, 87, 0.3);
+            overflow: hidden;
+        }
+
+        .digit_cont {
             position: relative;
+            width: 1.2em;
+            height: 1.5em;
+            font-weight: 900;
+            line-height: 1.5em;
+            border-radius: 0.25em;
+            color: #4c6377;
+            border-bottom: 0.01em solid rgba(76, 99, 119, 0.1);
+            box-shadow: 0 0.2em 0.3em -0.1em rgba(76, 99, 119, 0.1);
+            -webkit-perspective: 3em;
+            perspective: 3em;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .digit_cont:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 0.015em;
+            background: rgba(141, 163, 182, 0.25);
+            box-shadow: 0 0.01em 0.02em 0 rgba(255, 255, 255, 0.1);
             z-index: 1;
         }
 
-        #countdown #tiles>span {
-            width: 92px;
-            max-width: 92px;
-            font: bold 48px 'Droid Sans', Arial, sans-serif;
-            text-align: center;
-            color: #111;
-            background-color: #ddd;
-            background-image: -webkit-linear-gradient(top, #bbb, #eee);
-            background-image: -moz-linear-gradient(top, #bbb, #eee);
-            background-image: -ms-linear-gradient(top, #bbb, #eee);
-            background-image: -o-linear-gradient(top, #bbb, #eee);
-            border-top: 1px solid #fff;
-            border-radius: 3px;
-            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
-            margin: 0 7px;
-            padding: 18px 0;
-            display: inline-block;
-            position: relative;
+        .digit_cont:nth-child(n+1):not(:last-child) {
+            margin-right: 0.05em;
         }
 
-        #countdown #tiles>span:before {
-            content: "";
-            width: 100%;
-            height: 13px;
-            background: #111;
-            display: block;
-            padding: 0 3px;
+        .digit_cont span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
-            top: 41%;
-            left: -3px;
-            z-index: -1;
+            bottom: 50%;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
 
-        #countdown #tiles>span:after {
-            content: "";
-            width: 100%;
-            height: 1px;
-            background: #eee;
-            border-top: 1px solid #333;
-            display: block;
+        .digit_cont .last_placeholder,
+        .digit_cont .new_placeholder,
+        .digit_cont .last_rotate,
+        .digit_cont .new_rotate {
             position: absolute;
-            top: 48%;
             left: 0;
-        }
-
-        #countdown .labels {
             width: 100%;
-            height: 25px;
+            height: 50%;
             text-align: center;
-            position: absolute;
-            bottom: 8px;
+            overflow: hidden;
+            box-sizing: border-box;
         }
 
-        #countdown .labels li {
-            width: 102px;
-            font: bold 15px 'Droid Sans', Arial, sans-serif;
-            color: #f47321;
-            text-shadow: 1px 1px 0px #000;
-            text-align: center;
-            text-transform: uppercase;
-            display: inline-block;
+        .digit_cont .last_placeholder {
+            bottom: 0;
+            border-radius: 0 0 0.25em 0.25em;
+            background: linear-gradient(to bottom, #dae1e8 -90%, #fff 100%), #dae1e8;
+        }
+
+        .digit_cont .new_placeholder {
+            box-shadow: inset 0 0.01em 0 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .digit_cont .new_placeholder,
+        .digit_cont .last_rotate,
+        .digit_cont .new_rotate {
+            top: 0;
+            border-radius: 0.25em 0.25em 0 0;
+            background: linear-gradient(to bottom, #dae1e8 10%, #fff 200%), #dae1e8;
+        }
+
+        .digit_cont .last_rotate {
+            -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+            -webkit-animation: last_rotate 0.5s linear forwards;
+            animation: last_rotate 0.5s linear forwards;
+        }
+
+        .digit_cont .new_rotate {
+            border-top: 0.01em solid rgba(76, 99, 119, 0.3);
+            background: linear-gradient(to top, #dae1e8 -90%, #fff 100%), #dae1e8;
+            -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+            -webkit-animation: new_rotate 0.5s linear forwards;
+            animation: new_rotate 0.5s linear forwards;
+        }
+
+        .digit_cont .new_rotate .rotated {
+            width: 100%;
+            height: 100%;
+            border-radius: 0 0 0.25em 0.25em;
+            -webkit-transform: rotateX(180deg);
+            transform: rotateX(180deg);
+            overflow: hidden;
         }
     </style>
     <section id="homepage">
@@ -131,7 +197,7 @@
             <div class="row">
                 <div class="col-lg-12 px-0">
                     <div class="image-container">
-                        <img src="{{ !empty($event->banner_image) ? url('storage/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                        <img src="{{ !empty(optional($event)->banner_image) && file_exists(public_path('storage/' . optional($event)->banner_image)) ? url('storage/' . optional($event)->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
                             alt="Event Image" />
                         <div class="overlay"></div>
                         <div class="row">
@@ -188,7 +254,7 @@
                                             <h3 class="text-center fw-bold pb-2">
                                                 Let's Countdown
                                             </h3>
-                                            {{-- Coundown Time Nov 15 2024 --}}
+                                            <div class="flip-countdown"></div>
                                         </div>
 
                                         <div class="card-footer border-0">
@@ -196,7 +262,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="d-flex p-3 py-0 align-items-center justify-content-between">
                                                         <h5 class="mb-0 fw-bold cst-font first-color text-end pe-2">
-                                                            Registraion:
+                                                            Registration:
                                                         </h5>
                                                         <div>
                                                             <small><del>2000 Tk</del></small> <br>
@@ -210,8 +276,8 @@
                                         </div>
                                         <div class="card-footer border-0">
                                             <a href="{{ route('event.registration') }}"
-                                                class="btn btn-primary reg-btn w-100 fw-bold mb-2 rounded-2 cst-font">
-                                                Registraion Now
+                                                class="animated-button1 mb-2 w-100">
+                                                Registration Now
                                             </a>
                                         </div>
                                     </div>
@@ -223,22 +289,119 @@
             </div>
         </div>
     </section>
-    <section id="overview-section" style="background-color: #eee">
-        <div class="container py-5 mobile-none">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-6">
-                    <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
-                        <p class="fw-semibold" style="text-align: justify">
-                            {!! optional($event)->row_one_description !!}
+    @if (!empty(optional($event)->row_one_title) && !empty(optional($event)->row_one_description))
+        <section id="overview-section" style="background-color: #eee">
+            <div class="container py-5 mobile-none">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_one_title }}</h1>
+                            <p class="fw-semibold" style="text-align: justify">
+                                {!! optional($event)->row_one_description !!}
+                            </p>
+
+                            @if (optional($event)->row_one_button_link && optional($event)->row_one_button_name)
+                                <div class="pt-3">
+                                    <a href="{{ optional($event)->row_one_button_link }}"
+                                        class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
+                                        {{ optional($event)->row_one_button_name }}
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    @if (!empty(optional($event)->row_one_image))
+                        <div class="col-lg-6">
+                            <div class="card rounded-2 border-0 bg-transparent">
+                                <div class="card-body">
+                                    <img class="img-fluid rounded-2 w-100"
+                                        src="{{ !empty(optional($event)->row_one_image) ? url('storage/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($event)->row_one_title) }}"
+                                        alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </section>
+    @endif
+    @if (!empty(optional($event)->row_two_title) && !empty(optional($event)->row_two_description))
+        <section id="details-requirements">
+            <div class="container py-5">
+                <div class="row" style="text-align: justify">
+                    <div class="col-lg-12">
+
+                        <h1 class="first-color cst-font">
+                            {{ optional($event)->row_two_title }}
+                        </h1>
+
+                        <p class="pt-2">
+                            {!! optional($event)->row_two_description !!}
                         </p>
 
-                        <div class="pt-3">
-                            <a href="{{ route('event.registration') }}"
-                                class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
-                                {{ optional($event)->row_one_button_name }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if (!empty(optional($event)->row_three_title) && !empty(optional($event)->row_three_description))
+        <section id="overview-section" style="background-color: #eee">
+            <div class="container py-5 mobile-none">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_three_badge }}</h1>
+                            <div>
+                                <h5 class="mb-2">{{ optional($event)->row_three_title }}</h5>
+                                <p class="fw-semibold" style="text-align: justify">
+                                    {!! optional($event)->row_three_description !!}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card rounded-2 border-0 bg-transparent">
+                            <div class="card-body">
+                                <img class="img-fluid rounded-2 w-100"
+                                    src="{{ !empty(optional($event)->row_three_image) ? url('storage/' . optional($event)->row_three_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
+                                    alt="" />
+                                @if (optional($event)->row_three_button_link && optional($event)->row_three_button_name)
+                                    <div class="pt-3">
+                                        <a href="{{ optional($event)->row_three_button_link }}"
+                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
+                                            {{ optional($event)->row_three_button_name }}
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if (!empty(optional($event)->row_four_title) && !empty(optional($event)->row_four_description))
+        <section class="action-bg py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-10">
+                        <div class="text-white">
+                            <h3 class="srpt-font">{{ optional($event)->row_four_badge }}</h3>
+                            <h1 class="action-title pb-2 cst-font">
+                                {{ optional($event)->row_four_title }}
+                            </h1>
+                            <p class="fw-bold" style="text-align: justify">
+                                {!! optional($event)->row_four_description !!}
+                            </p>
+                        </div>
+                    </div>
+                    @if (optional($event)->row_four_button_link && optional($event)->row_four_button_name)
+                        <div class="col-lg-2">
+                            <a href="{{ optional($event)->row_four_button_link }}"
+                                class="btn btn-outline-light rouned-0 py-3 cst-font" style="border-radius: 0">
+                                {{ optional($event)->row_four_button_name }}
                             </a>
                         </div>
+<<<<<<< HEAD
 
                     </div>
                 </div>
@@ -250,41 +413,39 @@
                                 alt="" />
                         </div>
                     </div>
+=======
+                    @endif
+>>>>>>> 952c5bbc47ee3e41a7ffd65a92b4be7d1b3ba40f
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
-    <section id="details-requirements">
-        <div class="container py-5">
-            <div class="row" style="text-align: justify">
-                <div class="col-lg-12">
-
-                    <h1 class="first-color cst-font">
-                        {{ optional($event)->row_two_title }}
-                    </h1>
-
-                    <p class="pt-2">
-                        {!! optional($event)->row_two_description !!}
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="overview-section" style="background-color: #eee">
-        <div class="container py-5 mobile-none">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-8">
-                    <div class="py-5">
-                        <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_three_badge }}</h1>
-                        <div>
-                            <p>{{ optional($event)->row_three_badge }}</p>
-                            <p class="fw-semibold" style="text-align: justify">
-                                {!! optional($event)->row_three_description !!}</p>
+    @if (!empty(optional($event)->row_five_title) && !empty(optional($event)->row_five_description))
+        <section id="overview-section">
+            <div class="container py-5 mobile-none">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-4">
+                        <div class="card rounded-2 border-0 bg-transparent">
+                            <div class="card-body">
+                                {{-- <img class="img-fluid rounded-2 w-100"
+                                    src="{{ !empty(optional($event)->row_one_image) ? url('storage/event/' . optional($event)->row_one_image) : 'https://ui-avatars.com/api/?name=' . urlencode($event->row_one_title) }}"
+                                    alt="" /> --}}
+                                <img class="img-fluid rounded-2 w-100"
+                                    src="{{ !empty(optional($event)->row_five_image) ? url('storage/' . optional($event)->row_five_image) : 'https://ui-avatars.com/api/?name=' . urlencode('Row Three') }}"
+                                    alt="" />
+                                @if (optional($event)->row_five_button_link && optional($event)->row_five_button_name)
+                                    <div class="pt-3">
+                                        <a href="{{ optional($event)->row_five_button_link }}"
+                                            class="btn btn-primary reg-btn mb-2 rounded-2 cst-font">
+                                            {{ optional($event)->row_five_button_name }}
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
                 <div class="col-lg-4">
                     <div class="card rounded-2 border-0 bg-transparent">
@@ -297,11 +458,19 @@
                                     class="btn btn-primary reg-btn mb-2 rounded-2 cst-font w-100">
                                     {{ optional($event)->row_three_button_name }}
                                 </a>
+=======
+                    <div class="col-lg-8">
+                        <div class="py-5">
+                            <h1 class="pb-3 cst-font first-color">{{ optional($event)->row_five_title }}</h1>
+                            <div>
+                                <p>{!! optional($event)->row_five_description !!}</p>
+>>>>>>> 952c5bbc47ee3e41a7ffd65a92b4be7d1b3ba40f
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
     </section>
 
@@ -361,6 +530,10 @@
             </div>
         </div>
     </section>
+=======
+        </section>
+    @endif
+>>>>>>> 952c5bbc47ee3e41a7ffd65a92b4be7d1b3ba40f
 
     <section id="projects" style="background-color: #eee">
         <div class="container py-5">
@@ -374,7 +547,11 @@
                                 <i class="fa fa-solid fa-location-dot fs-2 second-color"></i>
                             </div>
                             <p class="fw-semibold pt-3 ps-4 mb-0">
-                                {{ optional($event)->location }}
+                                <a href="javascript:void(0)"
+                                    class="btn me-2 btn-outline-light bg-none border-0 rounded-pill text-black"
+                                    data-bs-toggle="modal" data-bs-target="#mapEvet">
+                                    {{ optional($event)->location }}
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -389,9 +566,9 @@
                             </div>
                             <p class="fw-semibold pt-3 ps-4 mb-0">
                                 <span>Phone: <span class="ps-2">{{ optional($event)->contact }}</span></span>
-                                {{-- <br />
-                                <span>Telephone:
-                                    <span class="ps-2">(+88) 01958025050</span></span> --}}
+                                <br />
+                                <span>Email:
+                                    <span class="ps-2">info@gmail.com</span></span>
                             </p>
                         </div>
                     </div>
@@ -405,7 +582,7 @@
                                 <i class="fa-regular fa-clock fa-fw fs-2 second-color"></i>
                             </div>
                             <p class="fw-semibold pt-3 ps-4 mb-0">
-                                <strong class="pe-2">Event Name:</strong>{{ optional($event)->event_name }} <br>
+                                {{-- <strong class="pe-2">Event Name:</strong>{{ optional($event)->event_name }} <br> --}}
                                 <strong class="pe-2">Event Type:</strong>{{ optional($event)->event_type }} <br>
                                 <strong class="pe-2">Date:</strong>
                                 {{ date('D, M j, Y', strtotime(optional($event)->start_date)) }}
@@ -458,7 +635,7 @@
                 <div class="modal-body p-0">
                     <div>
                         <img class="img-fluid"
-                            src="{{ !empty($event->banner_image) ? url('storage/event/' . $event->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
+                            src="{{ !empty(optional($event)->banner_image) ? url('storage/' . optional($event)->banner_image) : asset('frontend/images/no-banner(1920-330).png') }}"
                             alt="Event Image" />
                     </div>
                     <div class="p-3">
@@ -494,40 +671,64 @@
     {{-- Share Modal End --}}
     @push('scripts')
         <script>
-            var target_date = new Date().getTime() + (1000 * 3600 * 48); // set the countdown date
-            var days, hours, minutes, seconds; // variables for time units
+            const lang = 'EN';
+            const targetDate = '{{ optional($event)->start_date }}T00:00:00'; // Future event date
+            const ColorDigitEnd = '#bfbfbf';
 
-            var countdown = document.getElementById("tiles"); // get tag element
+            // Language settings
+            const dayLang = lang === 'EN' ? 'Days' : 'Дней';
+            const hourLang = lang === 'EN' ? 'Hours' : 'Часов';
+            const minLang = lang === 'EN' ? 'Minutes' : 'Минут';
+            const secLang = lang === 'EN' ? 'Seconds' : 'Секунд';
 
-            getCountdown();
+            class CountDown {
+                constructor({
+                    cont,
+                    targetDate,
+                    lang
+                }) {
+                    this.cont = cont;
+                    this.targetDate = new Date(targetDate);
+                    this.lang = lang;
+                    this.interval = null;
+                }
 
-            setInterval(function() {
-                getCountdown();
-            }, 1000);
+                start() {
+                    this.interval = setInterval(() => {
+                        const diff = this.targetDate - Date.now();
+                        if (diff <= 0) {
+                            clearInterval(this.interval);
+                            this.cont.innerHTML = 'Event has started!';
+                            return;
+                        }
 
-            function getCountdown() {
+                        // Calculate time components
+                        const days = Math.floor(diff / 86400000);
+                        const hours = Math.floor((diff % 86400000) / 3600000);
+                        const minutes = Math.floor((diff % 3600000) / 60000);
+                        const seconds = Math.floor((diff % 60000) / 1000);
 
-                // find the amount of "seconds" between now and target
-                var current_date = new Date().getTime();
-                var seconds_left = (target_date - current_date) / 1000;
-
-                days = pad(parseInt(seconds_left / 86400));
-                seconds_left = seconds_left % 86400;
-
-                hours = pad(parseInt(seconds_left / 3600));
-                seconds_left = seconds_left % 3600;
-
-                minutes = pad(parseInt(seconds_left / 60));
-                seconds = pad(parseInt(seconds_left % 60));
-
-                // format countdown string + set tag value
-                countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" +
-                    seconds + "</span>";
+                        // Update the display
+                        this.cont.innerHTML =
+                            `<div>${days} ${this.lang.day}</div>
+                     <div>${hours} ${this.lang.hour}</div>
+                     <div>${minutes} ${this.lang.minute}</div>
+                     <div>${seconds} ${this.lang.second}</div>`;
+                    }, 1000);
+                }
             }
 
-            function pad(n) {
-                return (n < 10 ? '0' : '') + n;
-            }
+            const cd = new CountDown({
+                cont: document.querySelector('.flip-countdown'),
+                targetDate: targetDate,
+                lang: {
+                    day: dayLang,
+                    hour: hourLang,
+                    minute: minLang,
+                    second: secLang
+                }
+            });
+            cd.start();
         </script>
     @endpush
 @endsection
