@@ -45,7 +45,12 @@ class User extends Authenticatable
     // {
     //     $this->notify(new \App\Notifications\VerifyEmail);
     // }
-    
+    public function events()
+    {
+        return $this->hasMany(usereventregistration::class, 'user_id');
+    }
 
-    
+
+
+
 }

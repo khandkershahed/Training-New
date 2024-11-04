@@ -536,14 +536,12 @@
                                         </div>
 
                                         @foreach ($categorys as $category)
-                                            <div class="col-6">
-                                                <div class="form-check">
-                                                    <label for="check{{ $category->id }}" class="form-check-label">
-                                                        <input type="checkbox" id="check{{ $category->id }}"
-                                                            name="career[]" value="{{ $category->id }}"
-                                                            class="form-check-input">{{ $category->name }}
-                                                    </label>
-                                                </div>
+                                            <div class="col-6 form-check">
+                                                <label for="check{{ $category->id }}" class="form-check-label">
+                                                    <input type="checkbox" id="check{{ $category->id }}" name="career[]"
+                                                        value="{{ $category->id }}"
+                                                        class="form-check-input">{{ $category->name }}
+                                                </label>
                                             </div>
                                         @endforeach
 
