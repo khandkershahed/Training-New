@@ -540,8 +540,8 @@
 
                                         @foreach ($categorys as $category)
                                             <div class="col-6 form-check">
-                                                <label for="check{{ $category->id }}" class="form-check-label">
-                                                    <input type="checkbox" id="check{{ $category->id }}" name="career[]"
+                                                <label for="check" class="form-check-label">
+                                                    <input type="checkbox" id="check" name="career[]"
                                                         value="{{ $category->id }}"
                                                         class="form-check-input">{{ $category->name }}
                                                 </label>
