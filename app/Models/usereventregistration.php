@@ -25,6 +25,4 @@ class usereventregistration extends Model
     {
         return $this->belongsTo(Event::class, 'event_id');
     }
-
-
 }

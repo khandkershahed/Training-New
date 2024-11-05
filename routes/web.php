@@ -36,7 +36,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     // Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [AdminProfileController::class, 'destroy'])->name('profile.destroy');
-
 });
 
 Route::middleware(['auth:admin', 'verified'])->group(function () {

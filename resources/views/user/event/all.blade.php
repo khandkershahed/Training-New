@@ -27,17 +27,17 @@
                             <tr>
                                 <td class="text-start">{{ $key + 1 }}</td>
 
-                                <td class="text-start">{{ optional($item->events)->event_name }}</td>
+                                <td class="text-start">{{ optional($item->eventName)->event_name }}</td>
                                 <td class="text-start">
-                                    {{ optional($item->events)->start_date ? \Carbon\Carbon::parse($item->events->start_date)->format('d-M-Y') : '' }}
+                                    {{ optional($item->eventName)->start_date ? \Carbon\Carbon::parse($item->eventName->start_date)->format('d-M-Y') : '' }}
                                 </td>
 
-                                <td class="text-start">{{ optional($item->events)->start_time }}</td>
-                                <td class="text-start">{{ optional($item->events)->event_type }}</td>
+                                <td class="text-start">{{ optional($item->eventName)->start_time }}</td>
+                                <td class="text-start">{{ optional($item->eventName)->event_type }}</td>
 
 
                                 <td class="text-start">
-                                    <a href="#" class="view">
+                                    <a href="" class="view">
                                         <i class="bi bi-pencil text-primary"></i>
                                     </a>
                                 </td>
