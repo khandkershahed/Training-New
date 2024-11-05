@@ -37,7 +37,7 @@
 
 
                                 <td class="text-start">
-                                    <a href="" class="view">
+                                    <a href="{{ route('user.event.details',$item->eventName->slug) }}" class="view">
                                         <i class="bi bi-pencil text-primary"></i>
                                     </a>
                                 </td>
@@ -53,4 +53,5 @@
 
         </div>
     </div>
+
 </x-app-layout>

@@ -23,9 +23,15 @@ use Illuminate\Support\Facades\Route;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/user/all-events/', [EventController::class, 'userAllEvent'])->name('user.all.event');
     Route::get('/user/event-details/{slug}', [EventController::class, 'userEventDetails'])->name('user.event.details');
+    Route::get('/download-attachment/{id}', [EventController::class, 'downloadAttachment'])->name('download.attachment');
+    Route::post('/user-event-registration/{id}', [EventController::class, 'userEventRegistration'])->name('user.event.registration.update');
+
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

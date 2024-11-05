@@ -81,6 +81,7 @@
 
                             <!-- Step 1 content -->
                             <div class="step-content" id="step-1">
+
                                 <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
@@ -152,6 +153,7 @@
 
                             <!-- Step 2 content -->
                             <div class="step-content d-none" id="step-2">
+
                                 <div class="row p-3 rounded-2 py-4 shadow-sm" style="border:1px solid #ddd;">
                                     <div class="col-lg-6">
                                         <div class="form-group mb-4">
@@ -197,8 +199,9 @@
                                             <label for="event_name">Event Name</label>
                                             <select
                                                 class="form-select form-select-sm @error('confirm_password') is-invalid @enderror"
-                                                aria-label="Default select example" name="event_id" style="height: 50px" required>
-                                                <option selected>Slelect Event</option>
+                                                aria-label="Default select example" name="event_id" style="height: 50px"
+                                                required>
+                                                <option selected>Select Event</option>
                                                 @foreach ($events as $event)
                                                     <option value="{{ $event->id }}">{{ $event->event_name }}</option>
                                                 @endforeach
@@ -295,6 +298,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="toStep1">Back</button>
                                     <button type="button" class="animated-button1 mt-4" id="toStep3">Next <i
