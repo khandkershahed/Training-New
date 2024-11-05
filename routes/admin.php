@@ -47,6 +47,7 @@ use App\Http\Controllers\FaqCategoryController;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\User\EventController as UserEventController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -305,3 +306,5 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::post('/admin/courses/bulk-delete', [CourseController::class, 'bulkDelete'])->name('admin.course.bulkDelete');
 //Course Status
 Route::post('/admin/course/update-status', [CourseController::class, 'updateStatus'])->name('admin.course.updateStatus');
+
+

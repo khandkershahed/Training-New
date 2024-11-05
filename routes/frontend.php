@@ -80,6 +80,7 @@ Route::get('/event/registration', [HomeController::class, 'eventRegistration'])-
 Route::post('/register/user/event', [HomeController::class, 'registerUserEvent'])->name('register.user.event');
 Route::post('/user/event/registration', [HomeController::class, 'userEventRegistration'])->name('user.event.registration');
 
+
 //Course Enroll
 Route::controller(CourseEnrollController::class)->group(function () {
     Route::post('/cart-store', 'AddToCartCourse');
