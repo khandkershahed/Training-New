@@ -10,9 +10,9 @@
                         </div>
                         <div class="card-body d-flex flex-column pt-13 pb-14">
                             <div class="m-0">
-                                <h1 class="fw-semibold text-white text-center lh-lg mb-9">
-                                     <span class="fw-bolder"> {{ $event->eventName->start_date }}</span>
-                                </h1>
+                                <h4 class="fw-semibold text-white text-center lh-lg mb-9">
+                                     <span class="fw-bolder"> Date : {{ $event->eventName->start_date }}</span>
+                                </h4>
                             </div>
                             <div class="text-center">
                                 {{-- <a class="btn btn-sm btn-success btn-color-white me-2">

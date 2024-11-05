@@ -405,6 +405,8 @@
                                                     fill="currentColor" />
                                             </svg>
                                         </span>
+                                    </a>
+
 
                                 </div>
 
@@ -453,7 +455,7 @@
                                         <div class="fw-bolder d-flex align-items-center fs-5">
                                             {{ Auth::user()->name }}
                                         </div>
-                                        <a href="#" class="fw-bold text-muted text-hover-primary fs-7">
+                                        <a href="#" class="fw-bold text-muted text-hover-primary fs-7" style="word-break: break-word;">
                                             {{ Auth::user()->email }}
                                         </a>
                                     </div>

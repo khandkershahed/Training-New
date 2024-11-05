@@ -40,12 +40,12 @@
           <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
               id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
               <div class="menu-item">
-                  <a class="menu-link" href="javascript:;">
+                  <a class="menu-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                       <span class="menu-icon">
                           <i class="fa-solid fa-rocket fs-2">
                           </i>
                       </span>
-                      <span class="menu-title">Dahboard</span>
+                      <span class="menu-title">Dashboard</span>
                   </a>
               </div>
 
@@ -74,7 +74,7 @@
                   </span>
                   <div class="menu-sub menu-sub-accordion">
                       <div class="menu-item">
-                          <a class="menu-link" href="{{ route('user.all.event') }}">
+                          <a class="menu-link {{ Route::is('user.all.event') ? 'active' : '' }}" href="{{ route('user.all.event') }}">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
@@ -108,7 +108,7 @@
                   </span>
                   <div class="menu-sub menu-sub-accordion">
                       <div class="menu-item">
-                          <a class="menu-link" href="{{ route('user.register.course.list') }}">
+                          <a class="menu-link {{ Route::is('user.register.course.list') ? 'active' : '' }}" href="{{ route('user.register.course.list') }}">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
