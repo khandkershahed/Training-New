@@ -80,7 +80,7 @@
                                     </div>
                             
                                     <div class="m-0">
-                                        <a href="{{ route('admin.course.index') }}"
+                                        <a href="javascript:;"
                                             class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">
                                             {{ $registerCourse->count() }}  <!-- Display the count of registered courses -->
                                         </a>
@@ -103,6 +103,7 @@
                                     <div class="m-0">
                                         <a href="{{ route('admin.all.registration') }}"
                                             class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ $events->count() }}</a>
+
 
                                         <span class="text-gray-500 fw-semibold fs-6">Register Events</span>
                                     </div>
@@ -160,7 +161,7 @@
 
                 <div class="card-header pt-5">
                     <h3 class="card-title align-items-start flex-column mb-5">
-                        <span class="card-label fw-bold text-gray-900">Course Registration</span>
+                        <span class="card-label fw-bold text-gray-900">Event Registration</span>
                     </h3>
                     <div class="card-title">
 

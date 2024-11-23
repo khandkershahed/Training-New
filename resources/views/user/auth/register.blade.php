@@ -279,6 +279,7 @@
                                     </p>
                                 </div>
                             </form>
+                            
                         </div>
                         <div class="card card2">
                             <div class="my-auto mx-md-5 px-md-5 right">

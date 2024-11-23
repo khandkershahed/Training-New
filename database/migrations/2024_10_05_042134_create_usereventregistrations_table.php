@@ -31,6 +31,10 @@ return new class extends Migration
 
             $table->string('project_link')->nullable();//
             $table->string('project_duration')->nullable();//
+
+            $table->string('speech_check')->nullable();//
+            $table->string('speech')->nullable();//
+
             $table->string('technology_used')->nullable();//
             $table->string('send_email')->default(1);//
             $table->string('event_notification')->default(1);//

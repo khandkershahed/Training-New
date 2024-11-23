@@ -542,7 +542,7 @@
                                             <div class="line"></div>
                                         </div>
 
-                                        @foreach ($categorys as $category)
+                                        {{-- @foreach ($categorys as $category)
                                             <div class="col-6 form-check">
                                                 <label for="check" class="form-check-label">
                                                     <input type="checkbox" id="check" name="career[]"
@@ -550,7 +550,20 @@
                                                         class="form-check-input">{{ $category->name }}
                                                 </label>
                                             </div>
+                                        @endforeach --}}
+
+                                        @foreach ($categorys as $category)
+                                            <div class="col-6 form-check">
+                                                <label for="check_{{ $category->id }}" class="form-check-label">
+                                                    <input type="checkbox" id="check_{{ $category->id }}"
+                                                        name="career[]" value="{{ $category->id }}"
+                                                        class="form-check-input">
+                                                    {{ $category->name }}
+                                                </label>
+                                            </div>
                                         @endforeach
+
+
 
                                     </div>
                                     <div class="d-flex align-items-center mb-3 mt-4">
@@ -577,11 +590,14 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-check">
+
                                                 <input type="checkbox" id="check29" name="terms_condition"
                                                     value="1" class="form-check-input">
+
                                                 <label for="check29" class="form-check-label">I agree to the <a
                                                         class="text-primary" href="{{ route('termsCondition') }}">Terms
                                                         and Conditions</a>, including the privacy policy, code of conduct,
@@ -589,6 +605,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button type="button" class="animated-button1 mt-4" id="backToStep2">Back</button>
@@ -596,6 +613,7 @@
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>
@@ -608,6 +626,25 @@
                 var textarea = document.getElementById("speech");
                 textarea.style.display = checkbox.checked ? "block" : "none";
             }
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                // When any checkbox is clicked
+                $('input[name="career[]"]').on('change', function() {
+                    // Get the ID of the clicked checkbox (to find the corresponding name)
+                    var checkboxId = $(this).attr('id');
+                    var categoryNameDiv = $('#category_name_' + checkboxId.split('_')[
+                        1]); // Extract the category ID
+
+                    // If the checkbox is checked, show the category name
+                    if ($(this).prop('checked')) {
+                        categoryNameDiv.show();
+                    } else {
+                        categoryNameDiv.hide();
+                    }
+                });
+            });
         </script>
     @endpush
 @endsection

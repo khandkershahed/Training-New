@@ -467,9 +467,7 @@
                                         <div>
                                             <h5>Need more information?</h5>
                                             <a type="submit" href="{{ route('contact') }}"
-                                                class="primary-btn-one add_to_cart_price w-100 rounded-0"
-                                                data-course_id="5" data-course_section_id="1" data-course_category_id="2"
-                                                data-course_type="offline" data-course_amount="15000">Contact Us
+                                                class="primary-btn-one w-100 rounded-0">Contact Us
                                             </a>
                                             <div class="pt-3">
                                                 <a href="">
@@ -507,7 +505,8 @@
 
                                                                 <div>
 
-                                                                    <a href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}">
+                                                                    <a
+                                                                        href="{{ url('course' . '/' . $courses->id . '/' . $courses->slug) }}">
 
                                                                         <img class="rounded-2 img-fluid course-images"
                                                                             src="{{ asset(!empty($courses->thumbnail_image) ? url('storage/course/' . $courses->thumbnail_image) : url('images/no-shop-imge.png')) }}"
