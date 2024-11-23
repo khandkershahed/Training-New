@@ -122,13 +122,16 @@
       </div>
       <!--end::Aside menu-->
       <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
-          <a href="javascript:void(0)"
-              class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100">
-              <span class="btn-label">
-                  Log Out
-              </span>
-              <i class="fa-solid fa-right-from-bracket btn-icon fs-2 m-0"></i>
-          </a>
-      </div>
+        <form action="{{ route('logout') }}" method="POST" class="w-100">
+            @csrf
+            <button type="submit" class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100">
+                <span class="btn-label">
+                    Log Out
+                </span>
+                <i class="fa-solid fa-right-from-bracket btn-icon fs-2 m-0"></i>
+            </button>
+        </form>
+    </div>
+    
   </div>
   <!--end::Aside-->
