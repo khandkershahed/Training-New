@@ -596,7 +596,7 @@
                                             <div class="form-check">
 
                                                 <input type="checkbox" id="check29" name="terms_condition"
-                                                    value="1" class="form-check-input">
+                                                    value="1" required class="form-check-input">
 
                                                 <label for="check29" class="form-check-label">I agree to the <a
                                                         class="text-primary" href="{{ route('termsCondition') }}">Terms
@@ -613,7 +613,7 @@
                                 </div>
                             </div>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>

@@ -429,6 +429,7 @@
                                                 <label class="form-check-label ms-1" for="toggleSwitch"
                                                     id="onlineLabel">Online</label>
                                             </div>
+
                                             <!-- Offline Course Fee Section -->
                                             <div id="offlineSection" class="card join_offline">
                                                 <div class="card-body">
@@ -444,6 +445,7 @@
                                                     </a>
                                                 </div>
                                             </div>
+
                                             <!-- Online Course Fee Section (Initially Hidden) -->
                                             <div id="onlineSection" class="card join_offline d-none">
                                                 <div class="card-body">
@@ -463,6 +465,7 @@
                                                     @endif
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                         <div>
                                             <h5>Need more information?</h5>
