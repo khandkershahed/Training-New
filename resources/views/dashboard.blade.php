@@ -101,7 +101,7 @@
                                     </div>
 
                                     <div class="m-0">
-                                        <a href="{{ route('admin.all.registration') }}"
+                                        <a href="javascript:;"
                                             class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ $events->count() }}</a>
 
 
