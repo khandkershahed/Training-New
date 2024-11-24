@@ -103,12 +103,13 @@ class HomeController extends Controller
     {
         // Validate incoming request
         $request->validate([
+
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'], // Adjusted for the users table
-            'event_id' => ['required'], // Adjusted for the users table
-            // 'password' => ['required', Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers()],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'event_id' => ['required'],
             'password' => ['required'],
-            // 'attachment.*' => 'file|mimes:jpg,png,pdf|max:2048', // Example file validation
+            'terms_condition' => ['required']
+
         ]);
 
         $alreadyRegistered = User::where('email', $request->email)->first();
@@ -202,16 +203,15 @@ class HomeController extends Controller
     public function courseDetails($id, $slug)
     {
         $coursedetail = Course::find($id);
-
-        $relatedcourses = Course::latest()->get();
-
         $courseCurriculams = CourseCurriculum::where('course_id', $coursedetail->id)->get();
-
         $courseSchedules = CourseSchedule::where('course_id', $coursedetail->id)->get();
-
         $courseOutlines = CourseOutline::where('course_id', $coursedetail->id)->get();
-
         $courseProjects = CourseProject::where('course_id', $coursedetail->id)->get();
+
+        $relatedcourses = Course::where('course_section_id', $coursedetail->course_section_id)
+            ->where('id', '!=', $coursedetail->id) // Exclude the current course
+            ->latest() // Order by the most recently created course
+            ->get();
 
         return view('frontend.pages.course.allCoursesDetails', compact('relatedcourses', 'coursedetail', 'courseCurriculams', 'courseSchedules', 'courseOutlines', 'courseProjects'));
     }

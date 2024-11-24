@@ -1,3 +1,19 @@
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+    (function() {
+        var s1 = document.createElement("script"),
+            s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/6742c5f64304e3196ae7ccb6/1idedajek';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
+
 <script src="{{ asset('frontend/assets/Js/popper.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/Js/bootstrap.min.js') }}"></script>
 <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>

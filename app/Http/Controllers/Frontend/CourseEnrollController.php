@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseEnrollController extends Controller
 {
-    
+
+    //AddToCartCourse
     public function AddToCartCourse(Request $request)
     {
         if (Auth::check()) {
@@ -52,7 +53,8 @@ class CourseEnrollController extends Controller
         }
     }
 
-    
+
+    //AddToCartOnlineCourse
 
     public function AddToCartOnlineCourse(Request $request)
     {
@@ -93,5 +95,4 @@ class CourseEnrollController extends Controller
             ]);
         }
     }
-
 }

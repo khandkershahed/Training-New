@@ -42,9 +42,24 @@
               <div class="menu-item">
                   <a class="menu-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                       <span class="menu-icon">
-                          <i class="fa-solid fa-rocket fs-2">
-                          </i>
+                          <?xml version="1.0" encoding="UTF-8"?>
+                          <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 29.93 27.44" width="20px" height="20px">
+                              <defs>
+                                  <style>
+                                      .cls-1 {
+                                          fill: #fff;
+                                          stroke-width: 0px;
+                                      }
+                                  </style>
+                              </defs>
+                              <g id="Layer_1-2" data-name="Layer 1">
+                                  <path class="cls-1"
+                                      d="M17.46,11.22c0,1.22-.36,2.42-1.04,3.43l-3.95-3.95v-5.59c2.9.59,4.99,3.15,4.99,6.11ZM9.98,5.11c-3.37.69-5.55,3.98-4.86,7.36.59,2.9,3.15,4.99,6.11,4.99,1.22,0,2.42-.36,3.43-1.04l-4.68-4.68v-6.63ZM19.95,7.48h4.99v-2.49h-4.99v2.49ZM19.95,12.47h4.99v-2.49h-4.99v2.49ZM19.95,17.46h4.99v-2.49h-4.99v2.49ZM16.21,22.45v2.49h6.24v2.49H7.48v-2.49h6.24v-2.49H0V3.74C0,1.68,1.68,0,3.74,0h22.45c2.06,0,3.74,1.68,3.74,3.74v18.71h-13.72ZM2.49,19.95h24.94V3.74c0-.69-.56-1.25-1.25-1.25H3.74c-.69,0-1.25.56-1.25,1.25v16.21Z" />
+                              </g>
+                          </svg>
                       </span>
+
                       <span class="menu-title">Dashboard</span>
                   </a>
               </div>
@@ -54,18 +69,22 @@
                       <span class="menu-icon">
                           <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
                           <span class="svg-icon svg-icon-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                  fill="none">
-                                  <path
-                                      d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
-                                      fill="currentColor" />
-                                  <path opacity="0.3"
-                                      d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
-                                      fill="currentColor" />
-                                  <path opacity="0.3"
-                                      d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
-                                      fill="currentColor" />
-                              </svg>
+                            <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 30 27.5" width="15px" height="15px">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: #fff;
+                                        stroke-width: 0px;
+                                    }
+                                </style>
+                            </defs>
+                            <g id="Layer_1-2" data-name="Layer 1">
+                                <path class="cls-1"
+                                    d="M23.75,0H6.25C2.8,0,0,2.8,0,6.25v15c0,3.45,2.8,6.25,6.25,6.25h17.5c3.45,0,6.25-2.8,6.25-6.25V6.25c0-3.45-2.8-6.25-6.25-6.25ZM27.5,21.25c0,2.07-1.68,3.75-3.75,3.75H6.25c-2.07,0-3.75-1.68-3.75-3.75V6.25c0-2.07,1.68-3.75,3.75-3.75h17.5c2.07,0,3.75,1.68,3.75,3.75v15ZM23.75,7.5c0,.69-.56,1.25-1.25,1.25h-8.75c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25h8.75c.69,0,1.25.56,1.25,1.25ZM10,7.5c0,1.04-.84,1.88-1.88,1.88-1.04,0-1.88-.84-1.88-1.88h0c0-1.04.84-1.88,1.88-1.87s1.88.84,1.88,1.88ZM23.75,13.75c0,.69-.56,1.25-1.25,1.25h-8.75c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25h8.75c.69,0,1.25.56,1.25,1.25ZM10,13.75c0,1.04-.84,1.88-1.88,1.88-1.04,0-1.88-.84-1.87-1.88s.84-1.88,1.88-1.88c1.04,0,1.88.84,1.87,1.88ZM23.75,20c0,.69-.56,1.25-1.25,1.25h-8.75c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25h8.75c.69,0,1.25.56,1.25,1.25ZM10,20c0,1.04-.84,1.88-1.88,1.88-1.04,0-1.88-.84-1.88-1.88s.84-1.88,1.88-1.88c1.04,0,1.88.84,1.88,1.88h0Z" />
+                            </g>
+                        </svg>
+                        
                           </span>
                           <!--end::Svg Icon-->
                       </span>
@@ -74,7 +93,8 @@
                   </span>
                   <div class="menu-sub menu-sub-accordion">
                       <div class="menu-item">
-                          <a class="menu-link {{ Route::is('user.all.event') ? 'active' : '' }}" href="{{ route('user.all.event') }}">
+                          <a class="menu-link {{ Route::is('user.all.event') ? 'active' : '' }}"
+                              href="{{ route('user.all.event') }}">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
@@ -88,17 +108,18 @@
                       <span class="menu-icon">
                           <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
                           <span class="svg-icon svg-icon-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                  fill="none">
-                                  <path
-                                      d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
-                                      fill="currentColor" />
-                                  <path opacity="0.3"
-                                      d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
-                                      fill="currentColor" />
-                                  <path opacity="0.3"
-                                      d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
-                                      fill="currentColor" />
+                            <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 27.5">
+                                <defs>
+                                  <style>
+                                    .cls-1 {
+                                      fill: #fff;
+                                      stroke-width: 0px;
+                                    }
+                                  </style>
+                                </defs>
+                                <g id="Layer_1-2" data-name="Layer 1">
+                                  <path class="cls-1" d="M23.75,0H6.25C2.8,0,0,2.8,0,6.25v15c0,3.45,2.8,6.25,6.25,6.25h17.5c3.45,0,6.25-2.8,6.25-6.25V6.25c0-3.45-2.8-6.25-6.25-6.25ZM27.5,21.25c0,2.07-1.68,3.75-3.75,3.75H6.25c-2.07,0-3.75-1.68-3.75-3.75V6.25c0-2.07,1.68-3.75,3.75-3.75h17.5c2.07,0,3.75,1.68,3.75,3.75v15ZM23.75,7.5c0,.69-.56,1.25-1.25,1.25h-8.75c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25h8.75c.69,0,1.25.56,1.25,1.25ZM10,7.5c0,1.04-.84,1.88-1.88,1.88-1.04,0-1.88-.84-1.88-1.88h0c0-1.04.84-1.88,1.88-1.87s1.88.84,1.88,1.88ZM23.75,13.75c0,.69-.56,1.25-1.25,1.25h-8.75c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25h8.75c.69,0,1.25.56,1.25,1.25ZM10,13.75c0,1.04-.84,1.88-1.88,1.88-1.04,0-1.88-.84-1.87-1.88s.84-1.88,1.88-1.88c1.04,0,1.88.84,1.87,1.88ZM23.75,20c0,.69-.56,1.25-1.25,1.25h-8.75c-.69,0-1.25-.56-1.25-1.25s.56-1.25,1.25-1.25h8.75c.69,0,1.25.56,1.25,1.25ZM10,20c0,1.04-.84,1.88-1.88,1.88-1.04,0-1.88-.84-1.88-1.88s.84-1.88,1.88-1.88c1.04,0,1.88.84,1.88,1.88h0Z"/>
+                                </g>
                               </svg>
                           </span>
                           <!--end::Svg Icon-->
@@ -108,7 +129,8 @@
                   </span>
                   <div class="menu-sub menu-sub-accordion">
                       <div class="menu-item">
-                          <a class="menu-link {{ Route::is('user.register.course.list') ? 'active' : '' }}" href="{{ route('user.register.course.list') }}">
+                          <a class="menu-link {{ Route::is('user.register.course.list') ? 'active' : '' }}"
+                              href="{{ route('user.register.course.list') }}">
                               <span class="menu-bullet">
                                   <span class="bullet bullet-dot"></span>
                               </span>
@@ -122,13 +144,17 @@
       </div>
       <!--end::Aside menu-->
       <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
-          <a href="javascript:void(0)"
-              class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100">
-              <span class="btn-label">
-                  Log Out
-              </span>
-              <i class="fa-solid fa-right-from-bracket btn-icon fs-2 m-0"></i>
-          </a>
+          <form action="{{ route('logout') }}" method="POST" class="w-100">
+              @csrf
+              <button type="submit"
+                  class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100">
+                  <span class="btn-label">
+                      Log Out
+                  </span>
+                  <i class="fa-solid fa-right-from-bracket btn-icon fs-2 m-0"></i>
+              </button>
+          </form>
       </div>
+
   </div>
   <!--end::Aside-->
