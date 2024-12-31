@@ -16,7 +16,6 @@
 
 <script src="{{ asset('frontend/assets/Js/popper.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/Js/bootstrap.min.js') }}"></script>
-<script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
