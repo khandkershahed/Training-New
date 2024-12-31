@@ -213,7 +213,7 @@
                                     <div class="col-md-10 col-12">
                                         <div class="row justify-content-center px-3 mb-3">
                                             <img id="logo"
-                                                src="https://i.ibb.co/HYRMgr8/26znqdblzf-WUKbfm30-Yplsy-Xy3-U7-J32-MCa-Fn-Ms7g.png">
+                                                src="{{ !empty(optional($setting)->site_logo) && file_exists(public_path('storage/' . optional($setting)->site_logo)) ? asset('storage/' . optional($setting)->site_logo) : asset('frontend/images/no-logo(217-55).jpg') }}">
                                         </div>
 
                                         <h3 class="mb-2 text-center heading">Login To Your Dashboard</h3>
