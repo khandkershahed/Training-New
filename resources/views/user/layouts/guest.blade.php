@@ -41,7 +41,7 @@
                             <x-application-logo class="w-25 h-25 fill-current text-gray-500" />
                         </a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body">  
                         {{ $slot }}
                     </div>
                 </div>
