@@ -1171,7 +1171,8 @@ a:hover {
     padding: 30px;
     color: black;
     margin-bottom: 20px;
-    background: url(https://i.ibb.co/tPRnDj3/02.jpg) no-repeat center center;
+    background: #f1f1f1;
+    /* background: url(https://i.ibb.co/tPRnDj3/02.jpg) no-repeat center center; */
     background-size: cover;
     transition: opacity 0.5s ease;
     /* Apply transition to opacity */
@@ -1197,7 +1198,8 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url(https://i.ibb.co/tPRnDj3/02.jpg) no-repeat center center;
+    background: rgb(242, 255, 255);
+    /* background: url(https://i.ibb.co/tPRnDj3/02.jpg) no-repeat center center; */
     background-size: cover;
     z-index: 1;
     opacity: 1;

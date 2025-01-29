@@ -28,6 +28,7 @@
 
         .fullscreen-bg {
             background-image: url('https://i.ibb.co/84wgNwT/Training-error-page-BG-1.jpg');
+            /* background-image: url('https://i.ibb.co/84wgNwT/Training-error-page-BG-1.jpg'); */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

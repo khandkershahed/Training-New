@@ -27,7 +27,7 @@
         }
 
         .fullscreen-bg {
-            background-image: url('https://i.ibb.co/84wgNwT/Training-error-page-BG-1.jpg');
+            background-image: url({{ asset('images/common_banner.jpg') }});
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
