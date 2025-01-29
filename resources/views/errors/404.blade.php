@@ -116,8 +116,8 @@
     </style>
     <div class="container-fluid px-0 error-page">
         <!-- Background section -->
-        <div class="row fullscreen-bg px-0">
-            <div class="col-lg-12 content">
+        <div class="row fullscreen-bg px-0 justify-content-start">
+            <div class="col-lg-4 content">
                 <div class="pb-5 mb-5">
                     <a class="navbar-brand" href="{{ route('homepage') }}">
                         <img class="img-fluid"

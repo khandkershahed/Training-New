@@ -93,9 +93,9 @@
                                     </div>
                                 @empty
                                     <div class="text-center py-3">
-                                        <img class="img-fluid" width="210px"
+                                        {{-- <img class="img-fluid" width="210px"
                                             src="https://i.ibb.co/Vg8gqx5/hand-drawn-no-data-illustration-23-2150696455.jpg"
-                                            alt="No Content">
+                                            alt="No Content"> --}}
                                     </div>
                                     <h5 class="text-center text-warning">No Course available right now.</h5>
                                 @endforelse

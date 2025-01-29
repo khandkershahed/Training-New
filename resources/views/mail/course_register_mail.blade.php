@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="https://i.ibb.co/52jNg3v/favicon.png" rel="apple-touch-icon-precomposed" />
-    <link href="https://i.ibb.co/52jNg3v/favicon.png" rel="shortcut icon" type="image/png" />
+    <link href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/no-logo(217-55).jpg') }}" rel="apple-touch-icon-precomposed" />
+    <link href="{{ !empty(optional($setting)->site_favicon) && file_exists(public_path('storage/' . optional($setting)->site_favicon)) ? asset('storage/' . optional($setting)->site_favicon) : asset('frontend/images/no-logo(217-55).jpg') }}" rel="shortcut icon" type="image/png" />
     <meta name="author" content="" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
