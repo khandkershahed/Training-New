@@ -147,8 +147,7 @@
                         <h3 class="pt-2 mb-5">Need help with your account or access issues? Reach out to our support
                             team.</h3>
                     </div>
-                    <a href="{{ route('support') }}" class="primary-btn-one mt-5">
-                        Contact Support <i class="fa-solid fa-long-arrow-right"></i>
+                    <a href="{{ route('support') }}ct Support <i class="fa-solid fa-long-arrow-right"></i>
                     </a>
                 </div>
             </div>

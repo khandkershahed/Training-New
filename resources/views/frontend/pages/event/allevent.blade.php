@@ -61,6 +61,7 @@
                                                                             </p>
                                                                             {{-- <div class="flip-countdown"></div> --}}
                                                                         </div>
+
                                                                         <div
                                                                             class="card-body p-2 px-4 mt-3 d-flex justify-content-between align-items-center events-card">
                                                                             <p class="text-center mb-0">
@@ -78,6 +79,7 @@
                                                                                     class="fs-6 fw-bold event-color cst-font">{{ date('g:i A', strtotime($event->start_time)) }}</span>
                                                                             </p>
                                                                         </div>
+
                                                                         <div class="card-footer border-0 events-card pb-0">
                                                                             <div class="row align-items-center">
                                                                                 <div class="col-lg-12">
@@ -105,6 +107,7 @@
                                                                                 Details
                                                                             </a>
                                                                         </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

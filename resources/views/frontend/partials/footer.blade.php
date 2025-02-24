@@ -14,9 +14,10 @@
                 </div>
                 <div>
                     <a class="text-decoration-none text-white me-1" href="{{ route('faq') }}">FAQ
-                    </a>|
-                    <a class="text-decoration-none text-white ms-1" href="{{ route('appointment') }}">Appointment
                     </a>
+                    {{-- |
+                    <a class="text-decoration-none text-white ms-1" href="{{ route('appointment') }}">Appointment
+                    </a> --}}
                     {{-- <a class="text-decoration-none text-white ms-1" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#discountModal">Enquiries
                     </a> --}}
                 </div>
@@ -93,7 +94,7 @@
                     </div> --}}
                     <div class="d-flex align-items-center justify-content-between">
                         <small class="mb-0 text-white" style="font-size: 13px">
-                            © 2024 by NGEN IT LTD.
+                            © 2025 by NGEN IT LTD.
                         </small>
                         <div class="ps-5">
                             {{-- <a href="" class="text-white text-decoration-none pe-2">Download</a> --}}
